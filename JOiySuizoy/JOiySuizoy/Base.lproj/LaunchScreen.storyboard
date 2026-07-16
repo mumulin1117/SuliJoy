@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchSuliJoy" translatesAutoresizingMaskIntoConstraints="NO" id="Oe4-gN-vRK">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SiIcon" translatesAutoresizingMaskIntoConstraints="NO" id="r8N-lM-GzC">
+                                <rect key="frame" x="146" y="345.66666666666669" width="101" height="101"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="101" id="PF6-14-6bZ"/>
+                                    <constraint firstAttribute="width" constant="101" id="TkF-Cf-YN3"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Oe4-gN-vRK" secondAttribute="bottom" id="F4A-LL-xz7"/>
+                            <constraint firstItem="Oe4-gN-vRK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="GTJ-Dh-v7d"/>
+                            <constraint firstItem="Oe4-gN-vRK" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Uem-h2-Mvq"/>
+                            <constraint firstItem="r8N-lM-GzC" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-30" id="duL-Eh-PAL"/>
+                            <constraint firstItem="Oe4-gN-vRK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wfU-D5-vbg"/>
+                            <constraint firstItem="r8N-lM-GzC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xkV-9b-Sq0"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="SiIcon" width="110" height="110"/>
+        <image name="launchSuliJoy" width="375" height="812"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

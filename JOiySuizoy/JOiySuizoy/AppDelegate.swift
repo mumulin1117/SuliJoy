@@ -1,0 +1,32 @@
+//
+//  AppDelegate.swift
+//  JOiySuizoy
+//
+//  Created by  on 2026/7/13.
+//
+
+import UIKit
+
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let root: UIViewController
+        let session = SuliJoyLocalAuthService.shared.restoreSession()
+        if session.isLoggedIn, session.currentEmail != nil {
+            root = SuliJoyMainTabBarController()
+        } else {
+            let auth = UINavigationController(rootViewController: SuliJoyWelcomeViewController())
+            auth.setNavigationBarHidden(true, animated: false)
+            root = auth
+        }
+
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = root
+        window.makeKeyAndVisible()
+        self.window = window
+        return true
+    }
+}
