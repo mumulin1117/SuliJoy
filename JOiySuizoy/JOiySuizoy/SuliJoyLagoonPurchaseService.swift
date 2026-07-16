@@ -33,7 +33,7 @@ final class SuliJoyLagoonPurchaseService {
                 }
                 return updated
             }
-            return .success(packs, message: products.isEmpty ? "" : "OK")//Products unavailable. Showing listed prices.
+            return .success(packs, message: products.isEmpty ? "Products unavailable. Showing listed prices." : "OK")
         } catch {
             return .failure("Unable to load StoreKit products.")
         }
