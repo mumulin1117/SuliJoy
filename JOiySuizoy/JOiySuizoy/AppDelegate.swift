@@ -14,11 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let root: UIViewController
-        let session = SuliJoyLocalAuthService.shared.restoreSession()
+        let session = SuliJoyLagoonGateService.shared.restoreSession()
         if session.isLoggedIn, session.currentEmail != nil {
             root = SuliJoyMainTabBarController()
         } else {
-            let auth = UINavigationController(rootViewController: SuliJoyWelcomeViewController())
+            let auth = UINavigationController(rootViewController: suliJoyShorelineEnsemble())
             auth.setNavigationBarHidden(true, animated: false)
             root = auth
         }

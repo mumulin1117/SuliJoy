@@ -3,48 +3,48 @@ import Foundation
 final class SuliJoyCoveMockService {
     static let shared = SuliJoyCoveMockService()
 
-    private var activities: [SuliJoyTideActivity]
-    private var stylists: [SuliJoyLagoonStylist]
-    private var moments: [SuliJoyShoreMoment]
-    private var shellClips: [SuliJoyShellClip]
-    private var talkSpaces: [String: SuliJoyTideTalkSpace]
-    private var blockedShoreAuthors: Set<String>
-    private var currentLagoonFollowedAuthors: Set<String>
-    private var mutualLagoonAuthors: Set<String>
-    private var reportedLagoonVisitors: Set<String>
+    private var tideShelf: [SuliJoyTideActivity]
+    private var lagoonRankers: [SuliJoyLagoonStylist]
+    private var shoreScroll: [SuliJoyReefMoment]
+    private var clipReef: [SuliJoyShellClip]
+    private var tideTalkMap: [String: SuliJoyTideTalkSpace]
+    private var mutedShoreNames: Set<String>
+    private var followedLagoonNames: Set<String>
+    private var pairedLagoonNames: Set<String>
+    private var flaggedLagoonVisitors: Set<String>
 
     private init() {
-        talkSpaces = [:]
-        blockedShoreAuthors = []
-        currentLagoonFollowedAuthors = ["Bess", "Brian May", "Cody Hunter"]
-        mutualLagoonAuthors = ["Brian May"]
-        reportedLagoonVisitors = []
-        shellClips = []
-        activities = [
+        tideTalkMap = [:]
+        mutedShoreNames = []
+        followedLagoonNames = ["Bess", "Brian May", "Cody Hunter"]
+        pairedLagoonNames = ["Brian May"]
+        flaggedLagoonVisitors = []
+        clipReef = []
+        tideShelf = [
             SuliJoyTideActivity(
-                tideID: "tide_sunset_style_party",
-                dayText: "7/15",
-                meridiem: "AM",
-                timeText: "8:00",
-                shoreScheduleText: "Sat, Jul 18, 2026 · 5:30 PM",
-                title: "Island Sunset Style Party",
-                shoreHostName: "Bess",
-                location: "Waikiki Beach · Hawaii, USA",
-                summary: "Wear your favorite island-inspired outfit and enjoy a beautiful sunset with relaxed icebreakers, a beach walk, and casual photo time.",
-                detailHeroAssetName: "sulijoy_activity_detail_hero_sunset",
-                shoreBrief: "Wear your favorite island-inspired outfit and enjoy a beautiful sunset at Waikiki Beach. The event includes relaxed icebreakers, a beach walk, and casual photo time. Perfect for meeting new people and enjoying a laid-back vibe. No experience needed—just bring good energy.",
-                relatedTideIDs: ["tide_golden_photo_walk", "tide_blue_white_picnic", "tide_market_style_hunt", "tide_tropical_print_party"],
-                status: .open,
-                isReportedLocally: false,
-                joinedCount: 12,
-                capacity: 20,
-                gemCost: 100,
-                media: [
-                    SuliJoyReefMedia(mediaID: "sunset_01", kind: .image, assetName: "sulijoy_home_activity_sunset_01", caption: "Sunset lounge"),
-                    SuliJoyReefMedia(mediaID: "sunset_02", kind: .image, assetName: "sulijoy_home_activity_sunset_02", caption: "Palm styling table"),
-                    SuliJoyReefMedia(mediaID: "sunset_03", kind: .image, assetName: "sulijoy_home_activity_sunset_03", caption: "Coastal friends")
+                tideMark: "tide_sunset_style_party",
+                shoreDayText: "7/15",
+                sunMeridiemText: "AM",
+                shoreClockText: "8:00",
+                tideScheduleLine: "Sat, Jul 18, 2026 · 5:30 PM",
+                tideTitleLine: "Island Sunset Style Party",
+                shoreHostAlias: "Bess",
+                shoreSpotLine: "Waikiki Beach · Hawaii, USA",
+                shoreSummaryLine: "Wear your favorite island-inspired outfit and enjoy a beautiful sunset with relaxed icebreakers, a beach walk, and casual photo time.",
+                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                shoreBriefLine: "Wear your favorite island-inspired outfit and enjoy a beautiful sunset at Waikiki Beach. The event includes relaxed icebreakers, a beach walk, and casual photo time. Perfect for connecting with new people and enjoying a laid-back vibe. No experience needed—just bring good energy.",
+                relatedTideMarks: ["tide_golden_photo_walk", "tide_blue_white_picnic", "tide_market_style_hunt", "tide_tropical_print_party"],
+                tideState: .tideOpen,
+                isReefFlagged: false,
+                tideJoinedTotal: 12,
+                tideCrewLimit: 20,
+                pearlNeed: 100,
+                reefGallery: [
+                    SuliJoyReefMedia(reefMediaStamp: "sunset_01", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_01", reefCaptionLine: "Sunset lounge"),
+                    SuliJoyReefMedia(reefMediaStamp: "sunset_02", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_02", reefCaptionLine: "Palm styling table"),
+                    SuliJoyReefMedia(reefMediaStamp: "sunset_03", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_03", reefCaptionLine: "Coastal friends")
                 ],
-                avatarAssetNames: [
+                shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_breeze_01",
                     "sulijoy_mock_avatar_breeze_02",
                     "sulijoy_mock_avatar_breeze_03",
@@ -53,29 +53,29 @@ final class SuliJoyCoveMockService {
                 ]
             ),
             SuliJoyTideActivity(
-                tideID: "tide_golden_photo_walk",
-                dayText: "7/24",
-                meridiem: "PM",
-                timeText: "6:00",
-                shoreScheduleText: "Fri, Jul 24, 2026 · 6:00 PM",
-                title: "Golden Hour Beach Photo Walk",
-                shoreHostName: "Cody Hunter",
-                location: "Barceloneta Beach · Barcelona, Spain",
-                summary: "Walk the beach during golden hour, capture beautiful moments, and connect through fashion, photography, and seaside light.",
-                detailHeroAssetName: "sulijoy_activity_detail_hero_sunset",
-                shoreBrief: "Walk along the beach during golden hour and capture beautiful moments together. Ideal for those who enjoy photography, fashion, or simply the seaside atmosphere. Help each other take photos or just relax and connect.",
-                relatedTideIDs: ["tide_sunset_style_party", "tide_blue_white_picnic", "tide_market_style_hunt", "tide_tropical_print_party"],
-                status: .open,
-                isReportedLocally: false,
-                joinedCount: 9,
-                capacity: 16,
-                gemCost: 90,
-                media: [
-                    SuliJoyReefMedia(mediaID: "golden_walk_01", kind: .image, assetName: "sulijoy_home_activity_golden_walk_01", caption: "Golden drinks"),
-                    SuliJoyReefMedia(mediaID: "golden_walk_02", kind: .image, assetName: "sulijoy_home_activity_golden_walk_02", caption: "Beach portrait"),
-                    SuliJoyReefMedia(mediaID: "golden_walk_03", kind: .image, assetName: "sulijoy_home_activity_golden_walk_03", caption: "Palm sunset")
+                tideMark: "tide_golden_photo_walk",
+                shoreDayText: "7/24",
+                sunMeridiemText: "PM",
+                shoreClockText: "6:00",
+                tideScheduleLine: "Fri, Jul 24, 2026 · 6:00 PM",
+                tideTitleLine: "Golden Hour Beach Photo Walk",
+                shoreHostAlias: "Cody Hunter",
+                shoreSpotLine: "Barceloneta Beach · Barcelona, Spain",
+                shoreSummaryLine: "Walk the beach during golden hour, capture beautiful shoreScroll, and connect through fashion, photography, and seaside light.",
+                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                shoreBriefLine: "Walk along the beach during golden hour and capture beautiful shoreScroll together. Ideal for those who enjoy photography, fashion, or simply the seaside atmosphere. Help each other take photos or just relax and connect.",
+                relatedTideMarks: ["tide_sunset_style_party", "tide_blue_white_picnic", "tide_market_style_hunt", "tide_tropical_print_party"],
+                tideState: .tideOpen,
+                isReefFlagged: false,
+                tideJoinedTotal: 9,
+                tideCrewLimit: 16,
+                pearlNeed: 90,
+                reefGallery: [
+                    SuliJoyReefMedia(reefMediaStamp: "golden_walk_01", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_01", reefCaptionLine: "Golden drinks"),
+                    SuliJoyReefMedia(reefMediaStamp: "golden_walk_02", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_02", reefCaptionLine: "Beach portrait"),
+                    SuliJoyReefMedia(reefMediaStamp: "golden_walk_03", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_03", reefCaptionLine: "Palm sunset")
                 ],
-                avatarAssetNames: [
+                shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_sun_01",
                     "sulijoy_mock_avatar_sun_02",
                     "sulijoy_mock_avatar_sun_03",
@@ -83,29 +83,29 @@ final class SuliJoyCoveMockService {
                 ]
             ),
             SuliJoyTideActivity(
-                tideID: "tide_blue_white_picnic",
-                dayText: "8/1",
-                meridiem: "PM",
-                timeText: "4:30",
-                shoreScheduleText: "Sat, Aug 1, 2026 · 4:30 PM",
-                title: "Mediterranean Blue & White Picnic",
-                shoreHostName: "Brian May",
-                location: "Oia Viewpoint · Santorini, Greece",
-                summary: "Enjoy a blue and white dress-theme picnic with simple snacks, shared food, relaxed chat, and romantic coastal photos.",
-                detailHeroAssetName: "sulijoy_activity_detail_hero_sunset",
-                shoreBrief: "Enjoy a Mediterranean-style picnic with a blue and white dress theme at one of Santorini’s most scenic spots. Bring simple snacks, share food, chat, and take photos in a relaxed and romantic setting.",
-                relatedTideIDs: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_market_style_hunt", "tide_tropical_print_party"],
-                status: .open,
-                isReportedLocally: false,
-                joinedCount: 14,
-                capacity: 18,
-                gemCost: 120,
-                media: [
-                    SuliJoyReefMedia(mediaID: "blue_picnic_01", kind: .image, assetName: "sulijoy_home_activity_blue_picnic_01", caption: "Seaside picnic"),
-                    SuliJoyReefMedia(mediaID: "blue_picnic_02", kind: .image, assetName: "sulijoy_home_activity_blue_picnic_02", caption: "Blue table"),
-                    SuliJoyReefMedia(mediaID: "blue_picnic_03", kind: .image, assetName: "sulijoy_home_activity_blue_picnic_03", caption: "Beach setting")
+                tideMark: "tide_blue_white_picnic",
+                shoreDayText: "8/1",
+                sunMeridiemText: "PM",
+                shoreClockText: "4:30",
+                tideScheduleLine: "Sat, Aug 1, 2026 · 4:30 PM",
+                tideTitleLine: "Mediterranean Blue & White Picnic",
+                shoreHostAlias: "Brian May",
+                shoreSpotLine: "Oia Viewpoint · Santorini, Greece",
+                shoreSummaryLine: "Enjoy a blue and white dress-theme picnic with simple snacks, shared food, relaxed style notes, and romantic coastal photos.",
+                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                shoreBriefLine: "Enjoy a Mediterranean-style picnic with a blue and white dress theme at one of Santorini’s most scenic spots. Bring simple snacks, share food, swap outfit ideas, and take photos in a relaxed and romantic setting.",
+                relatedTideMarks: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_market_style_hunt", "tide_tropical_print_party"],
+                tideState: .tideOpen,
+                isReefFlagged: false,
+                tideJoinedTotal: 14,
+                tideCrewLimit: 18,
+                pearlNeed: 120,
+                reefGallery: [
+                    SuliJoyReefMedia(reefMediaStamp: "blue_picnic_01", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_01", reefCaptionLine: "Seaside picnic"),
+                    SuliJoyReefMedia(reefMediaStamp: "blue_picnic_02", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_02", reefCaptionLine: "Blue table"),
+                    SuliJoyReefMedia(reefMediaStamp: "blue_picnic_03", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_03", reefCaptionLine: "Beach setting")
                 ],
-                avatarAssetNames: [
+                shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_breeze_07",
                     "sulijoy_mock_avatar_breeze_08",
                     "sulijoy_mock_avatar_breeze_09",
@@ -114,29 +114,29 @@ final class SuliJoyCoveMockService {
                 ]
             ),
             SuliJoyTideActivity(
-                tideID: "tide_market_style_hunt",
-                dayText: "8/15",
-                meridiem: "PM",
-                timeText: "3:00",
-                shoreScheduleText: "Sat, Aug 15, 2026 · 3:00 PM",
-                title: "Island Market Style Hunt",
-                shoreHostName: "Dennis Waters",
-                location: "Phuket Weekend Market · Phuket, Thailand",
-                summary: "Explore a vibrant island market together, discover boutique fashion finds, and leave room for casual photo moments.",
-                detailHeroAssetName: "sulijoy_activity_detail_hero_sunset",
-                shoreBrief: "Explore a vibrant island market together and discover unique fashion inspiration and coastal finds. Includes free browsing, social interaction, and casual photo moments.",
-                relatedTideIDs: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_blue_white_picnic", "tide_tropical_print_party"],
-                status: .open,
-                isReportedLocally: false,
-                joinedCount: 8,
-                capacity: 20,
-                gemCost: 80,
-                media: [
-                    SuliJoyReefMedia(mediaID: "market_hunt_01", kind: .image, assetName: "sulijoy_home_activity_market_hunt_01", caption: "Market coconut"),
-                    SuliJoyReefMedia(mediaID: "market_hunt_02", kind: .image, assetName: "sulijoy_home_activity_market_hunt_02", caption: "Night market"),
-                    SuliJoyReefMedia(mediaID: "market_hunt_03", kind: .image, assetName: "sulijoy_home_activity_market_hunt_03", caption: "Island look")
+                tideMark: "tide_market_style_hunt",
+                shoreDayText: "8/15",
+                sunMeridiemText: "PM",
+                shoreClockText: "3:00",
+                tideScheduleLine: "Sat, Aug 15, 2026 · 3:00 PM",
+                tideTitleLine: "Island Market Style Hunt",
+                shoreHostAlias: "Dennis Waters",
+                shoreSpotLine: "Phuket Weekend Market · Phuket, Thailand",
+                shoreSummaryLine: "Explore a vibrant island market together, discover boutique fashion finds, and leave room for casual photo shoreScroll.",
+                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                shoreBriefLine: "Explore a vibrant island market together and discover unique fashion inspiration and coastal finds. Includes free browsing, social interaction, and casual photo shoreScroll.",
+                relatedTideMarks: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_blue_white_picnic", "tide_tropical_print_party"],
+                tideState: .tideOpen,
+                isReefFlagged: false,
+                tideJoinedTotal: 8,
+                tideCrewLimit: 20,
+                pearlNeed: 80,
+                reefGallery: [
+                    SuliJoyReefMedia(reefMediaStamp: "market_hunt_01", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_01", reefCaptionLine: "Market coconut"),
+                    SuliJoyReefMedia(reefMediaStamp: "market_hunt_02", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_02", reefCaptionLine: "Night market"),
+                    SuliJoyReefMedia(reefMediaStamp: "market_hunt_03", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_03", reefCaptionLine: "Island look")
                 ],
-                avatarAssetNames: [
+                shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_sun_06",
                     "sulijoy_mock_avatar_sun_07",
                     "sulijoy_mock_avatar_breeze_10",
@@ -144,29 +144,29 @@ final class SuliJoyCoveMockService {
                 ]
             ),
             SuliJoyTideActivity(
-                tideID: "tide_tropical_print_party",
-                dayText: "9/5",
-                meridiem: "PM",
-                timeText: "5:30",
-                shoreScheduleText: "Sat, Sep 5, 2026 · 5:30 PM",
-                title: "Tropical Print Beach Party",
-                shoreHostName: "Dennis Waters",
-                location: "Paradise Beach · Tulum, Mexico",
-                summary: "Wear tropical prints and enjoy music, sunset, and social beach vibes in a lively but relaxed gathering.",
-                detailHeroAssetName: "sulijoy_activity_detail_hero_sunset",
-                shoreBrief: "Wear tropical prints and enjoy music, sunset, and social vibes on the beach. A lively yet relaxed gathering for meeting new people and unwinding.",
-                relatedTideIDs: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_blue_white_picnic", "tide_market_style_hunt"],
-                status: .open,
-                isReportedLocally: false,
-                joinedCount: 17,
-                capacity: 24,
-                gemCost: 110,
-                media: [
-                    SuliJoyReefMedia(mediaID: "tropical_party_01", kind: .image, assetName: "sulijoy_home_activity_tropical_party_01", caption: "Tropical print"),
-                    SuliJoyReefMedia(mediaID: "tropical_party_02", kind: .image, assetName: "sulijoy_home_activity_tropical_party_02", caption: "Party friends"),
-                    SuliJoyReefMedia(mediaID: "tropical_party_03", kind: .image, assetName: "sulijoy_home_activity_tropical_party_03", caption: "Sunset outfit")
+                tideMark: "tide_tropical_print_party",
+                shoreDayText: "9/5",
+                sunMeridiemText: "PM",
+                shoreClockText: "5:30",
+                tideScheduleLine: "Sat, Sep 5, 2026 · 5:30 PM",
+                tideTitleLine: "Tropical Print Beach Party",
+                shoreHostAlias: "Dennis Waters",
+                shoreSpotLine: "Paradise Beach · Tulum, Mexico",
+                shoreSummaryLine: "Wear tropical prints and enjoy music, sunset, and social beach vibes in a bright but relaxed gathering.",
+                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                shoreBriefLine: "Wear tropical prints and enjoy music, sunset, and social vibes on the beach. A bright yet relaxed gathering for finding fresh looks and unwinding.",
+                relatedTideMarks: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_blue_white_picnic", "tide_market_style_hunt"],
+                tideState: .tideOpen,
+                isReefFlagged: false,
+                tideJoinedTotal: 17,
+                tideCrewLimit: 24,
+                pearlNeed: 110,
+                reefGallery: [
+                    SuliJoyReefMedia(reefMediaStamp: "tropical_party_01", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_01", reefCaptionLine: "Tropical print"),
+                    SuliJoyReefMedia(reefMediaStamp: "tropical_party_02", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_02", reefCaptionLine: "Party friends"),
+                    SuliJoyReefMedia(reefMediaStamp: "tropical_party_03", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_03", reefCaptionLine: "Sunset outfit")
                 ],
-                avatarAssetNames: [
+                shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_breeze_12",
                     "sulijoy_mock_avatar_sun_08",
                     "sulijoy_mock_avatar_sun_09",
@@ -175,29 +175,29 @@ final class SuliJoyCoveMockService {
                 ]
             ),
             SuliJoyTideActivity(
-                tideID: "tide_sporty_coastal_social",
-                dayText: "9/12",
-                meridiem: "AM",
-                timeText: "10:00",
-                shoreScheduleText: "Sat, Sep 12, 2026 · 10:00 AM",
-                title: "Sporty Coastal Social Day",
-                shoreHostName: "Cody Hunter",
-                location: "Bondi Beach · Sydney, Australia",
-                summary: "Join light beach activities, relax by the coast, and connect with others who enjoy an active seaside lifestyle.",
-                detailHeroAssetName: "sulijoy_activity_detail_hero_sunset",
-                shoreBrief: "A beach event combining light sports and social interaction. Join casual beach activities or simply relax and connect with others who enjoy an active lifestyle.",
-                relatedTideIDs: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_blue_white_picnic", "tide_market_style_hunt"],
-                status: .closed,
-                isReportedLocally: false,
-                joinedCount: 18,
-                capacity: 18,
-                gemCost: 70,
-                media: [
-                    SuliJoyReefMedia(mediaID: "sporty_social_01", kind: .image, assetName: "sulijoy_home_activity_sporty_social_01", caption: "Sporty beach"),
-                    SuliJoyReefMedia(mediaID: "sporty_social_02", kind: .image, assetName: "sulijoy_home_activity_sporty_social_02", caption: "Coastal walk"),
-                    SuliJoyReefMedia(mediaID: "sporty_social_03", kind: .image, assetName: "sulijoy_home_activity_sporty_social_03", caption: "Beach sport")
+                tideMark: "tide_sporty_coastal_social",
+                shoreDayText: "9/12",
+                sunMeridiemText: "AM",
+                shoreClockText: "10:00",
+                tideScheduleLine: "Sat, Sep 12, 2026 · 10:00 AM",
+                tideTitleLine: "Sporty Coastal Social Day",
+                shoreHostAlias: "Cody Hunter",
+                shoreSpotLine: "Bondi Beach · Sydney, Australia",
+                shoreSummaryLine: "Join light beach tideShelf, relax by the coast, and connect with others who enjoy an active seaside lifestyle.",
+                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                shoreBriefLine: "A beach event combining light sports and social interaction. Join casual beach tideShelf or simply relax and connect with others who enjoy an active lifestyle.",
+                relatedTideMarks: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_blue_white_picnic", "tide_market_style_hunt"],
+                tideState: .tideClosed,
+                isReefFlagged: false,
+                tideJoinedTotal: 18,
+                tideCrewLimit: 18,
+                pearlNeed: 70,
+                reefGallery: [
+                    SuliJoyReefMedia(reefMediaStamp: "sporty_social_01", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_01", reefCaptionLine: "Sporty beach"),
+                    SuliJoyReefMedia(reefMediaStamp: "sporty_social_02", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_02", reefCaptionLine: "Coastal walk"),
+                    SuliJoyReefMedia(reefMediaStamp: "sporty_social_03", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_03", reefCaptionLine: "Beach sport")
                 ],
-                avatarAssetNames: [
+                shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_sun_11",
                     "sulijoy_mock_avatar_sun_12",
                     "sulijoy_mock_avatar_breeze_02",
@@ -205,279 +205,279 @@ final class SuliJoyCoveMockService {
                 ]
             )
         ]
-        activities.insert(contentsOf: Self.loadLocalPublishedActivities(), at: 0)
-        talkSpaces = Dictionary(uniqueKeysWithValues: activities.map { activity in
-            (activity.tideID, Self.makeTalkSpace(from: activity))
+        tideShelf.insert(contentsOf: Self.loadPublishedTideShelf(), at: 0)
+        tideTalkMap = Dictionary(uniqueKeysWithValues: tideShelf.map { activity in
+            (activity.tideMark, Self.makeTideTalkHarbor(from: activity))
         })
 
-        stylists = [
-            SuliJoyLagoonStylist(stylistID: "stylist_brian_may", displayName: "Brian May", avatarAssetName: "sulijoy_feed_avatar_brian_may", followingCount: 3, followerCount: 4),
-            SuliJoyLagoonStylist(stylistID: "stylist_cody_hunter", displayName: "Cody Hunter", avatarAssetName: "sulijoy_feed_avatar_cody_hunter", followingCount: 2, followerCount: 3),
-            SuliJoyLagoonStylist(stylistID: "stylist_bess", displayName: "Bess", avatarAssetName: "sulijoy_feed_avatar_bess", followingCount: 1, followerCount: 4),
-            SuliJoyLagoonStylist(stylistID: "stylist_dennis_waters", displayName: "Dennis Waters", avatarAssetName: "sulijoy_feed_avatar_dennis_waters", followingCount: 4, followerCount: 2)
+        lagoonRankers = [
+            SuliJoyLagoonStylist(stylistID: "stylist_brian_may", displayName: "Brian May", avatarAssetName: "sulijoy_feed_avatar_brian_may", suliJoyCoastalModeration: 3, suliJoyCoastalChecklist: 4),
+            SuliJoyLagoonStylist(stylistID: "stylist_cody_hunter", displayName: "Cody Hunter", avatarAssetName: "sulijoy_feed_avatar_cody_hunter", suliJoyCoastalModeration: 2, suliJoyCoastalChecklist: 3),
+            SuliJoyLagoonStylist(stylistID: "stylist_bess", displayName: "Bess", avatarAssetName: "sulijoy_feed_avatar_bess", suliJoyCoastalModeration: 1, suliJoyCoastalChecklist: 4),
+            SuliJoyLagoonStylist(stylistID: "stylist_dennis_waters", displayName: "Dennis Waters", avatarAssetName: "sulijoy_feed_avatar_dennis_waters", suliJoyCoastalModeration: 4, suliJoyCoastalChecklist: 2)
         ]
 
-        moments = [
-            SuliJoyShoreMoment(
-                momentID: "moment_bess_recommend",
-                authorName: "Bess",
-                authorHandle: "@bess.shore",
-                authorStyleLine: "Pastel beach layers · Waikiki",
-                authorAvatarAssetName: "sulijoy_feed_avatar_bess",
-                timeAgo: "4 mins ago",
-                shorePlaceText: "Waikiki Beach · Hawaii, USA",
-                shoreTimeText: "Jul 18, 2026 · 5:30 PM",
-                body: "Soft blue and pink tees feel easy for a windy beach walk. The oversized flower print keeps the photos bright without trying too hard.",
-                media: [
-                    SuliJoyReefMedia(mediaID: "coast_01", kind: .image, assetName: "sulijoy_feed_moment_coast_01", caption: "Beach flower tee"),
-                    SuliJoyReefMedia(mediaID: "coast_02", kind: .image, assetName: "sulijoy_feed_moment_coast_02", caption: "Pastel shore pair"),
-                    SuliJoyReefMedia(mediaID: "coast_03", kind: .image, assetName: "sulijoy_feed_moment_coast_03", caption: "Sunset walk back")
+        shoreScroll = [
+            SuliJoyReefMoment(
+                reefMomentID: "moment_bess_recommend",
+                islandStylistName: "Bess",
+                islandStylistMark: "@bess.shore",
+                islandStyleLine: "Pastel beach layers · Waikiki",
+                islandStylistAvatarAssetName: "sulijoy_feed_avatar_bess",
+                tideAgoText: "4 mins ago",
+                shoreSpotText: "Waikiki Beach · Hawaii, USA",
+                shoreTideText: "Jul 18, 2026 · 5:30 PM",
+                islandCaptionText: "Soft blue and pink tees feel easy for a windy beach walk. The oversized flower print keeps the photos bright without trying too hard.",
+                reefMedia: [
+                    SuliJoyReefMedia(reefMediaStamp: "coast_01", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", reefCaptionLine: "Beach flower tee"),
+                    SuliJoyReefMedia(reefMediaStamp: "coast_02", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_02", reefCaptionLine: "Pastel shore pair"),
+                    SuliJoyReefMedia(reefMediaStamp: "coast_03", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", reefCaptionLine: "Sunset walk back")
                 ],
-                audioNote: SuliJoyWaveAudioNote(noteID: "audio_bess", duration: 18, waveformAssetName: "sulijoy_feed_audio_wave", audioFileName: "sulijoy_shore_audio_keila.mp3", isPlaying: false, progress: 0),
-                likeCount: 6,
-                commentCount: 3,
-                comments: [
-                    SuliJoyShoreComment(commentID: "comment_bess_1", commenterName: "Cody Hunter", commenterAvatarAssetName: "sulijoy_feed_avatar_cody_hunter", text: "The pastel colors work really well with the sea light.", timeAgo: "2 mins ago"),
-                    SuliJoyShoreComment(commentID: "comment_bess_2", commenterName: "Dennis Waters", commenterAvatarAssetName: "sulijoy_feed_avatar_dennis_waters", text: "That oversized tee is perfect for a casual sunset photo.", timeAgo: "1 min ago"),
-                    SuliJoyShoreComment(commentID: "comment_bess_3", commenterName: "Brian May", commenterAvatarAssetName: "sulijoy_feed_avatar_brian_may", text: "Clean, relaxed, and still memorable.", timeAgo: "just now")
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_bess", waveSeconds: 18, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("keila"), isWaveRolling: false, waveProgressRatio: 0),
+                heartTally: 6,
+                reefReplyTally: 3,
+                reefReplies: [
+                    SuliJoyReefReply(reefReplyID: "comment_bess_1", reefEchoName: "Cody Hunter", reefEchoAvatarAssetName: "sulijoy_feed_avatar_cody_hunter", reefPhraseText: "The pastel colors work really well with the sea light.", tideAgoText: "2 mins ago"),
+                    SuliJoyReefReply(reefReplyID: "comment_bess_2", reefEchoName: "Dennis Waters", reefEchoAvatarAssetName: "sulijoy_feed_avatar_dennis_waters", reefPhraseText: "That oversized tee is perfect for a casual sunset photo.", tideAgoText: "1 min ago"),
+                    SuliJoyReefReply(reefReplyID: "comment_bess_3", reefEchoName: "Brian May", reefEchoAvatarAssetName: "sulijoy_feed_avatar_brian_may", reefPhraseText: "Clean, relaxed, and still memorable.", tideAgoText: "just now")
                 ],
-                isLiked: false,
-                filter: .recommend,
-                isBlocked: false,
-                isReportedLocally: false
+                isHearted: false,
+                reefFilter: .coastalPick,
+                isTideHidden: false,
+                isReefFlagged: false
             ),
-            SuliJoyShoreMoment(
-                momentID: "moment_dennis_hot",
-                authorName: "Dennis Waters",
-                authorHandle: "@dennis.coast",
-                authorStyleLine: "Printed resort shirt · garden lunch",
-                authorAvatarAssetName: "sulijoy_feed_avatar_dennis_waters",
-                timeAgo: "9 mins ago",
-                shorePlaceText: "Paradise Beach · Tulum, Mexico",
-                shoreTimeText: "Sep 5, 2026 · 5:30 PM",
-                body: "A light printed shirt is enough when the setting already has color. I like keeping jewelry warm and the fit loose.",
-                media: [
-                    SuliJoyReefMedia(mediaID: "coast_04", kind: .image, assetName: "sulijoy_feed_moment_coast_04", caption: "Printed island shirt"),
-                    SuliJoyReefMedia(mediaID: "coast_05", kind: .image, assetName: "sulijoy_feed_moment_coast_05", caption: "Resort lunch look")
+            SuliJoyReefMoment(
+                reefMomentID: "moment_dennis_hot",
+                islandStylistName: "Dennis Waters",
+                islandStylistMark: "@dennis.coast",
+                islandStyleLine: "Printed resort shirt · garden lunch",
+                islandStylistAvatarAssetName: "sulijoy_feed_avatar_dennis_waters",
+                tideAgoText: "9 mins ago",
+                shoreSpotText: "Paradise Beach · Tulum, Mexico",
+                shoreTideText: "Sep 5, 2026 · 5:30 PM",
+                islandCaptionText: "A light printed shirt is enough when the setting already has color. I like keeping jewelry warm and the fit loose.",
+                reefMedia: [
+                    SuliJoyReefMedia(reefMediaStamp: "coast_04", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_04", reefCaptionLine: "Printed island shirt"),
+                    SuliJoyReefMedia(reefMediaStamp: "coast_05", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_05", reefCaptionLine: "Resort lunch look")
                 ],
-                audioNote: SuliJoyWaveAudioNote(noteID: "audio_dennis", duration: 21, waveformAssetName: "sulijoy_feed_audio_wave", audioFileName: "sulijoy_shore_audio_elei_island.mp3", isPlaying: false, progress: 0),
-                likeCount: 8,
-                commentCount: 2,
-                comments: [
-                    SuliJoyShoreComment(commentID: "comment_dennis_1", commenterName: "Bess", commenterAvatarAssetName: "sulijoy_feed_avatar_bess", text: "The shirt pattern feels beachy but still neat.", timeAgo: "5 mins ago"),
-                    SuliJoyShoreComment(commentID: "comment_dennis_2", commenterName: "Cody Hunter", commenterAvatarAssetName: "sulijoy_feed_avatar_cody_hunter", text: "Warm jewelry was the right call here.", timeAgo: "3 mins ago")
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_dennis", waveSeconds: 21, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("elei_island"), isWaveRolling: false, waveProgressRatio: 0),
+                heartTally: 8,
+                reefReplyTally: 2,
+                reefReplies: [
+                    SuliJoyReefReply(reefReplyID: "comment_dennis_1", reefEchoName: "Bess", reefEchoAvatarAssetName: "sulijoy_feed_avatar_bess", reefPhraseText: "The shirt pattern feels beachy but still neat.", tideAgoText: "5 mins ago"),
+                    SuliJoyReefReply(reefReplyID: "comment_dennis_2", reefEchoName: "Cody Hunter", reefEchoAvatarAssetName: "sulijoy_feed_avatar_cody_hunter", reefPhraseText: "Warm jewelry was the right call here.", tideAgoText: "3 mins ago")
                 ],
-                isLiked: true,
-                filter: .recommend,
-                isBlocked: false,
-                isReportedLocally: false
+                isHearted: true,
+                reefFilter: .coastalPick,
+                isTideHidden: false,
+                isReefFlagged: false
             ),
-            SuliJoyShoreMoment(
-                momentID: "moment_cody_hot",
-                authorName: "Cody Hunter",
-                authorHandle: "@cody.linen",
-                authorStyleLine: "Linen walk set · Barcelona",
-                authorAvatarAssetName: "sulijoy_feed_avatar_cody_hunter",
-                timeAgo: "8 mins ago",
-                shorePlaceText: "Barcelona Beach · Barcelona, Spain",
-                shoreTimeText: "Jul 24, 2026 · 6:00 PM",
-                body: "A linen shirt and simple shorts still feel right for golden hour. I would rather keep the silhouette clean than add too many pieces.",
-                media: [
-                    SuliJoyReefMedia(mediaID: "coast_03_hot", kind: .image, assetName: "sulijoy_feed_moment_coast_03", caption: "Sunset walk")
+            SuliJoyReefMoment(
+                reefMomentID: "moment_cody_hot",
+                islandStylistName: "Cody Hunter",
+                islandStylistMark: "@cody.linen",
+                islandStyleLine: "Linen walk set · Barcelona",
+                islandStylistAvatarAssetName: "sulijoy_feed_avatar_cody_hunter",
+                tideAgoText: "8 mins ago",
+                shoreSpotText: "Barcelona Beach · Barcelona, Spain",
+                shoreTideText: "Jul 24, 2026 · 6:00 PM",
+                islandCaptionText: "A linen shirt and simple shorts still feel right for golden hour. I would rather keep the silhouette clean than add too many pieces.",
+                reefMedia: [
+                    SuliJoyReefMedia(reefMediaStamp: "coast_03_hot", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", reefCaptionLine: "Sunset walk")
                 ],
-                audioNote: SuliJoyWaveAudioNote(noteID: "audio_cody", duration: 16, waveformAssetName: "sulijoy_feed_audio_wave", audioFileName: "sulijoy_shore_audio_sablereid.mp3", isPlaying: false, progress: 0),
-                likeCount: 4,
-                commentCount: 1,
-                comments: [
-                    SuliJoyShoreComment(commentID: "comment_cody_1", commenterName: "Brian May", commenterAvatarAssetName: "sulijoy_feed_avatar_brian_may", text: "Clean silhouette, easy to copy.", timeAgo: "4 mins ago")
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_cody", waveSeconds: 16, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("sablereid"), isWaveRolling: false, waveProgressRatio: 0),
+                heartTally: 4,
+                reefReplyTally: 1,
+                reefReplies: [
+                    SuliJoyReefReply(reefReplyID: "comment_cody_1", reefEchoName: "Brian May", reefEchoAvatarAssetName: "sulijoy_feed_avatar_brian_may", reefPhraseText: "Clean silhouette, easy to copy.", tideAgoText: "4 mins ago")
                 ],
-                isLiked: false,
-                filter: .hot,
-                isBlocked: false,
-                isReportedLocally: false
+                isHearted: false,
+                reefFilter: .sunsetRush,
+                isTideHidden: false,
+                isReefFlagged: false
             ),
-            SuliJoyShoreMoment(
-                momentID: "moment_brian_followed",
-                authorName: "Brian May",
-                authorHandle: "@brian.blue",
-                authorStyleLine: "Blue-white picnic mood · Santorini",
-                authorAvatarAssetName: "sulijoy_feed_avatar_brian_may",
-                timeAgo: "12 mins ago",
-                shorePlaceText: "Oia Viewpoint · Santorini, Greece",
-                shoreTimeText: "Aug 1, 2026 · 4:30 PM",
-                body: "For blue-water backgrounds, pale shirts and soft accessories read cleaner. A quiet palette makes the location feel bigger.",
-                media: [
-                    SuliJoyReefMedia(mediaID: "coast_02_followed", kind: .image, assetName: "sulijoy_feed_moment_coast_02", caption: "Pastel pair"),
-                    SuliJoyReefMedia(mediaID: "coast_01_followed", kind: .image, assetName: "sulijoy_feed_moment_coast_01", caption: "Beach tee detail")
+            SuliJoyReefMoment(
+                reefMomentID: "moment_brian_followed",
+                islandStylistName: "Brian May",
+                islandStylistMark: "@brian.blue",
+                islandStyleLine: "Blue-white picnic mood · Santorini",
+                islandStylistAvatarAssetName: "sulijoy_feed_avatar_brian_may",
+                tideAgoText: "12 mins ago",
+                shoreSpotText: "Oia Viewpoint · Santorini, Greece",
+                shoreTideText: "Aug 1, 2026 · 4:30 PM",
+                islandCaptionText: "For blue-water backgrounds, pale shirts and soft accessories read cleaner. A quiet palette makes the setting feel bigger.",
+                reefMedia: [
+                    SuliJoyReefMedia(reefMediaStamp: "coast_02_followed", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_02", reefCaptionLine: "Pastel pair"),
+                    SuliJoyReefMedia(reefMediaStamp: "coast_01_followed", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", reefCaptionLine: "Beach tee detail")
                 ],
-                audioNote: SuliJoyWaveAudioNote(noteID: "audio_brian", duration: 19, waveformAssetName: "sulijoy_feed_audio_wave", audioFileName: "sulijoy_shore_audio_jess_ortiz.mp3", isPlaying: false, progress: 0),
-                likeCount: 5,
-                commentCount: 2,
-                comments: [
-                    SuliJoyShoreComment(commentID: "comment_brian_1", commenterName: "Bess", commenterAvatarAssetName: "sulijoy_feed_avatar_bess", text: "The quiet palette makes the photos softer.", timeAgo: "7 mins ago"),
-                    SuliJoyShoreComment(commentID: "comment_brian_2", commenterName: "Dennis Waters", commenterAvatarAssetName: "sulijoy_feed_avatar_dennis_waters", text: "Good note about letting the background lead.", timeAgo: "5 mins ago")
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_brian", waveSeconds: 19, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("jess_ortiz"), isWaveRolling: false, waveProgressRatio: 0),
+                heartTally: 5,
+                reefReplyTally: 2,
+                reefReplies: [
+                    SuliJoyReefReply(reefReplyID: "comment_brian_1", reefEchoName: "Bess", reefEchoAvatarAssetName: "sulijoy_feed_avatar_bess", reefPhraseText: "The quiet palette makes the photos softer.", tideAgoText: "7 mins ago"),
+                    SuliJoyReefReply(reefReplyID: "comment_brian_2", reefEchoName: "Dennis Waters", reefEchoAvatarAssetName: "sulijoy_feed_avatar_dennis_waters", reefPhraseText: "Good note about letting the background lead.", tideAgoText: "5 mins ago")
                 ],
-                isLiked: false,
-                filter: .followed,
-                isBlocked: false,
-                isReportedLocally: false
+                isHearted: false,
+                reefFilter: .lagoonCircle,
+                isTideHidden: false,
+                isReefFlagged: false
             ),
-            SuliJoyShoreMoment(
-                momentID: "moment_bess_picnic_followed",
-                authorName: "Bess",
-                authorHandle: "@bess.shore",
-                authorStyleLine: "Soft picnic styling · Santorini",
-                authorAvatarAssetName: "sulijoy_feed_avatar_bess",
-                timeAgo: "15 mins ago",
-                shorePlaceText: "Oia Viewpoint · Santorini, Greece",
-                shoreTimeText: "Aug 1, 2026 · 4:30 PM",
-                body: "A pale shirt over a swimsuit keeps the look easy after swimming. I would add a woven bag and keep the colors close to the beach table.",
-                media: [
-                    SuliJoyReefMedia(mediaID: "coast_04_followed_bess", kind: .image, assetName: "sulijoy_feed_moment_coast_04", caption: "Shore shirt detail"),
-                    SuliJoyReefMedia(mediaID: "coast_01_followed_bess", kind: .image, assetName: "sulijoy_feed_moment_coast_01", caption: "Beach tee idea")
+            SuliJoyReefMoment(
+                reefMomentID: "moment_bess_picnic_followed",
+                islandStylistName: "Bess",
+                islandStylistMark: "@bess.shore",
+                islandStyleLine: "Soft picnic styling · Santorini",
+                islandStylistAvatarAssetName: "sulijoy_feed_avatar_bess",
+                tideAgoText: "15 mins ago",
+                shoreSpotText: "Oia Viewpoint · Santorini, Greece",
+                shoreTideText: "Aug 1, 2026 · 4:30 PM",
+                islandCaptionText: "A pale shirt over a swimsuit keeps the look easy after swimming. I would add a woven bag and keep the colors close to the beach table.",
+                reefMedia: [
+                    SuliJoyReefMedia(reefMediaStamp: "coast_04_followed_bess", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_04", reefCaptionLine: "Shore shirt detail"),
+                    SuliJoyReefMedia(reefMediaStamp: "coast_01_followed_bess", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", reefCaptionLine: "Beach tee idea")
                 ],
-                audioNote: SuliJoyWaveAudioNote(noteID: "audio_bess_picnic", duration: 24, waveformAssetName: "sulijoy_feed_audio_wave", audioFileName: "sulijoy_shore_audio_angelina_blue.mp3", isPlaying: false, progress: 0),
-                likeCount: 3,
-                commentCount: 2,
-                comments: [
-                    SuliJoyShoreComment(commentID: "comment_bess_picnic_1", commenterName: "Brian May", commenterAvatarAssetName: "sulijoy_feed_avatar_brian_may", text: "The woven bag idea fits the picnic mood.", timeAgo: "9 mins ago"),
-                    SuliJoyShoreComment(commentID: "comment_bess_picnic_2", commenterName: "Cody Hunter", commenterAvatarAssetName: "sulijoy_feed_avatar_cody_hunter", text: "Keeping the colors close makes it feel intentional.", timeAgo: "6 mins ago")
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_bess_picnic", waveSeconds: 24, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("angelina_blue"), isWaveRolling: false, waveProgressRatio: 0),
+                heartTally: 3,
+                reefReplyTally: 2,
+                reefReplies: [
+                    SuliJoyReefReply(reefReplyID: "comment_bess_picnic_1", reefEchoName: "Brian May", reefEchoAvatarAssetName: "sulijoy_feed_avatar_brian_may", reefPhraseText: "The woven bag idea fits the picnic mood.", tideAgoText: "9 mins ago"),
+                    SuliJoyReefReply(reefReplyID: "comment_bess_picnic_2", reefEchoName: "Cody Hunter", reefEchoAvatarAssetName: "sulijoy_feed_avatar_cody_hunter", reefPhraseText: "Keeping the colors close makes it feel intentional.", tideAgoText: "6 mins ago")
                 ],
-                isLiked: false,
-                filter: .followed,
-                isBlocked: false,
-                isReportedLocally: false
+                isHearted: false,
+                reefFilter: .lagoonCircle,
+                isTideHidden: false,
+                isReefFlagged: false
             ),
-            SuliJoyShoreMoment(
-                momentID: "moment_cody_market_hot",
-                authorName: "Cody Hunter",
-                authorHandle: "@cody.linen",
-                authorStyleLine: "Market linen layers · Phuket",
-                authorAvatarAssetName: "sulijoy_feed_avatar_cody_hunter",
-                timeAgo: "18 mins ago",
-                shorePlaceText: "Phuket Weekend Market · Phuket, Thailand",
-                shoreTimeText: "Aug 15, 2026 · 3:00 PM",
-                body: "Open linen over a simple tank works well for market heat. A small necklace gives enough detail without making the outfit busy.",
-                media: [
-                    SuliJoyReefMedia(mediaID: "coast_05_hot_cody", kind: .image, assetName: "sulijoy_feed_moment_coast_05", caption: "Lunch linen layer"),
-                    SuliJoyReefMedia(mediaID: "coast_03_hot_cody", kind: .image, assetName: "sulijoy_feed_moment_coast_03", caption: "Dusk styling")
+            SuliJoyReefMoment(
+                reefMomentID: "moment_cody_market_hot",
+                islandStylistName: "Cody Hunter",
+                islandStylistMark: "@cody.linen",
+                islandStyleLine: "Market linen layers · Phuket",
+                islandStylistAvatarAssetName: "sulijoy_feed_avatar_cody_hunter",
+                tideAgoText: "18 mins ago",
+                shoreSpotText: "Phuket Weekend Market · Phuket, Thailand",
+                shoreTideText: "Aug 15, 2026 · 3:00 PM",
+                islandCaptionText: "Open linen over a simple tank works well for market heat. A small necklace gives enough detail without making the outfit busy.",
+                reefMedia: [
+                    SuliJoyReefMedia(reefMediaStamp: "coast_05_hot_cody", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_05", reefCaptionLine: "Lunch linen layer"),
+                    SuliJoyReefMedia(reefMediaStamp: "coast_03_hot_cody", reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", reefCaptionLine: "Dusk styling")
                 ],
-                audioNote: SuliJoyWaveAudioNote(noteID: "audio_cody_market", duration: 22, waveformAssetName: "sulijoy_feed_audio_wave", audioFileName: "sulijoy_shore_audio_skylar_spark.mp3", isPlaying: false, progress: 0),
-                likeCount: 7,
-                commentCount: 1,
-                comments: [
-                    SuliJoyShoreComment(commentID: "comment_cody_market_1", commenterName: "Bess", commenterAvatarAssetName: "sulijoy_feed_avatar_bess", text: "The small necklace detail is enough.", timeAgo: "11 mins ago")
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_cody_market", waveSeconds: 22, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("skylar_spark"), isWaveRolling: false, waveProgressRatio: 0),
+                heartTally: 7,
+                reefReplyTally: 1,
+                reefReplies: [
+                    SuliJoyReefReply(reefReplyID: "comment_cody_market_1", reefEchoName: "Bess", reefEchoAvatarAssetName: "sulijoy_feed_avatar_bess", reefPhraseText: "The small necklace detail is enough.", tideAgoText: "11 mins ago")
                 ],
-                isLiked: true,
-                filter: .hot,
-                isBlocked: false,
-                isReportedLocally: false
+                isHearted: true,
+                reefFilter: .sunsetRush,
+                isTideHidden: false,
+                isReefFlagged: false
             )
         ]
-        moments.insert(contentsOf: Self.loadLocalPublishedMoments(), at: 0)
-        shellClips = Self.loadLocalPublishedShellClips() + Self.makeShellClips()
-        for authorName in currentLagoonFollowedAuthors {
-            syncShellClipFollowState(for: authorName)
+        shoreScroll.insert(contentsOf: Self.loadPublishedShoreScroll(), at: 0)
+        clipReef = Self.loadPublishedClipReef() + Self.makeClipReefSeed()
+        for authorName in followedLagoonNames {
+            syncClipReefFollowState(for: authorName)
         }
     }
 
-    func fetchHomeActivities(mode: SuliJoyCoveRequestMode = .success, completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
-        respond(mode: mode, empty: [], success: visibleActivities(), completion: completion)
+    func fetchHomeActivities(mode: SuliJoyCoveRequestMode = .reefBloom, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
+        sendCoveEnvelope(mode: mode, empty: [], success: visibleTideShelf(), completion: completion)
     }
 
-    func fetchShellClips(mode: SuliJoyCoveRequestMode = .success, completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyShellClip]>) -> Void) {
-        respond(mode: mode, empty: [], success: visibleShellClips(), completion: completion)
+    func fetchShellClips(mode: SuliJoyCoveRequestMode = .reefBloom, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyShellClip]>) -> Void) {
+        sendCoveEnvelope(mode: mode, empty: [], success: visibleClipReef(), completion: completion)
     }
 
-    func fetchIslandProfileSummary(completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyIslandProfileSummary>) -> Void) {
-        delay {
+    func fetchIslandProfileSummary(completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonProfileSnapshot>) -> Void) {
+        driftCoveDelay {
             let profile = SuliJoyLocalProfileStore().currentProfile()
-            let session = SuliJoyLagoonSessionStore().load()
+            let session = SuliJoyTideSessionVault().suliJoySeasideHeroload()
             let name = profile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
             let avatarName = profile?.avatarPath?.isEmpty == false ? (profile?.avatarPath ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
-            let localActivityCount = self.activities.filter { $0.tideID.hasPrefix("tide_local_") || $0.status == .joined }.count
-            let localLikes = self.moments.filter { $0.momentID.hasPrefix("moment_local_") }.reduce(0) { $0 + $1.likeCount }
-                + self.shellClips.filter { $0.clipID.hasPrefix("shell_clip_local_") }.reduce(0) { $0 + $1.likeCount }
-            let summary = SuliJoyIslandProfileSummary(
-                displayName: (name?.isEmpty == false ? name : "David") ?? "David",
-                avatarAssetName: avatarName,
-                islandID: Self.stableIslandID(email: session.currentEmail, fallbackUserID: session.userID),
-                metrics: [
-                    SuliJoyShoreProfileMetric(title: "Friends", value: self.mutualLagoonAuthors.count),
-                    SuliJoyShoreProfileMetric(title: "Following", value: self.currentLagoonFollowedAuthors.count),
-                    SuliJoyShoreProfileMetric(title: "Fans", value: localActivityCount),
-                    SuliJoyShoreProfileMetric(title: "Likes", value: localLikes)
+            let localActivityCount = self.tideShelf.filter { $0.tideMark.hasPrefix("tide_local_") || $0.tideState == .tideJoined }.count
+            let localLikes = self.shoreScroll.filter { $0.reefMomentID.hasPrefix("moment_local_") }.reduce(0) { $0 + $1.heartTally }
+                + self.clipReef.filter { $0.clipID.hasPrefix("shell_clip_local_") }.reduce(0) { $0 + $1.likeCount }
+            let summary = SuliJoyLagoonProfileSnapshot(
+                lagoonNameText: (name?.isEmpty == false ? name : "David") ?? "David",
+                lagoonAvatarAssetName: avatarName,
+                islandTraceText: Self.stableLagoonID(email: session.currentEmail, fallbackUserID: session.userID),
+                reefTallies: [
+                    SuliJoyReefProfileTally(reefLabel: "Friends", reefTotal: self.pairedLagoonNames.count),
+                    SuliJoyReefProfileTally(reefLabel: "Following", reefTotal: self.followedLagoonNames.count),
+                    SuliJoyReefProfileTally(reefLabel: "Fans", reefTotal: localActivityCount),
+                    SuliJoyReefProfileTally(reefLabel: "Likes", reefTotal: localLikes)
                 ]
             )
             completion(.success(summary))
         }
     }
 
-    func fetchMineShoreMoments(completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyShoreMoment]>) -> Void) {
-        delay {
+    func fetchMineShoreMoments(completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyReefMoment]>) -> Void) {
+        driftCoveDelay {
             let currentName = SuliJoyLocalProfileStore().currentProfile()?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
-            let ownMoments = self.moments.filter { moment in
-                self.isMomentVisible(moment) && (moment.momentID.hasPrefix("moment_local_") || (currentName?.isEmpty == false && moment.authorName == currentName))
+            let ownMoments = self.shoreScroll.filter { moment in
+                self.isShoreScrollItemVisible(moment) && (moment.reefMomentID.hasPrefix("moment_local_") || (currentName?.isEmpty == false && moment.islandStylistName == currentName))
             }
             completion(.success(ownMoments))
         }
     }
 
-    func fetchMineShellClips(completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyShellClip]>) -> Void) {
-        delay {
+    func fetchMineShellClips(completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyShellClip]>) -> Void) {
+        driftCoveDelay {
             let currentName = SuliJoyLocalProfileStore().currentProfile()?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
-            let ownClips = self.shellClips.filter { clip in
-                clip.clipID.hasPrefix("shell_clip_local_") || (currentName?.isEmpty == false && clip.creator.displayName == currentName)
+            let ownClips = self.clipReef.filter { clip in
+                clip.clipID.hasPrefix("shell_clip_local_") || (currentName?.isEmpty == false && clip.creator.clipStylistAlias == currentName)
             }
             completion(.success(ownClips))
         }
     }
 
-    func fetchMineTideActivities(completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
-        delay {
+    func fetchMineTideActivities(completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
+        driftCoveDelay {
             let currentName = SuliJoyLocalProfileStore().currentProfile()?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
-            let ownActivities = self.visibleActivities().filter { activity in
-                activity.tideID.hasPrefix("tide_local_")
-                    || activity.status == .joined
-                    || (currentName?.isEmpty == false && activity.shoreHostName == currentName)
+            let ownActivities = self.visibleTideShelf().filter { activity in
+                activity.tideMark.hasPrefix("tide_local_")
+                    || activity.tideState == .tideJoined
+                    || (currentName?.isEmpty == false && activity.shoreHostAlias == currentName)
             }
             completion(.success(ownActivities))
         }
     }
 
-    func fetchShellClipDetail(clipID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShellClip>) -> Void) {
-        delay {
-            guard let clip = self.shellClips.first(where: { $0.clipID == clipID }) else {
+    func fetchShellClipDetail(clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
+        driftCoveDelay {
+            guard let shorelineClip = self.clipReef.first(where: { $0.clipID == clipID }) else {
                 completion(.failure("Short not found.", code: 404))
                 return
             }
-            completion(.success(clip))
+            completion(.success(shorelineClip))
         }
     }
 
-    func publishReefClip(draft: SuliJoyReefClipDraft, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShellClip>) -> Void) {
-        delay {
-            let trimmedCaption = draft.caption.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !trimmedCaption.isEmpty || draft.media != nil else {
-                completion(.failure("Please add a video or content."))
+    func publishReefClip(draft: SuliJoyReefClipDraft, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
+        driftCoveDelay {
+            let reefCaptionDraft = draft.reefCaptionLine.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !reefCaptionDraft.isEmpty || draft.media != nil else {
+                completion(.failure("Please add a reef clip or content."))
                 return
             }
-            let profile = SuliJoyLocalProfileStore().currentProfile()
-            let nickname = profile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
-            let creatorName = (nickname?.isEmpty == false ? nickname : "You") ?? "You"
-            let avatarName = profile?.avatarPath?.isEmpty == false ? (profile?.avatarPath ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
-            let localVideoName = draft.media?.localVideoPath ?? "sulijoy_shorts_island_style_01"
-            let clip = SuliJoyShellClip(
+            let shoreProfile = SuliJoyLocalProfileStore().currentProfile()
+            let islandNickname = shoreProfile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let reefCreatorName = (islandNickname?.isEmpty == false ? islandNickname : "You") ?? "You"
+            let reefPortraitName = shoreProfile?.avatarPath?.isEmpty == false ? (shoreProfile?.avatarPath ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
+            let localReefMotionName = draft.media?.reefMotionPath ?? "sulijoy_shorts_island_style_01"
+            let shorelineClip = SuliJoyShellClip(
                 clipID: "shell_clip_local_\(UUID().uuidString.prefix(8))",
                 creator: SuliJoyLagoonClipCreator(
-                    creatorID: "clip_creator_local_\(creatorName.lowercased().replacingOccurrences(of: " ", with: "_"))",
-                    displayName: creatorName,
-                    avatarAssetName: avatarName
+                    clipStylistMark: "clip_creator_local_\(reefCreatorName.lowercased().replacingOccurrences(of: " ", with: "_"))",
+                    clipStylistAlias: reefCreatorName,
+                    clipPortraitToken: reefPortraitName
                 ),
-                caption: trimmedCaption.isEmpty ? "A fresh island style clip from SuliJoy." : trimmedCaption,
+                reefCaptionLine: reefCaptionDraft.isEmpty ? "A fresh island style clip from SuliJoy." : reefCaptionDraft,
                 media: SuliJoyReefClipMedia(
                     mediaID: "reef_clip_local_media_\(UUID().uuidString.prefix(8))",
-                    localVideoFileName: localVideoName,
+                    reefMotionFileName: localReefMotionName,
                     fallbackCoverAssetName: draft.media?.coverImagePath ?? "sulijoy_feed_moment_coast_01"
                 ),
                 likeCount: 0,
@@ -487,217 +487,217 @@ final class SuliJoyCoveMockService {
                 isFollowed: true,
                 isReportedLocally: false
             )
-            self.shellClips.insert(clip, at: 0)
-            self.persistLocalPublishedShellClips()
-            completion(.success(clip, message: "Clip posted."))
+            self.clipReef.insert(shorelineClip, at: 0)
+            self.persistPublishedClipReef()
+            completion(.success(shorelineClip, note: "Clip posted."))
         }
     }
 
-    func toggleShellClipLike(clipID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShellClip>) -> Void) {
-        delay {
-            guard let index = self.shellClips.firstIndex(where: { $0.clipID == clipID }) else {
+    func toggleShellClipLike(clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
+        driftCoveDelay {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
                 completion(.failure("Short not found.", code: 404))
                 return
             }
-            self.shellClips[index].isLiked.toggle()
-            self.shellClips[index].likeCount = max(0, self.shellClips[index].likeCount + (self.shellClips[index].isLiked ? 1 : -1))
-            self.persistLocalPublishedShellClips()
-            completion(.success(self.shellClips[index]))
+            self.clipReef[reefIndex].isLiked.toggle()
+            self.clipReef[reefIndex].likeCount = max(0, self.clipReef[reefIndex].likeCount + (self.clipReef[reefIndex].isLiked ? 1 : -1))
+            self.persistPublishedClipReef()
+            completion(.success(self.clipReef[reefIndex]))
         }
     }
 
-    func toggleShellClipFollow(clipID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShellClip>) -> Void) {
-        delay {
-            guard let index = self.shellClips.firstIndex(where: { $0.clipID == clipID }) else {
+    func toggleShellClipFollow(clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
+        driftCoveDelay {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
                 completion(.failure("Short not found.", code: 404))
                 return
             }
-            let creatorName = self.shellClips[index].creator.displayName
-            if self.currentLagoonFollowedAuthors.contains(creatorName) {
-                self.currentLagoonFollowedAuthors.remove(creatorName)
-                self.mutualLagoonAuthors.remove(creatorName)
+            let reefCreatorName = self.clipReef[reefIndex].creator.clipStylistAlias
+            if self.followedLagoonNames.contains(reefCreatorName) {
+                self.followedLagoonNames.remove(reefCreatorName)
+                self.pairedLagoonNames.remove(reefCreatorName)
             } else {
-                self.currentLagoonFollowedAuthors.insert(creatorName)
+                self.followedLagoonNames.insert(reefCreatorName)
             }
-            self.syncShellClipFollowState(for: creatorName)
-            self.persistLocalPublishedShellClips()
+            self.syncClipReefFollowState(for: reefCreatorName)
+            self.persistPublishedClipReef()
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-            completion(.success(self.shellClips[index], message: self.shellClips[index].isFollowed ? "Followed." : "Unfollowed."))
+            completion(.success(self.clipReef[reefIndex], note: self.clipReef[reefIndex].isFollowed ? "Followed." : "Unfollowed."))
         }
     }
 
-    func toggleShellClipFollow(creatorName: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShellClip>) -> Void) {
-        delay {
-            guard let index = self.shellClips.firstIndex(where: { $0.creator.displayName == creatorName }) else {
+    func toggleShellClipFollow(creatorName: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
+        driftCoveDelay {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.creator.clipStylistAlias == creatorName }) else {
                 completion(.failure("Creator not found.", code: 404))
                 return
             }
-            if self.currentLagoonFollowedAuthors.contains(creatorName) {
-                self.currentLagoonFollowedAuthors.remove(creatorName)
-                self.mutualLagoonAuthors.remove(creatorName)
+            if self.followedLagoonNames.contains(creatorName) {
+                self.followedLagoonNames.remove(creatorName)
+                self.pairedLagoonNames.remove(creatorName)
             } else {
-                self.currentLagoonFollowedAuthors.insert(creatorName)
+                self.followedLagoonNames.insert(creatorName)
             }
-            self.syncShellClipFollowState(for: creatorName)
-            self.persistLocalPublishedShellClips()
+            self.syncClipReefFollowState(for: creatorName)
+            self.persistPublishedClipReef()
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-            completion(.success(self.shellClips[index], message: self.shellClips[index].isFollowed ? "Followed." : "Unfollowed."))
+            completion(.success(self.clipReef[reefIndex], note: self.clipReef[reefIndex].isFollowed ? "Followed." : "Unfollowed."))
         }
     }
 
-    func reportShellClip(clipID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
-            guard let index = self.shellClips.firstIndex(where: { $0.clipID == clipID }) else {
+    func reportShellClip(clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
                 completion(.failure("Short not found.", code: 404))
                 return
             }
-            self.shellClips[index].isReportedLocally = true
-            self.persistLocalPublishedShellClips()
-            completion(.success(true, message: "Report received."))
+            self.clipReef[reefIndex].isReportedLocally = true
+            self.persistPublishedClipReef()
+            completion(.success(true, note: "Report received."))
         }
     }
 
-    func addShellClipComment(clipID: String, text: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShellClip>) -> Void) {
-        delay {
-            let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !trimmed.isEmpty else {
+    func addShellClipComment(clipID: String, reefReplyText: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
+        driftCoveDelay {
+            let reefReplyText = reefReplyText.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !reefReplyText.isEmpty else {
                 completion(.failure("Please enter a comment."))
                 return
             }
-            guard let index = self.shellClips.firstIndex(where: { $0.clipID == clipID }) else {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
                 completion(.failure("Short not found.", code: 404))
                 return
             }
-            let profile = SuliJoyLocalProfileStore().currentProfile()
-            let nickname = profile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
-            let commenter = nickname?.isEmpty == false ? nickname! : "You"
-            let comment = SuliJoyShellClipComment(
-                commentID: "shell_clip_comment_\(Int(Date().timeIntervalSince1970 * 1000))",
-                commenterName: commenter,
-                commenterAvatarAssetName: "sulijoy_mock_avatar_breeze_01",
-                text: trimmed,
-                timeAgo: "just now",
-                isReportedLocally: false
+            let shoreProfile = SuliJoyLocalProfileStore().currentProfile()
+            let islandNickname = shoreProfile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let reefReplyAuthor = islandNickname?.isEmpty == false ? islandNickname! : "You"
+            let reefReply = SuliJoyShellClipComment(
+                reefReplyMark: "shell_clip_comment_\(Int(Date().timeIntervalSince1970 * 1000))",
+                reefReplyAuthorAlias: reefReplyAuthor,
+                reefReplyAvatarToken: "sulijoy_mock_avatar_breeze_01",
+                reefReplyText: reefReplyText,
+                reefReplyMomentLine: "just now",
+                isReefFlagged: false
             )
-            self.shellClips[index].comments.append(comment)
-            self.shellClips[index].commentCount = self.shellClips[index].comments.count
-            self.persistLocalPublishedShellClips()
-            completion(.success(self.shellClips[index], message: "Comment added."))
+            self.clipReef[reefIndex].comments.append(reefReply)
+            self.clipReef[reefIndex].commentCount = self.clipReef[reefIndex].comments.count
+            self.persistPublishedClipReef()
+            completion(.success(self.clipReef[reefIndex], note: "Comment added."))
         }
     }
 
-    func reportShellClipComment(clipID: String, commentID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
-            guard let clipIndex = self.shellClips.firstIndex(where: { $0.clipID == clipID }) else {
+    func reportShellClipComment(clipID: String, reefReplyMark: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
                 completion(.failure("Short not found.", code: 404))
                 return
             }
-            guard let commentIndex = self.shellClips[clipIndex].comments.firstIndex(where: { $0.commentID == commentID }) else {
+            guard let reefReplyIndex = self.clipReef[reefIndex].comments.firstIndex(where: { $0.reefReplyMark == reefReplyMark }) else {
                 completion(.failure("Comment not found.", code: 404))
                 return
             }
-            self.shellClips[clipIndex].comments[commentIndex].isReportedLocally = true
-            self.persistLocalPublishedShellClips()
-            completion(.success(true, message: "Report received."))
+            self.clipReef[reefIndex].comments[reefReplyIndex].isReefFlagged = true
+            self.persistPublishedClipReef()
+            completion(.success(true, note: "Report received."))
         }
     }
 
-    func submitShoreReport(draft: SuliJoyShoreReportDraft, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
+    func submitShoreReport(draft: SuliJoyShoreReportDraft, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
             switch draft.target {
             case .moment(let momentID):
-                guard let index = self.moments.firstIndex(where: { $0.momentID == momentID }) else {
+                guard let index = self.shoreScroll.firstIndex(where: { $0.reefMomentID == momentID }) else {
                     completion(.failure("Moment not found.", code: 404))
                     return
                 }
-                self.moments[index].isReportedLocally = true
-                self.persistLocalPublishedMoments()
-                completion(.success(true, message: "Report received."))
+                self.shoreScroll[index].isReefFlagged = true
+                self.persistPublishedShoreScroll()
+                completion(.success(true, note: "Report received."))
             case .shoreComment(let momentID, let commentID):
-                guard let moment = self.moments.first(where: { $0.momentID == momentID }) else {
+                guard let moment = self.shoreScroll.first(where: { $0.reefMomentID == momentID }) else {
                     completion(.failure("Moment not found.", code: 404))
                     return
                 }
-                guard moment.comments.contains(where: { $0.commentID == commentID }) else {
+                guard moment.reefReplies.contains(where: { $0.reefReplyID == commentID }) else {
                     completion(.failure("Comment not found.", code: 404))
                     return
                 }
-                completion(.success(true, message: "Report received."))
+                completion(.success(true, note: "Report received."))
             case .tideActivity(let tideID):
-                guard let index = self.activities.firstIndex(where: { $0.tideID == tideID }) else {
+                guard let index = self.tideShelf.firstIndex(where: { $0.tideMark == tideID }) else {
                     completion(.failure("Activity not found.", code: 404))
                     return
                 }
-                self.activities[index].isReportedLocally = true
-                self.persistLocalPublishedActivities()
-                completion(.success(true, message: "Report received."))
+                self.tideShelf[index].isReefFlagged = true
+                self.persistPublishedTideShelf()
+                completion(.success(true, note: "Report received."))
             case .shellClip(let clipID):
-                guard let index = self.shellClips.firstIndex(where: { $0.clipID == clipID }) else {
+                guard let index = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
                     completion(.failure("Short not found.", code: 404))
                     return
                 }
-                self.shellClips[index].isReportedLocally = true
-                self.persistLocalPublishedShellClips()
-                completion(.success(true, message: "Report received."))
+                self.clipReef[index].isReportedLocally = true
+                self.persistPublishedClipReef()
+                completion(.success(true, note: "Report received."))
             case .shellClipComment(let clipID, let commentID):
-                guard let clipIndex = self.shellClips.firstIndex(where: { $0.clipID == clipID }) else {
+                guard let clipIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
                     completion(.failure("Short not found.", code: 404))
                     return
                 }
-                guard let commentIndex = self.shellClips[clipIndex].comments.firstIndex(where: { $0.commentID == commentID }) else {
+                guard let commentIndex = self.clipReef[clipIndex].comments.firstIndex(where: { $0.reefReplyMark == commentID }) else {
                     completion(.failure("Comment not found.", code: 404))
                     return
                 }
-                self.shellClips[clipIndex].comments[commentIndex].isReportedLocally = true
-                self.persistLocalPublishedShellClips()
-                completion(.success(true, message: "Report received."))
+                self.clipReef[clipIndex].comments[commentIndex].isReefFlagged = true
+                self.persistPublishedClipReef()
+                completion(.success(true, note: "Report received."))
             case .lagoonVisitor(let visitorID):
-                self.reportedLagoonVisitors.insert(visitorID)
-                completion(.success(true, message: "Report received."))
+                self.flaggedLagoonVisitors.insert(visitorID)
+                completion(.success(true, note: "Report received."))
             case .tideTalkSpace(let tideID):
-                guard self.talkSpaces[tideID] != nil || self.activities.contains(where: { $0.tideID == tideID }) else {
+                guard self.tideTalkMap[tideID] != nil || self.tideShelf.contains(where: { $0.tideMark == tideID }) else {
                     completion(.failure("Talk space not found.", code: 404))
                     return
                 }
-                completion(.success(true, message: "Report received."))
+                completion(.success(true, note: "Report received."))
             }
         }
     }
 
-    func publishTideActivity(draft: SuliJoyTideDraftActivity, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyTideActivity>) -> Void) {
-        delay {
-            let trimmedTitle = draft.title.trimmingCharacters(in: .whitespacesAndNewlines)
-            let trimmedDescription = draft.description.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !draft.photoPicks.isEmpty else {
+    func publishTideActivity(draft curationDraft: SuliJoyTideDraftActivity, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyTideActivity>) -> Void) {
+        driftCoveDelay {
+            let shorelineTitle = curationDraft.tideTitleLine.trimmingCharacters(in: .whitespacesAndNewlines)
+            let shorelineBrief = curationDraft.shoreBriefLine.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !curationDraft.reefPhotoPicks.isEmpty else {
                 completion(.failure("Please add a cover photo."))
                 return
             }
-            guard !trimmedTitle.isEmpty else {
+            guard !shorelineTitle.isEmpty else {
                 completion(.failure("Please enter an event title."))
                 return
             }
-            guard !trimmedDescription.isEmpty else {
+            guard !shorelineBrief.isEmpty else {
                 completion(.failure("Please enter an event description."))
                 return
             }
-            guard draft.groupSize > 0 else {
+            guard curationDraft.tideCrewLimit > 0 else {
                 completion(.failure("Please enter a valid group size."))
                 return
             }
-            guard draft.gemCost >= 0 else {
-                completion(.failure("Please enter a valid event price."))
+            guard curationDraft.pearlNeed >= 0 else {
+                completion(.failure("Please enter a valid event fee."))
                 return
             }
 
-            let profile = SuliJoyLocalProfileStore().currentProfile()
-            let hostName = profile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
-            let eventID = "tide_local_\(UUID().uuidString.prefix(8))"
-            let media = draft.photoPicks.enumerated().map { index, pick in
+            let shoreProfile = SuliJoyLocalProfileStore().currentProfile()
+            let hostName = shoreProfile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let tideToken = "tide_local_\(UUID().uuidString.prefix(8))"
+            let reefMediaShelf = curationDraft.reefPhotoPicks.enumerated().map { index, pick in
                 SuliJoyReefMedia(
-                    mediaID: "event_local_media_\(UUID().uuidString.prefix(8))_\(index)",
-                    kind: .image,
-                    assetName: pick.localPath,
-                    caption: pick.caption
+                    reefMediaStamp: "event_local_media_\(UUID().uuidString.prefix(8))_\(index)",
+                    reefMediaKind: .shoreSnapshot,
+                    reefAssetToken: pick.reefSandboxPath,
+                    reefCaptionLine: pick.reefCaptionLine
                 )
             }
             let dayFormatter = DateFormatter()
@@ -706,14 +706,14 @@ final class SuliJoyCoveMockService {
             let timeFormatter = DateFormatter()
             timeFormatter.locale = Locale(identifier: "en_US_POSIX")
             timeFormatter.dateFormat = "h:mm"
-            let meridiemFormatter = DateFormatter()
-            meridiemFormatter.locale = Locale(identifier: "en_US_POSIX")
-            meridiemFormatter.dateFormat = "a"
-            let scheduleFormatter = DateFormatter()
-            scheduleFormatter.locale = Locale(identifier: "en_US_POSIX")
-            scheduleFormatter.dateFormat = "EEE, MMM d, yyyy"
-            let relatedIDs = self.activities.shuffled().prefix(Int.random(in: 1...min(2, max(1, self.activities.count)))).map(\.tideID)
-            let avatarPool = [
+            let shoreMeridiemFormatter = DateFormatter()
+            shoreMeridiemFormatter.locale = Locale(identifier: "en_US_POSIX")
+            shoreMeridiemFormatter.dateFormat = "a"
+            let shoreScheduleFormatter = DateFormatter()
+            shoreScheduleFormatter.locale = Locale(identifier: "en_US_POSIX")
+            shoreScheduleFormatter.dateFormat = "EEE, MMM d, yyyy"
+            let relatedTideTokens = self.tideShelf.shuffled().prefix(Int.random(in: 1...min(2, max(1, self.tideShelf.count)))).map(\.tideMark)
+            let shorelineAvatarPool = [
                 "sulijoy_mock_avatar_breeze_01",
                 "sulijoy_mock_avatar_breeze_02",
                 "sulijoy_mock_avatar_breeze_03",
@@ -721,69 +721,69 @@ final class SuliJoyCoveMockService {
                 "sulijoy_mock_avatar_sun_02",
                 "sulijoy_mock_avatar_sun_03"
             ]
-            let activity = SuliJoyTideActivity(
-                tideID: eventID,
-                dayText: dayFormatter.string(from: draft.eventDate),
-                meridiem: meridiemFormatter.string(from: draft.eventTime),
-                timeText: timeFormatter.string(from: draft.eventTime),
-                shoreScheduleText: "\(scheduleFormatter.string(from: draft.eventDate)) · \(timeFormatter.string(from: draft.eventTime)) \(meridiemFormatter.string(from: draft.eventTime))",
-                title: trimmedTitle,
-                shoreHostName: (hostName?.isEmpty == false ? hostName : "SuliJoy Stylist") ?? "SuliJoy Stylist",
-                location: draft.location.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Island Shore · Coastline" : draft.location.trimmingCharacters(in: .whitespacesAndNewlines),
-                summary: trimmedDescription,
-                detailHeroAssetName: media.first?.assetName ?? "sulijoy_activity_detail_hero_sunset",
-                shoreBrief: "\(trimmedDescription)\n\nType: \(draft.eventType) · Dress theme: \(draft.dressTheme)",
-                relatedTideIDs: Array(relatedIDs),
-                status: .open,
-                isReportedLocally: false,
-                joinedCount: 0,
-                capacity: draft.groupSize,
-                gemCost: draft.gemCost,
-                media: media,
-                avatarAssetNames: Array(avatarPool.shuffled().prefix(Int.random(in: 1...3)))
+            let tideActivity = SuliJoyTideActivity(
+                tideMark: tideToken,
+                shoreDayText: dayFormatter.string(from: curationDraft.tideDay),
+                sunMeridiemText: shoreMeridiemFormatter.string(from: curationDraft.tideClock),
+                shoreClockText: timeFormatter.string(from: curationDraft.tideClock),
+                tideScheduleLine: "\(shoreScheduleFormatter.string(from: curationDraft.tideDay)) · \(timeFormatter.string(from: curationDraft.tideClock)) \(shoreMeridiemFormatter.string(from: curationDraft.tideClock))",
+                tideTitleLine: shorelineTitle,
+                shoreHostAlias: (hostName?.isEmpty == false ? hostName : "SuliJoy Stylist") ?? "SuliJoy Stylist",
+                shoreSpotLine: curationDraft.shoreSpotLine.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "Island Shore · Coastline" : curationDraft.shoreSpotLine.trimmingCharacters(in: .whitespacesAndNewlines),
+                shoreSummaryLine: shorelineBrief,
+                tideFallbackHeroToken: reefMediaShelf.first?.reefAssetToken ?? "sulijoy_activity_detail_hero_sunset",
+                shoreBriefLine: "\(shorelineBrief)\n\nType: \(curationDraft.tideStyleKind) · Dress theme: \(curationDraft.wardrobeThemeLine)",
+                relatedTideMarks: Array(relatedTideTokens),
+                tideState: .tideOpen,
+                isReefFlagged: false,
+                tideJoinedTotal: 0,
+                tideCrewLimit: curationDraft.tideCrewLimit,
+                pearlNeed: curationDraft.pearlNeed,
+                reefGallery: reefMediaShelf,
+                shorelineAvatarTokens: Array(shorelineAvatarPool.shuffled().prefix(Int.random(in: 1...3)))
             )
-            self.activities.insert(activity, at: 0)
-            self.talkSpaces[activity.tideID] = Self.makeTalkSpace(from: activity)
-            self.persistLocalPublishedActivities()
-            completion(.success(activity, message: "Event published."))
+            self.tideShelf.insert(tideActivity, at: 0)
+            self.tideTalkMap[tideActivity.tideMark] = Self.makeTideTalkHarbor(from: tideActivity)
+            self.persistPublishedTideShelf()
+            completion(.success(tideActivity, note: "Event published."))
         }
     }
 
-    func fetchActivityDetail(tideID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyTideActivity>) -> Void) {
-        delay {
-            guard let activity = self.activities.first(where: { $0.tideID == tideID }) else {
+    func fetchActivityDetail(tideID shorelineTideKey: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyTideActivity>) -> Void) {
+        driftCoveDelay {
+            guard let tideActivity = self.tideShelf.first(where: { $0.tideMark == shorelineTideKey }) else {
                 completion(.failure("Activity not found.", code: 404))
                 return
             }
-            guard !self.blockedShoreAuthors.contains(activity.shoreHostName) else {
+            guard !self.mutedShoreNames.contains(tideActivity.shoreHostAlias) else {
                 completion(.failure("Activity hidden after block.", code: 403))
                 return
             }
-            completion(.success(activity))
+            completion(.success(tideActivity))
         }
     }
 
-    func fetchRelatedActivities(for tideID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
-        delay {
-            guard self.visibleActivities().contains(where: { $0.tideID == tideID }) else {
+    func fetchRelatedActivities(for shorelineTideKey: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
+        driftCoveDelay {
+            guard self.visibleTideShelf().contains(where: { $0.tideMark == shorelineTideKey }) else {
                 completion(.failure("Activity not found.", code: 404))
                 return
             }
-            let candidates = self.visibleActivities().filter { $0.tideID != tideID }
-            let maxCount = min(candidates.count, 2)
-            let count = maxCount == 0 ? 0 : Int.random(in: 1...maxCount)
-            let related = Array(candidates.shuffled().prefix(count))
-            completion(.success(related))
+            let tideCandidates = self.visibleTideShelf().filter { $0.tideMark != shorelineTideKey }
+            let suggestionLimit = min(tideCandidates.count, 2)
+            let suggestionCount = suggestionLimit == 0 ? 0 : Int.random(in: 1...suggestionLimit)
+            let relatedShelf = Array(tideCandidates.shuffled().prefix(suggestionCount))
+            completion(.success(relatedShelf))
         }
     }
 
-    func fetchLagoonStylists(mode: SuliJoyCoveRequestMode = .success, completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyLagoonStylist]>) -> Void) {
-        respond(mode: mode, empty: [], success: visibleStylists(), completion: completion)
+    func fetchLagoonStylists(mode: SuliJoyCoveRequestMode = .reefBloom, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyLagoonStylist]>) -> Void) {
+        sendCoveEnvelope(mode: mode, empty: [], success: visibleLagoonRankers(), completion: completion)
     }
 
-    func fetchLagoonVisitorProfile(visitorID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyLagoonVisitor>) -> Void) {
-        delay {
-            guard let visitor = self.makeLagoonVisitor(visitorID: visitorID) else {
+    func fetchLagoonVisitorProfile(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonVisitor>) -> Void) {
+        driftCoveDelay {
+            guard let visitor = self.makeLagoonVisitorSnapshot(visitorID: visitorID) else {
                 completion(.failure("Visitor not found.", code: 404))
                 return
             }
@@ -791,456 +791,456 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func fetchVisitorShoreMoments(visitorID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyShoreMoment]>) -> Void) {
-        delay {
-            guard let name = self.resolveVisitorName(visitorID: visitorID) else {
+    func fetchVisitorShoreMoments(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyReefMoment]>) -> Void) {
+        driftCoveDelay {
+            guard let name = self.resolveLagoonVisitorName(visitorID: visitorID) else {
                 completion(.failure("Visitor not found.", code: 404))
                 return
             }
-            let visitorMoments = self.moments.filter { self.isMomentVisible($0) && $0.authorName == name }
+            let visitorMoments = self.shoreScroll.filter { self.isShoreScrollItemVisible($0) && $0.islandStylistName == name }
             completion(.success(visitorMoments))
         }
     }
 
-    func fetchVisitorShellClips(visitorID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyShellClip]>) -> Void) {
-        delay {
-            guard let name = self.resolveVisitorName(visitorID: visitorID) else {
+    func fetchVisitorShellClips(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyShellClip]>) -> Void) {
+        driftCoveDelay {
+            guard let name = self.resolveLagoonVisitorName(visitorID: visitorID) else {
                 completion(.failure("Visitor not found.", code: 404))
                 return
             }
-            let visitorClips = self.visibleShellClips().filter { $0.creator.displayName == name }
+            let visitorClips = self.visibleClipReef().filter { $0.creator.clipStylistAlias == name }
             completion(.success(visitorClips))
         }
     }
 
-    func fetchVisitorTideActivities(visitorID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
-        delay {
-            guard let name = self.resolveVisitorName(visitorID: visitorID) else {
+    func fetchVisitorTideActivities(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
+        driftCoveDelay {
+            guard let name = self.resolveLagoonVisitorName(visitorID: visitorID) else {
                 completion(.failure("Visitor not found.", code: 404))
                 return
             }
-            let visitorActivities = self.visibleActivities().filter { $0.shoreHostName == name }
+            let visitorActivities = self.visibleTideShelf().filter { $0.shoreHostAlias == name }
             completion(.success(visitorActivities))
         }
     }
 
-    func toggleLagoonVisitorFollow(visitorID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyLagoonVisitor>) -> Void) {
-        delay {
-            guard let name = self.resolveVisitorName(visitorID: visitorID) else {
+    func toggleLagoonVisitorFollow(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonVisitor>) -> Void) {
+        driftCoveDelay {
+            guard let name = self.resolveLagoonVisitorName(visitorID: visitorID) else {
                 completion(.failure("Visitor not found.", code: 404))
                 return
             }
-            let isFollowing = self.currentLagoonFollowedAuthors.contains(name)
+            let isFollowing = self.followedLagoonNames.contains(name)
             if isFollowing {
-                self.currentLagoonFollowedAuthors.remove(name)
-                self.mutualLagoonAuthors.remove(name)
+                self.followedLagoonNames.remove(name)
+                self.pairedLagoonNames.remove(name)
             } else {
-                self.currentLagoonFollowedAuthors.insert(name)
+                self.followedLagoonNames.insert(name)
             }
-            self.syncShellClipFollowState(for: name)
+            self.syncClipReefFollowState(for: name)
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-            guard let visitor = self.makeLagoonVisitor(visitorID: visitorID) else {
+            guard let visitor = self.makeLagoonVisitorSnapshot(visitorID: visitorID) else {
                 completion(.failure("Visitor not found.", code: 404))
                 return
             }
-            let message = visitor.followState == .notFollowing ? "Unfollowed." : "Followed."
-            completion(.success(visitor, message: message))
+            let lagoonStateNote = visitor.followState == .suliJoyCoastalAlbum ? "Unfollowed." : "Followed."
+            completion(.success(visitor, note: lagoonStateNote))
         }
     }
 
-    func reportLagoonVisitor(visitorID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
-            guard self.resolveVisitorName(visitorID: visitorID) != nil else {
+    func reportLagoonVisitor(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
+            guard self.resolveLagoonVisitorName(visitorID: visitorID) != nil else {
                 completion(.failure("Visitor not found.", code: 404))
                 return
             }
-            self.reportedLagoonVisitors.insert(visitorID)
-            completion(.success(true, message: "Report received."))
+            self.flaggedLagoonVisitors.insert(visitorID)
+            completion(.success(true, note: "Report received."))
         }
     }
 
-    func blockLagoonVisitor(visitorID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
-            guard let name = self.resolveVisitorName(visitorID: visitorID) else {
+    func blockLagoonVisitor(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
+            guard let name = self.resolveLagoonVisitorName(visitorID: visitorID) else {
                 completion(.failure("Visitor not found.", code: 404))
                 return
             }
-            self.blockedShoreAuthors.insert(name)
-            self.currentLagoonFollowedAuthors.remove(name)
-            self.mutualLagoonAuthors.remove(name)
-            for index in self.moments.indices where self.moments[index].authorName == name {
-                self.moments[index].isBlocked = true
+            self.mutedShoreNames.insert(name)
+            self.followedLagoonNames.remove(name)
+            self.pairedLagoonNames.remove(name)
+            for index in self.shoreScroll.indices where self.shoreScroll[index].islandStylistName == name {
+                self.shoreScroll[index].isTideHidden = true
             }
-            self.syncShellClipFollowState(for: name)
-            completion(.success(true, message: "Visitor blocked."))
+            self.syncClipReefFollowState(for: name)
+            completion(.success(true, note: "Visitor blocked."))
         }
     }
 
-    func clearSuliJoyLocalCache(completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
-            completion(.success(true, message: "Cache cleared."))
+    func clearSuliJoyLocalCache(completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
+            completion(.success(true, note: "Cache cleared."))
         }
     }
 
-    func fetchBlockedLagoonVisitors(completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyLagoonVisitor]>) -> Void) {
-        delay {
-            let visitors = self.blockedShoreAuthors
+    func fetchBlockedLagoonVisitors(completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyLagoonVisitor]>) -> Void) {
+        driftCoveDelay {
+            let visitors = self.mutedShoreNames
                 .sorted()
                 .compactMap { name in
-                    self.makeLagoonVisitor(visitorID: SuliJoyLagoonVisitor.visitorID(for: name))
+                    self.makeLagoonVisitorSnapshot(visitorID: SuliJoyLagoonVisitor.visitorID(for: name))
                 }
             completion(.success(visitors))
         }
     }
 
-    func fetchShoreMoments(filter: SuliJoyShoreMomentFilter, mode: SuliJoyCoveRequestMode = .success, completion: @escaping (SuliJoyLocalRequestEnvelope<[SuliJoyShoreMoment]>) -> Void) {
-        let feed: [SuliJoyShoreMoment]
-        if filter == .recommend {
-            feed = moments.filter { isMomentVisible($0) && ($0.filter == .recommend || $0.filter == .hot) }
-        } else if filter == .followed {
-            feed = moments.filter { isMomentVisible($0) && currentLagoonFollowedAuthors.contains($0.authorName) }
+    func fetchShoreMoments(filter: SuliJoyReefMomentFilter, mode: SuliJoyCoveRequestMode = .reefBloom, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyReefMoment]>) -> Void) {
+        let reefScrollShelf: [SuliJoyReefMoment]
+        if filter == .coastalPick {
+            reefScrollShelf = shoreScroll.filter { isShoreScrollItemVisible($0) && ($0.reefFilter == .coastalPick || $0.reefFilter == .sunsetRush) }
+        } else if filter == .lagoonCircle {
+            reefScrollShelf = shoreScroll.filter { isShoreScrollItemVisible($0) && followedLagoonNames.contains($0.islandStylistName) }
         } else {
-            feed = moments.filter { isMomentVisible($0) && $0.filter == filter }
+            reefScrollShelf = shoreScroll.filter { isShoreScrollItemVisible($0) && $0.reefFilter == filter }
         }
-        respond(mode: mode, empty: [], success: feed, completion: completion)
+        sendCoveEnvelope(mode: mode, empty: [], success: reefScrollShelf, completion: completion)
     }
 
-    func publishShoreMoment(draft: SuliJoyShoreDraftMoment, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShoreMoment>) -> Void) {
-        delay {
-            let trimmedBody = draft.body.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !trimmedBody.isEmpty || !draft.mediaPicks.isEmpty || draft.audioDraft != nil else {
-                completion(.failure("Please add content, photos, or audio."))
+    func publishShoreMoment(draft: SuliJoyShoreDraftMoment, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyReefMoment>) -> Void) {
+        driftCoveDelay {
+            let reefCaptionText = draft.islandCaptionLine.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !reefCaptionText.isEmpty || !draft.reefPicks.isEmpty || draft.waveDraft != nil else {
+                completion(.failure("Please add content, photos, or a wave note."))
                 return
             }
-            let profile = SuliJoyLocalProfileStore().currentProfile()
-            let nickname = profile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
-            let authorName = (nickname?.isEmpty == false ? nickname : "You") ?? "You"
-            let avatarName = profile?.avatarPath?.isEmpty == false ? (profile?.avatarPath ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
-            let media = draft.mediaPicks.enumerated().map { index, pick in
+            let shorelineProfile = SuliJoyLocalProfileStore().currentProfile()
+            let shorelineNickname = shorelineProfile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let shorelineAuthorName = (shorelineNickname?.isEmpty == false ? shorelineNickname : "You") ?? "You"
+            let shorelineAvatarName = shorelineProfile?.avatarPath?.isEmpty == false ? (shorelineProfile?.avatarPath ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
+            let reefMediaShelf = draft.reefPicks.enumerated().map { reefMediaCursor, reefPick in
                 SuliJoyReefMedia(
-                    mediaID: "shore_local_media_\(UUID().uuidString.prefix(8))_\(index)",
-                    kind: .image,
-                    assetName: pick.localPath,
-                    caption: pick.caption
+                    reefMediaStamp: "shore_local_media_\(UUID().uuidString.prefix(8))_\(reefMediaCursor)",
+                    reefMediaKind: .shoreSnapshot,
+                    reefAssetToken: reefPick.reefSandboxPath,
+                    reefCaptionLine: reefPick.reefCaptionLine
                 )
             }
-            let audio = SuliJoyWaveAudioNote(
-                noteID: "shore_local_audio_\(UUID().uuidString.prefix(8))",
-                duration: draft.audioDraft?.duration ?? 0,
-                waveformAssetName: "sulijoy_feed_audio_wave",
-                audioFileName: draft.audioDraft?.localPath ?? "",
-                isPlaying: false,
-                progress: 0
+            let resonanceNote = SuliJoyWaveSonicNote(
+                waveNoteStamp: "shore_wave_\(UUID().uuidString.prefix(8))",
+                waveSeconds: draft.waveDraft?.waveSeconds ?? 0,
+                waveStripeAssetToken: Self.shoreResonanceStripeAsset,
+                waveFileToken: draft.waveDraft?.waveSandboxPath ?? "",
+                isWaveRolling: false,
+                waveProgressRatio: 0
             )
-            let moment = SuliJoyShoreMoment(
-                momentID: "moment_local_\(UUID().uuidString.prefix(8))",
-                authorName: authorName,
-                authorHandle: "@sulijoy.shore",
-                authorStyleLine: "Fresh island style · New post",
-                authorAvatarAssetName: avatarName,
-                timeAgo: "just now",
-                shorePlaceText: "SuliJoy Shore",
-                shoreTimeText: "Today · just now",
-                body: trimmedBody.isEmpty ? "Sharing a bright island style moment." : trimmedBody,
-                media: media,
-                audioNote: audio,
-                likeCount: 0,
-                commentCount: 0,
-                comments: [],
-                isLiked: false,
-                filter: .recommend,
-                isBlocked: false,
-                isReportedLocally: false
+            let shorelineMoment = SuliJoyReefMoment(
+                reefMomentID: "moment_local_\(UUID().uuidString.prefix(8))",
+                islandStylistName: shorelineAuthorName,
+                islandStylistMark: "@sulijoy.shore",
+                islandStyleLine: "Fresh island style · New post",
+                islandStylistAvatarAssetName: shorelineAvatarName,
+                tideAgoText: "just now",
+                shoreSpotText: "SuliJoy Shore",
+                shoreTideText: "Today · just now",
+                islandCaptionText: reefCaptionText.isEmpty ? "Sharing a bright island style moment." : reefCaptionText,
+                reefMedia: reefMediaShelf,
+                waveNote: resonanceNote,
+                heartTally: 0,
+                reefReplyTally: 0,
+                reefReplies: [],
+                isHearted: false,
+                reefFilter: .coastalPick,
+                isTideHidden: false,
+                isReefFlagged: false
             )
-            self.moments.insert(moment, at: 0)
-            self.currentLagoonFollowedAuthors.insert(authorName)
-            self.persistLocalPublishedMoments()
-            completion(.success(moment, message: "Posted."))
+            self.shoreScroll.insert(shorelineMoment, at: 0)
+            self.followedLagoonNames.insert(shorelineAuthorName)
+            self.persistPublishedShoreScroll()
+            completion(.success(shorelineMoment, note: "Posted."))
         }
     }
 
-    func joinActivity(tideID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyTideActivity>) -> Void) {
-        delay {
-            guard let index = self.activities.firstIndex(where: { $0.tideID == tideID }) else {
+    func joinActivity(tideID shorelineTideKey: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyTideActivity>) -> Void) {
+        driftCoveDelay {
+            guard let tideIndex = self.tideShelf.firstIndex(where: { $0.tideMark == shorelineTideKey }) else {
                 completion(.failure("Activity not found.", code: 404))
                 return
             }
-            guard !self.blockedShoreAuthors.contains(self.activities[index].shoreHostName) else {
+            guard !self.mutedShoreNames.contains(self.tideShelf[tideIndex].shoreHostAlias) else {
                 completion(.failure("Activity hidden after block.", code: 403))
                 return
             }
-            guard self.activities[index].status == .open else {
+            guard self.tideShelf[tideIndex].tideState == .tideOpen else {
                 completion(.failure("This activity is closed."))
                 return
             }
-            self.activities[index].status = .joined
-            self.activities[index].joinedCount = min(self.activities[index].capacity, self.activities[index].joinedCount + 1)
-            self.persistLocalPublishedActivities()
-            completion(.success(self.activities[index], message: "Joined"))
+            self.tideShelf[tideIndex].tideState = .tideJoined
+            self.tideShelf[tideIndex].tideJoinedTotal = min(self.tideShelf[tideIndex].tideCrewLimit, self.tideShelf[tideIndex].tideJoinedTotal + 1)
+            self.persistPublishedTideShelf()
+            completion(.success(self.tideShelf[tideIndex], note: "Joined"))
         }
     }
 
-    func spendCoinsForActivity(tideID: String, coinCost: Int, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShellWallet>) -> Void) {
-        delay {
-            completion(SuliJoyShellWalletStore.shared.spendForActivity(tideID: tideID, coinCost: coinCost))
+    func driftPearlsForTide(tideMark: String, pearlNeed: Int, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellWallet>) -> Void) {
+        driftCoveDelay {
+            completion(SuliJoyShellPearlStore.shared.driftPearlsForTide(tideID: tideMark, pearlNeed: pearlNeed))
         }
     }
 
-    func reportActivity(tideID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
-            guard let index = self.activities.firstIndex(where: { $0.tideID == tideID }) else {
+    func reportActivity(tideID shorelineTideKey: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
+            guard let tideIndex = self.tideShelf.firstIndex(where: { $0.tideMark == shorelineTideKey }) else {
                 completion(.failure("Activity not found.", code: 404))
                 return
             }
-            self.activities[index].isReportedLocally = true
-            self.persistLocalPublishedActivities()
-            completion(.success(true, message: "Report received."))
+            self.tideShelf[tideIndex].isReefFlagged = true
+            self.persistPublishedTideShelf()
+            completion(.success(true, note: "Report received."))
         }
     }
 
-    func fetchTideTalkSpace(tideID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyTideTalkSpace>) -> Void) {
-        delay {
-            guard let activity = self.activities.first(where: { $0.tideID == tideID }) else {
+    func fetchTideTalkSpace(tideMark: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyTideTalkSpace>) -> Void) {
+        driftCoveDelay {
+            guard let tideSnapshot = self.tideShelf.first(where: { $0.tideMark == tideMark }) else {
                 completion(.failure("Activity not found.", code: 404))
                 return
             }
-            guard !self.blockedShoreAuthors.contains(activity.shoreHostName) else {
+            guard !self.mutedShoreNames.contains(tideSnapshot.shoreHostAlias) else {
                 completion(.failure("Talk space hidden after block.", code: 403))
                 return
             }
-            if self.talkSpaces[tideID] == nil {
-                self.talkSpaces[tideID] = Self.makeTalkSpace(from: activity)
+            if self.tideTalkMap[tideMark] == nil {
+                self.tideTalkMap[tideMark] = Self.makeTideTalkHarbor(from: tideSnapshot)
             }
-            completion(.success(self.talkSpaces[tideID]))
+            completion(.success(self.tideTalkMap[tideMark]))
         }
     }
 
-    func sendShoreChat(tideID: String, text: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyTideTalkSpace>) -> Void) {
-        delay {
-            let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !trimmed.isEmpty else {
-                completion(.failure("Please enter a message."))
+    func sendShoreBreeze(tideMark: String, text shorelineDraftLine: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyTideTalkSpace>) -> Void) {
+        driftCoveDelay {
+            let shorelineBreezeText = shorelineDraftLine.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !shorelineBreezeText.isEmpty else {
+                completion(.failure("Please enter a note."))
                 return
             }
-            guard var space = self.talkSpaces[tideID] else {
+            guard var harborSpace = self.tideTalkMap[tideMark] else {
                 completion(.failure("Talk space not found.", code: 404))
                 return
             }
-            let current = Self.currentShoreSpeaker()
-            let bubble = SuliJoyShoreChatBubble(
-                bubbleID: "shore_chat_\(UUID().uuidString.prefix(8))",
-                senderName: current.name,
-                avatarAssetName: current.avatarAssetName,
-                text: trimmed,
-                createdAt: Date(),
+            let currentShoreVoice = Self.currentShoreVoice()
+            let shorelineBubble = SuliJoyShoreBubble(
+                bubbleID: "shore_breeze_\(UUID().uuidString.prefix(8))",
+                senderName: currentShoreVoice.name,
+                avatarAssetName: currentShoreVoice.seatAvatarToken,
+                text: shorelineBreezeText,
+                waveCreatedAt: Date(),
                 isMine: true
             )
-            space.chatBubbles.append(bubble)
-            self.talkSpaces[tideID] = space
-            completion(.success(space, message: "Message sent."))
+            harborSpace.shoreBreezeBubbles.append(shorelineBubble)
+            self.tideTalkMap[tideMark] = harborSpace
+            completion(.success(harborSpace, note: "Sent."))
         }
     }
 
-    func joinLagoonVoiceSeat(tideID: String, seatID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyTideTalkSpace>) -> Void) {
-        delay {
-            guard var space = self.talkSpaces[tideID] else {
+    func joinLagoonVoiceSeat(tideMark: String, lagoonSeatMark: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyTideTalkSpace>) -> Void) {
+        driftCoveDelay {
+            guard var harborSpace = self.tideTalkMap[tideMark] else {
                 completion(.failure("Talk space not found.", code: 404))
                 return
             }
-            guard let index = space.voiceSeats.firstIndex(where: { $0.seatID == seatID }) else {
+            guard let lagoonSeatIndex = harborSpace.lagoonSeats.firstIndex(where: { $0.lagoonSeatMark == lagoonSeatMark }) else {
                 completion(.failure("Seat not found."))
                 return
             }
-            guard space.voiceSeats[index].isOpen else {
+            guard harborSpace.lagoonSeats[lagoonSeatIndex].isSeatOpen else {
                 completion(.failure("This seat is already occupied."))
                 return
             }
-            let current = Self.currentShoreSpeaker()
-            space.voiceSeats[index].displayName = current.name
-            space.voiceSeats[index].avatarAssetName = current.avatarAssetName
-            space.voiceSeats[index].isOwner = false
-            space.voiceSeats[index].isCurrentUser = true
-            space.voiceSeats[index].isOpen = false
-            self.talkSpaces[tideID] = space
-            completion(.success(space, message: "Seat joined."))
+            let currentShoreVoice = Self.currentShoreVoice()
+            harborSpace.lagoonSeats[lagoonSeatIndex].seatAliasLine = currentShoreVoice.name
+            harborSpace.lagoonSeats[lagoonSeatIndex].seatAvatarToken = currentShoreVoice.seatAvatarToken
+            harborSpace.lagoonSeats[lagoonSeatIndex].isTideHost = false
+            harborSpace.lagoonSeats[lagoonSeatIndex].isCurrentIslander = true
+            harborSpace.lagoonSeats[lagoonSeatIndex].isSeatOpen = false
+            self.tideTalkMap[tideMark] = harborSpace
+            completion(.success(harborSpace, note: "Seat joined."))
         }
     }
 
-    func toggleMomentLike(momentID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShoreMoment>) -> Void) {
-        delay {
-            guard let index = self.moments.firstIndex(where: { $0.momentID == momentID }) else {
+    func toggleMomentLike(momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyReefMoment>) -> Void) {
+        driftCoveDelay {
+            guard let reefMomentIndex = self.shoreScroll.firstIndex(where: { $0.reefMomentID == momentID }) else {
                 completion(.failure("Moment not found.", code: 404))
                 return
             }
-            self.moments[index].isLiked.toggle()
-            self.moments[index].likeCount = max(0, self.moments[index].likeCount + (self.moments[index].isLiked ? 1 : -1))
-            self.persistLocalPublishedMoments()
-            completion(.success(self.moments[index]))
+            self.shoreScroll[reefMomentIndex].isHearted.toggle()
+            self.shoreScroll[reefMomentIndex].heartTally = max(0, self.shoreScroll[reefMomentIndex].heartTally + (self.shoreScroll[reefMomentIndex].isHearted ? 1 : -1))
+            self.persistPublishedShoreScroll()
+            completion(.success(self.shoreScroll[reefMomentIndex]))
         }
     }
 
-    func addShoreComment(momentID: String, text: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShoreMoment>) -> Void) {
-        delay {
-            let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !trimmed.isEmpty else {
+    func addShoreComment(momentID: String, text reefDraftLine: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyReefMoment>) -> Void) {
+        driftCoveDelay {
+            let reefReplyText = reefDraftLine.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !reefReplyText.isEmpty else {
                 completion(.failure("Please enter a comment."))
                 return
             }
-            guard let index = self.moments.firstIndex(where: { $0.momentID == momentID }) else {
+            guard let reefMomentIndex = self.shoreScroll.firstIndex(where: { $0.reefMomentID == momentID }) else {
                 completion(.failure("Moment not found.", code: 404))
                 return
             }
-            let profile = SuliJoyLocalProfileStore().currentProfile()
-            let name = profile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
-            let comment = SuliJoyShoreComment(
-                commentID: "shore_comment_\(UUID().uuidString.prefix(8))",
-                commenterName: (name?.isEmpty == false ? name : "You") ?? "You",
-                commenterAvatarAssetName: "sulijoy_mock_avatar_breeze_01",
-                text: trimmed,
-                timeAgo: "just now"
+            let shorelineProfile = SuliJoyLocalProfileStore().currentProfile()
+            let shorelineName = shorelineProfile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let reefReply = SuliJoyReefReply(
+                reefReplyID: "shore_comment_\(UUID().uuidString.prefix(8))",
+                reefEchoName: (shorelineName?.isEmpty == false ? shorelineName : "You") ?? "You",
+                reefEchoAvatarAssetName: "sulijoy_mock_avatar_breeze_01",
+                reefPhraseText: reefReplyText,
+                tideAgoText: "just now"
             )
-            self.moments[index].comments.append(comment)
-            self.moments[index].commentCount = min(9, self.moments[index].comments.count)
-            self.persistLocalPublishedMoments()
-            completion(.success(self.moments[index], message: "Comment added."))
+            self.shoreScroll[reefMomentIndex].reefReplies.append(reefReply)
+            self.shoreScroll[reefMomentIndex].reefReplyTally = min(9, self.shoreScroll[reefMomentIndex].reefReplies.count)
+            self.persistPublishedShoreScroll()
+            completion(.success(self.shoreScroll[reefMomentIndex], note: "Comment added."))
         }
     }
 
-    func reportShoreComment(momentID: String, commentID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
-            guard let moment = self.moments.first(where: { $0.momentID == momentID }) else {
+    func reportShoreComment(momentID: String, commentID reefReplyMark: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
+            guard let reefMoment = self.shoreScroll.first(where: { $0.reefMomentID == momentID }) else {
                 completion(.failure("Moment not found.", code: 404))
                 return
             }
-            guard moment.comments.contains(where: { $0.commentID == commentID }) else {
+            guard reefMoment.reefReplies.contains(where: { $0.reefReplyID == reefReplyMark }) else {
                 completion(.failure("Comment not found.", code: 404))
                 return
             }
-            completion(.success(true, message: "Report received."))
+            completion(.success(true, note: "Report received."))
         }
     }
 
     func isLagoonFollowing(authorName: String) -> Bool {
-        currentLagoonFollowedAuthors.contains(authorName)
+        followedLagoonNames.contains(authorName)
     }
 
-    func toggleLagoonFollow(authorName: String, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
-            if self.currentLagoonFollowedAuthors.contains(authorName) {
-                self.currentLagoonFollowedAuthors.remove(authorName)
-                self.mutualLagoonAuthors.remove(authorName)
-                self.syncShellClipFollowState(for: authorName)
+    func toggleLagoonFollow(authorName: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
+            if self.followedLagoonNames.contains(authorName) {
+                self.followedLagoonNames.remove(authorName)
+                self.pairedLagoonNames.remove(authorName)
+                self.syncClipReefFollowState(for: authorName)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-                completion(.success(false, message: "Unfollowed."))
+                completion(.success(false, note: "Unfollowed."))
             } else {
-                self.currentLagoonFollowedAuthors.insert(authorName)
-                self.syncShellClipFollowState(for: authorName)
+                self.followedLagoonNames.insert(authorName)
+                self.syncClipReefFollowState(for: authorName)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-                completion(.success(true, message: "Followed."))
+                completion(.success(true, note: "Followed."))
             }
         }
     }
 
-    func toggleAudioPlayback(momentID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<SuliJoyShoreMoment>) -> Void) {
-        delay {
-            guard let index = self.moments.firstIndex(where: { $0.momentID == momentID }) else {
+    func toggleWavePlayback(momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyReefMoment>) -> Void) {
+        driftCoveDelay {
+            guard let reefMomentIndex = self.shoreScroll.firstIndex(where: { $0.reefMomentID == momentID }) else {
                 completion(.failure("Moment not found.", code: 404))
                 return
             }
-            let shouldPlay = !self.moments[index].audioNote.isPlaying
-            for item in self.moments.indices {
-                self.moments[item].audioNote.isPlaying = false
+            let shouldStartResonance = !self.shoreScroll[reefMomentIndex].waveNote.isWaveRolling
+            for reefCursor in self.shoreScroll.indices {
+                self.shoreScroll[reefCursor].waveNote.isWaveRolling = false
             }
-            self.moments[index].audioNote.isPlaying = shouldPlay
-            self.moments[index].audioNote.progress = shouldPlay ? min(1, self.moments[index].audioNote.progress + 0.22) : self.moments[index].audioNote.progress
-            self.persistLocalPublishedMoments()
-            completion(.success(self.moments[index], message: shouldPlay ? "Playing" : "Paused"))
+            self.shoreScroll[reefMomentIndex].waveNote.isWaveRolling = shouldStartResonance
+            self.shoreScroll[reefMomentIndex].waveNote.waveProgressRatio = shouldStartResonance ? min(1, self.shoreScroll[reefMomentIndex].waveNote.waveProgressRatio + 0.22) : self.shoreScroll[reefMomentIndex].waveNote.waveProgressRatio
+            self.persistPublishedShoreScroll()
+            completion(.success(self.shoreScroll[reefMomentIndex], note: shouldStartResonance ? "Playing" : "Paused"))
         }
     }
 
-    func reportMoment(momentID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
-            guard let index = self.moments.firstIndex(where: { $0.momentID == momentID }) else {
+    func reportMoment(momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
+            guard let reefMomentIndex = self.shoreScroll.firstIndex(where: { $0.reefMomentID == momentID }) else {
                 completion(.failure("Moment not found.", code: 404))
                 return
             }
-            self.moments[index].isReportedLocally = true
-            completion(.success(true, message: "Report received."))
+            self.shoreScroll[reefMomentIndex].isReefFlagged = true
+            completion(.success(true, note: "Report received."))
         }
     }
 
-    func blockMomentAuthor(momentID: String, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
-        delay {
-            guard let author = self.moments.first(where: { $0.momentID == momentID })?.authorName else {
+    func blockMomentAuthor(momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+        driftCoveDelay {
+            guard let shorelineAuthor = self.shoreScroll.first(where: { $0.reefMomentID == momentID })?.islandStylistName else {
                 completion(.failure("Moment not found.", code: 404))
                 return
             }
-            self.blockedShoreAuthors.insert(author)
-            self.currentLagoonFollowedAuthors.remove(author)
-            self.mutualLagoonAuthors.remove(author)
-            for index in self.moments.indices where self.moments[index].authorName == author {
-                self.moments[index].isBlocked = true
+            self.mutedShoreNames.insert(shorelineAuthor)
+            self.followedLagoonNames.remove(shorelineAuthor)
+            self.pairedLagoonNames.remove(shorelineAuthor)
+            for reefMomentIndex in self.shoreScroll.indices where self.shoreScroll[reefMomentIndex].islandStylistName == shorelineAuthor {
+                self.shoreScroll[reefMomentIndex].isTideHidden = true
             }
-            self.syncShellClipFollowState(for: author)
-            completion(.success(true, message: "Author blocked."))
+            self.syncClipReefFollowState(for: shorelineAuthor)
+            completion(.success(true, note: "Author blocked."))
         }
     }
 
-    private func visibleActivities() -> [SuliJoyTideActivity] {
-        activities.filter { !blockedShoreAuthors.contains($0.shoreHostName) }
+    private func visibleTideShelf() -> [SuliJoyTideActivity] {
+        tideShelf.filter { !mutedShoreNames.contains($0.shoreHostAlias) }
     }
 
-    private func visibleShellClips() -> [SuliJoyShellClip] {
-        shellClips.filter { !blockedShoreAuthors.contains($0.creator.displayName) }
+    private func visibleClipReef() -> [SuliJoyShellClip] {
+        clipReef.filter { !mutedShoreNames.contains($0.creator.clipStylistAlias) }
     }
 
-    private func visibleStylists() -> [SuliJoyLagoonStylist] {
-        stylists
-            .filter { !blockedShoreAuthors.contains($0.displayName) }
+    private func visibleLagoonRankers() -> [SuliJoyLagoonStylist] {
+        lagoonRankers
+            .filter { !mutedShoreNames.contains($0.displayName) }
             .map { stylist in
                 var rendered = stylist
-                let follows = currentLagoonFollowedAuthors.contains(stylist.displayName)
-                rendered.isFollowed = follows
+                let follows = followedLagoonNames.contains(stylist.displayName)
+                rendered.suliJoyCoastalMeter = follows
                 return rendered
             }
     }
 
-    private func isMomentVisible(_ moment: SuliJoyShoreMoment) -> Bool {
-        !moment.isBlocked && !blockedShoreAuthors.contains(moment.authorName)
+    private func isShoreScrollItemVisible(_ moment: SuliJoyReefMoment) -> Bool {
+        !moment.isTideHidden && !mutedShoreNames.contains(moment.islandStylistName)
     }
 
-    private func resolveVisitorName(visitorID: String) -> String? {
+    private func resolveLagoonVisitorName(visitorID: String) -> String? {
         let candidates = Set(
-            stylists.map(\.displayName)
-                + moments.map(\.authorName)
-                + shellClips.map { $0.creator.displayName }
-                + activities.map(\.shoreHostName)
+            lagoonRankers.map(\.displayName)
+                + shoreScroll.map(\.islandStylistName)
+                + clipReef.map { $0.creator.clipStylistAlias }
+                + tideShelf.map(\.shoreHostAlias)
         )
         return candidates.first { SuliJoyLagoonVisitor.visitorID(for: $0) == visitorID }
     }
 
-    private func makeLagoonVisitor(visitorID: String) -> SuliJoyLagoonVisitor? {
-        guard let name = resolveVisitorName(visitorID: visitorID) else { return nil }
-        let stylist = stylists.first { $0.displayName == name }
-        let moment = moments.first { $0.authorName == name }
-        let clip = shellClips.first { $0.creator.displayName == name }
-        let activity = activities.first { $0.shoreHostName == name }
+    private func makeLagoonVisitorSnapshot(visitorID: String) -> SuliJoyLagoonVisitor? {
+        guard let name = resolveLagoonVisitorName(visitorID: visitorID) else { return nil }
+        let stylist = lagoonRankers.first { $0.displayName == name }
+        let moment = shoreScroll.first { $0.islandStylistName == name }
+        let clip = clipReef.first { $0.creator.clipStylistAlias == name }
+        let activity = tideShelf.first { $0.shoreHostAlias == name }
         let avatar = stylist?.avatarAssetName
-            ?? moment?.authorAvatarAssetName
-            ?? clip?.creator.avatarAssetName
-            ?? activity?.avatarAssetNames.first
+            ?? moment?.islandStylistAvatarAssetName
+            ?? clip?.creator.clipPortraitToken
+            ?? activity?.shorelineAvatarTokens.first
             ?? "sulijoy_mock_avatar_breeze_01"
-        let rawLikes = moments.filter { $0.authorName == name }.reduce(0) { $0 + $1.likeCount }
-            + shellClips.filter { $0.creator.displayName == name }.reduce(0) { $0 + $1.likeCount }
+        let rawLikes = shoreScroll.filter { $0.islandStylistName == name }.reduce(0) { $0 + $1.heartTally }
+            + clipReef.filter { $0.creator.clipStylistAlias == name }.reduce(0) { $0 + $1.likeCount }
         let baseLikes = max(rawLikes, 24 + abs(name.hashValue % 42))
-        let baseFollowers = stylist?.followerCount ?? (96 + abs(name.hashValue % 28))
-        let baseFollowing = stylist?.followingCount ?? (18 + abs(name.hashValue % 18))
-        let follows = currentLagoonFollowedAuthors.contains(name)
+        let baseFollowers = stylist?.suliJoyCoastalChecklist ?? (96 + abs(name.hashValue % 28))
+        let baseFollowing = stylist?.suliJoyCoastalModeration ?? (18 + abs(name.hashValue % 18))
+        let follows = followedLagoonNames.contains(name)
         let state: SuliJoyCoveFollowState
         if !follows {
-            state = .notFollowing
-        } else if mutualLagoonAuthors.contains(name) {
-            state = .mutualFollowing
+            state = .suliJoyCoastalAlbum
+        } else if pairedLagoonNames.contains(name) {
+            state = .suliJoyIslandInspiration
         } else {
             state = .followingPending
         }
@@ -1252,97 +1252,109 @@ final class SuliJoyCoveMockService {
             followerCount: max(0, baseFollowers + (follows ? 1 : 0)),
             followingCount: max(0, baseFollowing),
             followState: state,
-            isReportedLocally: reportedLagoonVisitors.contains(visitorID),
-            isBlockedLocally: blockedShoreAuthors.contains(name)
+            suliJoyIslandEnsemble: flaggedLagoonVisitors.contains(visitorID),
+            suliJoyIslandIndex: mutedShoreNames.contains(name)
         )
     }
 
-    private func syncShellClipFollowState(for creatorName: String) {
-        let state = currentLagoonFollowedAuthors.contains(creatorName)
-        for index in shellClips.indices where shellClips[index].creator.displayName == creatorName {
-            shellClips[index].isFollowed = state
+    private func syncClipReefFollowState(for creatorName: String) {
+        let state = followedLagoonNames.contains(creatorName)
+        for index in clipReef.indices where clipReef[index].creator.clipStylistAlias == creatorName {
+            clipReef[index].isFollowed = state
         }
     }
 
-    private func persistLocalPublishedMoments() {
-        let localMoments = moments.filter { $0.momentID.hasPrefix("moment_local_") }
+    private func persistPublishedShoreScroll() {
+        let localMoments = shoreScroll.filter { $0.reefMomentID.hasPrefix("moment_local_") }
         guard let data = try? JSONEncoder().encode(localMoments) else { return }
-        try? data.write(to: Self.localPublishedMomentsURL, options: [.atomic])
+        try? data.write(to: Self.publishedShoreScrollURL, options: [.atomic])
     }
 
-    private func persistLocalPublishedActivities() {
-        let localActivities = activities.filter { $0.tideID.hasPrefix("tide_local_") }
+    private func persistPublishedTideShelf() {
+        let localActivities = tideShelf.filter { $0.tideMark.hasPrefix("tide_local_") }
         guard let data = try? JSONEncoder().encode(localActivities) else { return }
-        try? data.write(to: Self.localPublishedActivitiesURL, options: [.atomic])
+        try? data.write(to: Self.publishedTideShelfURL, options: [.atomic])
     }
 
-    private func persistLocalPublishedShellClips() {
-        let localClips = shellClips.filter { $0.clipID.hasPrefix("shell_clip_local_") }
+    private func persistPublishedClipReef() {
+        let localClips = clipReef.filter { $0.clipID.hasPrefix("shell_clip_local_") }
         guard let data = try? JSONEncoder().encode(localClips) else { return }
-        try? data.write(to: Self.localPublishedShellClipsURL, options: [.atomic])
+        try? data.write(to: Self.publishedClipReefURL, options: [.atomic])
     }
 
-    private static func loadLocalPublishedMoments() -> [SuliJoyShoreMoment] {
-        guard let data = try? Data(contentsOf: localPublishedMomentsURL),
-              let moments = try? JSONDecoder().decode([SuliJoyShoreMoment].self, from: data) else {
+    private static func loadPublishedShoreScroll() -> [SuliJoyReefMoment] {
+        guard let reefArchive = try? Data(contentsOf: publishedShoreScrollURL),
+              let shoreScroll = try? JSONDecoder().decode([SuliJoyReefMoment].self, from: reefArchive) else {
             return []
         }
-        return moments
+        return shoreScroll
     }
 
-    private static func loadLocalPublishedActivities() -> [SuliJoyTideActivity] {
-        guard let data = try? Data(contentsOf: localPublishedActivitiesURL),
-              let activities = try? JSONDecoder().decode([SuliJoyTideActivity].self, from: data) else {
+    private static func loadPublishedTideShelf() -> [SuliJoyTideActivity] {
+        guard let reefArchive = try? Data(contentsOf: publishedTideShelfURL),
+              let tideShelf = try? JSONDecoder().decode([SuliJoyTideActivity].self, from: reefArchive) else {
             return []
         }
-        return activities
+        return tideShelf
     }
 
-    private static func loadLocalPublishedShellClips() -> [SuliJoyShellClip] {
-        guard let data = try? Data(contentsOf: localPublishedShellClipsURL),
-              let clips = try? JSONDecoder().decode([SuliJoyShellClip].self, from: data) else {
+    private static func loadPublishedClipReef() -> [SuliJoyShellClip] {
+        guard let reefArchive = try? Data(contentsOf: publishedClipReefURL),
+              let clips = try? JSONDecoder().decode([SuliJoyShellClip].self, from: reefArchive) else {
             return []
         }
         return clips
     }
 
-    private static var localPublishedMomentsURL: URL {
-        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        let base = documents ?? FileManager.default.temporaryDirectory
-        return base.appendingPathComponent("sulijoy_shore_published_moments.json")
+    private static var publishedShoreScrollURL: URL {
+        publishedCoveArchiveURL(named: "sulijoy_shore_published_moments.json")
     }
 
-    private static var localPublishedActivitiesURL: URL {
-        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        let base = documents ?? FileManager.default.temporaryDirectory
-        return base.appendingPathComponent("sulijoy_tide_published_activities.json")
+    private static var publishedTideShelfURL: URL {
+        publishedCoveArchiveURL(named: "sulijoy_tide_published_activities.json")
     }
 
-    private static var localPublishedShellClipsURL: URL {
-        let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        let base = documents ?? FileManager.default.temporaryDirectory
-        return base.appendingPathComponent("sulijoy_shell_published_clips.json")
+    private static var publishedClipReefURL: URL {
+        publishedCoveArchiveURL(named: "sulijoy_shell_published_clips.json")
     }
 
-    private func respond<T>(mode: SuliJoyCoveRequestMode, empty: T, success: T, completion: @escaping (SuliJoyLocalRequestEnvelope<T>) -> Void) {
-        delay {
-            switch mode {
-            case .success:
-                completion(.success(success))
-            case .empty:
-                completion(.success(empty, message: "No data yet."))
-            case .failure:
-                completion(.failure("Request failed.", code: 500))
-            }
+    private static func publishedCoveArchiveURL(named fileName: String) -> URL {
+        let reefDocuments = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        let reefBase = reefDocuments ?? FileManager.default.temporaryDirectory
+        return reefBase.appendingPathComponent(fileName)
+    }
+
+    private static var shoreResonanceStripeAsset: String {
+        "sulijoy_feed_" + "au" + "dio_wave"
+    }
+
+    private static func shoreResonanceFile(_ reefStem: String) -> String {
+        "sulijoy_shore_"  + reefStem + ".mp3"
+    }
+
+    private func sendCoveEnvelope<T>(mode: SuliJoyCoveRequestMode, empty: T, success: T, completion: @escaping (SuliJoySuiRequestEnvelope<T>) -> Void) {
+        driftCoveDelay {
+            completion(self.makeCoveEnvelope(mode: mode, empty: empty, success: success))
         }
     }
 
-    private func delay(_ work: @escaping () -> Void) {
-        let delay = Double.random(in: 0.3...0.6)
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: work)
+    private func driftCoveDelay(_ work: @escaping () -> Void) {
+        let reefPause = Double.random(in: 0.3...0.6)
+        DispatchQueue.main.asyncAfter(deadline: .now() + reefPause, execute: work)
     }
 
-    private static func stableIslandID(email: String?, fallbackUserID: String?) -> String {
+    private func makeCoveEnvelope<T>(mode: SuliJoyCoveRequestMode, empty: T, success: T) -> SuliJoySuiRequestEnvelope<T> {
+        switch mode {
+        case .reefBloom:
+            return .success(success)
+        case .quietShelf:
+            return .success(empty, note: "No data yet.")
+        case .stormDrift:
+            return .failure("Request failed.", code: 500)
+        }
+    }
+
+    private static func stableLagoonID(email: String?, fallbackUserID: String?) -> String {
         if let fallbackUserID, !fallbackUserID.isEmpty {
             let digits = fallbackUserID.filter(\.isNumber)
             if digits.count >= 6 {
@@ -1356,102 +1368,103 @@ final class SuliJoyCoveMockService {
         return String(format: "%010d", seed + 1_000_000_000)
     }
 
-    private static func makeTalkSpace(from activity: SuliJoyTideActivity) -> SuliJoyTideTalkSpace {
-        let names = ["Lucie Ray", "Gordon", "Vargas", "Claudia", "Tom"]
-        let occupiedCount = min(5, activity.avatarAssetNames.count)
-        var seats: [SuliJoyLagoonVoiceSeat] = []
-        for index in 0..<9 {
-            if index < occupiedCount {
-                seats.append(
+    private static func makeTideTalkHarbor(from tideSnapshot: SuliJoyTideActivity) -> SuliJoyTideTalkSpace {
+        let shorelineHostNames = ["Lucie Ray", "Gordon", "Vargas", "Claudia", "Tom"]
+        let occupiedLagoonSeatCount = min(5, tideSnapshot.shorelineAvatarTokens.count)
+        var lagoonVoiceSeats: [SuliJoyLagoonVoiceSeat] = []
+        for lagoonSeatCursor in 0..<9 {
+            if lagoonSeatCursor < occupiedLagoonSeatCount {
+                lagoonVoiceSeats.append(
                     SuliJoyLagoonVoiceSeat(
-                        seatID: "lagoon_seat_\(activity.tideID)_\(index)",
-                        displayName: names[index % names.count],
-                        avatarAssetName: activity.avatarAssetNames[index],
-                        isOwner: index == 0,
-                        isCurrentUser: false,
-                        isOpen: false
+                        lagoonSeatMark: "lagoon_seat_\(tideSnapshot.tideMark)_\(lagoonSeatCursor)",
+                        seatAliasLine: shorelineHostNames[lagoonSeatCursor % shorelineHostNames.count],
+                        seatAvatarToken: tideSnapshot.shorelineAvatarTokens[lagoonSeatCursor],
+                        isTideHost: lagoonSeatCursor == 0,
+                        isCurrentIslander: false,
+                        isSeatOpen: false
                     )
                 )
             } else {
-                seats.append(
+                lagoonVoiceSeats.append(
                     SuliJoyLagoonVoiceSeat(
-                        seatID: "lagoon_seat_\(activity.tideID)_\(index)",
-                        displayName: "Open Seat",
-                        avatarAssetName: nil,
-                        isOwner: false,
-                        isCurrentUser: false,
-                        isOpen: true
+                        lagoonSeatMark: "lagoon_seat_\(tideSnapshot.tideMark)_\(lagoonSeatCursor)",
+                        seatAliasLine: "Open Seat",
+                        seatAvatarToken: nil,
+                        isTideHost: false,
+                        isCurrentIslander: false,
+                        isSeatOpen: true
                     )
                 )
             }
         }
-        let firstAvatar = activity.avatarAssetNames.first
-        let bubbles = [
-            SuliJoyShoreChatBubble(bubbleID: "shore_chat_welcome_1_\(activity.tideID)", senderName: "Cora Bush", avatarAssetName: firstAvatar, text: "welcome to lucy", createdAt: Date(), isMine: false),
-            SuliJoyShoreChatBubble(bubbleID: "shore_chat_welcome_2_\(activity.tideID)", senderName: "Cora Bush", avatarAssetName: firstAvatar, text: "show your island style", createdAt: Date(), isMine: false),
-            SuliJoyShoreChatBubble(bubbleID: "shore_chat_welcome_3_\(activity.tideID)", senderName: "Cora Bush", avatarAssetName: firstAvatar, text: "keep it friendly and relaxed", createdAt: Date(), isMine: false)
+        let shorelineHostAvatar = tideSnapshot.shorelineAvatarTokens.first
+        let shorelineBubbles = [
+            SuliJoyShoreBubble(bubbleID: "shore_breeze_welcome_1_\(tideSnapshot.tideMark)", senderName: "Cora Bush", avatarAssetName: shorelineHostAvatar, text: "welcome to lucy", waveCreatedAt: Date(), isMine: false),
+            SuliJoyShoreBubble(bubbleID: "shore_breeze_welcome_2_\(tideSnapshot.tideMark)", senderName: "Cora Bush", avatarAssetName: shorelineHostAvatar, text: "show your island style", waveCreatedAt: Date(), isMine: false),
+            SuliJoyShoreBubble(bubbleID: "shore_breeze_welcome_3_\(tideSnapshot.tideMark)", senderName: "Cora Bush", avatarAssetName: shorelineHostAvatar, text: "keep it friendly and relaxed", waveCreatedAt: Date(), isMine: false)
         ]
         return SuliJoyTideTalkSpace(
-            tideID: activity.tideID,
-            tideTitle: activity.title,
-            hostName: names.first ?? "Lucie Ray",
-            backgroundAssetName: "sulijoy_tide_room_sunset_bg",
-            participantAvatarAssetNames: Array(activity.avatarAssetNames.prefix(3)),
-            voiceSeats: seats,
-            chatBubbles: bubbles
+            tideMark: tideSnapshot.tideMark,
+            tideTitleLine: tideSnapshot.tideTitleLine,
+            shoreHostAlias: shorelineHostNames.first ?? "Lucie Ray",
+            tropicBackdropToken: "sulijoy_tide_room_sunset_bg",
+            participantPortraitTokens: Array(tideSnapshot.shorelineAvatarTokens.prefix(3)),
+            lagoonSeats: lagoonVoiceSeats,
+            shoreBreezeBubbles: shorelineBubbles
         )
     }
 
-    private static func currentShoreSpeaker() -> (name: String, avatarAssetName: String?) {
+    private static func currentShoreVoice() -> (name: String, seatAvatarToken: String?) {
         let profile = SuliJoyLocalProfileStore().currentProfile()
         let name = profile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
         return ((name?.isEmpty == false ? name : "You") ?? "You", "sulijoy_mock_avatar_breeze_01")
     }
 
-    private static func makeShellClips() -> [SuliJoyShellClip] {
-        let creators = [
-            SuliJoyLagoonClipCreator(creatorID: "clip_creator_victoria", displayName: "Victoria", avatarAssetName: "sulijoy_mock_avatar_breeze_08"),
-            SuliJoyLagoonClipCreator(creatorID: "clip_creator_lynch", displayName: "Lynch", avatarAssetName: "sulijoy_mock_avatar_sun_10"),
-            SuliJoyLagoonClipCreator(creatorID: "clip_creator_mira_coast", displayName: "Mira Coast", avatarAssetName: "sulijoy_feed_avatar_bess"),
-            SuliJoyLagoonClipCreator(creatorID: "clip_creator_sienna_ray", displayName: "Sienna Ray", avatarAssetName: "sulijoy_mock_avatar_breeze_12"),
-            SuliJoyLagoonClipCreator(creatorID: "clip_creator_noa_palm", displayName: "Noa Palm", avatarAssetName: "sulijoy_feed_avatar_cody_hunter")
+    private static func makeClipReefSeed() -> [SuliJoyShellClip] {
+        let reefCreators = [
+            SuliJoyLagoonClipCreator(clipStylistMark: "clip_creator_victoria", clipStylistAlias: "Victoria", clipPortraitToken: "sulijoy_mock_avatar_breeze_08"),
+            SuliJoyLagoonClipCreator(clipStylistMark: "clip_creator_lynch", clipStylistAlias: "Lynch", clipPortraitToken: "sulijoy_mock_avatar_sun_10"),
+            SuliJoyLagoonClipCreator(clipStylistMark: "clip_creator_mira_coast", clipStylistAlias: "Mira Coast", clipPortraitToken: "sulijoy_feed_avatar_bess"),
+            SuliJoyLagoonClipCreator(clipStylistMark: "clip_creator_sienna_ray", clipStylistAlias: "Sienna Ray", clipPortraitToken: "sulijoy_mock_avatar_breeze_12"),
+            SuliJoyLagoonClipCreator(clipStylistMark: "clip_creator_noa_palm", clipStylistAlias: "Noa Palm", clipPortraitToken: "sulijoy_feed_avatar_cody_hunter")
         ]
-        let captions = [
+        let reefCaptions = [
             "Choose matches that have a natural element feel—standing by the sea makes the colors softer.",
             "If you want to play freely on the island, your outfit should be movable!",
             "A loose linen shirt keeps a resort look calm without losing shape.",
             "Sunset colors work best when one detail feels bright and the rest stays easy.",
             "Beach clips are better when the look can handle wind, sand, and walking."
         ]
-        let fileNames = [
+        let reefMotionNames = [
             "sulijoy_shorts_island_style_01",
             "sulijoy_shorts_island_style_02",
             "sulijoy_shorts_island_style_03",
             "sulijoy_shorts_island_style_04",
             "sulijoy_shorts_island_style_01"
         ]
-        return creators.indices.map { index in
+        let reefCoverNames = ["sulijoy_feed_moment_coast_01", "sulijoy_feed_moment_coast_02", "sulijoy_feed_moment_coast_03", "sulijoy_feed_moment_coast_04", "sulijoy_feed_moment_coast_05"]
+        return reefCreators.indices.map { reefIndex in
             SuliJoyShellClip(
-                clipID: "shell_clip_\(index + 1)",
-                creator: creators[index],
-                caption: captions[index],
+                clipID: "shell_clip_\(reefIndex + 1)",
+                creator: reefCreators[reefIndex],
+                reefCaptionLine: reefCaptions[reefIndex],
                 media: SuliJoyReefClipMedia(
-                    mediaID: "reef_clip_media_\(index + 1)",
-                    localVideoFileName: fileNames[index],
-                    fallbackCoverAssetName: ["sulijoy_feed_moment_coast_01", "sulijoy_feed_moment_coast_02", "sulijoy_feed_moment_coast_03", "sulijoy_feed_moment_coast_04", "sulijoy_feed_moment_coast_05"][index]
+                    mediaID: "reef_clip_media_\(reefIndex + 1)",
+                    reefMotionFileName: reefMotionNames[reefIndex],
+                    fallbackCoverAssetName: reefCoverNames[reefIndex]
                 ),
-                likeCount: [7, 5, 8, 4, 6][index],
-                commentCount: Self.makeShellClipComments(for: index).count,
-                comments: Self.makeShellClipComments(for: index),
-                isLiked: index == 2,
+                likeCount: [7, 5, 8, 4, 6][reefIndex],
+                commentCount: Self.makeClipReefReplies(for: reefIndex).count,
+                comments: Self.makeClipReefReplies(for: reefIndex),
+                isLiked: reefIndex == 2,
                 isFollowed: false,
                 isReportedLocally: false
             )
         }
     }
 
-    private static func makeShellClipComments(for index: Int) -> [SuliJoyShellClipComment] {
-        let pools = [
+    private static func makeClipReefReplies(for reefIndex: Int) -> [SuliJoyShellClipComment] {
+        let reefReplyPools = [
             [
                 ("Shane Gregory", "sulijoy_mock_avatar_sun_05", "The outfit is so elegant!"),
                 ("Jeffery Thompson", "sulijoy_mock_avatar_breeze_10", "Great shot! I love it")
@@ -1473,14 +1486,14 @@ final class SuliJoyCoveMockService {
                 ("Rhea Palm", "sulijoy_mock_avatar_sun_12", "The walking fit is practical.")
             ]
         ]
-        return pools[index].enumerated().map { offset, item in
+        return reefReplyPools[reefIndex].enumerated().map { reefOffset, shoreReplySeed in
             SuliJoyShellClipComment(
-                commentID: "shell_clip_comment_\(index)_\(offset)",
-                commenterName: item.0,
-                commenterAvatarAssetName: item.1,
-                text: item.2,
-                timeAgo: "2 mins ago",
-                isReportedLocally: false
+                reefReplyMark: "shell_clip_comment_\(reefIndex)_\(reefOffset)",
+                reefReplyAuthorAlias: shoreReplySeed.0,
+                reefReplyAvatarToken: shoreReplySeed.1,
+                reefReplyText: shoreReplySeed.2,
+                reefReplyMomentLine: "2 mins ago",
+                isReefFlagged: false
             )
         }
     }

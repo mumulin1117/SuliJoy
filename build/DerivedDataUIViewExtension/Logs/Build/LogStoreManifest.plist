@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>12</integer>
+	<key>logs</key>
+	<dict>
+		<key>C8330413-C951-4554-9AC3-BDBD95F6A2EB</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>C8330413-C951-4554-9AC3-BDBD95F6A2EB.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>2</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>JOiySuizoy project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>JOiySuizoy</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Archiving project JOiySuizoy with scheme JOiySuizoy</string>
+			<key>timeStartedRecording</key>
+			<real>806207448.68485904</real>
+			<key>timeStoppedRecording</key>
+			<real>806207456.39592695</real>
+			<key>title</key>
+			<string>Archiving project JOiySuizoy with scheme JOiySuizoy</string>
+			<key>uniqueIdentifier</key>
+			<string>C8330413-C951-4554-9AC3-BDBD95F6A2EB</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

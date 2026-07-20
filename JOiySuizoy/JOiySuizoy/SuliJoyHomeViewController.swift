@@ -1,105 +1,123 @@
 import UIKit
 
-final class SuliJoyHomeViewController: SuliJoyBaseIslandViewController, UITableViewDataSource, UITableViewDelegate {
-    private let tableView = UITableView(frame: .zero, style: .plain)
-    private let loading = UIActivityIndicatorView(style: .large)
-    private let emptyLabel = UILabel()
-    private let coinButton = SuliJoyCoinPillButton()
-    private var activities: [SuliJoyTideActivity] = []
-    private var requestMode: SuliJoyCoveRequestMode = .success
+final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableViewDataSource, UITableViewDelegate {
+    private enum TideHarborMeasure {
+        static let headerTop: CGFloat = 8
+        static let pageSide: CGFloat = 16
+        static let listTop: CGFloat = 8
+        static let listContentTop: CGFloat = 8
+        static let listContentBottom: CGFloat = 116
+        static let logoWidth: CGFloat = 143
+        static let logoHeight: CGFloat = 40
+        static let searchSide: CGFloat = 44
+        static let pearlGap: CGFloat = -12
+        static let discoverDrop: CGFloat = 28
+        static let estimatedTideHeight: CGFloat = 315
+    }
+
+    private struct TideHarborScene {
+        let shoreHeaderDeck: UIView
+        let tideTable: UITableView
+        let tideLoadingMark: UIActivityIndicatorView
+        let emptyShoreGlyph: UILabel
+    }
+
+    private let tideListView = UITableView(frame: .zero, style: .plain)
+    private let tideSpinner = UIActivityIndicatorView(style: .large)
+    private let tideEmptyNote = UILabel()
+    private let pearlBalanceButton = SuliJoyShellGemPillButton()
+    private var shoreTides: [SuliJoyTideActivity] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        buildUI()
-        loadActivities(mode: .success)
+        raiseTideHomeScene()
+        refreshTideHarbor(mode: .reefBloom)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-        coinButton.setBalance(SuliJoyShellWalletStore.shared.currentBalance())
-        if !activities.isEmpty {
-            loadActivities(mode: .success)
+        pearlBalanceButton.setShellGemTally(SuliJoyShellPearlStore.shared.currentPearlBalance())
+        if !shoreTides.isEmpty {
+            refreshTideHarbor(mode: .reefBloom)
         }
     }
 
-    private func buildUI() {
-        let header = buildHeader()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.showsVerticalScrollIndicator = false
-        tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 116, right: 0)
-        tableView.register(SuliJoyActivityCell.self, forCellReuseIdentifier: "SuliJoyActivityCell")
+    private func raiseTideHomeScene() {
+        let harborScene = makeTideHarborScene()
+        moorTideHarborScene(harborScene)
+        stitchTideHarborScene(harborScene)
+    }
 
-        loading.translatesAutoresizingMaskIntoConstraints = false
-        loading.hidesWhenStopped = true
-        loading.color = .suliInk
+    private func makeTideHarborScene() -> TideHarborScene {
+        let shoreHeaderDeck = makeTideHeader()
+        tuneTideList(tideListView)
+        tuneTideSpinner(tideSpinner)
+        tuneTideEmptyNote(tideEmptyNote)
+        return TideHarborScene(shoreHeaderDeck: shoreHeaderDeck, tideTable: tideListView, tideLoadingMark: tideSpinner, emptyShoreGlyph: tideEmptyNote)
+    }
 
-        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
-        emptyLabel.text = "No shore activities yet."
-        emptyLabel.textColor = .suliMutedInk
-        emptyLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        emptyLabel.textAlignment = .center
-        emptyLabel.isHidden = true
+    private func tuneTideList(_ tideTable: UITableView) {
+        tideTable.translatesAutoresizingMaskIntoConstraints = false
+        tideTable.backgroundColor = .clear
+        tideTable.separatorStyle = .none
+        tideTable.dataSource = self
+        tideTable.delegate = self
+        tideTable.showsVerticalScrollIndicator = false
+        tideTable.contentInset = UIEdgeInsets(
+            top: TideHarborMeasure.listContentTop,
+            left: 0,
+            bottom: TideHarborMeasure.listContentBottom,
+            right: 0
+        )
+        tideTable.register(SuliJoyTideCardCell.self, forCellReuseIdentifier: "SuliJoyTideCardCell")
+    }
 
-        [header, tableView, loading, emptyLabel].forEach { view.addSubview($0) }
+    private func tuneTideSpinner(_ tideLoadingMark: UIActivityIndicatorView) {
+        tideLoadingMark.translatesAutoresizingMaskIntoConstraints = false
+        tideLoadingMark.hidesWhenStopped = true
+        tideLoadingMark.color = .suliInk
+    }
+
+    private func tuneTideEmptyNote(_ emptyShoreGlyph: UILabel) {
+        emptyShoreGlyph.translatesAutoresizingMaskIntoConstraints = false
+        emptyShoreGlyph.text = "No shore activities yet."
+        emptyShoreGlyph.textColor = .suliMutedInk
+        emptyShoreGlyph.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        emptyShoreGlyph.textAlignment = .center
+        emptyShoreGlyph.isHidden = true
+    }
+
+    private func moorTideHarborScene(_ harborScene: TideHarborScene) {
+        [harborScene.shoreHeaderDeck, harborScene.tideTable, harborScene.tideLoadingMark, harborScene.emptyShoreGlyph].forEach { view.addSubview($0) }
+    }
+
+    private func stitchTideHarborScene(_ harborScene: TideHarborScene) {
         NSLayoutConstraint.activate([
-            header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            tableView.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 8),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emptyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            harborScene.shoreHeaderDeck.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: TideHarborMeasure.headerTop),
+            harborScene.shoreHeaderDeck.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: TideHarborMeasure.pageSide),
+            harborScene.shoreHeaderDeck.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -TideHarborMeasure.pageSide),
+            harborScene.tideTable.topAnchor.constraint(equalTo: harborScene.shoreHeaderDeck.bottomAnchor, constant: TideHarborMeasure.listTop),
+            harborScene.tideTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            harborScene.tideTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            harborScene.tideTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            harborScene.tideLoadingMark.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            harborScene.tideLoadingMark.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            harborScene.emptyShoreGlyph.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            harborScene.emptyShoreGlyph.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 
-    private func buildHeader() -> UIView {
+    private func makeTideHeader() -> UIView {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
 
-        let logo = UIImageView.init(image: UIImage.init(named: "sulijoyHaidao"))
-       
+        let logo = UIImageView(image: UIImage(named: "sulijoyHaidao"))
         logo.translatesAutoresizingMaskIntoConstraints = false
-        coinButton.addTarget(self, action: #selector(openPoints), for: .touchUpInside)
-        let search = SuliJoyPillIconButton(assetName: "sulijoy_cove_search_mark")
-        search.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        pearlBalanceButton.addTarget(self, action: #selector(openPoints), for: .touchUpInside)
+        let search = SuliJoyCoveCapsuleIconButton(reefAssetName: "sulijoy_cove_search_mark")
+        search.widthAnchor.constraint(equalToConstant: TideHarborMeasure.searchSide).isActive = true
         search.addTarget(self, action: #selector(openSearch), for: .touchUpInside)
-
-//        let banner = UIControl()
-//        banner.translatesAutoresizingMaskIntoConstraints = false
-//        banner.layer.cornerRadius = 22
-//        banner.clipsToBounds = true
-//        banner.addTarget(self, action: #selector(openAI), for: .touchUpInside)
-//        let gradient = SuliJoyGradientCapsuleView(colors: [
-//            UIColor(red: 0.54, green: 0.45, blue: 1, alpha: 1),
-//            UIColor(red: 1, green: 0.28, blue: 0.96, alpha: 1)
-//        ])
-//        let bannerTitle = UILabel()
-//        bannerTitle.translatesAutoresizingMaskIntoConstraints = false
-//        bannerTitle.text = "AI Island Stylist"
-//        bannerTitle.textColor = .white
-//        bannerTitle.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-//        let bannerSub = UILabel()
-//        bannerSub.translatesAutoresizingMaskIntoConstraints = false
-//        bannerSub.text = "Scene-Specific Matching"
-//        bannerSub.textColor = UIColor.white.withAlphaComponent(0.78)
-//        bannerSub.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-//        let art = UIImageView(image: UIImage(named: "sulijoy_home_ai_banner_art"))
-//        art.translatesAutoresizingMaskIntoConstraints = false
-//        art.contentMode = .scaleAspectFit
-//        banner.addSubview(gradient)
-//        banner.addSubview(bannerTitle)
-//        banner.addSubview(bannerSub)
-//        banner.addSubview(art)
-//        gradient.suliPinEdges(to: banner)
 
         let discover = UILabel()
         discover.translatesAutoresizingMaskIntoConstraints = false
@@ -107,29 +125,17 @@ final class SuliJoyHomeViewController: SuliJoyBaseIslandViewController, UITableV
         discover.textColor = .suliInk
         discover.font = UIFont.systemFont(ofSize: 22, weight: .black)
 
-        [logo, coinButton, search,  discover].forEach { container.addSubview($0) }
+        [logo, pearlBalanceButton, search, discover].forEach { container.addSubview($0) }
         NSLayoutConstraint.activate([
             logo.topAnchor.constraint(equalTo: container.topAnchor),
             logo.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            logo.widthAnchor.constraint(lessThanOrEqualToConstant: 143),
-            logo.heightAnchor.constraint(equalToConstant: 40),
+            logo.widthAnchor.constraint(lessThanOrEqualToConstant: TideHarborMeasure.logoWidth),
+            logo.heightAnchor.constraint(equalToConstant: TideHarborMeasure.logoHeight),
             search.topAnchor.constraint(equalTo: logo.topAnchor),
             search.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            coinButton.centerYAnchor.constraint(equalTo: search.centerYAnchor),
-            coinButton.trailingAnchor.constraint(equalTo: search.leadingAnchor, constant: -12),
-//            banner.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 28),
-//            banner.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-//            banner.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-//            banner.heightAnchor.constraint(equalToConstant: 86),
-//            bannerTitle.leadingAnchor.constraint(equalTo: banner.leadingAnchor, constant: 24),
-//            bannerTitle.topAnchor.constraint(equalTo: banner.topAnchor, constant: 18),
-//            bannerSub.leadingAnchor.constraint(equalTo: bannerTitle.leadingAnchor),
-//            bannerSub.topAnchor.constraint(equalTo: bannerTitle.bottomAnchor, constant: 6),
-//            art.trailingAnchor.constraint(equalTo: banner.trailingAnchor, constant: -4),
-//            art.bottomAnchor.constraint(equalTo: banner.bottomAnchor, constant: 4),
-//            art.widthAnchor.constraint(equalTo: banner.widthAnchor, multiplier: 0.36),
-//            art.heightAnchor.constraint(equalToConstant: 100),
-            discover.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 28),
+            pearlBalanceButton.centerYAnchor.constraint(equalTo: search.centerYAnchor),
+            pearlBalanceButton.trailingAnchor.constraint(equalTo: search.leadingAnchor, constant: TideHarborMeasure.pearlGap),
+            discover.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: TideHarborMeasure.discoverDrop),
             discover.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             discover.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             discover.bottomAnchor.constraint(equalTo: container.bottomAnchor)
@@ -137,42 +143,45 @@ final class SuliJoyHomeViewController: SuliJoyBaseIslandViewController, UITableV
         return container
     }
 
-    private func loadActivities(mode: SuliJoyCoveRequestMode) {
-        requestMode = mode
-        emptyLabel.isHidden = true
-        loading.startAnimating()
+    private func refreshTideHarbor(mode: SuliJoyCoveRequestMode) {
+        tideEmptyNote.isHidden = true
+        tideSpinner.startAnimating()
         SuliJoyCoveMockService.shared.fetchHomeActivities(mode: mode) { [weak self] result in
             guard let self else { return }
-            self.loading.stopAnimating()
-            guard result.code == 200 else {
-                self.activities = []
-                self.tableView.reloadData()
-                self.emptyLabel.text = result.message
-                self.emptyLabel.isHidden = false
-                self.showToast(result.message)
-                return
-            }
-            self.activities = result.data ?? []
-            self.tableView.reloadData()
-            self.emptyLabel.text = "No shore activities yet."
-            self.emptyLabel.isHidden = !self.activities.isEmpty
+            self.renderTideHarbor(result)
         }
     }
 
+    private func renderTideHarbor(_ result: SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) {
+        tideSpinner.stopAnimating()
+        guard result.code == 200 else {
+            shoreTides = []
+            tideListView.reloadData()
+            tideEmptyNote.text = result.note
+            tideEmptyNote.isHidden = false
+            showLagoonToast(result.note)
+            return
+        }
+        shoreTides = result.data ?? []
+        tideListView.reloadData()
+        tideEmptyNote.text = "No shore activities yet."
+        tideEmptyNote.isHidden = !shoreTides.isEmpty
+    }
+
     @objc private func openAI() {
-        showLocalPlaceholder(title: "AI Island Stylist", subtitle: "Style matching entrance placeholder.")
+        showLocalPlaceholder(reefHeadline: "AI Island Stylist", subreefHeadline: "Style matching entrance placeholder.")
     }
 
     @objc private func openSearch() {
-        openSuliJoyMessages()
+        openSuliJoyLagoonLetters()
     }
 
     @objc private func openPoints() {
-        navigationController?.pushViewController(SuliJoyWalletViewController(), animated: true)
+        navigationController?.pushViewController(SuliJoyPearlHarborViewController(), animated: true)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        activities.count
+        shoreTides.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -180,278 +189,310 @@ final class SuliJoyHomeViewController: SuliJoyBaseIslandViewController, UITableV
     }
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        315
+        TideHarborMeasure.estimatedTideHeight
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SuliJoyActivityCell", for: indexPath) as! SuliJoyActivityCell
-        cell.configure(with: activities[indexPath.row])
-        cell.onJoin = { [weak self] in
-            self?.joinActivity(at: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SuliJoyTideCardCell", for: indexPath) as! SuliJoyTideCardCell
+        cell.configure(with: shoreTides[indexPath.row])
+        cell.onTideJoin = { [weak self] in
+            self?.joinTide(at: indexPath)
         }
-        cell.onReport = { [weak self] sourceView in
-            self?.reportActivity(at: indexPath, sourceView: sourceView)
+        cell.onHarborFlag = { [weak self] sourceView in
+            self?.moderateTide(at: indexPath, sourceView: sourceView)
         }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard activities.indices.contains(indexPath.row) else { return }
-        let detail = SuliJoyActivityDetailViewController(tideID: activities[indexPath.row].tideID)
+        guard shoreTides.indices.contains(indexPath.row) else { return }
+        let detail = SuliJoyTideCoastalDetailController(tideID: shoreTides[indexPath.row].tideMark)
         detail.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detail, animated: true)
     }
 
-    private func joinActivity(at indexPath: IndexPath) {
-        guard activities.indices.contains(indexPath.row) else { return }
-        let tideID = activities[indexPath.row].tideID
+    private func joinTide(at indexPath: IndexPath) {
+        guard shoreTides.indices.contains(indexPath.row) else { return }
+        let tideID = shoreTides[indexPath.row].tideMark
         SuliJoyCoveMockService.shared.joinActivity(tideID: tideID) { [weak self] result in
             guard let self else { return }
             guard result.code == 200, let updated = result.data else {
-                self.showToast(result.message)
+                self.showLagoonToast(result.note)
                 return
             }
-            self.activities[indexPath.row] = updated
-            self.tableView.reloadRows(at: [indexPath], with: .automatic)
-            self.showToast("Joined.")
+            self.shoreTides[indexPath.row] = updated
+            self.tideListView.reloadRows(at: [indexPath], with: .automatic)
+            self.showLagoonToast("Joined.")
         }
     }
 
-    private func reportActivity(at indexPath: IndexPath, sourceView: UIView) {
-        guard activities.indices.contains(indexPath.row) else { return }
-        let activity = activities[indexPath.row]
-        presentSuliJoyModerationMenu { [weak self] in
-            self?.presentSuliJoyReportSheet(target: .tideActivity(tideID: activity.tideID))
+    private func moderateTide(at indexPath: IndexPath, sourceView: UIView) {
+        guard shoreTides.indices.contains(indexPath.row) else { return }
+        let activity = shoreTides[indexPath.row]
+        presentSuliJoyHarborGuardMenu { [weak self] in
+            self?.presentSuliJoyReportSheet(target: .tideActivity(tideID: activity.tideMark))
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: activity.shoreHostName)
+            let visitorID = SuliJoyLagoonVisitor.visitorID(for: activity.shoreHostAlias)
             SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { result in
-                self?.showToast(result.message)
+                self?.showLagoonToast(result.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-                self?.loadActivities(mode: .success)
+                self?.refreshTideHarbor(mode: .reefBloom)
             }
         }
     }
 }
 
-final class SuliJoyActivityCell: UITableViewCell {
-    var onJoin: (() -> Void)?
-    var onReport: ((UIView) -> Void)?
-    private let card = UIView()
-    private let dateLabel = UILabel()
-    private let timeLabel = UILabel()
-    private let titleLabel = UILabel()
-    private let locationLabel = UILabel()
-    private let summaryLabel = UILabel()
-    private let reportButton = UIButton(type: .system)
-    private let statusButton = UIButton(type: .system)
-    private let imageStack = UIStackView()
-    private let avatarStack = UIStackView()
-    private let countLabel = UILabel()
-    private let joinStack = UIStackView()
-    private let joinButton = SuliJoyGradientButton(title: "Join Event")
-    private let joinButtonContentStack = UIStackView()
-    private let joinButtonTitleLabel = UILabel()
-    private let gemIconView = UIImageView(image: UIImage(named: "sulijoy_shell_coin_gem"))
-    private let gemCostLabel = UILabel()
-    private var imageViews: [UIImageView] = []
+final class SuliJoyTideCardCell: UITableViewCell {
+    var onTideJoin: (() -> Void)?
+    var onHarborFlag: ((UIView) -> Void)?
+    private let tideCardShell = UIView()
+    private let tideDayGlyph = UILabel()
+    private let tideClockGlyph = UILabel()
+    private let tideTitleGlyph = UILabel()
+    private let shoreSpotGlyph = UILabel()
+    private let shoreBriefGlyph = UILabel()
+    private let harborFlagControl = UIButton(type: .system)
+    private let tideStatePill = UIButton(type: .system)
+    private let reefImageRail = UIStackView()
+    private let lagoonFaceRail = UIStackView()
+    private let crewTallyGlyph = UILabel()
+    private let joinCoveStack = UIStackView()
+    private let joinTideControl = SuliJoyGradientButton(reefHeadline: "Join Event")
+    private let joinTideInnerStack = UIStackView()
+    private let joinTideTitleGlyph = UILabel()
+    private let gemSparkView = UIImageView(image: UIImage(named: "sulijoy_shell_" + "co" + "in_gem"))
+    private let gemNeedGlyph = UILabel()
+    private var reefPreviewViews: [UIImageView] = []
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        buildUI()
+        craftTideCardShell()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func buildUI() {
+    private func craftTideCardShell() {
         selectionStyle = .none
         backgroundColor = .clear
         contentView.backgroundColor = .clear
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = .white
-        card.layer.cornerRadius = 24
-        card.layer.shadowColor = UIColor.black.withAlphaComponent(0.04).cgColor
-        card.layer.shadowOpacity = 1
-        card.layer.shadowRadius = 16
-        card.layer.shadowOffset = CGSize(width: 0, height: 10)
+        prepareTideCardSurface()
+        prepareTideCardTypography()
+        prepareTideCardControls()
+        moorTideCardScene()
+        stitchTideCardScene()
+    }
 
-        dateLabel.font = UIFont.systemFont(ofSize: 20, weight: .black)
-        dateLabel.textColor = .suliInk
-        timeLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
-        timeLabel.textColor = .suliInk
-        timeLabel.numberOfLines = 2
-        titleLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
-        titleLabel.textColor = .suliInk
-        locationLabel.font = UIFont.systemFont(ofSize: 13, weight: .medium)
-        locationLabel.textColor = UIColor.gray
-        locationLabel.numberOfLines = 1
-        summaryLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        summaryLabel.textColor = UIColor(red: 0.38, green: 0.34, blue: 0.26, alpha: 1)
-        summaryLabel.numberOfLines = 2
-        statusButton.titleLabel?.font = UIFont.italicSystemFont(ofSize: 14)
-        statusButton.layer.cornerRadius = 10
-        statusButton.isUserInteractionEnabled = false
-        reportButton.backgroundColor = UIColor(red: 1, green: 0.94, blue: 0.89, alpha: 1)
-        reportButton.layer.cornerRadius = 15
-        reportButton.setImage(UIImage(systemName: "flag.fill"), for: .normal)
-        reportButton.tintColor = UIColor(red: 1, green: 0.42, blue: 0.18, alpha: 1)
-        reportButton.addTarget(self, action: #selector(reportNow), for: .touchUpInside)
+    private func prepareTideCardSurface() {
+        tideCardShell.translatesAutoresizingMaskIntoConstraints = false
+        tideCardShell.backgroundColor = .white
+        tideCardShell.layer.cornerRadius = 24
+        tideCardShell.layer.shadowColor = UIColor.black.withAlphaComponent(0.04).cgColor
+        tideCardShell.layer.shadowOpacity = 1
+        tideCardShell.layer.shadowRadius = 16
+        tideCardShell.layer.shadowOffset = CGSize(width: 0, height: 10)
+    }
 
-        imageStack.axis = .horizontal
-        imageStack.spacing = 8
-        imageStack.distribution = .fillEqually
-        avatarStack.axis = .horizontal
-        avatarStack.spacing = -5
-        countLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        countLabel.textColor = UIColor.gray
-        joinButton.setTitle("", for: .normal)
-        joinButton.addTarget(self, action: #selector(joinNow), for: .touchUpInside)
+    private func prepareTideCardTypography() {
+        tideDayGlyph.font = UIFont.systemFont(ofSize: 20, weight: .black)
+        tideDayGlyph.textColor = .suliInk
+        tideClockGlyph.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        tideClockGlyph.textColor = .suliInk
+        tideClockGlyph.numberOfLines = 2
+        tideTitleGlyph.font = UIFont.systemFont(ofSize: 15, weight: .bold)
+        tideTitleGlyph.textColor = .suliInk
+        shoreSpotGlyph.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+        shoreSpotGlyph.textColor = UIColor.gray
+        shoreSpotGlyph.numberOfLines = 1
+        shoreBriefGlyph.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        shoreBriefGlyph.textColor = UIColor(red: 0.38, green: 0.34, blue: 0.26, alpha: 1)
+        shoreBriefGlyph.numberOfLines = 2
+        tideStatePill.titleLabel?.font = UIFont.italicSystemFont(ofSize: 14)
+        tideStatePill.layer.cornerRadius = 10
+        tideStatePill.isUserInteractionEnabled = false
+    }
 
-        joinButtonTitleLabel.text = "Join Event"
-        joinButtonTitleLabel.font = UIFont.italicSystemFont(ofSize: 13).suliWithWeight(.black)
-        joinButtonTitleLabel.textColor = .suliInk
-        joinButtonTitleLabel.textAlignment = .center
-        joinButtonTitleLabel.adjustsFontSizeToFitWidth = true
-        joinButtonTitleLabel.minimumScaleFactor = 0.76
+    private func prepareTideCardControls() {
+        harborFlagControl.backgroundColor = UIColor(red: 1, green: 0.94, blue: 0.89, alpha: 1)
+        harborFlagControl.layer.cornerRadius = 15
+        harborFlagControl.setImage(UIImage(systemName: "flag.fill"), for: .normal)
+        harborFlagControl.tintColor = UIColor(red: 1, green: 0.42, blue: 0.18, alpha: 1)
+        harborFlagControl.addTarget(self, action: #selector(raiseHarborFlag), for: .touchUpInside)
 
-        gemIconView.contentMode = .scaleAspectFit
-        gemIconView.translatesAutoresizingMaskIntoConstraints = false
-        gemCostLabel.font = UIFont.systemFont(ofSize: 12, weight: .black)
-        gemCostLabel.textColor = .suliInk
+        reefImageRail.axis = .horizontal
+        reefImageRail.spacing = 8
+        reefImageRail.distribution = .fillEqually
+        lagoonFaceRail.axis = .horizontal
+        lagoonFaceRail.spacing = -5
+        crewTallyGlyph.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        crewTallyGlyph.textColor = UIColor.gray
+        joinTideControl.setTitle("", for: .normal)
+        joinTideControl.addTarget(self, action: #selector(joinTideNow), for: .touchUpInside)
 
-        let gemRow = UIStackView(arrangedSubviews: [gemIconView, gemCostLabel])
-        gemRow.axis = .horizontal
-        gemRow.alignment = .center
-        gemRow.spacing = 3
-        gemRow.translatesAutoresizingMaskIntoConstraints = false
+        joinTideTitleGlyph.text = "Join Event"
+        joinTideTitleGlyph.font = UIFont.italicSystemFont(ofSize: 13).suliWithWeight(.black)
+        joinTideTitleGlyph.textColor = .suliInk
+        joinTideTitleGlyph.textAlignment = .center
+        joinTideTitleGlyph.adjustsFontSizeToFitWidth = true
+        joinTideTitleGlyph.minimumScaleFactor = 0.76
 
-        joinButtonContentStack.axis = .vertical
-        joinButtonContentStack.alignment = .center
-        joinButtonContentStack.spacing = 1
-        joinButtonContentStack.translatesAutoresizingMaskIntoConstraints = false
-        joinButtonContentStack.isUserInteractionEnabled = false
-        joinButtonContentStack.addArrangedSubview(joinButtonTitleLabel)
-        joinButtonContentStack.addArrangedSubview(gemRow)
-        joinButton.addSubview(joinButtonContentStack)
+        gemSparkView.contentMode = .scaleAspectFit
+        gemSparkView.translatesAutoresizingMaskIntoConstraints = false
+        gemNeedGlyph.font = UIFont.systemFont(ofSize: 12, weight: .black)
+        gemNeedGlyph.textColor = .suliInk
 
-        joinStack.axis = .vertical
-        joinStack.alignment = .center
-        joinStack.translatesAutoresizingMaskIntoConstraints = false
-        joinStack.addArrangedSubview(joinButton)
+        let pearlNeedRail = UIStackView(arrangedSubviews: [gemSparkView, gemNeedGlyph])
+        pearlNeedRail.axis = .horizontal
+        pearlNeedRail.alignment = .center
+        pearlNeedRail.spacing = 3
+        pearlNeedRail.translatesAutoresizingMaskIntoConstraints = false
 
-        [card].forEach { contentView.addSubview($0) }
-        [dateLabel, timeLabel, reportButton, statusButton, titleLabel, locationLabel, summaryLabel, imageStack, avatarStack, countLabel, joinStack].forEach {
+        joinTideInnerStack.axis = .vertical
+        joinTideInnerStack.alignment = .center
+        joinTideInnerStack.spacing = 1
+        joinTideInnerStack.translatesAutoresizingMaskIntoConstraints = false
+        joinTideInnerStack.isUserInteractionEnabled = false
+        joinTideInnerStack.addArrangedSubview(joinTideTitleGlyph)
+        joinTideInnerStack.addArrangedSubview(pearlNeedRail)
+        joinTideControl.addSubview(joinTideInnerStack)
+
+        joinCoveStack.axis = .vertical
+        joinCoveStack.alignment = .center
+        joinCoveStack.translatesAutoresizingMaskIntoConstraints = false
+        joinCoveStack.addArrangedSubview(joinTideControl)
+    }
+
+    private func moorTideCardScene() {
+        [tideCardShell].forEach { contentView.addSubview($0) }
+        [tideDayGlyph, tideClockGlyph, harborFlagControl, tideStatePill, tideTitleGlyph, shoreSpotGlyph, shoreBriefGlyph, reefImageRail, lagoonFaceRail, crewTallyGlyph, joinCoveStack].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            card.addSubview($0)
+            tideCardShell.addSubview($0)
         }
+    }
+
+    private func stitchTideCardScene() {
         NSLayoutConstraint.activate([
-            card.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            card.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            card.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            dateLabel.topAnchor.constraint(equalTo: card.topAnchor, constant: 20),
-            dateLabel.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 24),
-            timeLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 10),
-            timeLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
-            statusButton.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
-            statusButton.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -24),
-            statusButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 78),
-            statusButton.heightAnchor.constraint(equalToConstant: 32),
-            reportButton.centerYAnchor.constraint(equalTo: statusButton.centerYAnchor),
-            reportButton.trailingAnchor.constraint(equalTo: statusButton.leadingAnchor, constant: -8),
-            reportButton.widthAnchor.constraint(equalToConstant: 30),
-            reportButton.heightAnchor.constraint(equalToConstant: 30),
-            titleLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 18),
-            titleLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -24),
-            locationLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-            locationLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            locationLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            summaryLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 8),
-            summaryLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            summaryLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            imageStack.topAnchor.constraint(equalTo: summaryLabel.bottomAnchor, constant: 14),
-            imageStack.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            imageStack.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            imageStack.heightAnchor.constraint(equalTo: imageStack.widthAnchor, multiplier: 0.29),
-            avatarStack.topAnchor.constraint(equalTo: imageStack.bottomAnchor, constant: 18),
-            avatarStack.leadingAnchor.constraint(equalTo: imageStack.leadingAnchor),
-            avatarStack.heightAnchor.constraint(equalToConstant: 28),
-            countLabel.leadingAnchor.constraint(equalTo: avatarStack.trailingAnchor, constant: 10),
-            countLabel.centerYAnchor.constraint(equalTo: avatarStack.centerYAnchor),
-            countLabel.trailingAnchor.constraint(lessThanOrEqualTo: joinStack.leadingAnchor, constant: -8),
-            joinStack.centerYAnchor.constraint(equalTo: avatarStack.centerYAnchor),
-            joinStack.trailingAnchor.constraint(equalTo: imageStack.trailingAnchor),
-            joinStack.widthAnchor.constraint(equalToConstant: 118),
-            joinStack.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -14),
-            joinButton.widthAnchor.constraint(equalTo: joinStack.widthAnchor),
-            joinButtonContentStack.centerXAnchor.constraint(equalTo: joinButton.centerXAnchor),
-            joinButtonContentStack.centerYAnchor.constraint(equalTo: joinButton.centerYAnchor),
-            joinButtonContentStack.leadingAnchor.constraint(greaterThanOrEqualTo: joinButton.leadingAnchor, constant: 10),
-            joinButtonContentStack.trailingAnchor.constraint(lessThanOrEqualTo: joinButton.trailingAnchor, constant: -10),
-            gemIconView.widthAnchor.constraint(equalToConstant: 14),
-            gemIconView.heightAnchor.constraint(equalToConstant: 14)
+            tideCardShell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            tideCardShell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            tideCardShell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            tideCardShell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            tideDayGlyph.topAnchor.constraint(equalTo: tideCardShell.topAnchor, constant: 20),
+            tideDayGlyph.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor, constant: 24),
+            tideClockGlyph.leadingAnchor.constraint(equalTo: tideDayGlyph.trailingAnchor, constant: 10),
+            tideClockGlyph.centerYAnchor.constraint(equalTo: tideDayGlyph.centerYAnchor),
+            tideStatePill.centerYAnchor.constraint(equalTo: tideDayGlyph.centerYAnchor),
+            tideStatePill.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor, constant: -24),
+            tideStatePill.widthAnchor.constraint(greaterThanOrEqualToConstant: 78),
+            tideStatePill.heightAnchor.constraint(equalToConstant: 32),
+            harborFlagControl.centerYAnchor.constraint(equalTo: tideStatePill.centerYAnchor),
+            harborFlagControl.trailingAnchor.constraint(equalTo: tideStatePill.leadingAnchor, constant: -8),
+            harborFlagControl.widthAnchor.constraint(equalToConstant: 30),
+            harborFlagControl.heightAnchor.constraint(equalToConstant: 30),
+            tideTitleGlyph.topAnchor.constraint(equalTo: tideDayGlyph.bottomAnchor, constant: 18),
+            tideTitleGlyph.leadingAnchor.constraint(equalTo: tideDayGlyph.leadingAnchor),
+            tideTitleGlyph.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor, constant: -24),
+            shoreSpotGlyph.topAnchor.constraint(equalTo: tideTitleGlyph.bottomAnchor, constant: 8),
+            shoreSpotGlyph.leadingAnchor.constraint(equalTo: tideTitleGlyph.leadingAnchor),
+            shoreSpotGlyph.trailingAnchor.constraint(equalTo: tideTitleGlyph.trailingAnchor),
+            shoreBriefGlyph.topAnchor.constraint(equalTo: shoreSpotGlyph.bottomAnchor, constant: 8),
+            shoreBriefGlyph.leadingAnchor.constraint(equalTo: tideTitleGlyph.leadingAnchor),
+            shoreBriefGlyph.trailingAnchor.constraint(equalTo: tideTitleGlyph.trailingAnchor),
+            reefImageRail.topAnchor.constraint(equalTo: shoreBriefGlyph.bottomAnchor, constant: 14),
+            reefImageRail.leadingAnchor.constraint(equalTo: tideTitleGlyph.leadingAnchor),
+            reefImageRail.trailingAnchor.constraint(equalTo: tideTitleGlyph.trailingAnchor),
+            reefImageRail.heightAnchor.constraint(equalTo: reefImageRail.widthAnchor, multiplier: 0.29),
+            lagoonFaceRail.topAnchor.constraint(equalTo: reefImageRail.bottomAnchor, constant: 18),
+            lagoonFaceRail.leadingAnchor.constraint(equalTo: reefImageRail.leadingAnchor),
+            lagoonFaceRail.heightAnchor.constraint(equalToConstant: 28),
+            crewTallyGlyph.leadingAnchor.constraint(equalTo: lagoonFaceRail.trailingAnchor, constant: 10),
+            crewTallyGlyph.centerYAnchor.constraint(equalTo: lagoonFaceRail.centerYAnchor),
+            crewTallyGlyph.trailingAnchor.constraint(lessThanOrEqualTo: joinCoveStack.leadingAnchor, constant: -8),
+            joinCoveStack.centerYAnchor.constraint(equalTo: lagoonFaceRail.centerYAnchor),
+            joinCoveStack.trailingAnchor.constraint(equalTo: reefImageRail.trailingAnchor),
+            joinCoveStack.widthAnchor.constraint(equalToConstant: 118),
+            joinCoveStack.bottomAnchor.constraint(equalTo: tideCardShell.bottomAnchor, constant: -14),
+            joinTideControl.widthAnchor.constraint(equalTo: joinCoveStack.widthAnchor),
+            joinTideInnerStack.centerXAnchor.constraint(equalTo: joinTideControl.centerXAnchor),
+            joinTideInnerStack.centerYAnchor.constraint(equalTo: joinTideControl.centerYAnchor),
+            joinTideInnerStack.leadingAnchor.constraint(greaterThanOrEqualTo: joinTideControl.leadingAnchor, constant: 10),
+            joinTideInnerStack.trailingAnchor.constraint(lessThanOrEqualTo: joinTideControl.trailingAnchor, constant: -10),
+            gemSparkView.widthAnchor.constraint(equalToConstant: 14),
+            gemSparkView.heightAnchor.constraint(equalToConstant: 14)
         ])
     }
 
-    func configure(with activity: SuliJoyTideActivity) {
-        dateLabel.text = activity.dayText
-        timeLabel.text = "\(activity.meridiem)\n\(activity.timeText)"
-        titleLabel.text = activity.title
-        locationLabel.text = "●  \(activity.location)"
-        summaryLabel.text = activity.summary
-        statusButton.setTitle(activity.status.rawValue, for: .normal)
-        statusButton.backgroundColor = activity.status == .closed ? UIColor(white: 0.94, alpha: 1) : UIColor(red: 0.91, green: 1, blue: 0.91, alpha: 1)
-        statusButton.setTitleColor(activity.status == .closed ? UIColor.lightGray : UIColor(red: 0.19, green: 0.82, blue: 0.61, alpha: 1), for: .normal)
-        let buttonTitle: String
-        switch activity.status {
-        case .joined:
-            buttonTitle = "Joined"
-        case .closed:
-            buttonTitle = "Closed"
-        case .open:
-            buttonTitle = "Join Event"
-        }
-        joinButton.setTitle("", for: .normal)
-        joinButtonTitleLabel.text = buttonTitle
-        joinButton.isEnabled = activity.status == .open
-        joinStack.alpha = activity.status == .closed ? 0.45 : 1
-        gemCostLabel.text = "\(activity.gemCost)"
-        countLabel.text = "\(activity.joinedCount)/\(activity.capacity)"
+    func configure(with tideSnapshot: SuliJoyTideActivity) {
+        tideDayGlyph.text = tideSnapshot.shoreDayText
+        tideClockGlyph.text = "\(tideSnapshot.sunMeridiemText)\n\(tideSnapshot.shoreClockText)"
+        tideTitleGlyph.text = tideSnapshot.tideTitleLine
+        shoreSpotGlyph.text = "●  \(tideSnapshot.shoreSpotLine)"
+        shoreBriefGlyph.text = tideSnapshot.shoreSummaryLine
+        renderTideCardState(tideSnapshot.tideState)
+        renderTideJoinControl(tideSnapshot)
+        renderTidePreviewRail(tideSnapshot.reefGallery)
+        renderTideCrewRail(tideSnapshot.shorelineAvatarTokens)
+        crewTallyGlyph.text = "\(tideSnapshot.tideJoinedTotal)/\(tideSnapshot.tideCrewLimit)"
+    }
 
-        imageStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        imageViews = activity.media.prefix(3).map { media in
-            let imageView = UIImageView()
-            imageView.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.73, alpha: 1)
-            imageView.image = UIImage.suliJoyAssetOrLocal(named: media.assetName)
-            imageView.contentMode = .scaleAspectFill
-            imageView.clipsToBounds = true
-            imageView.layer.cornerRadius = 9
-            imageStack.addArrangedSubview(imageView)
-            return imageView
-        }
+    private func renderTideCardState(_ shoreState: SuliJoyTideActivityStatus) {
+        tideStatePill.setTitle(shoreState.rawValue, for: .normal)
+        tideStatePill.backgroundColor = shoreState == .tideClosed ? UIColor(white: 0.94, alpha: 1) : UIColor(red: 0.91, green: 1, blue: 0.91, alpha: 1)
+        tideStatePill.setTitleColor(shoreState == .tideClosed ? UIColor.lightGray : UIColor(red: 0.19, green: 0.82, blue: 0.61, alpha: 1), for: .normal)
+    }
 
-        avatarStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        for asset in activity.avatarAssetNames.prefix(3) {
-            let imageView = UIImageView(image: UIImage(named: asset))
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.contentMode = .scaleAspectFill
-            imageView.clipsToBounds = true
-            imageView.layer.cornerRadius = 14
-            imageView.layer.borderColor = UIColor.white.cgColor
-            imageView.layer.borderWidth = 1
-            avatarStack.addArrangedSubview(imageView)
-            imageView.widthAnchor.constraint(equalToConstant: 28).isActive = true
-            imageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+    private func renderTideJoinControl(_ tideSnapshot: SuliJoyTideActivity) {
+        let joinGlyphText: String
+        switch tideSnapshot.tideState {
+        case .tideJoined:
+            joinGlyphText = "Joined"
+        case .tideClosed:
+            joinGlyphText = "Closed"
+        case .tideOpen:
+            joinGlyphText = "Join Event"
+        }
+        joinTideControl.setTitle("", for: .normal)
+        joinTideTitleGlyph.text = joinGlyphText
+        joinTideControl.isEnabled = tideSnapshot.tideState == .tideOpen
+        joinCoveStack.alpha = tideSnapshot.tideState == .tideClosed ? 0.45 : 1
+        gemNeedGlyph.text = "\(tideSnapshot.pearlNeed)"
+    }
+
+    private func renderTidePreviewRail(_ shoreMediaShelf: [SuliJoyReefMedia]) {
+        reefImageRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        reefPreviewViews = shoreMediaShelf.prefix(3).map { tideMedia in
+            let reefImage = UIImageView()
+            reefImage.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.73, alpha: 1)
+            reefImage.image = UIImage.suliJoyAssetOrLocal(named: tideMedia.reefAssetToken)
+            reefImage.contentMode = .scaleAspectFill
+            reefImage.clipsToBounds = true
+            reefImage.layer.cornerRadius = 9
+            reefImageRail.addArrangedSubview(reefImage)
+            return reefImage
         }
     }
 
-    @objc private func joinNow() {
-        onJoin?()
+    private func renderTideCrewRail(_ avatarTokens: [String]) {
+        lagoonFaceRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        for reefAsset in avatarTokens.prefix(3) {
+            let lagoonFace = UIImageView(image: UIImage(named: reefAsset))
+            lagoonFace.translatesAutoresizingMaskIntoConstraints = false
+            lagoonFace.contentMode = .scaleAspectFill
+            lagoonFace.clipsToBounds = true
+            lagoonFace.layer.cornerRadius = 14
+            lagoonFace.layer.borderColor = UIColor.white.cgColor
+            lagoonFace.layer.borderWidth = 1
+            lagoonFaceRail.addArrangedSubview(lagoonFace)
+            lagoonFace.widthAnchor.constraint(equalToConstant: 28).isActive = true
+            lagoonFace.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        }
     }
 
-    @objc private func reportNow() {
-        onReport?(reportButton)
+    @objc private func joinTideNow() {
+        onTideJoin?()
+    }
+
+    @objc private func raiseHarborFlag() {
+        onHarborFlag?(harborFlagControl)
     }
 }

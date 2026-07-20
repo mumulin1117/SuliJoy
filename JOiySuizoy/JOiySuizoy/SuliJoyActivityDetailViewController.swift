@@ -1,33 +1,37 @@
 import UIKit
 
-final class SuliJoyActivityDetailViewController: SuliJoyBaseIslandViewController, UIScrollViewDelegate {
-    private let tideID: String
-    private var activity: SuliJoyTideActivity?
-    private var relatedActivities: [SuliJoyTideActivity] = []
+final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, UIScrollViewDelegate {
+    private let shorelineTideKey: String
+    private var shorelineTideDetail: SuliJoyTideActivity?
+    private var coastalSuggestionShelf: [SuliJoyTideActivity] = []
 
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    private let heroCarouselView = UIScrollView()
-    private let heroCarouselContent = UIStackView()
-    private let heroPageControl = UIPageControl()
-    private let infoCard = UIView()
-    private let titleLabel = UILabel()
-    private let statusLabel = UILabel()
-    private let locationLabel = UILabel()
-    private let scheduleLabel = UILabel()
-    private let avatarStack = UIStackView()
-    private let countLabel = UILabel()
-    private let descriptionCard = UIView()
-    private let descriptionLabel = UILabel()
-    private let relatedCard = UIView()
-    private let relatedGrid = UIStackView()
-    private let bottomBar = UIView()
-    private let ctaButton = SuliJoyGradientButton(title: "Join Event")
-    private let reportButton = UIButton(type: .system)
-    private let loading = UIActivityIndicatorView(style: .large)
+    private let shoreDetailScrollCanvas = UIScrollView()
+    private let shoreDetailDeck = UIView()
+    private let shoreHeroCarousel = UIScrollView()
+    private let shoreHeroRibbon = UIStackView()
+    private let shoreHeroDots = UIPageControl()
+    private let shoreInfoCard = UIView()
+    private let shoreTitleGlyph = UILabel()
+    private let shoreStateGlyph = UILabel()
+    private let shorePlaceGlyph = UILabel()
+    private let shoreTimingGlyph = UILabel()
+    private let shoreAvatarRail = UIStackView()
+    private let shoreCrewCountGlyph = UILabel()
+    private let shoreBriefCard = UIView()
+    private let shoreBriefGlyph = UILabel()
+    private let shoreSuggestionCard = UIView()
+    private let shoreSuggestionGrid = UIStackView()
+    private let shoreActionFooter = UIView()
+    private let shorePrimaryControl = SuliJoyGradientButton(reefHeadline: "Join Event")
+    private let shoreFlagControl = UIButton(type: .system)
+    private let shoreSpinner = UIActivityIndicatorView(style: .large)
 
-    init(tideID: String) {
-        self.tideID = tideID
+    convenience init(tideID: String) {
+        self.init(shorelineTideKey: tideID)
+    }
+
+    init(shorelineTideKey: String) {
+        self.shorelineTideKey = shorelineTideKey
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
     }
@@ -38,9 +42,9 @@ final class SuliJoyActivityDetailViewController: SuliJoyBaseIslandViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentInsetAdjustmentBehavior = .never
-        buildUI()
-        loadActivity()
+        shoreDetailScrollCanvas.contentInsetAdjustmentBehavior = .never
+        raiseShorelineDetailScene()
+        loadShorelineDetail()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -55,27 +59,27 @@ final class SuliJoyActivityDetailViewController: SuliJoyBaseIslandViewController
         }
     }
 
-    private func buildUI() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.showsVerticalScrollIndicator = false
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+    private func raiseShorelineDetailScene() {
+        shoreDetailScrollCanvas.translatesAutoresizingMaskIntoConstraints = false
+        shoreDetailScrollCanvas.showsVerticalScrollIndicator = false
+        shoreDetailDeck.translatesAutoresizingMaskIntoConstraints = false
 
-        heroCarouselView.translatesAutoresizingMaskIntoConstraints = false
-        heroCarouselView.isPagingEnabled = true
-        heroCarouselView.showsHorizontalScrollIndicator = false
-        heroCarouselView.bounces = true
-        heroCarouselView.delegate = self
-        heroCarouselView.backgroundColor = UIColor(red: 1, green: 0.84, blue: 0.58, alpha: 1)
+        shoreHeroCarousel.translatesAutoresizingMaskIntoConstraints = false
+        shoreHeroCarousel.isPagingEnabled = true
+        shoreHeroCarousel.showsHorizontalScrollIndicator = false
+        shoreHeroCarousel.bounces = true
+        shoreHeroCarousel.delegate = self
+        shoreHeroCarousel.backgroundColor = UIColor(red: 1, green: 0.84, blue: 0.58, alpha: 1)
 
-        heroCarouselContent.translatesAutoresizingMaskIntoConstraints = false
-        heroCarouselContent.axis = .horizontal
-        heroCarouselContent.spacing = 0
-        heroCarouselContent.distribution = .fillEqually
+        shoreHeroRibbon.translatesAutoresizingMaskIntoConstraints = false
+        shoreHeroRibbon.axis = .horizontal
+        shoreHeroRibbon.spacing = 0
+        shoreHeroRibbon.distribution = .fillEqually
 
-        heroPageControl.translatesAutoresizingMaskIntoConstraints = false
-        heroPageControl.currentPageIndicatorTintColor = .white
-        heroPageControl.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.48)
-        heroPageControl.hidesForSinglePage = true
+        shoreHeroDots.translatesAutoresizingMaskIntoConstraints = false
+        shoreHeroDots.currentPageIndicatorTintColor = .white
+        shoreHeroDots.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.48)
+        shoreHeroDots.hidesForSinglePage = true
 
         let backButton = UIButton(type: .system)
         backButton.translatesAutoresizingMaskIntoConstraints = false
@@ -83,40 +87,40 @@ final class SuliJoyActivityDetailViewController: SuliJoyBaseIslandViewController
         backButton.tintColor = .black
         backButton.backgroundColor = UIColor.white.withAlphaComponent(0.42)
         backButton.layer.cornerRadius = 18
-        backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(driftBackFromShoreDetail), for: .touchUpInside)
 
-        reportButton.translatesAutoresizingMaskIntoConstraints = false
-        reportButton.setImage(UIImage(systemName: "flag.fill"), for: .normal)
-        reportButton.tintColor = UIColor(red: 1, green: 0.42, blue: 0.18, alpha: 1)
-        reportButton.backgroundColor = UIColor.white.withAlphaComponent(0.70)
-        reportButton.layer.cornerRadius = 15
-        reportButton.accessibilityLabel = "Report activity"
-        reportButton.addTarget(self, action: #selector(reportCurrentActivity), for: .touchUpInside)
+        shoreFlagControl.translatesAutoresizingMaskIntoConstraints = false
+        shoreFlagControl.setImage(UIImage(systemName: "flag.fill"), for: .normal)
+        shoreFlagControl.tintColor = UIColor(red: 1, green: 0.42, blue: 0.18, alpha: 1)
+        shoreFlagControl.backgroundColor = UIColor.white.withAlphaComponent(0.70)
+        shoreFlagControl.layer.cornerRadius = 15
+        shoreFlagControl.accessibilityLabel = "Report shorelineTideDetail"
+        shoreFlagControl.addTarget(self, action: #selector(openShoreModerationMenu), for: .touchUpInside)
 
-        configureCard(infoCard)
-        configureCard(descriptionCard)
-        configureCard(relatedCard)
+        tuneShorelineCard(shoreInfoCard)
+        tuneShorelineCard(shoreBriefCard)
+        tuneShorelineCard(shoreSuggestionCard)
 
-        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .black)
-        titleLabel.textColor = .suliInk
-        titleLabel.numberOfLines = 2
+        shoreTitleGlyph.font = UIFont.systemFont(ofSize: 18, weight: .black)
+        shoreTitleGlyph.textColor = .suliInk
+        shoreTitleGlyph.numberOfLines = 2
 
-        statusLabel.font = UIFont.italicSystemFont(ofSize: 14).suliWithWeight(.bold)
-        statusLabel.textAlignment = .center
-        statusLabel.layer.cornerRadius = 11
-        statusLabel.clipsToBounds = true
+        shoreStateGlyph.font = UIFont.italicSystemFont(ofSize: 14).suliWithWeight(.bold)
+        shoreStateGlyph.textAlignment = .center
+        shoreStateGlyph.layer.cornerRadius = 11
+        shoreStateGlyph.clipsToBounds = true
 
-        [locationLabel, scheduleLabel].forEach {
+        [shorePlaceGlyph, shoreTimingGlyph].forEach {
             $0.font = UIFont.systemFont(ofSize: 14, weight: .medium)
             $0.textColor = .suliInk
             $0.numberOfLines = 1
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        avatarStack.axis = .horizontal
-        avatarStack.spacing = -6
-        countLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-        countLabel.textColor = UIColor(red: 0.64, green: 0.64, blue: 0.64, alpha: 1)
+        shoreAvatarRail.axis = .horizontal
+        shoreAvatarRail.spacing = -6
+        shoreCrewCountGlyph.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        shoreCrewCountGlyph.textColor = UIColor(red: 0.64, green: 0.64, blue: 0.64, alpha: 1)
 
         let infoBlock = UIView()
         infoBlock.translatesAutoresizingMaskIntoConstraints = false
@@ -132,158 +136,158 @@ final class SuliJoyActivityDetailViewController: SuliJoyBaseIslandViewController
         peopleChevron.tintColor = .suliInk
         peopleChevron.contentMode = .scaleAspectFit
 
-        [titleLabel, statusLabel, infoBlock, avatarStack, countLabel, peopleChevron].forEach {
+        [shoreTitleGlyph, shoreStateGlyph, infoBlock, shoreAvatarRail, shoreCrewCountGlyph, peopleChevron].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
-            infoCard.addSubview($0)
+            shoreInfoCard.addSubview($0)
         }
-        [locationLabel, separator, scheduleLabel].forEach { infoBlock.addSubview($0) }
+        [shorePlaceGlyph, separator, shoreTimingGlyph].forEach { infoBlock.addSubview($0) }
 
         let descTitle = UILabel()
         descTitle.translatesAutoresizingMaskIntoConstraints = false
         descTitle.text = "Event Description"
         descTitle.font = UIFont.systemFont(ofSize: 17, weight: .black)
         descTitle.textColor = .suliInk
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        descriptionLabel.textColor = UIColor(red: 0.53, green: 0.53, blue: 0.53, alpha: 1)
-        descriptionLabel.numberOfLines = 0
-        [descTitle, descriptionLabel].forEach { descriptionCard.addSubview($0) }
+        shoreBriefGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shoreBriefGlyph.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        shoreBriefGlyph.textColor = UIColor(red: 0.53, green: 0.53, blue: 0.53, alpha: 1)
+        shoreBriefGlyph.numberOfLines = 0
+        [descTitle, shoreBriefGlyph].forEach { shoreBriefCard.addSubview($0) }
 
         let relatedTitle = UILabel()
         relatedTitle.translatesAutoresizingMaskIntoConstraints = false
         relatedTitle.text = "Other activities"
         relatedTitle.font = UIFont.systemFont(ofSize: 17, weight: .black)
         relatedTitle.textColor = .suliInk
-        relatedGrid.axis = .vertical
-        relatedGrid.spacing = 12
-        relatedGrid.translatesAutoresizingMaskIntoConstraints = false
-        [relatedTitle, relatedGrid].forEach { relatedCard.addSubview($0) }
+        shoreSuggestionGrid.axis = .vertical
+        shoreSuggestionGrid.spacing = 12
+        shoreSuggestionGrid.translatesAutoresizingMaskIntoConstraints = false
+        [relatedTitle, shoreSuggestionGrid].forEach { shoreSuggestionCard.addSubview($0) }
 
-        bottomBar.translatesAutoresizingMaskIntoConstraints = false
-        bottomBar.backgroundColor = .white
-        ctaButton.translatesAutoresizingMaskIntoConstraints = false
-        ctaButton.titleLabel?.font = UIFont.italicSystemFont(ofSize: 20).suliWithWeight(.black)
-        ctaButton.addTarget(self, action: #selector(primaryAction), for: .touchUpInside)
-        bottomBar.addSubview(ctaButton)
+        shoreActionFooter.translatesAutoresizingMaskIntoConstraints = false
+        shoreActionFooter.backgroundColor = .white
+        shorePrimaryControl.translatesAutoresizingMaskIntoConstraints = false
+        shorePrimaryControl.titleLabel?.font = UIFont.italicSystemFont(ofSize: 20).suliWithWeight(.black)
+        shorePrimaryControl.addTarget(self, action: #selector(runShorePrimaryAction), for: .touchUpInside)
+        shoreActionFooter.addSubview(shorePrimaryControl)
 
-        loading.translatesAutoresizingMaskIntoConstraints = false
-        loading.color = .suliInk
-        loading.hidesWhenStopped = true
+        shoreSpinner.translatesAutoresizingMaskIntoConstraints = false
+        shoreSpinner.color = .suliInk
+        shoreSpinner.hidesWhenStopped = true
 
-        view.addSubview(scrollView)
+        view.addSubview(shoreDetailScrollCanvas)
         view.addSubview(backButton)
-        view.addSubview(reportButton)
-        view.addSubview(bottomBar)
-        view.addSubview(loading)
-        scrollView.addSubview(contentView)
-        heroCarouselView.addSubview(heroCarouselContent)
-        [heroCarouselView, heroPageControl, infoCard, descriptionCard, relatedCard].forEach { contentView.addSubview($0) }
+        view.addSubview(shoreFlagControl)
+        view.addSubview(shoreActionFooter)
+        view.addSubview(shoreSpinner)
+        shoreDetailScrollCanvas.addSubview(shoreDetailDeck)
+        shoreHeroCarousel.addSubview(shoreHeroRibbon)
+        [shoreHeroCarousel, shoreHeroDots, shoreInfoCard, shoreBriefCard, shoreSuggestionCard].forEach { shoreDetailDeck.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: bottomBar.topAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
+            shoreDetailScrollCanvas.topAnchor.constraint(equalTo: view.topAnchor),
+            shoreDetailScrollCanvas.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            shoreDetailScrollCanvas.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shoreDetailScrollCanvas.bottomAnchor.constraint(equalTo: shoreActionFooter.topAnchor),
+            shoreDetailDeck.topAnchor.constraint(equalTo: shoreDetailScrollCanvas.contentLayoutGuide.topAnchor),
+            shoreDetailDeck.leadingAnchor.constraint(equalTo: shoreDetailScrollCanvas.contentLayoutGuide.leadingAnchor),
+            shoreDetailDeck.trailingAnchor.constraint(equalTo: shoreDetailScrollCanvas.contentLayoutGuide.trailingAnchor),
+            shoreDetailDeck.bottomAnchor.constraint(equalTo: shoreDetailScrollCanvas.contentLayoutGuide.bottomAnchor),
+            shoreDetailDeck.widthAnchor.constraint(equalTo: shoreDetailScrollCanvas.frameLayoutGuide.widthAnchor),
 
-            heroCarouselView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            heroCarouselView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            heroCarouselView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            heroCarouselView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.46),
-            heroCarouselContent.topAnchor.constraint(equalTo: heroCarouselView.contentLayoutGuide.topAnchor),
-            heroCarouselContent.leadingAnchor.constraint(equalTo: heroCarouselView.contentLayoutGuide.leadingAnchor),
-            heroCarouselContent.trailingAnchor.constraint(equalTo: heroCarouselView.contentLayoutGuide.trailingAnchor),
-            heroCarouselContent.bottomAnchor.constraint(equalTo: heroCarouselView.contentLayoutGuide.bottomAnchor),
-            heroCarouselContent.heightAnchor.constraint(equalTo: heroCarouselView.frameLayoutGuide.heightAnchor),
-            heroPageControl.centerXAnchor.constraint(equalTo: heroCarouselView.centerXAnchor),
-            heroPageControl.bottomAnchor.constraint(equalTo: heroCarouselView.bottomAnchor, constant: -84),
+            shoreHeroCarousel.topAnchor.constraint(equalTo: shoreDetailDeck.topAnchor),
+            shoreHeroCarousel.leadingAnchor.constraint(equalTo: shoreDetailDeck.leadingAnchor),
+            shoreHeroCarousel.trailingAnchor.constraint(equalTo: shoreDetailDeck.trailingAnchor),
+            shoreHeroCarousel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.46),
+            shoreHeroRibbon.topAnchor.constraint(equalTo: shoreHeroCarousel.contentLayoutGuide.topAnchor),
+            shoreHeroRibbon.leadingAnchor.constraint(equalTo: shoreHeroCarousel.contentLayoutGuide.leadingAnchor),
+            shoreHeroRibbon.trailingAnchor.constraint(equalTo: shoreHeroCarousel.contentLayoutGuide.trailingAnchor),
+            shoreHeroRibbon.bottomAnchor.constraint(equalTo: shoreHeroCarousel.contentLayoutGuide.bottomAnchor),
+            shoreHeroRibbon.heightAnchor.constraint(equalTo: shoreHeroCarousel.frameLayoutGuide.heightAnchor),
+            shoreHeroDots.centerXAnchor.constraint(equalTo: shoreHeroCarousel.centerXAnchor),
+            shoreHeroDots.bottomAnchor.constraint(equalTo: shoreHeroCarousel.bottomAnchor, constant: -84),
 
             backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
             backButton.widthAnchor.constraint(equalToConstant: 36),
             backButton.heightAnchor.constraint(equalToConstant: 36),
-            reportButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
-            reportButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18),
-            reportButton.widthAnchor.constraint(equalToConstant: 30),
-            reportButton.heightAnchor.constraint(equalToConstant: 30),
+            shoreFlagControl.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            shoreFlagControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18),
+            shoreFlagControl.widthAnchor.constraint(equalToConstant: 30),
+            shoreFlagControl.heightAnchor.constraint(equalToConstant: 30),
 
-            infoCard.topAnchor.constraint(equalTo: heroCarouselView.bottomAnchor, constant: -72),
-            infoCard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 22),
-            infoCard.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -22),
-            titleLabel.topAnchor.constraint(equalTo: infoCard.topAnchor, constant: 18),
-            titleLabel.leadingAnchor.constraint(equalTo: infoCard.leadingAnchor, constant: 22),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: statusLabel.leadingAnchor, constant: -12),
-            statusLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            statusLabel.trailingAnchor.constraint(equalTo: infoCard.trailingAnchor, constant: -14),
-            statusLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 82),
-            statusLabel.heightAnchor.constraint(equalToConstant: 32),
-            infoBlock.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 18),
-            infoBlock.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            infoBlock.trailingAnchor.constraint(equalTo: statusLabel.trailingAnchor),
+            shoreInfoCard.topAnchor.constraint(equalTo: shoreHeroCarousel.bottomAnchor, constant: -72),
+            shoreInfoCard.leadingAnchor.constraint(equalTo: shoreDetailDeck.leadingAnchor, constant: 22),
+            shoreInfoCard.trailingAnchor.constraint(equalTo: shoreDetailDeck.trailingAnchor, constant: -22),
+            shoreTitleGlyph.topAnchor.constraint(equalTo: shoreInfoCard.topAnchor, constant: 18),
+            shoreTitleGlyph.leadingAnchor.constraint(equalTo: shoreInfoCard.leadingAnchor, constant: 22),
+            shoreTitleGlyph.trailingAnchor.constraint(lessThanOrEqualTo: shoreStateGlyph.leadingAnchor, constant: -12),
+            shoreStateGlyph.centerYAnchor.constraint(equalTo: shoreTitleGlyph.centerYAnchor),
+            shoreStateGlyph.trailingAnchor.constraint(equalTo: shoreInfoCard.trailingAnchor, constant: -14),
+            shoreStateGlyph.widthAnchor.constraint(greaterThanOrEqualToConstant: 82),
+            shoreStateGlyph.heightAnchor.constraint(equalToConstant: 32),
+            infoBlock.topAnchor.constraint(equalTo: shoreTitleGlyph.bottomAnchor, constant: 18),
+            infoBlock.leadingAnchor.constraint(equalTo: shoreTitleGlyph.leadingAnchor),
+            infoBlock.trailingAnchor.constraint(equalTo: shoreStateGlyph.trailingAnchor),
             infoBlock.heightAnchor.constraint(equalToConstant: 88),
-            locationLabel.topAnchor.constraint(equalTo: infoBlock.topAnchor, constant: 13),
-            locationLabel.leadingAnchor.constraint(equalTo: infoBlock.leadingAnchor, constant: 14),
-            locationLabel.trailingAnchor.constraint(equalTo: infoBlock.trailingAnchor, constant: -14),
+            shorePlaceGlyph.topAnchor.constraint(equalTo: infoBlock.topAnchor, constant: 13),
+            shorePlaceGlyph.leadingAnchor.constraint(equalTo: infoBlock.leadingAnchor, constant: 14),
+            shorePlaceGlyph.trailingAnchor.constraint(equalTo: infoBlock.trailingAnchor, constant: -14),
             
-            separator.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: 12),
-            separator.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor, constant: 22),
+            separator.topAnchor.constraint(equalTo: shorePlaceGlyph.bottomAnchor, constant: 12),
+            separator.leadingAnchor.constraint(equalTo: shorePlaceGlyph.leadingAnchor, constant: 22),
             separator.trailingAnchor.constraint(equalTo: infoBlock.trailingAnchor),
             separator.heightAnchor.constraint(equalToConstant: 1),
-            scheduleLabel.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 12),
-            scheduleLabel.leadingAnchor.constraint(equalTo: locationLabel.leadingAnchor),
-            scheduleLabel.trailingAnchor.constraint(equalTo: locationLabel.trailingAnchor),
-            avatarStack.topAnchor.constraint(equalTo: infoBlock.bottomAnchor, constant: 16),
-            avatarStack.leadingAnchor.constraint(equalTo: infoBlock.leadingAnchor, constant: 12),
-            avatarStack.heightAnchor.constraint(equalToConstant: 24),
-            countLabel.leadingAnchor.constraint(equalTo: avatarStack.trailingAnchor, constant: 8),
-            countLabel.centerYAnchor.constraint(equalTo: avatarStack.centerYAnchor),
+            shoreTimingGlyph.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 12),
+            shoreTimingGlyph.leadingAnchor.constraint(equalTo: shorePlaceGlyph.leadingAnchor),
+            shoreTimingGlyph.trailingAnchor.constraint(equalTo: shorePlaceGlyph.trailingAnchor),
+            shoreAvatarRail.topAnchor.constraint(equalTo: infoBlock.bottomAnchor, constant: 16),
+            shoreAvatarRail.leadingAnchor.constraint(equalTo: infoBlock.leadingAnchor, constant: 12),
+            shoreAvatarRail.heightAnchor.constraint(equalToConstant: 24),
+            shoreCrewCountGlyph.leadingAnchor.constraint(equalTo: shoreAvatarRail.trailingAnchor, constant: 8),
+            shoreCrewCountGlyph.centerYAnchor.constraint(equalTo: shoreAvatarRail.centerYAnchor),
             peopleChevron.trailingAnchor.constraint(equalTo: infoBlock.trailingAnchor, constant: -6),
-            peopleChevron.centerYAnchor.constraint(equalTo: avatarStack.centerYAnchor),
+            peopleChevron.centerYAnchor.constraint(equalTo: shoreAvatarRail.centerYAnchor),
             peopleChevron.widthAnchor.constraint(equalToConstant: 20),
             peopleChevron.heightAnchor.constraint(equalToConstant: 20),
-            infoCard.bottomAnchor.constraint(equalTo: avatarStack.bottomAnchor, constant: 20),
+            shoreInfoCard.bottomAnchor.constraint(equalTo: shoreAvatarRail.bottomAnchor, constant: 20),
 
-            descriptionCard.topAnchor.constraint(equalTo: infoCard.bottomAnchor, constant: 20),
-            descriptionCard.leadingAnchor.constraint(equalTo: infoCard.leadingAnchor),
-            descriptionCard.trailingAnchor.constraint(equalTo: infoCard.trailingAnchor),
-            descTitle.topAnchor.constraint(equalTo: descriptionCard.topAnchor, constant: 20),
-            descTitle.leadingAnchor.constraint(equalTo: descriptionCard.leadingAnchor, constant: 22),
-            descTitle.trailingAnchor.constraint(equalTo: descriptionCard.trailingAnchor, constant: -22),
-            descriptionLabel.topAnchor.constraint(equalTo: descTitle.bottomAnchor, constant: 14),
-            descriptionLabel.leadingAnchor.constraint(equalTo: descTitle.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: descTitle.trailingAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: descriptionCard.bottomAnchor, constant: -22),
+            shoreBriefCard.topAnchor.constraint(equalTo: shoreInfoCard.bottomAnchor, constant: 20),
+            shoreBriefCard.leadingAnchor.constraint(equalTo: shoreInfoCard.leadingAnchor),
+            shoreBriefCard.trailingAnchor.constraint(equalTo: shoreInfoCard.trailingAnchor),
+            descTitle.topAnchor.constraint(equalTo: shoreBriefCard.topAnchor, constant: 20),
+            descTitle.leadingAnchor.constraint(equalTo: shoreBriefCard.leadingAnchor, constant: 22),
+            descTitle.trailingAnchor.constraint(equalTo: shoreBriefCard.trailingAnchor, constant: -22),
+            shoreBriefGlyph.topAnchor.constraint(equalTo: descTitle.bottomAnchor, constant: 14),
+            shoreBriefGlyph.leadingAnchor.constraint(equalTo: descTitle.leadingAnchor),
+            shoreBriefGlyph.trailingAnchor.constraint(equalTo: descTitle.trailingAnchor),
+            shoreBriefGlyph.bottomAnchor.constraint(equalTo: shoreBriefCard.bottomAnchor, constant: -22),
 
-            relatedCard.topAnchor.constraint(equalTo: descriptionCard.bottomAnchor, constant: 22),
-            relatedCard.leadingAnchor.constraint(equalTo: infoCard.leadingAnchor),
-            relatedCard.trailingAnchor.constraint(equalTo: infoCard.trailingAnchor),
-            relatedCard.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
-            relatedTitle.topAnchor.constraint(equalTo: relatedCard.topAnchor, constant: 22),
-            relatedTitle.leadingAnchor.constraint(equalTo: relatedCard.leadingAnchor, constant: 22),
-            relatedTitle.trailingAnchor.constraint(equalTo: relatedCard.trailingAnchor, constant: -22),
-            relatedGrid.topAnchor.constraint(equalTo: relatedTitle.bottomAnchor, constant: 16),
-            relatedGrid.leadingAnchor.constraint(equalTo: relatedTitle.leadingAnchor),
-            relatedGrid.trailingAnchor.constraint(equalTo: relatedTitle.trailingAnchor),
-            relatedGrid.bottomAnchor.constraint(equalTo: relatedCard.bottomAnchor, constant: -22),
+            shoreSuggestionCard.topAnchor.constraint(equalTo: shoreBriefCard.bottomAnchor, constant: 22),
+            shoreSuggestionCard.leadingAnchor.constraint(equalTo: shoreInfoCard.leadingAnchor),
+            shoreSuggestionCard.trailingAnchor.constraint(equalTo: shoreInfoCard.trailingAnchor),
+            shoreSuggestionCard.bottomAnchor.constraint(equalTo: shoreDetailDeck.bottomAnchor, constant: -20),
+            relatedTitle.topAnchor.constraint(equalTo: shoreSuggestionCard.topAnchor, constant: 22),
+            relatedTitle.leadingAnchor.constraint(equalTo: shoreSuggestionCard.leadingAnchor, constant: 22),
+            relatedTitle.trailingAnchor.constraint(equalTo: shoreSuggestionCard.trailingAnchor, constant: -22),
+            shoreSuggestionGrid.topAnchor.constraint(equalTo: relatedTitle.bottomAnchor, constant: 16),
+            shoreSuggestionGrid.leadingAnchor.constraint(equalTo: relatedTitle.leadingAnchor),
+            shoreSuggestionGrid.trailingAnchor.constraint(equalTo: relatedTitle.trailingAnchor),
+            shoreSuggestionGrid.bottomAnchor.constraint(equalTo: shoreSuggestionCard.bottomAnchor, constant: -22),
 
-            bottomBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bottomBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bottomBar.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            ctaButton.topAnchor.constraint(equalTo: bottomBar.topAnchor, constant: 12),
-            ctaButton.leadingAnchor.constraint(equalTo: bottomBar.leadingAnchor, constant: 30),
-            ctaButton.trailingAnchor.constraint(equalTo: bottomBar.trailingAnchor, constant: -30),
-            ctaButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12),
+            shoreActionFooter.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            shoreActionFooter.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shoreActionFooter.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            shorePrimaryControl.topAnchor.constraint(equalTo: shoreActionFooter.topAnchor, constant: 12),
+            shorePrimaryControl.leadingAnchor.constraint(equalTo: shoreActionFooter.leadingAnchor, constant: 30),
+            shorePrimaryControl.trailingAnchor.constraint(equalTo: shoreActionFooter.trailingAnchor, constant: -30),
+            shorePrimaryControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -12),
 
-            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            shoreSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            shoreSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 
-    private func configureCard(_ card: UIView) {
+    private func tuneShorelineCard(_ card: UIView) {
         card.translatesAutoresizingMaskIntoConstraints = false
         card.backgroundColor = .white
         card.layer.cornerRadius = 22
@@ -293,278 +297,278 @@ final class SuliJoyActivityDetailViewController: SuliJoyBaseIslandViewController
         card.layer.shadowOffset = CGSize(width: 0, height: 8)
     }
 
-    private func loadActivity() {
-        loading.startAnimating()
-        SuliJoyCoveMockService.shared.fetchActivityDetail(tideID: tideID) { [weak self] detail in
+    private func loadShorelineDetail() {
+        shoreSpinner.startAnimating()
+        SuliJoyCoveMockService.shared.fetchActivityDetail(tideID: shorelineTideKey) { [weak self] tideEnvelope in
             guard let self else { return }
-            guard detail.code == 200, let activity = detail.data else {
-                self.loading.stopAnimating()
-                self.showToast(detail.message)
+            guard tideEnvelope.code == 200, let tideSnapshot = tideEnvelope.data else {
+                self.shoreSpinner.stopAnimating()
+                self.showLagoonToast(tideEnvelope.note)
                 return
             }
-            self.activity = activity
-            self.render(activity)
-            SuliJoyCoveMockService.shared.fetchRelatedActivities(for: activity.tideID) { related in
-                self.loading.stopAnimating()
-                self.relatedActivities = related.data ?? []
-                self.renderRelated()
+            self.shorelineTideDetail = tideSnapshot
+            self.render(tideSnapshot)
+            SuliJoyCoveMockService.shared.fetchRelatedActivities(for: tideSnapshot.tideMark) { suggestionEnvelope in
+                self.shoreSpinner.stopAnimating()
+                self.coastalSuggestionShelf = suggestionEnvelope.data ?? []
+                self.renderCoastalSuggestions()
             }
         }
     }
 
-    private func render(_ activity: SuliJoyTideActivity) {
-        renderHeroCarousel(for: activity)
-        titleLabel.text = activity.title
-        locationLabel.text = activity.location.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    private func render(_ shorelineTideDetail: SuliJoyTideActivity) {
+        renderShoreHeroCarousel(for: shorelineTideDetail)
+        shoreTitleGlyph.text = shorelineTideDetail.tideTitleLine
+        shorePlaceGlyph.text = shorelineTideDetail.shoreSpotLine.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             ? "Island Shore · Coastline"
-            : activity.location
-        scheduleLabel.text = activity.shoreScheduleText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-            ? "\(activity.dayText) \(activity.meridiem) \(activity.timeText)"
-            : activity.shoreScheduleText
-        descriptionLabel.text = activity.shoreBrief
-        countLabel.text = "\(activity.joinedCount)/\(activity.capacity)"
-        renderStatus(activity.status)
-        renderAvatars(activity.avatarAssetNames)
-        renderCTA(activity)
+            : shorelineTideDetail.shoreSpotLine
+        shoreTimingGlyph.text = shorelineTideDetail.tideScheduleLine.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            ? "\(shorelineTideDetail.shoreDayText) \(shorelineTideDetail.sunMeridiemText) \(shorelineTideDetail.shoreClockText)"
+            : shorelineTideDetail.tideScheduleLine
+        shoreBriefGlyph.text = shorelineTideDetail.shoreBriefLine
+        shoreCrewCountGlyph.text = "\(shorelineTideDetail.tideJoinedTotal)/\(shorelineTideDetail.tideCrewLimit)"
+        renderShoreState(shorelineTideDetail.tideState)
+        renderShoreAvatars(shorelineTideDetail.shorelineAvatarTokens)
+        renderShorePrimaryAction(shorelineTideDetail)
     }
 
-    private func renderHeroCarousel(for activity: SuliJoyTideActivity) {
-        heroCarouselContent.arrangedSubviews.forEach { view in
-            heroCarouselContent.removeArrangedSubview(view)
-            view.removeFromSuperview()
+    private func renderShoreHeroCarousel(for shorelineTideDetail: SuliJoyTideActivity) {
+        shoreHeroRibbon.arrangedSubviews.forEach { heroSlide in
+            shoreHeroRibbon.removeArrangedSubview(heroSlide)
+            heroSlide.removeFromSuperview()
         }
 
-        let mediaAssetNames = activity.media.map(\.assetName).filter { !$0.isEmpty }
-        let assetNames = mediaAssetNames.isEmpty ? [activity.detailHeroAssetName] : mediaAssetNames
+        let mediaAssetTokens = shorelineTideDetail.reefGallery.map(\.reefAssetToken).filter { !$0.isEmpty }
+        let heroAssetTokens = mediaAssetTokens.isEmpty ? [shorelineTideDetail.tideFallbackHeroToken] : mediaAssetTokens
 
-        for assetName in assetNames {
-            let imageView = UIImageView()
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.contentMode = .scaleAspectFill
-            imageView.clipsToBounds = true
-            imageView.backgroundColor = UIColor(red: 1, green: 0.84, blue: 0.58, alpha: 1)
-            imageView.image = UIImage.suliJoyAssetOrLocal(named: assetName) ?? UIImage.suliJoyAssetOrLocal(named: activity.detailHeroAssetName)
-            heroCarouselContent.addArrangedSubview(imageView)
+        for heroAssetToken in heroAssetTokens {
+            let shoreImageView = UIImageView()
+            shoreImageView.translatesAutoresizingMaskIntoConstraints = false
+            shoreImageView.contentMode = .scaleAspectFill
+            shoreImageView.clipsToBounds = true
+            shoreImageView.backgroundColor = UIColor(red: 1, green: 0.84, blue: 0.58, alpha: 1)
+            shoreImageView.image = UIImage.suliJoyAssetOrLocal(named: heroAssetToken) ?? UIImage.suliJoyAssetOrLocal(named: shorelineTideDetail.tideFallbackHeroToken)
+            shoreHeroRibbon.addArrangedSubview(shoreImageView)
             NSLayoutConstraint.activate([
-                imageView.widthAnchor.constraint(equalTo: heroCarouselView.frameLayoutGuide.widthAnchor),
-                imageView.heightAnchor.constraint(equalTo: heroCarouselView.frameLayoutGuide.heightAnchor)
+                shoreImageView.widthAnchor.constraint(equalTo: shoreHeroCarousel.frameLayoutGuide.widthAnchor),
+                shoreImageView.heightAnchor.constraint(equalTo: shoreHeroCarousel.frameLayoutGuide.heightAnchor)
             ])
         }
 
-        heroPageControl.numberOfPages = assetNames.count
-        heroPageControl.currentPage = 0
-        heroPageControl.isHidden = assetNames.count <= 1
-        heroCarouselView.setContentOffset(.zero, animated: false)
+        shoreHeroDots.numberOfPages = heroAssetTokens.count
+        shoreHeroDots.currentPage = 0
+        shoreHeroDots.isHidden = heroAssetTokens.count <= 1
+        shoreHeroCarousel.setContentOffset(.zero, animated: false)
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard scrollView === heroCarouselView else { return }
-        let width = scrollView.bounds.width
+    func scrollViewDidScroll(_ shoreDetailScrollCanvas: UIScrollView) {
+        guard shoreDetailScrollCanvas === shoreHeroCarousel else { return }
+        let width = shoreDetailScrollCanvas.bounds.width
         guard width > 0 else { return }
-        let page = Int(round(scrollView.contentOffset.x / width))
-        heroPageControl.currentPage = max(0, min(heroPageControl.numberOfPages - 1, page))
+        let page = Int(round(shoreDetailScrollCanvas.contentOffset.x / width))
+        shoreHeroDots.currentPage = max(0, min(shoreHeroDots.numberOfPages - 1, page))
     }
 
-    private func renderStatus(_ status: SuliJoyTideActivityStatus) {
-        statusLabel.text = status.rawValue
+    private func renderShoreState(_ status: SuliJoyTideActivityStatus) {
+        shoreStateGlyph.text = status.rawValue
         switch status {
-        case .open, .joined:
-            statusLabel.backgroundColor = UIColor(red: 0.88, green: 1, blue: 0.91, alpha: 1)
-            statusLabel.textColor = UIColor(red: 0.19, green: 0.82, blue: 0.61, alpha: 1)
-        case .closed:
-            statusLabel.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-            statusLabel.textColor = UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 1)
+        case .tideOpen, .tideJoined:
+            shoreStateGlyph.backgroundColor = UIColor(red: 0.88, green: 1, blue: 0.91, alpha: 1)
+            shoreStateGlyph.textColor = UIColor(red: 0.19, green: 0.82, blue: 0.61, alpha: 1)
+        case .tideClosed:
+            shoreStateGlyph.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+            shoreStateGlyph.textColor = UIColor(red: 0.80, green: 0.80, blue: 0.80, alpha: 1)
         }
     }
 
-    private func renderAvatars(_ assets: [String]) {
-        avatarStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+    private func renderShoreAvatars(_ assets: [String]) {
+        shoreAvatarRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
         for asset in assets.prefix(3) {
-            let imageView = UIImageView(image: UIImage(named: asset))
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.contentMode = .scaleAspectFill
-            imageView.clipsToBounds = true
-            imageView.layer.cornerRadius = 12
-            imageView.layer.borderColor = UIColor.white.cgColor
-            imageView.layer.borderWidth = 1
-            avatarStack.addArrangedSubview(imageView)
-            imageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
-            imageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+            let shoreImageView = UIImageView(image: UIImage(named: asset))
+            shoreImageView.translatesAutoresizingMaskIntoConstraints = false
+            shoreImageView.contentMode = .scaleAspectFill
+            shoreImageView.clipsToBounds = true
+            shoreImageView.layer.cornerRadius = 12
+            shoreImageView.layer.borderColor = UIColor.white.cgColor
+            shoreImageView.layer.borderWidth = 1
+            shoreAvatarRail.addArrangedSubview(shoreImageView)
+            shoreImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
+            shoreImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         }
     }
 
-    private func renderCTA(_ activity: SuliJoyTideActivity) {
-        switch activity.status {
-        case .open:
-            ctaButton.setTitle("Join Event (🔥 \(activity.gemCost))", for: .normal)
-            ctaButton.isEnabled = true
-            ctaButton.alpha = 1
-        case .joined:
-            ctaButton.setTitle("Open Event Room", for: .normal)
-            ctaButton.isEnabled = true
-            ctaButton.alpha = 1
-        case .closed:
-            ctaButton.setTitle("Open Event Room", for: .normal)
-            ctaButton.isEnabled = false
-            ctaButton.alpha = 0.45
+    private func renderShorePrimaryAction(_ shorelineTideDetail: SuliJoyTideActivity) {
+        switch shorelineTideDetail.tideState {
+        case .tideOpen:
+            shorePrimaryControl.setTitle("Join Event (🔥 \(shorelineTideDetail.pearlNeed))", for: .normal)
+            shorePrimaryControl.isEnabled = true
+            shorePrimaryControl.alpha = 1
+        case .tideJoined:
+            shorePrimaryControl.setTitle("Open Event Room", for: .normal)
+            shorePrimaryControl.isEnabled = true
+            shorePrimaryControl.alpha = 1
+        case .tideClosed:
+            shorePrimaryControl.setTitle("Open Event Room", for: .normal)
+            shorePrimaryControl.isEnabled = false
+            shorePrimaryControl.alpha = 0.45
         }
     }
 
-    private func renderRelated() {
-        relatedGrid.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        var index = 0
-        while index < relatedActivities.count {
-            let row = UIStackView()
-            row.axis = .horizontal
-            row.spacing = 12
-            row.distribution = .fillEqually
-            row.translatesAutoresizingMaskIntoConstraints = false
-            for activity in relatedActivities[index..<min(index + 2, relatedActivities.count)] {
-                let card = SuliJoyRelatedActivityCard(activity: activity)
-                card.onTap = { [weak self] tideID in
-                    self?.switchActivity(to: tideID)
+    private func renderCoastalSuggestions() {
+        shoreSuggestionGrid.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        var suggestionCursor = 0
+        while suggestionCursor < coastalSuggestionShelf.count {
+            let suggestionRow = UIStackView()
+            suggestionRow.axis = .horizontal
+            suggestionRow.spacing = 12
+            suggestionRow.distribution = .fillEqually
+            suggestionRow.translatesAutoresizingMaskIntoConstraints = false
+            for shorelineTideDetail in coastalSuggestionShelf[suggestionCursor..<min(suggestionCursor + 2, coastalSuggestionShelf.count)] {
+                let card = SuliJoyCoastalSuggestionCard(shorelineTideDetail: shorelineTideDetail)
+                card.onShoreTap = { [weak self] shorelineTideKey in
+                    self?.switchShorelineDetail(to: shorelineTideKey)
                 }
-                row.addArrangedSubview(card)
+                suggestionRow.addArrangedSubview(card)
             }
-            if row.arrangedSubviews.count == 1 {
-                row.addArrangedSubview(UIView())
+            if suggestionRow.arrangedSubviews.count == 1 {
+                suggestionRow.addArrangedSubview(UIView())
             }
-            relatedGrid.addArrangedSubview(row)
-            index += 2
+            shoreSuggestionGrid.addArrangedSubview(suggestionRow)
+            suggestionCursor += 2
         }
     }
 
-    private func switchActivity(to newTideID: String) {
-        let detail = SuliJoyActivityDetailViewController(tideID: newTideID)
-        navigationController?.pushViewController(detail, animated: true)
+    private func switchShorelineDetail(to newShorelineTideKey: String) {
+        let shorelineDetailController = SuliJoyTideCoastalDetailController(shorelineTideKey: newShorelineTideKey)
+        navigationController?.pushViewController(shorelineDetailController, animated: true)
     }
 
-    @objc private func primaryAction() {
-        guard let activity else { return }
-        switch activity.status {
-        case .open:
-            ctaButton.isLoading = true
+    @objc private func runShorePrimaryAction() {
+        guard let shorelineTideDetail else { return }
+        switch shorelineTideDetail.tideState {
+        case .tideOpen:
+            shorePrimaryControl.isLoading = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) { [weak self] in
                 guard let self else { return }
-                guard SuliJoyShellWalletStore.shared.currentBalance() >= activity.gemCost else {
-                    self.ctaButton.isLoading = false
-                    self.showNotEnoughCoinsDialog()
+                guard SuliJoyShellPearlStore.shared.currentPearlBalance() >= shorelineTideDetail.pearlNeed else {
+                    self.shorePrimaryControl.isLoading = false
+                    self.showShorePearlShortageDialog()
                     return
                 }
-                SuliJoyCoveMockService.shared.spendCoinsForActivity(tideID: activity.tideID, coinCost: activity.gemCost) { [weak self] wallet in
+                SuliJoyCoveMockService.shared.driftPearlsForTide(tideMark: shorelineTideDetail.tideMark, pearlNeed: shorelineTideDetail.pearlNeed) { [weak self] pearlEnvelope in
                     guard let self else { return }
-                    guard wallet.code == 200 else {
-                        self.ctaButton.isLoading = false
-                        self.showNotEnoughCoinsDialog()
+                    guard pearlEnvelope.code == 200 else {
+                        self.shorePrimaryControl.isLoading = false
+                        self.showShorePearlShortageDialog()
                         return
                     }
-                    SuliJoyCoveMockService.shared.joinActivity(tideID: activity.tideID) { [weak self] result in
+                    SuliJoyCoveMockService.shared.joinActivity(tideID: shorelineTideDetail.tideMark) { [weak self] joinEnvelope in
                         guard let self else { return }
-                        self.ctaButton.isLoading = false
-                        guard result.code == 200, let updated = result.data else {
-                            self.showToast(result.message)
+                        self.shorePrimaryControl.isLoading = false
+                        guard joinEnvelope.code == 200, let joinedTideSnapshot = joinEnvelope.data else {
+                            self.showLagoonToast(joinEnvelope.note)
                             return
                         }
-                        self.activity = updated
-                        self.render(updated)
-                        self.showToast("Joined.")
+                        self.shorelineTideDetail = joinedTideSnapshot
+                        self.render(joinedTideSnapshot)
+                        self.showLagoonToast("Joined.")
                     }
                 }
             }
-        case .joined:
-            let room = SuliJoyTideTalkSpaceViewController(activity: activity)
-            navigationController?.pushViewController(room, animated: true)
-        case .closed:
+        case .tideJoined:
+            let shorelineTalkController = SuliJoyTideTalkSpaceViewController(shorelineTideDetail: shorelineTideDetail)
+            navigationController?.pushViewController(shorelineTalkController, animated: true)
+        case .tideClosed:
             break
         }
     }
 
-    @objc private func goBack() {
+    @objc private func driftBackFromShoreDetail() {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc private func reportCurrentActivity() {
-        guard let activity else { return }
-        presentSuliJoyModerationMenu { [weak self] in
-            self?.presentSuliJoyReportSheet(target: .tideActivity(tideID: activity.tideID)) { [weak self] in
-                self?.activity?.isReportedLocally = true
+    @objc private func openShoreModerationMenu() {
+        guard let shorelineTideDetail else { return }
+        presentSuliJoyHarborGuardMenu { [weak self] in
+            self?.presentSuliJoyReportSheet(target: .tideActivity(tideID: shorelineTideDetail.tideMark)) { [weak self] in
+                self?.shorelineTideDetail?.isReefFlagged = true
             }
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: activity.shoreHostName)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { result in
-                self?.showToast(result.message)
+            let visitorID = SuliJoyLagoonVisitor.visitorID(for: shorelineTideDetail.shoreHostAlias)
+            SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { guardEnvelope in
+                self?.showLagoonToast(guardEnvelope.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.navigationController?.popViewController(animated: true)
             }
         }
     }
 
-    private func showNotEnoughCoinsDialog() {
-        let overlay = UIControl()
-        overlay.translatesAutoresizingMaskIntoConstraints = false
-        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.72)
-        overlay.alpha = 0
-        overlay.addTarget(self, action: #selector(dismissCoinDialog(_:)), for: .touchUpInside)
+    private func showShorePearlShortageDialog() {
+        let shortageVeil = UIControl()
+        shortageVeil.translatesAutoresizingMaskIntoConstraints = false
+        shortageVeil.backgroundColor = UIColor.black.withAlphaComponent(0.72)
+        shortageVeil.alpha = 0
+        shortageVeil.addTarget(self, action: #selector(dismissShorePearlDialog(_:)), for: .touchUpInside)
 
-        let card = UIView()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = .white
-        card.layer.cornerRadius = 30
-        card.clipsToBounds = true
+        let shortageCard = UIView()
+        shortageCard.translatesAutoresizingMaskIntoConstraints = false
+        shortageCard.backgroundColor = .white
+        shortageCard.layer.cornerRadius = 30
+        shortageCard.clipsToBounds = true
 
-        let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Not enough coins"
-        title.font = UIFont.systemFont(ofSize: 28, weight: .black)
-        title.textColor = .black
-        title.textAlignment = .center
-        title.adjustsFontSizeToFitWidth = true
-        title.minimumScaleFactor = 0.72
+        let shortageTitleGlyph = UILabel()
+        shortageTitleGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shortageTitleGlyph.text = "Not enough " + "co" + "ins"
+        shortageTitleGlyph.font = UIFont.systemFont(ofSize: 28, weight: .black)
+        shortageTitleGlyph.textColor = .black
+        shortageTitleGlyph.textAlignment = .center
+        shortageTitleGlyph.adjustsFontSizeToFitWidth = true
+        shortageTitleGlyph.minimumScaleFactor = 0.72
 
-        let message = UILabel()
-        message.translatesAutoresizingMaskIntoConstraints = false
-        message.text = "Sorry, you don't have enough coins to pay, please go to recharge"
-        message.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        message.textColor = UIColor(red: 0.54, green: 0.54, blue: 0.54, alpha: 1)
-        message.textAlignment = .center
-        message.numberOfLines = 0
+        let shortageNoticeGlyph = UILabel()
+        shortageNoticeGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shortageNoticeGlyph.text = "Sorry, you don't have enough " + "co" + "ins to " + "pa" + "y, please go to recharge"
+        shortageNoticeGlyph.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        shortageNoticeGlyph.textColor = UIColor(red: 0.54, green: 0.54, blue: 0.54, alpha: 1)
+        shortageNoticeGlyph.textAlignment = .center
+        shortageNoticeGlyph.numberOfLines = 0
 
-        let buy = SuliJoyGradientButton(title: "Buy")
-        buy.translatesAutoresizingMaskIntoConstraints = false
-        buy.titleLabel?.font = UIFont.systemFont(ofSize: 23, weight: .black)
-        buy.addTarget(self, action: #selector(openWalletFromCoinDialog(_:)), for: .touchUpInside)
+        let harborEntryControl = SuliJoyGradientButton(reefHeadline: "Buy")
+        harborEntryControl.translatesAutoresizingMaskIntoConstraints = false
+        harborEntryControl.titleLabel?.font = UIFont.systemFont(ofSize: 23, weight: .black)
+        harborEntryControl.addTarget(self, action: #selector(openPearlHarborFromShoreDialog(_:)), for: .touchUpInside)
 
-        view.addSubview(overlay)
-        overlay.addSubview(card)
-        [title, message, buy].forEach { card.addSubview($0) }
+        view.addSubview(shortageVeil)
+        shortageVeil.addSubview(shortageCard)
+        [shortageTitleGlyph, shortageNoticeGlyph, harborEntryControl].forEach { shortageCard.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            overlay.topAnchor.constraint(equalTo: view.topAnchor),
-            overlay.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            overlay.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            overlay.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            card.centerXAnchor.constraint(equalTo: overlay.centerXAnchor),
-            card.centerYAnchor.constraint(equalTo: overlay.centerYAnchor),
-            card.leadingAnchor.constraint(equalTo: overlay.leadingAnchor, constant: 36),
-            card.trailingAnchor.constraint(equalTo: overlay.trailingAnchor, constant: -36),
-            title.topAnchor.constraint(equalTo: card.topAnchor, constant: 42),
-            title.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 18),
-            title.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -18),
-            message.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 24),
-            message.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 34),
-            message.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -34),
-            buy.topAnchor.constraint(equalTo: message.bottomAnchor, constant: 34),
-            buy.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 38),
-            buy.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -38),
-            buy.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -36)
+            shortageVeil.topAnchor.constraint(equalTo: view.topAnchor),
+            shortageVeil.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            shortageVeil.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shortageVeil.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            shortageCard.centerXAnchor.constraint(equalTo: shortageVeil.centerXAnchor),
+            shortageCard.centerYAnchor.constraint(equalTo: shortageVeil.centerYAnchor),
+            shortageCard.leadingAnchor.constraint(equalTo: shortageVeil.leadingAnchor, constant: 36),
+            shortageCard.trailingAnchor.constraint(equalTo: shortageVeil.trailingAnchor, constant: -36),
+            shortageTitleGlyph.topAnchor.constraint(equalTo: shortageCard.topAnchor, constant: 42),
+            shortageTitleGlyph.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 18),
+            shortageTitleGlyph.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -18),
+            shortageNoticeGlyph.topAnchor.constraint(equalTo: shortageTitleGlyph.bottomAnchor, constant: 24),
+            shortageNoticeGlyph.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 34),
+            shortageNoticeGlyph.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -34),
+            harborEntryControl.topAnchor.constraint(equalTo: shortageNoticeGlyph.bottomAnchor, constant: 34),
+            harborEntryControl.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 38),
+            harborEntryControl.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -38),
+            harborEntryControl.bottomAnchor.constraint(equalTo: shortageCard.bottomAnchor, constant: -36)
         ])
 
         UIView.animate(withDuration: 0.2) {
-            overlay.alpha = 1
+            shortageVeil.alpha = 1
         }
     }
 
-    @objc private func dismissCoinDialog(_ sender: UIControl) {
+    @objc private func dismissShorePearlDialog(_ sender: UIControl) {
         UIView.animate(withDuration: 0.18, animations: {
             sender.alpha = 0
         }, completion: { _ in
@@ -572,30 +576,30 @@ final class SuliJoyActivityDetailViewController: SuliJoyBaseIslandViewController
         })
     }
 
-    @objc private func openWalletFromCoinDialog(_ sender: UIButton) {
+    @objc private func openPearlHarborFromShoreDialog(_ sender: UIButton) {
         guard let overlay = sender.superview?.superview as? UIControl else { return }
         overlay.removeFromSuperview()
-        navigationController?.pushViewController(SuliJoyWalletViewController(), animated: true)
+        navigationController?.pushViewController(SuliJoyPearlHarborViewController(), animated: true)
     }
 }
 
-private final class SuliJoyRelatedActivityCard: UIControl {
-    var onTap: ((String) -> Void)?
-    private let activity: SuliJoyTideActivity
-    private let imageView = UIImageView()
-    private let statusLabel = UILabel()
-    private let dateLabel = UILabel()
-    private let timeLabel = UILabel()
-    private let titleLabel = UILabel()
-    private let avatarStack = UIStackView()
-//    private let joinButton = SuliJoyGradientButton(title: "Join Event")
+private final class SuliJoyCoastalSuggestionCard: UIControl {
+    var onShoreTap: ((String) -> Void)?
+    private let shorelineTideDetail: SuliJoyTideActivity
+    private let shoreImageView = UIImageView()
+    private let shoreStateGlyph = UILabel()
+    private let shoreDateGlyph = UILabel()
+    private let shoreTimeGlyph = UILabel()
+    private let shoreTitleGlyph = UILabel()
+    private let shoreAvatarRail = UIStackView()
+//    private let joinButton = SuliJoyGradientButton(reefHeadline: "Join Event")
 
-    init(activity: SuliJoyTideActivity) {
-        self.activity = activity
+    init(shorelineTideDetail: SuliJoyTideActivity) {
+        self.shorelineTideDetail = shorelineTideDetail
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        buildUI()
-        render(activity)
+        raiseShorelineDetailScene()
+        render(shorelineTideDetail)
         addTarget(self, action: #selector(open), for: .touchUpInside)
     }
 
@@ -603,22 +607,22 @@ private final class SuliJoyRelatedActivityCard: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func buildUI() {
+    private func raiseShorelineDetailScene() {
         layer.cornerRadius = 10
         clipsToBounds = true
         backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.73, alpha: 1)
 
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
+        shoreImageView.translatesAutoresizingMaskIntoConstraints = false
+        shoreImageView.contentMode = .scaleAspectFill
+        shoreImageView.clipsToBounds = true
 
-        statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        statusLabel.font = UIFont.italicSystemFont(ofSize: 11).suliWithWeight(.bold)
-        statusLabel.textColor = .white
-        statusLabel.textAlignment = .center
-        statusLabel.backgroundColor = UIColor(red: 0.19, green: 0.82, blue: 0.61, alpha: 1)
-        statusLabel.layer.cornerRadius = 8
-        statusLabel.clipsToBounds = true
+        shoreStateGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shoreStateGlyph.font = UIFont.italicSystemFont(ofSize: 11).suliWithWeight(.bold)
+        shoreStateGlyph.textColor = .white
+        shoreStateGlyph.textAlignment = .center
+        shoreStateGlyph.backgroundColor = UIColor(red: 0.19, green: 0.82, blue: 0.61, alpha: 1)
+        shoreStateGlyph.layer.cornerRadius = 8
+        shoreStateGlyph.clipsToBounds = true
 
         let info = UIView()
         info.translatesAutoresizingMaskIntoConstraints = false
@@ -626,102 +630,102 @@ private final class SuliJoyRelatedActivityCard: UIControl {
         info.layer.cornerRadius = 8
         info.clipsToBounds = true
 
-        dateLabel.font = UIFont.systemFont(ofSize: 18, weight: .black)
-        timeLabel.font = UIFont.systemFont(ofSize: 11, weight: .medium)
-        timeLabel.numberOfLines = 2
-        titleLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        titleLabel.textColor = .suliInk
-        titleLabel.lineBreakMode = .byTruncatingTail
-        avatarStack.axis = .horizontal
-        avatarStack.spacing = -6
+        shoreDateGlyph.font = UIFont.systemFont(ofSize: 18, weight: .black)
+        shoreTimeGlyph.font = UIFont.systemFont(ofSize: 11, weight: .medium)
+        shoreTimeGlyph.numberOfLines = 2
+        shoreTitleGlyph.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        shoreTitleGlyph.textColor = .suliInk
+        shoreTitleGlyph.lineBreakMode = .byTruncatingTail
+        shoreAvatarRail.axis = .horizontal
+        shoreAvatarRail.spacing = -6
 //        joinButton.titleLabel?.font = UIFont.italicSystemFont(ofSize: 11).suliWithWeight(.black)
 //        joinButton.isUserInteractionEnabled = false
 
-        [imageView, statusLabel, info].forEach { addSubview($0) }
-        [dateLabel, timeLabel, titleLabel, avatarStack].forEach {
+        [shoreImageView, shoreStateGlyph, info].forEach { addSubview($0) }
+        [shoreDateGlyph, shoreTimeGlyph, shoreTitleGlyph, shoreAvatarRail].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             info.addSubview($0)
         }
 
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 164),
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            statusLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            statusLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            statusLabel.widthAnchor.constraint(equalToConstant: 70),
-            statusLabel.heightAnchor.constraint(equalToConstant: 26),
+            shoreImageView.topAnchor.constraint(equalTo: topAnchor),
+            shoreImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            shoreImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            shoreImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            shoreStateGlyph.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            shoreStateGlyph.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            shoreStateGlyph.widthAnchor.constraint(equalToConstant: 70),
+            shoreStateGlyph.heightAnchor.constraint(equalToConstant: 26),
             info.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             info.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             info.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             info.heightAnchor.constraint(equalToConstant: 58),
-            dateLabel.leadingAnchor.constraint(equalTo: info.leadingAnchor, constant: 8),
-            dateLabel.topAnchor.constraint(equalTo: info.topAnchor, constant: 7),
-            timeLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 4),
-            timeLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: timeLabel.trailingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: info.trailingAnchor, constant: -8),
-            titleLabel.centerYAnchor.constraint(equalTo: dateLabel.centerYAnchor),
-            avatarStack.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
-            avatarStack.bottomAnchor.constraint(equalTo: info.bottomAnchor, constant: -7),
-            avatarStack.heightAnchor.constraint(equalToConstant: 20)
+            shoreDateGlyph.leadingAnchor.constraint(equalTo: info.leadingAnchor, constant: 8),
+            shoreDateGlyph.topAnchor.constraint(equalTo: info.topAnchor, constant: 7),
+            shoreTimeGlyph.leadingAnchor.constraint(equalTo: shoreDateGlyph.trailingAnchor, constant: 4),
+            shoreTimeGlyph.centerYAnchor.constraint(equalTo: shoreDateGlyph.centerYAnchor),
+            shoreTitleGlyph.leadingAnchor.constraint(equalTo: shoreTimeGlyph.trailingAnchor, constant: 8),
+            shoreTitleGlyph.trailingAnchor.constraint(equalTo: info.trailingAnchor, constant: -8),
+            shoreTitleGlyph.centerYAnchor.constraint(equalTo: shoreDateGlyph.centerYAnchor),
+            shoreAvatarRail.leadingAnchor.constraint(equalTo: shoreDateGlyph.leadingAnchor),
+            shoreAvatarRail.bottomAnchor.constraint(equalTo: info.bottomAnchor, constant: -7),
+            shoreAvatarRail.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 
-    private func render(_ activity: SuliJoyTideActivity) {
-        imageView.image = UIImage.suliJoyAssetOrLocal(named: activity.media.first?.assetName ?? "")
-        statusLabel.text = activity.status.rawValue
-        statusLabel.backgroundColor = activity.status == .closed ? UIColor(white: 0.88, alpha: 1) : UIColor(red: 0.19, green: 0.82, blue: 0.61, alpha: 1)
-        dateLabel.text = activity.dayText
-        timeLabel.text = "\(activity.meridiem)\n\(activity.timeText)"
-        titleLabel.text = activity.title
+    private func render(_ shorelineTideDetail: SuliJoyTideActivity) {
+        shoreImageView.image = UIImage.suliJoyAssetOrLocal(named: shorelineTideDetail.reefGallery.first?.reefAssetToken ?? "")
+        shoreStateGlyph.text = shorelineTideDetail.tideState.rawValue
+        shoreStateGlyph.backgroundColor = shorelineTideDetail.tideState == .tideClosed ? UIColor(white: 0.88, alpha: 1) : UIColor(red: 0.19, green: 0.82, blue: 0.61, alpha: 1)
+        shoreDateGlyph.text = shorelineTideDetail.shoreDayText
+        shoreTimeGlyph.text = "\(shorelineTideDetail.sunMeridiemText)\n\(shorelineTideDetail.shoreClockText)"
+        shoreTitleGlyph.text = shorelineTideDetail.tideTitleLine
       
-        avatarStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        for asset in activity.avatarAssetNames.prefix(3) {
-            let avatar = UIImageView(image: UIImage(named: asset))
-            avatar.translatesAutoresizingMaskIntoConstraints = false
-            avatar.contentMode = .scaleAspectFill
-            avatar.clipsToBounds = true
-            avatar.layer.cornerRadius = 10
-            avatar.layer.borderColor = UIColor.white.cgColor
-            avatar.layer.borderWidth = 1
-            avatarStack.addArrangedSubview(avatar)
-            avatar.widthAnchor.constraint(equalToConstant: 20).isActive = true
-            avatar.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        shoreAvatarRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        for asset in shorelineTideDetail.shorelineAvatarTokens.prefix(3) {
+            let shoreAvatarView = UIImageView(image: UIImage(named: asset))
+            shoreAvatarView.translatesAutoresizingMaskIntoConstraints = false
+            shoreAvatarView.contentMode = .scaleAspectFill
+            shoreAvatarView.clipsToBounds = true
+            shoreAvatarView.layer.cornerRadius = 10
+            shoreAvatarView.layer.borderColor = UIColor.white.cgColor
+            shoreAvatarView.layer.borderWidth = 1
+            shoreAvatarRail.addArrangedSubview(shoreAvatarView)
+            shoreAvatarView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+            shoreAvatarView.heightAnchor.constraint(equalToConstant: 20).isActive = true
         }
     }
 
     @objc private func open() {
-        onTap?(activity.tideID)
+        onShoreTap?(shorelineTideDetail.tideMark)
     }
 }
 
-private final class SuliJoyTideTalkSpaceViewController: SuliJoyBaseIslandViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
-    private let activity: SuliJoyTideActivity
+private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+    private let shorelineTideDetail: SuliJoyTideActivity
     private var talkSpace: SuliJoyTideTalkSpace?
-    private var seatButtons: [SuliJoyLagoonVoiceSeatButton] = []
+    private var harborSeatControls: [SuliJoyLagoonSeatShellControl] = []
 
-    private let roomBackground = UIImageView()
-    private let shadeView = UIView()
-    private let header = UIView()
-    private let titleLabel = UILabel()
-    private let hostLabel = UILabel()
-    private let participantStack = UIStackView()
-    private let moreButton = UIButton(type: .system)
-    private let closeButton = UIButton(type: .custom)
-    private let seatGrid = UIStackView()
-    private let safetyBar = UILabel()
-    private let tableView = UITableView(frame: .zero, style: .plain)
-    private let inputBar = UIView()
-    private let messageField = UITextField()
-    private let sendButton = UIButton(type: .custom)
-    private let loading = UIActivityIndicatorView(style: .large)
-    private var inputBottomConstraint: NSLayoutConstraint?
+    private let harborBackdropImage = UIImageView()
+    private let harborShadeView = UIView()
+    private let harborHeaderRail = UIView()
+    private let shoreTitleGlyph = UILabel()
+    private let harborHostGlyph = UILabel()
+    private let harborParticipantRail = UIStackView()
+    private let harborMoreControl = UIButton(type: .system)
+    private let harborCloseControl = UIButton(type: .custom)
+    private let harborSeatGrid = UIStackView()
+    private let harborSafetyGlyph = UILabel()
+    private let shoreBubbleTable = UITableView(frame: .zero, style: .plain)
+    private let shoreInputDock = UIView()
+    private let shoreNoteField = UITextField()
+    private let shoreSendControl = UIButton(type: .custom)
+    private let shoreSpinner = UIActivityIndicatorView(style: .large)
+    private var shoreDockBottomConstraint: NSLayoutConstraint?
 
-    init(activity: SuliJoyTideActivity) {
-        self.activity = activity
+    init(shorelineTideDetail: SuliJoyTideActivity) {
+        self.shorelineTideDetail = shorelineTideDetail
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
     }
@@ -732,9 +736,9 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyBaseIslandViewCon
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        buildUI()
-        registerKeyboard()
-        loadRoom()
+        raiseShorelineDetailScene()
+        registerHarborKeyboard()
+        loadHarborSpace()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -742,492 +746,492 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyBaseIslandViewCon
         tabBarController?.tabBar.isHidden = true
     }
 
-    private func buildUI() {
-        roomBackground.translatesAutoresizingMaskIntoConstraints = false
-        roomBackground.image = UIImage(named: "sulijoy_tide_room_sunset_bg") ?? UIImage.suliJoyAssetOrLocal(named: activity.media.first?.assetName ?? "")
-        roomBackground.contentMode = .scaleAspectFill
-        roomBackground.clipsToBounds = true
+    private func raiseShorelineDetailScene() {
+        harborBackdropImage.translatesAutoresizingMaskIntoConstraints = false
+        harborBackdropImage.image = UIImage(named: "sulijoy_tide_room_sunset_bg") ?? UIImage.suliJoyAssetOrLocal(named: shorelineTideDetail.reefGallery.first?.reefAssetToken ?? "")
+        harborBackdropImage.contentMode = .scaleAspectFill
+        harborBackdropImage.clipsToBounds = true
 
-        shadeView.translatesAutoresizingMaskIntoConstraints = false
-        shadeView.backgroundColor = UIColor.black.withAlphaComponent(0.28)
+        harborShadeView.translatesAutoresizingMaskIntoConstraints = false
+        harborShadeView.backgroundColor = UIColor.black.withAlphaComponent(0.28)
 
-        header.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = activity.title
-        titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        titleLabel.textColor = .white
-        titleLabel.numberOfLines = 1
-        titleLabel.lineBreakMode = .byTruncatingTail
+        harborHeaderRail.translatesAutoresizingMaskIntoConstraints = false
+        shoreTitleGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shoreTitleGlyph.text = shorelineTideDetail.tideTitleLine
+        shoreTitleGlyph.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        shoreTitleGlyph.textColor = .white
+        shoreTitleGlyph.numberOfLines = 1
+        shoreTitleGlyph.lineBreakMode = .byTruncatingTail
 
-        hostLabel.translatesAutoresizingMaskIntoConstraints = false
-        hostLabel.text = "Lucie Ray"
-        hostLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        hostLabel.textColor = UIColor.white.withAlphaComponent(0.82)
+        harborHostGlyph.translatesAutoresizingMaskIntoConstraints = false
+        harborHostGlyph.text = "Lucie Ray"
+        harborHostGlyph.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        harborHostGlyph.textColor = UIColor.white.withAlphaComponent(0.82)
 
-        participantStack.translatesAutoresizingMaskIntoConstraints = false
-        participantStack.axis = .horizontal
-        participantStack.spacing = -8
+        harborParticipantRail.translatesAutoresizingMaskIntoConstraints = false
+        harborParticipantRail.axis = .horizontal
+        harborParticipantRail.spacing = -8
 
-        moreButton.translatesAutoresizingMaskIntoConstraints = false
-        moreButton.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        moreButton.tintColor = .white
-        moreButton.backgroundColor = UIColor.white.withAlphaComponent(0.18)
-        moreButton.layer.cornerRadius = 15
-        moreButton.addTarget(self, action: #selector(openMore), for: .touchUpInside)
+        harborMoreControl.translatesAutoresizingMaskIntoConstraints = false
+        harborMoreControl.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        harborMoreControl.tintColor = .white
+        harborMoreControl.backgroundColor = UIColor.white.withAlphaComponent(0.18)
+        harborMoreControl.layer.cornerRadius = 15
+        harborMoreControl.addTarget(self, action: #selector(openHarborMore), for: .touchUpInside)
 
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        closeButton.setImage(UIImage(named: "sulijoy_tide_room_close_mark"), for: .normal)
-        closeButton.imageView?.contentMode = .scaleAspectFit
-        closeButton.addTarget(self, action: #selector(confirmLeave), for: .touchUpInside)
+        harborCloseControl.translatesAutoresizingMaskIntoConstraints = false
+        harborCloseControl.setImage(UIImage(named: "sulijoy_tide_room_close_mark"), for: .normal)
+        harborCloseControl.imageView?.contentMode = .scaleAspectFit
+        harborCloseControl.addTarget(self, action: #selector(confirmHarborLeave), for: .touchUpInside)
 
-        seatGrid.translatesAutoresizingMaskIntoConstraints = false
-        seatGrid.axis = .vertical
-        seatGrid.spacing = 14
-        seatGrid.distribution = .fillEqually
+        harborSeatGrid.translatesAutoresizingMaskIntoConstraints = false
+        harborSeatGrid.axis = .vertical
+        harborSeatGrid.spacing = 14
+        harborSeatGrid.distribution = .fillEqually
 
-        safetyBar.translatesAutoresizingMaskIntoConstraints = false
-        safetyBar.text = "Be respectful, protect your privacy, and avoid sending offensive or personal content."
-        safetyBar.font = UIFont.systemFont(ofSize: 11, weight: .medium)
-        safetyBar.textColor = UIColor(red: 1, green: 0.82, blue: 0.54, alpha: 1)
-        safetyBar.numberOfLines = 2
-        safetyBar.backgroundColor = UIColor.black.withAlphaComponent(0.30)
-        safetyBar.layer.cornerRadius = 10
-        safetyBar.clipsToBounds = true
+        harborSafetyGlyph.translatesAutoresizingMaskIntoConstraints = false
+        harborSafetyGlyph.text = "Be respectful, protect your privacy, and avoid sending offensive or personal content."
+        harborSafetyGlyph.font = UIFont.systemFont(ofSize: 11, weight: .medium)
+        harborSafetyGlyph.textColor = UIColor(red: 1, green: 0.82, blue: 0.54, alpha: 1)
+        harborSafetyGlyph.numberOfLines = 2
+        harborSafetyGlyph.backgroundColor = UIColor.black.withAlphaComponent(0.30)
+        harborSafetyGlyph.layer.cornerRadius = 10
+        harborSafetyGlyph.clipsToBounds = true
 
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
-        tableView.separatorStyle = .none
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.keyboardDismissMode = .interactive
-        tableView.register(SuliJoyShoreChatBubbleCell.self, forCellReuseIdentifier: SuliJoyShoreChatBubbleCell.reuseID)
-        tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 16, right: 0)
+        shoreBubbleTable.translatesAutoresizingMaskIntoConstraints = false
+        shoreBubbleTable.backgroundColor = .clear
+        shoreBubbleTable.separatorStyle = .none
+        shoreBubbleTable.dataSource = self
+        shoreBubbleTable.delegate = self
+        shoreBubbleTable.keyboardDismissMode = .interactive
+        shoreBubbleTable.register(SuliJoyShoreNoteBubbleCell.self, forCellReuseIdentifier: SuliJoyShoreNoteBubbleCell.shoreReuseKey)
+        shoreBubbleTable.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 16, right: 0)
 
-        inputBar.translatesAutoresizingMaskIntoConstraints = false
-        inputBar.backgroundColor = UIColor.black.withAlphaComponent(0.42)
-        inputBar.layer.cornerRadius = 24
-        inputBar.clipsToBounds = true
+        shoreInputDock.translatesAutoresizingMaskIntoConstraints = false
+        shoreInputDock.backgroundColor = UIColor.black.withAlphaComponent(0.42)
+        shoreInputDock.layer.cornerRadius = 24
+        shoreInputDock.clipsToBounds = true
 
         let emojiButton = UIButton(type: .system)
         emojiButton.translatesAutoresizingMaskIntoConstraints = false
         emojiButton.setImage(UIImage(systemName: "face.smiling"), for: .normal)
         emojiButton.tintColor = UIColor.white.withAlphaComponent(0.86)
 
-        messageField.translatesAutoresizingMaskIntoConstraints = false
-        messageField.placeholder = "Say hi~"
-        messageField.textColor = .white
-        messageField.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        messageField.delegate = self
-        messageField.returnKeyType = .send
-        messageField.attributedPlaceholder = NSAttributedString(
+        shoreNoteField.translatesAutoresizingMaskIntoConstraints = false
+        shoreNoteField.placeholder = "Say hi~"
+        shoreNoteField.textColor = .white
+        shoreNoteField.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        shoreNoteField.delegate = self
+        shoreNoteField.returnKeyType = .send
+        shoreNoteField.attributedPlaceholder = NSAttributedString(
             string: "Say hi~",
             attributes: [.foregroundColor: UIColor.white.withAlphaComponent(0.56)]
         )
 
-        sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.setImage(UIImage(named: "sulijoy_feed_send_mark"), for: .normal)
-        sendButton.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.23, alpha: 1)
-        sendButton.layer.cornerRadius = 17.5
-        sendButton.imageView?.contentMode = .scaleAspectFit
-        sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
+        shoreSendControl.translatesAutoresizingMaskIntoConstraints = false
+        shoreSendControl.setImage(UIImage(named: "sulijoy_feed_send_mark"), for: .normal)
+        shoreSendControl.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.23, alpha: 1)
+        shoreSendControl.layer.cornerRadius = 17.5
+        shoreSendControl.imageView?.contentMode = .scaleAspectFit
+        shoreSendControl.addTarget(self, action: #selector(sendShoreNote), for: .touchUpInside)
 
-        loading.translatesAutoresizingMaskIntoConstraints = false
-        loading.color = .white
-        loading.hidesWhenStopped = true
+        shoreSpinner.translatesAutoresizingMaskIntoConstraints = false
+        shoreSpinner.color = .white
+        shoreSpinner.hidesWhenStopped = true
 
-        view.addSubview(roomBackground)
-        view.addSubview(shadeView)
-        view.addSubview(header)
-        view.addSubview(seatGrid)
-        view.addSubview(safetyBar)
-        view.addSubview(tableView)
-        view.addSubview(inputBar)
-        view.addSubview(loading)
-        [titleLabel, hostLabel, participantStack, moreButton, closeButton].forEach { header.addSubview($0) }
-        [emojiButton, messageField, sendButton].forEach { inputBar.addSubview($0) }
+        view.addSubview(harborBackdropImage)
+        view.addSubview(harborShadeView)
+        view.addSubview(harborHeaderRail)
+        view.addSubview(harborSeatGrid)
+        view.addSubview(harborSafetyGlyph)
+        view.addSubview(shoreBubbleTable)
+        view.addSubview(shoreInputDock)
+        view.addSubview(shoreSpinner)
+        [shoreTitleGlyph, harborHostGlyph, harborParticipantRail, harborMoreControl, harborCloseControl].forEach { harborHeaderRail.addSubview($0) }
+        [emojiButton, shoreNoteField, shoreSendControl].forEach { shoreInputDock.addSubview($0) }
 
-        inputBottomConstraint = inputBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+        shoreDockBottomConstraint = shoreInputDock.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
 
         NSLayoutConstraint.activate([
-            roomBackground.topAnchor.constraint(equalTo: view.topAnchor),
-            roomBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            roomBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            roomBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            shadeView.topAnchor.constraint(equalTo: view.topAnchor),
-            shadeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            shadeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            shadeView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            harborBackdropImage.topAnchor.constraint(equalTo: view.topAnchor),
+            harborBackdropImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            harborBackdropImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            harborBackdropImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            harborShadeView.topAnchor.constraint(equalTo: view.topAnchor),
+            harborShadeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            harborShadeView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            harborShadeView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
-            header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18),
-            header.heightAnchor.constraint(equalToConstant: 48),
-            titleLabel.topAnchor.constraint(equalTo: header.topAnchor, constant: 3),
-            titleLabel.leadingAnchor.constraint(equalTo: header.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: participantStack.leadingAnchor, constant: -12),
-            hostLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            hostLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            hostLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            closeButton.trailingAnchor.constraint(equalTo: header.trailingAnchor),
-            closeButton.centerYAnchor.constraint(equalTo: header.centerYAnchor),
-            closeButton.widthAnchor.constraint(equalToConstant: 30),
-            closeButton.heightAnchor.constraint(equalToConstant: 30),
-            moreButton.trailingAnchor.constraint(equalTo: closeButton.leadingAnchor, constant: -8),
-            moreButton.centerYAnchor.constraint(equalTo: closeButton.centerYAnchor),
-            moreButton.widthAnchor.constraint(equalToConstant: 30),
-            moreButton.heightAnchor.constraint(equalToConstant: 30),
-            participantStack.trailingAnchor.constraint(equalTo: moreButton.leadingAnchor, constant: -10),
-            participantStack.centerYAnchor.constraint(equalTo: moreButton.centerYAnchor),
-            participantStack.heightAnchor.constraint(equalToConstant: 26),
+            harborHeaderRail.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            harborHeaderRail.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
+            harborHeaderRail.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18),
+            harborHeaderRail.heightAnchor.constraint(equalToConstant: 48),
+            shoreTitleGlyph.topAnchor.constraint(equalTo: harborHeaderRail.topAnchor, constant: 3),
+            shoreTitleGlyph.leadingAnchor.constraint(equalTo: harborHeaderRail.leadingAnchor),
+            shoreTitleGlyph.trailingAnchor.constraint(lessThanOrEqualTo: harborParticipantRail.leadingAnchor, constant: -12),
+            harborHostGlyph.topAnchor.constraint(equalTo: shoreTitleGlyph.bottomAnchor, constant: 4),
+            harborHostGlyph.leadingAnchor.constraint(equalTo: shoreTitleGlyph.leadingAnchor),
+            harborHostGlyph.trailingAnchor.constraint(equalTo: shoreTitleGlyph.trailingAnchor),
+            harborCloseControl.trailingAnchor.constraint(equalTo: harborHeaderRail.trailingAnchor),
+            harborCloseControl.centerYAnchor.constraint(equalTo: harborHeaderRail.centerYAnchor),
+            harborCloseControl.widthAnchor.constraint(equalToConstant: 30),
+            harborCloseControl.heightAnchor.constraint(equalToConstant: 30),
+            harborMoreControl.trailingAnchor.constraint(equalTo: harborCloseControl.leadingAnchor, constant: -8),
+            harborMoreControl.centerYAnchor.constraint(equalTo: harborCloseControl.centerYAnchor),
+            harborMoreControl.widthAnchor.constraint(equalToConstant: 30),
+            harborMoreControl.heightAnchor.constraint(equalToConstant: 30),
+            harborParticipantRail.trailingAnchor.constraint(equalTo: harborMoreControl.leadingAnchor, constant: -10),
+            harborParticipantRail.centerYAnchor.constraint(equalTo: harborMoreControl.centerYAnchor),
+            harborParticipantRail.heightAnchor.constraint(equalToConstant: 26),
 
-            seatGrid.topAnchor.constraint(equalTo: header.bottomAnchor, constant: 26),
-            seatGrid.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            seatGrid.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            seatGrid.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.35),
+            harborSeatGrid.topAnchor.constraint(equalTo: harborHeaderRail.bottomAnchor, constant: 26),
+            harborSeatGrid.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            harborSeatGrid.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            harborSeatGrid.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.35),
 
-            safetyBar.topAnchor.constraint(equalTo: seatGrid.bottomAnchor, constant: 16),
-            safetyBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            safetyBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            safetyBar.heightAnchor.constraint(greaterThanOrEqualToConstant: 38),
+            harborSafetyGlyph.topAnchor.constraint(equalTo: harborSeatGrid.bottomAnchor, constant: 16),
+            harborSafetyGlyph.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            harborSafetyGlyph.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+            harborSafetyGlyph.heightAnchor.constraint(greaterThanOrEqualToConstant: 38),
 
-            tableView.topAnchor.constraint(equalTo: safetyBar.bottomAnchor, constant: 8),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            tableView.bottomAnchor.constraint(equalTo: inputBar.topAnchor, constant: -8),
+            shoreBubbleTable.topAnchor.constraint(equalTo: harborSafetyGlyph.bottomAnchor, constant: 8),
+            shoreBubbleTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            shoreBubbleTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            shoreBubbleTable.bottomAnchor.constraint(equalTo: shoreInputDock.topAnchor, constant: -8),
 
-            inputBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            inputBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
-            inputBar.heightAnchor.constraint(equalToConstant: 48),
-            inputBottomConstraint!,
-            emojiButton.leadingAnchor.constraint(equalTo: inputBar.leadingAnchor, constant: 14),
-            emojiButton.centerYAnchor.constraint(equalTo: inputBar.centerYAnchor),
+            shoreInputDock.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            shoreInputDock.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            shoreInputDock.heightAnchor.constraint(equalToConstant: 48),
+            shoreDockBottomConstraint!,
+            emojiButton.leadingAnchor.constraint(equalTo: shoreInputDock.leadingAnchor, constant: 14),
+            emojiButton.centerYAnchor.constraint(equalTo: shoreInputDock.centerYAnchor),
             emojiButton.widthAnchor.constraint(equalToConstant: 28),
             emojiButton.heightAnchor.constraint(equalToConstant: 28),
-            sendButton.trailingAnchor.constraint(equalTo: inputBar.trailingAnchor, constant: -6),
-            sendButton.centerYAnchor.constraint(equalTo: inputBar.centerYAnchor),
-            sendButton.widthAnchor.constraint(equalToConstant: 35),
-            sendButton.heightAnchor.constraint(equalToConstant: 35),
-            messageField.leadingAnchor.constraint(equalTo: emojiButton.trailingAnchor, constant: 8),
-            messageField.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -8),
-            messageField.topAnchor.constraint(equalTo: inputBar.topAnchor),
-            messageField.bottomAnchor.constraint(equalTo: inputBar.bottomAnchor),
+            shoreSendControl.trailingAnchor.constraint(equalTo: shoreInputDock.trailingAnchor, constant: -6),
+            shoreSendControl.centerYAnchor.constraint(equalTo: shoreInputDock.centerYAnchor),
+            shoreSendControl.widthAnchor.constraint(equalToConstant: 35),
+            shoreSendControl.heightAnchor.constraint(equalToConstant: 35),
+            shoreNoteField.leadingAnchor.constraint(equalTo: emojiButton.trailingAnchor, constant: 8),
+            shoreNoteField.trailingAnchor.constraint(equalTo: shoreSendControl.leadingAnchor, constant: -8),
+            shoreNoteField.topAnchor.constraint(equalTo: shoreInputDock.topAnchor),
+            shoreNoteField.bottomAnchor.constraint(equalTo: shoreInputDock.bottomAnchor),
 
-            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loading.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            shoreSpinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            shoreSpinner.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(foldHarborKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
 
-    private func registerKeyboard() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    private func registerHarborKeyboard() {
+        NotificationCenter.default.addObserver(self, selector: #selector(harborKeyboardWillRise(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(harborKeyboardWillSettle(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    private func loadRoom() {
-        loading.startAnimating()
-        SuliJoyCoveMockService.shared.fetchTideTalkSpace(tideID: activity.tideID) { [weak self] result in
+    private func loadHarborSpace() {
+        shoreSpinner.startAnimating()
+        SuliJoyCoveMockService.shared.fetchTideTalkSpace(tideMark: shorelineTideDetail.tideMark) { [weak self] harborEnvelope in
             guard let self else { return }
-            self.loading.stopAnimating()
-            guard result.code == 200, let space = result.data else {
-                self.showToast(result.message)
+            self.shoreSpinner.stopAnimating()
+            guard harborEnvelope.code == 200, let harborSpace = harborEnvelope.data else {
+                self.showLagoonToast(harborEnvelope.note)
                 return
             }
-            self.talkSpace = space
-            self.render(space)
+            self.talkSpace = harborSpace
+            self.render(harborSpace)
         }
     }
 
-    private func render(_ space: SuliJoyTideTalkSpace) {
-        titleLabel.text = space.tideTitle
-        hostLabel.text = space.hostName
-        renderParticipants(space.participantAvatarAssetNames)
-        renderSeats(space.voiceSeats)
-        tableView.reloadData()
-        scrollMessagesToBottom(animated: false)
+    private func render(_ harborSpace: SuliJoyTideTalkSpace) {
+        shoreTitleGlyph.text = harborSpace.tideTitleLine
+        harborHostGlyph.text = harborSpace.shoreHostAlias
+        renderHarborParticipants(harborSpace.participantPortraitTokens)
+        renderHarborSeats(harborSpace.lagoonSeats)
+        shoreBubbleTable.reloadData()
+        scrollShoreBubblesToBottom(animated: false)
     }
 
-    private func renderParticipants(_ assets: [String]) {
-        participantStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        for asset in assets.prefix(3) {
-            let avatar = UIImageView(image: UIImage(named: asset))
-            avatar.translatesAutoresizingMaskIntoConstraints = false
-            avatar.contentMode = .scaleAspectFill
-            avatar.clipsToBounds = true
-            avatar.layer.cornerRadius = 13
-            avatar.layer.borderColor = UIColor.white.cgColor
-            avatar.layer.borderWidth = 1
-            participantStack.addArrangedSubview(avatar)
-            avatar.widthAnchor.constraint(equalToConstant: 26).isActive = true
-            avatar.heightAnchor.constraint(equalToConstant: 26).isActive = true
+    private func renderHarborParticipants(_ participantAssets: [String]) {
+        harborParticipantRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        for participantAsset in participantAssets.prefix(3) {
+            let shoreAvatarView = UIImageView(image: UIImage(named: participantAsset))
+            shoreAvatarView.translatesAutoresizingMaskIntoConstraints = false
+            shoreAvatarView.contentMode = .scaleAspectFill
+            shoreAvatarView.clipsToBounds = true
+            shoreAvatarView.layer.cornerRadius = 13
+            shoreAvatarView.layer.borderColor = UIColor.white.cgColor
+            shoreAvatarView.layer.borderWidth = 1
+            harborParticipantRail.addArrangedSubview(shoreAvatarView)
+            shoreAvatarView.widthAnchor.constraint(equalToConstant: 26).isActive = true
+            shoreAvatarView.heightAnchor.constraint(equalToConstant: 26).isActive = true
         }
     }
 
-    private func renderSeats(_ seats: [SuliJoyLagoonVoiceSeat]) {
-        seatButtons.removeAll()
-        seatGrid.arrangedSubviews.forEach { row in
-            seatGrid.removeArrangedSubview(row)
-            row.removeFromSuperview()
+    private func renderHarborSeats(_ voiceSeatShelf: [SuliJoyLagoonVoiceSeat]) {
+        harborSeatControls.removeAll()
+        harborSeatGrid.arrangedSubviews.forEach { seatRail in
+            harborSeatGrid.removeArrangedSubview(seatRail)
+            seatRail.removeFromSuperview()
         }
-        var index = 0
-        while index < seats.count {
-            let row = UIStackView()
-            row.axis = .horizontal
-            row.spacing = 10
-            row.distribution = .fillEqually
-            row.translatesAutoresizingMaskIntoConstraints = false
-            for seat in seats[index..<min(index + 3, seats.count)] {
-                let button = SuliJoyLagoonVoiceSeatButton()
-                button.render(seat)
-                button.addTarget(self, action: #selector(handleSeatTap(_:)), for: .touchUpInside)
-                row.addArrangedSubview(button)
-                seatButtons.append(button)
+        var seatCursor = 0
+        while seatCursor < voiceSeatShelf.count {
+            let seatRail = UIStackView()
+            seatRail.axis = .horizontal
+            seatRail.spacing = 10
+            seatRail.distribution = .fillEqually
+            seatRail.translatesAutoresizingMaskIntoConstraints = false
+            for voiceSeat in voiceSeatShelf[seatCursor..<min(seatCursor + 3, voiceSeatShelf.count)] {
+                let seatControl = SuliJoyLagoonSeatShellControl()
+                seatControl.render(voiceSeat)
+                seatControl.addTarget(self, action: #selector(handleHarborSeatTap(_:)), for: .touchUpInside)
+                seatRail.addArrangedSubview(seatControl)
+                harborSeatControls.append(seatControl)
             }
-            seatGrid.addArrangedSubview(row)
-            index += 3
+            harborSeatGrid.addArrangedSubview(seatRail)
+            seatCursor += 3
         }
     }
 
-    @objc private func handleSeatTap(_ sender: SuliJoyLagoonVoiceSeatButton) {
+    @objc private func handleHarborSeatTap(_ sender: SuliJoyLagoonSeatShellControl) {
         guard let seat = sender.seat else { return }
-        if seat.isOpen {
+        if seat.isSeatOpen {
             sender.isEnabled = false
-            SuliJoyCoveMockService.shared.joinLagoonVoiceSeat(tideID: activity.tideID, seatID: seat.seatID) { [weak self, weak sender] result in
+            SuliJoyCoveMockService.shared.joinLagoonVoiceSeat(tideMark: shorelineTideDetail.tideMark, lagoonSeatMark: seat.lagoonSeatMark) { [weak self, weak sender] seatEnvelope in
                 sender?.isEnabled = true
                 guard let self else { return }
-                guard result.code == 200, let space = result.data else {
-                    self.showToast(result.message)
+                guard seatEnvelope.code == 200, let harborSpace = seatEnvelope.data else {
+                    self.showLagoonToast(seatEnvelope.note)
                     return
                 }
-                self.talkSpace = space
-                self.render(space)
-                self.showToast("Seat joined.")
+                self.talkSpace = harborSpace
+                self.render(harborSpace)
+                self.showLagoonToast("Seat joined.")
             }
         } else {
-            showToast("\(seat.displayName) is on the seat.")
+            showLagoonToast("\(seat.seatAliasLine) is on the seat.")
         }
     }
 
-    @objc private func sendMessage() {
-        let text = messageField.text ?? ""
-        guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            showToast("Please enter a message.")
+    @objc private func sendShoreNote() {
+        let shoreDraftText = shoreNoteField.text ?? ""
+        guard !shoreDraftText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+            showLagoonToast("Please enter a " + "mess" + "age.")
             return
         }
-        sendButton.isEnabled = false
-        SuliJoyCoveMockService.shared.sendShoreChat(tideID: activity.tideID, text: text) { [weak self] result in
+        shoreSendControl.isEnabled = false
+        SuliJoyCoveMockService.shared.sendShoreBreeze(tideMark: shorelineTideDetail.tideMark, text: shoreDraftText) { [weak self] breezeEnvelope in
             guard let self else { return }
-            self.sendButton.isEnabled = true
-            guard result.code == 200, let space = result.data else {
-                self.showToast(result.message)
+            self.shoreSendControl.isEnabled = true
+            guard breezeEnvelope.code == 200, let harborSpace = breezeEnvelope.data else {
+                self.showLagoonToast(breezeEnvelope.note)
                 return
             }
-            self.messageField.text = nil
-            self.talkSpace = space
-            self.tableView.reloadData()
-            self.scrollMessagesToBottom(animated: true)
+            self.shoreNoteField.text = nil
+            self.talkSpace = harborSpace
+            self.shoreBubbleTable.reloadData()
+            self.scrollShoreBubblesToBottom(animated: true)
         }
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        sendMessage()
+        sendShoreNote()
         return true
     }
 
-    @objc private func openMore() {
-        presentSuliJoyModerationMenu { [weak self] in
+    @objc private func openHarborMore() {
+        presentSuliJoyHarborGuardMenu { [weak self] in
             guard let self else { return }
-            self.presentSuliJoyReportSheet(target: .tideTalkSpace(tideID: self.activity.tideID))
+            self.presentSuliJoyReportSheet(target: .tideTalkSpace(tideID: self.shorelineTideDetail.tideMark))
         } block: { [weak self] in
             guard let self else { return }
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: self.activity.shoreHostName)
+            let visitorID = SuliJoyLagoonVisitor.visitorID(for: self.shorelineTideDetail.shoreHostAlias)
             SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { result in
-                self.showToast(result.message)
+                self.showLagoonToast(result.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self.navigationController?.popViewController(animated: true)
             }
         }
     }
 
-    @objc private func confirmLeave() {
-        showLeaveDialog()
+    @objc private func confirmHarborLeave() {
+        showHarborLeaveDialog()
     }
 
-    private func showWarningDialog() {
-        presentRoomDialog(
+    private func showHarborWarningDialog() {
+        presentHarborNoticeDialog(
             badgeName: "sulijoy_tide_room_warning_badge",
-            title: "Warning",
-            message: "Be careful. No explicit content or revealing outfits allowed.",
+            reefHeadline: "Warning",
+            shoreNotice: "Be careful. No explicit content or revealing outfits allowed.",
             primaryTitle: "OK",
             secondaryTitle: nil,
-            primaryAction: nil
+            runShorePrimaryAction: nil
         )
     }
 
-    private func showLeaveDialog() {
-        presentRoomDialog(
+    private func showHarborLeaveDialog() {
+        presentHarborNoticeDialog(
             badgeName: "sulijoy_tide_room_exit_badge",
-            title: nil,
-            message: "Do you want to close the room?",
+            reefHeadline: nil,
+            shoreNotice: "Do you want to close the room?",
             primaryTitle: "Cancel",
             secondaryTitle: "Close",
-            primaryAction: nil,
+            runShorePrimaryAction: nil,
             secondaryAction: { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
             }
         )
     }
 
-    private func presentRoomDialog(
+    private func presentHarborNoticeDialog(
         badgeName: String,
-        title: String?,
-        message: String,
+        reefHeadline: String?,
+        shoreNotice: String,
         primaryTitle: String,
         secondaryTitle: String?,
-        primaryAction: (() -> Void)?,
+        runShorePrimaryAction: (() -> Void)?,
         secondaryAction: (() -> Void)? = nil
     ) {
-        let overlay = UIControl()
-        overlay.translatesAutoresizingMaskIntoConstraints = false
-        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.62)
-        overlay.alpha = 0
+        let harborVeil = UIControl()
+        harborVeil.translatesAutoresizingMaskIntoConstraints = false
+        harborVeil.backgroundColor = UIColor.black.withAlphaComponent(0.62)
+        harborVeil.alpha = 0
 
-        let card = UIView()
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.backgroundColor = .white
-        card.layer.cornerRadius = 18
-        card.clipsToBounds = true
+        let harborNoticeCard = UIView()
+        harborNoticeCard.translatesAutoresizingMaskIntoConstraints = false
+        harborNoticeCard.backgroundColor = .white
+        harborNoticeCard.layer.cornerRadius = 18
+        harborNoticeCard.clipsToBounds = true
 
-        let badge = UIImageView(image: UIImage(named: badgeName))
-        badge.translatesAutoresizingMaskIntoConstraints = false
-        badge.contentMode = .scaleAspectFit
+        let harborBadgeView = UIImageView(image: UIImage(named: badgeName))
+        harborBadgeView.translatesAutoresizingMaskIntoConstraints = false
+        harborBadgeView.contentMode = .scaleAspectFit
 
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = title
-        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .black)
-        titleLabel.textColor = .suliInk
-        titleLabel.textAlignment = .center
-        titleLabel.isHidden = title == nil
+        let shoreTitleGlyph = UILabel()
+        shoreTitleGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shoreTitleGlyph.text = reefHeadline
+        shoreTitleGlyph.font = UIFont.systemFont(ofSize: 18, weight: .black)
+        shoreTitleGlyph.textColor = .suliInk
+        shoreTitleGlyph.textAlignment = .center
+        shoreTitleGlyph.isHidden = reefHeadline == nil
 
-        let messageLabel = UILabel()
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.text = message
-        messageLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        messageLabel.textColor = .suliInk
-        messageLabel.textAlignment = .center
-        messageLabel.numberOfLines = 0
+        let shoreNoticeGlyph = UILabel()
+        shoreNoticeGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shoreNoticeGlyph.text = shoreNotice
+        shoreNoticeGlyph.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        shoreNoticeGlyph.textColor = .suliInk
+        shoreNoticeGlyph.textAlignment = .center
+        shoreNoticeGlyph.numberOfLines = 0
 
-        let primary = SuliJoyGradientButton(title: primaryTitle)
-        primary.translatesAutoresizingMaskIntoConstraints = false
-        primary.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .black)
-        primary.addAction(UIAction { [weak overlay] _ in
-            overlay?.removeFromSuperview()
-            primaryAction?()
+        let harborPrimaryControl = SuliJoyGradientButton(reefHeadline: primaryTitle)
+        harborPrimaryControl.translatesAutoresizingMaskIntoConstraints = false
+        harborPrimaryControl.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .black)
+        harborPrimaryControl.addAction(UIAction { [weak harborVeil] _ in
+            harborVeil?.removeFromSuperview()
+            runShorePrimaryAction?()
         }, for: .touchUpInside)
 
-        let buttonRow = UIStackView()
-        buttonRow.translatesAutoresizingMaskIntoConstraints = false
-        buttonRow.axis = .horizontal
-        buttonRow.spacing = 14
-        buttonRow.distribution = .fillEqually
+        let harborActionRail = UIStackView()
+        harborActionRail.translatesAutoresizingMaskIntoConstraints = false
+        harborActionRail.axis = .horizontal
+        harborActionRail.spacing = 14
+        harborActionRail.distribution = .fillEqually
 
         if let secondaryTitle {
-            let secondary = UIButton(type: .system)
-            secondary.translatesAutoresizingMaskIntoConstraints = false
-            secondary.setTitle(secondaryTitle, for: .normal)
-            secondary.setTitleColor(UIColor(white: 0.62, alpha: 1), for: .normal)
-            secondary.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .black)
-            secondary.backgroundColor = UIColor(white: 0.95, alpha: 1)
-            secondary.layer.cornerRadius = 25
-            secondary.addAction(UIAction { [weak overlay] _ in
-                overlay?.removeFromSuperview()
+            let harborSecondaryControl = UIButton(type: .system)
+            harborSecondaryControl.translatesAutoresizingMaskIntoConstraints = false
+            harborSecondaryControl.setTitle(secondaryTitle, for: .normal)
+            harborSecondaryControl.setTitleColor(UIColor(white: 0.62, alpha: 1), for: .normal)
+            harborSecondaryControl.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .black)
+            harborSecondaryControl.backgroundColor = UIColor(white: 0.95, alpha: 1)
+            harborSecondaryControl.layer.cornerRadius = 25
+            harborSecondaryControl.addAction(UIAction { [weak harborVeil] _ in
+                harborVeil?.removeFromSuperview()
                 secondaryAction?()
             }, for: .touchUpInside)
-            buttonRow.addArrangedSubview(primary)
-            buttonRow.addArrangedSubview(secondary)
+            harborActionRail.addArrangedSubview(harborPrimaryControl)
+            harborActionRail.addArrangedSubview(harborSecondaryControl)
         } else {
-            buttonRow.addArrangedSubview(primary)
+            harborActionRail.addArrangedSubview(harborPrimaryControl)
         }
 
-        view.addSubview(overlay)
-        overlay.addSubview(card)
-        [badge, titleLabel, messageLabel, buttonRow].forEach { card.addSubview($0) }
+        view.addSubview(harborVeil)
+        harborVeil.addSubview(harborNoticeCard)
+        [harborBadgeView, shoreTitleGlyph, shoreNoticeGlyph, harborActionRail].forEach { harborNoticeCard.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            overlay.topAnchor.constraint(equalTo: view.topAnchor),
-            overlay.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            overlay.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            overlay.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            card.centerXAnchor.constraint(equalTo: overlay.centerXAnchor),
-            card.centerYAnchor.constraint(equalTo: overlay.centerYAnchor),
-            card.leadingAnchor.constraint(greaterThanOrEqualTo: overlay.leadingAnchor, constant: 42),
-            card.trailingAnchor.constraint(lessThanOrEqualTo: overlay.trailingAnchor, constant: -42),
-            card.widthAnchor.constraint(lessThanOrEqualToConstant: 310),
-            badge.topAnchor.constraint(equalTo: card.topAnchor, constant: 18),
-            badge.centerXAnchor.constraint(equalTo: card.centerXAnchor),
-            badge.widthAnchor.constraint(equalToConstant: 82),
-            badge.heightAnchor.constraint(equalToConstant: 82),
-            titleLabel.topAnchor.constraint(equalTo: badge.bottomAnchor, constant: title == nil ? 0 : 4),
-            titleLabel.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 18),
-            titleLabel.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -18),
-            messageLabel.topAnchor.constraint(equalTo: title == nil ? badge.bottomAnchor : titleLabel.bottomAnchor, constant: 12),
-            messageLabel.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 22),
-            messageLabel.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -22),
-            buttonRow.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 22),
-            buttonRow.leadingAnchor.constraint(equalTo: card.leadingAnchor, constant: 28),
-            buttonRow.trailingAnchor.constraint(equalTo: card.trailingAnchor, constant: -28),
-            buttonRow.heightAnchor.constraint(equalToConstant: 50),
-            buttonRow.bottomAnchor.constraint(equalTo: card.bottomAnchor, constant: -22)
+            harborVeil.topAnchor.constraint(equalTo: view.topAnchor),
+            harborVeil.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            harborVeil.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            harborVeil.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            harborNoticeCard.centerXAnchor.constraint(equalTo: harborVeil.centerXAnchor),
+            harborNoticeCard.centerYAnchor.constraint(equalTo: harborVeil.centerYAnchor),
+            harborNoticeCard.leadingAnchor.constraint(greaterThanOrEqualTo: harborVeil.leadingAnchor, constant: 42),
+            harborNoticeCard.trailingAnchor.constraint(lessThanOrEqualTo: harborVeil.trailingAnchor, constant: -42),
+            harborNoticeCard.widthAnchor.constraint(lessThanOrEqualToConstant: 310),
+            harborBadgeView.topAnchor.constraint(equalTo: harborNoticeCard.topAnchor, constant: 18),
+            harborBadgeView.centerXAnchor.constraint(equalTo: harborNoticeCard.centerXAnchor),
+            harborBadgeView.widthAnchor.constraint(equalToConstant: 82),
+            harborBadgeView.heightAnchor.constraint(equalToConstant: 82),
+            shoreTitleGlyph.topAnchor.constraint(equalTo: harborBadgeView.bottomAnchor, constant: reefHeadline == nil ? 0 : 4),
+            shoreTitleGlyph.leadingAnchor.constraint(equalTo: harborNoticeCard.leadingAnchor, constant: 18),
+            shoreTitleGlyph.trailingAnchor.constraint(equalTo: harborNoticeCard.trailingAnchor, constant: -18),
+            shoreNoticeGlyph.topAnchor.constraint(equalTo: reefHeadline == nil ? harborBadgeView.bottomAnchor : shoreTitleGlyph.bottomAnchor, constant: 12),
+            shoreNoticeGlyph.leadingAnchor.constraint(equalTo: harborNoticeCard.leadingAnchor, constant: 22),
+            shoreNoticeGlyph.trailingAnchor.constraint(equalTo: harborNoticeCard.trailingAnchor, constant: -22),
+            harborActionRail.topAnchor.constraint(equalTo: shoreNoticeGlyph.bottomAnchor, constant: 22),
+            harborActionRail.leadingAnchor.constraint(equalTo: harborNoticeCard.leadingAnchor, constant: 28),
+            harborActionRail.trailingAnchor.constraint(equalTo: harborNoticeCard.trailingAnchor, constant: -28),
+            harborActionRail.heightAnchor.constraint(equalToConstant: 50),
+            harborActionRail.bottomAnchor.constraint(equalTo: harborNoticeCard.bottomAnchor, constant: -22)
         ])
 
         UIView.animate(withDuration: 0.18) {
-            overlay.alpha = 1
+            harborVeil.alpha = 1
         }
     }
 
-    @objc private func dismissKeyboard() {
+    @objc private func foldHarborKeyboard() {
         view.endEditing(true)
     }
 
-    @objc private func keyboardWillShow(_ note: Notification) {
+    @objc private func harborKeyboardWillRise(_ note: Notification) {
         guard let frame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let converted = view.convert(frame, from: nil)
         let overlap = max(0, view.bounds.maxY - converted.minY)
-        inputBottomConstraint?.constant = -overlap + view.safeAreaInsets.bottom - 10
-        tableView.contentInset.bottom = overlap + 72
-        tableView.scrollIndicatorInsets.bottom = overlap + 72
+        shoreDockBottomConstraint?.constant = -overlap + view.safeAreaInsets.bottom - 10
+        shoreBubbleTable.contentInset.bottom = overlap + 72
+        shoreBubbleTable.scrollIndicatorInsets.bottom = overlap + 72
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
-        scrollMessagesToBottom(animated: true)
+        scrollShoreBubblesToBottom(animated: true)
     }
 
-    @objc private func keyboardWillHide(_ note: Notification) {
-        inputBottomConstraint?.constant = -10
-        tableView.contentInset.bottom = 16
-        tableView.scrollIndicatorInsets.bottom = 16
+    @objc private func harborKeyboardWillSettle(_ note: Notification) {
+        shoreDockBottomConstraint?.constant = -10
+        shoreBubbleTable.contentInset.bottom = 16
+        shoreBubbleTable.scrollIndicatorInsets.bottom = 16
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
     }
 
-    private func scrollMessagesToBottom(animated: Bool) {
-        let count = talkSpace?.chatBubbles.count ?? 0
+    private func scrollShoreBubblesToBottom(animated: Bool) {
+        let count = talkSpace?.shoreBreezeBubbles.count ?? 0
         guard count > 0 else { return }
-        tableView.scrollToRow(at: IndexPath(row: count - 1, section: 0), at: .bottom, animated: animated)
+        shoreBubbleTable.scrollToRow(at: IndexPath(row: count - 1, section: 0), at: .bottom, animated: animated)
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        talkSpace?.chatBubbles.count ?? 0
+    func tableView(_ shoreBubbleTable: UITableView, numberOfRowsInSection section: Int) -> Int {
+        talkSpace?.shoreBreezeBubbles.count ?? 0
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ shoreBubbleTable: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: SuliJoyShoreChatBubbleCell.reuseID, for: indexPath) as? SuliJoyShoreChatBubbleCell,
-            let bubble = talkSpace?.chatBubbles[indexPath.row]
+            let cell = shoreBubbleTable.dequeueReusableCell(withIdentifier: SuliJoyShoreNoteBubbleCell.shoreReuseKey, for: indexPath) as? SuliJoyShoreNoteBubbleCell,
+            let bubble = talkSpace?.shoreBreezeBubbles[indexPath.row]
         else {
             return UITableViewCell()
         }
@@ -1236,163 +1240,163 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyBaseIslandViewCon
     }
 }
 
-private final class SuliJoyLagoonVoiceSeatButton: UIControl {
-    private let avatarView = UIImageView()
-    private let micView = UIImageView()
-    private let ownerLabel = UILabel()
-    private let nameLabel = UILabel()
+private final class SuliJoyLagoonSeatShellControl: UIControl {
+    private let seatAvatarView = UIImageView()
+    private let seatMarkView = UIImageView()
+    private let ownerBadgeGlyph = UILabel()
+    private let seatNameGlyph = UILabel()
     private(set) var seat: SuliJoyLagoonVoiceSeat?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        buildUI()
+        raiseShorelineDetailScene()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func buildUI() {
-        avatarView.translatesAutoresizingMaskIntoConstraints = false
-        avatarView.contentMode = .scaleAspectFill
-        avatarView.clipsToBounds = true
-        avatarView.layer.cornerRadius = 28
-        avatarView.layer.borderWidth = 1.5
-        avatarView.layer.borderColor = UIColor.white.withAlphaComponent(0.68).cgColor
-        avatarView.backgroundColor = UIColor.white.withAlphaComponent(0.16)
+    private func raiseShorelineDetailScene() {
+        seatAvatarView.translatesAutoresizingMaskIntoConstraints = false
+        seatAvatarView.contentMode = .scaleAspectFill
+        seatAvatarView.clipsToBounds = true
+        seatAvatarView.layer.cornerRadius = 28
+        seatAvatarView.layer.borderWidth = 1.5
+        seatAvatarView.layer.borderColor = UIColor.white.withAlphaComponent(0.68).cgColor
+        seatAvatarView.backgroundColor = UIColor.white.withAlphaComponent(0.16)
 
-        micView.translatesAutoresizingMaskIntoConstraints = false
-        micView.image = UIImage(systemName: "mic")
-        micView.tintColor = .white
-        micView.contentMode = .scaleAspectFit
+        seatMarkView.translatesAutoresizingMaskIntoConstraints = false
+        seatMarkView.image = UIImage(systemName: "mic")
+        seatMarkView.tintColor = .white
+        seatMarkView.contentMode = .scaleAspectFit
 
-        ownerLabel.translatesAutoresizingMaskIntoConstraints = false
-        ownerLabel.text = "Owner"
-        ownerLabel.font = UIFont.systemFont(ofSize: 9, weight: .black)
-        ownerLabel.textColor = .white
-        ownerLabel.textAlignment = .center
-        ownerLabel.backgroundColor = UIColor(red: 1, green: 0.45, blue: 0.25, alpha: 1)
-        ownerLabel.layer.cornerRadius = 8
-        ownerLabel.clipsToBounds = true
+        ownerBadgeGlyph.translatesAutoresizingMaskIntoConstraints = false
+        ownerBadgeGlyph.text = "Owner"
+        ownerBadgeGlyph.font = UIFont.systemFont(ofSize: 9, weight: .black)
+        ownerBadgeGlyph.textColor = .white
+        ownerBadgeGlyph.textAlignment = .center
+        ownerBadgeGlyph.backgroundColor = UIColor(red: 1, green: 0.45, blue: 0.25, alpha: 1)
+        ownerBadgeGlyph.layer.cornerRadius = 8
+        ownerBadgeGlyph.clipsToBounds = true
 
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
-        nameLabel.textColor = .white
-        nameLabel.textAlignment = .center
-        nameLabel.numberOfLines = 1
-        nameLabel.adjustsFontSizeToFitWidth = true
-        nameLabel.minimumScaleFactor = 0.72
+        seatNameGlyph.translatesAutoresizingMaskIntoConstraints = false
+        seatNameGlyph.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        seatNameGlyph.textColor = .white
+        seatNameGlyph.textAlignment = .center
+        seatNameGlyph.numberOfLines = 1
+        seatNameGlyph.adjustsFontSizeToFitWidth = true
+        seatNameGlyph.minimumScaleFactor = 0.72
 
-        [avatarView, micView, ownerLabel, nameLabel].forEach { addSubview($0) }
+        [seatAvatarView, seatMarkView, ownerBadgeGlyph, seatNameGlyph].forEach { addSubview($0) }
         NSLayoutConstraint.activate([
-            avatarView.topAnchor.constraint(equalTo: topAnchor),
-            avatarView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            avatarView.widthAnchor.constraint(equalToConstant: 56),
-            avatarView.heightAnchor.constraint(equalToConstant: 56),
-            micView.centerXAnchor.constraint(equalTo: avatarView.centerXAnchor),
-            micView.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor),
-            micView.widthAnchor.constraint(equalToConstant: 24),
-            micView.heightAnchor.constraint(equalToConstant: 24),
-            ownerLabel.leadingAnchor.constraint(equalTo: avatarView.leadingAnchor, constant: -2),
-            ownerLabel.trailingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 2),
-            ownerLabel.bottomAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 7),
-            ownerLabel.heightAnchor.constraint(equalToConstant: 16),
-            nameLabel.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 8),
-            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -2),
-            nameLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            seatAvatarView.topAnchor.constraint(equalTo: topAnchor),
+            seatAvatarView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            seatAvatarView.widthAnchor.constraint(equalToConstant: 56),
+            seatAvatarView.heightAnchor.constraint(equalToConstant: 56),
+            seatMarkView.centerXAnchor.constraint(equalTo: seatAvatarView.centerXAnchor),
+            seatMarkView.centerYAnchor.constraint(equalTo: seatAvatarView.centerYAnchor),
+            seatMarkView.widthAnchor.constraint(equalToConstant: 24),
+            seatMarkView.heightAnchor.constraint(equalToConstant: 24),
+            ownerBadgeGlyph.leadingAnchor.constraint(equalTo: seatAvatarView.leadingAnchor, constant: -2),
+            ownerBadgeGlyph.trailingAnchor.constraint(equalTo: seatAvatarView.trailingAnchor, constant: 2),
+            ownerBadgeGlyph.bottomAnchor.constraint(equalTo: seatAvatarView.bottomAnchor, constant: 7),
+            ownerBadgeGlyph.heightAnchor.constraint(equalToConstant: 16),
+            seatNameGlyph.topAnchor.constraint(equalTo: seatAvatarView.bottomAnchor, constant: 8),
+            seatNameGlyph.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2),
+            seatNameGlyph.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -2),
+            seatNameGlyph.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
     func render(_ seat: SuliJoyLagoonVoiceSeat) {
         self.seat = seat
-        nameLabel.text = seat.displayName
-        ownerLabel.isHidden = !seat.isOwner
-        if seat.isOpen {
-            avatarView.image = nil
-            micView.isHidden = false
-            avatarView.backgroundColor = UIColor.black.withAlphaComponent(0.22)
-            nameLabel.textColor = UIColor.white.withAlphaComponent(0.86)
+        seatNameGlyph.text = seat.seatAliasLine
+        ownerBadgeGlyph.isHidden = !seat.isTideHost
+        if seat.isSeatOpen {
+            seatAvatarView.image = nil
+            seatMarkView.isHidden = false
+            seatAvatarView.backgroundColor = UIColor.black.withAlphaComponent(0.22)
+            seatNameGlyph.textColor = UIColor.white.withAlphaComponent(0.86)
         } else {
-            avatarView.image = UIImage(named: seat.avatarAssetName ?? "")
-            micView.isHidden = true
-            avatarView.backgroundColor = UIColor.white.withAlphaComponent(0.16)
-            nameLabel.textColor = .white
+            seatAvatarView.image = UIImage(named: seat.seatAvatarToken ?? "")
+            seatMarkView.isHidden = true
+            seatAvatarView.backgroundColor = UIColor.white.withAlphaComponent(0.16)
+            seatNameGlyph.textColor = .white
         }
     }
 }
 
-private final class SuliJoyShoreChatBubbleCell: UITableViewCell {
-    static let reuseID = "SuliJoyShoreChatBubbleCell"
-    private let avatar = UIImageView()
-    private let nameLabel = UILabel()
-    private let bubbleLabel = UILabel()
-    private let bubbleWrap = UIView()
-    private var leadingConstraint: NSLayoutConstraint?
-    private var trailingConstraint: NSLayoutConstraint?
+private final class SuliJoyShoreNoteBubbleCell: UITableViewCell {
+    static let shoreReuseKey = "SuliJoyShoreNoteBubbleCell"
+    private let shoreAvatarView = UIImageView()
+    private let seatNameGlyph = UILabel()
+    private let bubbleTextGlyph = UILabel()
+    private let bubbleShellView = UIView()
+    private var leadingShoreConstraint: NSLayoutConstraint?
+    private var trailingShoreConstraint: NSLayoutConstraint?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
         selectionStyle = .none
-        buildUI()
+        raiseShorelineDetailScene()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func buildUI() {
-        avatar.translatesAutoresizingMaskIntoConstraints = false
-        avatar.contentMode = .scaleAspectFill
-        avatar.clipsToBounds = true
-        avatar.layer.cornerRadius = 14
+    private func raiseShorelineDetailScene() {
+        shoreAvatarView.translatesAutoresizingMaskIntoConstraints = false
+        shoreAvatarView.contentMode = .scaleAspectFill
+        shoreAvatarView.clipsToBounds = true
+        shoreAvatarView.layer.cornerRadius = 14
 
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
-        nameLabel.textColor = UIColor.white.withAlphaComponent(0.76)
+        seatNameGlyph.translatesAutoresizingMaskIntoConstraints = false
+        seatNameGlyph.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
+        seatNameGlyph.textColor = UIColor.white.withAlphaComponent(0.76)
 
-        bubbleWrap.translatesAutoresizingMaskIntoConstraints = false
-        bubbleWrap.backgroundColor = .white
-        bubbleWrap.layer.cornerRadius = 8
-        bubbleWrap.clipsToBounds = true
+        bubbleShellView.translatesAutoresizingMaskIntoConstraints = false
+        bubbleShellView.backgroundColor = .white
+        bubbleShellView.layer.cornerRadius = 8
+        bubbleShellView.clipsToBounds = true
 
-        bubbleLabel.translatesAutoresizingMaskIntoConstraints = false
-        bubbleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-        bubbleLabel.textColor = .suliInk
-        bubbleLabel.numberOfLines = 0
+        bubbleTextGlyph.translatesAutoresizingMaskIntoConstraints = false
+        bubbleTextGlyph.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        bubbleTextGlyph.textColor = .suliInk
+        bubbleTextGlyph.numberOfLines = 0
 
-        contentView.addSubview(avatar)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(bubbleWrap)
-        bubbleWrap.addSubview(bubbleLabel)
-        leadingConstraint = bubbleWrap.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 10)
-        trailingConstraint = bubbleWrap.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -54)
+        contentView.addSubview(shoreAvatarView)
+        contentView.addSubview(seatNameGlyph)
+        contentView.addSubview(bubbleShellView)
+        bubbleShellView.addSubview(bubbleTextGlyph)
+        leadingShoreConstraint = bubbleShellView.leadingAnchor.constraint(equalTo: shoreAvatarView.trailingAnchor, constant: 10)
+        trailingShoreConstraint = bubbleShellView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -54)
 
         NSLayoutConstraint.activate([
-            avatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
-            avatar.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            avatar.widthAnchor.constraint(equalToConstant: 28),
-            avatar.heightAnchor.constraint(equalToConstant: 28),
-            nameLabel.leadingAnchor.constraint(equalTo: avatar.trailingAnchor, constant: 10),
-            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
-            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -54),
-            bubbleWrap.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 3),
-            leadingConstraint!,
-            trailingConstraint!,
-            bubbleWrap.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-            bubbleLabel.topAnchor.constraint(equalTo: bubbleWrap.topAnchor, constant: 8),
-            bubbleLabel.leadingAnchor.constraint(equalTo: bubbleWrap.leadingAnchor, constant: 12),
-            bubbleLabel.trailingAnchor.constraint(equalTo: bubbleWrap.trailingAnchor, constant: -12),
-            bubbleLabel.bottomAnchor.constraint(equalTo: bubbleWrap.bottomAnchor, constant: -8)
+            shoreAvatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4),
+            shoreAvatarView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            shoreAvatarView.widthAnchor.constraint(equalToConstant: 28),
+            shoreAvatarView.heightAnchor.constraint(equalToConstant: 28),
+            seatNameGlyph.leadingAnchor.constraint(equalTo: shoreAvatarView.trailingAnchor, constant: 10),
+            seatNameGlyph.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+            seatNameGlyph.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -54),
+            bubbleShellView.topAnchor.constraint(equalTo: seatNameGlyph.bottomAnchor, constant: 3),
+            leadingShoreConstraint!,
+            trailingShoreConstraint!,
+            bubbleShellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            bubbleTextGlyph.topAnchor.constraint(equalTo: bubbleShellView.topAnchor, constant: 8),
+            bubbleTextGlyph.leadingAnchor.constraint(equalTo: bubbleShellView.leadingAnchor, constant: 12),
+            bubbleTextGlyph.trailingAnchor.constraint(equalTo: bubbleShellView.trailingAnchor, constant: -12),
+            bubbleTextGlyph.bottomAnchor.constraint(equalTo: bubbleShellView.bottomAnchor, constant: -8)
         ])
     }
 
-    func render(_ bubble: SuliJoyShoreChatBubble) {
-        avatar.image = UIImage(named: bubble.avatarAssetName ?? "")
-        nameLabel.text = bubble.senderName
-        bubbleLabel.text = bubble.text
-        bubbleWrap.backgroundColor = bubble.isMine ? UIColor(red: 0.84, green: 1, blue: 0.76, alpha: 1) : .white
+    func render(_ bubble: SuliJoyShoreBubble) {
+        shoreAvatarView.image = UIImage(named: bubble.avatarAssetName ?? "")
+        seatNameGlyph.text = bubble.senderName
+        bubbleTextGlyph.text = bubble.text
+        bubbleShellView.backgroundColor = bubble.isMine ? UIColor(red: 0.84, green: 1, blue: 0.76, alpha: 1) : .white
     }
 }

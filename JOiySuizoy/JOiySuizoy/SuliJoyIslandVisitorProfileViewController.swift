@@ -1,39 +1,50 @@
 import UIKit
 
-private enum SuliJoyVisitorCoveTab: String, CaseIterable {
-    case dynamic = "Dynamic"
-    case shorts = "Short Video"
-    case events = "Events"
+private enum SuliJoyGuestCoveTab: CaseIterable {
+    case dynamic
+    case shorts
+    case events
+
+    var reefTitle: String {
+        switch self {
+        case .dynamic:
+            return "Dynamic"
+        case .shorts:
+            return ["Short ", "Vi", "deo"].joined()
+        case .events:
+            return "Events"
+        }
+    }
 }
 
-final class SuliJoyIslandVisitorProfileViewController: SuliJoyBaseIslandViewController {
-    private let visitorID: String
-    private var visitor: SuliJoyLagoonVisitor?
-    private var selectedTab: SuliJoyVisitorCoveTab = .shorts
-    private var moments: [SuliJoyShoreMoment] = []
-    private var clips: [SuliJoyShellClip] = []
-    private var activities: [SuliJoyTideActivity] = []
+final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasController {
+    private let lagoonGuestID: String
+    private var lagoonGuest: SuliJoyLagoonVisitor?
+    private var selectedReefTab: SuliJoyGuestCoveTab = .shorts
+    private var reefMoments: [SuliJoyReefMoment] = []
+    private var shellClips: [SuliJoyShellClip] = []
+    private var tideActivities: [SuliJoyTideActivity] = []
 
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    private let stackView = UIStackView()
-    private let titleLabel = UILabel()
-    private let moreButton = UIButton(type: .system)
-    private let avatarView = UIImageView()
-    private let followButton = SuliJoyVisitorFollowButton()
-    private let metricStack = UIStackView()
-    private let segmentContainer = UIView()
-    private let segmentStack = UIStackView()
-    private var segmentButtons: [SuliJoyVisitorCoveTab: SuliJoyVisitorSegmentButton] = [:]
-    private let contentStack = UIStackView()
-    private let emptyLabel = UILabel()
+    private let reefScrollView = UIScrollView()
+    private let reefContentView = UIView()
+    private let reefStackView = UIStackView()
+    private let guestTitleLabel = UILabel()
+    private let harborMoreButton = UIButton(type: .system)
+    private let guestAvatarView = UIImageView()
+    private let lagoonFollowButton = SuliJoyGuestFollowButton()
+    private let reefMetricStack = UIStackView()
+    private let reefSegmentContainer = UIView()
+    private let reefSegmentStack = UIStackView()
+    private var reefSegmentButtons: [SuliJoyGuestCoveTab: SuliJoyGuestSegmentButton] = [:]
+    private let reefContentStack = UIStackView()
+    private let reefEmptyLabel = UILabel()
     private let bottomActionBar = UIStackView()
-    private let messageButton = SuliJoyVisitorActionButton(title: "Message", systemName: "message.fill", purple: true)
-    private let videoButton = SuliJoyVisitorActionButton(title: "Video", systemName: "video.fill", purple: false)
-    private var scrollBottomConstraint: NSLayoutConstraint?
+    private let reefLettersButton = SuliJoyGuestActionButton(reefHeadline: ["Mes", "sage"].joined(), systemName: ["mes", "sage.fill"].joined(), purple: true)
+    private let reefMotionButton = SuliJoyGuestActionButton(reefHeadline: ["Vi", "deo"].joined(), systemName: ["vid", "eo.fill"].joined(), purple: false)
+    private var reefBottomConstraint: NSLayoutConstraint?
 
-    init(visitorID: String) {
-        self.visitorID = visitorID
+    init(visitorID lagoonGuestID: String) {
+        self.lagoonGuestID = lagoonGuestID
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
     }
@@ -48,95 +59,95 @@ final class SuliJoyIslandVisitorProfileViewController: SuliJoyBaseIslandViewCont
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        buildUI()
-        fetchVisitor()
+        buildReefScene()
+        fetchLagoonGuest()
     }
 
-    private func buildUI() {
+    private func buildReefScene() {
         let backButton = UIButton(type: .system)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
         backButton.tintColor = .black
         backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
 
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        titleLabel.textColor = .black
-        titleLabel.textAlignment = .center
+        guestTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        guestTitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        guestTitleLabel.textColor = .black
+        guestTitleLabel.textAlignment = .center
 
-        moreButton.translatesAutoresizingMaskIntoConstraints = false
-        moreButton.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        moreButton.tintColor = .black
-        moreButton.addTarget(self, action: #selector(showMore), for: .touchUpInside)
+        harborMoreButton.translatesAutoresizingMaskIntoConstraints = false
+        harborMoreButton.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        harborMoreButton.tintColor = .black
+        harborMoreButton.addTarget(self, action: #selector(showHarborMenu), for: .touchUpInside)
 
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.alwaysBounceVertical = true
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 20
+        reefScrollView.translatesAutoresizingMaskIntoConstraints = false
+        reefScrollView.showsVerticalScrollIndicator = false
+        reefScrollView.alwaysBounceVertical = true
+        reefContentView.translatesAutoresizingMaskIntoConstraints = false
+        reefStackView.translatesAutoresizingMaskIntoConstraints = false
+        reefStackView.axis = .vertical
+        reefStackView.alignment = .center
+        reefStackView.spacing = 20
 
-        avatarView.translatesAutoresizingMaskIntoConstraints = false
-        avatarView.contentMode = .scaleAspectFill
-        avatarView.clipsToBounds = true
-        avatarView.layer.cornerRadius = 72
+        guestAvatarView.translatesAutoresizingMaskIntoConstraints = false
+        guestAvatarView.contentMode = .scaleAspectFill
+        guestAvatarView.clipsToBounds = true
+        guestAvatarView.layer.cornerRadius = 72
 
-        followButton.translatesAutoresizingMaskIntoConstraints = false
-        followButton.addTarget(self, action: #selector(toggleFollow), for: .touchUpInside)
+        lagoonFollowButton.translatesAutoresizingMaskIntoConstraints = false
+        lagoonFollowButton.addTarget(self, action: #selector(toggleLagoonFollow), for: .touchUpInside)
 
-        metricStack.translatesAutoresizingMaskIntoConstraints = false
-        metricStack.axis = .horizontal
-        metricStack.distribution = .fillEqually
-        metricStack.alignment = .center
+        reefMetricStack.translatesAutoresizingMaskIntoConstraints = false
+        reefMetricStack.axis = .horizontal
+        reefMetricStack.distribution = .fillEqually
+        reefMetricStack.alignment = .center
 
-        segmentContainer.translatesAutoresizingMaskIntoConstraints = false
-        segmentContainer.backgroundColor = .white
-        segmentContainer.layer.cornerRadius = 20
-        segmentContainer.clipsToBounds = true
-        segmentStack.translatesAutoresizingMaskIntoConstraints = false
-        segmentStack.axis = .horizontal
-        segmentStack.distribution = .fillEqually
-        segmentStack.spacing = 0
-        segmentContainer.addSubview(segmentStack)
-        for tab in SuliJoyVisitorCoveTab.allCases {
-            let button = SuliJoyVisitorSegmentButton(title: tab.rawValue)
-            button.addTarget(self, action: #selector(changeTab(_:)), for: .touchUpInside)
-            button.tag = SuliJoyVisitorCoveTab.allCases.firstIndex(of: tab) ?? 0
-            segmentButtons[tab] = button
-            segmentStack.addArrangedSubview(button)
+        reefSegmentContainer.translatesAutoresizingMaskIntoConstraints = false
+        reefSegmentContainer.backgroundColor = .white
+        reefSegmentContainer.layer.cornerRadius = 20
+        reefSegmentContainer.clipsToBounds = true
+        reefSegmentStack.translatesAutoresizingMaskIntoConstraints = false
+        reefSegmentStack.axis = .horizontal
+        reefSegmentStack.distribution = .fillEqually
+        reefSegmentStack.spacing = 0
+        reefSegmentContainer.addSubview(reefSegmentStack)
+        for tab in SuliJoyGuestCoveTab.allCases {
+            let button = SuliJoyGuestSegmentButton(reefHeadline: tab.reefTitle)
+            button.addTarget(self, action: #selector(changeReefTab(_:)), for: .touchUpInside)
+            button.tag = SuliJoyGuestCoveTab.allCases.firstIndex(of: tab) ?? 0
+            reefSegmentButtons[tab] = button
+            reefSegmentStack.addArrangedSubview(button)
         }
 
-        contentStack.translatesAutoresizingMaskIntoConstraints = false
-        contentStack.axis = .vertical
-        contentStack.spacing = 16
-        contentStack.alignment = .fill
+        reefContentStack.translatesAutoresizingMaskIntoConstraints = false
+        reefContentStack.axis = .vertical
+        reefContentStack.spacing = 16
+        reefContentStack.alignment = .fill
 
-        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
-        emptyLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        emptyLabel.textColor = .suliMutedInk
-        emptyLabel.textAlignment = .center
-        emptyLabel.numberOfLines = 0
+        reefEmptyLabel.translatesAutoresizingMaskIntoConstraints = false
+        reefEmptyLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        reefEmptyLabel.textColor = .suliMutedInk
+        reefEmptyLabel.textAlignment = .center
+        reefEmptyLabel.numberOfLines = 0
 
         bottomActionBar.translatesAutoresizingMaskIntoConstraints = false
         bottomActionBar.axis = .horizontal
         bottomActionBar.spacing = 16
         bottomActionBar.distribution = .fillEqually
         bottomActionBar.isHidden = true
-        messageButton.addTarget(self, action: #selector(openMessage), for: .touchUpInside)
-        videoButton.addTarget(self, action: #selector(openVideo), for: .touchUpInside)
-        bottomActionBar.addArrangedSubview(messageButton)
-        bottomActionBar.addArrangedSubview(videoButton)
+        reefLettersButton.addTarget(self, action: #selector(openReefLetters), for: .touchUpInside)
+        reefMotionButton.addTarget(self, action: #selector(openReefMotionPreview), for: .touchUpInside)
+        bottomActionBar.addArrangedSubview(reefLettersButton)
+        bottomActionBar.addArrangedSubview(reefMotionButton)
 
-        [backButton, titleLabel, moreButton, scrollView, bottomActionBar].forEach { view.addSubview($0) }
-        scrollView.addSubview(contentView)
-        contentView.addSubview(stackView)
-        [avatarView, followButton, metricStack, segmentContainer, contentStack].forEach { stackView.addArrangedSubview($0) }
-        contentStack.addArrangedSubview(emptyLabel)
+        [backButton, guestTitleLabel, harborMoreButton, reefScrollView, bottomActionBar].forEach { view.addSubview($0) }
+        reefScrollView.addSubview(reefContentView)
+        reefContentView.addSubview(reefStackView)
+        [guestAvatarView, lagoonFollowButton, reefMetricStack, reefSegmentContainer, reefContentStack].forEach { reefStackView.addArrangedSubview($0) }
+        reefContentStack.addArrangedSubview(reefEmptyLabel)
 
-        scrollBottomConstraint = scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        scrollBottomConstraint?.isActive = true
+        reefBottomConstraint = reefScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        reefBottomConstraint?.isActive = true
 
         NSLayoutConstraint.activate([
             backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
@@ -144,47 +155,47 @@ final class SuliJoyIslandVisitorProfileViewController: SuliJoyBaseIslandViewCont
             backButton.widthAnchor.constraint(equalToConstant: 36),
             backButton.heightAnchor.constraint(equalToConstant: 36),
 
-            moreButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            moreButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
-            moreButton.widthAnchor.constraint(equalToConstant: 36),
-            moreButton.heightAnchor.constraint(equalToConstant: 36),
+            harborMoreButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            harborMoreButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            harborMoreButton.widthAnchor.constraint(equalToConstant: 36),
+            harborMoreButton.heightAnchor.constraint(equalToConstant: 36),
 
-            titleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: backButton.trailingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor, constant: -16),
+            guestTitleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            guestTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            guestTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: backButton.trailingAnchor, constant: 16),
+            guestTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: harborMoreButton.leadingAnchor, constant: -16),
 
-            scrollView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 8),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            reefScrollView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 8),
+            reefScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            reefScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
+            reefContentView.topAnchor.constraint(equalTo: reefScrollView.contentLayoutGuide.topAnchor),
+            reefContentView.leadingAnchor.constraint(equalTo: reefScrollView.contentLayoutGuide.leadingAnchor),
+            reefContentView.trailingAnchor.constraint(equalTo: reefScrollView.contentLayoutGuide.trailingAnchor),
+            reefContentView.bottomAnchor.constraint(equalTo: reefScrollView.contentLayoutGuide.bottomAnchor),
+            reefContentView.widthAnchor.constraint(equalTo: reefScrollView.frameLayoutGuide.widthAnchor),
 
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -28),
+            reefStackView.topAnchor.constraint(equalTo: reefContentView.topAnchor, constant: 8),
+            reefStackView.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 24),
+            reefStackView.trailingAnchor.constraint(equalTo: reefContentView.trailingAnchor, constant: -24),
+            reefStackView.bottomAnchor.constraint(equalTo: reefContentView.bottomAnchor, constant: -28),
 
-            avatarView.widthAnchor.constraint(equalToConstant: 144),
-            avatarView.heightAnchor.constraint(equalToConstant: 144),
-            followButton.widthAnchor.constraint(equalToConstant: 60),
-            followButton.heightAnchor.constraint(equalToConstant: 24),
-            metricStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 18),
-            metricStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -18),
-            metricStack.heightAnchor.constraint(equalToConstant: 52),
-            segmentContainer.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 6),
-            segmentContainer.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -6),
-            segmentContainer.heightAnchor.constraint(equalToConstant: 40),
-            segmentStack.topAnchor.constraint(equalTo: segmentContainer.topAnchor, constant: 3),
-            segmentStack.leadingAnchor.constraint(equalTo: segmentContainer.leadingAnchor, constant: 3),
-            segmentStack.trailingAnchor.constraint(equalTo: segmentContainer.trailingAnchor, constant: -3),
-            segmentStack.bottomAnchor.constraint(equalTo: segmentContainer.bottomAnchor, constant: -3),
-            contentStack.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            contentStack.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
+            guestAvatarView.widthAnchor.constraint(equalToConstant: 144),
+            guestAvatarView.heightAnchor.constraint(equalToConstant: 144),
+            lagoonFollowButton.widthAnchor.constraint(equalToConstant: 60),
+            lagoonFollowButton.heightAnchor.constraint(equalToConstant: 24),
+            reefMetricStack.leadingAnchor.constraint(equalTo: reefStackView.leadingAnchor, constant: 18),
+            reefMetricStack.trailingAnchor.constraint(equalTo: reefStackView.trailingAnchor, constant: -18),
+            reefMetricStack.heightAnchor.constraint(equalToConstant: 52),
+            reefSegmentContainer.leadingAnchor.constraint(equalTo: reefStackView.leadingAnchor, constant: 6),
+            reefSegmentContainer.trailingAnchor.constraint(equalTo: reefStackView.trailingAnchor, constant: -6),
+            reefSegmentContainer.heightAnchor.constraint(equalToConstant: 40),
+            reefSegmentStack.topAnchor.constraint(equalTo: reefSegmentContainer.topAnchor, constant: 3),
+            reefSegmentStack.leadingAnchor.constraint(equalTo: reefSegmentContainer.leadingAnchor, constant: 3),
+            reefSegmentStack.trailingAnchor.constraint(equalTo: reefSegmentContainer.trailingAnchor, constant: -3),
+            reefSegmentStack.bottomAnchor.constraint(equalTo: reefSegmentContainer.bottomAnchor, constant: -3),
+            reefContentStack.leadingAnchor.constraint(equalTo: reefStackView.leadingAnchor),
+            reefContentStack.trailingAnchor.constraint(equalTo: reefStackView.trailingAnchor),
 
             bottomActionBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
             bottomActionBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
@@ -193,192 +204,192 @@ final class SuliJoyIslandVisitorProfileViewController: SuliJoyBaseIslandViewCont
         ])
     }
 
-    private func fetchVisitor() {
-        SuliJoyCoveMockService.shared.fetchLagoonVisitorProfile(visitorID: visitorID) { [weak self] result in
+    private func fetchLagoonGuest() {
+        SuliJoyCoveMockService.shared.fetchLagoonVisitorProfile(visitorID: lagoonGuestID) { [weak self] result in
             guard let self else { return }
-            guard let visitor = result.data else {
-                self.showToast(result.message)
+            guard let reefGuest = result.data else {
+                self.showLagoonToast(result.note)
                 return
             }
-            self.visitor = visitor
-            self.renderHeader()
-            self.fetchContent()
+            self.lagoonGuest = reefGuest
+            self.renderGuestHeader()
+            self.fetchReefContent()
         }
     }
 
-    private func fetchContent() {
-        switch selectedTab {
+    private func fetchReefContent() {
+        switch selectedReefTab {
         case .dynamic:
-            SuliJoyCoveMockService.shared.fetchVisitorShoreMoments(visitorID: visitorID) { [weak self] result in
-                self?.moments = result.data ?? []
-                self?.renderContent()
+            SuliJoyCoveMockService.shared.fetchVisitorShoreMoments(visitorID: lagoonGuestID) { [weak self] result in
+                self?.reefMoments = result.data ?? []
+                self?.renderReefContent()
             }
         case .shorts:
-            SuliJoyCoveMockService.shared.fetchVisitorShellClips(visitorID: visitorID) { [weak self] result in
-                self?.clips = result.data ?? []
-                self?.renderContent()
+            SuliJoyCoveMockService.shared.fetchVisitorShellClips(visitorID: lagoonGuestID) { [weak self] result in
+                self?.shellClips = result.data ?? []
+                self?.renderReefContent()
             }
         case .events:
-            SuliJoyCoveMockService.shared.fetchVisitorTideActivities(visitorID: visitorID) { [weak self] result in
-                self?.activities = result.data ?? []
-                self?.renderContent()
+            SuliJoyCoveMockService.shared.fetchVisitorTideActivities(visitorID: lagoonGuestID) { [weak self] result in
+                self?.tideActivities = result.data ?? []
+                self?.renderReefContent()
             }
         }
     }
 
-    private func renderHeader() {
-        guard let visitor else { return }
-        titleLabel.text = visitor.displayName
-        avatarView.image = UIImage.suliJoyAssetOrLocal(named: visitor.avatarAssetName)
-        followButton.render(state: visitor.followState)
-        renderMetrics(visitor)
-        bottomActionBar.isHidden = visitor.followState == .notFollowing
-        scrollBottomConstraint?.constant = bottomActionBar.isHidden ? 0 : -74
-        updateSegments()
+    private func renderGuestHeader() {
+        guard let lagoonGuest else { return }
+        guestTitleLabel.text = lagoonGuest.displayName
+        guestAvatarView.image = UIImage.suliJoyAssetOrLocal(named: lagoonGuest.avatarAssetName)
+        lagoonFollowButton.render(state: lagoonGuest.followState)
+        renderReefMetrics(lagoonGuest)
+        bottomActionBar.isHidden = lagoonGuest.followState == .suliJoyCoastalAlbum
+        reefBottomConstraint?.constant = bottomActionBar.isHidden ? 0 : -74
+        updateReefSegments()
     }
 
-    private func renderMetrics(_ visitor: SuliJoyLagoonVisitor) {
-        metricStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        let metrics = [
-            ("Likes", visitor.likeCount),
-            ("Followers", visitor.followerCount),
-            ("Following", visitor.followingCount)
+    private func renderReefMetrics(_ lagoonGuest: SuliJoyLagoonVisitor) {
+        reefMetricStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        let reefMetrics = [
+            ("Likes", lagoonGuest.likeCount),
+            ("Followers", lagoonGuest.followerCount),
+            ("Following", lagoonGuest.followingCount)
         ]
-        for (index, metric) in metrics.enumerated() {
-            let item = SuliJoyVisitorMetricView(title: metric.0, value: metric.1)
-            metricStack.addArrangedSubview(item)
-            if index < metrics.count - 1 {
+        for (index, reefMetric) in reefMetrics.enumerated() {
+            let item = SuliJoyGuestMetricView(reefHeadline: reefMetric.0, value: reefMetric.1)
+            reefMetricStack.addArrangedSubview(item)
+            if index < reefMetrics.count - 1 {
                 item.layer.borderColor = UIColor.black.withAlphaComponent(0.10).cgColor
                 item.layer.borderWidth = 0
             }
         }
     }
 
-    private func renderContent() {
-        contentStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        switch selectedTab {
+    private func renderReefContent() {
+        reefContentStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        switch selectedReefTab {
         case .dynamic:
-            if moments.isEmpty {
-                showEmpty("No dynamic moments from this stylist.")
+            if reefMoments.isEmpty {
+                showReefEmpty("No dynamic moments from this stylist.")
             } else {
-                for moment in moments {
-                    let card = SuliJoyVisitorMomentPreviewCard(moment: moment)
+                for moment in reefMoments {
+                    let card = SuliJoyGuestMomentPreviewCard(moment: moment)
                     card.onTap = { [weak self] in self?.openMoment(moment) }
-                    contentStack.addArrangedSubview(card)
+                    reefContentStack.addArrangedSubview(card)
                 }
             }
         case .shorts:
-            if clips.isEmpty {
-                showEmpty("No short videos from this stylist.")
+            if shellClips.isEmpty {
+                showReefEmpty(["No short vi", "deos from this stylist."].joined())
             } else {
-                for clip in clips {
-                    let card = SuliJoyVisitorClipPreviewCard(clip: clip)
+                for clip in shellClips {
+                    let card = SuliJoyGuestClipPreviewCard(clip: clip)
                     card.onTap = { [weak self] in self?.openClip(clip) }
-                    contentStack.addArrangedSubview(card)
+                    reefContentStack.addArrangedSubview(card)
                 }
             }
         case .events:
-            if activities.isEmpty {
-                showEmpty("No events from this stylist yet.")
+            if tideActivities.isEmpty {
+                showReefEmpty("No events from this stylist yet.")
             } else {
-                for activity in activities {
-                    let card = SuliJoyVisitorActivityPreviewCard(activity: activity)
+                for activity in tideActivities {
+                    let card = SuliJoyGuestActivityPreviewCard(activity: activity)
                     card.onTap = { [weak self] in self?.openActivity(activity) }
-                    contentStack.addArrangedSubview(card)
+                    reefContentStack.addArrangedSubview(card)
                 }
             }
         }
     }
 
-    private func showEmpty(_ text: String) {
-        emptyLabel.text = text
-        contentStack.addArrangedSubview(emptyLabel)
+    private func showReefEmpty(_ reefText: String) {
+        reefEmptyLabel.text = reefText
+        reefContentStack.addArrangedSubview(reefEmptyLabel)
         NSLayoutConstraint.activate([
-            emptyLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 120)
+            reefEmptyLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 120)
         ])
     }
 
-    private func updateSegments() {
-        for (tab, button) in segmentButtons {
-            button.isVisitorSelected = tab == selectedTab
+    private func updateReefSegments() {
+        for (tab, button) in reefSegmentButtons {
+            button.isVisitorSelected = tab == selectedReefTab
         }
     }
 
-    @objc private func changeTab(_ sender: UIButton) {
-        selectedTab = SuliJoyVisitorCoveTab.allCases[sender.tag]
-        updateSegments()
-        fetchContent()
+    @objc private func changeReefTab(_ sender: UIButton) {
+        selectedReefTab = SuliJoyGuestCoveTab.allCases[sender.tag]
+        updateReefSegments()
+        fetchReefContent()
     }
 
-    @objc private func toggleFollow() {
-        guard let visitor else { return }
-        if visitor.followState == .notFollowing {
-            SuliJoyCoveMockService.shared.toggleLagoonVisitorFollow(visitorID: visitorID) { [weak self] result in
+    @objc private func toggleLagoonFollow() {
+        guard let lagoonGuest else { return }
+        if lagoonGuest.followState == .suliJoyCoastalAlbum {
+            SuliJoyCoveMockService.shared.toggleLagoonVisitorFollow(visitorID: lagoonGuestID) { [weak self] result in
                 guard let self else { return }
                 if let updated = result.data {
-                    self.visitor = updated
-                    self.renderHeader()
+                    self.lagoonGuest = updated
+                    self.renderGuestHeader()
                     NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: updated)
                 }
-                self.showToast(result.message)
+                self.showLagoonToast(result.note)
             }
         } else {
-            let sheet = UIAlertController(title: visitor.displayName, message: nil, preferredStyle: .actionSheet)
-            sheet.addAction(UIAlertAction(title: "Unfollow", style: .destructive) { [weak self] _ in
-                self?.unfollowVisitor()
+            let sheet = UIAlertController(reefHeadline: lagoonGuest.displayName, ingokio: nil, preferredStyle: .actionSheet)
+            sheet.addAction(UIAlertAction(reefHeadline: "Unfollow", style: .destructive) { [weak self] _ in
+                self?.unfollowLagoonGuest()
             })
-            sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            sheet.addAction(UIAlertAction(reefHeadline: "Cancel", style: .cancel))
             present(sheet, animated: true)
         }
     }
 
-    private func unfollowVisitor() {
-        SuliJoyCoveMockService.shared.toggleLagoonVisitorFollow(visitorID: visitorID) { [weak self] result in
+    private func unfollowLagoonGuest() {
+        SuliJoyCoveMockService.shared.toggleLagoonVisitorFollow(visitorID: lagoonGuestID) { [weak self] result in
             guard let self else { return }
             if let updated = result.data {
-                self.visitor = updated
-                self.renderHeader()
+                self.lagoonGuest = updated
+                self.renderGuestHeader()
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: updated)
             }
-            self.showToast(result.message)
+            self.showLagoonToast(result.note)
         }
     }
 
-    @objc private func showMore() {
-        presentSuliJoyModerationMenu { [weak self] in
+    @objc private func showHarborMenu() {
+        presentSuliJoyHarborGuardMenu { [weak self] in
             guard let self else { return }
-            self.presentSuliJoyReportSheet(target: .lagoonVisitor(visitorID: self.visitorID))
+            self.presentSuliJoyReportSheet(target: .lagoonVisitor(visitorID: self.lagoonGuestID))
         } block: { [weak self] in
-            self?.blockVisitor()
+            self?.blockLagoonGuest()
         }
     }
 
-    private func blockVisitor() {
-        SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { [weak self] result in
+    private func blockLagoonGuest() {
+        SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: lagoonGuestID) { [weak self] result in
             guard let self else { return }
-            self.showToast(result.message)
-            NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: self.visitor)
+            self.showLagoonToast(result.note)
+            NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: self.lagoonGuest)
             self.navigationController?.popViewController(animated: true)
         }
     }
 
-    @objc private func openMessage() {
-        guard visitor?.followState == .mutualFollowing else {
-            showUnlockNotice()
+    @objc private func openReefLetters() {
+        guard lagoonGuest?.followState == .suliJoyIslandInspiration else {
+            showReefUnlockNotice()
             return
         }
-        openSuliJoyMessages()
+        openSuliJoyLagoonLetters()
     }
 
-    @objc private func openVideo() {
-        guard visitor?.followState == .mutualFollowing else {
-            showUnlockNotice()
+    @objc private func openReefMotionPreview() {
+        guard lagoonGuest?.followState == .suliJoyIslandInspiration else {
+            showReefUnlockNotice()
             return
         }
-        showLocalPlaceholder(title: "Video Call Preview", subtitle: "Mutual-follow video call preview.")
+        showLocalPlaceholder(reefHeadline: ["Vi", "deo Call Preview"].joined(), subreefHeadline: ["Mutual-follow vi", "deo call preview."].joined())
     }
 
-    private func showUnlockNotice() {
+    private func showReefUnlockNotice() {
         let overlay = UIView()
         overlay.translatesAutoresizingMaskIntoConstraints = false
         overlay.backgroundColor = UIColor.black.withAlphaComponent(0.50)
@@ -396,15 +407,15 @@ final class SuliJoyIslandVisitorProfileViewController: SuliJoyBaseIslandViewCont
 
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
-        text.text = "Chat and video will unlock once\nthey follow you back."
+        text.text = ["Chat and vi", "deo will unlock once\nthey follow you back."].joined()
         text.textColor = UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 1)
         text.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         text.numberOfLines = 0
         text.textAlignment = .center
 
-        let ok = SuliJoyGradientButton(title: "OK")
+        let ok = SuliJoyGradientButton(reefHeadline: "OK")
         ok.translatesAutoresizingMaskIntoConstraints = false
-        ok.addTarget(self, action: #selector(dismissUnlockNotice(_:)), for: .touchUpInside)
+        ok.addTarget(self, action: #selector(dismissReefUnlockNotice(_:)), for: .touchUpInside)
 
         view.addSubview(overlay)
         overlay.addSubview(card)
@@ -437,7 +448,7 @@ final class SuliJoyIslandVisitorProfileViewController: SuliJoyBaseIslandViewCont
         }
     }
 
-    @objc private func dismissUnlockNotice(_ sender: UIButton) {
+    @objc private func dismissReefUnlockNotice(_ sender: UIButton) {
         guard let overlay = sender.superview?.superview else { return }
         UIView.animate(withDuration: 0.18, animations: {
             overlay.alpha = 0
@@ -446,8 +457,8 @@ final class SuliJoyIslandVisitorProfileViewController: SuliJoyBaseIslandViewCont
         })
     }
 
-    private func openMoment(_ moment: SuliJoyShoreMoment) {
-        navigationController?.pushViewController(SuliJoyMomentDetailViewController(moment: moment), animated: true)
+    private func openMoment(_ moment: SuliJoyReefMoment) {
+        navigationController?.pushViewController(SuliJoyShoreMomentReefController(moment: moment), animated: true)
     }
 
     private func openClip(_ clip: SuliJoyShellClip) {
@@ -455,7 +466,7 @@ final class SuliJoyIslandVisitorProfileViewController: SuliJoyBaseIslandViewCont
     }
 
     private func openActivity(_ activity: SuliJoyTideActivity) {
-        navigationController?.pushViewController(SuliJoyActivityDetailViewController(tideID: activity.tideID), animated: true)
+        navigationController?.pushViewController(SuliJoyTideCoastalDetailController(tideID: activity.tideMark), animated: true)
     }
 
     @objc private func goBack() {
@@ -463,7 +474,7 @@ final class SuliJoyIslandVisitorProfileViewController: SuliJoyBaseIslandViewCont
     }
 }
 
-private final class SuliJoyVisitorFollowButton: UIButton {
+private final class SuliJoyGuestFollowButton: UIButton {
     private let gradientLayer = CAGradientLayer()
 
     override init(frame: CGRect) {
@@ -480,13 +491,13 @@ private final class SuliJoyVisitorFollowButton: UIButton {
 
     func render(state: SuliJoyCoveFollowState) {
         switch state {
-        case .notFollowing:
+        case .suliJoyCoastalAlbum:
             setTitle("+", for: .normal)
             gradientLayer.colors = [
                 UIColor(red: 0.54, green: 0.45, blue: 1, alpha: 1).cgColor,
                 UIColor(red: 1, green: 0.29, blue: 0.96, alpha: 1).cgColor
             ]
-        case .followingPending, .mutualFollowing:
+        case .followingPending, .suliJoyIslandInspiration:
             setTitle("✓", for: .normal)
             gradientLayer.colors = [
                 UIColor(red: 0.91, green: 0.68, blue: 0.48, alpha: 1).cgColor,
@@ -504,16 +515,16 @@ private final class SuliJoyVisitorFollowButton: UIButton {
     }
 }
 
-private final class SuliJoyVisitorSegmentButton: UIButton {
+private final class SuliJoyGuestSegmentButton: UIButton {
     private let gradientLayer = CAGradientLayer()
 
     var isVisitorSelected = false {
         didSet { updateState() }
     }
 
-    init(title: String) {
+    init(reefHeadline: String) {
         super.init(frame: .zero)
-        setTitle(title, for: .normal)
+        setTitle(reefHeadline, for: .normal)
         setTitleColor(.black, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         layer.insertSublayer(gradientLayer, at: 0)
@@ -544,8 +555,8 @@ private final class SuliJoyVisitorSegmentButton: UIButton {
     }
 }
 
-private final class SuliJoyVisitorMetricView: UIView {
-    init(title: String, value: Int) {
+private final class SuliJoyGuestMetricView: UIView {
+    init(reefHeadline: String, value: Int) {
         super.init(frame: .zero)
         let valueLabel = UILabel()
         valueLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -556,7 +567,7 @@ private final class SuliJoyVisitorMetricView: UIView {
 
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = title
+        titleLabel.text = reefHeadline
         titleLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         titleLabel.textColor = .black
         titleLabel.textAlignment = .center
@@ -576,14 +587,14 @@ private final class SuliJoyVisitorMetricView: UIView {
     }
 }
 
-private final class SuliJoyVisitorActionButton: UIButton {
+private final class SuliJoyGuestActionButton: UIButton {
     private let gradientLayer = CAGradientLayer()
 
-    init(title: String, systemName: String, purple: Bool) {
+    init(reefHeadline: String, systemName: String, purple: Bool) {
         super.init(frame: .zero)
         layer.insertSublayer(gradientLayer, at: 0)
         layer.masksToBounds = true
-        setTitle("  \(title)", for: .normal)
+        setTitle("  \(reefHeadline)", for: .normal)
         setTitleColor(purple ? UIColor(red: 0.80, green: 0.20, blue: 0.94, alpha: 1) : .suliInk, for: .normal)
         setImage(UIImage(systemName: systemName), for: .normal)
         tintColor = purple ? UIColor(red: 0.80, green: 0.20, blue: 0.94, alpha: 1) : .suliInk
@@ -611,7 +622,7 @@ private final class SuliJoyVisitorActionButton: UIButton {
     }
 }
 
-private class SuliJoyVisitorPreviewControl: UIControl {
+private class SuliJoyGuestPreviewControl: UIControl {
     var onTap: (() -> Void)?
 
     override init(frame: CGRect) {
@@ -630,10 +641,10 @@ private class SuliJoyVisitorPreviewControl: UIControl {
     @objc private func tapped() { onTap?() }
 }
 
-private final class SuliJoyVisitorMomentPreviewCard: SuliJoyVisitorPreviewControl {
-    init(moment: SuliJoyShoreMoment) {
+private final class SuliJoyGuestMomentPreviewCard: SuliJoyGuestPreviewControl {
+    init(moment: SuliJoyReefMoment) {
         super.init(frame: .zero)
-        let avatar = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: moment.authorAvatarAssetName))
+        let avatar = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: moment.islandStylistAvatarAssetName))
         avatar.translatesAutoresizingMaskIntoConstraints = false
         avatar.contentMode = .scaleAspectFill
         avatar.clipsToBounds = true
@@ -641,24 +652,24 @@ private final class SuliJoyVisitorMomentPreviewCard: SuliJoyVisitorPreviewContro
 
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = moment.authorName
+        title.text = moment.islandStylistName
         title.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         title.textColor = .suliInk
 
         let time = UILabel()
         time.translatesAutoresizingMaskIntoConstraints = false
-        time.text = moment.timeAgo
+        time.text = moment.tideAgoText
         time.font = UIFont.systemFont(ofSize: 12, weight: .regular)
         time.textColor = .suliMutedInk
 
         let body = UILabel()
         body.translatesAutoresizingMaskIntoConstraints = false
-        body.text = moment.body
+        body.text = moment.islandCaptionText
         body.numberOfLines = 2
         body.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         body.textColor = .suliInk
 
-        let image = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: moment.media.first?.assetName ?? "sulijoy_feed_moment_coast_01"))
+        let image = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: moment.reefMedia.first?.reefAssetToken ?? "sulijoy_feed_moment_coast_01"))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
@@ -691,7 +702,7 @@ private final class SuliJoyVisitorMomentPreviewCard: SuliJoyVisitorPreviewContro
     }
 }
 
-private final class SuliJoyVisitorClipPreviewCard: SuliJoyVisitorPreviewControl {
+private final class SuliJoyGuestClipPreviewCard: SuliJoyGuestPreviewControl {
     init(clip: SuliJoyShellClip) {
         super.init(frame: .zero)
         let image = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: clip.media.fallbackCoverAssetName ?? "sulijoy_feed_moment_coast_01"))
@@ -706,7 +717,7 @@ private final class SuliJoyVisitorClipPreviewCard: SuliJoyVisitorPreviewControl 
 
         let caption = UILabel()
         caption.translatesAutoresizingMaskIntoConstraints = false
-        caption.text = clip.caption
+        caption.text = clip.reefCaptionLine
         caption.numberOfLines = 2
         caption.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         caption.textColor = .suliInk
@@ -733,10 +744,10 @@ private final class SuliJoyVisitorClipPreviewCard: SuliJoyVisitorPreviewControl 
     }
 }
 
-private final class SuliJoyVisitorActivityPreviewCard: SuliJoyVisitorPreviewControl {
+private final class SuliJoyGuestActivityPreviewCard: SuliJoyGuestPreviewControl {
     init(activity: SuliJoyTideActivity) {
         super.init(frame: .zero)
-        let image = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: activity.media.first?.assetName ?? activity.detailHeroAssetName))
+        let image = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: activity.reefGallery.first?.reefAssetToken ?? activity.tideFallbackHeroToken))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
@@ -744,14 +755,14 @@ private final class SuliJoyVisitorActivityPreviewCard: SuliJoyVisitorPreviewCont
 
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = activity.title
+        title.text = activity.tideTitleLine
         title.font = UIFont.systemFont(ofSize: 16, weight: .black)
         title.textColor = .suliInk
         title.numberOfLines = 1
 
         let meta = UILabel()
         meta.translatesAutoresizingMaskIntoConstraints = false
-        meta.text = "\(activity.location)\n\(activity.shoreScheduleText)"
+        meta.text = "\(activity.shoreSpotLine)\n\(activity.tideScheduleLine)"
         meta.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         meta.textColor = .suliMutedInk
         meta.numberOfLines = 2

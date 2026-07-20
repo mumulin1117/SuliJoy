@@ -1,14 +1,25 @@
 import UIKit
 
 private final class SuliJoyShoreReportRadioView: UIView {
+    private enum LagoonRadioPalette {
+        static let selectedRing = UIColor(red: 1, green: 0.62, blue: 0.33, alpha: 1)
+        static let idleRing = UIColor.black.withAlphaComponent(0.38)
+        static let selectedPearl = UIColor(red: 0.78, green: 0.98, blue: 0.46, alpha: 1)
+    }
+
+    private enum LagoonRadioShape {
+        static let ringInset: CGFloat = 2
+        static let pearlInset: CGFloat = 7
+        static let ringWidth: CGFloat = 2
+    }
+
     var isChecked: Bool = false {
         didSet { setNeedsDisplay() }
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .clear
-        isUserInteractionEnabled = false
+        prepareLagoonRadioSurface()
     }
 
     required init?(coder: NSCoder) {
@@ -16,17 +27,31 @@ private final class SuliJoyShoreReportRadioView: UIView {
     }
 
     override func draw(_ rect: CGRect) {
-        let stroke = isChecked ? UIColor(red: 1, green: 0.62, blue: 0.33, alpha: 1) : UIColor.black.withAlphaComponent(0.38)
-        let circleRect = bounds.insetBy(dx: 2, dy: 2)
-        let path = UIBezierPath(ovalIn: circleRect)
-        stroke.setStroke()
-        path.lineWidth = 2
-        path.stroke()
+        drawLagoonRing(in: bounds)
+        if isChecked {
+            drawLagoonPearl(in: bounds)
+        }
+    }
 
-        guard isChecked else { return }
-        let dotRect = bounds.insetBy(dx: 7, dy: 7)
-        UIColor(red: 0.78, green: 0.98, blue: 0.46, alpha: 1).setFill()
-        UIBezierPath(ovalIn: dotRect).fill()
+    private func prepareLagoonRadioSurface() {
+        backgroundColor = .clear
+        isUserInteractionEnabled = false
+    }
+
+    private func drawLagoonRing(in radioBounds: CGRect) {
+        lagoonRingColor().setStroke()
+        let ringPath = UIBezierPath(ovalIn: radioBounds.insetBy(dx: LagoonRadioShape.ringInset, dy: LagoonRadioShape.ringInset))
+        ringPath.lineWidth = LagoonRadioShape.ringWidth
+        ringPath.stroke()
+    }
+
+    private func drawLagoonPearl(in radioBounds: CGRect) {
+        LagoonRadioPalette.selectedPearl.setFill()
+        UIBezierPath(ovalIn: radioBounds.insetBy(dx: LagoonRadioShape.pearlInset, dy: LagoonRadioShape.pearlInset)).fill()
+    }
+
+    private func lagoonRingColor() -> UIColor {
+        isChecked ? LagoonRadioPalette.selectedRing : LagoonRadioPalette.idleRing
     }
 }
 
@@ -85,21 +110,21 @@ private final class SuliJoyShoreReportReasonRow: UIControl {
 
 final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDelegate {
     private let target: SuliJoyShoreReportTarget
-    private let completion: (SuliJoyLocalRequestEnvelope<Bool>) -> Void
-    private let dimmingView = UIView()
-    private let sheetView = UIView()
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    private let confirmContainer = UIView()
-    private let confirmButton = SuliJoyGradientButton(title: "Confirm")
-    private let otherTextView = UITextView()
-    private let placeholderLabel = UILabel()
-    private let messageLabel = UILabel()
+    private let completion: (SuliJoySuiRequestEnvelope<Bool>) -> Void
+    private let shoreCurtainView = UIView()
+    private let shoreSheetView = UIView()
+    private let shoreScrollView = UIScrollView()
+    private let shoreContentView = UIView()
+    private let shoreConfirmDock = UIView()
+    private let shoreConfirmButton = SuliJoyGradientButton(reefHeadline: "Confirm")
+    private let shoreOtherTextView = UITextView()
+    private let shorePlaceholderLabel = UILabel()
+    private let shoreInlineLabel = UILabel()
     private var sheetBottomConstraint: NSLayoutConstraint?
-    private var selectedReason: SuliJoyShoreReportReason?
-    private var reasonRows: [SuliJoyShoreReportReasonRow] = []
+    private var chosenShoreReason: SuliJoyShoreReportReason?
+    private var shoreReasonRows: [SuliJoyShoreReportReasonRow] = []
 
-    init(target: SuliJoyShoreReportTarget, completion: @escaping (SuliJoyLocalRequestEnvelope<Bool>) -> Void) {
+    init(target: SuliJoyShoreReportTarget, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
         self.target = target
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
@@ -113,108 +138,108 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        buildInterface()
-        registerKeyboardNotifications()
+        buildShoreReportReef()
+        registerShoreKeyboardSignals()
     }
 
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
 
-    private func buildInterface() {
+    private func buildShoreReportReef() {
         view.backgroundColor = .clear
 
-        dimmingView.translatesAutoresizingMaskIntoConstraints = false
-        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.52)
-        dimmingView.alpha = 0
-        view.addSubview(dimmingView)
+        shoreCurtainView.translatesAutoresizingMaskIntoConstraints = false
+        shoreCurtainView.backgroundColor = UIColor.black.withAlphaComponent(0.52)
+        shoreCurtainView.alpha = 0
+        view.addSubview(shoreCurtainView)
         NSLayoutConstraint.activate([
-            dimmingView.topAnchor.constraint(equalTo: view.topAnchor),
-            dimmingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            dimmingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            dimmingView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            shoreCurtainView.topAnchor.constraint(equalTo: view.topAnchor),
+            shoreCurtainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            shoreCurtainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shoreCurtainView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        dimmingView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeSheet)))
+        shoreCurtainView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeShoreReportSheet)))
 
-        sheetView.translatesAutoresizingMaskIntoConstraints = false
-        sheetView.backgroundColor = .white
-        sheetView.layer.cornerRadius = 24
-        sheetView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        sheetView.clipsToBounds = true
-        view.addSubview(sheetView)
+        shoreSheetView.translatesAutoresizingMaskIntoConstraints = false
+        shoreSheetView.backgroundColor = .white
+        shoreSheetView.layer.cornerRadius = 24
+        shoreSheetView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        shoreSheetView.clipsToBounds = true
+        view.addSubview(shoreSheetView)
 
-        let bottom = sheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        let bottom = shoreSheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         sheetBottomConstraint = bottom
         NSLayoutConstraint.activate([
-            sheetView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            sheetView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shoreSheetView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            shoreSheetView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             bottom,
-            sheetView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.78),
-            sheetView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 0.56)
+            shoreSheetView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.78),
+            shoreSheetView.heightAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: 0.56)
         ])
 
-        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        sheetView.addGestureRecognizer(pan)
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handleShoreSheetPan(_:)))
+        shoreSheetView.addGestureRecognizer(pan)
 
-        confirmContainer.translatesAutoresizingMaskIntoConstraints = false
-        confirmContainer.backgroundColor = .white
-        sheetView.addSubview(confirmContainer)
+        shoreConfirmDock.translatesAutoresizingMaskIntoConstraints = false
+        shoreConfirmDock.backgroundColor = .white
+        shoreSheetView.addSubview(shoreConfirmDock)
 
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.alwaysBounceVertical = false
-        scrollView.keyboardDismissMode = .interactive
-        sheetView.addSubview(scrollView)
+        shoreScrollView.translatesAutoresizingMaskIntoConstraints = false
+        shoreScrollView.alwaysBounceVertical = false
+        shoreScrollView.keyboardDismissMode = .interactive
+        shoreSheetView.addSubview(shoreScrollView)
 
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.addSubview(contentView)
+        shoreContentView.translatesAutoresizingMaskIntoConstraints = false
+        shoreScrollView.addSubview(shoreContentView)
 
-        confirmButton.translatesAutoresizingMaskIntoConstraints = false
-        confirmButton.addTarget(self, action: #selector(confirmReport), for: .touchUpInside)
-        confirmContainer.addSubview(confirmButton)
+        shoreConfirmButton.translatesAutoresizingMaskIntoConstraints = false
+        shoreConfirmButton.addTarget(self, action: #selector(confirmShoreReport), for: .touchUpInside)
+        shoreConfirmDock.addSubview(shoreConfirmButton)
 
         let confirmTopBorder = UIView()
         confirmTopBorder.translatesAutoresizingMaskIntoConstraints = false
         confirmTopBorder.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-        confirmContainer.addSubview(confirmTopBorder)
+        shoreConfirmDock.addSubview(confirmTopBorder)
 
         NSLayoutConstraint.activate([
-            confirmContainer.leadingAnchor.constraint(equalTo: sheetView.leadingAnchor),
-            confirmContainer.trailingAnchor.constraint(equalTo: sheetView.trailingAnchor),
-            confirmContainer.bottomAnchor.constraint(equalTo: sheetView.safeAreaLayoutGuide.bottomAnchor),
-            confirmContainer.heightAnchor.constraint(equalToConstant: 86),
+            shoreConfirmDock.leadingAnchor.constraint(equalTo: shoreSheetView.leadingAnchor),
+            shoreConfirmDock.trailingAnchor.constraint(equalTo: shoreSheetView.trailingAnchor),
+            shoreConfirmDock.bottomAnchor.constraint(equalTo: shoreSheetView.safeAreaLayoutGuide.bottomAnchor),
+            shoreConfirmDock.heightAnchor.constraint(equalToConstant: 86),
 
-            confirmTopBorder.topAnchor.constraint(equalTo: confirmContainer.topAnchor),
-            confirmTopBorder.leadingAnchor.constraint(equalTo: confirmContainer.leadingAnchor),
-            confirmTopBorder.trailingAnchor.constraint(equalTo: confirmContainer.trailingAnchor),
+            confirmTopBorder.topAnchor.constraint(equalTo: shoreConfirmDock.topAnchor),
+            confirmTopBorder.leadingAnchor.constraint(equalTo: shoreConfirmDock.leadingAnchor),
+            confirmTopBorder.trailingAnchor.constraint(equalTo: shoreConfirmDock.trailingAnchor),
             confirmTopBorder.heightAnchor.constraint(equalToConstant: 1),
 
-            confirmButton.leadingAnchor.constraint(equalTo: confirmContainer.leadingAnchor, constant: 15),
-            confirmButton.trailingAnchor.constraint(equalTo: confirmContainer.trailingAnchor, constant: -15),
-            confirmButton.centerYAnchor.constraint(equalTo: confirmContainer.centerYAnchor),
+            shoreConfirmButton.leadingAnchor.constraint(equalTo: shoreConfirmDock.leadingAnchor, constant: 15),
+            shoreConfirmButton.trailingAnchor.constraint(equalTo: shoreConfirmDock.trailingAnchor, constant: -15),
+            shoreConfirmButton.centerYAnchor.constraint(equalTo: shoreConfirmDock.centerYAnchor),
 
-            scrollView.topAnchor.constraint(equalTo: sheetView.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: sheetView.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: sheetView.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: confirmContainer.topAnchor),
+            shoreScrollView.topAnchor.constraint(equalTo: shoreSheetView.topAnchor),
+            shoreScrollView.leadingAnchor.constraint(equalTo: shoreSheetView.leadingAnchor),
+            shoreScrollView.trailingAnchor.constraint(equalTo: shoreSheetView.trailingAnchor),
+            shoreScrollView.bottomAnchor.constraint(equalTo: shoreConfirmDock.topAnchor),
 
-            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
+            shoreContentView.topAnchor.constraint(equalTo: shoreScrollView.contentLayoutGuide.topAnchor),
+            shoreContentView.leadingAnchor.constraint(equalTo: shoreScrollView.contentLayoutGuide.leadingAnchor),
+            shoreContentView.trailingAnchor.constraint(equalTo: shoreScrollView.contentLayoutGuide.trailingAnchor),
+            shoreContentView.bottomAnchor.constraint(equalTo: shoreScrollView.contentLayoutGuide.bottomAnchor),
+            shoreContentView.widthAnchor.constraint(equalTo: shoreScrollView.frameLayoutGuide.widthAnchor)
         ])
 
-        addSheetContent()
+        addShoreReportContent()
 
         view.layoutIfNeeded()
-        sheetView.transform = CGAffineTransform(translationX: 0, y: sheetView.bounds.height)
+        shoreSheetView.transform = CGAffineTransform(translationX: 0, y: shoreSheetView.bounds.height)
         UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseOut]) {
-            self.dimmingView.alpha = 1
-            self.sheetView.transform = .identity
+            self.shoreCurtainView.alpha = 1
+            self.shoreSheetView.transform = .identity
         }
     }
 
-    private func addSheetContent() {
+    private func addShoreReportContent() {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = "Report"
@@ -237,141 +262,141 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
 
         [SuliJoyShoreReportReason.fakePhoto, .scamOrCommercial, .notInterested].forEach { reason in
             let row = SuliJoyShoreReportReasonRow(reason: reason)
-            row.addTarget(self, action: #selector(selectReason(_:)), for: .touchUpInside)
-            reasonRows.append(row)
+            row.addTarget(self, action: #selector(chooseShoreReason(_:)), for: .touchUpInside)
+            shoreReasonRows.append(row)
             stack.addArrangedSubview(row)
         }
 
         let otherRow = SuliJoyShoreReportReasonRow(reason: .other)
-        otherRow.addTarget(self, action: #selector(selectReason(_:)), for: .touchUpInside)
-        reasonRows.append(otherRow)
+        otherRow.addTarget(self, action: #selector(chooseShoreReason(_:)), for: .touchUpInside)
+        shoreReasonRows.append(otherRow)
 
-        otherTextView.translatesAutoresizingMaskIntoConstraints = false
-        otherTextView.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1)
-        otherTextView.layer.cornerRadius = 12
-        otherTextView.textColor = .suliInk
-        otherTextView.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        otherTextView.textContainerInset = UIEdgeInsets(top: 18, left: 16, bottom: 14, right: 16)
-        otherTextView.delegate = self
-        otherTextView.returnKeyType = .done
+        shoreOtherTextView.translatesAutoresizingMaskIntoConstraints = false
+        shoreOtherTextView.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1)
+        shoreOtherTextView.layer.cornerRadius = 12
+        shoreOtherTextView.textColor = .suliInk
+        shoreOtherTextView.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        shoreOtherTextView.textContainerInset = UIEdgeInsets(top: 18, left: 16, bottom: 14, right: 16)
+        shoreOtherTextView.delegate = self
+        shoreOtherTextView.returnKeyType = .done
 
-        placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
-        placeholderLabel.text = "Enter your reason here ..."
-        placeholderLabel.textColor = UIColor.black.withAlphaComponent(0.18)
-        placeholderLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        otherTextView.addSubview(placeholderLabel)
+        shorePlaceholderLabel.translatesAutoresizingMaskIntoConstraints = false
+        shorePlaceholderLabel.text = "Enter your reason here ..."
+        shorePlaceholderLabel.textColor = UIColor.black.withAlphaComponent(0.18)
+        shorePlaceholderLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        shoreOtherTextView.addSubview(shorePlaceholderLabel)
 
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.alpha = 0
-        messageLabel.textColor = UIColor(red: 1, green: 0.42, blue: 0.18, alpha: 1)
-        messageLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
-        messageLabel.textAlignment = .center
-        messageLabel.numberOfLines = 0
+        shoreInlineLabel.translatesAutoresizingMaskIntoConstraints = false
+        shoreInlineLabel.alpha = 0
+        shoreInlineLabel.textColor = UIColor(red: 1, green: 0.42, blue: 0.18, alpha: 1)
+        shoreInlineLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        shoreInlineLabel.textAlignment = .center
+        shoreInlineLabel.numberOfLines = 0
 
-        [titleLabel, subtitleLabel, stack, otherRow, otherTextView, messageLabel].forEach { contentView.addSubview($0) }
+        [titleLabel, subtitleLabel, stack, otherRow, shoreOtherTextView, shoreInlineLabel].forEach { shoreContentView.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 28),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            titleLabel.topAnchor.constraint(equalTo: shoreContentView.topAnchor, constant: 28),
+            titleLabel.leadingAnchor.constraint(equalTo: shoreContentView.leadingAnchor, constant: 24),
+            titleLabel.trailingAnchor.constraint(equalTo: shoreContentView.trailingAnchor, constant: -24),
 
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            subtitleLabel.leadingAnchor.constraint(equalTo: shoreContentView.leadingAnchor, constant: 24),
+            subtitleLabel.trailingAnchor.constraint(equalTo: shoreContentView.trailingAnchor, constant: -24),
 
             stack.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 18),
-            stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            stack.leadingAnchor.constraint(equalTo: shoreContentView.leadingAnchor),
+            stack.trailingAnchor.constraint(equalTo: shoreContentView.trailingAnchor),
 
             otherRow.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 22),
-            otherRow.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            otherRow.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            otherRow.leadingAnchor.constraint(equalTo: shoreContentView.leadingAnchor),
+            otherRow.trailingAnchor.constraint(equalTo: shoreContentView.trailingAnchor),
 
-            otherTextView.topAnchor.constraint(equalTo: otherRow.bottomAnchor, constant: 10),
-            otherTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            otherTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            otherTextView.heightAnchor.constraint(equalToConstant: 100),
+            shoreOtherTextView.topAnchor.constraint(equalTo: otherRow.bottomAnchor, constant: 10),
+            shoreOtherTextView.leadingAnchor.constraint(equalTo: shoreContentView.leadingAnchor, constant: 24),
+            shoreOtherTextView.trailingAnchor.constraint(equalTo: shoreContentView.trailingAnchor, constant: -24),
+            shoreOtherTextView.heightAnchor.constraint(equalToConstant: 100),
 
-            placeholderLabel.topAnchor.constraint(equalTo: otherTextView.topAnchor, constant: 18),
-            placeholderLabel.leadingAnchor.constraint(equalTo: otherTextView.leadingAnchor, constant: 20),
-            placeholderLabel.trailingAnchor.constraint(lessThanOrEqualTo: otherTextView.trailingAnchor, constant: -20),
+            shorePlaceholderLabel.topAnchor.constraint(equalTo: shoreOtherTextView.topAnchor, constant: 18),
+            shorePlaceholderLabel.leadingAnchor.constraint(equalTo: shoreOtherTextView.leadingAnchor, constant: 20),
+            shorePlaceholderLabel.trailingAnchor.constraint(lessThanOrEqualTo: shoreOtherTextView.trailingAnchor, constant: -20),
 
-            messageLabel.topAnchor.constraint(equalTo: otherTextView.bottomAnchor, constant: 10),
-            messageLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            messageLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            messageLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -18)
+            shoreInlineLabel.topAnchor.constraint(equalTo: shoreOtherTextView.bottomAnchor, constant: 10),
+            shoreInlineLabel.leadingAnchor.constraint(equalTo: shoreContentView.leadingAnchor, constant: 24),
+            shoreInlineLabel.trailingAnchor.constraint(equalTo: shoreContentView.trailingAnchor, constant: -24),
+            shoreInlineLabel.bottomAnchor.constraint(equalTo: shoreContentView.bottomAnchor, constant: -18)
         ])
     }
 
-    @objc private func selectReason(_ sender: SuliJoyShoreReportReasonRow) {
-        selectedReason = sender.reason
-        reasonRows.forEach { $0.isChosen = $0 === sender }
-        hideInlineMessage()
+    @objc private func chooseShoreReason(_ sender: SuliJoyShoreReportReasonRow) {
+        chosenShoreReason = sender.reason
+        shoreReasonRows.forEach { $0.isChosen = $0 === sender }
+        hideShoreInlineNote()
         if sender.reason == .other {
-            otherTextView.becomeFirstResponder()
+            shoreOtherTextView.becomeFirstResponder()
         }
     }
 
-    @objc private func confirmReport() {
+    @objc private func confirmShoreReport() {
         view.endEditing(true)
-        let otherText = otherTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        let otherText = shoreOtherTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         let finalReason: SuliJoyShoreReportReason
-        if let selectedReason {
-            finalReason = selectedReason
+        if let chosenShoreReason {
+            finalReason = chosenShoreReason
         } else if !otherText.isEmpty {
             finalReason = .other
         } else {
-            showInlineMessage("Please select a report reason.")
+            showShoreInlineNote("Please select a report reason.")
             return
         }
 
         if finalReason == .other && otherText.isEmpty {
-            showInlineMessage("Please enter your report reason.")
+            showShoreInlineNote("Please enter your report reason.")
             return
         }
 
-        hideInlineMessage()
-        confirmButton.isLoading = true
+        hideShoreInlineNote()
+        shoreConfirmButton.isLoading = true
         let draft = SuliJoyShoreReportDraft(
             target: target,
             reason: finalReason,
             otherText: otherText.isEmpty ? nil : otherText,
-            createdAt: Date()
+            waveCreatedAt: Date()
         )
         SuliJoyCoveMockService.shared.submitShoreReport(draft: draft) { [weak self] result in
             DispatchQueue.main.async {
                 guard let self else { return }
-                self.confirmButton.isLoading = false
+                self.shoreConfirmButton.isLoading = false
                 if result.code == 200 {
-                    self.dismissSheet {
+                    self.dismissShoreReportSheet {
                         self.completion(result)
                     }
                 } else {
-                    self.showInlineMessage(result.message)
+                    self.showShoreInlineNote(result.note)
                 }
             }
         }
     }
 
-    private func showInlineMessage(_ message: String) {
-        messageLabel.text = message
+    private func showShoreInlineNote(_ jback: String) {
+        shoreInlineLabel.text = jback
         UIView.animate(withDuration: 0.18) {
-            self.messageLabel.alpha = 1
+            self.shoreInlineLabel.alpha = 1
         }
     }
 
-    private func hideInlineMessage() {
-        guard messageLabel.alpha > 0 else { return }
+    private func hideShoreInlineNote() {
+        guard shoreInlineLabel.alpha > 0 else { return }
         UIView.animate(withDuration: 0.18) {
-            self.messageLabel.alpha = 0
+            self.shoreInlineLabel.alpha = 0
         }
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        placeholderLabel.isHidden = !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-        if !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && selectedReason == nil {
-            selectedReason = .other
-            reasonRows.forEach { $0.isChosen = $0.reason == .other }
+        shorePlaceholderLabel.isHidden = !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        if !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && chosenShoreReason == nil {
+            chosenShoreReason = .other
+            shoreReasonRows.forEach { $0.isChosen = $0.reason == .other }
         }
     }
 
@@ -383,31 +408,31 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         return true
     }
 
-    private func registerKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    private func registerShoreKeyboardSignals() {
+        NotificationCenter.default.addObserver(self, selector: #selector(shoreKeyboardWillRise(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(shoreKeyboardWillSettle(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc private func keyboardWillShow(_ notification: Notification) {
+    @objc private func shoreKeyboardWillRise(_ notification: Notification) {
         guard let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let overlap = max(0, view.bounds.maxY - frame.minY)
         sheetBottomConstraint?.constant = -overlap
-        scrollView.contentInset.bottom = 16
-        scrollView.scrollIndicatorInsets.bottom = 16
-        animateKeyboardChange(notification)
+        shoreScrollView.contentInset.bottom = 16
+        shoreScrollView.verticalScrollIndicatorInsets.bottom = 16
+        animateShoreKeyboardShift(notification)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-            self.scrollView.scrollRectToVisible(self.otherTextView.convert(self.otherTextView.bounds, to: self.scrollView), animated: true)
+            self.shoreScrollView.scrollRectToVisible(self.shoreOtherTextView.convert(self.shoreOtherTextView.bounds, to: self.shoreScrollView), animated: true)
         }
     }
 
-    @objc private func keyboardWillHide(_ notification: Notification) {
+    @objc private func shoreKeyboardWillSettle(_ notification: Notification) {
         sheetBottomConstraint?.constant = 0
-        scrollView.contentInset.bottom = 0
-        scrollView.scrollIndicatorInsets.bottom = 0
-        animateKeyboardChange(notification)
+        shoreScrollView.contentInset.bottom = 0
+        shoreScrollView.verticalScrollIndicatorInsets.bottom = 0
+        animateShoreKeyboardShift(notification)
     }
 
-    private func animateKeyboardChange(_ notification: Notification) {
+    private func animateShoreKeyboardShift(_ notification: Notification) {
         let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.25
         let curveRaw = notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt ?? 7
         UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions(rawValue: curveRaw << 16)) {
@@ -415,19 +440,19 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         }
     }
 
-    @objc private func handlePan(_ gesture: UIPanGestureRecognizer) {
+    @objc private func handleShoreSheetPan(_ gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
         switch gesture.state {
         case .changed:
             if translation.y > 0 {
-                sheetView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+                shoreSheetView.transform = CGAffineTransform(translationX: 0, y: translation.y)
             }
         case .ended, .cancelled:
             if translation.y > 90 {
-                dismissSheet()
+                dismissShoreReportSheet()
             } else {
                 UIView.animate(withDuration: 0.18) {
-                    self.sheetView.transform = .identity
+                    self.shoreSheetView.transform = .identity
                 }
             }
         default:
@@ -435,15 +460,15 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         }
     }
 
-    @objc private func closeSheet() {
-        dismissSheet()
+    @objc private func closeShoreReportSheet() {
+        dismissShoreReportSheet()
     }
 
-    private func dismissSheet(completion: (() -> Void)? = nil) {
+    private func dismissShoreReportSheet(completion: (() -> Void)? = nil) {
         view.endEditing(true)
         UIView.animate(withDuration: 0.22, delay: 0, options: [.curveEaseIn]) {
-            self.dimmingView.alpha = 0
-            self.sheetView.transform = CGAffineTransform(translationX: 0, y: self.sheetView.bounds.height)
+            self.shoreCurtainView.alpha = 0
+            self.shoreSheetView.transform = CGAffineTransform(translationX: 0, y: self.shoreSheetView.bounds.height)
         } completion: { _ in
             self.dismiss(animated: false, completion: completion)
         }
@@ -469,30 +494,30 @@ private extension SuliJoyShoreReportTarget {
     }
 }
 
-extension SuliJoyBaseIslandViewController {
+extension SuliJoyTropicCanvasController {
     func presentSuliJoyReportSheet(target: SuliJoyShoreReportTarget, completion: (() -> Void)? = nil) {
         let sheet = SuliJoyShoreReportSheetController(target: target) { [weak self] result in
-            self?.showToast(result.message)
+            self?.showLagoonToast(result.note)
             completion?()
         }
         present(sheet, animated: false)
     }
 
-    func presentSuliJoyModerationMenu(report: @escaping () -> Void, block: @escaping () -> Void) {
-        let menu = SuliJoyShoreModerationMenuController(report: report, block: block)
-        present(menu, animated: false)
+    func presentSuliJoyHarborGuardMenu(_ harborFlag: @escaping () -> Void, block reefMute: @escaping () -> Void) {
+        let coveSheet = SuliJoyHarborGuardSheetController(harborFlag: harborFlag, reefMute: reefMute)
+        present(coveSheet, animated: false)
     }
 }
 
-private final class SuliJoyShoreModerationMenuController: UIViewController {
-    private let dimmingView = UIView()
-    private let container = UIStackView()
-    private let reportAction: () -> Void
-    private let blockAction: () -> Void
+private final class SuliJoyHarborGuardSheetController: UIViewController {
+    private let duskVeilView = UIView()
+    private let coveActionStack = UIStackView()
+    private let harborFlagDrift: () -> Void
+    private let reefMuteDrift: () -> Void
 
-    init(report: @escaping () -> Void, block: @escaping () -> Void) {
-        reportAction = report
-        blockAction = block
+    init(harborFlag: @escaping () -> Void, reefMute: @escaping () -> Void) {
+        harborFlagDrift = harborFlag
+        reefMuteDrift = reefMute
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overFullScreen
         modalTransitionStyle = .crossDissolve
@@ -504,87 +529,87 @@ private final class SuliJoyShoreModerationMenuController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        buildUI()
+        weaveHarborGuardUI()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidAppear(_ shoreAnimated: Bool) {
+        super.viewDidAppear(shoreAnimated)
         UIView.animate(withDuration: 0.22, delay: 0, options: [.curveEaseOut]) {
-            self.dimmingView.alpha = 1
-            self.container.transform = .identity
+            self.duskVeilView.alpha = 1
+            self.coveActionStack.transform = .identity
         }
     }
 
-    private func buildUI() {
+    private func weaveHarborGuardUI() {
         view.backgroundColor = .clear
 
-        dimmingView.translatesAutoresizingMaskIntoConstraints = false
-        dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.48)
-        dimmingView.alpha = 0
-        view.addSubview(dimmingView)
-        dimmingView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelNow)))
+        duskVeilView.translatesAutoresizingMaskIntoConstraints = false
+        duskVeilView.backgroundColor = UIColor.black.withAlphaComponent(0.48)
+        duskVeilView.alpha = 0
+        view.addSubview(duskVeilView)
+        duskVeilView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapSandCancel)))
 
-        container.translatesAutoresizingMaskIntoConstraints = false
-        container.axis = .vertical
-        container.spacing = 12
-        container.transform = CGAffineTransform(translationX: 0, y: 180)
-        view.addSubview(container)
+        coveActionStack.translatesAutoresizingMaskIntoConstraints = false
+        coveActionStack.axis = .vertical
+        coveActionStack.spacing = 12
+        coveActionStack.transform = CGAffineTransform(translationX: 0, y: 180)
+        view.addSubview(coveActionStack)
 
-        let report = makePlainButton(title: "Report", action: #selector(reportNow))
-        let block = makePlainButton(title: "Block", action: #selector(blockNow))
-        let cancel = SuliJoyGradientButton(title: "Cancel")
-        cancel.translatesAutoresizingMaskIntoConstraints = false
-        cancel.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .black)
-        cancel.addTarget(self, action: #selector(cancelNow), for: .touchUpInside)
+        let harborFlagButton = makePearlPlainAction(reefHeadline: "Report", action: #selector(tapHarborFlag))
+        let reefMuteButton = makePearlPlainAction(reefHeadline: "Block", action: #selector(tapReefMute))
+        let sandCancelButton = SuliJoyGradientButton(reefHeadline: "Cancel")
+        sandCancelButton.translatesAutoresizingMaskIntoConstraints = false
+        sandCancelButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .black)
+        sandCancelButton.addTarget(self, action: #selector(tapSandCancel), for: .touchUpInside)
 
-        [report, block, cancel].forEach {
-            container.addArrangedSubview($0)
+        [harborFlagButton, reefMuteButton, sandCancelButton].forEach {
+            coveActionStack.addArrangedSubview($0)
             $0.heightAnchor.constraint(equalToConstant: 56).isActive = true
         }
 
         NSLayoutConstraint.activate([
-            dimmingView.topAnchor.constraint(equalTo: view.topAnchor),
-            dimmingView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            dimmingView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            dimmingView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            duskVeilView.topAnchor.constraint(equalTo: view.topAnchor),
+            duskVeilView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            duskVeilView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            duskVeilView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            container.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 48),
-            container.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -48),
-            container.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
+            coveActionStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 48),
+            coveActionStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -48),
+            coveActionStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30)
         ])
     }
 
-    private func makePlainButton(title: String, action: Selector) -> UIButton {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .white
-        button.setTitle(title, for: .normal)
-        button.setTitleColor(UIColor(white: 0.58, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .black)
-        button.layer.cornerRadius = 28
-        button.clipsToBounds = true
-        button.addTarget(self, action: action, for: .touchUpInside)
-        return button
+    private func makePearlPlainAction(reefHeadline: String, action: Selector) -> UIButton {
+        let pearlActionButton = UIButton(type: .system)
+        pearlActionButton.translatesAutoresizingMaskIntoConstraints = false
+        pearlActionButton.backgroundColor = .white
+        pearlActionButton.setTitle(title, for: .normal)
+        pearlActionButton.setTitleColor(UIColor(white: 0.58, alpha: 1), for: .normal)
+        pearlActionButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .black)
+        pearlActionButton.layer.cornerRadius = 28
+        pearlActionButton.clipsToBounds = true
+        pearlActionButton.addTarget(self, action: action, for: .touchUpInside)
+        return pearlActionButton
     }
 
-    private func dismissThen(_ action: @escaping () -> Void) {
+    private func foldHarborGuard(after reefAction: @escaping () -> Void) {
         UIView.animate(withDuration: 0.18, delay: 0, options: [.curveEaseIn]) {
-            self.dimmingView.alpha = 0
-            self.container.transform = CGAffineTransform(translationX: 0, y: 180)
+            self.duskVeilView.alpha = 0
+            self.coveActionStack.transform = CGAffineTransform(translationX: 0, y: 180)
         } completion: { _ in
-            self.dismiss(animated: false, completion: action)
+            self.dismiss(animated: false, completion: reefAction)
         }
     }
 
-    @objc private func reportNow() {
-        dismissThen(reportAction)
+    @objc private func tapHarborFlag() {
+        foldHarborGuard(after: harborFlagDrift)
     }
 
-    @objc private func blockNow() {
-        dismissThen(blockAction)
+    @objc private func tapReefMute() {
+        foldHarborGuard(after: reefMuteDrift)
     }
 
-    @objc private func cancelNow() {
-        dismissThen {}
+    @objc private func tapSandCancel() {
+        foldHarborGuard {}
     }
 }
