@@ -79,7 +79,7 @@ final class suliJoyShorelineAesthetic: SuliJoyReefEntryCanvasController {
     }
 
     private func makeShoreSignupNextControl() -> SuliJoyGradientButton {
-        let shorelineNextControl = SuliJoyGradientButton(reefHeadline: "Next")
+        let shorelineNextControl = SuliJoyGradientButton(reefHeadline: "NYedxktb".suliJoyPalmUnfurled)
         shorelineNextControl.translatesAutoresizingMaskIntoConstraints = false
         shorelineNextControl.addTarget(self, action: #selector(commitShoreSignupDraft(_:)), for: .touchUpInside)
         return shorelineNextControl

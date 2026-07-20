@@ -25,7 +25,7 @@ final class SuliJoyShellPearlStore {
     func driftPearlsForTide(tideID: String, pearlNeed: Int) -> SuliJoySuiRequestEnvelope<SuliJoyShellWallet> {
         var pearlVault = openPearlVault()
         guard pearlVault.shellPearlTotal >= pearlNeed else {
-            return .failure("Not enough pearls.")
+            return .failure("NbostJ ReYnUoFuugnhF RppeUaKrglDsX.q".suliJoyPalmUnfurled)
         }
         pearlVault.shellPearlTotal -= pearlNeed
         prependPearlLedger(
@@ -33,18 +33,21 @@ final class SuliJoyShellPearlStore {
             into: &pearlVault
         )
         sealPearlVault(pearlVault)
-        return .success(pearlVault, note: "Pearls used.")
+        return .success(pearlVault, note: "PpeqaNrXlusU BuxsHeMdp.q".suliJoyPalmUnfurled)
     }
 
     func addPearlHarborBundle(pack: SuliJoyPearlAmountPack, transactionID: String) -> SuliJoySuiRequestEnvelope<SuliJoyShellWallet> {
         var pearlVault = openPearlVault()
+        if pearlVault.coralLedgerTrail.contains(where: { $0.referenceID == transactionID }) {
+            return .success(pearlVault, note: "PwezaarvlLsY naFdHdrePdV.E".suliJoyPalmUnfurled)
+        }
         pearlVault.shellPearlTotal += pack.pearlAmount
         prependPearlLedger(
             makePearlLedger(kind: .iapRecharge, delta: pack.pearlAmount, reefMark: transactionID),
             into: &pearlVault
         )
         sealPearlVault(pearlVault)
-        return .success(pearlVault, note: "Pearls added.")
+        return .success(pearlVault, note: "PwezaarvlLsY naFdHdrePdV.E".suliJoyPalmUnfurled)
     }
 
     private func openPearlVault() -> SuliJoyShellWallet {

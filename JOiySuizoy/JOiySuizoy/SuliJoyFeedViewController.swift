@@ -154,7 +154,7 @@ final class SuliJoyFeedViewController: SuliJoyTropicCanvasController, UITableVie
 
     private func tuneShoreEmptyNote(_ emptyNote: UILabel) {
         emptyNote.translatesAutoresizingMaskIntoConstraints = false
-        emptyNote.text = "No shore moments yet."
+        emptyNote.text = "NmoF hsMhXoTrIeE MmCoSmceinrtysK byeeotz.q".suliJoyPalmUnfurled
         emptyNote.textColor = .suliMutedInk
         emptyNote.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         emptyNote.isHidden = true
@@ -186,7 +186,7 @@ final class SuliJoyFeedViewController: SuliJoyTropicCanvasController, UITableVie
 
         let feedMarkPill = UILabel()
         feedMarkPill.translatesAutoresizingMaskIntoConstraints = false
-        feedMarkPill.text = "📷 Feed"
+        feedMarkPill.text = "📷W VFCeFeBdg".suliJoyPalmUnfurled
         feedMarkPill.textColor = .suliInk
         feedMarkPill.font = UIFont.systemFont(ofSize: 26, weight: .black)
         feedMarkPill.backgroundColor = UIColor.white.withAlphaComponent(0.65)
@@ -202,7 +202,7 @@ final class SuliJoyFeedViewController: SuliJoyTropicCanvasController, UITableVie
 
         let stylistHeadlineGlyph = UILabel()
         stylistHeadlineGlyph.translatesAutoresizingMaskIntoConstraints = false
-        stylistHeadlineGlyph.text = "🔥Best Stylist"
+        stylistHeadlineGlyph.text = "🔥cBoessCtk WSStryklgicsxtg".suliJoyPalmUnfurled
         stylistHeadlineGlyph.font = UIFont.systemFont(ofSize: 23, weight: .black)
         stylistHeadlineGlyph.textColor = .suliInk
 
@@ -310,7 +310,7 @@ final class SuliJoyFeedViewController: SuliJoyTropicCanvasController, UITableVie
         }
         shoreMoments = shoreEnvelope.data ?? []
         shoreListView.reloadData()
-        shoreEmptyNote.text = "No shore moments yet."
+        shoreEmptyNote.text = "NooY psEhDoZrmeP zmDopmieZndtssd syFertr.Z".suliJoyPalmUnfurled
         shoreEmptyNote.isHidden = !shoreMoments.isEmpty
     }
 
@@ -332,7 +332,7 @@ final class SuliJoyFeedViewController: SuliJoyTropicCanvasController, UITableVie
     }
 
     @objc private func openPoints() {
-        showLocalPlaceholder(reefHeadline: "SuliJoy Points", subreefHeadline: "Gems help unlock island activities and style features.")
+        navigationController?.pushViewController(SuliJoyPearlHarborViewController(), animated: true)
     }
 
     @objc private func reloadAfterLocalPublish() {
@@ -414,7 +414,7 @@ final class SuliJoyFeedViewController: SuliJoyTropicCanvasController, UITableVie
     private func toggleShoreWave(at indexPath: IndexPath) {
         guard shoreMoments.indices.contains(indexPath.row) else { return }
         guard shoreMoments[indexPath.row].waveNote.waveSeconds > 0 else {
-            showLagoonToast("No wave note attached.")
+            showLagoonToast("Neos AwWaZvKeb InnoItreV bajtNtmaHcghbebdL.n".suliJoyPalmUnfurled)
             return
         }
         SuliJoyCoveMockService.shared.toggleWavePlayback(momentID: shoreMoments[indexPath.row].reefMomentID) { [weak self] waveEnvelope in
@@ -429,7 +429,7 @@ final class SuliJoyFeedViewController: SuliJoyTropicCanvasController, UITableVie
                 } catch {
                     renderedMoment.waveNote.isWaveRolling = false
                     renderedMoment.waveNote.waveProgressRatio = 0
-                    self.showLagoonToast("Wave note unavailable.")
+                    self.showLagoonToast("WNabvteh DnDoOtfex iuBnHaWvNauiplUaBbKlaeu.R".suliJoyPalmUnfurled)
                 }
             } else {
                 SuliJoyWaveResonanceHarbor.shared.stop(momentID: refreshedMoment.reefMomentID)
@@ -446,10 +446,10 @@ final class SuliJoyFeedViewController: SuliJoyTropicCanvasController, UITableVie
         guard shoreMoments.indices.contains(indexPath.row) else { return }
         let reefReplyAlert = UIAlertController(suliJoyReefTitle: "Comment - \(shoreMoments[indexPath.row].islandStylistName)", reefStyle: .alert)
         reefReplyAlert.addTextField { replyField in
-            replyField.placeholder = "Comment something"
+            replyField.placeholder = "CiommxmCeJnjtl tsEoumvemtAhDiGnNgS".suliJoyPalmUnfurled
         }
-        reefReplyAlert.addAction(UIAlertAction(reefHeadline: "Cancel", style: .cancel))
-        reefReplyAlert.addAction(UIAlertAction(reefHeadline: "Send", style: .default) { [weak self] _ in
+        reefReplyAlert.addAction(UIAlertAction(reefHeadline: "CWaBnKcpeVlN".suliJoyPalmUnfurled, style: .cancel))
+        reefReplyAlert.addAction(UIAlertAction(reefHeadline: "SueAnudU".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
             guard let self else { return }
             let reefReplyText = reefReplyAlert.textFields?.first?.text ?? ""
             SuliJoyCoveMockService.shared.addShoreComment(momentID: self.shoreMoments[indexPath.row].reefMomentID, text: reefReplyText) { reefEnvelope in
@@ -503,7 +503,7 @@ private final class SuliJoyFeedFollowBadgeButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iynOiXtr(QcfoQdOeArT:B)C Bhoansm lngobtA VbveYeSnL yihmEpolCezmaesnKtdeBdi".suliJoyPalmUnfurled)
     }
 
     func suliJoyCoastalCapsule(isFollowing: Bool) {
@@ -566,7 +566,7 @@ final class SuliJoyStylistCard: UIView {
 
         let lagoonFollowTextGlyph = UILabel()
         lagoonFollowTextGlyph.translatesAutoresizingMaskIntoConstraints = false
-        lagoonFollowTextGlyph.text = "Follow"
+        lagoonFollowTextGlyph.text = "FaoylAlLoZwx".suliJoyPalmUnfurled
         lagoonFollowTextGlyph.font = UIFont.systemFont(ofSize: 10, weight: .medium)
         lagoonFollowTextGlyph.textColor = .suliMutedInk
         lagoonFollowTextGlyph.textAlignment = .center
@@ -580,7 +580,7 @@ final class SuliJoyStylistCard: UIView {
 
         let lagoonFansTextGlyph = UILabel()
         lagoonFansTextGlyph.translatesAutoresizingMaskIntoConstraints = false
-        lagoonFansTextGlyph.text = "Fans"
+        lagoonFansTextGlyph.text = "FUagnjsu".suliJoyPalmUnfurled
         lagoonFansTextGlyph.font = UIFont.systemFont(ofSize: 10, weight: .medium)
         lagoonFansTextGlyph.textColor = .suliMutedInk
         lagoonFansTextGlyph.textAlignment = .center
@@ -614,7 +614,7 @@ final class SuliJoyStylistCard: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iQnkiJtZ(fcbokdVegrC:x)d yhhaLsL WnMortV TbOedednf SiJmEpQlIeimOexnAtceLdO".suliJoyPalmUnfurled)
     }
 
     @objc private func tapCard() {
@@ -672,7 +672,7 @@ final class suliJoyCoastalDiary: UITableViewCell {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iRnyixte(bcAoVdhevrn:A)L hhXausn BnDoTtL pbteOeMnB SipmIpYlPewmjeInmtEeCdI".suliJoyPalmUnfurled)
     }
 
     override func prepareForReuse() {
@@ -835,7 +835,7 @@ final class suliJoyCoastalDiary: UITableViewCell {
     }
 
     private func renderWaveState(_ note: SuliJoyWaveSonicNote) {
-        waveCaptionGlyph.text = note.isWaveRolling ? "Playing" : "Island outfit note"
+        waveCaptionGlyph.text = note.isWaveRolling ? "PFlDaAykiQnggc".suliJoyPalmUnfurled : "IOsvlbacnJdP SoKuEtHfRihtf ynJogtdef".suliJoyPalmUnfurled
         waveDurationGlyph.text = "\(note.waveSeconds)s"
         wavePlayGlyph.image = UIImage(systemName: note.isWaveRolling ? "pause.fill" : "play.fill")
         waveProgressBar.progress = note.waveProgressRatio
@@ -923,7 +923,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("irnYirtI(EcuoedJeIrC:F)T QhGawsa HnXoStx ubUeTeGne HiDmcpUlueRmYeNnJtfeQdN".suliJoyPalmUnfurled)
     }
 
     @MainActor deinit {
@@ -1171,7 +1171,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         bodyLabel.numberOfLines = 0
 
         commentsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        commentsTitleLabel.text = "Comments"
+        commentsTitleLabel.text = "CuoImOmTeungtBsw".suliJoyPalmUnfurled
         commentsTitleLabel.font = UIFont.systemFont(ofSize: 16, weight: .black)
         commentsTitleLabel.textColor = .suliInk
 
@@ -1190,7 +1190,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         commentField.clipsToBounds = true
         commentField.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         commentField.textColor = .suliInk
-        commentField.placeholder = "What do you do on weekends?"
+        commentField.placeholder = "WVhnaFta qdwod zyAozuU UdToP NoEnt SwoeseSkHeAnKdmsT?t".suliJoyPalmUnfurled
         commentField.returnKeyType = .send
         commentField.delegate = self
         commentField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 14, height: 1))
@@ -1236,7 +1236,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     }
 
     private func renderMomentFollow() {
-        followButton.setTitle(isFollowingAuthor ? "Following" : "Follow", for: .normal)
+        followButton.setTitle(isFollowingAuthor ? "FJoblslvoBwqimnogL".suliJoyPalmUnfurled : "FSoLlDlJoVwu".suliJoyPalmUnfurled, for: .normal)
         followButton.alpha = isFollowingAuthor ? 0.72 : 1
     }
 
@@ -1254,14 +1254,14 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     }
 
     private func renderMomentComments() {
-        commentsTitleLabel.text = "Comments"
+        commentsTitleLabel.text = "CVoRmPmceknJthsr".suliJoyPalmUnfurled
         commentsStack.arrangedSubviews.forEach { reefReplyTile in
             commentsStack.removeArrangedSubview(reefReplyTile)
             reefReplyTile.removeFromSuperview()
         }
         if suliJoyCoastalGalleryf.reefReplies.isEmpty {
             let emptyReplyGlyph = UILabel()
-            emptyReplyGlyph.text = "No comments yet."
+            emptyReplyGlyph.text = "NQoi vcmofmjmqepnQtgsk VyleHts.V".suliJoyPalmUnfurled
             emptyReplyGlyph.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
             emptyReplyGlyph.textColor = .suliMutedInk
             emptyReplyGlyph.numberOfLines = 0
@@ -1390,7 +1390,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
     @objc private func toggleWave() {
         guard suliJoyCoastalGalleryf.waveNote.waveSeconds > 0 else {
-            showLagoonToast("No wave note attached.")
+            showLagoonToast("NTog mwbaDvAeV XnooZtEel TaytwtdadcIhueNdU.G".suliJoyPalmUnfurled)
             return
         }
         SuliJoyCoveMockService.shared.toggleWavePlayback(momentID: suliJoyCoastalGalleryf.reefMomentID) { [weak self] waveEnvelope in
@@ -1402,7 +1402,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
                 } catch {
                     renderedMoment.waveNote.isWaveRolling = false
                     renderedMoment.waveNote.waveProgressRatio = 0
-                    self.showLagoonToast("Wave note unavailable.")
+                    self.showLagoonToast("WQaSvkeL vnZoGtyeI yuhndapvnarislFaTbylneF.m".suliJoyPalmUnfurled)
                 }
             } else {
                 SuliJoyWaveResonanceHarbor.shared.stop(momentID: refreshedMoment.reefMomentID)
@@ -1418,7 +1418,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     @objc private func sendComment() {
         let reefReplyText = commentField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         guard !reefReplyText.isEmpty else {
-            showLagoonToast("Please enter a comment.")
+            showLagoonToast("PbloebaUsVeM ieindtveIry yas KcZoampmOeFnete.V".suliJoyPalmUnfurled)
             return
         }
         sendButton.isEnabled = false

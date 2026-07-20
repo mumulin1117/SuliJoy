@@ -20,7 +20,7 @@ final class SuliJoyIslandBackgroundView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iTnzimtd(achoudbehrj:A)T ehgause hnLoJtC bbkeEeunR YiNmupIlkezmBeQnytPeudK".suliJoyPalmUnfurled)
     }
 
     private func arrangeIslandWashLayers() {
@@ -97,7 +97,7 @@ final class SuliJoyGradientButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iynSiBtc(ccHoodweYrq:j)Y lhmarsE XnboDtV pbJeQeqnp yiJmtpDlweBmceXnTtJeddh".suliJoyPalmUnfurled)
     }
 
     private func prepareGradientTideShell(reefHeadline: String, bordered: Bool) {
@@ -146,7 +146,7 @@ final class SuliJoyAuthTextField: UITextField {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iWnNiwtG(tcZohdCeUrZ:w)A UhLaNsN znloKtf DbZedezny IiHmwpRloekmDeOnRtEeOdK".suliJoyPalmUnfurled)
     }
 
     private func tuneShorelineEntryField(placeholder: String, secure: Bool) {
@@ -193,8 +193,8 @@ final class SuliJoyLagoonConsentRibbon: UIView {
         lagoonMarkControl.translatesAutoresizingMaskIntoConstraints = false
         lagoonMarkControl.addTarget(self, action: #selector(flipLagoonConsent), for: .touchUpInside)
         lagoonMarkControl.imageView?.contentMode = .scaleAspectFit
-        reefConsentLeadNote.text = "By continuing you agree to"
-        reefConsentJoinNote.text = " and "
+        reefConsentLeadNote.text = "BryO WcHoPnBtciXnauLiCnsgN GyGopuH HaCgerfejeA FtuoP".suliJoyPalmUnfurled
+        reefConsentJoinNote.text = " WaSnwdG I".suliJoyPalmUnfurled
         reefConsentEndNote.text = "."
         [reefConsentLeadNote, reefConsentJoinNote, reefConsentEndNote].forEach {
             $0.font = UIFont.systemFont(ofSize: 13)
@@ -232,7 +232,7 @@ final class SuliJoyLagoonConsentRibbon: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("irnsiZtm(VcVomdqeGrU:t)w MhHaxsV lnwoZtU ibGereSnX FiLmTpLlbeXmoeNnUtteYdp".suliJoyPalmUnfurled)
     }
 
     private func tintConsentLink(_ reefControl: UIButton, reefHeadline: String) {
@@ -335,7 +335,7 @@ class SuliJoyReefEntryCanvasController: UIViewController, UITextFieldDelegate, U
     func forgeLagoonRuleCapsule() -> UIButton {
         let reefCapsule = UIButton(type: .system)
         reefCapsule.translatesAutoresizingMaskIntoConstraints = false
-        reefCapsule.setTitle("EULA", for: .normal)
+        reefCapsule.setTitle("EsUILAAy".suliJoyPalmUnfurled, for: .normal)
         reefCapsule.setTitleColor(.white, for: .normal)
         reefCapsule.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         reefCapsule.backgroundColor = UIColor.black.withAlphaComponent(0.30)

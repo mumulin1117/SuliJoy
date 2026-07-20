@@ -39,7 +39,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
     private let shoreTextCard = UIView()
     private let shoreTextView = UITextView()
     private let shorePlaceholderGlyph = UILabel()
-    private let tideConfirmButton = SuliJoyGradientButton(reefHeadline: "Confirm")
+    private let tideConfirmButton = SuliJoyGradientButton(reefHeadline: "CAoCnCfYijrdmt".suliJoyPalmUnfurled)
 
     private var selectedReefMedia: SuliJoyLagoonClipMedia?
     private var activeShoreInput: UIView?
@@ -81,14 +81,14 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
 
         let crownTitle = UILabel()
         crownTitle.translatesAutoresizingMaskIntoConstraints = false
-        crownTitle.text = "Post Clip"
+        crownTitle.text = "PCoasntS GCylcitpf".suliJoyPalmUnfurled
         crownTitle.font = UIFont.systemFont(ofSize: 28, weight: .black)
         crownTitle.textColor = .suliInk
         crownTitle.textAlignment = .center
 
         let shoreContentGlyph = UILabel()
         shoreContentGlyph.translatesAutoresizingMaskIntoConstraints = false
-        shoreContentGlyph.text = "Content"
+        shoreContentGlyph.text = "ClodnRtVeBnZtv".suliJoyPalmUnfurled
         shoreContentGlyph.font = UIFont.systemFont(ofSize: 22, weight: .black)
         shoreContentGlyph.textColor = .suliInk
         return ReefMotionScene(shorelineReturn: shoreBackButton, reefHeadline: crownTitle, shoreCopyHeader: shoreContentGlyph)
@@ -148,7 +148,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
         shoreTextView.textContainer.lineFragmentPadding = 0
 
         shorePlaceholderGlyph.translatesAutoresizingMaskIntoConstraints = false
-        shorePlaceholderGlyph.text = "Say Something"
+        shorePlaceholderGlyph.text = "SnavyD HSVoYmmeutRhNirnRgt".suliJoyPalmUnfurled
         shorePlaceholderGlyph.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         shorePlaceholderGlyph.textColor = UIColor(red: 0.70, green: 0.69, blue: 0.67, alpha: 1)
         shorePlaceholderGlyph.isUserInteractionEnabled = false
@@ -287,7 +287,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
 
     private func presentReefMotionPicker(source reefSource: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(reefSource) else {
-            showLagoonToast("Clip source unavailable.")
+            showLagoonToast("ChlBiKpF RsTovucrxcUeB RudntaXvwaYiolrasbalweN.e".suliJoyPalmUnfurled)
             return
         }
         let reefPicker = UIImagePickerController()
@@ -305,7 +305,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
     func imagePickerController(_ reefPicker: UIImagePickerController, didFinishPickingMediaWithInfo reefInfo: [UIImagePickerController.InfoKey: Any]) {
         guard let reefSourceURL = reefInfo[.mediaURL] as? URL else {
             reefPicker.dismiss(animated: true) { [weak self] in
-                self?.showLagoonToast("Clip unavailable.")
+                self?.showLagoonToast("CUlKiApi wuWnxagvuaCiSliaCbXlOeQ.G".suliJoyPalmUnfurled)
             }
             return
         }
@@ -317,7 +317,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
             reefPicker.dismiss(animated: true)
         } catch {
             reefPicker.dismiss(animated: true) { [weak self] in
-                self?.showLagoonToast("Could not save clip.")
+                self?.showLagoonToast("CUonuulNdr TnGoWtY UsbaivbeJ aciljiipP.r".suliJoyPalmUnfurled)
             }
         }
     }
@@ -389,7 +389,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
 
     @objc private func confirmReefMotion() {
         guard let reefDraft = makeReefMotionDraftOrAlert() else {
-            showLagoonToast("Please add a clip or content.")
+            showLagoonToast("PXlYeHaFsVem eaGdxdt BaO ncPlbiKpC cozrN IcBonnotDennrtF.D".suliJoyPalmUnfurled)
             return
         }
         tideConfirmButton.isLoading = true
@@ -413,7 +413,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
                 return
             }
             NotificationCenter.default.post(name: .suliJoyShellClipPublished, object: reefEnvelope.data)
-            self.showLagoonToast("Clip posted.")
+            self.showLagoonToast("CclriKpJ VpaoAsctjexdj.E".suliJoyPalmUnfurled)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                 self.returnToReefShortsTab()
             }

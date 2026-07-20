@@ -83,7 +83,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
 
     private func tuneEmptyShoreGlyph() {
         emptyShoreGlyph.translatesAutoresizingMaskIntoConstraints = false
-        emptyShoreGlyph.text = "No island shorts yet."
+        emptyShoreGlyph.text = "NBoF ZipsWlwapnBdR isbhromrhtfsJ cyWeDtl.M".suliJoyPalmUnfurled
         emptyShoreGlyph.textColor = .suliMutedInk
         emptyShoreGlyph.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         emptyShoreGlyph.textAlignment = .center
@@ -123,7 +123,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
         ])
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "💖 Shorts"
+        titleLabel.text = "💖f WSohyoMrYtQsh".suliJoyPalmUnfurled
         titleLabel.textColor = .suliInk
         titleLabel.font = UIFont.italicSystemFont(ofSize: 28).suliWithWeight(.black)
 
@@ -216,7 +216,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
                 self.activeReefTile = shorelineTile.isShorelineCurrentActive ? shorelineTile : nil
             } else {
                 self.activeReefTile = nil
-                self.showLagoonToast("Short unavailable.")
+                self.showLagoonToast("SihPoVrytg vuinKacvhaSiMlbabbnlceM.Y".suliJoyPalmUnfurled)
             }
         }
         shorelineTile.onShorelineFollowTap = { [weak self] reefID in
@@ -269,11 +269,11 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
     private func presentShoreReplyPrompt(reefID: String) {
         let reefPrompt = UIAlertController(suliJoyReefTitle: "Comment", reefStyle: .alert)
         reefPrompt.addTextField { shoreField in
-            shoreField.placeholder = "Comment something"
+            shoreField.placeholder = "CJojmdmUebnQtq LsdoJmBemtFhSitnRgU".suliJoyPalmUnfurled
             shoreField.autocapitalizationType = .sentences
         }
-        reefPrompt.addAction(UIAlertAction(reefHeadline: "Cancel", style: .cancel))
-        reefPrompt.addAction(UIAlertAction(reefHeadline: "Send", style: .default) { [weak self, weak reefPrompt] _ in
+        reefPrompt.addAction(UIAlertAction(reefHeadline: "CJaVnfcyeFlk".suliJoyPalmUnfurled, style: .cancel))
+        reefPrompt.addAction(UIAlertAction(reefHeadline: "SzeHncdl".suliJoyPalmUnfurled, style: .default) { [weak self, weak reefPrompt] _ in
             let reefText = reefPrompt?.textFields?.first?.text ?? ""
             SuliJoyCoveMockService.shared.addShellClipComment(clipID: reefID, reefReplyText: reefText) { reefEnvelope in
                 guard let self else { return }
@@ -291,7 +291,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
         presentSuliJoyHarborGuardMenu { [weak self] in
             self?.presentSuliJoyReportSheet(target: .shellClip(clipID: reefID))
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: shorelineShell.creator.clipStylistAlias)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: shorelineShell.creator.clipStylistAlias)
             SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { reefEnvelope in
                 self?.showLagoonToast(reefEnvelope.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
@@ -343,7 +343,7 @@ final class SuliJoyShortsClipCell: UITableViewCell {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iYnQiKtS(fcloWdMeirQ:k)E thbaUse OnaoUtc IbyeieWnL JilmopMlDeVmLennztKendw".suliJoyPalmUnfurled)
     }
 
     override func prepareForReuse() {
@@ -440,7 +440,7 @@ final class SuliJoyShortsClipCell: UITableViewCell {
         shoreReplyDock.addTarget(self, action: #selector(tapShoreReply), for: .touchUpInside)
 
         shoreReplyHintLabel.translatesAutoresizingMaskIntoConstraints = false
-        shoreReplyHintLabel.text = "Comment something"
+        shoreReplyHintLabel.text = "CkoVmWmQePnPtB msooxmWebtthDiunpgN".suliJoyPalmUnfurled
         shoreReplyHintLabel.textColor = UIColor(red: 0.74, green: 0.74, blue: 0.74, alpha: 1)
         shoreReplyHintLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
 

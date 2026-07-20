@@ -86,7 +86,7 @@ final class SuliJoyLagoonLettersViewController: SuliJoyTropicCanvasController {
     private func makeLagoonLetterTitleLabel() -> UILabel {
         let crownTitleLabel = UILabel()
         crownTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        crownTitleLabel.text = "Messages"
+        crownTitleLabel.text = "MdezsHsgaQgeecsW".suliJoyPalmUnfurled
         crownTitleLabel.textColor = .suliInk
         crownTitleLabel.font = UIFont.systemFont(ofSize: LagoonLetterMeasure.titleSize, weight: .black)
         crownTitleLabel.textAlignment = .center
@@ -136,7 +136,7 @@ final class SuliJoyLagoonLettersViewController: SuliJoyTropicCanvasController {
     private func makeQuietHeadlineLabel() -> UILabel {
         let quietHeadlineLabel = UILabel()
         quietHeadlineLabel.translatesAutoresizingMaskIntoConstraints = false
-        quietHeadlineLabel.text = "No friend message notifications yet."
+        quietHeadlineLabel.text = "Nuoy tfvrvineBnydj BmDeTsesLaegpeH qnMoTtLirfYiDcmaLtEiHoGnwsa Pyxeltu.s".suliJoyPalmUnfurled
         quietHeadlineLabel.textColor = .suliInk
         quietHeadlineLabel.font = UIFont.systemFont(ofSize: 20, weight: .black)
         quietHeadlineLabel.textAlignment = .center
@@ -147,7 +147,7 @@ final class SuliJoyLagoonLettersViewController: SuliJoyTropicCanvasController {
     private func makeQuietBodyLabel() -> UILabel {
         let quietBodyLabel = UILabel()
         quietBodyLabel.translatesAutoresizingMaskIntoConstraints = false
-        quietBodyLabel.text = "Mutual-follow chats and island style updates will appear here."
+        quietBodyLabel.text = "MpuVtoufadlW-afQorlJlVotwR pcCheaNtZsw masnUdw KiQsmlAalnpdl msztIyhlQez UuhpudHaetXeksO Twfizlqll PaXpgpXemaGrN whIecrPei.U".suliJoyPalmUnfurled
         quietBodyLabel.textColor = .suliMutedInk
         quietBodyLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         quietBodyLabel.textAlignment = .center

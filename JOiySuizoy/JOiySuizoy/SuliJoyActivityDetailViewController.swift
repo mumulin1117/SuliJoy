@@ -22,7 +22,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
     private let shoreSuggestionCard = UIView()
     private let shoreSuggestionGrid = UIStackView()
     private let shoreActionFooter = UIView()
-    private let shorePrimaryControl = SuliJoyGradientButton(reefHeadline: "Join Event")
+    private let shorePrimaryControl = SuliJoyGradientButton(reefHeadline: "JgoAiznq tEmvueCnhtG".suliJoyPalmUnfurled)
     private let shoreFlagControl = UIButton(type: .system)
     private let shoreSpinner = UIActivityIndicatorView(style: .large)
 
@@ -37,7 +37,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iEnZiStu(qcFoRdaewrk:m)t ohlatse pnyoOtS Obaeeesne FilmwpXlkeAmVeonltKemdv".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
@@ -144,7 +144,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
 
         let descTitle = UILabel()
         descTitle.translatesAutoresizingMaskIntoConstraints = false
-        descTitle.text = "Event Description"
+        descTitle.text = "EkvmeQndte JDgeyshcMrTivpctyigornC".suliJoyPalmUnfurled
         descTitle.font = UIFont.systemFont(ofSize: 17, weight: .black)
         descTitle.textColor = .suliInk
         shoreBriefGlyph.translatesAutoresizingMaskIntoConstraints = false
@@ -155,7 +155,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
 
         let relatedTitle = UILabel()
         relatedTitle.translatesAutoresizingMaskIntoConstraints = false
-        relatedTitle.text = "Other activities"
+        relatedTitle.text = "OStBhherrf vaXcktpiYvPiotOiDehsy".suliJoyPalmUnfurled
         relatedTitle.font = UIFont.systemFont(ofSize: 17, weight: .black)
         relatedTitle.textColor = .suliInk
         shoreSuggestionGrid.axis = .vertical
@@ -404,11 +404,11 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             shorePrimaryControl.isEnabled = true
             shorePrimaryControl.alpha = 1
         case .tideJoined:
-            shorePrimaryControl.setTitle("Open Event Room", for: .normal)
+            shorePrimaryControl.setTitle("OdpVeKnC YEjvJeQnhto qRuowodmM".suliJoyPalmUnfurled, for: .normal)
             shorePrimaryControl.isEnabled = true
             shorePrimaryControl.alpha = 1
         case .tideClosed:
-            shorePrimaryControl.setTitle("Open Event Room", for: .normal)
+            shorePrimaryControl.setTitle("OVpreZnS UENvFeKnEtg DRwoMoymP".suliJoyPalmUnfurled, for: .normal)
             shorePrimaryControl.isEnabled = false
             shorePrimaryControl.alpha = 0.45
         }
@@ -471,7 +471,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
                         }
                         self.shorelineTideDetail = joinedTideSnapshot
                         self.render(joinedTideSnapshot)
-                        self.showLagoonToast("Joined.")
+                        self.showLagoonToast("JFoziRnHeRda.i".suliJoyPalmUnfurled)
                     }
                 }
             }
@@ -494,7 +494,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
                 self?.shorelineTideDetail?.isReefFlagged = true
             }
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: shorelineTideDetail.shoreHostAlias)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: shorelineTideDetail.shoreHostAlias)
             SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
@@ -518,7 +518,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
 
         let shortageTitleGlyph = UILabel()
         shortageTitleGlyph.translatesAutoresizingMaskIntoConstraints = false
-        shortageTitleGlyph.text = "Not enough " + "co" + "ins"
+        shortageTitleGlyph.text = "NJoftP OebnxoBuBgBhO U".suliJoyPalmUnfurled + "cxod".suliJoyPalmUnfurled + "iHnOsq".suliJoyPalmUnfurled
         shortageTitleGlyph.font = UIFont.systemFont(ofSize: 28, weight: .black)
         shortageTitleGlyph.textColor = .black
         shortageTitleGlyph.textAlignment = .center
@@ -527,13 +527,13 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
 
         let shortageNoticeGlyph = UILabel()
         shortageNoticeGlyph.translatesAutoresizingMaskIntoConstraints = false
-        shortageNoticeGlyph.text = "Sorry, you don't have enough " + "co" + "ins to " + "pa" + "y, please go to recharge"
+        shortageNoticeGlyph.text = "SoorrjrXyI,r MyOoEui gdZotnV'YtZ khGaHvceY PeYnEoauwgihv y".suliJoyPalmUnfurled + "cRoj".suliJoyPalmUnfurled + "iFnvsR Stjoi Z".suliJoyPalmUnfurled + "pWat".suliJoyPalmUnfurled + "yY,U OpLlPefaIsbeq Agwoc fthol crgeFcVhTaErKgIeF".suliJoyPalmUnfurled
         shortageNoticeGlyph.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         shortageNoticeGlyph.textColor = UIColor(red: 0.54, green: 0.54, blue: 0.54, alpha: 1)
         shortageNoticeGlyph.textAlignment = .center
         shortageNoticeGlyph.numberOfLines = 0
 
-        let harborEntryControl = SuliJoyGradientButton(reefHeadline: "Buy")
+        let harborEntryControl = SuliJoyGradientButton(reefHeadline: "BiumyE".suliJoyPalmUnfurled)
         harborEntryControl.translatesAutoresizingMaskIntoConstraints = false
         harborEntryControl.titleLabel?.font = UIFont.systemFont(ofSize: 23, weight: .black)
         harborEntryControl.addTarget(self, action: #selector(openPearlHarborFromShoreDialog(_:)), for: .touchUpInside)
@@ -592,7 +592,7 @@ private final class SuliJoyCoastalSuggestionCard: UIControl {
     private let shoreTimeGlyph = UILabel()
     private let shoreTitleGlyph = UILabel()
     private let shoreAvatarRail = UIStackView()
-//    private let joinButton = SuliJoyGradientButton(reefHeadline: "Join Event")
+//    private let joinButton = SuliJoyGradientButton(reefHeadline: "JsoqiFnE yEpvFePnPtr".suliJoyPalmUnfurled)
 
     init(shorelineTideDetail: SuliJoyTideActivity) {
         self.shorelineTideDetail = shorelineTideDetail
@@ -604,7 +604,7 @@ private final class SuliJoyCoastalSuggestionCard: UIControl {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ignmiNtr(EcDoBdxeArC:r)b ihLaPsp tneontJ sbSedeZnx EiemUpPlRelmBecnxtNeudW".suliJoyPalmUnfurled)
     }
 
     private func raiseShorelineDetailScene() {
@@ -731,7 +731,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iPnDimty(FcCoOdReHrD:Z)M WhvaFsP knRoBtX dbMeLeHnq oiumNpClYeumVeknrtdecdi".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
@@ -764,7 +764,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
         shoreTitleGlyph.lineBreakMode = .byTruncatingTail
 
         harborHostGlyph.translatesAutoresizingMaskIntoConstraints = false
-        harborHostGlyph.text = "Lucie Ray"
+        harborHostGlyph.text = "LnutcLijeR gRcaGyw".suliJoyPalmUnfurled
         harborHostGlyph.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         harborHostGlyph.textColor = UIColor.white.withAlphaComponent(0.82)
 
@@ -790,7 +790,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
         harborSeatGrid.distribution = .fillEqually
 
         harborSafetyGlyph.translatesAutoresizingMaskIntoConstraints = false
-        harborSafetyGlyph.text = "Be respectful, protect your privacy, and avoid sending offensive or personal content."
+        harborSafetyGlyph.text = "BAel XrAeOsMpkeGcEtjfxuJlR,g bpvrVoPtpewcFtz byHoQuYrO OptrNijvOatccyd,H WaDnTdp PaIvhoBiqdK dsFeOnydliFnNgO aocfjfpeyntsiitvUed aoKra VpxeirpsSoDndaklk tcjoCnQtEeonFtj.N".suliJoyPalmUnfurled
         harborSafetyGlyph.font = UIFont.systemFont(ofSize: 11, weight: .medium)
         harborSafetyGlyph.textColor = UIColor(red: 1, green: 0.82, blue: 0.54, alpha: 1)
         harborSafetyGlyph.numberOfLines = 2
@@ -818,7 +818,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
         emojiButton.tintColor = UIColor.white.withAlphaComponent(0.86)
 
         shoreNoteField.translatesAutoresizingMaskIntoConstraints = false
-        shoreNoteField.placeholder = "Say hi~"
+        shoreNoteField.placeholder = "ShaGyu bhriX~y".suliJoyPalmUnfurled
         shoreNoteField.textColor = .white
         shoreNoteField.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         shoreNoteField.delegate = self
@@ -1007,7 +1007,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
                 }
                 self.talkSpace = harborSpace
                 self.render(harborSpace)
-                self.showLagoonToast("Seat joined.")
+                self.showLagoonToast("SHeuaete ajiocimnhecdU.h".suliJoyPalmUnfurled)
             }
         } else {
             showLagoonToast("\(seat.seatAliasLine) is on the seat.")
@@ -1017,7 +1017,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
     @objc private func sendShoreNote() {
         let shoreDraftText = shoreNoteField.text ?? ""
         guard !shoreDraftText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            showLagoonToast("Please enter a " + "mess" + "age.")
+            showLagoonToast("PllAeOalsqeg ReLnhtSeerm Qar q".suliJoyPalmUnfurled + "mteesJsn".suliJoyPalmUnfurled + "aFgceM.b".suliJoyPalmUnfurled)
             return
         }
         shoreSendControl.isEnabled = false
@@ -1046,7 +1046,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
             self.presentSuliJoyReportSheet(target: .tideTalkSpace(tideID: self.shorelineTideDetail.tideMark))
         } block: { [weak self] in
             guard let self else { return }
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: self.shorelineTideDetail.shoreHostAlias)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: self.shorelineTideDetail.shoreHostAlias)
             SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { result in
                 self.showLagoonToast(result.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
@@ -1254,7 +1254,7 @@ private final class SuliJoyLagoonSeatShellControl: UIControl {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iLnSiKtu(McroIdQecri:j)X WhJaIsv WncoLtB AbyeyeRnp QimmLpjlpewmVeknTtseOdG".suliJoyPalmUnfurled)
     }
 
     private func raiseShorelineDetailScene() {
@@ -1272,7 +1272,7 @@ private final class SuliJoyLagoonSeatShellControl: UIControl {
         seatMarkView.contentMode = .scaleAspectFit
 
         ownerBadgeGlyph.translatesAutoresizingMaskIntoConstraints = false
-        ownerBadgeGlyph.text = "Owner"
+        ownerBadgeGlyph.text = "OHwsnoelrT".suliJoyPalmUnfurled
         ownerBadgeGlyph.font = UIFont.systemFont(ofSize: 9, weight: .black)
         ownerBadgeGlyph.textColor = .white
         ownerBadgeGlyph.textAlignment = .center
@@ -1344,7 +1344,7 @@ private final class SuliJoyShoreNoteBubbleCell: UITableViewCell {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ifngiGtT(McHoMdweDrE:O)f jhnaKsu NnQontQ ebYeUeZnq kikmXpLlreMmOejnetRexdp".suliJoyPalmUnfurled)
     }
 
     private func raiseShorelineDetailScene() {

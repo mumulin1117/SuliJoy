@@ -31,9 +31,9 @@ final class SuliJoyReefLaunchEntryController: SuliJoyTropicCanvasController {
 
     private var reefLaunchEntries: [ReefLaunchEntry] {
         [
-            ReefLaunchEntry(reefMarkName: "photo.on.rectangle.angled", shoreHeadline: "Post Moment", tideCaption: "Share outfit photos and voice notes.", coralMood: .mist, coveSelector: #selector(openShoreMomentMaker)),
-            ReefLaunchEntry(reefMarkName: "calendar.badge.plus", shoreHeadline: "Create Event", tideCaption: "Host a coastal style gathering.", coralMood: .sunlit, coveSelector: #selector(openTideEventMaker)),
-            ReefLaunchEntry(reefMarkName: "play.rectangle.fill", shoreHeadline: "Post Clip", tideCaption: "Upload a short island style clip.", coralMood: .mist, coveSelector: #selector(openReefClipMaker))
+            ReefLaunchEntry(reefMarkName: "pNhJottkoh.aotnW.frleMcFtjarnmgdlteu.uaknbgHlWerdy".suliJoyPalmUnfurled, shoreHeadline: "PXovsTtu dMZoJmReKnKtD".suliJoyPalmUnfurled, tideCaption: "SZhmaGrweQ yoUuPtKfHiDth gpshgoNtRoXsC KaznCds avsoqiecwet anooytMezsK.D".suliJoyPalmUnfurled, coralMood: .mist, coveSelector: #selector(openShoreMomentMaker)),
+            ReefLaunchEntry(reefMarkName: "cwaeloeZnydBaZrw.vbeaKdZgSeh.BpplkuWsa".suliJoyPalmUnfurled, shoreHeadline: "CHrhevagtneA gEwvbexnStH".suliJoyPalmUnfurled, tideCaption: "HzoksHti VaC gcAonaesbttaalB MsRtTyZlweB tgxaUtchaeRrIiBnIgl.V".suliJoyPalmUnfurled, coralMood: .sunlit, coveSelector: #selector(openTideEventMaker)),
+            ReefLaunchEntry(reefMarkName: "pvlfamyP.WrVewcAtNaVnhgxlaea.zfZiOlvlr".suliJoyPalmUnfurled, shoreHeadline: "PsozsCtD BCIlMinpC".suliJoyPalmUnfurled, tideCaption: "UZpGlpoPaKdw Jar SsJhVoarzts ZiVselXaEnpdV VsGtMymldeK Ecelrijpb.V".suliJoyPalmUnfurled, coralMood: .mist, coveSelector: #selector(openReefClipMaker))
         ]
     }
 
@@ -61,7 +61,7 @@ final class SuliJoyReefLaunchEntryController: SuliJoyTropicCanvasController {
 
         let titleGlyph = UILabel()
         titleGlyph.translatesAutoresizingMaskIntoConstraints = false
-        titleGlyph.text = "Publish"
+        titleGlyph.text = "PDukbOlbiusehm".suliJoyPalmUnfurled
         titleGlyph.font = UIFont.systemFont(ofSize: 28, weight: .black)
         titleGlyph.textColor = .suliInk
         titleGlyph.textAlignment = .center
@@ -292,7 +292,7 @@ private final class SuliJoyReefLaunchEntryCard: UIControl {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iangiftg(xcqoodieArU:t)B phialsy SnMojtX gbIeueBnp HiymZpNlteJmxevnWtbeFdj".suliJoyPalmUnfurled)
     }
 
     override var isHighlighted: Bool {

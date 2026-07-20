@@ -15,7 +15,7 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
     private let shorePlaceField = UITextField()
     private let shoreCrewField = UITextField()
     private let entryPearlField = UITextField()
-    private let shorePublishControl = SuliJoyGradientButton(reefHeadline: "Publish Event")
+    private let shorePublishControl = SuliJoyGradientButton(reefHeadline: "PNuVbglUiNsfhd uENvOevnjtX".suliJoyPalmUnfurled)
     private var coverSlotControls: [SuliJoyTideCoverSlotControl] = []
     private var coverReefPicks: [SuliJoyReefEventPhotoPick] = []
     private var coverPreviewImages: [UIImage] = []
@@ -138,7 +138,7 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         shoreReturnControl.addTarget(self, action: #selector(driftBackFromCurationDraft), for: .touchUpInside)
         let curationHeadlineGlyph = UILabel()
         curationHeadlineGlyph.translatesAutoresizingMaskIntoConstraints = false
-        curationHeadlineGlyph.text = "Create Events"
+        curationHeadlineGlyph.text = "CfrDeIabtFeu dEovsehnttHsh".suliJoyPalmUnfurled
         curationHeadlineGlyph.font = UIFont.systemFont(ofSize: 25, weight: .black)
         curationHeadlineGlyph.textColor = .suliInk
         curationHeadlineGlyph.textAlignment = .center
@@ -343,14 +343,14 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         foldDraftKeyboard()
         let coverChoiceSheet = UIAlertController(suliJoyReefTitle: nil, reefStyle: .actionSheet)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            coverChoiceSheet.addAction(UIAlertAction(reefHeadline: "Take Photo", style: .default) { [weak self] _ in
+            coverChoiceSheet.addAction(UIAlertAction(reefHeadline: "TdaZkKeS APThkoOtqop".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
                 self?.openCoverImagePicker(source: .camera)
             })
         }
-        coverChoiceSheet.addAction(UIAlertAction(reefHeadline: "Choose from Library", style: .default) { [weak self] _ in
+        coverChoiceSheet.addAction(UIAlertAction(reefHeadline: "CchwoDofsVeZ EfZrsoImC ELciybsraajrAyz".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
             self?.openCoverImagePicker(source: .photoLibrary)
         })
-        coverChoiceSheet.addAction(UIAlertAction(reefHeadline: "Cancel", style: .cancel))
+        coverChoiceSheet.addAction(UIAlertAction(reefHeadline: "CCaqndcaeqlP".suliJoyPalmUnfurled, style: .cancel))
         let coverAnchor: UIView = coverSlotControls.indices.contains(activeCoverSlotIndex) ? coverSlotControls[activeCoverSlotIndex] : self.view
         coverChoiceSheet.popoverPresentationController?.sourceView = coverAnchor
         coverChoiceSheet.popoverPresentationController?.sourceRect = coverAnchor.bounds
@@ -359,7 +359,7 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
 
     private func openCoverImagePicker(source reefSource: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(reefSource) else {
-            showLagoonToast("Source unavailable.")
+            showLagoonToast("SjooucrAcneY suHnTaOvCatiplVasbKlMeq.b".suliJoyPalmUnfurled)
             return
         }
         let coverPicker = UIImagePickerController()
@@ -374,10 +374,10 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         coverPicker.dismiss(animated: true)
         let coverImage = (reefInfo[.editedImage] as? UIImage) ?? (reefInfo[.originalImage] as? UIImage)
         guard let coverImage, let shorelinePath = storeCoverSnapshot(coverImage) else {
-            showLagoonToast("Photo could not be saved.")
+            showLagoonToast("PahSoctcoC xcWoGualMdj xnlortX jbHeZ ssRaOvAebdM.R".suliJoyPalmUnfurled)
             return
         }
-        let reefPick = SuliJoyReefEventPhotoPick(reefSandboxPath: shorelinePath, reefCaptionLine: activeCoverSlotIndex == 0 ? "Event cover" : "Event photo")
+        let reefPick = SuliJoyReefEventPhotoPick(reefSandboxPath: shorelinePath, reefCaptionLine: activeCoverSlotIndex == 0 ? "EnvEeQnhtl YctomvPeXrn".suliJoyPalmUnfurled : "EkvQeFnotb KpzhPoJteoN".suliJoyPalmUnfurled)
         if activeCoverSlotIndex < coverReefPicks.count {
             coverReefPicks[activeCoverSlotIndex] = reefPick
             coverPreviewImages[activeCoverSlotIndex] = coverImage
@@ -461,8 +461,8 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
             shorelineWheel.topAnchor.constraint(equalTo: calendarSheet.view.topAnchor, constant: 44),
             shorelineWheel.heightAnchor.constraint(equalToConstant: 190)
         ])
-        calendarSheet.addAction(UIAlertAction(reefHeadline: "Cancel", style: .cancel))
-        calendarSheet.addAction(UIAlertAction(reefHeadline: "Done", style: .default) { _ in completion(shorelineWheel.date) })
+        calendarSheet.addAction(UIAlertAction(reefHeadline: "CpaSnCcXehlU".suliJoyPalmUnfurled, style: .cancel))
+        calendarSheet.addAction(UIAlertAction(reefHeadline: "Dhoynyel".suliJoyPalmUnfurled, style: .default) { _ in completion(shorelineWheel.date) })
         calendarSheet.popoverPresentationController?.sourceView = mode == .date ? shoreDateCapsule : shoreTimeCapsule
         calendarSheet.popoverPresentationController?.sourceRect = (mode == .date ? shoreDateCapsule : shoreTimeCapsule).bounds
         present(calendarSheet, animated: true)
@@ -470,18 +470,18 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
 
     @objc private func publishShorelineDraft() {
         foldDraftKeyboard()
-        guard !coverReefPicks.isEmpty else { showLagoonToast("Please add a cover photo."); return }
+        guard !coverReefPicks.isEmpty else { showLagoonToast("PildeyaLsYea KaXdYdK KaW TcZoqvpeurm npmhjoktuop.l".suliJoyPalmUnfurled); return }
         let shorelineTitle = (styleTitleField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !shorelineTitle.isEmpty else { showLagoonToast("Please enter an event title."); return }
+        guard !shorelineTitle.isEmpty else { showLagoonToast("PklsegaEsLeC QexndtveHrS pabnP veevoeQnZte WtciutplPej.y".suliJoyPalmUnfurled); return }
         let shorelineBrief = shoreBriefTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !shorelineBrief.isEmpty else { showLagoonToast("Please enter an event description."); return }
-        guard let chosenShoreDate, let chosenShoreTime else { showLagoonToast("Please choose event date and time."); return }
+        guard !shorelineBrief.isEmpty else { showLagoonToast("PmlDeEaesTeG GeRnNtKeJrt OaPnh veIvTebnrtd hdaecsFcQrCixpdtliFonnh.D".suliJoyPalmUnfurled); return }
+        guard let chosenShoreDate, let chosenShoreTime else { showLagoonToast("PglUeGahsmeC wcXhcoroSsoeQ lejvLelnCto xdeaptgel eadnqdQ YtyidmHeR.z".suliJoyPalmUnfurled); return }
         guard let crewLimit = Int(shoreCrewField.text ?? ""), crewLimit > 0 else {
-            showLagoonToast("Please enter a valid group size.")
+            showLagoonToast("PhlQeVarspeb reFnftiePrs baZ bvgaWlTiOdf vgMrDojutpI zsxikzSeh.X".suliJoyPalmUnfurled)
             return
         }
         guard let pearlNeed = Int(entryPearlField.text ?? ""), pearlNeed >= 0 else {
-            showLagoonToast("Please enter a valid event " + "pr" + "ice.")
+            showLagoonToast("PBldekalsueL meanrtdeury WaH XvFavlcikdT rejvXernwtf e".suliJoyPalmUnfurled + "pVrK".suliJoyPalmUnfurled + "idcyex.h".suliJoyPalmUnfurled)
             return
         }
         let tideDraft = SuliJoyTideDraftActivity(
@@ -506,7 +506,7 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
                 self.showLagoonToast(publishEnvelope.note)
                 return
             }
-            self.showLagoonToast("Event published.")
+            self.showLagoonToast("EYvoefnttJ rptutbklFiJsbhzeedU.y".suliJoyPalmUnfurled)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                 self.navigationController?.popToRootViewController(animated: false)
                 self.tabBarController?.selectedIndex = 0
@@ -589,7 +589,7 @@ private final class SuliJoyTideCalendarCapsuleButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnEiFtP(ScEoHdneKrk:L)a uhWaBss KnjoxtO fbzeLeqnw ViQmwpRlzegmZeAnhtqeddD".suliJoyPalmUnfurled)
     }
 
     private func raiseCurationDraftScene() {
@@ -635,7 +635,7 @@ private final class SuliJoyTideCoverSlotControl: UIControl {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("irnRittM(acuoldFedrR:B)F RhOaJsb tnDortt zbZeqeNna DiLmQpKlNehmeejnNtMeMdq".suliJoyPalmUnfurled)
     }
 
     private func raiseCurationDraftScene(isCover: Bool) {
@@ -657,7 +657,7 @@ private final class SuliJoyTideCoverSlotControl: UIControl {
         coverBadgeView.image = UIImage(named: "sulijoy_event_create_cover_badge")
         coverBadgeView.isHidden = !isCover
         coverTextGlyph.translatesAutoresizingMaskIntoConstraints = false
-        coverTextGlyph.text = "Cover"
+        coverTextGlyph.text = "CIoBvHeprJ".suliJoyPalmUnfurled
         coverTextGlyph.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         coverTextGlyph.textColor = .white
         coverTextGlyph.isHidden = !isCover

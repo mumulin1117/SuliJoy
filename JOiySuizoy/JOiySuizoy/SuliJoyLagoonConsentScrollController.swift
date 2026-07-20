@@ -36,7 +36,7 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iwnGijtx(occobdjeYrq:v)o lhwabsg WnFoVty QbuexeJnW yiwmwpDlUedmoeEnAteegdQ".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
@@ -83,7 +83,7 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
     private func makeLagoonRuleTitle() -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "EULA"
+        label.text = "EpUhLpAZ".suliJoyPalmUnfurled
         label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 30, weight: .black)
@@ -128,7 +128,7 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
     private func makeLagoonRuleCancelButton() -> UIButton {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Cancel", for: .normal)
+        button.setTitle("CYatnXcQeGly".suliJoyPalmUnfurled, for: .normal)
         button.setTitleColor(UIColor.black.withAlphaComponent(0.40), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         button.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1)
@@ -138,7 +138,7 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
     }
 
     private func makeLagoonRuleAgreeButton() -> UIButton {
-        let button = SuliJoyGradientButton(reefHeadline: "I agree")
+        let button = SuliJoyGradientButton(reefHeadline: "Id QaugwrDeaeg".suliJoyPalmUnfurled)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         button.addTarget(self, action: #selector(agreeLagoonRuleSheet), for: .touchUpInside)

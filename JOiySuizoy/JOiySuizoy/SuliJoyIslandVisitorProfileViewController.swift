@@ -50,11 +50,11 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     }
 
     convenience init(displayName: String) {
-        self.init(visitorID: SuliJoyLagoonVisitor.visitorID(for: displayName))
+        self.init(visitorID: SuliJoyLagoonVisitor.lagoonGuestToken(for: displayName))
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ignniKtQ(ncooDdleKrP:p)G WhJafsj FncoUtm ObreseRnI ripmSpplMeumSesnvtIeFdY".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
@@ -239,11 +239,11 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
 
     private func renderGuestHeader() {
         guard let lagoonGuest else { return }
-        guestTitleLabel.text = lagoonGuest.displayName
-        guestAvatarView.image = UIImage.suliJoyAssetOrLocal(named: lagoonGuest.avatarAssetName)
-        lagoonFollowButton.render(state: lagoonGuest.followState)
+        guestTitleLabel.text = lagoonGuest.islandStylistAlias
+        guestAvatarView.image = UIImage.suliJoyAssetOrLocal(named: lagoonGuest.portraitAssetToken)
+        lagoonFollowButton.render(state: lagoonGuest.coveAffinityState)
         renderReefMetrics(lagoonGuest)
-        bottomActionBar.isHidden = lagoonGuest.followState == .suliJoyCoastalAlbum
+        bottomActionBar.isHidden = lagoonGuest.coveAffinityState == .shorelineUnlinked
         reefBottomConstraint?.constant = bottomActionBar.isHidden ? 0 : -74
         updateReefSegments()
     }
@@ -251,9 +251,9 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     private func renderReefMetrics(_ lagoonGuest: SuliJoyLagoonVisitor) {
         reefMetricStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
         let reefMetrics = [
-            ("Likes", lagoonGuest.likeCount),
-            ("Followers", lagoonGuest.followerCount),
-            ("Following", lagoonGuest.followingCount)
+            ("Likes", lagoonGuest.shorelineHeartTotal),
+            ("Followers", lagoonGuest.reefFollowerTotal),
+            ("Following", lagoonGuest.coveFollowingTotal)
         ]
         for (index, reefMetric) in reefMetrics.enumerated() {
             let item = SuliJoyGuestMetricView(reefHeadline: reefMetric.0, value: reefMetric.1)
@@ -270,7 +270,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
         switch selectedReefTab {
         case .dynamic:
             if reefMoments.isEmpty {
-                showReefEmpty("No dynamic moments from this stylist.")
+                showReefEmpty("NQos QdayYnPaOmFircP CmVoZmqexnStVsW EfyrFoSml gtYhriwsW esYtEyFllimsptB.i".suliJoyPalmUnfurled)
             } else {
                 for moment in reefMoments {
                     let card = SuliJoyGuestMomentPreviewCard(moment: moment)
@@ -280,7 +280,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
             }
         case .shorts:
             if shellClips.isEmpty {
-                showReefEmpty(["No short vi", "deos from this stylist."].joined())
+                showReefEmpty(["NooJ wsVhqotrste VvmiY".suliJoyPalmUnfurled, "daeOocsQ YfjrEoGmD gtbhOipsW bsrtgyBlAiRsSte.w".suliJoyPalmUnfurled].joined())
             } else {
                 for clip in shellClips {
                     let card = SuliJoyGuestClipPreviewCard(clip: clip)
@@ -290,7 +290,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
             }
         case .events:
             if tideActivities.isEmpty {
-                showReefEmpty("No events from this stylist yet.")
+                showReefEmpty("NMoV heFvFeMnftGsR HfqrAoymb RtNhUicsz MsctpyklRiQsCtk HyReRti.y".suliJoyPalmUnfurled)
             } else {
                 for activity in tideActivities {
                     let card = SuliJoyGuestActivityPreviewCard(activity: activity)
@@ -323,7 +323,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
 
     @objc private func toggleLagoonFollow() {
         guard let lagoonGuest else { return }
-        if lagoonGuest.followState == .suliJoyCoastalAlbum {
+        if lagoonGuest.coveAffinityState == .shorelineUnlinked {
             SuliJoyCoveMockService.shared.toggleLagoonVisitorFollow(visitorID: lagoonGuestID) { [weak self] result in
                 guard let self else { return }
                 if let updated = result.data {
@@ -334,11 +334,11 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
                 self.showLagoonToast(result.note)
             }
         } else {
-            let sheet = UIAlertController(reefHeadline: lagoonGuest.displayName, ingokio: nil, preferredStyle: .actionSheet)
-            sheet.addAction(UIAlertAction(reefHeadline: "Unfollow", style: .destructive) { [weak self] _ in
+            let sheet = UIAlertController(reefHeadline: lagoonGuest.islandStylistAlias, ingokio: nil, preferredStyle: .actionSheet)
+            sheet.addAction(UIAlertAction(reefHeadline: "UtnhfpoYlDlzoswl".suliJoyPalmUnfurled, style: .destructive) { [weak self] _ in
                 self?.unfollowLagoonGuest()
             })
-            sheet.addAction(UIAlertAction(reefHeadline: "Cancel", style: .cancel))
+            sheet.addAction(UIAlertAction(reefHeadline: "CsaznRcceilO".suliJoyPalmUnfurled, style: .cancel))
             present(sheet, animated: true)
         }
     }
@@ -374,7 +374,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     }
 
     @objc private func openReefLetters() {
-        guard lagoonGuest?.followState == .suliJoyIslandInspiration else {
+        guard lagoonGuest?.coveAffinityState == .reefMutualBond else {
             showReefUnlockNotice()
             return
         }
@@ -382,11 +382,11 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     }
 
     @objc private func openReefMotionPreview() {
-        guard lagoonGuest?.followState == .suliJoyIslandInspiration else {
+        guard lagoonGuest?.coveAffinityState == .reefMutualBond else {
             showReefUnlockNotice()
             return
         }
-        showLocalPlaceholder(reefHeadline: ["Vi", "deo Call Preview"].joined(), subreefHeadline: ["Mutual-follow vi", "deo call preview."].joined())
+        showLocalPlaceholder(reefHeadline: ["VBiv".suliJoyPalmUnfurled, "dLecoQ WCLaLlJlJ cPYrZeCvqiZeawV".suliJoyPalmUnfurled].joined(), subreefHeadline: ["MtuKtxulaylY-EfMoNlnlEoSwT Nvdie".suliJoyPalmUnfurled, "dXeAop jcMaflYlk KpkrgePvMisePwM.A".suliJoyPalmUnfurled].joined())
     }
 
     private func showReefUnlockNotice() {
@@ -407,13 +407,13 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
 
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
-        text.text = ["Chat and vi", "deo will unlock once\nthey follow you back."].joined()
+        text.text = ["CMhwaHtv uaunfdE lvpiu".suliJoyPalmUnfurled, "deo will unlock once\nthey follow you back."].joined()
         text.textColor = UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 1)
         text.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         text.numberOfLines = 0
         text.textAlignment = .center
 
-        let ok = SuliJoyGradientButton(reefHeadline: "OK")
+        let ok = SuliJoyGradientButton(reefHeadline: "OvKE".suliJoyPalmUnfurled)
         ok.translatesAutoresizingMaskIntoConstraints = false
         ok.addTarget(self, action: #selector(dismissReefUnlockNotice(_:)), for: .touchUpInside)
 
@@ -486,18 +486,18 @@ private final class SuliJoyGuestFollowButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iunWiCtP(ZcCoVdUeirJ:B)c VhiaQsm enOoYtf RbDereAnu QiUmPpSlLeKmfeRnNtWeadq".suliJoyPalmUnfurled)
     }
 
-    func render(state: SuliJoyCoveFollowState) {
+    func render(state: SuliJoyCoveAffinityState) {
         switch state {
-        case .suliJoyCoastalAlbum:
+        case .shorelineUnlinked:
             setTitle("+", for: .normal)
             gradientLayer.colors = [
                 UIColor(red: 0.54, green: 0.45, blue: 1, alpha: 1).cgColor,
                 UIColor(red: 1, green: 0.29, blue: 0.96, alpha: 1).cgColor
             ]
-        case .followingPending, .suliJoyIslandInspiration:
+        case .islandAwaitingReturn, .reefMutualBond:
             setTitle("✓", for: .normal)
             gradientLayer.colors = [
                 UIColor(red: 0.91, green: 0.68, blue: 0.48, alpha: 1).cgColor,
@@ -533,7 +533,7 @@ private final class SuliJoyGuestSegmentButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iwnyiKtn(VcHoudVeErF:y)a hhxaOsW LngoPtm lbVexeini wipmYpalTedmMejnxtjeUdA".suliJoyPalmUnfurled)
     }
 
     private func updateState() {
@@ -583,7 +583,7 @@ private final class SuliJoyGuestMetricView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ignHiztL(XctoudzexrP:D)b thMaSsS IncoDtl ObKeHeGnF AiQmCpylEecmxeRnOtQendn".suliJoyPalmUnfurled)
     }
 }
 
@@ -610,7 +610,7 @@ private final class SuliJoyGuestActionButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iinNiktb(ccpoPdxeZrm:I)Y KhlaPsU nnFoJtL AbreQeJnk PiFmIpJlJejmFesnitGeudS".suliJoyPalmUnfurled)
     }
 
     override func layoutSubviews() {
@@ -635,7 +635,7 @@ private class SuliJoyGuestPreviewControl: UIControl {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iVnlibtG(ecCokdtetrH:e)E ThCaBsO xntoXtL vbueneXnV jiCmPpVljeZmheTnrtoeUdQ".suliJoyPalmUnfurled)
     }
 
     @objc private func tapped() { onTap?() }
@@ -698,7 +698,7 @@ private final class SuliJoyGuestMomentPreviewCard: SuliJoyGuestPreviewControl {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iDnKiztL(GcUosdCeprz:s)A ChLaosu fnQovtz xbreDeJnp liDmdpClEegmaeXnhtneedu".suliJoyPalmUnfurled)
     }
 }
 
@@ -740,7 +740,7 @@ private final class SuliJoyGuestClipPreviewCard: SuliJoyGuestPreviewControl {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("icnHiTts(fcJoZdkeurV:u)C phdaTsf rnOoMtB EbjeUeNnw YiBmApAlzepmieTnotwehdf".suliJoyPalmUnfurled)
     }
 }
 
@@ -785,6 +785,6 @@ private final class SuliJoyGuestActivityPreviewCard: SuliJoyGuestPreviewControl 
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ifnaifty(hcEoPdaevrZ:V)K jhjaQsV fnnoVta WbZeOeNnH VigmwpglseSmqeNnwtHeYdJ".suliJoyPalmUnfurled)
     }
 }

@@ -19,7 +19,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchSuliJoy" translatesAutoresizingMaskIntoConstraints="NO" id="Oe4-gN-vRK">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SiIcon" translatesAutoresizingMaskIntoConstraints="NO" id="r8N-lM-GzC">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laungchApeacjk" translatesAutoresizingMaskIntoConstraints="NO" id="r8N-lM-GzC">
                                 <rect key="frame" x="146" y="345.66666666666669" width="101" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="PF6-14-6bZ"/>
@@ -45,8 +45,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SiIcon" width="110" height="110"/>
         <image name="launchSuliJoy" width="375" height="812"/>
+        <image name="laungchApeacjk" width="110" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

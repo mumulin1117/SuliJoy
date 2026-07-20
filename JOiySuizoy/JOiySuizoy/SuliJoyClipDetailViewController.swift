@@ -37,7 +37,7 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ilnqiRtn(YcMozdFeqrx:p)X QhBadsT MnJobtv QbxeIeGnD iiKmSpflbepmTewnetEetdp".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
@@ -120,7 +120,7 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
         creatorNameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openReefCreatorProfile)))
 
         lagoonFollowButton.translatesAutoresizingMaskIntoConstraints = false
-        lagoonFollowButton.setTitle("Follow", for: .normal)
+        lagoonFollowButton.setTitle("FRoRlhlioXwp".suliJoyPalmUnfurled, for: .normal)
         lagoonFollowButton.setTitleColor(.white, for: .normal)
         lagoonFollowButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .black)
         lagoonFollowButton.layer.cornerRadius = 21
@@ -245,7 +245,7 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
         reefContentView.addSubview(reefCaptionLabel)
 
         reefCommentsTitle.translatesAutoresizingMaskIntoConstraints = false
-        reefCommentsTitle.text = "Comments"
+        reefCommentsTitle.text = "CHohmkmFesnEtasJ".suliJoyPalmUnfurled
         reefCommentsTitle.textColor = .suliInk
         reefCommentsTitle.font = UIFont.systemFont(ofSize: 22, weight: .black)
         reefContentView.addSubview(reefCommentsTitle)
@@ -270,7 +270,7 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
 
     private func anchorReefInputDock() {
         reefInputField.translatesAutoresizingMaskIntoConstraints = false
-        reefInputField.placeholder = "What do you do on weekends?"
+        reefInputField.placeholder = "WchxaFtY Bdeow qygoPua UdCoV bocnO TwHeveWkVecnPdWsz?R".suliJoyPalmUnfurled
         reefInputField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         reefInputField.backgroundColor = UIColor(red: 0.97, green: 0.98, blue: 0.98, alpha: 1)
         reefInputField.layer.cornerRadius = 22
@@ -313,7 +313,7 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
         creatorAvatarView.image = UIImage.suliJoyAssetOrLocal(named: reefClip.creator.clipPortraitToken)
         creatorNameLabel.text = reefClip.creator.clipStylistAlias
         reefCaptionLabel.text = reefClip.reefCaptionLine
-        lagoonFollowButton.setTitle(reefClip.isFollowed ? "Following" : "Follow", for: .normal)
+        lagoonFollowButton.setTitle(reefClip.isFollowed ? "FFoalClJoZwMilnags".suliJoyPalmUnfurled : "FhoGlUlAoDwl".suliJoyPalmUnfurled, for: .normal)
         lagoonFollowButton.alpha = reefClip.isFollowed ? 0.72 : 1
         reefLikeCountLabel.text = "\(reefClip.likeCount)"
         reefViewCountLabel.text = "\(min(9, reefClip.likeCount + reefClip.commentCount))"
@@ -403,7 +403,7 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
             return
         }
         guard let reefMotionURL = reefMovieURL(for: reefClip.media.reefMotionFileName) else {
-            showLagoonToast("Video unavailable.")
+            showLagoonToast("VviAdXevoM xuinNaSvnaciulEaYbWlheH.h".suliJoyPalmUnfurled)
             return
         }
         let shoreMotionEngine = AVPlayer(url: reefMotionURL)
@@ -470,7 +470,7 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
                 self?.fetchReefDetail()
             }
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: reefClip.creator.clipStylistAlias)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.creator.clipStylistAlias)
             SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { reefEnvelope in
                 self?.showLagoonToast(reefEnvelope.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
@@ -487,7 +487,7 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
                 self?.fetchReefDetail()
             }
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: reefClip.creator.clipStylistAlias)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.creator.clipStylistAlias)
             SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { reefEnvelope in
                 self?.showLagoonToast(reefEnvelope.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
@@ -529,7 +529,7 @@ final class SuliJoyClipCommentCard: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ienViRtO(jcKoCdCeOrs:E)t qhtaXsO mnvovtl ZbOeqeDng hiEmZprloeamOeanxtmevdj".suliJoyPalmUnfurled)
     }
 
     private func raiseReefDetailScene() {

@@ -75,7 +75,7 @@ final class SuliJoyShellPearlStorecontroller: SuliJoyReefEntryCanvasController {
     }
 
     private func makeLagoonEntryButton() -> SuliJoyGradientButton {
-        let submitLagoon = SuliJoyGradientButton(reefHeadline: "LOGIN")
+        let submitLagoon = SuliJoyGradientButton(reefHeadline: "LPOkGYIpNc".suliJoyPalmUnfurled)
         submitLagoon.translatesAutoresizingMaskIntoConstraints = false
         submitLagoon.addTarget(self, action: #selector(commitLagoonEntry(_:)), for: .touchUpInside)
         return submitLagoon

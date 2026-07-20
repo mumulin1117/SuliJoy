@@ -14,7 +14,7 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
     private let waveIconView = UIImageView()
     private let waveStatusGlyph = UILabel()
     private let waveRetryButton = UIButton(type: .system)
-    private let tideConfirmButton = SuliJoyGradientButton(reefHeadline: "Confirm")
+    private let tideConfirmButton = SuliJoyGradientButton(reefHeadline: "CqoEnMfJiarImR".suliJoyPalmUnfurled)
     private var shoreBottomTether: NSLayoutConstraint?
     private var activePhotoIndex = 0
     private var reefMediaPicks: [SuliJoyReefLocalMediaPick] = []
@@ -113,7 +113,7 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
 
         let crownGlyph = UILabel()
         crownGlyph.translatesAutoresizingMaskIntoConstraints = false
-        crownGlyph.text = "Post"
+        crownGlyph.text = "PwoPsftw".suliJoyPalmUnfurled
         crownGlyph.font = UIFont.systemFont(ofSize: 26, weight: .black)
         crownGlyph.textColor = .suliInk
         crownGlyph.textAlignment = .center
@@ -152,7 +152,7 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
 
     private func tuneShoreTextArea() {
         shoreTextTitle.translatesAutoresizingMaskIntoConstraints = false
-        shoreTextTitle.text = "Content"
+        shoreTextTitle.text = "CroEnEtseUnutr".suliJoyPalmUnfurled
         shoreTextTitle.font = UIFont.systemFont(ofSize: 22, weight: .black)
         shoreTextTitle.textColor = .suliInk
 
@@ -169,7 +169,7 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
         shoreTextView.delegate = self
 
         shorePlaceholderGlyph.translatesAutoresizingMaskIntoConstraints = false
-        shorePlaceholderGlyph.text = "Say Something"
+        shorePlaceholderGlyph.text = "SxaGyg DSGoBmAeKtthuiYnzgg".suliJoyPalmUnfurled
         shorePlaceholderGlyph.textColor = UIColor(red: 0.68, green: 0.67, blue: 0.66, alpha: 1)
         shorePlaceholderGlyph.font = UIFont.systemFont(ofSize: 16, weight: .regular)
 
@@ -240,7 +240,7 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
             waveStatusGlyph.text = "\(waveDraft.waveSeconds)s"
             waveRetryButton.isHidden = false
         } else {
-            waveStatusGlyph.text = "Recording"
+            waveStatusGlyph.text = "RfeOcxoErbdsiWnOgq".suliJoyPalmUnfurled
             waveRetryButton.isHidden = true
         }
         let canSendShoreMoment = hasShoreMomentContent()
@@ -268,7 +268,7 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
 
     private func openReefImagePicker(source reefSource: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(reefSource) else {
-            showLagoonToast("Camera is unavailable.")
+            showLagoonToast("CWaamueArDaG Eiosb yuvnxabvWaCiclUaPbklLet.X".suliJoyPalmUnfurled)
             return
         }
         let reefPicker = UIImagePickerController()
@@ -295,7 +295,7 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
 
     private func storeReefImage(_ reefImage: UIImage) {
         guard let reefPick = saveReefImageToSandbox(reefImage) else {
-            showLagoonToast("Photo could not be saved.")
+            showLagoonToast("PWhToZtOoo pcFoFuplvdC AnpoVtS hbPet msaaevUeAdv.a".suliJoyPalmUnfurled)
             return
         }
         if reefMediaPicks.indices.contains(activePhotoIndex) {
@@ -322,7 +322,7 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
         let reefURL = reefDirectory.appendingPathComponent("shore_photo_\(UUID().uuidString).jpg")
         do {
             try reefData.write(to: reefURL, options: .atomic)
-            return SuliJoyReefLocalMediaPick(reefSandboxPath: reefURL.path, reefCaptionLine: "Island style photo")
+            return SuliJoyReefLocalMediaPick(reefSandboxPath: reefURL.path, reefCaptionLine: "IosNldamnydi csAtNyUlTeu fpbhDoNtJoV".suliJoyPalmUnfurled)
         } catch {
             return nil
         }
@@ -350,7 +350,7 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
 
     @objc private func confirmShoreMoment() {
         guard hasShoreMomentContent() else {
-            showLagoonToast("Please add content, photos, or audio.")
+            showLagoonToast("PxleewaVsAej EaCdydv kcCoJnjtNetnztS,o VpDhLoKtQopsq,M uoQrT hazutdZiroQ.k".suliJoyPalmUnfurled)
             return
         }
         let shoreDraft = SuliJoyShoreDraftMoment(
@@ -458,7 +458,7 @@ private final class SuliJoyReefPhotoSlotControl: UIControl {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iMnViVtJ(CcgoHdRewrG:m)G ohxaXsj Jnfobtb sbPeaeNnE KilmipjlZeUmaeinlthesdw".suliJoyPalmUnfurled)
     }
 
     func configure(image: UIImage?) {
@@ -503,7 +503,7 @@ private final class SuliJoyWaveDraftReefOverlay: UIView, AVAudioRecorderDelegate
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ijnuiFtt(KcAordFefru:T)g phJaysh NnioNtH PbgedeLnL PiomTpylkermtefnctXebdx".suliJoyPalmUnfurled)
     }
 
     private func raiseWaveOverlay() {

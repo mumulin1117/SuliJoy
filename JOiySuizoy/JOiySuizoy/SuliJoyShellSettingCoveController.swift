@@ -28,7 +28,7 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
     private let lagoonAccessStore = SuliJoyLagoonGateService.shared
     private let shoreDriftScroll = UIScrollView()
     private let reefRowStack = UIStackView()
-    private let harborExitButton = SuliJoyGradientButton(reefHeadline: "Log out")
+    private let harborExitButton = SuliJoyGradientButton(reefHeadline: "LkoDgf goduHtW".suliJoyPalmUnfurled)
     private var mistVeil: UIView?
 
     private var shellWardrobeEntries: [ShellWardrobeEntry] {
@@ -71,7 +71,7 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
 
         let coveTitleGlyph = UILabel()
         coveTitleGlyph.translatesAutoresizingMaskIntoConstraints = false
-        coveTitleGlyph.text = "Setting"
+        coveTitleGlyph.text = "SYeEtVttiWnugp".suliJoyPalmUnfurled
         coveTitleGlyph.textAlignment = .center
         coveTitleGlyph.textColor = .suliInk
         coveTitleGlyph.font = UIFont.systemFont(ofSize: 18, weight: .black)
@@ -253,7 +253,7 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
     private func forgeCoralRemovalTitle() -> UILabel {
         let removalTitleGlyph = UILabel()
         removalTitleGlyph.translatesAutoresizingMaskIntoConstraints = false
-        removalTitleGlyph.text = "Delete account"
+        removalTitleGlyph.text = "DueglHeJtJeX faKcvcPoRuunKtl".suliJoyPalmUnfurled
         removalTitleGlyph.textAlignment = .center
         removalTitleGlyph.textColor = .suliInk
         removalTitleGlyph.font = UIFont.systemFont(ofSize: 17, weight: .black)
@@ -263,7 +263,7 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
     private func forgeCoralRemovalBody() -> UILabel {
         let bodyGlyph = UILabel()
         bodyGlyph.translatesAutoresizingMaskIntoConstraints = false
-        bodyGlyph.text = "Deleting the account will clear the account data. Are you sure to delete?"
+        bodyGlyph.text = "DbeAlheUteiNnHgY UtrhBeA jaWcNcgoqutnRtW KwbiElulU ycqlzelacrL ytQhHeB XaVcVcLosunnYtx gdaaDtfax.M YAYrdeY WywohuW usSuYrmeE qtroI MdMeRlQeXtbeW?Y".suliJoyPalmUnfurled
         bodyGlyph.textAlignment = .center
         bodyGlyph.textColor = .suliMutedInk
         bodyGlyph.font = UIFont.systemFont(ofSize: 13, weight: .regular)
@@ -272,7 +272,7 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
     }
 
     private func forgeCoralRemovalCancel() -> SuliJoyGradientButton {
-        let reefCancelTap = SuliJoyGradientButton(reefHeadline: "Cancel")
+        let reefCancelTap = SuliJoyGradientButton(reefHeadline: "CTabnncheOlE".suliJoyPalmUnfurled)
         reefCancelTap.translatesAutoresizingMaskIntoConstraints = false
         reefCancelTap.addTarget(self, action: #selector(dismissMistVeil), for: .touchUpInside)
         return reefCancelTap
@@ -281,7 +281,7 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
     private func forgeCoralRemovalAction() -> UIButton {
         let removalTap = UIButton(type: .system)
         removalTap.translatesAutoresizingMaskIntoConstraints = false
-        removalTap.setTitle("Delete", for: .normal)
+        removalTap.setTitle("DdeElweptyeb".suliJoyPalmUnfurled, for: .normal)
         removalTap.setTitleColor(UIColor.suliMutedInk.withAlphaComponent(0.68), for: .normal)
         removalTap.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .black)
         removalTap.backgroundColor = UIColor(white: 0.94, alpha: 1)
@@ -300,7 +300,7 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
     private func forgeHarborExitAction() -> UIButton {
         let harborExitTap = UIButton(type: .system)
         harborExitTap.translatesAutoresizingMaskIntoConstraints = false
-        harborExitTap.setTitle("Log out", for: .normal)
+        harborExitTap.setTitle("Lkoxgi VojubtK".suliJoyPalmUnfurled, for: .normal)
         harborExitTap.setTitleColor(.suliMutedInk, for: .normal)
         harborExitTap.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         harborExitTap.backgroundColor = .white
@@ -310,7 +310,7 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
     }
 
     private func forgeHarborExitCancel() -> SuliJoyGradientButton {
-        let harborCancelTap = SuliJoyGradientButton(reefHeadline: "Cancel")
+        let harborCancelTap = SuliJoyGradientButton(reefHeadline: "CJaTnLcyeElU".suliJoyPalmUnfurled)
         harborCancelTap.translatesAutoresizingMaskIntoConstraints = false
         harborCancelTap.addTarget(self, action: #selector(dismissMistVeil), for: .touchUpInside)
         return harborCancelTap
@@ -414,7 +414,7 @@ private final class SuliJoyShellCoveActionRow: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iQnFiMtZ(qcroBdTeprQ:Y)X NhraCsk xnxontz Lbjeaegne EiSmVpvlRevmNeGnPtYeodY".suliJoyPalmUnfurled)
     }
 
     override var isHighlighted: Bool {
@@ -433,7 +433,7 @@ private final class SuliJoyShellCoveHairline: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iBnWiRtW(ScZoVdQejro:W)Y ChZaJsb dnJoYtm rbaesePnz EiMmDpklteVmBennCtBesdI".suliJoyPalmUnfurled)
     }
 }
 
@@ -463,7 +463,7 @@ final class SuliJoyReefMutedVisitorCoveController: SuliJoyTropicCanvasController
 
         let coveTitleGlyph = UILabel()
         coveTitleGlyph.translatesAutoresizingMaskIntoConstraints = false
-        coveTitleGlyph.text = "Blocked List"
+        coveTitleGlyph.text = "BWlpoGcZkUeKdS qLdiosHtT".suliJoyPalmUnfurled
         coveTitleGlyph.textAlignment = .center
         coveTitleGlyph.textColor = .suliInk
         coveTitleGlyph.font = UIFont.systemFont(ofSize: 18, weight: .black)
@@ -478,7 +478,7 @@ final class SuliJoyReefMutedVisitorCoveController: SuliJoyTropicCanvasController
         mutedReefStack.spacing = 12
 
         quietShoreLabel.translatesAutoresizingMaskIntoConstraints = false
-        quietShoreLabel.text = "No blocked island stylists yet."
+        quietShoreLabel.text = "NkoG tbrlRolcekxewdf NixsWldaqnSdA DsitRyTluiFsFtQsV jyqeStg.m".suliJoyPalmUnfurled
         quietShoreLabel.textColor = .suliMutedInk
         quietShoreLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         quietShoreLabel.textAlignment = .center
@@ -535,20 +535,20 @@ final class SuliJoyReefMutedVisitorCoveController: SuliJoyTropicCanvasController
 
         let avatarGlyph = UIImageView()
         avatarGlyph.translatesAutoresizingMaskIntoConstraints = false
-        avatarGlyph.image = UIImage.suliJoyAssetOrLocal(named: islandGuest.avatarAssetName) ?? UIImage(named: "sulijoy_mock_avatar_breeze_01")
+        avatarGlyph.image = UIImage.suliJoyAssetOrLocal(named: islandGuest.portraitAssetToken) ?? UIImage(named: "sulijoy_mock_avatar_breeze_01")
         avatarGlyph.contentMode = .scaleAspectFill
         avatarGlyph.layer.cornerRadius = 24
         avatarGlyph.clipsToBounds = true
 
         let nameGlyph = UILabel()
         nameGlyph.translatesAutoresizingMaskIntoConstraints = false
-        nameGlyph.text = islandGuest.displayName
+        nameGlyph.text = islandGuest.islandStylistAlias
         nameGlyph.textColor = .suliInk
         nameGlyph.font = UIFont.systemFont(ofSize: 16, weight: .black)
 
         let stateGlyph = UILabel()
         stateGlyph.translatesAutoresizingMaskIntoConstraints = false
-        stateGlyph.text = "Blocked"
+        stateGlyph.text = "BSldouclkBeadG".suliJoyPalmUnfurled
         stateGlyph.textColor = .suliMutedInk
         stateGlyph.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
 

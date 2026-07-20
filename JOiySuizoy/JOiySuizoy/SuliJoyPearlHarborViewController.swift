@@ -66,7 +66,7 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iJnAivtT(kcRoKdQejrz:k)q lhRaEsu Cnnoqtw ZbkejegnQ minmgpiltevmQeJnmtAeUdV".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
@@ -121,7 +121,7 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
     private func makeHarborTitle() -> UILabel {
         let harborTitle = UILabel()
         harborTitle.translatesAutoresizingMaskIntoConstraints = false
-        harborTitle.text = ["My ", "wal", "let"].joined()
+        harborTitle.text = ["MyyT p".suliJoyPalmUnfurled, "wSajlk".suliJoyPalmUnfurled, "lPeWtb".suliJoyPalmUnfurled].joined()
         harborTitle.font = UIFont.systemFont(ofSize: 30, weight: .black)
         harborTitle.textColor = .black
         harborTitle.textAlignment = .center
@@ -234,7 +234,7 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
     }
 
     private func gatherPearlShelves() {
-        harborHintLabel.text = "Loading StoreKit products..."
+        harborHintLabel.text = "LDokaNdjiVndgN ySltfoBrOeTKkiOtC NpYrNocdeuicOtKsV.S.U.W".suliJoyPalmUnfurled
         Task { [weak self] in
             let harborAnswer = await SuliJoyPearlHarborBridge.gatherShelves()
             guard let self else { return }
@@ -292,11 +292,11 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
             switch harborAnswer.cargo {
             case .settled:
                 self.refreshShellTotal()
-                self.showLagoonToast("Recharge completed.")
+                self.showLagoonToast("RKercBhRairmgleK EcXohmWpAlTeOtweUdj.r".suliJoyPalmUnfurled)
             case .backedOut:
-                self.showLagoonToast(["Pur", "chase cancelled."].joined())
+                self.showLagoonToast(["PmuOrW".suliJoyPalmUnfurled, "cxheahsQee SctaOnBcSeelFleeNdz.b".suliJoyPalmUnfurled].joined())
             case .waiting:
-                self.showLagoonToast(["Pur", "chase pending."].joined())
+                self.showLagoonToast(["PCuirI".suliJoyPalmUnfurled, "cMhAacsnec zpJeJnJdgiunDgL.u".suliJoyPalmUnfurled].joined())
             case .missing:
                 self.showLagoonToast(harborAnswer.note)
             case .none:
@@ -340,7 +340,7 @@ private final class SuliJoyPearlPackCell: UICollectionViewCell {
     private let gemView = UIImageView(image: UIImage(named: ["sulijoy", "_wal", "let_gem_small"].joined()))
     private let shellCountLabel = UILabel()
     private let tideTagLabel = UILabel()
-    private let sunBloomButton = SuliJoyGradientButton(reefHeadline: "Recharge")
+    private let sunBloomButton = SuliJoyGradientButton(reefHeadline: "RWetczhyaCrEgheb".suliJoyPalmUnfurled)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -348,7 +348,7 @@ private final class SuliJoyPearlPackCell: UICollectionViewCell {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iPnyiqtE(lcEordNeXrN:m)S BhPaYsz BneoitU ebRejennk tiFmBpzlqeNmdeLnntIetdZ".suliJoyPalmUnfurled)
     }
 
     private func arrangePearlTileScene() {

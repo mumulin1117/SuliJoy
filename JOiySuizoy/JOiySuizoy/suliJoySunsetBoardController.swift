@@ -58,7 +58,7 @@ final class suliJoySunsetBoardController: UIViewController {
     private func makeReadyIslandSubtitle() -> UILabel {
         let subtitleMark = UILabel()
         subtitleMark.translatesAutoresizingMaskIntoConstraints = false
-        subtitleMark.text = "Your island style space is ready."
+        subtitleMark.text = "YRofuEry MiwsiljaSnjdW msithyvlkeB ushpcaWcGeh hiwsW zrWeTaUdPyH.n".suliJoyPalmUnfurled
         subtitleMark.textColor = .suliMutedInk
         subtitleMark.font = UIFont.systemFont(ofSize: ReadyIslandTideMeasure.subtitleSize, weight: .medium)
         subtitleMark.textAlignment = .center
@@ -69,7 +69,7 @@ final class suliJoySunsetBoardController: UIViewController {
     private func makeReadyIslandExitControl() -> UIButton {
         let exitControl = UIButton(type: .system)
         exitControl.translatesAutoresizingMaskIntoConstraints = false
-        exitControl.setTitle("Log out", for: .normal)
+        exitControl.setTitle("Lnohgt UoYuEtj".suliJoyPalmUnfurled, for: .normal)
         exitControl.titleLabel?.font = UIFont.systemFont(ofSize: ReadyIslandTideMeasure.exitSize, weight: .bold)
         exitControl.setTitleColor(.suliInk, for: .normal)
         exitControl.addTarget(self, action: #selector(commitReadyIslandExit), for: .touchUpInside)

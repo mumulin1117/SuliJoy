@@ -105,7 +105,7 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
     private func makeIslandTagline() -> UILabel {
         let islandStyleTagline = UILabel()
         islandStyleTagline.translatesAutoresizingMaskIntoConstraints = false
-        islandStyleTagline.text = "Show your island style."
+        islandStyleTagline.text = "SPhMobwx HypoVuMrj EiosflsarnQdJ CsmtbyxlEeR.W".suliJoyPalmUnfurled
         islandStyleTagline.textColor = .suliInk
         islandStyleTagline.font = UIFont.italicSystemFont(ofSize: ArrivalMetric.taglineSize)
         islandStyleTagline.textAlignment = .center
@@ -115,7 +115,7 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
     private func makeLagoonEntryControl() -> UIButton {
         let lagoonEntryControl = UIButton(type: .system)
         lagoonEntryControl.translatesAutoresizingMaskIntoConstraints = false
-        lagoonEntryControl.setTitle("Login", for: .normal)
+        lagoonEntryControl.setTitle("LEoOgQiVns".suliJoyPalmUnfurled, for: .normal)
         lagoonEntryControl.setTitleColor(.white, for: .normal)
         lagoonEntryControl.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .black)
         lagoonEntryControl.backgroundColor = .suliInk
@@ -125,7 +125,7 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
     }
 
     private func makeShoreSignupControl() -> SuliJoyGradientButton {
-        let shoreSignupControl = SuliJoyGradientButton(reefHeadline: "Sign in", bordered: true)
+        let shoreSignupControl = SuliJoyGradientButton(reefHeadline: "SSiVgCnG siKnw".suliJoyPalmUnfurled, bordered: true)
         shoreSignupControl.addTarget(self, action: #selector(sailToShoreSignup), for: .touchUpInside)
         plantShoreMailBadge(on: shoreSignupControl)
         return shoreSignupControl

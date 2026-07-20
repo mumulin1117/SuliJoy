@@ -81,7 +81,7 @@ final class SuliJoyLagoonGateService {
         )
         shoreProfileVault.save(shoreProfile)
         lagoonSessionVault.markLagoonEntry(shoreMail: shorelineDraft.email, islanderID: islandAccount.accountID, reefPass: makeLagoonToken())
-        return .success(shoreProfile, note: "Profile completed.")
+        return .success(shoreProfile, note: "PCrDoSfgihlaem ocdoamxpalpedtZeMdG.I".suliJoyPalmUnfurled)
     }
 
     func completeProfile(draft: SuliJoySignupDraft, bio: String, avatar: UIImage?) -> SuliJoySuiRequestEnvelope<SuliJoyShoreProfile> {
@@ -144,7 +144,7 @@ final class SuliJoyLagoonGateService {
         let lagoonState = lagoonSessionVault.suliJoySeasideHeroload()
         guard let shoreMail = lagoonState.currentEmail else {
             lagoonSessionVault.clearLagoonEntryOnly()
-            return .success(true, note: "Account deleted.")
+            return .success(true, note: "AbcZcvojuYnOtW hdQeclceEtxeWdm.C".suliJoyPalmUnfurled)
         }
 
         shoreProfileVault.delete(email: shoreMail)
@@ -152,15 +152,15 @@ final class SuliJoyLagoonGateService {
             islandAccountVault.desuliJoyPalmMatcherlete(emsuliJoyPalmMatrixail: shoreMail)
         }
         lagoonSessionVault.clearLagoonEntryOnly()
-        return .success(true, note: "Account deleted.")
+        return .success(true, note: "AJcucjoSuinWtJ fdBexlNeztieGdg.y".suliJoyPalmUnfurled)
     }
 
     private func inspectLagoonEntryKey(_ lagoonKey: LagoonEntryKey) -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession>? {
         if lagoonKey.shoreMail.isEmpty {
-            return .failure("Please enter your email.")
+            return .failure("PBlSeyaAsmeB KennVtxearX AypocuvrD BeYmQajiBlu.h".suliJoyPalmUnfurled)
         }
         if lagoonKey.tideSecret.isEmpty {
-            return .failure("Please enter your password.")
+            return .failure("PxlYeCaBsYel qexnItPeOrS nyiozuYre spnarsfsRwcobrXdG.B".suliJoyPalmUnfurled)
         }
         return nil
     }
@@ -171,19 +171,19 @@ final class SuliJoyLagoonGateService {
         tideSecret: String
     ) -> SuliJoySuiRequestEnvelope<SuliJoySignupDraft>? {
         if shoreName.isEmpty {
-            return .failure("Please enter your name.")
+            return .failure("PJlveqaPskeD DePnktzeBrX QydoVurrx TnxaVmoeQ.U".suliJoyPalmUnfurled)
         }
         if shoreMail.isEmpty {
-            return .failure("Please enter your email.")
+            return .failure("PjlheDalsSen IeVnttZeGrY Qywozulre GewmaafiBlC.k".suliJoyPalmUnfurled)
         }
         if !looksLikeShoreMail(shoreMail) {
-            return .failure("Please enter a valid email address.")
+            return .failure("PPlDeoarszey IeKnZtEeXrx Yam yvjaOlTivdP EeomyaFiclw caDdndIreeUsYsC.H".suliJoyPalmUnfurled)
         }
         if tideSecret.count < 8 {
-            return .failure("Password must be at least 8 characters.")
+            return .failure("PKahsQszwAoXrkdO zmRuKsXtR JbgeG aaOtp nlRefaBsMtF Z8d ycdhNaSrDarcetVeorKsj.z".suliJoyPalmUnfurled)
         }
         if alreadyOwnsIslandMail(shoreMail) {
-            return .failure("This email is already registered.")
+            return .failure("TqhEixsU FefmqawiYlS siUsP aaclQrheiaSdvyA mrKeRgxiBsgtfebrzewdu.y".suliJoyPalmUnfurled)
         }
         return nil
     }
@@ -194,10 +194,10 @@ final class SuliJoyLagoonGateService {
 
     private func openSavedIslandAccount(with lagoonKey: LagoonEntryKey) -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
         guard let islandAccount = islandAccountVault.suliJoyPalmRankingaccount(esuliJoyPalmGuidemail: lagoonKey.shoreMail) else {
-            return .failure("Account does not exist.", code: 404)
+            return .failure("AhcKcyoJuLnTtP edMojetsG BnRoztc jeMxRiWsrtu.J".suliJoyPalmUnfurled, code: 404)
         }
         guard islandAccount.password == lagoonKey.tideSecret else {
-            return .failure("Incorrect password.", code: 401)
+            return .failure("IpnocYokrRrNeTcitX XppaxslsLwuovrNds.g".suliJoyPalmUnfurled, code: 401)
         }
         lagoonSessionVault.markLagoonEntry(shoreMail: lagoonKey.shoreMail, islanderID: islandAccount.accountID, reefPass: makeLagoonToken())
         return .success(lagoonSessionVault.suliJoySeasideHeroload())

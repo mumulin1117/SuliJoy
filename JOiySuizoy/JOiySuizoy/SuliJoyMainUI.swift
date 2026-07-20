@@ -67,7 +67,7 @@ final class SuliJoyCoveCapsuleIconButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iRnciStT(kcRondyejrY:E)h zhcaFsB wnsovtB jbEeJelnx oiImxpNlieBmweSnCtPeYdL".suliJoyPalmUnfurled)
     }
 
     private func tuneCoveCapsuleShell() {
@@ -104,7 +104,7 @@ final class SuliJoyShellGemPillButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iwnCibtC(JcYoLdaeBrg:c)C uhEaWsT GnKovtY mbSeAennV RiFmipFlnehmQeinotdeDds".suliJoyPalmUnfurled)
     }
 
     private func prepareShellGemPillShell() {
@@ -155,7 +155,7 @@ final class SuliJoyGradientCapsuleView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iNnsiJtk(ScSoGdhegrx:f)v Yhnabsn nnBoatd pbiexeGnL jiwmGpOlmeRmAeenetZeydH".suliJoyPalmUnfurled)
     }
 
     override func layoutSubviews() {
@@ -347,14 +347,14 @@ extension UIViewController {
     ) -> UIAlertController {
         let coastalSheet = UIAlertController(suliJoyReefTitle: reefHeadline, reefStyle: .actionSheet)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            coastalSheet.addAction(UIAlertAction(reefHeadline: "Take Photo", style: .default) { _ in
+            coastalSheet.addAction(UIAlertAction(reefHeadline: "TxaokEeE xPshHoltOol".suliJoyPalmUnfurled, style: .default) { _ in
                 reefSourceRoute(.camera)
             })
         }
-        coastalSheet.addAction(UIAlertAction(reefHeadline: "Choose from Library", style: .default) { _ in
+        coastalSheet.addAction(UIAlertAction(reefHeadline: "CMhUorossoeF NfnrnoVmU xLSidbsriaDrnyC".suliJoyPalmUnfurled, style: .default) { _ in
             reefSourceRoute(.photoLibrary)
         })
-        coastalSheet.addAction(UIAlertAction(reefHeadline: "Cancel", style: .cancel))
+        coastalSheet.addAction(UIAlertAction(reefHeadline: "CxaanNcGeslw".suliJoyPalmUnfurled, style: .cancel))
         if let islandPopover = coastalSheet.popoverPresentationController {
             islandPopover.sourceView = shoreAnchor
             islandPopover.sourceRect = shoreAnchor.bounds
@@ -378,7 +378,7 @@ extension UIViewController {
         coastalSheet.addAction(UIAlertAction(reefHeadline: galleryPhrase, style: .default) { _ in
             reefSourceRoute(.photoLibrary)
         })
-        coastalSheet.addAction(UIAlertAction(reefHeadline: "Cancel", style: .cancel))
+        coastalSheet.addAction(UIAlertAction(reefHeadline: "CtaWnFcjeOlz".suliJoyPalmUnfurled, style: .cancel))
         if let islandPopover = coastalSheet.popoverPresentationController {
             islandPopover.sourceView = shoreAnchor
             islandPopover.sourceRect = shoreAnchor.bounds
@@ -506,7 +506,7 @@ final class SuliJoySimplePlaceholderViewController: SuliJoyTropicCanvasControlle
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iBnLigtP(YctovdFegrr:V)k yhaapsX dnaomtC gbLeYeGnl fixmlpslreNmBeOnHtqetdL".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {

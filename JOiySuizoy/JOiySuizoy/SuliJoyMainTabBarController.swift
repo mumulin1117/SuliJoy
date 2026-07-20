@@ -166,18 +166,18 @@ final class SuliJoyMineLiteViewController: SuliJoyTropicCanvasController {
         super.viewDidLoad()
         let title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "My Island"
+        title.text = "MWyf mICsBlTaWnadr".suliJoyPalmUnfurled
         title.font = UIFont.systemFont(ofSize: 30, weight: .black)
         title.textColor = .suliInk
 
         let profile = SuliJoyLocalProfileStore().currentProfile()
         let subtitle = UILabel()
         subtitle.translatesAutoresizingMaskIntoConstraints = false
-        subtitle.text = profile?.nickname ?? "Your SuliJoy style profile"
+        subtitle.text = profile?.nickname ?? "YYonuorR HSXuzlIivJponyP ysvtIywlPeH NpHrQoNfViwlDeY".suliJoyPalmUnfurled
         subtitle.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         subtitle.textColor = .suliMutedInk
 
-        let logout = SuliJoyGradientButton(reefHeadline: "Log out")
+        let logout = SuliJoyGradientButton(reefHeadline: "LHoPgk MoPuWth".suliJoyPalmUnfurled)
         logout.translatesAutoresizingMaskIntoConstraints = false
         logout.addTarget(self, action: #selector(leaveMineLiteLagoon), for: .touchUpInside)
 

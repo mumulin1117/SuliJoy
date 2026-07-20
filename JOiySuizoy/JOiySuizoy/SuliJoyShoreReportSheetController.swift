@@ -23,7 +23,7 @@ private final class SuliJoyShoreReportRadioView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iBnoiqtY(RcaordJeHrH:a)b uhfaXsc LnIoZtl cbEemegnj siHmrpnlYecmMeynqtaejdL".suliJoyPalmUnfurled)
     }
 
     override func draw(_ rect: CGRect) {
@@ -104,7 +104,7 @@ private final class SuliJoyShoreReportReasonRow: UIControl {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iTnFiQtg(fcsoJdRezrM:A)P jhHaUsX NnQoetg KbXeuejnb tigmWpdlFePmUeGnOtueKdX".suliJoyPalmUnfurled)
     }
 }
 
@@ -116,7 +116,7 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
     private let shoreScrollView = UIScrollView()
     private let shoreContentView = UIView()
     private let shoreConfirmDock = UIView()
-    private let shoreConfirmButton = SuliJoyGradientButton(reefHeadline: "Confirm")
+    private let shoreConfirmButton = SuliJoyGradientButton(reefHeadline: "CJoanmfSitrBmP".suliJoyPalmUnfurled)
     private let shoreOtherTextView = UITextView()
     private let shorePlaceholderLabel = UILabel()
     private let shoreInlineLabel = UILabel()
@@ -133,7 +133,7 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ianLiMtm(OclondTerrQ:h)H KhxaTsl snGoLtJ QbReheCnL liRmZpMlxeGmxeVnGtveKdD".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
@@ -242,7 +242,7 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
     private func addShoreReportContent() {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Report"
+        titleLabel.text = "ReeipFoorrtz".suliJoyPalmUnfurled
         titleLabel.textColor = .black
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.systemFont(ofSize: 26, weight: .black)
@@ -281,7 +281,7 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         shoreOtherTextView.returnKeyType = .done
 
         shorePlaceholderLabel.translatesAutoresizingMaskIntoConstraints = false
-        shorePlaceholderLabel.text = "Enter your reason here ..."
+        shorePlaceholderLabel.text = "EtnTtKedrk vyeoxuxrT qrfewaZsioNnx nhCeXrpeY O.J.r.c".suliJoyPalmUnfurled
         shorePlaceholderLabel.textColor = UIColor.black.withAlphaComponent(0.18)
         shorePlaceholderLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         shoreOtherTextView.addSubview(shorePlaceholderLabel)
@@ -524,7 +524,7 @@ private final class SuliJoyHarborGuardSheetController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iAnYiito(TcMozddeWrx:z)f IhGabsi jnRoTtE PbieKeonT ZiXmPpOlXeVmveXnDtMeFdP".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
@@ -555,9 +555,9 @@ private final class SuliJoyHarborGuardSheetController: UIViewController {
         coveActionStack.transform = CGAffineTransform(translationX: 0, y: 180)
         view.addSubview(coveActionStack)
 
-        let harborFlagButton = makePearlPlainAction(reefHeadline: "Report", action: #selector(tapHarborFlag))
-        let reefMuteButton = makePearlPlainAction(reefHeadline: "Block", action: #selector(tapReefMute))
-        let sandCancelButton = SuliJoyGradientButton(reefHeadline: "Cancel")
+        let harborFlagButton = makePearlPlainAction(reefHeadline: "RjejpToPruts".suliJoyPalmUnfurled, action: #selector(tapHarborFlag))
+        let reefMuteButton = makePearlPlainAction(reefHeadline: "BBlQoFcukD".suliJoyPalmUnfurled, action: #selector(tapReefMute))
+        let sandCancelButton = SuliJoyGradientButton(reefHeadline: "CbaVnLcievlT".suliJoyPalmUnfurled)
         sandCancelButton.translatesAutoresizingMaskIntoConstraints = false
         sandCancelButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .black)
         sandCancelButton.addTarget(self, action: #selector(tapSandCancel), for: .touchUpInside)
@@ -583,7 +583,7 @@ private final class SuliJoyHarborGuardSheetController: UIViewController {
         let pearlActionButton = UIButton(type: .system)
         pearlActionButton.translatesAutoresizingMaskIntoConstraints = false
         pearlActionButton.backgroundColor = .white
-        pearlActionButton.setTitle(title, for: .normal)
+        pearlActionButton.setTitle(reefHeadline, for: .normal)
         pearlActionButton.setTitleColor(UIColor(white: 0.58, alpha: 1), for: .normal)
         pearlActionButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .black)
         pearlActionButton.layer.cornerRadius = 28

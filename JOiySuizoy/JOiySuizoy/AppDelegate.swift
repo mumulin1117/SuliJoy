@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        SuliJoyLagoonHarborService.shared.beginPearlHarborRenewalWatch()
+
         let root: UIViewController
         let session = SuliJoyLagoonGateService.shared.restoreSession()
         if session.isLoggedIn, session.currentEmail != nil {

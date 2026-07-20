@@ -76,7 +76,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         profileCrownPill.clipsToBounds = true
 
         profileCrownGlyph.translatesAutoresizingMaskIntoConstraints = false
-        profileCrownGlyph.text = "🤩 Profile"
+        profileCrownGlyph.text = "🤩u GPZrvoVfPiGlNef".suliJoyPalmUnfurled
         profileCrownGlyph.font = UIFont.italicSystemFont(ofSize: 31).suliWithWeight(.black)
         profileCrownGlyph.textColor = .suliInk
         profileCrownGlyph.adjustsFontSizeToFitWidth = true
@@ -101,14 +101,14 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         avatarShellView.image = UIImage(named: "sulijoy_mock_avatar_breeze_01")
 
         nameShellTap.translatesAutoresizingMaskIntoConstraints = false
-        nameShellTap.setTitle("David", for: .normal)
+        nameShellTap.setTitle("DQauvciOdq".suliJoyPalmUnfurled, for: .normal)
         nameShellTap.setTitleColor(.suliInk, for: .normal)
         nameShellTap.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         nameShellTap.contentHorizontalAlignment = .left
         nameShellTap.isUserInteractionEnabled = false
 
         islandCodeGlyph.translatesAutoresizingMaskIntoConstraints = false
-        islandCodeGlyph.text = "ID  3994920304"
+        islandCodeGlyph.text = "IIDN i q3P9N9L4U9M2X0G3h0o4H".suliJoyPalmUnfurled
         islandCodeGlyph.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         islandCodeGlyph.textColor = .suliMutedInk
         islandCodeGlyph.textAlignment = .left
@@ -163,7 +163,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         view.addSubview(wardrobeTable)
 
         quietCoveGlyph.translatesAutoresizingMaskIntoConstraints = false
-        quietCoveGlyph.text = "No profile content yet."
+        quietCoveGlyph.text = "Nuol zprreoXfxiflCeE dcKoOnPtHepnEtb VyGegtc.l".suliJoyPalmUnfurled
         quietCoveGlyph.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         quietCoveGlyph.textColor = .suliMutedInk
         quietCoveGlyph.textAlignment = .center
@@ -500,7 +500,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         if cell.switchShorelineCurrent() {
             activeReefClipCell = cell.isShorelineCurrentActive ? cell : nil
         } else {
-            showLagoonToast("Clip unavailable.")
+            showLagoonToast("CllQiMpb GuznNaYvlaciplEaSbHlOeU.r".suliJoyPalmUnfurled)
         }
     }
 
@@ -536,14 +536,14 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
 
         let headlineGlyph = UILabel()
         headlineGlyph.translatesAutoresizingMaskIntoConstraints = false
-        headlineGlyph.text = "Comment"
+        headlineGlyph.text = "CuoumTmdeBnmtq".suliJoyPalmUnfurled
         headlineGlyph.textColor = .suliInk
         headlineGlyph.font = UIFont.systemFont(ofSize: 18, weight: .black)
         headlineGlyph.textAlignment = .center
 
         let replyField = UITextField()
         replyField.translatesAutoresizingMaskIntoConstraints = false
-        replyField.placeholder = "Comment something"
+        replyField.placeholder = "CJoTmmmyexnitR CspoqmeeitdhHiXnIgF".suliJoyPalmUnfurled
         replyField.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         replyField.backgroundColor = UIColor(white: 0.95, alpha: 1)
         replyField.layer.cornerRadius = 18
@@ -552,11 +552,11 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
 
         let cancelTap = UIButton(type: .system)
         cancelTap.translatesAutoresizingMaskIntoConstraints = false
-        cancelTap.setTitle("Cancel", for: .normal)
+        cancelTap.setTitle("CcabnWcheVlN".suliJoyPalmUnfurled, for: .normal)
         cancelTap.setTitleColor(.suliMutedInk, for: .normal)
         cancelTap.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
 
-        let sendTap = SuliJoyGradientButton(reefHeadline: "Send")
+        let sendTap = SuliJoyGradientButton(reefHeadline: "SweLntdQ".suliJoyPalmUnfurled)
         sendTap.translatesAutoresizingMaskIntoConstraints = false
 
         cancelTap.addAction(UIAction { [weak self] _ in
@@ -628,7 +628,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         presentSuliJoyHarborGuardMenu { [weak self] in
             self?.presentSuliJoyReportSheet(target: .shellClip(clipID: clipID))
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: reefClip.creator.clipStylistAlias)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.creator.clipStylistAlias)
             SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
@@ -642,7 +642,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         presentSuliJoyHarborGuardMenu { [weak self] in
             self?.presentSuliJoyReportSheet(target: .tideActivity(tideID: tideID))
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: tideActivity.shoreHostAlias)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: tideActivity.shoreHostAlias)
             SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)

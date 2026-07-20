@@ -41,7 +41,7 @@ final class SuliJoyReefProfileTideController: SuliJoyReefEntryCanvasController, 
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ignMiCtZ(jcPoldReirx:l)A Lhdacst TnfoAtB JbqeXeHnP oiSmKpQlweAmneEnQtPeAdl".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
@@ -82,7 +82,7 @@ final class SuliJoyReefProfileTideController: SuliJoyReefEntryCanvasController, 
     private func makeShoreBioHeading() -> UILabel {
         let bioGlyph = UILabel()
         bioGlyph.translatesAutoresizingMaskIntoConstraints = false
-        bioGlyph.text = "Bio"
+        bioGlyph.text = "Brigov".suliJoyPalmUnfurled
         bioGlyph.textColor = .suliInk
         bioGlyph.font = UIFont.systemFont(ofSize: 17, weight: .black)
         bioGlyph.transform = CGAffineTransform(a: 1, b: 0, c: -0.12, d: 1, tx: 0, ty: 0)
@@ -91,7 +91,7 @@ final class SuliJoyReefProfileTideController: SuliJoyReefEntryCanvasController, 
 
     private func tuneShoreBioLagoonText() {
         shoreBioLagoonText.translatesAutoresizingMaskIntoConstraints = false
-        shoreBioLagoonText.text = "Collecting little sounds of my days."
+        shoreBioLagoonText.text = "CmoolGlUeIcOtYignbgS alwiStutRloej osVoZuTnAdhsR MoFfJ DmOys GdPaEytsa.h".suliJoyPalmUnfurled
         shoreBioLagoonText.textColor = UIColor(red: 0.55, green: 0.53, blue: 0.49, alpha: 1)
         shoreBioLagoonText.font = UIFont.systemFont(ofSize: 16)
         shoreBioLagoonText.backgroundColor = UIColor(red: 24 / 255, green: 23 / 255, blue: 22 / 255, alpha: 0.05)
@@ -101,7 +101,7 @@ final class SuliJoyReefProfileTideController: SuliJoyReefEntryCanvasController, 
     }
 
     private func makeShoreFinishControl() -> SuliJoyGradientButton {
-        let finishTide = SuliJoyGradientButton(reefHeadline: "Sign up")
+        let finishTide = SuliJoyGradientButton(reefHeadline: "SziqgmnM Oulpp".suliJoyPalmUnfurled)
         finishTide.translatesAutoresizingMaskIntoConstraints = false
         finishTide.addTarget(self, action: #selector(finishShoreSignup(_:)), for: .touchUpInside)
         return finishTide
@@ -153,7 +153,7 @@ final class SuliJoyReefProfileTideController: SuliJoyReefEntryCanvasController, 
         shorePortraitPreview.image = UIImage(named: "sulijoy_auth_camera_badge")
         let portraitGlyph = UILabel()
         portraitGlyph.translatesAutoresizingMaskIntoConstraints = false
-        portraitGlyph.text = "Add Profile Photo."
+        portraitGlyph.text = "AMdTdV BPerloWfCiNlZeE lPnhHoKtuoe.z".suliJoyPalmUnfurled
         portraitGlyph.textColor = UIColor(red: 0.55, green: 0.53, blue: 0.49, alpha: 1)
         portraitGlyph.font = UIFont.systemFont(ofSize: 13)
         portraitCard.addSubview(shorePortraitPreview)

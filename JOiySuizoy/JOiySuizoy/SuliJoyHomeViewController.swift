@@ -81,7 +81,7 @@ final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableVie
 
     private func tuneTideEmptyNote(_ emptyShoreGlyph: UILabel) {
         emptyShoreGlyph.translatesAutoresizingMaskIntoConstraints = false
-        emptyShoreGlyph.text = "No shore activities yet."
+        emptyShoreGlyph.text = "Ntot wsahbosrcex kaScZtMiDvUiRtCiQeQsM myNeNtL.z".suliJoyPalmUnfurled
         emptyShoreGlyph.textColor = .suliMutedInk
         emptyShoreGlyph.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         emptyShoreGlyph.textAlignment = .center
@@ -121,7 +121,7 @@ final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableVie
 
         let discover = UILabel()
         discover.translatesAutoresizingMaskIntoConstraints = false
-        discover.text = "👏Discover Events"
+        discover.text = "👏qDiiXsJcFotvieJrC ZEavEepnPtfsE".suliJoyPalmUnfurled
         discover.textColor = .suliInk
         discover.font = UIFont.systemFont(ofSize: 22, weight: .black)
 
@@ -164,12 +164,12 @@ final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableVie
         }
         shoreTides = result.data ?? []
         tideListView.reloadData()
-        tideEmptyNote.text = "No shore activities yet."
+        tideEmptyNote.text = "Nxok MsshJoTrseK IaBcvtnidvFiBtNiReoss GyeeCtu.B".suliJoyPalmUnfurled
         tideEmptyNote.isHidden = !shoreTides.isEmpty
     }
 
     @objc private func openAI() {
-        showLocalPlaceholder(reefHeadline: "AI Island Stylist", subreefHeadline: "Style matching entrance placeholder.")
+        showLocalPlaceholder(reefHeadline: "AEIr mIaselCaOnBdC ESftIyhldiKsjtA".suliJoyPalmUnfurled, subreefHeadline: "SutnyYlnej NmyaMtWclhMiFnfgO KeZnDtUrDaBnJcPeX YpHlGazcfeNhfoWlkdQeprl.N".suliJoyPalmUnfurled)
     }
 
     @objc private func openSearch() {
@@ -222,7 +222,7 @@ final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableVie
             }
             self.shoreTides[indexPath.row] = updated
             self.tideListView.reloadRows(at: [indexPath], with: .automatic)
-            self.showLagoonToast("Joined.")
+            self.showLagoonToast("JgoliknfefdK.V".suliJoyPalmUnfurled)
         }
     }
 
@@ -232,7 +232,7 @@ final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableVie
         presentSuliJoyHarborGuardMenu { [weak self] in
             self?.presentSuliJoyReportSheet(target: .tideActivity(tideID: activity.tideMark))
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.visitorID(for: activity.shoreHostAlias)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: activity.shoreHostAlias)
             SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { result in
                 self?.showLagoonToast(result.note)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
@@ -257,7 +257,7 @@ final class SuliJoyTideCardCell: UITableViewCell {
     private let lagoonFaceRail = UIStackView()
     private let crewTallyGlyph = UILabel()
     private let joinCoveStack = UIStackView()
-    private let joinTideControl = SuliJoyGradientButton(reefHeadline: "Join Event")
+    private let joinTideControl = SuliJoyGradientButton(reefHeadline: "JkoMiRnK PETvJeJnEtz".suliJoyPalmUnfurled)
     private let joinTideInnerStack = UIStackView()
     private let joinTideTitleGlyph = UILabel()
     private let gemSparkView = UIImageView(image: UIImage(named: "sulijoy_shell_" + "co" + "in_gem"))
@@ -270,7 +270,7 @@ final class SuliJoyTideCardCell: UITableViewCell {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ionPirtz(zcroVdUeorS:M)N zhdatsp nnaoItc ubgeSeHnZ timmspllKeMmaeCnktFeEdz".suliJoyPalmUnfurled)
     }
 
     private func craftTideCardShell() {
@@ -330,7 +330,7 @@ final class SuliJoyTideCardCell: UITableViewCell {
         joinTideControl.setTitle("", for: .normal)
         joinTideControl.addTarget(self, action: #selector(joinTideNow), for: .touchUpInside)
 
-        joinTideTitleGlyph.text = "Join Event"
+        joinTideTitleGlyph.text = "JZowiJnX sEmvLennotZ".suliJoyPalmUnfurled
         joinTideTitleGlyph.font = UIFont.italicSystemFont(ofSize: 13).suliWithWeight(.black)
         joinTideTitleGlyph.textColor = .suliInk
         joinTideTitleGlyph.textAlignment = .center

@@ -147,6 +147,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JOiySuizoy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SuliJoy;
 				INFOPLIST_KEY_NSCameraUsageDescription = "SuliJoy uses the camera only when you choose to take photos or record videos for SuliJoy style posts.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "SuliJoy uses the microphone only when you choose to record voice notes or videos for SuliJoy style posts.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "SuliJoy uses your photo library only when you choose photos or videos for SuliJoy style posts.";
@@ -185,6 +186,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JOiySuizoy/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SuliJoy;
 				INFOPLIST_KEY_NSCameraUsageDescription = "SuliJoy uses the camera only when you choose to take photos or record videos for SuliJoy style posts.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "SuliJoy uses the microphone only when you choose to record voice notes or videos for SuliJoy style posts.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "SuliJoy uses your photo library only when you choose photos or videos for SuliJoy style posts.";

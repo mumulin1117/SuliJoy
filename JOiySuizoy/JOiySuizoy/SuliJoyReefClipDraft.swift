@@ -548,30 +548,30 @@ struct SuliJoyLagoonStylist: Equatable {
     var suliJoyCoastalMeter: Bool = false
 }
 
-enum SuliJoyCoveFollowState: String, Codable, Equatable {
-    case suliJoyCoastalAlbum
-    case followingPending
-    case suliJoyIslandInspiration
+enum SuliJoyCoveAffinityState: String, Codable, Equatable {
+    case shorelineUnlinked = "suliJoyCoastalAlbum"
+    case islandAwaitingReturn = "followingPending"
+    case reefMutualBond = "suliJoyIslandInspiration"
 }
 
 struct SuliJoyLagoonVisitor: Equatable {
-    let visitorID: String
-    let displayName: String
-    let avatarAssetName: String
-    let likeCount: Int
-    let followerCount: Int
-    let followingCount: Int
-    let followState: SuliJoyCoveFollowState
+    let lagoonGuestToken: String
+    let islandStylistAlias: String
+    let portraitAssetToken: String
+    let shorelineHeartTotal: Int
+    let reefFollowerTotal: Int
+    let coveFollowingTotal: Int
+    let coveAffinityState: SuliJoyCoveAffinityState
     var suliJoyIslandEnsemble: Bool
     var suliJoyIslandIndex: Bool
 
-    static func visitorID(for displayName: String) -> String {
-        let normalized = displayName
+    static func lagoonGuestToken(for islandAlias: String) -> String {
+        let shorelineSlug = islandAlias
             .lowercased()
             .components(separatedBy: CharacterSet.alphanumerics.inverted)
             .filter { !$0.isEmpty }
             .joined(separator: "_")
-        return "sulijoy_lagoon_visitor_\(normalized.isEmpty ? "shore_guest" : normalized)"
+        return "sulijoy_lagoon_visitor_\(shorelineSlug.isEmpty ? "shore_guest" : shorelineSlug)"
     }
 }
 
