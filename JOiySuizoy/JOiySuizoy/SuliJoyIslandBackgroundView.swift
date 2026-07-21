@@ -457,6 +457,8 @@ enum SuliJoyPolicyCopy {
 
     To keep the app safe, the following content and behavior are not allowed:
 
+    SuliJoy has no tolerance for objectionable content or abusive users. Users can flag objectionable content and block abusive users from the safety menu shown on posts, activities, shorts, comments, and profiles.
+
     1. Child sexual abuse material, sexual exploitation of minors, grooming, or any content that harms children.
 
     2. Nudity, pornography, sexual services, graphic violence, hate, bullying, threats, stalking, harassment, or content that promotes self-harm.
@@ -487,11 +489,11 @@ enum SuliJoyPolicyCopy {
         ),
         SuliJoyLagoonClause(
             reefHeadline: "Community Safety",
-            body: "Do not post illegal, hateful, harassing, bullying, sexually explicit, violent, deceptive, infringing, or child-harm content. SuliJoy may remove content, limit features, suspend accounts, or permanently ban users who violate these rules."
+            body: "SuliJoy has no tolerance for objectionable content or abusive users. Do not post illegal, hateful, harassing, bullying, sexually explicit, violent, deceptive, infringing, or child-harm content. SuliJoy may remove content, limit features, suspend accounts, or permanently ban users who violate these rules."
         ),
         SuliJoyLagoonClause(
             reefHeadline: "Reports, Blocking & Moderation",
-            body: "SuliJoy is designed around user-managed safety controls, including reporting and blocking. Reports may be reviewed for policy enforcement. Blocking should prevent unwanted interaction where the feature is available."
+            body: "SuliJoy is designed around user-managed safety controls. Users can report objectionable content and block abusive users from posts, activities, shorts, comments, and profiles. Reports may be reviewed for policy enforcement. Blocking should prevent unwanted interaction where the feature is available."
         ),
         SuliJoyLagoonClause(
             reefHeadline: "AI Style Assistant",

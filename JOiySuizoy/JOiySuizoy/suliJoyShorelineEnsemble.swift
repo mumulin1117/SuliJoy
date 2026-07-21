@@ -199,11 +199,22 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
         resortImageView.layer.shadowRadius = 20
     }
 
+    private func canPassArrivalConsent() -> Bool {
+        guard SuliJoyLagoonGateService.shared.restoreSession().hasAgreedEULA else {
+            refreshConsentRibbonState()
+            presentReefNotice("Palbecadseef grheiajdk lamnndo paqgrrseteu vtwox ytzhAeB CEDUELFAG,H ITJeKrLmMsN OoPfQ RSSeTrUvViWcXeY,Z aabncdd ePfrgihviajckyl mPnoolpiqcrys tfuivrwsxty.z".suliJoyPalmUnfurled)
+            return false
+        }
+        return true
+    }
+
     @objc private func sailToLagoonEntry() {
+        guard canPassArrivalConsent() else { return }
         navigationController?.pushViewController(SuliJoyShellPearlStorecontroller(), animated: true)
     }
 
     @objc private func sailToShoreSignup() {
+        guard canPassArrivalConsent() else { return }
         navigationController?.pushViewController(suliJoyShorelineAesthetic(), animated: true)
     }
 }

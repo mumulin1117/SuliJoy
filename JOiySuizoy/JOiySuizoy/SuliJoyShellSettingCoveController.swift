@@ -1,6 +1,6 @@
 import UIKit
 
-final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
+final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController, UIGestureRecognizerDelegate {
     private enum ShellWardrobeMeasure {
         static let sunriseInset: CGFloat = 18
         static let palmEdgeInset: CGFloat = 24
@@ -322,7 +322,8 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
         veilLayer.backgroundColor = UIColor.black.withAlphaComponent(0.46)
         veilLayer.alpha = 0
         let reefTap = UITapGestureRecognizer(target: self, action: #selector(dismissMistVeil))
-        reefTap.cancelsTouchesInView = false
+        reefTap.cancelsTouchesInView = true
+        reefTap.delegate = self
         veilLayer.addGestureRecognizer(reefTap)
         UIView.animate(withDuration: 0.18) {
             veilLayer.alpha = 1
@@ -346,12 +347,15 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
 
     @objc private func completeLagoonExit() {
         lagoonAccessStore.logoutLagoonSession()
-        dismissMistVeil()
-        sailBackToWelcome()
+        closeMistAndSailToArrival()
     }
 
     @objc private func removeIslandAccountNow() {
         _ = lagoonAccessStore.deleteCurrentIslandAccount()
+        closeMistAndSailToArrival()
+    }
+
+    private func closeMistAndSailToArrival() {
         dismissMistVeil()
         sailBackToWelcome()
     }
@@ -359,10 +363,19 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController {
     private func sailBackToWelcome() {
         let welcome = UINavigationController(rootViewController: suliJoyShorelineEnsemble())
         welcome.setNavigationBarHidden(true, animated: false)
+        if let reefWindow = view.window {
+            reefWindow.rootViewController = welcome
+            reefWindow.makeKeyAndVisible()
+            return
+        }
         UIApplication.shared.connectedScenes
             .compactMap { ($0 as? UIWindowScene)?.keyWindow }
             .first?
             .rootViewController = welcome
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        touch.view === gestureRecognizer.view
     }
 }
 

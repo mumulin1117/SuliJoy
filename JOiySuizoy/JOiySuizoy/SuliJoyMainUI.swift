@@ -255,8 +255,9 @@ class SuliJoyTropicCanvasController: UIViewController {
     }
 
     private func makeIslandToastPearlIcon() -> UIImageView {
-        let icon = UIImageView(image: UIImage(named: "sulijoy_shell_" + "co" + "in_gem"))
+        let icon = UIImageView(image: UIImage(systemName: "exclamationmark.triangle.fill"))
         icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.tintColor = UIColor(red: 1, green: 0.45, blue: 0.12, alpha: 1)
         icon.contentMode = .scaleAspectFit
         return icon
     }
@@ -413,8 +414,9 @@ extension UIViewController {
         pearlBadgeShell.layer.cornerRadius = 27
         pearlBadgeShell.clipsToBounds = true
 
-        let pearlBadgeMark = UIImageView(image: UIImage(named: "sulijoy_shell_" + "co" + "in_gem"))
+        let pearlBadgeMark = UIImageView(image: UIImage(systemName: "exclamationmark.triangle.fill"))
         pearlBadgeMark.translatesAutoresizingMaskIntoConstraints = false
+        pearlBadgeMark.tintColor = UIColor(red: 1, green: 0.45, blue: 0.12, alpha: 1)
         pearlBadgeMark.contentMode = .scaleAspectFit
 
         let headlineGlyph = UILabel()
