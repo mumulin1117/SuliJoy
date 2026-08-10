@@ -15,20 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         SuliJoyLagoonHarborService.shared.beginPearlHarborRenewalWatch()
 
-        let root: UIViewController
-        let session = SuliJoyLagoonGateService.shared.restoreSession()
-        if session.isLoggedIn, session.currentEmail != nil {
-            root = SuliJoyMainTabBarController()
-        } else {
-            let auth = UINavigationController(rootViewController: suliJoyShorelineEnsemble())
-            auth.setNavigationBarHidden(true, animated: false)
-            root = auth
+        SuliJoyGinConfiguration.shared.reefReturnToIslandRoot = { window in
+            window?.rootViewController = Self.suliJoyIslandRoot()
         }
-
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = root
         window.makeKeyAndVisible()
         self.window = window
+        SuliJoyGinHub.shared.reefPrepare(with: window)
+        window.rootViewController = SuliJoyGinHub.shared.reefLaunchController()
         return true
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        SuliJoyGinHub.shared.reefStorePushRibbon(deviceToken)
+    }
+
+    private static func suliJoyIslandRoot() -> UIViewController {
+        let session = SuliJoyLagoonGateService.shared.restoreSession()
+        if session.isLoggedIn, session.currentEmail != nil {
+            return SuliJoyMainTabBarController()
+        }
+        let auth = UINavigationController(rootViewController: suliJoyShorelineEnsemble())
+        auth.setNavigationBarHidden(true, animated: false)
+        return auth
     }
 }
