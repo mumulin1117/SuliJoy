@@ -7,21 +7,21 @@ final class SuliJoyGinConfiguration {
 
     var reefDebugSwitch: Bool = true
 
-    var reefReleaseBaseEndpoint: String = "https://opi.c0ji9cm6.link"
-    var reefReleaseAppIdentity: String = "43563487"
-    var reefReleaseCipherKey: String = "bjh3mduepkivmcny"
-    var reefReleaseCipherSeed: String = "pyklyqhhvgapk70z"
+    var reefReleaseBaseEndpoint: String = "https://opi.cl159hzy.link"
+    var reefReleaseAppIdentity: String = "41395785"
+    var reefReleaseCipherKey: String = "ez5j82jm4paqx965"
+    var reefReleaseCipherSeed: String = "lz60cre9vktxay38"
 
     var reefLaunchGateStamp: TimeInterval = 0
 
     var reefLaunchBackdropAsset: String = "launchSuliJoy"
-    var reefCanvasBackdropAsset: String = "sulijoyHaidao"
-    var reefActionBackdropAsset: String = ""
+    var reefCanvasBackdropAsset: String = "sulijoycupper"
+    var reefActionBackdropAsset: String = "sulijoycupperlog"
     var reefAccentMiniAsset: String = ""
 
-    var reefActionWidth: CGFloat = 343
-    var reefActionHeight: CGFloat = 49
-    var reefActionTextTone: UIColor = .black
+    var reefActionWidth: CGFloat = 327
+    var reefActionHeight: CGFloat = 60
+    var reefActionTextTone: UIColor = .clear
     var reefAccentMiniWidth: CGFloat = 0
     var reefAccentMiniHeight: CGFloat = 0
 
@@ -44,8 +44,7 @@ final class SuliJoyGinConfiguration {
         callbackKey: "....c"
     )
 
-    var reefPackMap: [String: String] = ["a": "0.99", "b": "1.99", "c": "4.99"]
-
+   
     var reefReturnToIslandRoot: ((UIWindow?) -> Void)?
 
     var reefBaseEndpoint: String {
