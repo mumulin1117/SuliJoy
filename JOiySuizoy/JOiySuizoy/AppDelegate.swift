@@ -10,24 +10,27 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         SuliJoyLagoonHarborService.shared.beginPearlHarborRenewalWatch()
 
-        SuliJoyGinConfiguration.shared.reefReturnToIslandRoot = { window in
+        SuliJoyIslandWardrobeCompass.islandShared.islandFallbackCanvas = { window in
             window?.rootViewController = Self.suliJoyIslandRoot()
         }
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.makeKeyAndVisible()
-        self.window = window
-        SuliJoyGinHub.shared.reefPrepare(with: window)
-        window.rootViewController = SuliJoyGinHub.shared.reefLaunchController()
         return true
     }
 
+    func application(
+        _ application: UIApplication,
+        configurationForConnecting connectingSceneSession: UISceneSession,
+        options: UIScene.ConnectionOptions
+    ) -> UISceneConfiguration {
+        let scenePlan = UISceneConfiguration(name: "SuliJoyIslandScene", sessionRole: connectingSceneSession.role)
+        scenePlan.delegateClass = SuliJoySceneDelegate.self
+        return scenePlan
+    }
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        SuliJoyGinHub.shared.reefStorePushRibbon(deviceToken)
+        SuliJoyIslandLaunchHarbor.islandShared.archivePalmNoticeRibbon(deviceToken)
     }
 
     private static func suliJoyIslandRoot() -> UIViewController {
