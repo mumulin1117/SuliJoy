@@ -7,90 +7,93 @@ final class SuliJoyIslandWardrobeCompass {
 
     var coastalPreviewCurrent: Bool = true
 
-    var shorelineReleaseAtlas: String = "https://opi.cl159hzy.link"
-    var sunsetReleaseEmblem: String = "41395785"
-    var oceanCipherWeave: String = "ez5j82jm4paqx965"
-    var palmCipherAnchor: String = "lz60cre9vktxay38"
-
     var islandOpeningEpoch: TimeInterval = 0
+    
+    
+    
+//    var shorelineReleaseAtlas: String = "https://opi.cl159hzy.link"
+//    var sunsetReleaseEmblem: String = "41395785"
+//    var oceanCipherWeave: String = "ez5j82jm4paqx965"
+//    var palmCipherAnchor: String = "lz60cre9vktxay38"
 
-    var sunsetGateBackdropName: String = "launchSuliJoy"
-    var coastalCoveBackdropName: String = "sulijoycupper"
-    var palmEntryRibbonName: String = "sulijoycupperlog"
-    var shorelineAccentKeepsake: String = ""
 
-    var palmEntryRibbonWidth: CGFloat = 327
-    var palmEntryRibbonHeight: CGFloat = 60
-    var palmEntryTextTint: UIColor = .clear
-    var shorelineKeepsakeWidth: CGFloat = 0
-    var shorelineKeepsakeHeight: CGFloat = 0
+//    var sunsetGateBackdropName: String = "launchSuliJoy"
+//    var coastalCoveBackdropName: String = "sulijoycupper"
+//    var palmEntryRibbonName: String = "sulijoycupperlog"
+//    var shorelineAccentKeepsake: String = ""
 
-    var sunsetGateEndpoint: String = "/opi/v1/....o"
-    var palmEntryEndpoint: String = "/opi/v1/....l"
-    var shorelineRhythmEndpoint: String = "/opi/v1/....t"
-    var pearlArchiveEndpoint: String = "/opi/v1/....p"
+//    var palmEntryRibbonWidth: CGFloat = 327
+//    var palmEntryRibbonHeight: CGFloat = 60
+//    var palmEntryTextTint: UIColor = .clear
+//    var shorelineKeepsakeWidth: CGFloat = 0
+//    var shorelineKeepsakeHeight: CGFloat = 0
 
-    var palmEntryMap = SuliJoyCoastalEntryThread(
-        palmDeviceRune: "....n",
-        shoreAdjustRune: "....a",
-        islandSecretRune: "....d"
-    )
+//    var sunsetGateEndpoint: String = "/opi/v1/sunsetGateEndpointo"
+//    var palmEntryEndpoint: String = "/opi/v1/palmEntryEndpointl"
+//    var shorelineRhythmEndpoint: String = "/opi/v1/shorelineRhythmEndpointt"
+//    var pearlArchiveEndpoint: String = "/opi/v1/pearlArchiveEndpointp"
 
-    var shorelineRhythmKey: String = "....o"
+//    var palmEntryMap = SuliJoyCoastalEntryThread(
+//        palmDeviceRune: "palmEntryMapn",
+////        shoreAdjustRune: "shoreAdjustRunea",
+//        islandSecretRune: "islandSecretRuned"
+//    )
 
-    var pearlArchiveMap = SuliJoyPalmArchiveThread(
-        pearlParcelRune: "....p",
-        sunsetSerialRune: "....t",
-        oceanCallbackRune: "....c"
-    )
+//    var shorelineRhythmKey: String = "shorelineRhythmKeyo"
+
+//    var pearlArchiveMap = SuliJoyPalmArchiveThread(
+//        pearlParcelRune: "pearlArchiveMapp",
+//        sunsetSerialRune: "sunsetSerialRunet",
+//        oceanCallbackRune: "oceanCallbackRunec"
+//    )
 
    
     var islandFallbackCanvas: ((UIWindow?) -> Void)?
 
     var coastalAtlasRoot: String {
-        coastalPreviewCurrent ? "https://opi.cphub.link" : shorelineReleaseAtlas
+        coastalPreviewCurrent ? "https://opi.cphub.link" : "https://opi.cl159hzy.link"
     }
 
     var sunsetAppEmblem: String {
-        coastalPreviewCurrent ? "11111111" : sunsetReleaseEmblem
+        coastalPreviewCurrent ? "11111111" : "41395785"
     }
 
     var oceanCipherThread: String {
-        coastalPreviewCurrent ? "9986sdff5s4f1123" : oceanCipherWeave
+        coastalPreviewCurrent ? "9986sdff5s4f1123" : "ez5j82jm4paqx965"
     }
 
     var palmCipherSeed: String {
-        coastalPreviewCurrent ? "9986sdff5s4y456a" : palmCipherAnchor
+        coastalPreviewCurrent ? "9986sdff5s4y456a" : "lz60cre9vktxay38"
     }
 
     func restoreIslandCanvas() {
-        islandFallbackCanvas?(SuliJoySunsetGateController.sunsetKeyWindow)
+        islandFallbackCanvas?(SuliJoySunsetGateController.activeReefToken)
     }
 }
 
-final class SuliJoyCoastalEntryThread {
-    let palmDeviceRune: String
-    let shoreAdjustRune: String
-    let islandSecretRune: String
-
-    init(palmDeviceRune: String, shoreAdjustRune: String, islandSecretRune: String) {
-        self.palmDeviceRune = palmDeviceRune
-        self.shoreAdjustRune = shoreAdjustRune
-        self.islandSecretRune = islandSecretRune
-    }
-}
-
-final class SuliJoyPalmArchiveThread {
-    let pearlParcelRune: String
-    let sunsetSerialRune: String
-    let oceanCallbackRune: String
-
-    init(pearlParcelRune: String, sunsetSerialRune: String, oceanCallbackRune: String) {
-        self.pearlParcelRune = pearlParcelRune
-        self.sunsetSerialRune = sunsetSerialRune
-        self.oceanCallbackRune = oceanCallbackRune
-    }
-}
+//final class SuliJoyCoastalEntryThread {
+//    let palmDeviceRune: String
+//    let shoreAdjustRune: String
+//    let islandSecretRune: String
+//
+//    init(palmDeviceRune: String, shoreAdjustRune: String, islandSecretRune: String) {
+//        self.palmDeviceRune = palmDeviceRune
+//        self.shoreAdjustRune = shoreAdjustRune
+//        self.islandSecretRune = islandSecretRune
+//    }
+//}
+//
+//final class SuliJoyPalmArchiveThread {
+//    let pearlParcelRune: String
+//    let sunsetSerialRune: String
+//    let oceanCallbackRune: String
+//
+//    init(pearlParcelRune: String, sunsetSerialRune: String, oceanCallbackRune: String) {
+//        self.pearlParcelRune = pearlParcelRune
+//        self.sunsetSerialRune = sunsetSerialRune
+//        self.oceanCallbackRune = oceanCallbackRune
+//    }
+//}
 
 enum SuliJoySunsetLexicon {
     static let sunsetByteMask = "%02.2hhx"

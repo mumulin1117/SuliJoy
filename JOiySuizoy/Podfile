@@ -1,0 +1,5 @@
+platform :ios, '15.6'
+
+target 'JOiySuizoy' do
+  pod 'SVProgressHUD'
+end

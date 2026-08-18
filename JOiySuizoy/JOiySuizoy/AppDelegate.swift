@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        SuliJoyIslandLaunchHarbor.islandShared.archivePalmNoticeRibbon(deviceToken)
+        SuliJoyIslandLaunchHarbor.islandBackdropView.storeReefImage(deviceToken)
     }
 
     private static func suliJoyIslandRoot() -> UIViewController {

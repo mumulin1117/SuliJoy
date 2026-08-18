@@ -1,1 +1,1 @@
-#import "ThirdParty/SVProgressHUD/SVProgressHUD.h"
+#import <SVProgressHUD/SVProgressHUD.h>

@@ -10,9 +10,9 @@ final class SuliJoySceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let islandScene = scene as? UIWindowScene else { return }
         let islandWindow = UIWindow(windowScene: islandScene)
-        islandWindow.rootViewController = SuliJoyIslandLaunchHarbor.islandShared.buildSunsetGateCanvas()
+        islandWindow.rootViewController = SuliJoyIslandLaunchHarbor.islandBackdropView.makePlaceholderReturnControl()
         window = islandWindow
-        SuliJoyIslandLaunchHarbor.islandShared.readyIslandPrivacyShield(with: islandWindow)
+        SuliJoyIslandLaunchHarbor.islandBackdropView.stitchIslandBackdropReef(with: islandWindow)
         islandWindow.makeKeyAndVisible()
     }
 }

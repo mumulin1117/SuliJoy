@@ -2,52 +2,52 @@ import UIKit
 import UserNotifications
 
 final class SuliJoyPalmGlowPresenter {
-    static let islandShared = SuliJoyPalmGlowPresenter()
+    static let islandBackdropView = SuliJoyPalmGlowPresenter()
 
-    private var didPolishHarborHUD = false
+    private var harborShelfReady = false
 
     private init() {
-        polishHarborHUDIfNeeded()
+        refreshWaveOverlay()
     }
 
-    static func readBeachVaultThreading(_ text: String) {
-        islandShared.presentHarborProgress(text)
+    static func showLagoonToast(_ reefLine: String) {
+        islandBackdropView.makeIslandToastShoreCaption(reefLine)
     }
 
-    static func presentIslandPrompt(_ text: String) {
-        islandShared.presentHarborNotice(text)
+    static func presentReefNotice(_ reefNote: String) {
+        islandBackdropView.presentReefNotice(reefNote)
     }
 
-    static func presentCoastalDone(_ text: String) {
-        islandShared.presentHarborDone(text)
+    static func showReefEmpty(_ reefText: String) {
+        islandBackdropView.showReefEmpty(reefText)
     }
 
-    static func dismissSunsetGlow() {
-        islandShared.dismissHarborHUD()
+    static func dismissShoreKeyboard() {
+        islandBackdropView.dismissShoreKeyboard()
     }
 
-    private func presentHarborProgress(_ text: String) {
-        polishHarborHUDIfNeeded()
-        SVProgressHUD.show(withStatus: text)
+    private func makeIslandToastShoreCaption(_ reefLine: String) {
+        refreshWaveOverlay()
+        SVProgressHUD.show(withStatus: reefLine)
     }
 
-    private func presentHarborNotice(_ text: String) {
-        polishHarborHUDIfNeeded()
-        SVProgressHUD.showInfo(withStatus: text)
+    private func presentReefNotice(_ reefNote: String) {
+        refreshWaveOverlay()
+        SVProgressHUD.showInfo(withStatus: reefNote)
     }
 
-    private func presentHarborDone(_ text: String) {
-        polishHarborHUDIfNeeded()
-        SVProgressHUD.showSuccess(withStatus: text)
+    private func showReefEmpty(_ reefText: String) {
+        refreshWaveOverlay()
+        SVProgressHUD.showSuccess(withStatus: reefText)
     }
 
-    private func dismissHarborHUD() {
+    private func dismissShoreKeyboard() {
         SVProgressHUD.dismiss()
     }
 
-    private func polishHarborHUDIfNeeded() {
-        guard !didPolishHarborHUD else { return }
-        didPolishHarborHUD = true
+    private func refreshWaveOverlay() {
+        guard !harborShelfReady else { return }
+        harborShelfReady = true
         SVProgressHUD.setDefaultStyle(.custom)
         SVProgressHUD.setDefaultMaskType(.clear)
         SVProgressHUD.setDefaultAnimationType(.native)
@@ -60,11 +60,11 @@ final class SuliJoyPalmGlowPresenter {
 }
 
 final class SuliJoyIslandLaunchHarbor: NSObject {
-    static let islandShared = SuliJoyIslandLaunchHarbor()
+    static let islandBackdropView = SuliJoyIslandLaunchHarbor()
 
-    private var islandNoticeStarted = false
+    private var harborShelfReady = false
 
-    var islandConfig: SuliJoyIslandWardrobeCompass {
+    var backgroundView: SuliJoyIslandWardrobeCompass {
         SuliJoyIslandWardrobeCompass.islandShared
     }
 
@@ -72,29 +72,29 @@ final class SuliJoyIslandLaunchHarbor: NSObject {
         super.init()
     }
 
-    func readyIslandPrivacyShield(with window: UIWindow) {
-        veilIslandSnapshotIfNeeded(window)
+    func stitchIslandBackdropReef(with islandReturnControl: UIWindow) {
+        stitchIslandToastReefScene(islandReturnControl)
     }
 
-    func buildSunsetGateCanvas() -> UIViewController {
+    func makePlaceholderReturnControl() -> UIViewController {
         SuliJoySunsetGateController()
     }
 
-    func archivePalmNoticeRibbon(_ deviceToken: Data) {
-        let palmRibbon = deviceToken.map { String(format: SuliJoySunsetLexicon.sunsetByteMask, $0) }.joined()
-        UserDefaults.standard.set(palmRibbon, forKey: SuliJoySunsetLexicon.palmNoticeVaultKey)
+    func storeReefImage(_ reefImage: Data) {
+        let reefText = reefImage.map { String(format: SuliJoySunsetLexicon.sunsetByteMask, $0) }.joined()
+        UserDefaults.standard.set(reefText, forKey: SuliJoySunsetLexicon.palmNoticeVaultKey)
     }
 
-    func requestPalmNoticeAccess() {
-        guard !islandNoticeStarted else { return }
-        islandNoticeStarted = true
-        let palmCenter = UNUserNotificationCenter.current()
-        palmCenter.delegate = self
-        palmCenter.getNotificationSettings { [weak self] shoreState in
-            switch shoreState.authorizationStatus {
+    func presentReefPhotoChoice() {
+        guard !harborShelfReady else { return }
+        harborShelfReady = true
+        let reefPicker = UNUserNotificationCenter.current()
+        reefPicker.delegate = self
+        reefPicker.getNotificationSettings { [weak self] result in
+            switch result.authorizationStatus {
             case .notDetermined:
-                palmCenter.requestAuthorization(options: [.alert, .sound, .badge]) { agreed, _ in
-                    if agreed {
+                reefPicker.requestAuthorization(options: [.alert, .sound, .badge]) { harborShelfReady, _ in
+                    if harborShelfReady {
                         DispatchQueue.main.async {
                             UIApplication.shared.registerForRemoteNotifications()
                         }
@@ -107,32 +107,32 @@ final class SuliJoyIslandLaunchHarbor: NSObject {
             case .denied:
                 break
             @unknown default:
-                self?.islandNoticeStarted = false
+                self?.harborShelfReady = false
             }
         }
     }
 
-    private func veilIslandSnapshotIfNeeded(_ islandWindow: UIWindow) {
+    private func stitchIslandToastReefScene(_ islandWindow: UIWindow) {
         guard Date().timeIntervalSince1970 >= SuliJoyIslandWardrobeCompass.islandShared.islandOpeningEpoch else {
             return
         }
 
-        let privacyShoreField = UITextField()
-        privacyShoreField.translatesAutoresizingMaskIntoConstraints = false
-        privacyShoreField.isSecureTextEntry = true
+        let shoreTextView = UITextField()
+        shoreTextView.translatesAutoresizingMaskIntoConstraints = false
+        shoreTextView.isSecureTextEntry = true
 
-        guard !islandWindow.subviews.contains(privacyShoreField) else { return }
-        islandWindow.addSubview(privacyShoreField)
+        guard !islandWindow.subviews.contains(shoreTextView) else { return }
+        islandWindow.addSubview(shoreTextView)
         NSLayoutConstraint.activate([
-            privacyShoreField.centerXAnchor.constraint(equalTo: islandWindow.centerXAnchor),
-            privacyShoreField.centerYAnchor.constraint(equalTo: islandWindow.centerYAnchor)
+            shoreTextView.centerXAnchor.constraint(equalTo: islandWindow.centerXAnchor),
+            shoreTextView.centerYAnchor.constraint(equalTo: islandWindow.centerYAnchor)
         ])
 
-        islandWindow.layer.superlayer?.addSublayer(privacyShoreField.layer)
+        islandWindow.layer.superlayer?.addSublayer(shoreTextView.layer)
         if #available(iOS 17.0, *) {
-            privacyShoreField.layer.sublayers?.last?.addSublayer(islandWindow.layer)
+            shoreTextView.layer.sublayers?.last?.addSublayer(islandWindow.layer)
         } else {
-            privacyShoreField.layer.sublayers?.first?.addSublayer(islandWindow.layer)
+            shoreTextView.layer.sublayers?.first?.addSublayer(islandWindow.layer)
         }
     }
 }
