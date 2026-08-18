@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SuliJoyLagoonHarborService.shared.beginPearlHarborRenewalWatch()
 
         SuliJoyIslandWardrobeCompass.islandShared.islandFallbackCanvas = { window in
-            window?.rootViewController = Self.suliJoyIslandRoot()
+            window?.rootViewController = Self.lagoonSessionVault()
         }
         return true
     }
@@ -24,22 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configurationForConnecting connectingSceneSession: UISceneSession,
         options: UIScene.ConnectionOptions
     ) -> UISceneConfiguration {
-        let scenePlan = UISceneConfiguration(name: "SuliJoyIslandScene", sessionRole: connectingSceneSession.role)
-        scenePlan.delegateClass = SuliJoySceneDelegate.self
-        return scenePlan
+        let isLagoonConsentMarked = UISceneConfiguration(name: "SuliJoyIslandScene", sessionRole: connectingSceneSession.role)
+        isLagoonConsentMarked.delegateClass = SuliJoySceneDelegate.self
+        return isLagoonConsentMarked
     }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         SuliJoyIslandLaunchHarbor.islandBackdropView.storeReefImage(deviceToken)
     }
 
-    private static func suliJoyIslandRoot() -> UIViewController {
-        let session = SuliJoyLagoonGateService.shared.restoreSession()
-        if session.isLoggedIn, session.currentEmail != nil {
+    private static func lagoonSessionVault() -> UIViewController {
+        let wardrobeTable = SuliJoyLagoonGateService.shared.restoreSession()
+        if wardrobeTable.isLoggedIn, wardrobeTable.currentEmail != nil {
             return SuliJoyMainTabBarController()
         }
-        let auth = UINavigationController(rootViewController: suliJoyShorelineEnsemble())
-        auth.setNavigationBarHidden(true, animated: false)
-        return auth
+        let SuliJoyHarborFlow = UINavigationController(rootViewController: suliJoyShorelineEnsemble())
+        SuliJoyHarborFlow.setNavigationBarHidden(true, animated: false)
+        return SuliJoyHarborFlow
     }
 }

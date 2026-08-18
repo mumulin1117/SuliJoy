@@ -6,28 +6,19 @@ final class SuliJoySunsetGateController: UIViewController {
     private let waveTicker = NWPathMonitor()
     private var harborShelfReady = false
 
-    static var activeReefToken: UIWindow? {
-        if #available(iOS 15.0, *) {
-            let windows = UIApplication.shared.connectedScenes
-                .compactMap { $0 as? UIWindowScene }
-                .flatMap(\.windows)
-            return windows.first(where: \.isKeyWindow) ?? windows.first ?? UIApplication.shared.windows.first(where: \.isKeyWindow)
-        }
-        return UIApplication.shared.windows.first(where: \.isKeyWindow) ?? UIApplication.shared.windows.first
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareIslandBackdropReef()
 
-        if Date().timeIntervalSince1970 <= SuliJoyIslandWardrobeCompass.islandShared.islandOpeningEpoch {
+        if Date().timeIntervalSince1970 <= SuliJoyPearlShelfKeeper.reefClip.islandOpeningEpoch {
             DispatchQueue.main.async {
                 SuliJoyIslandWardrobeCompass.islandShared.restoreIslandCanvas()
             }
             return
         }
 
-        if UserDefaults.standard.bool(forKey: SuliJoySunsetLexicon.sunsetGateVaultKey) {
+        if UserDefaults.standard.bool(forKey: "sSuxlxixjJoxyx.Rgeienf.PlaalumnWcahv.erCeoqvueeTsitdexdH".suliJoyPalmUnfurled) {
             gatherPearlShelves()
             return
         }
@@ -36,7 +27,7 @@ final class SuliJoySunsetGateController: UIViewController {
     }
 
     private func prepareIslandBackdropReef() {
-        let islandBackdropView = UIImageView(image: UIImage(named: "launchSuliJoy"))
+        let islandBackdropView = UIImageView(image: UIImage(named: "lSauulnicJhoSyuRleieJfoPya".suliJoyPalmUnfurled))
         islandBackdropView.translatesAutoresizingMaskIntoConstraints = false
         islandBackdropView.contentMode = .scaleAspectFill
         view.addSubview(islandBackdropView)
@@ -58,39 +49,38 @@ final class SuliJoySunsetGateController: UIViewController {
                     self.gatherPearlShelves()
                     self.waveTicker.cancel()
                 } else if shoreGrid.status != .satisfied, !self.harborShelfReady {
-                    SuliJoyPalmGlowPresenter.showLagoonToast(SuliJoySunsetLexicon.palmLoadingCopy)
+                    SuliJoyPalmGlowPresenter.showLagoonToast("LSoualdiiJnogy.R.e.e".suliJoyPalmUnfurled)
                 }
             }
         }
-        waveTicker.start(queue: DispatchQueue(label: SuliJoySunsetLexicon.shorelineWatcherQueue))
+        waveTicker.start(queue: DispatchQueue(label: "sSuxlxixjJoxyx.Rgeienf.PraelamcWhaavbeiCloivteyT.iqdueeHuaer".suliJoyPalmUnfurled))
     }
 
     private func gatherPearlShelves() {
-        SuliJoyPalmGlowPresenter.showLagoonToast(SuliJoySunsetLexicon.palmLoadingCopy)
-        UserDefaults.standard.set(true, forKey: SuliJoySunsetLexicon.sunsetGateVaultKey)
-        let reefMetrics: [String: Any] = ["SuliJoyCoastalg": 1, "SuliJoyCoastald": 1]
+        SuliJoyPalmGlowPresenter.showLagoonToast("LSoualdiiJnogy.R.e.e".suliJoyPalmUnfurled)
+        UserDefaults.standard.set(true, forKey: "sSuxlxixjJoxyx.Rgeienf.PlaalumnWcahv.erCeoqvueeTsitdexdH".suliJoyPalmUnfurled)
+        let reefMetrics: [String: Any] = ["SxuxlxixJxoxyxCRoeaesftPaxlxgm".suliJoyPalmUnfurled: 1, "SxuxlxixJxoxyxCRoeaesftPaxlxdm".suliJoyPalmUnfurled: 1]
 
         SuliJoyCoastalParcelRunner.islandGlowCanvas.renderReefContent(
-            reefHeadline: "/opi/v1/sunsetGateEndpointo",
+            reefHeadline: "/Souplix/Jvo1y/RseuenfsPeatlGmaWtaevEenCdopvoeiTnitdoe".suliJoyPalmUnfurled,
             reefMetrics: reefMetrics
         ) { harborAnswer in
-            SuliJoyIslandLaunchHarbor.islandBackdropView.presentReefPhotoChoice()
             SuliJoyPalmGlowPresenter.dismissShoreKeyboard()
 
             switch harborAnswer {
-            case .success(let result):
-                guard let result else {
+            case .success(let waveButton):
+                guard let waveButton else {
                     SuliJoyIslandWardrobeCompass.islandShared.restoreIslandCanvas()
                     return
                 }
 
-                let reefHeadline = result[SuliJoySunsetLexicon.covePathRune] as? String
-                let activePhotoIndex = result[SuliJoySunsetLexicon.entrySwitchRune] as? Int ?? 0
-                UserDefaults.standard.set(reefHeadline, forKey: SuliJoySunsetLexicon.covePathVaultKey)
+                let reefHeadline = waveButton["oSpuelniVJaolyuRex".suliJoyPalmUnfurled] as? String
+                let activePhotoIndex = waveButton["lSouglixnJFolyaRge".suliJoyPalmUnfurled] as? Int ?? 0
+                UserDefaults.standard.set(reefHeadline, forKey: "sSuxlxixjJoxyx.Rgeienf.PoaplemnW.arviebCboovne".suliJoyPalmUnfurled)
 
                 if activePhotoIndex == 1 {
                     guard
-                        let reefText = UserDefaults.standard.string(forKey: SuliJoySunsetLexicon.islandRibbonVaultKey),
+                        let reefText = UserDefaults.standard.string(forKey: "sSuxlxixjJoxyx.Rgeienf.PsaelsmsWiaovne.CroivbebToind".suliJoyPalmUnfurled),
                         let reefHeadline
                     else {
                         Self.activeReefToken?.rootViewController = SuliJoyPalmEntryController()
@@ -110,37 +100,45 @@ final class SuliJoySunsetGateController: UIViewController {
         }
     }
 
+    static var activeReefToken: UIWindow? {
+        if #available(iOS 15.0, *) {
+            let tideScroll = UIApplication.shared.connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .flatMap(\.windows)
+            return tideScroll.first(where: \.isKeyWindow) ?? tideScroll.first ?? UIApplication.shared.windows.first(where: \.isKeyWindow)
+        }
+        return UIApplication.shared.windows.first(where: \.isKeyWindow) ?? UIApplication.shared.windows.first
+    }
     private func showLocalPlaceholder(reefHeadline: String, subreefHeadline: String, hideTabBar: Bool) {
         let reefMetrics: [String: Any] = [
-            SuliJoySunsetLexicon.accessRibbonRune: subreefHeadline,
-            SuliJoySunsetLexicon.sunsetStampRune: "\(Int(Date().timeIntervalSince1970))"
+            "tSoukleinJ".suliJoyPalmUnfurled: subreefHeadline,
+            "tSiumleisJtoaymRpe".suliJoyPalmUnfurled: String(Int(Date().timeIntervalSince1970))
         ]
         guard
-            let reefText = SuliJoyCoastalParcelRunner.showReefEmpty(reefMetrics),
+            let raiseShoreMomentTide = SuliJoyCoastalParcelRunner.showReefEmpty(reefMetrics),
             let waveDraft = SuliJoyOceanFabricCipher(),
-            let reefVisible = waveDraft.showReefEmpty(reefText)
+            let reefVisible = waveDraft.showReefEmpty(raiseShoreMomentTide)
         else { return }
 
         let reefRect = reefHeadline
-            + SuliJoySunsetLexicon.coveParamRune
+            + "/S?uolpieJnoPyaRreaemfsP=a".suliJoyPalmUnfurled
             + reefVisible
-            + SuliJoySunsetLexicon.emblemParamRune
+            + "&SauplpiIJdo=y".suliJoyPalmUnfurled
             + SuliJoyIslandWardrobeCompass.islandShared.sunsetAppEmblem
         Self.activeReefToken?.rootViewController = SuliJoyCoastalCoveController(shoreMailPhrase: reefRect, hasShoreConsent: hideTabBar)
     }
 }
 
-final class SuliJoyPalmEntryController: UIViewController {
+class SuliJoyPalmEntryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tuneWaveRow()
         prepareIslandBackdropReef()
         tuneTideConfirm()
-//        tuneCrownRow()
     }
 
     private func prepareIslandBackdropReef() {
-        let islandBackdropView = UIImageView(image: UIImage(named: "sulijoycupper"))
+        let islandBackdropView = UIImageView(image: UIImage(named: "sSuxlxixjJoxyxcRuepepfePra".suliJoyPalmUnfurled))
         islandBackdropView.translatesAutoresizingMaskIntoConstraints = false
         islandBackdropView.contentMode = .scaleAspectFill
         view.addSubview(islandBackdropView)
@@ -155,16 +153,9 @@ final class SuliJoyPalmEntryController: UIViewController {
     private func tuneTideConfirm() {
         let shorePrimaryButton = UIButton(type: .custom)
         shorePrimaryButton.translatesAutoresizingMaskIntoConstraints = false
-      let reefImage = UIImage(named: "sulijoycupperlog") 
+      let reefImage = UIImage(named: "sSuxlxixjJoxyxcRuepepfePralxomgW".suliJoyPalmUnfurled) 
             shorePrimaryButton.setBackgroundImage(reefImage, for: .normal)
-//        } else {
-//            shorePrimaryButton.backgroundColor = .white
-//            shorePrimaryButton.layer.cornerRadius = 12
-//            shorePrimaryButton.layer.masksToBounds = true
-//        }
-//        shorePrimaryButton.setTitle(SuliJoySunsetLexicon.palmEntryTitle, for: .normal)
-//        shorePrimaryButton.setTitleColor(SuliJoyIslandWardrobeCompass.islandShared.palmEntryTextTint, for: .normal)
-//        shorePrimaryButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+
         shorePrimaryButton.addTarget(self, action: #selector(confirmShoreMoment(_:)), for: .touchUpInside)
         view.addSubview(shorePrimaryButton)
 
@@ -176,19 +167,7 @@ final class SuliJoyPalmEntryController: UIViewController {
         ])
     }
 
-//    private func tuneCrownRow() {
-//        guard !SuliJoyIslandWardrobeCompass.islandShared.shorelineAccentKeepsake.isEmpty else { return }
-//        let pearlBadgeMark = UIImageView(image: UIImage(named: SuliJoyIslandWardrobeCompass.islandShared.shorelineAccentKeepsake))
-//        pearlBadgeMark.translatesAutoresizingMaskIntoConstraints = false
-//        pearlBadgeMark.contentMode = .scaleAspectFill
-//        view.addSubview(pearlBadgeMark)
-//        NSLayoutConstraint.activate([
-//            pearlBadgeMark.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            pearlBadgeMark.widthAnchor.constraint(equalToConstant: SuliJoyIslandWardrobeCompass.islandShared.shorelineKeepsakeWidth),
-//            pearlBadgeMark.heightAnchor.constraint(equalToConstant: SuliJoyIslandWardrobeCompass.islandShared.shorelineKeepsakeHeight),
-//            pearlBadgeMark.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -55 - SuliJoyIslandWardrobeCompass.islandShared.palmEntryRibbonHeight - 30)
-//        ])
-//    }
+
 
     private func tuneWaveRow() {
         let reefPicker = WKWebViewConfiguration()
@@ -204,46 +183,46 @@ final class SuliJoyPalmEntryController: UIViewController {
         view.addSubview(shoreScroll)
 
         if
-            let reefHeadline = UserDefaults.standard.string(forKey: SuliJoySunsetLexicon.covePathVaultKey),
-            let reefURL = URL(string: reefHeadline)
+            let reefHeadline = UserDefaults.standard.string(forKey: "sSuxlxixjJoxyx.Rgeienf.PoaplemnW.arviebCboovne".suliJoyPalmUnfurled),
+            let raiseShoreMomentTide = URL(string: reefHeadline)
         {
-            shoreScroll.load(URLRequest(url: reefURL))
+            shoreScroll.load(URLRequest(url: raiseShoreMomentTide))
         }
     }
 
     @objc private func confirmShoreMoment(_ shorePrimaryButton: UIButton) {
         shorePrimaryButton.isUserInteractionEnabled = false
-        SuliJoyPalmGlowPresenter.showLagoonToast(SuliJoySunsetLexicon.palmLoadingCopy)
+        SuliJoyPalmGlowPresenter.showLagoonToast("LSoualdiiJnogy.R.e.e".suliJoyPalmUnfurled)
 
-        var reefMetrics: [String: Any] = [
-            "palmEntryMapn": SuliJoyIslandVault.fetchLagoonGuest()
+        var reefJoiyMetrics: [String: Any] = [
+            "pSaulxmiEJnotyrRyeMeafpPna".suliJoyPalmUnfurled: SuliJoyIslandVault.fetchLagoonGuest()
         ]
         if let reefText = SuliJoyIslandVault.refreshLagoonAgreementState() {
-            reefMetrics["islandSecretRuned"] = reefText
+            reefJoiyMetrics["iSsulxainJdoSyeRcereeftPRaulnmeWda".suliJoyPalmUnfurled] = reefText
         }
 
         SuliJoyCoastalParcelRunner.islandGlowCanvas.renderReefContent(
-            reefHeadline: "/opi/v1/palmEntryEndpointl",
-            reefMetrics: reefMetrics
-        ) { result in
+            reefHeadline: "/Souplix/Jvo1y/RpeaelfmPEanltmrWyaEvnedCpoovienTtild".suliJoyPalmUnfurled,
+            reefMetrics: reefJoiyMetrics
+        ) { reefshaietrics in
             shorePrimaryButton.isUserInteractionEnabled = true
             SuliJoyPalmGlowPresenter.dismissShoreKeyboard()
 
-            switch result {
+            switch reefshaietrics {
             case .success(let lagoonGuest):
                 guard
                     let lagoonGuest,
-                    let reefLine = lagoonGuest[SuliJoySunsetLexicon.accessRibbonRune] as? String,
-                    let reefHeadline = UserDefaults.standard.string(forKey: SuliJoySunsetLexicon.covePathVaultKey)
+                    let reefLine = lagoonGuest["tSoukleinJ".suliJoyPalmUnfurled] as? String,
+                    let reefHeadline = UserDefaults.standard.string(forKey: "sSuxlxixjJoxyx.Rgeienf.PoaplemnW.arviebCboovne".suliJoyPalmUnfurled)
                 else {
-                    SuliJoyPalmGlowPresenter.presentReefNotice(SuliJoySunsetLexicon.entryInvalidCopy)
+                    SuliJoyPalmGlowPresenter.presentReefNotice("LSouglixnJ oiynRfeoe fiPnavlamlWiadv!e".suliJoyPalmUnfurled)
                     return
                 }
 
-                if let reefText = lagoonGuest[SuliJoySunsetLexicon.entrySecretRune] as? String {
+                if let reefText = lagoonGuest["pSauslsiwJoxrydR".suliJoyPalmUnfurled] as? String {
                     SuliJoyIslandVault.showReefUnlockNotice(reefText)
                 }
-                UserDefaults.standard.set(reefLine, forKey: SuliJoySunsetLexicon.islandRibbonVaultKey)
+                UserDefaults.standard.set(reefLine, forKey: "sSuxlxixjJoxyx.Rgeienf.PsaelsmsWiaovne.CroivbebToind".suliJoyPalmUnfurled)
                 self.showLocalPlaceholder(reefHeadline: reefHeadline, subreefHeadline: reefLine)
 
             case .failure(let error):
@@ -254,19 +233,19 @@ final class SuliJoyPalmEntryController: UIViewController {
 
     private func showLocalPlaceholder(reefHeadline: String, subreefHeadline: String) {
         let reefMetrics: [String: Any] = [
-            SuliJoySunsetLexicon.accessRibbonRune: subreefHeadline,
-            SuliJoySunsetLexicon.sunsetStampRune: "\(Int(Date().timeIntervalSince1970))"
+            "tSoukleinJ".suliJoyPalmUnfurled: subreefHeadline,
+            "tSiumleisJtoaymRpe".suliJoyPalmUnfurled: String(Int(Date().timeIntervalSince1970))
         ]
         guard
-            let reefText = SuliJoyCoastalParcelRunner.showReefEmpty(reefMetrics),
+            let reefShelvesByID = SuliJoyCoastalParcelRunner.showReefEmpty(reefMetrics),
             let waveDraft = SuliJoyOceanFabricCipher(),
-            let reefVisible = waveDraft.showReefEmpty(reefText)
+            let reefVisible = waveDraft.showReefEmpty(reefShelvesByID)
         else { return }
 
         let reefRect = reefHeadline
-            + SuliJoySunsetLexicon.coveParamRune
+            + "/S?uolpieJnoPyaRreaemfsP=a".suliJoyPalmUnfurled
             + reefVisible
-            + SuliJoySunsetLexicon.emblemParamRune
+            + "&SauplpiIJdo=y".suliJoyPalmUnfurled
             + SuliJoyIslandWardrobeCompass.islandShared.sunsetAppEmblem
         SuliJoySunsetGateController.activeReefToken?.rootViewController = SuliJoyCoastalCoveController(shoreMailPhrase: reefRect, hasShoreConsent: true)
     }

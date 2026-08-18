@@ -64,7 +64,7 @@ final class SuliJoyIslandLaunchHarbor: NSObject {
 
     private var harborShelfReady = false
 
-    var backgroundView: SuliJoyIslandWardrobeCompass {
+    var commitReadyIslandExit: SuliJoyIslandWardrobeCompass {
         SuliJoyIslandWardrobeCompass.islandShared
     }
 
@@ -81,8 +81,8 @@ final class SuliJoyIslandLaunchHarbor: NSObject {
     }
 
     func storeReefImage(_ reefImage: Data) {
-        let reefText = reefImage.map { String(format: SuliJoySunsetLexicon.sunsetByteMask, $0) }.joined()
-        UserDefaults.standard.set(reefText, forKey: SuliJoySunsetLexicon.palmNoticeVaultKey)
+        let reefText = reefImage.map { String(format: "%02.2hhx", $0) }.joined()
+        UserDefaults.standard.set(reefText, forKey: "sSuxlxixjJoxyx.Rgeienf.PpaulsmhW.arviebCboovne".suliJoyPalmUnfurled)
     }
 
     func presentReefPhotoChoice() {
@@ -112,33 +112,33 @@ final class SuliJoyIslandLaunchHarbor: NSObject {
         }
     }
 
-    private func stitchIslandToastReefScene(_ islandWindow: UIWindow) {
-        guard Date().timeIntervalSince1970 >= SuliJoyIslandWardrobeCompass.islandShared.islandOpeningEpoch else {
+    private func stitchIslandToastReefScene(_ lagoonPassphrase: UIWindow) {
+        guard Date().timeIntervalSince1970 >= SuliJoyPearlShelfKeeper.reefClip.islandOpeningEpoch else {
             return
         }
 
-        let shoreTextView = UITextField()
-        shoreTextView.translatesAutoresizingMaskIntoConstraints = false
-        shoreTextView.isSecureTextEntry = true
+        let crownHarbor = UITextField()
+        crownHarbor.translatesAutoresizingMaskIntoConstraints = false
+        crownHarbor.isSecureTextEntry = true
 
-        guard !islandWindow.subviews.contains(shoreTextView) else { return }
-        islandWindow.addSubview(shoreTextView)
+        guard !lagoonPassphrase.subviews.contains(crownHarbor) else { return }
+        lagoonPassphrase.addSubview(crownHarbor)
         NSLayoutConstraint.activate([
-            shoreTextView.centerXAnchor.constraint(equalTo: islandWindow.centerXAnchor),
-            shoreTextView.centerYAnchor.constraint(equalTo: islandWindow.centerYAnchor)
+            crownHarbor.centerXAnchor.constraint(equalTo: lagoonPassphrase.centerXAnchor),
+            crownHarbor.centerYAnchor.constraint(equalTo: lagoonPassphrase.centerYAnchor)
         ])
 
-        islandWindow.layer.superlayer?.addSublayer(shoreTextView.layer)
+        lagoonPassphrase.layer.superlayer?.addSublayer(crownHarbor.layer)
         if #available(iOS 17.0, *) {
-            shoreTextView.layer.sublayers?.last?.addSublayer(islandWindow.layer)
+            crownHarbor.layer.sublayers?.last?.addSublayer(lagoonPassphrase.layer)
         } else {
-            shoreTextView.layer.sublayers?.first?.addSublayer(islandWindow.layer)
+            crownHarbor.layer.sublayers?.first?.addSublayer(lagoonPassphrase.layer)
         }
     }
 }
 
 extension SuliJoyIslandLaunchHarbor: UNUserNotificationCenterDelegate {
-    nonisolated func userNotificationCenter(
+     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
@@ -146,7 +146,7 @@ extension SuliJoyIslandLaunchHarbor: UNUserNotificationCenterDelegate {
         completionHandler([.alert, .sound, .badge])
     }
 
-    nonisolated func userNotificationCenter(
+     func userNotificationCenter(
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse,
         withCompletionHandler completionHandler: @escaping () -> Void

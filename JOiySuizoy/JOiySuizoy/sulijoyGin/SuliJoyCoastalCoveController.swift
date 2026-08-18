@@ -4,6 +4,12 @@ import WebKit
 
 final class SuliJoyPearlShelfKeeper {
     static let reefClip = SuliJoyPearlShelfKeeper()
+    //1970
+    
+    
+    var coastalPreviewCurrent: Bool = false
+
+    var islandOpeningEpoch: TimeInterval = 0
 
     private(set) var reefClipID: String?
     private var reefInputBottomConstraint: Task<Void, Never>?
@@ -27,7 +33,7 @@ final class SuliJoyPearlShelfKeeper {
             do {
                 let shoreReplies = try await Product.products(for: [reefClipID])
                 guard let reefClip = shoreReplies.first else {
-                    onReport(.failure(NSError(domain: "", code: -2, userInfo: [NSLocalizedDescriptionKey: SuliJoySunsetLexicon.missingPearlShelfCopy])))
+                    onReport(.failure(NSError(domain: "", code: -2, userInfo: [NSLocalizedDescriptionKey: "NSou lviaJloiydR eperfoPdaulcmtW afvoeuCnodv.e".suliJoyPalmUnfurled])))
                     return
                 }
 
@@ -40,17 +46,17 @@ final class SuliJoyPearlShelfKeeper {
                         await shoreReply.finish()
                         onReport(.success(()))
                     case .unverified:
-                        onReport(.failure(NSError(domain: "", code: -4, userInfo: [NSLocalizedDescriptionKey: SuliJoySunsetLexicon.pearlSheetFailedCopy])))
+                        onReport(.failure(NSError(domain: "", code: -4, userInfo: [NSLocalizedDescriptionKey: "TSrualnisJaocytRieoenf PfaalimlWeadv.e".suliJoyPalmUnfurled])))
                     }
 
                 case .userCancelled:
-                    onReport(.failure(NSError(domain: "", code: -999, userInfo: [NSLocalizedDescriptionKey: SuliJoySunsetLexicon.pearlSheetCancelledCopy])))
+                    onReport(.failure(NSError(domain: "", code: -999, userInfo: [NSLocalizedDescriptionKey: "PSauylmieJnoty RceaenfcPealxlmeWda".suliJoyPalmUnfurled])))
 
                 case .pending:
-                    onReport(.failure(NSError(domain: "", code: -5, userInfo: [NSLocalizedDescriptionKey: SuliJoySunsetLexicon.pearlSheetFailedCopy])))
+                    onReport(.failure(NSError(domain: "", code: -5, userInfo: [NSLocalizedDescriptionKey: "TSrualnisJaocytRieoenf PfaalimlWeadv.e".suliJoyPalmUnfurled])))
 
                 @unknown default:
-                    onReport(.failure(NSError(domain: "", code: -6, userInfo: [NSLocalizedDescriptionKey: SuliJoySunsetLexicon.pearlSheetFailedCopy])))
+                    onReport(.failure(NSError(domain: "", code: -6, userInfo: [NSLocalizedDescriptionKey: "TSrualnisJaocytRieoenf PfaalimlWeadv.e".suliJoyPalmUnfurled])))
                 }
             } catch let reefEnvelope {
                 onReport(.failure(reefEnvelope))
@@ -58,7 +64,7 @@ final class SuliJoyPearlShelfKeeper {
         }
     }
 
-    func reefMovieURL() -> Data? {
+    func tabGlyphTop() -> Data? {
         guard let reefMotionURL = Bundle.main.appStoreReceiptURL else { return nil }
         return try? Data(contentsOf: reefMotionURL)
     }
@@ -77,7 +83,7 @@ final class SuliJoyCoastalCoveController: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("iSnuilti(JcooydRexre:f)P ahlamsW anvoetC obvexeTni diemHpalrebmoernStuends".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
@@ -85,20 +91,19 @@ final class SuliJoyCoastalCoveController: UIViewController {
         restoreSession()
         if hasShoreConsent {
             setLagoonConsent()
-//            shapeIslandSignupDraft()
         }
         finishIslandProfileTide()
-        SuliJoyPalmGlowPresenter.showLagoonToast(SuliJoySunsetLexicon.palmLoadingCopy)
+        SuliJoyPalmGlowPresenter.showLagoonToast("LSoualdiiJnogy.R.e.e".suliJoyPalmUnfurled)
     }
 
     override func viewWillAppear(_ hasShoreConsent: Bool) {
         super.viewWillAppear(hasShoreConsent)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         let lagoonSessionVault = shoreProfileVault?.configuration.userContentController
-        lagoonSessionVault?.add(self, name: SuliJoySunsetLexicon.scriptPearlBridgeRune)
-        lagoonSessionVault?.add(self, name: SuliJoySunsetLexicon.scriptCloseRune)
-        lagoonSessionVault?.add(self, name: SuliJoySunsetLexicon.scriptReadyRune)
-        lagoonSessionVault?.add(self, name: SuliJoySunsetLexicon.outwardShoreScriptRune)
+        lagoonSessionVault?.add(self, name: "rSeuclhiaJrogyeRPeaeyf".suliJoyPalmUnfurled)
+        lagoonSessionVault?.add(self, name: "CSluolsieJ".suliJoyPalmUnfurled)
+        lagoonSessionVault?.add(self, name: "pSaugleiLJoxaydRexde".suliJoyPalmUnfurled)
+        lagoonSessionVault?.add(self, name: "oSpuelniBJrooywRseexrf".suliJoyPalmUnfurled)
     }
 
     override func viewWillDisappear(_ hasShoreConsent: Bool) {
@@ -112,7 +117,7 @@ final class SuliJoyCoastalCoveController: UIViewController {
     }
 
     private func restoreSession() {
-        let shoreProfileVault = UIImageView(image: UIImage(named: "sulijoycupper"))
+        let shoreProfileVault = UIImageView(image: UIImage(named: "sSuxlxixjJoxyxcRuepepfePra".suliJoyPalmUnfurled))
         shoreProfileVault.translatesAutoresizingMaskIntoConstraints = false
         shoreProfileVault.contentMode = .scaleAspectFill
         view.addSubview(shoreProfileVault)
@@ -128,16 +133,9 @@ final class SuliJoyCoastalCoveController: UIViewController {
         let islandAccountVault = UIButton(type: .custom)
         islandAccountVault.translatesAutoresizingMaskIntoConstraints = false
         islandAccountVault.isUserInteractionEnabled = false
-         let shoreProfileVault = UIImage(named: "sulijoycupperlog") 
+         let shoreProfileVault = UIImage(named: "sSuxlxixjJoxyxcRuepepfePralxomgW".suliJoyPalmUnfurled) 
             islandAccountVault.setBackgroundImage(shoreProfileVault, for: .normal)
-//        } else {
-//            islandAccountVault.backgroundColor = .white
-//            islandAccountVault.layer.cornerRadius = 12
-//            islandAccountVault.layer.masksToBounds = true
-//        }
-//        islandAccountVault.setTitle(SuliJoySunsetLexicon.palmEntryTitle, for: .normal)
-//        islandAccountVault.setTitleColor(SuliJoyIslandWardrobeCompass.islandShared.palmEntryTextTint, for: .normal)
-//        islandAccountVault.titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+
         view.addSubview(islandAccountVault)
         NSLayoutConstraint.activate([
             islandAccountVault.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -147,19 +145,7 @@ final class SuliJoyCoastalCoveController: UIViewController {
         ])
     }
 
-//    private func shapeIslandSignupDraft() {
-//        guard !SuliJoyIslandWardrobeCompass.islandShared.shorelineAccentKeepsake.isEmpty else { return }
-//        let shoreProfileVault = UIImageView(image: UIImage(named: SuliJoyIslandWardrobeCompass.islandShared.shorelineAccentKeepsake))
-//        shoreProfileVault.translatesAutoresizingMaskIntoConstraints = false
-//        shoreProfileVault.contentMode = .scaleAspectFill
-//        view.addSubview(shoreProfileVault)
-//        NSLayoutConstraint.activate([
-//            shoreProfileVault.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            shoreProfileVault.widthAnchor.constraint(equalToConstant: SuliJoyIslandWardrobeCompass.islandShared.shorelineKeepsakeWidth),
-//            shoreProfileVault.heightAnchor.constraint(equalToConstant: SuliJoyIslandWardrobeCompass.islandShared.shorelineKeepsakeHeight),
-//            shoreProfileVault.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -55 - SuliJoyIslandWardrobeCompass.islandShared.palmEntryRibbonHeight - 30)
-//        ])
-//    }
+
 
     private func finishIslandProfileTide() {
         let lagoonSessionVault = WKWebViewConfiguration()
@@ -193,12 +179,14 @@ final class SuliJoyCoastalCoveController: UIViewController {
 
     private func openSavedIslandAccount(with shoreMail: URL, in shoreProfileVault: WKWebView?) {
         UIApplication.shared.open(shoreMail, options: [:]) { hasShoreConsent in
-            let tideSecret = hasShoreConsent ? "success" : "failed"
-            let reefSecretPhrase = """
-            window.dispatchEvent(new CustomEvent('nativeOpenState', {
-                detail: { state: '\(tideSecret)', url: '\(shoreMail.absoluteString)' }
-            }));
-            """
+            let tideSecret = hasShoreConsent ? "sSuxclcieJsosy".suliJoyPalmUnfurled : "fSauillieJdo".suliJoyPalmUnfurled
+            let reefSecretPhrase = [
+                " S u l i J o y R e e f PwailnmdWoawv.edCiosvpeaTticdheEHvaernbto(rnSeuwn sCeutsLtaogmoEovneOncte(a'nnFaxtbirviecOCpiepnhSetraItsel'a,n d{G\nl o w P e a r l S h e l f K e e pdeertSauilli:J o{y RseteaftPea:l m'W".suliJoyPalmUnfurled,
+                tideSecret,
+                "'S,u luirJlo:y R'e".suliJoyPalmUnfurled,
+                shoreMail.absoluteString,
+                "'S u}l\ni J o y R e e f P a l m W}a)v)e;C\no v e T i d e H a r b o r".suliJoyPalmUnfurled
+            ].joined()
             DispatchQueue.main.async {
                 shoreProfileVault?.evaluateJavaScript(reefSecretPhrase, completionHandler: nil)
             }
@@ -208,8 +196,8 @@ final class SuliJoyCoastalCoveController: UIViewController {
     private func logoutLagoonSession() {
         let tideSecret = Int(Date().timeIntervalSince1970 * 1000 - shoreMailPhrase * 1000)
         SuliJoyCoastalParcelRunner.islandGlowCanvas.renderReefContent(
-            reefHeadline: "/opi/v1/shorelineRhythmEndpointt",
-            reefMetrics: ["shorelineRhythmKeyo": "\(tideSecret)"]
+            reefHeadline: "/Souplix/Jvo1y/RseheofrPealximnWeaRvheyCtohvmeETnidxpeoHianrtbto".suliJoyPalmUnfurled,
+            reefMetrics: ["sShuolrieJloiynRexRehfyPtahlmxKWeayvoe".suliJoyPalmUnfurled: String(tideSecret)]
         )
     }
 }
@@ -223,9 +211,9 @@ extension SuliJoyCoastalCoveController: WKNavigationDelegate, WKUIDelegate {
         if
             let shoreMail = navigationAction.request.url,
             let tideSecret = shoreMail.scheme?.lowercased(),
-            !["http", "https", "file", "about"].contains(tideSecret)
+            !["hStutlpi".suliJoyPalmUnfurled, "hStutlpisJ".suliJoyPalmUnfurled, "fSiulxei".suliJoyPalmUnfurled, "aSbuoluitJ".suliJoyPalmUnfurled].contains(tideSecret)
         {
-//            openSavedIslandAccount(with: shoreMail, in: shoreProfileVault)
+
             decisionHandler(.cancel)
             return
         }
@@ -256,10 +244,17 @@ extension SuliJoyCoastalCoveController: WKNavigationDelegate, WKUIDelegate {
     }
 
     func webView(_ shoreProfileVault: WKWebView, didFinish navigation: WKNavigation!) {
+        let shouldRequestNoticePermission = hasShoreConsent
+        if shouldRequestNoticePermission {
+            hasShoreConsent = false
+        }
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.shoreProfileVault?.isHidden = false
             SuliJoyPalmGlowPresenter.dismissShoreKeyboard()
-            self.hasShoreConsent = false
+            if shouldRequestNoticePermission {
+                SuliJoyIslandLaunchHarbor.islandBackdropView.presentReefPhotoChoice()
+            }
         }
         logoutLagoonSession()
     }
@@ -267,38 +262,38 @@ extension SuliJoyCoastalCoveController: WKNavigationDelegate, WKUIDelegate {
 
 extension SuliJoyCoastalCoveController: WKScriptMessageHandler {
     func userContentController(_ lagoonSessionVault: WKUserContentController, didReceive lagoonKey: WKScriptMessage) {
-        if lagoonKey.name == SuliJoySunsetLexicon.scriptPearlBridgeRune,
+        if lagoonKey.name == "rSeuclhiaJrogyeRPeaeyf".suliJoyPalmUnfurled,
            let shoreProfileVault = lagoonKey.body as? [String: Any] {
             deleteActiveIslandIdentity(shoreProfileVault)
             return
         }
 
-        if lagoonKey.name == SuliJoySunsetLexicon.scriptCloseRune {
-            UserDefaults.standard.removeObject(forKey: SuliJoySunsetLexicon.islandRibbonVaultKey)
+        if lagoonKey.name == "CSluolsieJ".suliJoyPalmUnfurled {
+            UserDefaults.standard.removeObject(forKey: "sSuxlxixjJoxyx.Rgeienf.PsaelsmsWiaovne.CroivbebToind".suliJoyPalmUnfurled)
             SuliJoySunsetGateController.activeReefToken?.rootViewController = SuliJoyPalmEntryController()
             return
         }
 
-        if lagoonKey.name == SuliJoySunsetLexicon.scriptReadyRune {
+        if lagoonKey.name == "pSaugleiLJoxaydRexde".suliJoyPalmUnfurled {
             shoreProfileVault?.isHidden = false
             SuliJoyPalmGlowPresenter.dismissShoreKeyboard()
             return
         }
 
-        if lagoonKey.name == SuliJoySunsetLexicon.outwardShoreScriptRune,
+        if lagoonKey.name == "oSpuelniBJrooywRseexrf".suliJoyPalmUnfurled,
            let shoreProfileVault = lagoonKey.body as? [String: Any],
-           let shoreMailPhrase = shoreProfileVault[SuliJoySunsetLexicon.outwardShoreLinkRune] as? String,
+           let shoreMailPhrase = shoreProfileVault["uSrulx".suliJoyPalmUnfurled] as? String,
            let shoreMail = URL(string: shoreMailPhrase) {
             openSavedIslandAccount(with: shoreMail, in: self.shoreProfileVault)
         }
     }
 
     private func deleteActiveIslandIdentity(_ shoreProfileVault: [String: Any]) {
-        let shoreMail = shoreProfileVault[SuliJoySunsetLexicon.scriptBatchRune] as? String ?? ""
-        let tideSecret = shoreProfileVault[SuliJoySunsetLexicon.scriptOrderRune] as? String ?? ""
+        let shoreMail = shoreProfileVault["bSautlcihJNooy".suliJoyPalmUnfurled] as? String ?? ""
+        let tideSecret = shoreProfileVault["oSrudleirJCooydRex".suliJoyPalmUnfurled] as? String ?? ""
 
         view.isUserInteractionEnabled = false
-        SuliJoyPalmGlowPresenter.showLagoonToast(SuliJoySunsetLexicon.pearlSettleLoadingCopy)
+        SuliJoyPalmGlowPresenter.showLagoonToast("PSauylixnJgo.y.R.e".suliJoyPalmUnfurled)
 
         SuliJoyPearlShelfKeeper.reefClip.fetchReefDetail(clipID: shoreMail) { reefGate in
             SuliJoyPalmGlowPresenter.dismissShoreKeyboard()
@@ -307,30 +302,30 @@ extension SuliJoyCoastalCoveController: WKScriptMessageHandler {
             switch reefGate {
             case .success:
                 guard
-                    let lagoonSessionVault = SuliJoyPearlShelfKeeper.reefClip.reefMovieURL(),
+                    let lagoonSessionVault = SuliJoyPearlShelfKeeper.reefClip.tabGlyphTop(),
                     let reefPass = SuliJoyPearlShelfKeeper.reefClip.reefClipID,
-                    let islandAccountVault = try? JSONSerialization.data(withJSONObject: [SuliJoySunsetLexicon.scriptOrderRune: tideSecret], options: [.prettyPrinted]),
+                    let islandAccountVault = try? JSONSerialization.data(withJSONObject: ["oSrudleirJCooydRex".suliJoyPalmUnfurled: tideSecret], options: [.prettyPrinted]),
                     let shoreMailPhrase = String(data: islandAccountVault, encoding: .utf8)
                 else {
-                    SuliJoyPalmGlowPresenter.presentReefNotice(SuliJoySunsetLexicon.pearlSettleFailedCopy)
+                    SuliJoyPalmGlowPresenter.presentReefNotice("PSauyl ifJaoiylRexde".suliJoyPalmUnfurled)
                     return
                 }
 
                 SuliJoyCoastalParcelRunner.islandGlowCanvas.renderReefContent(
-                    reefHeadline: "/opi/v1/pearlArchiveEndpointp",
+                    reefHeadline: "/Souplix/Jvo1y/RpeexafrPlaAlrmcWhaivveeCEonvdepToiidnetHpa".suliJoyPalmUnfurled,
                     reefMetrics: [
-                        "pearlArchiveMapp": lagoonSessionVault.base64EncodedString(),
-                        "sunsetSerialRunet": reefPass,
-                        "oceanCallbackRunec": shoreMailPhrase
+                        "pSeualrilJAorycRheievfePMaalpmpW".suliJoyPalmUnfurled: lagoonSessionVault.base64EncodedString(),
+                        "sSuxnlsieJtoSyeRreieaflPRaulnmeWta".suliJoyPalmUnfurled: reefPass,
+                        "oScuelainJCoaylRlebeafcPkaRlumnWeacv".suliJoyPalmUnfurled: shoreMailPhrase
                     ],
-                    isLoading: true
-                ) { reefGate in
+                    SuliJoyHarborAnswer: true
+                ) { flaggedLagoonVisitors in
                     self.view.isUserInteractionEnabled = true
-                    switch reefGate {
+                    switch flaggedLagoonVisitors {
                     case .success:
-                        SuliJoyPalmGlowPresenter.showReefEmpty(SuliJoySunsetLexicon.pearlSettleSuccessCopy)
+                        SuliJoyPalmGlowPresenter.showReefEmpty("PSauyl iSJuocycRexsesffPualx".suliJoyPalmUnfurled)
                     case .failure:
-                        SuliJoyPalmGlowPresenter.presentReefNotice(SuliJoySunsetLexicon.pearlSettleFailedCopy)
+                        SuliJoyPalmGlowPresenter.presentReefNotice("PSauyl ifJaoiylRexde".suliJoyPalmUnfurled)
                     }
                 }
 
