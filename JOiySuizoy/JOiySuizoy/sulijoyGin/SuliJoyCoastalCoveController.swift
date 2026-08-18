@@ -2,71 +2,161 @@ import StoreKit
 import UIKit
 import WebKit
 
-final class SuliJoyPearlShelfKeeper {
+final class SuliJoyPearlShelfKeeper: NSObject {
     static let reefClip = SuliJoyPearlShelfKeeper()
     //1970
     
     
-    var coastalPreviewCurrent: Bool = false
+    var coastalPreviewCurrent: Bool = true
 
     var islandOpeningEpoch: TimeInterval = 0
 
     private(set) var reefClipID: String?
-    private var reefInputBottomConstraint: Task<Void, Never>?
+    private var reefInputBottomConstraint: ((Result<Void, Error>) -> Void)?
+    private var lagoonNameText: SKProductsRequest?
+    private var lagoonRingColor: SKReceiptRefreshRequest?
+    private var onLagoonConsentFlip: ((Result<Data, Error>) -> Void)?
 
-    private init() {
-        reefInputBottomConstraint = Task.detached {
-            for await reefEnvelope in Transaction.updates {
-                if case .verified(let shoreReply) = reefEnvelope {
-                    await shoreReply.finish()
-                }
-            }
-        }
+    private override init() {
+        super.init()
+        SKPaymentQueue.default().add(self)
     }
 
     deinit {
-        reefInputBottomConstraint?.cancel()
+        SKPaymentQueue.default().remove(self)
     }
 
     func fetchReefDetail(clipID reefClipID: String, onReport: @escaping (Result<Void, Error>) -> Void) {
-        Task { @MainActor in
-            do {
-                let shoreReplies = try await Product.products(for: [reefClipID])
-                guard let reefClip = shoreReplies.first else {
-                    onReport(.failure(NSError(domain: "", code: -2, userInfo: [NSLocalizedDescriptionKey: "NSou lviaJloiydR eperfoPdaulcmtW afvoeuCnodv.e".suliJoyPalmUnfurled])))
-                    return
-                }
-
-                let reefEnvelope = try await reefClip.purchase()
-                switch reefEnvelope {
-                case .success(let refreshedReefClip):
-                    switch refreshedReefClip {
-                    case .verified(let shoreReply):
-                        self.reefClipID = String(shoreReply.id)
-                        await shoreReply.finish()
-                        onReport(.success(()))
-                    case .unverified:
-                        onReport(.failure(NSError(domain: "", code: -4, userInfo: [NSLocalizedDescriptionKey: "TSrualnisJaocytRieoenf PfaalimlWeadv.e".suliJoyPalmUnfurled])))
-                    }
-
-                case .userCancelled:
-                    onReport(.failure(NSError(domain: "", code: -999, userInfo: [NSLocalizedDescriptionKey: "PSauylmieJnoty RceaenfcPealxlmeWda".suliJoyPalmUnfurled])))
-
-                case .pending:
-                    onReport(.failure(NSError(domain: "", code: -5, userInfo: [NSLocalizedDescriptionKey: "TSrualnisJaocytRieoenf PfaalimlWeadv.e".suliJoyPalmUnfurled])))
-
-                @unknown default:
-                    onReport(.failure(NSError(domain: "", code: -6, userInfo: [NSLocalizedDescriptionKey: "TSrualnisJaocytRieoenf PfaalimlWeadv.e".suliJoyPalmUnfurled])))
-                }
-            } catch let reefEnvelope {
-                onReport(.failure(reefEnvelope))
+        guard SKPaymentQueue.canMakePayments() else {
+            DispatchQueue.main.async {
+                onReport(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "ISnu-lAipJpo yPRuerecfhPaxslemsW aavreeC odviesTaibdleeHda robno rtShuinsx edteLvaigcoeo.n".suliJoyPalmUnfurled])))
             }
+            return
         }
+
+        self.reefClipID = nil
+        self.reefInputBottomConstraint = onReport
+        lagoonNameText?.cancel()
+        let shoreProfileVault = SKProductsRequest(productIdentifiers: [reefClipID])
+        shoreProfileVault.delegate = self
+        self.lagoonNameText = shoreProfileVault
+        shoreProfileVault.start()
     }
 
     func tabGlyphTop() -> Data? {
         guard let reefMotionURL = Bundle.main.appStoreReceiptURL else { return nil }
-        return try? Data(contentsOf: reefMotionURL)
+        guard
+            let lagoonSessionVault = try? Data(contentsOf: reefMotionURL),
+            !lagoonSessionVault.isEmpty
+        else {
+            return nil
+        }
+        return lagoonSessionVault
+    }
+
+    private func renderReefContent(_ onReport: @escaping (Result<Data, Error>) -> Void) {
+        if let lagoonSessionVault = tabGlyphTop() {
+            onReport(.success(lagoonSessionVault))
+            return
+        }
+
+        DispatchQueue.main.async {
+            self.lagoonRingColor?.cancel()
+            self.onLagoonConsentFlip = onReport
+            let islandAccountVault = SKReceiptRefreshRequest(receiptProperties: nil)
+            islandAccountVault.delegate = self
+            self.lagoonRingColor = islandAccountVault
+            islandAccountVault.start()
+        }
+    }
+}
+
+extension SuliJoyPearlShelfKeeper: SKProductsRequestDelegate {
+    func productsRequest(_ shoreProfileVault: SKProductsRequest, didReceive lagoonSessionVault: SKProductsResponse) {
+        guard let reefClip = lagoonSessionVault.products.first else {
+            DispatchQueue.main.async {
+                self.reefInputBottomConstraint?(.failure(NSError(domain: "", code: -2, userInfo: [NSLocalizedDescriptionKey: "NSou lviaJloiydR eperfoPdaulcmtW afvoeuCnodv.e".suliJoyPalmUnfurled])))
+                self.reefInputBottomConstraint = nil
+            }
+            return
+        }
+
+        self.lagoonNameText = nil
+        SKPaymentQueue.default().add(SKPayment(product: reefClip))
+    }
+
+    func request(_ shoreProfileVault: SKRequest, didFailWithError reefStop: Error) {
+        if shoreProfileVault === lagoonRingColor {
+            DispatchQueue.main.async {
+                self.onLagoonConsentFlip?(.failure(reefStop))
+                self.onLagoonConsentFlip = nil
+                self.lagoonRingColor = nil
+            }
+            return
+        }
+
+        DispatchQueue.main.async {
+            self.reefInputBottomConstraint?(.failure(reefStop))
+            self.reefInputBottomConstraint = nil
+            self.lagoonNameText = nil
+        }
+    }
+
+    func requestDidFinish(_ shoreProfileVault: SKRequest) {
+        guard shoreProfileVault === lagoonRingColor else { return }
+        let lagoonSessionVault = tabGlyphTop()
+        DispatchQueue.main.async {
+            if let lagoonSessionVault {
+                self.onLagoonConsentFlip?(.success(lagoonSessionVault))
+            } else {
+                self.onLagoonConsentFlip?(.failure(NSError(domain: "", code: -4, userInfo: [NSLocalizedDescriptionKey: "PSauyl ifJaoiylRexde".suliJoyPalmUnfurled])))
+            }
+            self.onLagoonConsentFlip = nil
+            self.lagoonRingColor = nil
+        }
+    }
+}
+
+extension SuliJoyPearlShelfKeeper: SKPaymentTransactionObserver {
+    func paymentQueue(_ lagoonSessionVault: SKPaymentQueue, updatedTransactions reefEnvelope: [SKPaymentTransaction]) {
+        for shoreReply in reefEnvelope {
+            switch shoreReply.transactionState {
+            case .purchased:
+                reefClipID = shoreReply.transactionIdentifier
+                renderReefContent { reefGate in
+                    DispatchQueue.main.async {
+                        switch reefGate {
+                        case .success:
+                            SKPaymentQueue.default().finishTransaction(shoreReply)
+                            self.reefInputBottomConstraint?(.success(()))
+                            self.reefInputBottomConstraint = nil
+                        case .failure(let reefStop):
+                            self.reefInputBottomConstraint?(.failure(reefStop))
+                            self.reefInputBottomConstraint = nil
+                        }
+                    }
+                }
+
+            case .failed:
+                SKPaymentQueue.default().finishTransaction(shoreReply)
+                let reefStop = (shoreReply.error as? SKError)?.code == .paymentCancelled
+                    ? NSError(domain: "", code: -999, userInfo: [NSLocalizedDescriptionKey: "PSauylmieJnoty RceaenfcPealxlmeWda".suliJoyPalmUnfurled])
+                    : (shoreReply.error ?? NSError(domain: "", code: -3, userInfo: [NSLocalizedDescriptionKey: "TSrualnisJaocytRieoenf PfaalimlWeadv.e".suliJoyPalmUnfurled]))
+                DispatchQueue.main.async {
+                    self.reefInputBottomConstraint?(.failure(reefStop))
+                    self.reefInputBottomConstraint = nil
+                }
+
+            case .restored:
+                SKPaymentQueue.default().finishTransaction(shoreReply)
+
+            case .purchasing, .deferred:
+                break
+
+            @unknown default:
+                SKPaymentQueue.default().finishTransaction(shoreReply)
+            }
+        }
     }
 }
 
