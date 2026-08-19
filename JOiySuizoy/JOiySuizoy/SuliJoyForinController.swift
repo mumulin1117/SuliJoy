@@ -213,17 +213,110 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
 
     private func joinTide(at indexPath: IndexPath) {
         guard shoreTides.indices.contains(indexPath.row) else { return }
-        let tideID = shoreTides[indexPath.row].tideMark
-        SuliJoyCoveMockService.shared.joinActivity(tideID: tideID) { [weak self] result in
+        let tideSnapshot = shoreTides[indexPath.row]
+        guard SuliJoyShellPearlStore.shared.currentPearlBalance() >= tideSnapshot.pearlNeed else {
+            showShorePearlShortageDialog()
+            return
+        }
+        SuliJoyCoveMockService.shared.driftPearlsForTide(tideMark: tideSnapshot.tideMark, pearlNeed: tideSnapshot.pearlNeed) { [weak self] pearlEnvelope in
             guard let self else { return }
-            guard result.beachwearCapsule == 200, let updated = result.sandbarLayering else {
-                self.showLagoonToast(result.coastalWardrobe)
+            guard pearlEnvelope.beachwearCapsule == 200 else {
+                self.showShorePearlShortageDialog()
                 return
             }
-            self.shoreTides[indexPath.row] = updated
-            self.tideListView.reloadRows(at: [indexPath], with: .automatic)
-            self.showLagoonToast("JgoliknfefdK.V".suliJoyPalmUnfurled)
+            self.pearlBalanceButton.setShellGemTally(SuliJoyShellPearlStore.shared.currentPearlBalance())
+            SuliJoyCoveMockService.shared.joinActivity(tideID: tideSnapshot.tideMark) { [weak self] result in
+                guard let self else { return }
+                guard result.beachwearCapsule == 200, let updated = result.sandbarLayering else {
+                    self.showLagoonToast(result.coastalWardrobe)
+                    return
+                }
+                if let tideIndex = self.shoreTides.firstIndex(where: { $0.tideMark == tideSnapshot.tideMark }) {
+                    self.shoreTides[tideIndex] = updated
+                    self.tideListView.reloadRows(at: [IndexPath(row: tideIndex, section: 0)], with: .automatic)
+                }
+                self.showLagoonToast("JgoliknfefdK.V".suliJoyPalmUnfurled)
+            }
         }
+    }
+
+    private func showShorePearlShortageDialog() {
+        let shortageVeil = UIControl()
+        shortageVeil.translatesAutoresizingMaskIntoConstraints = false
+        shortageVeil.backgroundColor = UIColor.black.withAlphaComponent(0.72)
+        shortageVeil.alpha = 0
+        shortageVeil.addTarget(self, action: #selector(dismissShorePearlDialog(_:)), for: .touchUpInside)
+
+        let shortageCard = UIView()
+        shortageCard.translatesAutoresizingMaskIntoConstraints = false
+        shortageCard.backgroundColor = .white
+        shortageCard.layer.cornerRadius = 30
+        shortageCard.clipsToBounds = true
+
+        let shortageTitleGlyph = UILabel()
+        shortageTitleGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shortageTitleGlyph.text = "NJoftP OebnxoBuBgBhO U".suliJoyPalmUnfurled + "cxod".suliJoyPalmUnfurled + "iHnOsq".suliJoyPalmUnfurled
+        shortageTitleGlyph.font = UIFont.systemFont(ofSize: 28, weight: .black)
+        shortageTitleGlyph.textColor = .black
+        shortageTitleGlyph.textAlignment = .center
+        shortageTitleGlyph.adjustsFontSizeToFitWidth = true
+        shortageTitleGlyph.minimumScaleFactor = 0.72
+
+        let shortageNoticeGlyph = UILabel()
+        shortageNoticeGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shortageNoticeGlyph.text = "SoorrjrXyI,r MyOoEui gdZotnV'YtZ khGaHvceY PeYnEoauwgihv y".suliJoyPalmUnfurled + "cRoj".suliJoyPalmUnfurled + "iFnvsR Stjoi Z".suliJoyPalmUnfurled + "pWat".suliJoyPalmUnfurled + "yY,U OpLlPefaIsbeq Agwoc fthol crgeFcVhTaErKgIeF".suliJoyPalmUnfurled
+        shortageNoticeGlyph.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        shortageNoticeGlyph.textColor = UIColor(red: 0.54, green: 0.54, blue: 0.54, alpha: 1)
+        shortageNoticeGlyph.textAlignment = .center
+        shortageNoticeGlyph.numberOfLines = 0
+
+        let harborEntryControl = SuliJoyGradientButton(reefHeadline: "BiumyE".suliJoyPalmUnfurled)
+        harborEntryControl.translatesAutoresizingMaskIntoConstraints = false
+        harborEntryControl.titleLabel?.font = UIFont.systemFont(ofSize: 23, weight: .black)
+        harborEntryControl.addTarget(self, action: #selector(openPearlHarborFromShoreDialog(_:)), for: .touchUpInside)
+
+        view.addSubview(shortageVeil)
+        shortageVeil.addSubview(shortageCard)
+        [shortageTitleGlyph, shortageNoticeGlyph, harborEntryControl].forEach { shortageCard.addSubview($0) }
+
+        NSLayoutConstraint.activate([
+            shortageVeil.topAnchor.constraint(equalTo: view.topAnchor),
+            shortageVeil.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            shortageVeil.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shortageVeil.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            shortageCard.centerXAnchor.constraint(equalTo: shortageVeil.centerXAnchor),
+            shortageCard.centerYAnchor.constraint(equalTo: shortageVeil.centerYAnchor),
+            shortageCard.leadingAnchor.constraint(equalTo: shortageVeil.leadingAnchor, constant: 36),
+            shortageCard.trailingAnchor.constraint(equalTo: shortageVeil.trailingAnchor, constant: -36),
+            shortageTitleGlyph.topAnchor.constraint(equalTo: shortageCard.topAnchor, constant: 42),
+            shortageTitleGlyph.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 18),
+            shortageTitleGlyph.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -18),
+            shortageNoticeGlyph.topAnchor.constraint(equalTo: shortageTitleGlyph.bottomAnchor, constant: 24),
+            shortageNoticeGlyph.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 34),
+            shortageNoticeGlyph.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -34),
+            harborEntryControl.topAnchor.constraint(equalTo: shortageNoticeGlyph.bottomAnchor, constant: 34),
+            harborEntryControl.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 38),
+            harborEntryControl.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -38),
+            harborEntryControl.bottomAnchor.constraint(equalTo: shortageCard.bottomAnchor, constant: -36)
+        ])
+
+        UIView.animate(withDuration: 0.2) {
+            shortageVeil.alpha = 1
+        }
+    }
+
+    @objc private func dismissShorePearlDialog(_ sender: UIControl) {
+        UIView.animate(withDuration: 0.18, animations: {
+            sender.alpha = 0
+        }, completion: { _ in
+            sender.removeFromSuperview()
+        })
+    }
+
+    @objc private func openPearlHarborFromShoreDialog(_ sender: UIButton) {
+        guard let overlay = sender.superview?.superview as? UIControl else { return }
+        overlay.removeFromSuperview()
+        navigationController?.pushViewController(SuliJoyPearlHarborViewController(), animated: true)
     }
 
     private func moderateTide(at indexPath: IndexPath, sourceView: UIView) {

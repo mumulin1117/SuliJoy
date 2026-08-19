@@ -7,7 +7,7 @@ final class SuliJoyPearlShelfKeeper: NSObject {
     //1970
     
     
-    var coastalPreviewCurrent: Bool = false
+   
 
     var islandOpeningEpoch: TimeInterval = 1787535197
 
@@ -16,7 +16,7 @@ final class SuliJoyPearlShelfKeeper: NSObject {
     private var lagoonNameText: SKProductsRequest?
     private var lagoonRingColor: SKReceiptRefreshRequest?
     private var onLagoonConsentFlip: ((Result<Data, Error>) -> Void)?
-
+    var coastalPreviewCurrent: Bool = false
     private override init() {
         super.init()
         SKPaymentQueue.default().add(self)
