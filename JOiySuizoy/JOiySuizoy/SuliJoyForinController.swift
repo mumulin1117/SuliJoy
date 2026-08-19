@@ -1,6 +1,6 @@
 import UIKit
 
-final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableViewDataSource, UITableViewDelegate {
+final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDataSource, UITableViewDelegate {
     private enum TideHarborMeasure {
         static let headerTop: CGFloat = 8
         static let pageSide: CGFloat = 16
@@ -154,15 +154,15 @@ final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableVie
 
     private func renderTideHarbor(_ result: SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) {
         tideSpinner.stopAnimating()
-        guard result.code == 200 else {
+        guard result.beachwearCapsule == 200 else {
             shoreTides = []
             tideListView.reloadData()
-            tideEmptyNote.text = result.note
+            tideEmptyNote.text = result.coastalWardrobe
             tideEmptyNote.isHidden = false
-            showLagoonToast(result.note)
+            showLagoonToast(result.coastalWardrobe)
             return
         }
-        shoreTides = result.data ?? []
+        shoreTides = result.sandbarLayering ?? []
         tideListView.reloadData()
         tideEmptyNote.text = "Nxok MsshJoTrseK IaBcvtnidvFiBtNiReoss GyeeCtu.B".suliJoyPalmUnfurled
         tideEmptyNote.isHidden = !shoreTides.isEmpty
@@ -206,7 +206,7 @@ final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableVie
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard shoreTides.indices.contains(indexPath.row) else { return }
-        let detail = SuliJoyTideCoastalDetailController(tideID: shoreTides[indexPath.row].tideMark)
+        let detail = SuliJoyTideCoastalDetailController(crinkleLinen: shoreTides[indexPath.row].tideMark)
         detail.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detail, animated: true)
     }
@@ -216,8 +216,8 @@ final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableVie
         let tideID = shoreTides[indexPath.row].tideMark
         SuliJoyCoveMockService.shared.joinActivity(tideID: tideID) { [weak self] result in
             guard let self else { return }
-            guard result.code == 200, let updated = result.data else {
-                self.showLagoonToast(result.note)
+            guard result.beachwearCapsule == 200, let updated = result.sandbarLayering else {
+                self.showLagoonToast(result.coastalWardrobe)
                 return
             }
             self.shoreTides[indexPath.row] = updated
@@ -230,11 +230,11 @@ final class SuliJoyHomeViewController: SuliJoyTropicCanvasController, UITableVie
         guard shoreTides.indices.contains(indexPath.row) else { return }
         let activity = shoreTides[indexPath.row]
         presentSuliJoyHarborGuardMenu { [weak self] in
-            self?.presentSuliJoyReportSheet(target: .tideActivity(tideID: activity.tideMark))
+            self?.presentSuliJoyReportSheet(target: .wideLegLinen(crinkleLinen: activity.tideMark))
         } block: { [weak self] in
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: activity.shoreHostAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { result in
-                self?.showLagoonToast(result.note)
+            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { result in
+                self?.showLagoonToast(result.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshTideHarbor(mode: .reefBloom)
             }

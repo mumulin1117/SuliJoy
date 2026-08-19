@@ -40,9 +40,9 @@ final class SuliJoyCoveMockService {
                 tideCrewLimit: 20,
                 pearlNeed: 100,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "sQuJnBsVeCtD_H0Z1x".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_01", reefCaptionLine: "SVucnHsyeWts XlPosudnKgAeQ".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "soutnMsGeMtC_B0q2R".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_02", reefCaptionLine: "PdavlpmH psNtGyGlRizntgZ etWaHbrlVeA".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "sGunnjscestD_Q0A3c".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_03", reefCaptionLine: "CSoqaXsutLaolQ ZfLrNisexntdMsI".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "sQuJnBsVeCtD_H0Z1x".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_01", hibiscusShade: "SVucnHsyeWts XlPosudnKgAeQ".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "soutnMsGeMtC_B0q2R".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_02", hibiscusShade: "PdavlpmH psNtGyGlRizntgZ etWaHbrlVeA".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "sGunnjscestD_Q0A3c".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_03", hibiscusShade: "CSoqaXsutLaolQ ZfLrNisexntdMsI".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_breeze_01",
@@ -71,9 +71,9 @@ final class SuliJoyCoveMockService {
                 tideCrewLimit: 16,
                 pearlNeed: 90,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "gEoGladFeuny_iwqallYkk_V0g1q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_01", reefCaptionLine: "GjohlxdXeanz AdprCiunMkIsV".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "gAoxlGdkeanW_YwxadltkU_Y0H2o".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_02", reefCaptionLine: "ByeraucrhY LpZoyrjtwrYasiItW".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "gzomlwdYeWnq_MwMaVlfkc_r0m3G".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_03", reefCaptionLine: "PMaXlimv xsPupnesVeQtc".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "gEoGladFeuny_iwqallYkk_V0g1q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_01", hibiscusShade: "GjohlxdXeanz AdprCiunMkIsV".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "gAoxlGdkeanW_YwxadltkU_Y0H2o".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_02", hibiscusShade: "ByeraucrhY LpZoyrjtwrYasiItW".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "gzomlwdYeWnq_MwMaVlfkc_r0m3G".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_03", hibiscusShade: "PMaXlimv xsPupnesVeQtc".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_sun_01",
@@ -101,9 +101,9 @@ final class SuliJoyCoveMockService {
                 tideCrewLimit: 18,
                 pearlNeed: 120,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "bblTuhec_wpkiLcgnKiUce_o0T1U".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_01", reefCaptionLine: "SSeTavswipdrei ZppiocZnTiSca".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "bhlOuiew_YpjiBcqnRiDcC_P0A2B".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_02", reefCaptionLine: "BSlbuxei qtBakbGlKev".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "bYluuFeY_YpYiNctnqiHcm_Q0B3O".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_03", reefCaptionLine: "BaeZadcIhu HsSeEtItBilnuga".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "bblTuhec_wpkiLcgnKiUce_o0T1U".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_01", hibiscusShade: "SSeTavswipdrei ZppiocZnTiSca".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "bhlOuiew_YpjiBcqnRiDcC_P0A2B".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_02", hibiscusShade: "BSlbuxei qtBakbGlKev".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "bYluuFeY_YpYiNctnqiHcm_Q0B3O".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_03", hibiscusShade: "BaeZadcIhu HsSeEtItBilnuga".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_breeze_07",
@@ -132,9 +132,9 @@ final class SuliJoyCoveMockService {
                 tideCrewLimit: 20,
                 pearlNeed: 80,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "mbayrZkseNtn_dhTuHnQtQ_W0t1S".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_01", reefCaptionLine: "MPanrNkKejtR vcooecIoenVuctd".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "mhaCrykMeItg_ihXuynctU_Z0H2K".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_02", reefCaptionLine: "NgiTgehGtb PmiakrwkgeHtQ".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "mNaBrskAeGtl_shduxnQtZ_Z0E3D".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_03", reefCaptionLine: "IvsYlSatnidY ElJoFoGkz".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "mbayrZkseNtn_dhTuHnQtQ_W0t1S".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_01", hibiscusShade: "MPanrNkKejtR vcooecIoenVuctd".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "mhaCrykMeItg_ihXuynctU_Z0H2K".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_02", hibiscusShade: "NgiTgehGtb PmiakrwkgeHtQ".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "mNaBrskAeGtl_shduxnQtZ_Z0E3D".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_03", hibiscusShade: "IvsYlSatnidY ElJoFoGkz".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_sun_06",
@@ -162,9 +162,9 @@ final class SuliJoyCoveMockService {
                 tideCrewLimit: 24,
                 pearlNeed: 110,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "tQrMoapOimcBaKlY_cpbaYrftuyS_p0a1w".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_01", reefCaptionLine: "TmrWoMpBiFczaglq LpvrwihnrtJ".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "tWrJozphiScnajlW_hpmanrrtwyh_n0P2H".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_02", reefCaptionLine: "PlaGrlthyQ VfKrtibeBnJdVsK".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "tGrbowpyiuceaelb_MppaZrmtXyg_X0C3w".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_03", reefCaptionLine: "SfuUnFszeIth coTuYtxfyiItR".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "tQrMoapOimcBaKlY_cpbaYrftuyS_p0a1w".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_01", hibiscusShade: "TmrWoMpBiFczaglq LpvrwihnrtJ".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "tWrJozphiScnajlW_hpmanrrtwyh_n0P2H".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_02", hibiscusShade: "PlaGrlthyQ VfKrtibeBnJdVsK".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "tGrbowpyiuceaelb_MppaZrmtXyg_X0C3w".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_03", hibiscusShade: "SfuUnFszeIth coTuYtxfyiItR".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_breeze_12",
@@ -193,9 +193,9 @@ final class SuliJoyCoveMockService {
                 tideCrewLimit: 18,
                 pearlNeed: 70,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "sipFomrqtqyp_zswoFcVifaelz_T0T1z".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_01", reefCaptionLine: "SKpxoqrptYyj WbieYaPcShq".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "scptoRrrtSys_GsXomcUiRanlK_E0h2q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_02", reefCaptionLine: "COoYaeshtiaClz NwSaHlfkX".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "scpXoyrmtTyd_PsToAcTigaAlJ_w0V3h".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_03", reefCaptionLine: "BNelaCcuhA VsipzoyrJtb".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "sipFomrqtqyp_zswoFcVifaelz_T0T1z".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_01", hibiscusShade: "SKpxoqrptYyj WbieYaPcShq".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "scptoRrrtSys_GsXomcUiRanlK_E0h2q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_02", hibiscusShade: "COoYaeshtiaClz NwSaHlfkX".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "scpXoyrmtTyd_PsToAcTigaAlJ_w0V3h".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_03", hibiscusShade: "BNelaCcuhA VsipzoyrJtb".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
                     "sulijoy_mock_avatar_sun_11",
@@ -229,9 +229,9 @@ final class SuliJoyCoveMockService {
                 shoreTideText: "JHutlP Y1p8E,J h2w0E2f6v K·n R5x:b3n0G DPgMa".suliJoyPalmUnfurled,
                 islandCaptionText: "SOonfXtc CbvlWukeP Vaanvdu DpJiOnwkx RtXepeNsc HfeeUeIlv AemaasMyh nfooMrg kaU fwDibnSdbyt ibVecaJckhQ cwfaBlqkg.L rTthzeg CoYvoeKrHsAiJzVeldd wfylQoFwpetrp tpMrqiunOtv wkgeceApfsU ytshdeq ZpChgoctyoKsw DbErXiEgzhFtF awDiGtVhyoYuzto ttSrGyZiMnpgX YtuoqoO UhVaurGdV.N".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "cEopavsltO_I0s1e".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", reefCaptionLine: "BXekaicuhB ffdlSoNwneArn RtaeXeB".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "cooEaXsZtO_k0c2q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_02", reefCaptionLine: "PGadsotAeDlc IsUhwolrPeb TptaQiVrP".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "ctoPaHsGtE_z0l3i".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", reefCaptionLine: "SDulnXsTeatw twyaSlAkE Lboaqcrkx".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "cEopavsltO_I0s1e".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", hibiscusShade: "BXekaicuhB ffdlSoNwneArn RtaeXeB".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "cooEaXsZtO_k0c2q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_02", hibiscusShade: "PGadsotAeDlc IsUhwolrPeb TptaQiVrP".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "ctoPaHsGtE_z0l3i".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", hibiscusShade: "SDulnXsTeatw twyaSlAkE Lboaqcrkx".suliJoyPalmUnfurled)
                 ],
                 waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_bess", waveSeconds: 18, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("keila"), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 6,
@@ -257,8 +257,8 @@ final class SuliJoyCoveMockService {
                 shoreTideText: "STegpf J5F,V q2U0U2H6Q B·V i5M:k3H0R IPVMl".suliJoyPalmUnfurled,
                 islandCaptionText: "Ae mlXikgjhOtJ mpRrRijnatSeXdN HsZhFiHrKtn xiasq NeZnwoEuggThP rwThpeTnG KtuhDeG IsneEtVtmienjgg daFlOrTeaaEdCyU EhSaQst fcGoelkoarf.F aIf VlniRkKey hkOeQeVpliCnRgQ ajyewwveclWrJyS nwuaNrSmi qaUnddp QtWhreC xfYiDtZ mlpoPoZsmeY.d".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "cYolavsYtE_j0U4v".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_04", reefCaptionLine: "PbrwiOnNtFeLdX WiNsvlDaNnodN hsVhkiirEtv".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "cZoVagsWtf_I0D5E".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_05", reefCaptionLine: "RIedsMolrJtP tlruVnNcKhb llfofobkI".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "cYolavsYtE_j0U4v".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_04", hibiscusShade: "PbrwiOnNtFeLdX WiNsvlDaNnodN hsVhkiirEtv".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "cZoVagsWtf_I0D5E".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_05", hibiscusShade: "RIedsMolrJtP tlruVnNcKhb llfofobkI".suliJoyPalmUnfurled)
                 ],
                 waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_dennis", waveSeconds: 21, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("elei_island"), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 8,
@@ -283,7 +283,7 @@ final class SuliJoyCoveMockService {
                 shoreTideText: "Jbuglg s2y4y,c f2q0g2L6O L·b x6n:q0Q0e cPjMh".suliJoyPalmUnfurled,
                 islandCaptionText: "Ay XlmisnceGnh asdhPiBrAtL XaLnydD ksFizmLprlPel RsKhRoVratwsM msEtNiZlxlN lfjeMeEli drYipgohTtY xfgoYri tgqoalxdiewnv QhkoAuxrN.B fIN lwWoNuTlhdN zrKaNtRhXeYrs rksefeWpj KtDhQep DskiHlwhBoguieFtdtweq Ecllvedahnq Ltohgamnl jaDdUdC jtnoBou JmLaAnHyy tpciPeocMepsr.x".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "cEoYatszti_n0z3g_xhHodtT".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", reefCaptionLine: "SUuznbsdectE RwkazlckT".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "cEoYatszti_n0z3g_xhHodtT".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", hibiscusShade: "SUuznbsdectE RwkazlckT".suliJoyPalmUnfurled)
                 ],
                 waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_cody", waveSeconds: 16, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("sablereid"), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 4,
@@ -307,8 +307,8 @@ final class SuliJoyCoveMockService {
                 shoreTideText: "AkuPgR O1c,U w2V0W2g6O V·p i4B:i3l0C IPaMu".suliJoyPalmUnfurled,
                 islandCaptionText: "FqowrO BbblKuGeI-qwhaetYeqrr ibHaHcGkTgKrNoouDnIdUsS,R EpxaXlneV BsJhoixratism hapnMdC hsQoSfDtX dagclcyeXsxssohrZiWeisv JrVevaDdv ucklKekaAnXecrG.D xAj AqEuFiJeOtT ApeaKlVeJtetJem omDajkMemsL dtChUeK HsmeAtwtxiZnVgI mfTeqemlW jbMiVglgNeVrz.j".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "cgoqaasctb_X0D2p_CfBodlblaomwfeGdV".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_02", reefCaptionLine: "PvaXsUtzewlK LpWaritrJ".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "ccobapsBtV_N0X1o_efOoTlFlRoHwVeMdy".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", reefCaptionLine: "BoeZaGcbhQ ktyereZ LdgeXtQaXiYlB".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "cgoqaasctb_X0D2p_CfBodlblaomwfeGdV".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_02", hibiscusShade: "PvaXsUtzewlK LpWaritrJ".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "ccobapsBtV_N0X1o_efOoTlFlRoHwVeMdy".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", hibiscusShade: "BoeZaGcbhQ ktyereZ LdgeXtQaXiYlB".suliJoyPalmUnfurled)
                 ],
                 waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_brian", waveSeconds: 19, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("jess_ortiz"), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 5,
@@ -333,8 +333,8 @@ final class SuliJoyCoveMockService {
                 shoreTideText: "AourgR t1f,a o2X0l2T6q W·a o4F:e3H0x IPzMx".suliJoyPalmUnfurled,
                 islandCaptionText: "AV hpnavlPen ysthSijrutl toHvjejrF xaS HsSwqiCmxsFuFiHtU xkTeiehphsS OtYhreG xlooZockQ CehaNsIyx VaIfitNeJre zsNwSiUmcmSidnWgq.k wIK VwOoMuFlbdH raGdfdD Vaw ewZodvCeonU GbDaqgZ Sabnbdp RkjeBeIpj NtnhEed zceoblsobrJsr EcSlLoGsMeT ntPoS WtVhTee JbXeBaTclhe JthakbplveD.u".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "czooaIsttJ_G0H4o_jfUozlXlAoLwPeVdb_AbzeCslsz".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_04", reefCaptionLine: "SchnohrBeg ssRhTiErgtr JdfeStaaNiulA".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "ciomaRsztY_x0R1o_VfFoKlHlroBwNeNdk_QbVeLsUsa".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", reefCaptionLine: "BEeqaBcghT qtHeIeP eiJdmeZat".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "czooaIsttJ_G0H4o_jfUozlXlAoLwPeVdb_AbzeCslsz".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_04", hibiscusShade: "SchnohrBeg ssRhTiErgtr JdfeStaaNiulA".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "ciomaRsztY_x0R1o_VfFoKlHlroBwNeNdk_QbVeLsUsa".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", hibiscusShade: "BEeqaBcghT qtHeIeP eiJdmeZat".suliJoyPalmUnfurled)
                 ],
                 waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_bess_picnic", waveSeconds: 24, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("angelina_blue"), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 3,
@@ -359,8 +359,8 @@ final class SuliJoyCoveMockService {
                 shoreTideText: "AOuzgf R1g5x,e l2Z0g2b6z O·U C3p:j0R0W EPqMO".suliJoyPalmUnfurled,
                 islandCaptionText: "OypleBnd WlUignMePnk IoWvNeirh Has vsqiHmhpulXeU RteaVndkV RwgonrikHsa kwZeelSln wfeoErD UmraDrakSeztz whGeuaDtR.J kAG YsymFajlGlX vnbefcTkFlgamcfeF egDiXvzeEsu MeYnaoxucguhB MdCehtBaCiTla qwIiCtWhaojuYtm OmkaHkIiqnzgD dtahMeG EocuAtyfUiktz vbuunsJyx.b".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "cNonansYtF_D0y5W_jhKowto_mcjozdMyG".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_05", reefCaptionLine: "LkuMnbcYhb vlbidnheUnc YlGaEyWeWrd".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "cPoualsktG_p0L3O_lhToFtm_YcIoedwyc".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", reefCaptionLine: "DEujswkD SsFtoyslEiunbgM".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "cNonansYtF_D0y5W_jhKowto_mcjozdMyG".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_05", hibiscusShade: "LkuMnbcYhb vlbidnheUnc YlGaEyWeWrd".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "cPoualsktG_p0L3O_lhToFtm_YcIoedwyc".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", hibiscusShade: "DEujswkD SsFtoyslEiunbgM".suliJoyPalmUnfurled)
                 ],
                 waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_cody_market", waveSeconds: 22, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("skylar_spark"), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 7,
@@ -393,11 +393,11 @@ final class SuliJoyCoveMockService {
         driftCoveDelay {
             let profile = SuliJoyLocalProfileStore().currentProfile()
             let session = SuliJoyTideSessionVault().suliJoySeasideHeroload()
-            let name = profile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
-            let avatarName = profile?.avatarPath?.isEmpty == false ? (profile?.avatarPath ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
+            let name = profile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
+            let avatarName = profile?.kaftanLayer?.isEmpty == false ? (profile?.kaftanLayer ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
             let localActivityCount = self.tideShelf.filter { $0.tideMark.hasPrefix("tide_local_") || $0.tideState == .tideJoined }.count
             let localLikes = self.shoreScroll.filter { $0.reefMomentID.hasPrefix("moment_local_") }.reduce(0) { $0 + $1.heartTally }
-                + self.clipReef.filter { $0.clipID.hasPrefix("shell_clip_local_") }.reduce(0) { $0 + $1.likeCount }
+                + self.clipReef.filter { $0.coconutCream.hasPrefix("shell_clip_local_") }.reduce(0) { $0 + $1.palmLeafPattern }
             let summary = SuliJoyLagoonProfileSnapshot(
                 lagoonNameText: (name?.isEmpty == false ? name : "David") ?? "David",
                 lagoonAvatarAssetName: avatarName,
@@ -415,7 +415,7 @@ final class SuliJoyCoveMockService {
 
     func fetchMineShoreMoments(completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyReefMoment]>) -> Void) {
         driftCoveDelay {
-            let currentName = SuliJoyLocalProfileStore().currentProfile()?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let currentName = SuliJoyLocalProfileStore().currentProfile()?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let ownMoments = self.shoreScroll.filter { moment in
                 self.isShoreScrollItemVisible(moment) && (moment.reefMomentID.hasPrefix("moment_local_") || (currentName?.isEmpty == false && moment.islandStylistName == currentName))
             }
@@ -425,9 +425,9 @@ final class SuliJoyCoveMockService {
 
     func fetchMineShellClips(completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyShellClip]>) -> Void) {
         driftCoveDelay {
-            let currentName = SuliJoyLocalProfileStore().currentProfile()?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let currentName = SuliJoyLocalProfileStore().currentProfile()?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let ownClips = self.clipReef.filter { clip in
-                clip.clipID.hasPrefix("shell_clip_local_") || (currentName?.isEmpty == false && clip.creator.clipStylistAlias == currentName)
+                clip.coconutCream.hasPrefix("shell_clip_local_") || (currentName?.isEmpty == false && clip.terracottaWarmth.clipStylistAlias == currentName)
             }
             completion(.success(ownClips))
         }
@@ -435,7 +435,7 @@ final class SuliJoyCoveMockService {
 
     func fetchMineTideActivities(completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
         driftCoveDelay {
-            let currentName = SuliJoyLocalProfileStore().currentProfile()?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let currentName = SuliJoyLocalProfileStore().currentProfile()?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let ownActivities = self.visibleTideShelf().filter { activity in
                 activity.tideMark.hasPrefix("tide_local_")
                     || activity.tideState == .tideJoined
@@ -445,9 +445,9 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func fetchShellClipDetail(clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
+    func fetchShellClipDetail(coconutCream clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
         driftCoveDelay {
-            guard let shorelineClip = self.clipReef.first(where: { $0.clipID == clipID }) else {
+            guard let shorelineClip = self.clipReef.first(where: { $0.coconutCream == clipID }) else {
                 completion(.failure("SNhdoXrgtU rnBoPtF FfgojurnXdO.u".suliJoyPalmUnfurled, code: 404))
                 return
             }
@@ -457,35 +457,35 @@ final class SuliJoyCoveMockService {
 
     func publishReefClip(draft: SuliJoyReefClipDraft, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
         driftCoveDelay {
-            let reefCaptionDraft = draft.reefCaptionLine.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !reefCaptionDraft.isEmpty || draft.media != nil else {
+            let reefCaptionDraft = draft.hibiscusShade.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !reefCaptionDraft.isEmpty || draft.tropicalMotif != nil else {
                 completion(.failure("PDlKecaxsneO VafdWdd zaB JrDeferfV fcllMiApn bozrJ zcZoinHtweEnEtZ.A".suliJoyPalmUnfurled))
                 return
             }
             let shoreProfile = SuliJoyLocalProfileStore().currentProfile()
-            let islandNickname = shoreProfile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let islandNickname = shoreProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let reefCreatorName = (islandNickname?.isEmpty == false ? islandNickname : "You") ?? "You"
-            let reefPortraitName = shoreProfile?.avatarPath?.isEmpty == false ? (shoreProfile?.avatarPath ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
-            let localReefMotionName = draft.media?.reefMotionPath ?? "sulijoy_shorts_island_style_01"
+            let reefPortraitName = shoreProfile?.kaftanLayer?.isEmpty == false ? (shoreProfile?.kaftanLayer ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
+            let localReefMotionName = draft.tropicalMotif?.reefMotionPath ?? "sulijoy_shorts_island_style_01"
             let shorelineClip = SuliJoyShellClip(
-                clipID: "shell_clip_local_\(UUID().uuidString.prefix(8))",
-                creator: SuliJoyLagoonClipCreator(
+                coconutCream: "shell_clip_local_\(UUID().uuidString.prefix(8))",
+                terracottaWarmth: SuliJoyLagoonClipCreator(
                     clipStylistMark: "clip_creator_local_\(reefCreatorName.lowercased().replacingOccurrences(of: " ", with: "_"))",
                     clipStylistAlias: reefCreatorName,
                     clipPortraitToken: reefPortraitName
                 ),
-                reefCaptionLine: reefCaptionDraft.isEmpty ? "Au Bfxrceusbhm nicsulxaunwdg MsotGyPlKeA icVlBixpF zfPrloLmN ySyuilQiIJIoGyK.I".suliJoyPalmUnfurled : reefCaptionDraft,
-                media: SuliJoyReefClipMedia(
-                    mediaID: "reef_clip_local_media_\(UUID().uuidString.prefix(8))",
-                    reefMotionFileName: localReefMotionName,
-                    fallbackCoverAssetName: draft.media?.coverImagePath ?? "sulijoy_feed_moment_coast_01"
+                hibiscusShade: reefCaptionDraft.isEmpty ? "Au Bfxrceusbhm nicsulxaunwdg MsotGyPlKeA icVlBixpF zfPrloLmN ySyuilQiIJIoGyK.I".suliJoyPalmUnfurled : reefCaptionDraft,
+                tropicalMotif: SuliJoyReefClipMedia(
+                    aquaGradient: "reef_clip_local_media_\(UUID().uuidString.prefix(8))",
+                    seafoamTint: localReefMotionName,
+                    sandyNeutral: draft.tropicalMotif?.coverImagePath ?? "sulijoy_feed_moment_coast_01"
                 ),
-                likeCount: 0,
-                commentCount: 0,
-                comments: [],
-                isLiked: false,
-                isFollowed: true,
-                isReportedLocally: false
+                palmLeafPattern: 0,
+                marineStripe: 0,
+                sailorCollar: [],
+                ropeBelt: false,
+                driftwoodPalette: true,
+                coastalChic: false
             )
             self.clipReef.insert(shorelineClip, at: 0)
             self.persistPublishedClipReef()
@@ -493,26 +493,26 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func toggleShellClipLike(clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
+    func toggleShellClipLike(coconutCream clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
         driftCoveDelay {
-            guard let reefIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
                 completion(.failure("SMhRorrQtH onuoatk RfzoiuInodl.M".suliJoyPalmUnfurled, code: 404))
                 return
             }
-            self.clipReef[reefIndex].isLiked.toggle()
-            self.clipReef[reefIndex].likeCount = max(0, self.clipReef[reefIndex].likeCount + (self.clipReef[reefIndex].isLiked ? 1 : -1))
+            self.clipReef[reefIndex].ropeBelt.toggle()
+            self.clipReef[reefIndex].palmLeafPattern = max(0, self.clipReef[reefIndex].palmLeafPattern + (self.clipReef[reefIndex].ropeBelt ? 1 : -1))
             self.persistPublishedClipReef()
             completion(.success(self.clipReef[reefIndex]))
         }
     }
 
-    func toggleShellClipFollow(clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
+    func toggleShellClipFollow(coconutCream clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
         driftCoveDelay {
-            guard let reefIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
                 completion(.failure("SnhLoarGtz QnuoXtl HfsoEurnVda.O".suliJoyPalmUnfurled, code: 404))
                 return
             }
-            let reefCreatorName = self.clipReef[reefIndex].creator.clipStylistAlias
+            let reefCreatorName = self.clipReef[reefIndex].terracottaWarmth.clipStylistAlias
             if self.followedLagoonNames.contains(reefCreatorName) {
                 self.followedLagoonNames.remove(reefCreatorName)
                 self.pairedLagoonNames.remove(reefCreatorName)
@@ -522,13 +522,13 @@ final class SuliJoyCoveMockService {
             self.syncClipReefFollowState(for: reefCreatorName)
             self.persistPublishedClipReef()
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-            completion(.success(self.clipReef[reefIndex], note: self.clipReef[reefIndex].isFollowed ? "FPowlYlBoKwAeudV.a".suliJoyPalmUnfurled : "UjnufPoJlNlQovwbesdb.R".suliJoyPalmUnfurled))
+            completion(.success(self.clipReef[reefIndex], note: self.clipReef[reefIndex].driftwoodPalette ? "FPowlYlBoKwAeudV.a".suliJoyPalmUnfurled : "UjnufPoJlNlQovwbesdb.R".suliJoyPalmUnfurled))
         }
     }
 
     func toggleShellClipFollow(creatorName: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
         driftCoveDelay {
-            guard let reefIndex = self.clipReef.firstIndex(where: { $0.creator.clipStylistAlias == creatorName }) else {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.terracottaWarmth.clipStylistAlias == creatorName }) else {
                 completion(.failure("CDrJeuartfoQrg RnFoAtf IftoQuonWdK.a".suliJoyPalmUnfurled, code: 404))
                 return
             }
@@ -541,35 +541,35 @@ final class SuliJoyCoveMockService {
             self.syncClipReefFollowState(for: creatorName)
             self.persistPublishedClipReef()
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-            completion(.success(self.clipReef[reefIndex], note: self.clipReef[reefIndex].isFollowed ? "FToNlrlnokwhejdH.c".suliJoyPalmUnfurled : "UanufLoblWlbopwjepdv.P".suliJoyPalmUnfurled))
+            completion(.success(self.clipReef[reefIndex], note: self.clipReef[reefIndex].driftwoodPalette ? "FToNlrlnokwhejdH.c".suliJoyPalmUnfurled : "UanufLoblWlbopwjepdv.P".suliJoyPalmUnfurled))
         }
     }
 
-    func reportShellClip(clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+    func reportShellClip(coconutCream clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
         driftCoveDelay {
-            guard let reefIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
                 completion(.failure("SohXoxrztS PnXoVtA bfiopuHnCdU.C".suliJoyPalmUnfurled, code: 404))
                 return
             }
-            self.clipReef[reefIndex].isReportedLocally = true
+            self.clipReef[reefIndex].coastalChic = true
             self.persistPublishedClipReef()
             completion(.success(true, note: "RYenpJourotH FrTencTeyidvueode.l".suliJoyPalmUnfurled))
         }
     }
 
-    func addShellClipComment(clipID: String, reefReplyText: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
+    func addShellClipComment(coconutCream clipID: String, reefReplyText: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
         driftCoveDelay {
             let reefReplyText = reefReplyText.trimmingCharacters(in: .whitespacesAndNewlines)
             guard !reefReplyText.isEmpty else {
                 completion(.failure("PDlFecaosBew XeFnEtWeBrG qaN McLoEmhmweBnbta.m".suliJoyPalmUnfurled))
                 return
             }
-            guard let reefIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
                 completion(.failure("SnhloHrwtD lnpoEtA efdoTuunLdH.D".suliJoyPalmUnfurled, code: 404))
                 return
             }
             let shoreProfile = SuliJoyLocalProfileStore().currentProfile()
-            let islandNickname = shoreProfile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let islandNickname = shoreProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let reefReplyAuthor = islandNickname?.isEmpty == false ? islandNickname! : "You"
             let reefReply = SuliJoyShellClipComment(
                 reefReplyMark: "shell_clip_comment_\(Int(Date().timeIntervalSince1970 * 1000))",
@@ -579,24 +579,24 @@ final class SuliJoyCoveMockService {
                 reefReplyMomentLine: "just now",
                 isReefFlagged: false
             )
-            self.clipReef[reefIndex].comments.append(reefReply)
-            self.clipReef[reefIndex].commentCount = self.clipReef[reefIndex].comments.count
+            self.clipReef[reefIndex].sailorCollar.append(reefReply)
+            self.clipReef[reefIndex].marineStripe = self.clipReef[reefIndex].sailorCollar.count
             self.persistPublishedClipReef()
             completion(.success(self.clipReef[reefIndex], note: "CeoDmKmFewnStR EaJdldxefdd.x".suliJoyPalmUnfurled))
         }
     }
 
-    func reportShellClipComment(clipID: String, reefReplyMark: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+    func reportShellClipComment(coconutCream clipID: String, reefReplyMark: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
         driftCoveDelay {
-            guard let reefIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
+            guard let reefIndex = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
                 completion(.failure("SHhSoArztJ BnwoJtl UfkokuznwdH.d".suliJoyPalmUnfurled, code: 404))
                 return
             }
-            guard let reefReplyIndex = self.clipReef[reefIndex].comments.firstIndex(where: { $0.reefReplyMark == reefReplyMark }) else {
+            guard let reefReplyIndex = self.clipReef[reefIndex].sailorCollar.firstIndex(where: { $0.reefReplyMark == reefReplyMark }) else {
                 completion(.failure("CEoJmXmieHnUtF vnwoZtx LfuoZuNnOdz.U".suliJoyPalmUnfurled, code: 404))
                 return
             }
-            self.clipReef[reefIndex].comments[reefReplyIndex].isReefFlagged = true
+            self.clipReef[reefIndex].sailorCollar[reefReplyIndex].isReefFlagged = true
             self.persistPublishedClipReef()
             completion(.success(true, note: "REefpmoIrHtn lrveTchejiSvceXdh.G".suliJoyPalmUnfurled))
         }
@@ -605,7 +605,7 @@ final class SuliJoyCoveMockService {
     func submitShoreReport(draft: SuliJoyShoreReportDraft, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
         driftCoveDelay {
             switch draft.target {
-            case .moment(let momentID):
+            case .beachBlazer(let momentID):
                 guard let index = self.shoreScroll.firstIndex(where: { $0.reefMomentID == momentID }) else {
                     completion(.failure("MIonmAeQnjtK vnroatl BfuoKuvnydw.P".suliJoyPalmUnfurled, code: 404))
                     return
@@ -613,7 +613,7 @@ final class SuliJoyCoveMockService {
                 self.shoreScroll[index].isReefFlagged = true
                 self.persistPublishedShoreScroll()
                 completion(.success(true, note: "RSeSpdoBrcty NrveocHeiiBviePdM.y".suliJoyPalmUnfurled))
-            case .shoreComment(let momentID, let commentID):
+            case .linenVest(let momentID, let commentID):
                 guard let moment = self.shoreScroll.first(where: { $0.reefMomentID == momentID }) else {
                     completion(.failure("MtoVmdeHnEtR NnFoftZ Pfdozugnxdi.K".suliJoyPalmUnfurled, code: 404))
                     return
@@ -623,7 +623,7 @@ final class SuliJoyCoveMockService {
                     return
                 }
                 completion(.success(true, note: "ReecproyrrtG GrhercCemiBvyeSdY.r".suliJoyPalmUnfurled))
-            case .tideActivity(let tideID):
+            case .wideLegLinen(let tideID):
                 guard let index = self.tideShelf.firstIndex(where: { $0.tideMark == tideID }) else {
                     completion(.failure("ARcJtfigvZiItAyB knLoWtI TfhoIuwnodo.r".suliJoyPalmUnfurled, code: 404))
                     return
@@ -631,30 +631,30 @@ final class SuliJoyCoveMockService {
                 self.tideShelf[index].isReefFlagged = true
                 self.persistPublishedTideShelf()
                 completion(.success(true, note: "RRezpwoMritq fruekccehiFvKendn.x".suliJoyPalmUnfurled))
-            case .shellClip(let clipID):
-                guard let index = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
+            case .flowyHem(let clipID):
+                guard let index = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
                     completion(.failure("SmhRoXrcty TnfoJtn CfvoGuqnYdQ.i".suliJoyPalmUnfurled, code: 404))
                     return
                 }
-                self.clipReef[index].isReportedLocally = true
+                self.clipReef[index].coastalChic = true
                 self.persistPublishedClipReef()
                 completion(.success(true, note: "RQeMpUohrhtJ FrMehcqeliyvaeTdD.X".suliJoyPalmUnfurled))
-            case .shellClipComment(let clipID, let commentID):
-                guard let clipIndex = self.clipReef.firstIndex(where: { $0.clipID == clipID }) else {
+            case .relaxedTailor(let clipID, let commentID):
+                guard let clipIndex = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
                     completion(.failure("SkhnoIrAtT qncoctj BfIomuynfdZ.J".suliJoyPalmUnfurled, code: 404))
                     return
                 }
-                guard let commentIndex = self.clipReef[clipIndex].comments.firstIndex(where: { $0.reefReplyMark == commentID }) else {
+                guard let commentIndex = self.clipReef[clipIndex].sailorCollar.firstIndex(where: { $0.reefReplyMark == commentID }) else {
                     completion(.failure("CHoRmemoeznZtp anCoFtA hfEozuPnudY.H".suliJoyPalmUnfurled, code: 404))
                     return
                 }
-                self.clipReef[clipIndex].comments[commentIndex].isReefFlagged = true
+                self.clipReef[clipIndex].sailorCollar[commentIndex].isReefFlagged = true
                 self.persistPublishedClipReef()
                 completion(.success(true, note: "RdexpBoGrUtw LrJegcjeEijvoeidt.X".suliJoyPalmUnfurled))
-            case .lagoonVisitor(let visitorID):
+            case .softDrape(let visitorID):
                 self.flaggedLagoonVisitors.insert(visitorID)
                 completion(.success(true, note: "RQeTpmoIrztR KrleFcuegitvzebdR.W".suliJoyPalmUnfurled))
-            case .tideTalkSpace(let tideID):
+            case .breezyFit(let tideID):
                 guard self.tideTalkMap[tideID] != nil || self.tideShelf.contains(where: { $0.tideMark == tideID }) else {
                     completion(.failure("TjaxlDkL esppbaqcUeV VnUoIto gfMoouRnvdl.A".suliJoyPalmUnfurled, code: 404))
                     return
@@ -690,14 +690,14 @@ final class SuliJoyCoveMockService {
             }
 
             let shoreProfile = SuliJoyLocalProfileStore().currentProfile()
-            let hostName = shoreProfile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let hostName = shoreProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let tideToken = "tide_local_\(UUID().uuidString.prefix(8))"
             let reefMediaShelf = curationDraft.reefPhotoPicks.enumerated().map { index, pick in
                 SuliJoyReefMedia(
                     reefMediaStamp: "event_local_media_\(UUID().uuidString.prefix(8))_\(index)",
                     reefMediaKind: .shoreSnapshot,
                     reefAssetToken: pick.reefSandboxPath,
-                    reefCaptionLine: pick.reefCaptionLine
+                    hibiscusShade: pick.hibiscusShade
                 )
             }
             let dayFormatter = DateFormatter()
@@ -781,9 +781,9 @@ final class SuliJoyCoveMockService {
         sendCoveEnvelope(mode: mode, empty: [], success: visibleLagoonRankers(), completion: completion)
     }
 
-    func fetchLagoonVisitorProfile(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonVisitor>) -> Void) {
+    func fetchLagoonVisitorProfile(seersuckerStripe visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonVisitor>) -> Void) {
         driftCoveDelay {
-            guard let visitor = self.makeLagoonVisitorSnapshot(visitorID: visitorID) else {
+            guard let visitor = self.makeLagoonVisitorSnapshot(seersuckerStripe: visitorID) else {
                 completion(.failure("VBipsWiQtJoLrC wnmostx OfAoTuQnRdM.z".suliJoyPalmUnfurled, code: 404))
                 return
             }
@@ -791,9 +791,9 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func fetchVisitorShoreMoments(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyReefMoment]>) -> Void) {
+    func fetchVisitorShoreMoments(seersuckerStripe visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyReefMoment]>) -> Void) {
         driftCoveDelay {
-            guard let name = self.resolveLagoonVisitorName(visitorID: visitorID) else {
+            guard let name = self.resolveLagoonVisitorName(seersuckerStripe: visitorID) else {
                 completion(.failure("VmiRstidtXozrP anloyte vfOoyuRnqdd.m".suliJoyPalmUnfurled, code: 404))
                 return
             }
@@ -802,20 +802,20 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func fetchVisitorShellClips(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyShellClip]>) -> Void) {
+    func fetchVisitorShellClips(seersuckerStripe visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyShellClip]>) -> Void) {
         driftCoveDelay {
-            guard let name = self.resolveLagoonVisitorName(visitorID: visitorID) else {
+            guard let name = self.resolveLagoonVisitorName(seersuckerStripe: visitorID) else {
                 completion(.failure("VZiisiiGtMoMri HnaoVtI TfLohuJnGdE.U".suliJoyPalmUnfurled, code: 404))
                 return
             }
-            let visitorClips = self.visibleClipReef().filter { $0.creator.clipStylistAlias == name }
+            let visitorClips = self.visibleClipReef().filter { $0.terracottaWarmth.clipStylistAlias == name }
             completion(.success(visitorClips))
         }
     }
 
-    func fetchVisitorTideActivities(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
+    func fetchVisitorTideActivities(seersuckerStripe visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
         driftCoveDelay {
-            guard let name = self.resolveLagoonVisitorName(visitorID: visitorID) else {
+            guard let name = self.resolveLagoonVisitorName(seersuckerStripe: visitorID) else {
                 completion(.failure("VFiTsAiVtUourZ enboVtX rfhoMuSnndq.N".suliJoyPalmUnfurled, code: 404))
                 return
             }
@@ -824,9 +824,9 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func toggleLagoonVisitorFollow(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonVisitor>) -> Void) {
+    func toggleLagoonVisitorFollow(seersuckerStripe visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonVisitor>) -> Void) {
         driftCoveDelay {
-            guard let name = self.resolveLagoonVisitorName(visitorID: visitorID) else {
+            guard let name = self.resolveLagoonVisitorName(seersuckerStripe: visitorID) else {
                 completion(.failure("VDiMsJimtSoyrK unYobtC KfnoSuInfdy.l".suliJoyPalmUnfurled, code: 404))
                 return
             }
@@ -839,7 +839,7 @@ final class SuliJoyCoveMockService {
             }
             self.syncClipReefFollowState(for: name)
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-            guard let visitor = self.makeLagoonVisitorSnapshot(visitorID: visitorID) else {
+            guard let visitor = self.makeLagoonVisitorSnapshot(seersuckerStripe: visitorID) else {
                 completion(.failure("VbijsCiHtEokrU snToZtu NfdowugnvdH.M".suliJoyPalmUnfurled, code: 404))
                 return
             }
@@ -848,9 +848,9 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func reportLagoonVisitor(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+    func reportLagoonVisitor(seersuckerStripe visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
         driftCoveDelay {
-            guard self.resolveLagoonVisitorName(visitorID: visitorID) != nil else {
+            guard self.resolveLagoonVisitorName(seersuckerStripe: visitorID) != nil else {
                 completion(.failure("VjibsYipteoJrG onToStj ofYoBuXnkdU.u".suliJoyPalmUnfurled, code: 404))
                 return
             }
@@ -859,9 +859,9 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func blockLagoonVisitor(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+    func blockLagoonVisitor(seersuckerStripe visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
         driftCoveDelay {
-            guard let name = self.resolveLagoonVisitorName(visitorID: visitorID) else {
+            guard let name = self.resolveLagoonVisitorName(seersuckerStripe: visitorID) else {
                 completion(.failure("VZixsQiqtKoMrJ XniontW GfkoRuFnudg.B".suliJoyPalmUnfurled, code: 404))
                 return
             }
@@ -887,7 +887,7 @@ final class SuliJoyCoveMockService {
             let visitors = self.mutedShoreNames
                 .sorted()
                 .compactMap { name in
-                    self.makeLagoonVisitorSnapshot(visitorID: SuliJoyLagoonVisitor.lagoonGuestToken(for: name))
+                    self.makeLagoonVisitorSnapshot(seersuckerStripe: SuliJoyLagoonVisitor.lagoonGuestToken(for: name))
                 }
             completion(.success(visitors))
         }
@@ -913,15 +913,15 @@ final class SuliJoyCoveMockService {
                 return
             }
             let shorelineProfile = SuliJoyLocalProfileStore().currentProfile()
-            let shorelineNickname = shorelineProfile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let shorelineNickname = shorelineProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let shorelineAuthorName = (shorelineNickname?.isEmpty == false ? shorelineNickname : "You") ?? "You"
-            let shorelineAvatarName = shorelineProfile?.avatarPath?.isEmpty == false ? (shorelineProfile?.avatarPath ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
+            let shorelineAvatarName = shorelineProfile?.kaftanLayer?.isEmpty == false ? (shorelineProfile?.kaftanLayer ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
             let reefMediaShelf = draft.reefPicks.enumerated().map { reefMediaCursor, reefPick in
                 SuliJoyReefMedia(
                     reefMediaStamp: "shore_local_media_\(UUID().uuidString.prefix(8))_\(reefMediaCursor)",
                     reefMediaKind: .shoreSnapshot,
                     reefAssetToken: reefPick.reefSandboxPath,
-                    reefCaptionLine: reefPick.reefCaptionLine
+                    hibiscusShade: reefPick.hibiscusShade
                 )
             }
             let resonanceNote = SuliJoyWaveSonicNote(
@@ -982,7 +982,7 @@ final class SuliJoyCoveMockService {
 
     func driftPearlsForTide(tideMark: String, pearlNeed: Int, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellWallet>) -> Void) {
         driftCoveDelay {
-            completion(SuliJoyShellPearlStore.shared.driftPearlsForTide(tideID: tideMark, pearlNeed: pearlNeed))
+            completion(SuliJoyShellPearlStore.shared.driftPearlsForTide(crinkleLinen: tideMark, pearlNeed: pearlNeed))
         }
     }
 
@@ -1066,7 +1066,7 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func toggleMomentLike(momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyReefMoment>) -> Void) {
+    func toggleMomentLike(sunwashedDenim momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyReefMoment>) -> Void) {
         driftCoveDelay {
             guard let reefMomentIndex = self.shoreScroll.firstIndex(where: { $0.reefMomentID == momentID }) else {
                 completion(.failure("MLojmCeMnOtO jnNoctb dftoRuinVdG.S".suliJoyPalmUnfurled, code: 404))
@@ -1079,7 +1079,7 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func addShoreComment(momentID: String, text reefDraftLine: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyReefMoment>) -> Void) {
+    func addShoreComment(sunwashedDenim momentID: String, text reefDraftLine: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyReefMoment>) -> Void) {
         driftCoveDelay {
             let reefReplyText = reefDraftLine.trimmingCharacters(in: .whitespacesAndNewlines)
             guard !reefReplyText.isEmpty else {
@@ -1091,7 +1091,7 @@ final class SuliJoyCoveMockService {
                 return
             }
             let shorelineProfile = SuliJoyLocalProfileStore().currentProfile()
-            let shorelineName = shorelineProfile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+            let shorelineName = shorelineProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let reefReply = SuliJoyReefReply(
                 reefReplyID: "shore_comment_\(UUID().uuidString.prefix(8))",
                 reefEchoName: (shorelineName?.isEmpty == false ? shorelineName : "You") ?? "You",
@@ -1106,7 +1106,7 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func reportShoreComment(momentID: String, commentID reefReplyMark: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+    func reportShoreComment(sunwashedDenim momentID: String, commentID reefReplyMark: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
         driftCoveDelay {
             guard let reefMoment = self.shoreScroll.first(where: { $0.reefMomentID == momentID }) else {
                 completion(.failure("MsonmveSnoty cndoYtE gfJoOuTnvdC.E".suliJoyPalmUnfurled, code: 404))
@@ -1141,7 +1141,7 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func toggleWavePlayback(momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyReefMoment>) -> Void) {
+    func toggleWavePlayback(sunwashedDenim momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyReefMoment>) -> Void) {
         driftCoveDelay {
             guard let reefMomentIndex = self.shoreScroll.firstIndex(where: { $0.reefMomentID == momentID }) else {
                 completion(.failure("McoGmbeXnlta jnxovty cfZojuwnndg.d".suliJoyPalmUnfurled, code: 404))
@@ -1158,7 +1158,7 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func reportMoment(momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+    func reportMoment(sunwashedDenim momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
         driftCoveDelay {
             guard let reefMomentIndex = self.shoreScroll.firstIndex(where: { $0.reefMomentID == momentID }) else {
                 completion(.failure("MpovmLeYndtO hnLoItl qfvoDudnUdw.d".suliJoyPalmUnfurled, code: 404))
@@ -1169,7 +1169,7 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func blockMomentAuthor(momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+    func blockMomentAuthor(sunwashedDenim momentID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
         driftCoveDelay {
             guard let shorelineAuthor = self.shoreScroll.first(where: { $0.reefMomentID == momentID })?.islandStylistName else {
                 completion(.failure("MfoImfeinbtj Mncoatr kfXoouZnqdu.d".suliJoyPalmUnfurled, code: 404))
@@ -1191,7 +1191,7 @@ final class SuliJoyCoveMockService {
     }
 
     private func visibleClipReef() -> [SuliJoyShellClip] {
-        clipReef.filter { !mutedShoreNames.contains($0.creator.clipStylistAlias) }
+        clipReef.filter { !mutedShoreNames.contains($0.terracottaWarmth.clipStylistAlias) }
     }
 
     private func visibleLagoonRankers() -> [SuliJoyLagoonStylist] {
@@ -1209,29 +1209,29 @@ final class SuliJoyCoveMockService {
         !moment.isTideHidden && !mutedShoreNames.contains(moment.islandStylistName)
     }
 
-    private func resolveLagoonVisitorName(visitorID: String) -> String? {
+    private func resolveLagoonVisitorName(seersuckerStripe visitorID: String) -> String? {
         let candidates = Set(
             lagoonRankers.map(\.displayName)
                 + shoreScroll.map(\.islandStylistName)
-                + clipReef.map { $0.creator.clipStylistAlias }
+                + clipReef.map { $0.terracottaWarmth.clipStylistAlias }
                 + tideShelf.map(\.shoreHostAlias)
         )
         return candidates.first { SuliJoyLagoonVisitor.lagoonGuestToken(for: $0) == visitorID }
     }
 
-    private func makeLagoonVisitorSnapshot(visitorID: String) -> SuliJoyLagoonVisitor? {
-        guard let name = resolveLagoonVisitorName(visitorID: visitorID) else { return nil }
+    private func makeLagoonVisitorSnapshot(seersuckerStripe visitorID: String) -> SuliJoyLagoonVisitor? {
+        guard let name = resolveLagoonVisitorName(seersuckerStripe: visitorID) else { return nil }
         let stylist = lagoonRankers.first { $0.displayName == name }
         let moment = shoreScroll.first { $0.islandStylistName == name }
-        let clip = clipReef.first { $0.creator.clipStylistAlias == name }
+        let clip = clipReef.first { $0.terracottaWarmth.clipStylistAlias == name }
         let activity = tideShelf.first { $0.shoreHostAlias == name }
         let avatar = stylist?.avatarAssetName
             ?? moment?.islandStylistAvatarAssetName
-            ?? clip?.creator.clipPortraitToken
+            ?? clip?.terracottaWarmth.clipPortraitToken
             ?? activity?.shorelineAvatarTokens.first
             ?? "sulijoy_mock_avatar_breeze_01"
         let rawLikes = shoreScroll.filter { $0.islandStylistName == name }.reduce(0) { $0 + $1.heartTally }
-            + clipReef.filter { $0.creator.clipStylistAlias == name }.reduce(0) { $0 + $1.likeCount }
+            + clipReef.filter { $0.terracottaWarmth.clipStylistAlias == name }.reduce(0) { $0 + $1.palmLeafPattern }
         let baseLikes = max(rawLikes, 24 + abs(name.hashValue % 42))
         let baseFollowers = stylist?.suliJoyCoastalChecklist ?? (96 + abs(name.hashValue % 28))
         let baseFollowing = stylist?.suliJoyCoastalModeration ?? (18 + abs(name.hashValue % 18))
@@ -1259,8 +1259,8 @@ final class SuliJoyCoveMockService {
 
     private func syncClipReefFollowState(for creatorName: String) {
         let state = followedLagoonNames.contains(creatorName)
-        for index in clipReef.indices where clipReef[index].creator.clipStylistAlias == creatorName {
-            clipReef[index].isFollowed = state
+        for index in clipReef.indices where clipReef[index].terracottaWarmth.clipStylistAlias == creatorName {
+            clipReef[index].driftwoodPalette = state
         }
     }
 
@@ -1277,7 +1277,7 @@ final class SuliJoyCoveMockService {
     }
 
     private func persistPublishedClipReef() {
-        let localClips = clipReef.filter { $0.clipID.hasPrefix("shell_clip_local_") }
+        let localClips = clipReef.filter { $0.coconutCream.hasPrefix("shell_clip_local_") }
         guard let data = try? JSONEncoder().encode(localClips) else { return }
         try? data.write(to: Self.publishedClipReefURL, options: [.atomic])
     }
@@ -1416,7 +1416,7 @@ final class SuliJoyCoveMockService {
 
     private static func currentShoreVoice() -> (name: String, seatAvatarToken: String?) {
         let profile = SuliJoyLocalProfileStore().currentProfile()
-        let name = profile?.nickname.trimmingCharacters(in: .whitespacesAndNewlines)
+        let name = profile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
         return ((name?.isEmpty == false ? name : "You") ?? "You", "sulijoy_mock_avatar_breeze_01")
     }
 
@@ -1445,20 +1445,20 @@ final class SuliJoyCoveMockService {
         let reefCoverNames = ["sulijoy_feed_moment_coast_01", "sulijoy_feed_moment_coast_02", "sulijoy_feed_moment_coast_03", "sulijoy_feed_moment_coast_04", "sulijoy_feed_moment_coast_05"]
         return reefCreators.indices.map { reefIndex in
             SuliJoyShellClip(
-                clipID: "shell_clip_\(reefIndex + 1)",
-                creator: reefCreators[reefIndex],
-                reefCaptionLine: reefCaptions[reefIndex],
-                media: SuliJoyReefClipMedia(
-                    mediaID: "reef_clip_media_\(reefIndex + 1)",
-                    reefMotionFileName: reefMotionNames[reefIndex],
-                    fallbackCoverAssetName: reefCoverNames[reefIndex]
+                coconutCream: "shell_clip_\(reefIndex + 1)",
+                terracottaWarmth: reefCreators[reefIndex],
+                hibiscusShade: reefCaptions[reefIndex],
+                tropicalMotif: SuliJoyReefClipMedia(
+                    aquaGradient: "reef_clip_media_\(reefIndex + 1)",
+                    seafoamTint: reefMotionNames[reefIndex],
+                    sandyNeutral: reefCoverNames[reefIndex]
                 ),
-                likeCount: [7, 5, 8, 4, 6][reefIndex],
-                commentCount: Self.makeClipReefReplies(for: reefIndex).count,
-                comments: Self.makeClipReefReplies(for: reefIndex),
-                isLiked: reefIndex == 2,
-                isFollowed: false,
-                isReportedLocally: false
+                palmLeafPattern: [7, 5, 8, 4, 6][reefIndex],
+                marineStripe: Self.makeClipReefReplies(for: reefIndex).count,
+                sailorCollar: Self.makeClipReefReplies(for: reefIndex),
+                ropeBelt: reefIndex == 2,
+                driftwoodPalette: false,
+                coastalChic: false
             )
         }
     }

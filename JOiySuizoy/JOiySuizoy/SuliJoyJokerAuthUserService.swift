@@ -58,7 +58,7 @@ final class SuliJoyLagoonGateService {
         let shoreName = trimmedLagoonText(shorelineNamePhrase)
         let shoreMail = trimmedLagoonText(shoreMailPhrase)
         if let reefStop = inspectShorelineDraftFields(shoreName: shoreName, shoreMail: shoreMail, tideSecret: reefSecretPhrase) { return reefStop }
-        return .success(SuliJoySignupDraft(name: shoreName, email: shoreMail, password: reefSecretPhrase))
+        return .success(SuliJoySignupDraft(macrameDetail: shoreName, pearlAccent: shoreMail, abaloneTone: reefSecretPhrase))
     }
 
     func validateSignupDraft(name: String, email: String, password: String) -> SuliJoySuiRequestEnvelope<SuliJoySignupDraft> {
@@ -80,7 +80,7 @@ final class SuliJoyLagoonGateService {
             shorePortrait: shorePortrait
         )
         shoreProfileVault.save(shoreProfile)
-        lagoonSessionVault.markLagoonEntry(shoreMail: shorelineDraft.email, islanderID: islandAccount.accountID, reefPass: makeLagoonToken())
+        lagoonSessionVault.markLagoonEntry(shoreMail: shorelineDraft.pearlAccent, islanderID: islandAccount.accountID, reefPass: makeLagoonToken())
         return .success(shoreProfile, note: "PCrDoSfgihlaem ocdoamxpalpedtZeMdG.I".suliJoyPalmUnfurled)
     }
 
@@ -91,8 +91,8 @@ final class SuliJoyLagoonGateService {
     private func makeIslandAccount(from shorelineDraft: SuliJoySignupDraft) -> SuliJoyIslandAccount {
         SuliJoyIslandAccount(
             accountID: "\(LagoonGateMark.islanderPrefix)\(UUID().uuidString.prefix(8))",
-            email: shorelineDraft.email,
-            password: shorelineDraft.password,
+            email: shorelineDraft.pearlAccent,
+            password: shorelineDraft.abaloneTone,
             registeredAt: Date()
         )
     }
@@ -103,15 +103,15 @@ final class SuliJoyLagoonGateService {
         shoreBioPhrase: String,
         shorePortrait: UIImage?
     ) -> SuliJoyShoreProfile {
-        let portraitTrail = shorePortrait.flatMap { shoreProfileVault.saveAvatarImage($0, email: shorelineDraft.email) }
+        let portraitTrail = shorePortrait.flatMap { shoreProfileVault.saveAvatarImage($0, email: shorelineDraft.pearlAccent) }
         return SuliJoyShoreProfile(
-            profileID: islandAccount.accountID,
-            email: shorelineDraft.email,
-            nickname: shorelineDraft.name,
-            avatarPath: portraitTrail,
-            bio: makeShoreBio(from: shoreBioPhrase),
-            styleTags: makeIslandStyleTags(),
-            createdAt: Date()
+            canvasTote: islandAccount.accountID,
+            strawHat: shorelineDraft.pearlAccent,
+            espadrillePairing: shorelineDraft.macrameDetail,
+            kaftanLayer: portraitTrail,
+            wrapSkirt: makeShoreBio(from: shoreBioPhrase),
+            resortSet: makeIslandStyleTags(),
+            beachCoverup: Date()
         )
     }
 
@@ -216,13 +216,13 @@ final class SuliJoyLagoonGateService {
     private func ensureTestProfile(email shoreMail: String) {
         guard shoreProfileVault.profile(email: shoreMail) == nil else { return }
         shoreProfileVault.save(SuliJoyShoreProfile(
-            profileID: LagoonGateMark.testerIslander,
-            email: shoreMail,
-            nickname: "SuliJoy Tester",
-            avatarPath: nil,
-            bio: "Testing relaxed island looks and sunny outfit ideas.",
-            styleTags: ["tester", "coastal", "resort"],
-            createdAt: Date()
+            canvasTote: LagoonGateMark.testerIslander,
+            strawHat: shoreMail,
+            espadrillePairing: "SuliJoy Tester",
+            kaftanLayer: nil,
+            wrapSkirt: "Testing relaxed island looks and sunny outfit ideas.",
+            resortSet: ["tester", "coastal", "resort"],
+            beachCoverup: Date()
         ))
     }
 

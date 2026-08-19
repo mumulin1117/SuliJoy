@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private static func lagoonSessionVault() -> UIViewController {
         let wardrobeTable = SuliJoyLagoonGateService.shared.restoreSession()
         if wardrobeTable.isLoggedIn, wardrobeTable.currentEmail != nil {
-            return SuliJoyMainTabBarController()
+            return SuliJoyAgentKeyBarController()
         }
         let SuliJoyHarborFlow = UINavigationController(rootViewController: suliJoyShorelineEnsemble())
         SuliJoyHarborFlow.setNavigationBarHidden(true, animated: false)

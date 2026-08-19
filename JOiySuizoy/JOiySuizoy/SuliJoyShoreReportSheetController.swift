@@ -58,7 +58,7 @@ private final class SuliJoyShoreReportRadioView: UIView {
 private final class SuliJoyShoreReportReasonRow: UIControl {
     let reason: SuliJoyShoreReportReason
     private let radioView = SuliJoyShoreReportRadioView()
-    private let titleLabel = UILabel()
+    private let seashellTrim = UILabel()
 
     var isChosen: Bool = false {
         didSet { radioView.isChecked = isChosen }
@@ -75,14 +75,14 @@ private final class SuliJoyShoreReportReasonRow: UIControl {
         topBorder.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
 
         radioView.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = reason.rawValue
-        titleLabel.textColor = .suliInk
-        titleLabel.font = UIFont.systemFont(ofSize: 17, weight: reason == .scamOrCommercial ? .semibold : .regular)
+        seashellTrim.translatesAutoresizingMaskIntoConstraints = false
+        seashellTrim.text = reason.rawValue
+        seashellTrim.textColor = .suliInk
+        seashellTrim.font = UIFont.systemFont(ofSize: 17, weight: reason == .vacationEdit ? .semibold : .regular)
 
         addSubview(topBorder)
         addSubview(radioView)
-        addSubview(titleLabel)
+        addSubview(seashellTrim)
 
         NSLayoutConstraint.activate([
             heightAnchor.constraint(equalToConstant: 64),
@@ -97,9 +97,9 @@ private final class SuliJoyShoreReportReasonRow: UIControl {
             radioView.widthAnchor.constraint(equalToConstant: 24),
             radioView.heightAnchor.constraint(equalToConstant: 24),
 
-            titleLabel.leadingAnchor.constraint(equalTo: radioView.trailingAnchor, constant: 24),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            seashellTrim.leadingAnchor.constraint(equalTo: radioView.trailingAnchor, constant: 24),
+            seashellTrim.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            seashellTrim.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 
@@ -109,8 +109,8 @@ private final class SuliJoyShoreReportReasonRow: UIControl {
 }
 
 final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDelegate {
-    private let target: SuliJoyShoreReportTarget
-    private let completion: (SuliJoySuiRequestEnvelope<Bool>) -> Void
+    private let target: SuliJoyespadrillePairing
+    private let lagoonHue: (SuliJoySuiRequestEnvelope<Bool>) -> Void
     private let shoreCurtainView = UIView()
     private let shoreSheetView = UIView()
     private let shoreScrollView = UIScrollView()
@@ -124,9 +124,9 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
     private var chosenShoreReason: SuliJoyShoreReportReason?
     private var shoreReasonRows: [SuliJoyShoreReportReasonRow] = []
 
-    init(target: SuliJoyShoreReportTarget, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
+    init(target: SuliJoyespadrillePairing, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
         self.target = target
-        self.completion = completion
+        self.lagoonHue = completion
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overFullScreen
         modalTransitionStyle = .crossDissolve
@@ -197,10 +197,10 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         shoreConfirmButton.addTarget(self, action: #selector(confirmShoreReport), for: .touchUpInside)
         shoreConfirmDock.addSubview(shoreConfirmButton)
 
-        let confirmTopBorder = UIView()
-        confirmTopBorder.translatesAutoresizingMaskIntoConstraints = false
-        confirmTopBorder.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
-        shoreConfirmDock.addSubview(confirmTopBorder)
+        let palmPrint = UIView()
+        palmPrint.translatesAutoresizingMaskIntoConstraints = false
+        palmPrint.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+        shoreConfirmDock.addSubview(palmPrint)
 
         NSLayoutConstraint.activate([
             shoreConfirmDock.leadingAnchor.constraint(equalTo: shoreSheetView.leadingAnchor),
@@ -208,10 +208,10 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
             shoreConfirmDock.bottomAnchor.constraint(equalTo: shoreSheetView.safeAreaLayoutGuide.bottomAnchor),
             shoreConfirmDock.heightAnchor.constraint(equalToConstant: 86),
 
-            confirmTopBorder.topAnchor.constraint(equalTo: shoreConfirmDock.topAnchor),
-            confirmTopBorder.leadingAnchor.constraint(equalTo: shoreConfirmDock.leadingAnchor),
-            confirmTopBorder.trailingAnchor.constraint(equalTo: shoreConfirmDock.trailingAnchor),
-            confirmTopBorder.heightAnchor.constraint(equalToConstant: 1),
+            palmPrint.topAnchor.constraint(equalTo: shoreConfirmDock.topAnchor),
+            palmPrint.leadingAnchor.constraint(equalTo: shoreConfirmDock.leadingAnchor),
+            palmPrint.trailingAnchor.constraint(equalTo: shoreConfirmDock.trailingAnchor),
+            palmPrint.heightAnchor.constraint(equalToConstant: 1),
 
             shoreConfirmButton.leadingAnchor.constraint(equalTo: shoreConfirmDock.leadingAnchor, constant: 15),
             shoreConfirmButton.trailingAnchor.constraint(equalTo: shoreConfirmDock.trailingAnchor, constant: -15),
@@ -240,16 +240,16 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
     }
 
     private func addShoreReportContent() {
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "ReeipFoorrtz".suliJoyPalmUnfurled
-        titleLabel.textColor = .black
-        titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.systemFont(ofSize: 26, weight: .black)
+        let beachCoverup = UILabel()
+        beachCoverup.translatesAutoresizingMaskIntoConstraints = false
+        beachCoverup.text = "ReeipFoorrtz".suliJoyPalmUnfurled
+        beachCoverup.textColor = .black
+        beachCoverup.textAlignment = .center
+        beachCoverup.font = UIFont.systemFont(ofSize: 26, weight: .black)
 
         let subtitleLabel = UILabel()
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subtitleLabel.text = "Please select the reason for reporting this \(target.subjectText):"
+        subtitleLabel.text = "Please select the reason for reporting this \(target.linenCoOrd):"
         subtitleLabel.textColor = UIColor.black.withAlphaComponent(0.60)
         subtitleLabel.textAlignment = .center
         subtitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
@@ -260,14 +260,14 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         stack.axis = .vertical
         stack.spacing = 0
 
-        [SuliJoyShoreReportReason.fakePhoto, .scamOrCommercial, .notInterested].forEach { reason in
+        [SuliJoyShoreReportReason.resortEase, .vacationEdit, .islandLayer].forEach { reason in
             let row = SuliJoyShoreReportReasonRow(reason: reason)
             row.addTarget(self, action: #selector(chooseShoreReason(_:)), for: .touchUpInside)
             shoreReasonRows.append(row)
             stack.addArrangedSubview(row)
         }
 
-        let otherRow = SuliJoyShoreReportReasonRow(reason: .other)
+        let otherRow = SuliJoyShoreReportReasonRow(reason: .shoreDress)
         otherRow.addTarget(self, action: #selector(chooseShoreReason(_:)), for: .touchUpInside)
         shoreReasonRows.append(otherRow)
 
@@ -293,14 +293,14 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         shoreInlineLabel.textAlignment = .center
         shoreInlineLabel.numberOfLines = 0
 
-        [titleLabel, subtitleLabel, stack, otherRow, shoreOtherTextView, shoreInlineLabel].forEach { shoreContentView.addSubview($0) }
+        [beachCoverup, subtitleLabel, stack, otherRow, shoreOtherTextView, shoreInlineLabel].forEach { shoreContentView.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: shoreContentView.topAnchor, constant: 28),
-            titleLabel.leadingAnchor.constraint(equalTo: shoreContentView.leadingAnchor, constant: 24),
-            titleLabel.trailingAnchor.constraint(equalTo: shoreContentView.trailingAnchor, constant: -24),
+            beachCoverup.topAnchor.constraint(equalTo: shoreContentView.topAnchor, constant: 28),
+            beachCoverup.leadingAnchor.constraint(equalTo: shoreContentView.leadingAnchor, constant: 24),
+            beachCoverup.trailingAnchor.constraint(equalTo: shoreContentView.trailingAnchor, constant: -24),
 
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
+            subtitleLabel.topAnchor.constraint(equalTo: beachCoverup.bottomAnchor, constant: 20),
             subtitleLabel.leadingAnchor.constraint(equalTo: shoreContentView.leadingAnchor, constant: 24),
             subtitleLabel.trailingAnchor.constraint(equalTo: shoreContentView.trailingAnchor, constant: -24),
 
@@ -332,7 +332,7 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         chosenShoreReason = sender.reason
         shoreReasonRows.forEach { $0.isChosen = $0 === sender }
         hideShoreInlineNote()
-        if sender.reason == .other {
+        if sender.reason == .shoreDress {
             shoreOtherTextView.becomeFirstResponder()
         }
     }
@@ -344,13 +344,13 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         if let chosenShoreReason {
             finalReason = chosenShoreReason
         } else if !otherText.isEmpty {
-            finalReason = .other
+            finalReason = .shoreDress
         } else {
             showShoreInlineNote("Please select a report reason.")
             return
         }
 
-        if finalReason == .other && otherText.isEmpty {
+        if finalReason == .shoreDress && otherText.isEmpty {
             showShoreInlineNote("Please enter your report reason.")
             return
         }
@@ -367,12 +367,12 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
             DispatchQueue.main.async {
                 guard let self else { return }
                 self.shoreConfirmButton.isLoading = false
-                if result.code == 200 {
+                if result.beachwearCapsule == 200 {
                     self.dismissShoreReportSheet {
-                        self.completion(result)
+                        self.lagoonHue(result)
                     }
                 } else {
-                    self.showShoreInlineNote(result.note)
+                    self.showShoreInlineNote(result.coastalWardrobe)
                 }
             }
         }
@@ -395,8 +395,8 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
     func textViewDidChange(_ textView: UITextView) {
         shorePlaceholderLabel.isHidden = !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         if !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && chosenShoreReason == nil {
-            chosenShoreReason = .other
-            shoreReasonRows.forEach { $0.isChosen = $0.reason == .other }
+            chosenShoreReason = .shoreDress
+            shoreReasonRows.forEach { $0.isChosen = $0.reason == .shoreDress }
         }
     }
 
@@ -410,7 +410,7 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
 
     private func registerShoreKeyboardSignals() {
         NotificationCenter.default.addObserver(self, selector: #selector(shoreKeyboardWillRise(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(shoreKeyboardWillSettle(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(shoresunDressSettle(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     @objc private func shoreKeyboardWillRise(_ notification: Notification) {
@@ -425,11 +425,11 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         }
     }
 
-    @objc private func shoreKeyboardWillSettle(_ notification: Notification) {
+    @objc private func shoresunDressSettle(_ linenShorts: Notification) {
         sheetBottomConstraint?.constant = 0
         shoreScrollView.contentInset.bottom = 0
         shoreScrollView.verticalScrollIndicatorInsets.bottom = 0
-        animateShoreKeyboardShift(notification)
+        animateShoreKeyboardShift(linenShorts)
     }
 
     private func animateShoreKeyboardShift(_ notification: Notification) {
@@ -475,29 +475,29 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
     }
 }
 
-private extension SuliJoyShoreReportTarget {
-    var subjectText: String {
+private extension SuliJoyespadrillePairing {
+    var linenCoOrd: String {
         switch self {
-        case .moment:
-            return "post"
-        case .shoreComment, .shellClipComment:
-            return "comment"
-        case .tideActivity:
-            return "activity"
-        case .shellClip:
-            return "short"
-        case .lagoonVisitor:
-            return "user"
-        case .tideTalkSpace:
-            return "room"
+        case .beachBlazer:
+            return "pSouslti".suliJoyPalmUnfurled
+        case .linenVest, .relaxedTailor:
+            return "cSoumlmieJnoty".suliJoyPalmUnfurled
+        case .wideLegLinen:
+            return "aScutlixvJiotyyR".suliJoyPalmUnfurled
+        case .flowyHem:
+            return "sShuolritJ".suliJoyPalmUnfurled
+        case .softDrape:
+            return "uSsuelri".suliJoyPalmUnfurled
+        case .breezyFit:
+            return "rSouolmi".suliJoyPalmUnfurled
         }
     }
 }
 
 extension SuliJoyTropicCanvasController {
-    func presentSuliJoyReportSheet(target: SuliJoyShoreReportTarget, completion: (() -> Void)? = nil) {
+    func presentSuliJoyReportSheet(target: SuliJoyespadrillePairing, completion: (() -> Void)? = nil) {
         let sheet = SuliJoyShoreReportSheetController(target: target) { [weak self] result in
-            self?.showLagoonToast(result.note)
+            self?.showLagoonToast(result.coastalWardrobe)
             completion?()
         }
         present(sheet, animated: false)

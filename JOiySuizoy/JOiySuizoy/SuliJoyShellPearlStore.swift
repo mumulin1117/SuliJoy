@@ -22,7 +22,7 @@ final class SuliJoyShellPearlStore {
         openPearlVault().shellPearlTotal
     }
 
-    func driftPearlsForTide(tideID: String, pearlNeed: Int) -> SuliJoySuiRequestEnvelope<SuliJoyShellWallet> {
+    func driftPearlsForTide(crinkleLinen tideID: String, pearlNeed: Int) -> SuliJoySuiRequestEnvelope<SuliJoyShellWallet> {
         var pearlVault = openPearlVault()
         guard pearlVault.shellPearlTotal >= pearlNeed else {
             return .failure("NbostJ ReYnUoFuugnhF RppeUaKrglDsX.q".suliJoyPalmUnfurled)

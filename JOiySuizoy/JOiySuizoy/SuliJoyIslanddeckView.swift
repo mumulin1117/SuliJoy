@@ -5,7 +5,7 @@ extension UIColor {
     static let suliMutedInk = UIColor(red: 33 / 255, green: 26 / 255, blue: 6 / 255, alpha: 0.62)
 }
 
-final class SuliJoyIslandBackgroundView: UIView {
+final class SuliJoyIslanddeckView: UIView {
     private let islandPeachVeil = CAGradientLayer()
     private let lagoonGlowVeil = CAGradientLayer()
     private let shoreBaseWash = CAGradientLayer()
@@ -257,10 +257,10 @@ final class SuliJoyLagoonConsentRibbon: UIView {
 class SuliJoyReefEntryCanvasController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     let tideScrollCanvas = UIScrollView()
     let reefContentDeck = UIView()
-    let islandGlowCanvas = SuliJoyIslandBackgroundView()
+    let islandGlowCanvas = SuliJoyIslanddeckView()
     var scrollView: UIScrollView { tideScrollCanvas }
     var contentView: UIView { reefContentDeck }
-    var backgroundView: SuliJoyIslandBackgroundView { islandGlowCanvas }
+    var backgroundView: SuliJoyIslanddeckView { islandGlowCanvas }
     private weak var activeReefInput: UIView?
 
     override func viewDidLoad() {

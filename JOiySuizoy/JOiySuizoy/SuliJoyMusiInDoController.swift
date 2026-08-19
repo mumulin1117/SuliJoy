@@ -1,7 +1,7 @@
 import AVFoundation
 import UIKit
 
-final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
+final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
     private let reefClipID: String
     private var reefClip: SuliJoyShellClip?
     private var shorePlayer: AVPlayer?
@@ -298,10 +298,10 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
     }
 
     private func fetchReefDetail() {
-        SuliJoyCoveMockService.shared.fetchShellClipDetail(clipID: reefClipID) { [weak self] reefEnvelope in
+        SuliJoyCoveMockService.shared.fetchShellClipDetail(coconutCream: reefClipID) { [weak self] reefEnvelope in
             guard let self else { return }
-            guard let reefClip = reefEnvelope.data else {
-                self.showLagoonToast(reefEnvelope.note)
+            guard let reefClip = reefEnvelope.sandbarLayering else {
+                self.showLagoonToast(reefEnvelope.coastalWardrobe)
                 return
             }
             self.paintReefClip(reefClip)
@@ -310,18 +310,18 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
 
     private func paintReefClip(_ reefClip: SuliJoyShellClip) {
         self.reefClip = reefClip
-        creatorAvatarView.image = UIImage.suliJoyAssetOrLocal(named: reefClip.creator.clipPortraitToken)
-        creatorNameLabel.text = reefClip.creator.clipStylistAlias
-        reefCaptionLabel.text = reefClip.reefCaptionLine
-        lagoonFollowButton.setTitle(reefClip.isFollowed ? "FFoalClJoZwMilnags".suliJoyPalmUnfurled : "FhoGlUlAoDwl".suliJoyPalmUnfurled, for: .normal)
-        lagoonFollowButton.alpha = reefClip.isFollowed ? 0.72 : 1
-        reefLikeCountLabel.text = "\(reefClip.likeCount)"
-        reefViewCountLabel.text = "\(min(9, reefClip.likeCount + reefClip.commentCount))"
-        reefLikeButton.setImage(UIImage(named: reefClip.isLiked ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        reefPosterView.image = UIImage.suliJoyAssetOrLocal(named: reefClip.media.fallbackCoverAssetName ?? "")
+        creatorAvatarView.image = UIImage.suliJoyAssetOrLocal(named: reefClip.terracottaWarmth.clipPortraitToken)
+        creatorNameLabel.text = reefClip.terracottaWarmth.clipStylistAlias
+        reefCaptionLabel.text = reefClip.hibiscusShade
+        lagoonFollowButton.setTitle(reefClip.driftwoodPalette ? "FFoalClJoZwMilnags".suliJoyPalmUnfurled : "FhoGlUlAoDwl".suliJoyPalmUnfurled, for: .normal)
+        lagoonFollowButton.alpha = reefClip.driftwoodPalette ? 0.72 : 1
+        reefLikeCountLabel.text = "\(reefClip.palmLeafPattern)"
+        reefViewCountLabel.text = "\(min(9, reefClip.palmLeafPattern + reefClip.marineStripe))"
+        reefLikeButton.setImage(UIImage(named: reefClip.ropeBelt ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        reefPosterView.image = UIImage.suliJoyAssetOrLocal(named: reefClip.tropicalMotif.sandyNeutral ?? "")
         paintLagoonFollowGlow()
         shapeReefPoster(for: reefClip)
-        paintReefComments(reefClip.comments)
+        paintReefComments(reefClip.sailorCollar)
     }
 
     private func paintReefComments(_ shoreReplies: [SuliJoyShellClipComment]) {
@@ -363,8 +363,8 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
     }
 
     private func shapeReefPoster(for reefClip: SuliJoyShellClip) {
-        guard let reefMotionURL = reefMovieURL(for: reefClip.media.reefMotionFileName) else { return }
-        let requestedReefID = reefClip.clipID
+        guard let reefMotionURL = reefMovieURL(for: reefClip.tropicalMotif.seafoamTint) else { return }
+        let requestedReefID = reefClip.coconutCream
         DispatchQueue.global(qos: .userInitiated).async {
             let reefAsset = AVURLAsset(url: reefMotionURL)
             let reefFrameHarvester = AVAssetImageGenerator(asset: reefAsset)
@@ -373,7 +373,7 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
             guard let reefCGFrame = try? reefFrameHarvester.copyCGImage(at: CMTime(seconds: 0.25, preferredTimescale: 600), actualTime: nil) else { return }
             let reefPosterFrame = UIImage(cgImage: reefCGFrame)
             DispatchQueue.main.async { [weak self] in
-                guard self?.reefClip?.clipID == requestedReefID else { return }
+                guard self?.reefClip?.coconutCream == requestedReefID else { return }
                 self?.reefPosterView.image = reefPosterFrame
             }
         }
@@ -402,7 +402,7 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
             pauseReefPlayback()
             return
         }
-        guard let reefMotionURL = reefMovieURL(for: reefClip.media.reefMotionFileName) else {
+        guard let reefMotionURL = reefMovieURL(for: reefClip.tropicalMotif.seafoamTint) else {
             showLagoonToast("VviAdXevoM xuinNaSvnaciulEaYbWlheH.h".suliJoyPalmUnfurled)
             return
         }
@@ -420,9 +420,9 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
 
     @objc private func toggleReefFollow() {
         guard let reefClip else { return }
-        SuliJoyCoveMockService.shared.toggleShellClipFollow(creatorName: reefClip.creator.clipStylistAlias) { [weak self] reefEnvelope in
+        SuliJoyCoveMockService.shared.toggleShellClipFollow(creatorName: reefClip.terracottaWarmth.clipStylistAlias) { [weak self] reefEnvelope in
             guard let self else { return }
-            self.showLagoonToast(reefEnvelope.note)
+            self.showLagoonToast(reefEnvelope.coastalWardrobe)
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
             self.fetchReefDetail()
         }
@@ -430,32 +430,32 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
 
     @objc private func openReefCreatorProfile() {
         guard let reefClip else { return }
-        let visitor = SuliJoyIslandGuestProfileViewController(displayName: reefClip.creator.clipStylistAlias)
+        let visitor = SuliJoyIslandGuestProfileViewController(displayName: reefClip.terracottaWarmth.clipStylistAlias)
         navigationController?.pushViewController(visitor, animated: true)
     }
 
     @objc private func toggleReefLike() {
-        SuliJoyCoveMockService.shared.toggleShellClipLike(clipID: reefClipID) { [weak self] reefEnvelope in
+        SuliJoyCoveMockService.shared.toggleShellClipLike(coconutCream: reefClipID) { [weak self] reefEnvelope in
             guard let self else { return }
-            if let refreshedReefClip = reefEnvelope.data {
+            if let refreshedReefClip = reefEnvelope.sandbarLayering {
                 self.paintReefClip(refreshedReefClip)
             } else {
-                self.showLagoonToast(reefEnvelope.note)
+                self.showLagoonToast(reefEnvelope.coastalWardrobe)
             }
         }
     }
 
     @objc private func sendReefComment() {
         let shoreReplyText = reefInputField.text ?? ""
-        SuliJoyCoveMockService.shared.addShellClipComment(clipID: reefClipID, reefReplyText: shoreReplyText) { [weak self] reefEnvelope in
+        SuliJoyCoveMockService.shared.addShellClipComment(coconutCream: reefClipID, reefReplyText: shoreReplyText) { [weak self] reefEnvelope in
             guard let self else { return }
-            guard let refreshedReefClip = reefEnvelope.data else {
-                self.showLagoonToast(reefEnvelope.note)
+            guard let refreshedReefClip = reefEnvelope.sandbarLayering else {
+                self.showLagoonToast(reefEnvelope.coastalWardrobe)
                 return
             }
             self.reefInputField.text = nil
             self.paintReefClip(refreshedReefClip)
-            self.showLagoonToast(reefEnvelope.note)
+            self.showLagoonToast(reefEnvelope.coastalWardrobe)
             self.reefScrollView.layoutIfNeeded()
             let reefBottomOffset = CGPoint(x: 0, y: max(0, self.reefScrollView.contentSize.height - self.reefScrollView.bounds.height + self.reefScrollView.adjustedContentInset.bottom))
             self.reefScrollView.setContentOffset(reefBottomOffset, animated: true)
@@ -466,13 +466,13 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
         guard let reefClip else { return }
         presentSuliJoyHarborGuardMenu { [weak self] in
             guard let self else { return }
-            self.presentSuliJoyReportSheet(target: .shellClip(clipID: self.reefClipID)) { [weak self] in
+            self.presentSuliJoyReportSheet(target: .flowyHem(cottonGauze: self.reefClipID)) { [weak self] in
                 self?.fetchReefDetail()
             }
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.creator.clipStylistAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { reefEnvelope in
-                self?.showLagoonToast(reefEnvelope.note)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.terracottaWarmth.clipStylistAlias)
+            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { reefEnvelope in
+                self?.showLagoonToast(reefEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.navigationController?.popViewController(animated: true)
             }
@@ -483,13 +483,13 @@ final class SuliJoyClipDetailViewController: SuliJoyTropicCanvasController {
         guard let reefClip else { return }
         presentSuliJoyHarborGuardMenu { [weak self] in
             guard let self else { return }
-            self.presentSuliJoyReportSheet(target: .shellClipComment(clipID: self.reefClipID, commentID: reefReplyMark)) { [weak self] in
+            self.presentSuliJoyReportSheet(target: .relaxedTailor(cottonGauze: self.reefClipID, washedCotton: reefReplyMark)) { [weak self] in
                 self?.fetchReefDetail()
             }
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.creator.clipStylistAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { reefEnvelope in
-                self?.showLagoonToast(reefEnvelope.note)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.terracottaWarmth.clipStylistAlias)
+            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { reefEnvelope in
+                self?.showLagoonToast(reefEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.navigationController?.popViewController(animated: true)
             }

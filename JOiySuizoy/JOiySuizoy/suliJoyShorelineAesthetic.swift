@@ -118,11 +118,11 @@ final class suliJoyShorelineAesthetic: SuliJoyReefEntryCanvasController {
                 shoreMailPhrase: self.shoreMailInput.text ?? "",
                 reefSecretPhrase: self.shoreSecretInput.text ?? ""
             )
-            guard let shorelineDraft = draftEnvelope.data else {
-                self.presentReefNotice(draftEnvelope.note)
+            guard let shorelineDraft = draftEnvelope.sandbarLayering else {
+                self.presentReefNotice(draftEnvelope.coastalWardrobe)
                 return
             }
-            self.navigationController?.pushViewController(SuliJoyReefProfileTideController(draft: shorelineDraft), animated: true)
+            self.navigationController?.pushViewController(SuliJoypaperbagWaistController(draft: shorelineDraft), animated: true)
         }
     }
 }

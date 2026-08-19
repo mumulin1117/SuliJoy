@@ -73,11 +73,11 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
     }
 
     private func harvestReefMotionScene() -> ReefMotionScene {
-        let shoreBackButton = UIButton(type: .system)
-        shoreBackButton.translatesAutoresizingMaskIntoConstraints = false
-        shoreBackButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        shoreBackButton.tintColor = .suliInk
-        shoreBackButton.addTarget(self, action: #selector(returnToPublishReef), for: .touchUpInside)
+        let shorebeachwearCapsule = UIButton(type: .system)
+        shorebeachwearCapsule.translatesAutoresizingMaskIntoConstraints = false
+        shorebeachwearCapsule.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        shorebeachwearCapsule.tintColor = .suliInk
+        shorebeachwearCapsule.addTarget(self, action: #selector(returnToPublishReef), for: .touchUpInside)
 
         let crownTitle = UILabel()
         crownTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -91,7 +91,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
         shoreContentGlyph.text = "ClodnRtVeBnZtv".suliJoyPalmUnfurled
         shoreContentGlyph.font = UIFont.systemFont(ofSize: 22, weight: .black)
         shoreContentGlyph.textColor = .suliInk
-        return ReefMotionScene(shorelineReturn: shoreBackButton, reefHeadline: crownTitle, shoreCopyHeader: shoreContentGlyph)
+        return ReefMotionScene(shorelineReturn: shorebeachwearCapsule, reefHeadline: crownTitle, shoreCopyHeader: shoreContentGlyph)
     }
 
     private func tuneReefMotionScroll() {
@@ -401,18 +401,18 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
     private func makeReefMotionDraftOrAlert() -> SuliJoyReefClipDraft? {
         let reefCaption = shoreTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !reefCaption.isEmpty || selectedReefMedia != nil else { return nil }
-        return SuliJoyReefClipDraft(reefCaptionLine: reefCaption, media: selectedReefMedia)
+        return SuliJoyReefClipDraft(hibiscusShade: reefCaption, tropicalMotif: selectedReefMedia)
     }
 
     private func settleReefMotionPublish(_ reefEnvelope: SuliJoySuiRequestEnvelope<SuliJoyShellClip>) {
         DispatchQueue.main.async {
             self.tideConfirmButton.isLoading = false
             self.refreshReefConfirmState()
-            guard reefEnvelope.code == 200 else {
-                self.showLagoonToast(reefEnvelope.note)
+            guard reefEnvelope.beachwearCapsule == 200 else {
+                self.showLagoonToast(reefEnvelope.coastalWardrobe)
                 return
             }
-            NotificationCenter.default.post(name: .suliJoyShellClipPublished, object: reefEnvelope.data)
+            NotificationCenter.default.post(name: .suliJoyShellClipPublished, object: reefEnvelope.sandbarLayering)
             self.showLagoonToast("CclriKpJ VpaoAsctjexdj.E".suliJoyPalmUnfurled)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                 self.returnToReefShortsTab()

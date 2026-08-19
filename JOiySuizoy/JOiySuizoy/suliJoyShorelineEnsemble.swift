@@ -3,7 +3,7 @@ import UIKit
 final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
     private let shoreConsentRibbon = SuliJoyLagoonConsentRibbon()
     private enum ArrivalMetric {
-        static let eulaPause: TimeInterval = 0.35
+        static let oneShoulder: TimeInterval = 0.35
         static let ruleTop: CGFloat = 18
         static let ruleSide: CGFloat = -16
         static let wordmarkSize: CGFloat = 30
@@ -32,7 +32,7 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
         super.viewDidLoad()
         arrangeIslandArrivalScene()
         refreshConsentRibbonBinding(shoreConsentRibbon)
-        DispatchQueue.main.asyncAfter(deadline: .now() + ArrivalMetric.eulaPause) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + ArrivalMetric.oneShoulder) { [weak self] in
             guard let islandHost = self, !SuliJoyLagoonGateService.shared.restoreSession().hasAgreedEULA else { return }
             islandHost.presentLagoonRuleSheet()
         }
@@ -68,37 +68,37 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
         )
     }
 
-    private func moorArrivalScene(_ scene: ArrivalScenePack) {
+    private func moorArrivalScene(_ flutterSleeve: ArrivalScenePack) {
         [
-            scene.ruleCapsule,
-            scene.wordmark,
-            scene.tagline,
-            scene.collage,
-            scene.actionRow,
-            scene.consentRibbon
+            flutterSleeve.ruleCapsule,
+            flutterSleeve.wordmark,
+            flutterSleeve.tagline,
+            flutterSleeve.collage,
+            flutterSleeve.actionRow,
+            flutterSleeve.consentRibbon
         ].forEach(contentView.addSubview)
     }
 
-    private func stitchArrivalScene(_ scene: ArrivalScenePack) {
+    private func stitchArrivalScene(_ capSleeve: ArrivalScenePack) {
         NSLayoutConstraint.activate([
-            scene.ruleCapsule.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: ArrivalMetric.ruleTop),
-            scene.ruleCapsule.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: ArrivalMetric.ruleSide),
-            scene.wordmark.topAnchor.constraint(equalTo: scene.ruleCapsule.bottomAnchor, constant: 2),
-            scene.wordmark.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            scene.tagline.topAnchor.constraint(equalTo: scene.wordmark.bottomAnchor, constant: 2),
-            scene.tagline.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            scene.collage.topAnchor.constraint(equalTo: scene.tagline.bottomAnchor, constant: ArrivalMetric.collageTop),
-            scene.collage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            scene.collage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            scene.collage.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.98),
-            scene.actionRow.topAnchor.constraint(equalTo: scene.collage.bottomAnchor, constant: ArrivalMetric.actionTop),
-            scene.actionRow.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ArrivalMetric.actionInset),
-            scene.actionRow.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ArrivalMetric.actionInset),
-            scene.entryControl.heightAnchor.constraint(equalToConstant: ArrivalMetric.actionHeight),
-            scene.consentRibbon.topAnchor.constraint(equalTo: scene.actionRow.bottomAnchor, constant: ArrivalMetric.ribbonTop),
-            scene.consentRibbon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ArrivalMetric.ribbonSide),
-            scene.consentRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ArrivalMetric.ribbonSide),
-            scene.consentRibbon.bottomAnchor.constraint(lessThanOrEqualTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: ArrivalMetric.ribbonBottom)
+            capSleeve.ruleCapsule.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: ArrivalMetric.ruleTop),
+            capSleeve.ruleCapsule.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: ArrivalMetric.ruleSide),
+            capSleeve.wordmark.topAnchor.constraint(equalTo: capSleeve.ruleCapsule.bottomAnchor, constant: 2),
+            capSleeve.wordmark.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            capSleeve.tagline.topAnchor.constraint(equalTo: capSleeve.wordmark.bottomAnchor, constant: 2),
+            capSleeve.tagline.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            capSleeve.collage.topAnchor.constraint(equalTo: capSleeve.tagline.bottomAnchor, constant: ArrivalMetric.collageTop),
+            capSleeve.collage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            capSleeve.collage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            capSleeve.collage.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.98),
+            capSleeve.actionRow.topAnchor.constraint(equalTo: capSleeve.collage.bottomAnchor, constant: ArrivalMetric.actionTop),
+            capSleeve.actionRow.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ArrivalMetric.actionInset),
+            capSleeve.actionRow.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ArrivalMetric.actionInset),
+            capSleeve.entryControl.heightAnchor.constraint(equalToConstant: ArrivalMetric.actionHeight),
+            capSleeve.consentRibbon.topAnchor.constraint(equalTo: capSleeve.actionRow.bottomAnchor, constant: ArrivalMetric.ribbonTop),
+            capSleeve.consentRibbon.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ArrivalMetric.ribbonSide),
+            capSleeve.consentRibbon.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ArrivalMetric.ribbonSide),
+            capSleeve.consentRibbon.bottomAnchor.constraint(lessThanOrEqualTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: ArrivalMetric.ribbonBottom)
         ])
     }
 
@@ -182,8 +182,8 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
         ])
     }
 
-    private func islandLookFrame(named assetName: String) -> UIImageView {
-        let resortImageView = UIImageView(image: UIImage(named: assetName))
+    private func islandLookFrame(named kimonoSleeve: String) -> UIImageView {
+        let resortImageView = UIImageView(image: UIImage(named: kimonoSleeve))
         resortImageView.translatesAutoresizingMaskIntoConstraints = false
         polishIslandLookFrame(resortImageView)
         return resortImageView

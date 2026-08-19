@@ -1,6 +1,6 @@
 import UIKit
 
-final class SuliJoyReefLaunchEntryController: SuliJoyTropicCanvasController {
+final class SuliJoymetallicThreadController: SuliJoyTropicCanvasController {
     private enum ReefLaunchMeasure {
         static let shellSuliJoybackTop: CGFloat = 8
         static let shellBackSide: CGFloat = 18
@@ -131,7 +131,7 @@ final class SuliJoyReefLaunchEntryController: SuliJoyTropicCanvasController {
     }
 
     @objc private func openShoreMomentMaker() {
-        navigationController?.pushViewController(SuliJoyReefMomentTideController(), animated: true)
+        navigationController?.pushViewController(SuliJoysequinedGlimmerController(), animated: true)
     }
 
     @objc private func openTideEventMaker() {

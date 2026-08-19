@@ -29,7 +29,7 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
     private let lagoonCrownText: String
     private let lagoonRefreshText: String
     private let lagoonClauses: [SuliJoyLagoonClause]
-    private let lagoonIslandWash = SuliJoyIslandBackgroundView()
+    private let lagoonIslandWash = SuliJoyIslanddeckView()
 
     init(lagoonCrownText: String, lagoonRefreshText: String = "Last updated: July 2026", lagoonClauses: [SuliJoyLagoonClause]) {
         self.lagoonCrownText = lagoonCrownText

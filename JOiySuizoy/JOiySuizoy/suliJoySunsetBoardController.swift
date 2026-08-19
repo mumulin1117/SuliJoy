@@ -2,17 +2,17 @@ import UIKit
 
 final class suliJoySunsetBoardController: UIViewController {
     private enum ReadyIslandTideMeasure {
-        static let titleSize: CGFloat = 34
-        static let subtitleSize: CGFloat = 17
-        static let exitSize: CGFloat = 16
-        static let titleLift: CGFloat = -34
-        static let subtitleDrop: CGFloat = 10
-        static let subtitleSide: CGFloat = 40
-        static let exitDrop: CGFloat = 28
+        static let resortSilhouette: CGFloat = 34
+        static let oceanPalette: CGFloat = 17
+        static let sandbarLayering: CGFloat = 16
+        static let linenDrape: CGFloat = -34
+        static let raffiaTexture: CGFloat = 10
+        static let shorelineEnsemble: CGFloat = 40
+        static let tideColorway: CGFloat = 28
     }
 
     private struct ReadyIslandReefScene {
-        let islandBackdrop: SuliJoyIslandBackgroundView
+        let islandBackdrop: SuliJoyIslanddeckView
         let titleGlyph: UILabel
         let subtitleGlyph: UILabel
         let exitControl: UIButton
@@ -39,20 +39,20 @@ final class suliJoySunsetBoardController: UIViewController {
         )
     }
 
-    private func makeReadyIslandBackdrop() -> SuliJoyIslandBackgroundView {
-        let backdrop = SuliJoyIslandBackgroundView()
+    private func makeReadyIslandBackdrop() -> SuliJoyIslanddeckView {
+        let backdrop = SuliJoyIslanddeckView()
         backdrop.translatesAutoresizingMaskIntoConstraints = false
         return backdrop
     }
 
     private func makeReadyIslandTitle() -> UILabel {
-        let titleMark = UILabel()
-        titleMark.translatesAutoresizingMaskIntoConstraints = false
-        titleMark.text = "SuliJoy"
-        titleMark.textColor = .suliInk
-        titleMark.font = UIFont.systemFont(ofSize: ReadyIslandTideMeasure.titleSize, weight: .black)
-        titleMark.textAlignment = .center
-        return titleMark
+        let coralAccent = UILabel()
+        coralAccent.translatesAutoresizingMaskIntoConstraints = false
+        coralAccent.text = "SuliJoy"
+        coralAccent.textColor = .suliInk
+        coralAccent.font = UIFont.systemFont(ofSize: ReadyIslandTideMeasure.resortSilhouette, weight: .black)
+        coralAccent.textAlignment = .center
+        return coralAccent
     }
 
     private func makeReadyIslandSubtitle() -> UILabel {
@@ -60,7 +60,7 @@ final class suliJoySunsetBoardController: UIViewController {
         subtitleMark.translatesAutoresizingMaskIntoConstraints = false
         subtitleMark.text = "YRofuEry MiwsiljaSnjdW msithyvlkeB ushpcaWcGeh hiwsW zrWeTaUdPyH.n".suliJoyPalmUnfurled
         subtitleMark.textColor = .suliMutedInk
-        subtitleMark.font = UIFont.systemFont(ofSize: ReadyIslandTideMeasure.subtitleSize, weight: .medium)
+        subtitleMark.font = UIFont.systemFont(ofSize: ReadyIslandTideMeasure.oceanPalette, weight: .medium)
         subtitleMark.textAlignment = .center
         subtitleMark.numberOfLines = 0
         return subtitleMark
@@ -70,7 +70,7 @@ final class suliJoySunsetBoardController: UIViewController {
         let exitControl = UIButton(type: .system)
         exitControl.translatesAutoresizingMaskIntoConstraints = false
         exitControl.setTitle("Lnohgt UoYuEtj".suliJoyPalmUnfurled, for: .normal)
-        exitControl.titleLabel?.font = UIFont.systemFont(ofSize: ReadyIslandTideMeasure.exitSize, weight: .bold)
+        exitControl.titleLabel?.font = UIFont.systemFont(ofSize: ReadyIslandTideMeasure.sandbarLayering, weight: .bold)
         exitControl.setTitleColor(.suliInk, for: .normal)
         exitControl.addTarget(self, action: #selector(commitReadyIslandExit), for: .touchUpInside)
         return exitControl
@@ -92,11 +92,11 @@ final class suliJoySunsetBoardController: UIViewController {
             readyScene.islandBackdrop.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             readyScene.islandBackdrop.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             readyScene.titleGlyph.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            readyScene.titleGlyph.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: ReadyIslandTideMeasure.titleLift),
-            readyScene.subtitleGlyph.topAnchor.constraint(equalTo: readyScene.titleGlyph.bottomAnchor, constant: ReadyIslandTideMeasure.subtitleDrop),
-            readyScene.subtitleGlyph.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReadyIslandTideMeasure.subtitleSide),
-            readyScene.subtitleGlyph.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReadyIslandTideMeasure.subtitleSide),
-            readyScene.exitControl.topAnchor.constraint(equalTo: readyScene.subtitleGlyph.bottomAnchor, constant: ReadyIslandTideMeasure.exitDrop),
+            readyScene.titleGlyph.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: ReadyIslandTideMeasure.linenDrape),
+            readyScene.subtitleGlyph.topAnchor.constraint(equalTo: readyScene.titleGlyph.bottomAnchor, constant: ReadyIslandTideMeasure.raffiaTexture),
+            readyScene.subtitleGlyph.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ReadyIslandTideMeasure.shorelineEnsemble),
+            readyScene.subtitleGlyph.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ReadyIslandTideMeasure.shorelineEnsemble),
+            readyScene.exitControl.topAnchor.constraint(equalTo: readyScene.subtitleGlyph.bottomAnchor, constant: ReadyIslandTideMeasure.tideColorway),
             readyScene.exitControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }

@@ -26,7 +26,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
     private let shoreFlagControl = UIButton(type: .system)
     private let shoreSpinner = UIActivityIndicatorView(style: .large)
 
-    convenience init(tideID: String) {
+    convenience init(crinkleLinen tideID: String) {
         self.init(shorelineTideKey: tideID)
     }
 
@@ -81,13 +81,13 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         shoreHeroDots.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.48)
         shoreHeroDots.hidesForSinglePage = true
 
-        let backButton = UIButton(type: .system)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.tintColor = .black
-        backButton.backgroundColor = UIColor.white.withAlphaComponent(0.42)
-        backButton.layer.cornerRadius = 18
-        backButton.addTarget(self, action: #selector(driftBackFromShoreDetail), for: .touchUpInside)
+        let beachwearCapsule = UIButton(type: .system)
+        beachwearCapsule.translatesAutoresizingMaskIntoConstraints = false
+        beachwearCapsule.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        beachwearCapsule.tintColor = .black
+        beachwearCapsule.backgroundColor = UIColor.white.withAlphaComponent(0.42)
+        beachwearCapsule.layer.cornerRadius = 18
+        beachwearCapsule.addTarget(self, action: #selector(driftBackFromShoreDetail), for: .touchUpInside)
 
         shoreFlagControl.translatesAutoresizingMaskIntoConstraints = false
         shoreFlagControl.setImage(UIImage(systemName: "flag.fill"), for: .normal)
@@ -175,7 +175,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         shoreSpinner.hidesWhenStopped = true
 
         view.addSubview(shoreDetailScrollCanvas)
-        view.addSubview(backButton)
+        view.addSubview(beachwearCapsule)
         view.addSubview(shoreFlagControl)
         view.addSubview(shoreActionFooter)
         view.addSubview(shoreSpinner)
@@ -206,11 +206,11 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             shoreHeroDots.centerXAnchor.constraint(equalTo: shoreHeroCarousel.centerXAnchor),
             shoreHeroDots.bottomAnchor.constraint(equalTo: shoreHeroCarousel.bottomAnchor, constant: -84),
 
-            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
-            backButton.widthAnchor.constraint(equalToConstant: 36),
-            backButton.heightAnchor.constraint(equalToConstant: 36),
-            shoreFlagControl.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            beachwearCapsule.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            beachwearCapsule.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
+            beachwearCapsule.widthAnchor.constraint(equalToConstant: 36),
+            beachwearCapsule.heightAnchor.constraint(equalToConstant: 36),
+            shoreFlagControl.centerYAnchor.constraint(equalTo: beachwearCapsule.centerYAnchor),
             shoreFlagControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18),
             shoreFlagControl.widthAnchor.constraint(equalToConstant: 30),
             shoreFlagControl.heightAnchor.constraint(equalToConstant: 30),
@@ -301,16 +301,16 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         shoreSpinner.startAnimating()
         SuliJoyCoveMockService.shared.fetchActivityDetail(tideID: shorelineTideKey) { [weak self] tideEnvelope in
             guard let self else { return }
-            guard tideEnvelope.code == 200, let tideSnapshot = tideEnvelope.data else {
+            guard tideEnvelope.beachwearCapsule == 200, let tideSnapshot = tideEnvelope.sandbarLayering else {
                 self.shoreSpinner.stopAnimating()
-                self.showLagoonToast(tideEnvelope.note)
+                self.showLagoonToast(tideEnvelope.coastalWardrobe)
                 return
             }
             self.shorelineTideDetail = tideSnapshot
             self.render(tideSnapshot)
             SuliJoyCoveMockService.shared.fetchRelatedActivities(for: tideSnapshot.tideMark) { suggestionEnvelope in
                 self.shoreSpinner.stopAnimating()
-                self.coastalSuggestionShelf = suggestionEnvelope.data ?? []
+                self.coastalSuggestionShelf = suggestionEnvelope.sandbarLayering ?? []
                 self.renderCoastalSuggestions()
             }
         }
@@ -457,7 +457,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
                 }
                 SuliJoyCoveMockService.shared.driftPearlsForTide(tideMark: shorelineTideDetail.tideMark, pearlNeed: shorelineTideDetail.pearlNeed) { [weak self] pearlEnvelope in
                     guard let self else { return }
-                    guard pearlEnvelope.code == 200 else {
+                    guard pearlEnvelope.beachwearCapsule == 200 else {
                         self.shorePrimaryControl.isLoading = false
                         self.showShorePearlShortageDialog()
                         return
@@ -465,8 +465,8 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
                     SuliJoyCoveMockService.shared.joinActivity(tideID: shorelineTideDetail.tideMark) { [weak self] joinEnvelope in
                         guard let self else { return }
                         self.shorePrimaryControl.isLoading = false
-                        guard joinEnvelope.code == 200, let joinedTideSnapshot = joinEnvelope.data else {
-                            self.showLagoonToast(joinEnvelope.note)
+                        guard joinEnvelope.beachwearCapsule == 200, let joinedTideSnapshot = joinEnvelope.sandbarLayering else {
+                            self.showLagoonToast(joinEnvelope.coastalWardrobe)
                             return
                         }
                         self.shorelineTideDetail = joinedTideSnapshot
@@ -490,13 +490,13 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
     @objc private func openShoreModerationMenu() {
         guard let shorelineTideDetail else { return }
         presentSuliJoyHarborGuardMenu { [weak self] in
-            self?.presentSuliJoyReportSheet(target: .tideActivity(tideID: shorelineTideDetail.tideMark)) { [weak self] in
+            self?.presentSuliJoyReportSheet(target: .wideLegLinen(crinkleLinen: shorelineTideDetail.tideMark)) { [weak self] in
                 self?.shorelineTideDetail?.isReefFlagged = true
             }
         } block: { [weak self] in
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: shorelineTideDetail.shoreHostAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { guardEnvelope in
-                self?.showLagoonToast(guardEnvelope.note)
+            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
+                self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.navigationController?.popViewController(animated: true)
             }
@@ -935,8 +935,8 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
         SuliJoyCoveMockService.shared.fetchTideTalkSpace(tideMark: shorelineTideDetail.tideMark) { [weak self] harborEnvelope in
             guard let self else { return }
             self.shoreSpinner.stopAnimating()
-            guard harborEnvelope.code == 200, let harborSpace = harborEnvelope.data else {
-                self.showLagoonToast(harborEnvelope.note)
+            guard harborEnvelope.beachwearCapsule == 200, let harborSpace = harborEnvelope.sandbarLayering else {
+                self.showLagoonToast(harborEnvelope.coastalWardrobe)
                 return
             }
             self.talkSpace = harborSpace
@@ -1001,8 +1001,8 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
             SuliJoyCoveMockService.shared.joinLagoonVoiceSeat(tideMark: shorelineTideDetail.tideMark, lagoonSeatMark: seat.lagoonSeatMark) { [weak self, weak sender] seatEnvelope in
                 sender?.isEnabled = true
                 guard let self else { return }
-                guard seatEnvelope.code == 200, let harborSpace = seatEnvelope.data else {
-                    self.showLagoonToast(seatEnvelope.note)
+                guard seatEnvelope.beachwearCapsule == 200, let harborSpace = seatEnvelope.sandbarLayering else {
+                    self.showLagoonToast(seatEnvelope.coastalWardrobe)
                     return
                 }
                 self.talkSpace = harborSpace
@@ -1024,8 +1024,8 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
         SuliJoyCoveMockService.shared.sendShoreBreeze(tideMark: shorelineTideDetail.tideMark, text: shoreDraftText) { [weak self] breezeEnvelope in
             guard let self else { return }
             self.shoreSendControl.isEnabled = true
-            guard breezeEnvelope.code == 200, let harborSpace = breezeEnvelope.data else {
-                self.showLagoonToast(breezeEnvelope.note)
+            guard breezeEnvelope.beachwearCapsule == 200, let harborSpace = breezeEnvelope.sandbarLayering else {
+                self.showLagoonToast(breezeEnvelope.coastalWardrobe)
                 return
             }
             self.shoreNoteField.text = nil
@@ -1043,12 +1043,12 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
     @objc private func openHarborMore() {
         presentSuliJoyHarborGuardMenu { [weak self] in
             guard let self else { return }
-            self.presentSuliJoyReportSheet(target: .tideTalkSpace(tideID: self.shorelineTideDetail.tideMark))
+            self.presentSuliJoyReportSheet(target: .breezyFit(crinkleLinen: self.shorelineTideDetail.tideMark))
         } block: { [weak self] in
             guard let self else { return }
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: self.shorelineTideDetail.shoreHostAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { result in
-                self.showLagoonToast(result.note)
+            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { result in
+                self.showLagoonToast(result.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self.navigationController?.popViewController(animated: true)
             }

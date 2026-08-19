@@ -64,11 +64,11 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     }
 
     private func buildReefScene() {
-        let backButton = UIButton(type: .system)
-        backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.tintColor = .black
-        backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        let beachwearCapsule = UIButton(type: .system)
+        beachwearCapsule.translatesAutoresizingMaskIntoConstraints = false
+        beachwearCapsule.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        beachwearCapsule.tintColor = .black
+        beachwearCapsule.addTarget(self, action: #selector(goBack), for: .touchUpInside)
 
         guestTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         guestTitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -140,7 +140,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
         bottomActionBar.addArrangedSubview(reefLettersButton)
         bottomActionBar.addArrangedSubview(reefMotionButton)
 
-        [backButton, guestTitleLabel, harborMoreButton, reefScrollView, bottomActionBar].forEach { view.addSubview($0) }
+        [beachwearCapsule, guestTitleLabel, harborMoreButton, reefScrollView, bottomActionBar].forEach { view.addSubview($0) }
         reefScrollView.addSubview(reefContentView)
         reefContentView.addSubview(reefStackView)
         [guestAvatarView, lagoonFollowButton, reefMetricStack, reefSegmentContainer, reefContentStack].forEach { reefStackView.addArrangedSubview($0) }
@@ -150,22 +150,22 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
         reefBottomConstraint?.isActive = true
 
         NSLayoutConstraint.activate([
-            backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            backButton.widthAnchor.constraint(equalToConstant: 36),
-            backButton.heightAnchor.constraint(equalToConstant: 36),
+            beachwearCapsule.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            beachwearCapsule.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            beachwearCapsule.widthAnchor.constraint(equalToConstant: 36),
+            beachwearCapsule.heightAnchor.constraint(equalToConstant: 36),
 
             harborMoreButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            harborMoreButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            harborMoreButton.centerYAnchor.constraint(equalTo: beachwearCapsule.centerYAnchor),
             harborMoreButton.widthAnchor.constraint(equalToConstant: 36),
             harborMoreButton.heightAnchor.constraint(equalToConstant: 36),
 
-            guestTitleLabel.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            guestTitleLabel.centerYAnchor.constraint(equalTo: beachwearCapsule.centerYAnchor),
             guestTitleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            guestTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: backButton.trailingAnchor, constant: 16),
+            guestTitleLabel.leadingAnchor.constraint(greaterThanOrEqualTo: beachwearCapsule.trailingAnchor, constant: 16),
             guestTitleLabel.trailingAnchor.constraint(lessThanOrEqualTo: harborMoreButton.leadingAnchor, constant: -16),
 
-            reefScrollView.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 8),
+            reefScrollView.topAnchor.constraint(equalTo: beachwearCapsule.bottomAnchor, constant: 8),
             reefScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             reefScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
@@ -205,10 +205,10 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     }
 
     private func fetchLagoonGuest() {
-        SuliJoyCoveMockService.shared.fetchLagoonVisitorProfile(visitorID: lagoonGuestID) { [weak self] result in
+        SuliJoyCoveMockService.shared.fetchLagoonVisitorProfile(seersuckerStripe: lagoonGuestID) { [weak self] result in
             guard let self else { return }
-            guard let reefGuest = result.data else {
-                self.showLagoonToast(result.note)
+            guard let reefGuest = result.sandbarLayering else {
+                self.showLagoonToast(result.coastalWardrobe)
                 return
             }
             self.lagoonGuest = reefGuest
@@ -220,18 +220,18 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     private func fetchReefContent() {
         switch selectedReefTab {
         case .dynamic:
-            SuliJoyCoveMockService.shared.fetchVisitorShoreMoments(visitorID: lagoonGuestID) { [weak self] result in
-                self?.reefMoments = result.data ?? []
+            SuliJoyCoveMockService.shared.fetchVisitorShoreMoments(seersuckerStripe: lagoonGuestID) { [weak self] result in
+                self?.reefMoments = result.sandbarLayering ?? []
                 self?.renderReefContent()
             }
         case .shorts:
-            SuliJoyCoveMockService.shared.fetchVisitorShellClips(visitorID: lagoonGuestID) { [weak self] result in
-                self?.shellClips = result.data ?? []
+            SuliJoyCoveMockService.shared.fetchVisitorShellClips(seersuckerStripe: lagoonGuestID) { [weak self] result in
+                self?.shellClips = result.sandbarLayering ?? []
                 self?.renderReefContent()
             }
         case .events:
-            SuliJoyCoveMockService.shared.fetchVisitorTideActivities(visitorID: lagoonGuestID) { [weak self] result in
-                self?.tideActivities = result.data ?? []
+            SuliJoyCoveMockService.shared.fetchVisitorTideActivities(seersuckerStripe: lagoonGuestID) { [weak self] result in
+                self?.tideActivities = result.sandbarLayering ?? []
                 self?.renderReefContent()
             }
         }
@@ -324,14 +324,14 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     @objc private func toggleLagoonFollow() {
         guard let lagoonGuest else { return }
         if lagoonGuest.coveAffinityState == .shorelineUnlinked {
-            SuliJoyCoveMockService.shared.toggleLagoonVisitorFollow(visitorID: lagoonGuestID) { [weak self] result in
+            SuliJoyCoveMockService.shared.toggleLagoonVisitorFollow(seersuckerStripe: lagoonGuestID) { [weak self] result in
                 guard let self else { return }
-                if let updated = result.data {
+                if let updated = result.sandbarLayering {
                     self.lagoonGuest = updated
                     self.renderGuestHeader()
                     NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: updated)
                 }
-                self.showLagoonToast(result.note)
+                self.showLagoonToast(result.coastalWardrobe)
             }
         } else {
             let sheet = UIAlertController(reefHeadline: lagoonGuest.islandStylistAlias, ingokio: nil, preferredStyle: .actionSheet)
@@ -344,30 +344,30 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     }
 
     private func unfollowLagoonGuest() {
-        SuliJoyCoveMockService.shared.toggleLagoonVisitorFollow(visitorID: lagoonGuestID) { [weak self] result in
+        SuliJoyCoveMockService.shared.toggleLagoonVisitorFollow(seersuckerStripe: lagoonGuestID) { [weak self] result in
             guard let self else { return }
-            if let updated = result.data {
+            if let updated = result.sandbarLayering {
                 self.lagoonGuest = updated
                 self.renderGuestHeader()
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: updated)
             }
-            self.showLagoonToast(result.note)
+            self.showLagoonToast(result.coastalWardrobe)
         }
     }
 
     @objc private func showHarborMenu() {
         presentSuliJoyHarborGuardMenu { [weak self] in
             guard let self else { return }
-            self.presentSuliJoyReportSheet(target: .lagoonVisitor(visitorID: self.lagoonGuestID))
+            self.presentSuliJoyReportSheet(target: .softDrape(seersuckerStripe: self.lagoonGuestID))
         } block: { [weak self] in
             self?.blockLagoonGuest()
         }
     }
 
     private func blockLagoonGuest() {
-        SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: lagoonGuestID) { [weak self] result in
+        SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: lagoonGuestID) { [weak self] result in
             guard let self else { return }
-            self.showLagoonToast(result.note)
+            self.showLagoonToast(result.coastalWardrobe)
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: self.lagoonGuest)
             self.navigationController?.popViewController(animated: true)
         }
@@ -462,11 +462,11 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     }
 
     private func openClip(_ clip: SuliJoyShellClip) {
-        navigationController?.pushViewController(SuliJoyClipDetailViewController(clipID: clip.clipID), animated: true)
+        navigationController?.pushViewController(SuliJoyMusiInDoController(clipID: clip.coconutCream), animated: true)
     }
 
     private func openActivity(_ activity: SuliJoyTideActivity) {
-        navigationController?.pushViewController(SuliJoyTideCoastalDetailController(tideID: activity.tideMark), animated: true)
+        navigationController?.pushViewController(SuliJoyTideCoastalDetailController(crinkleLinen: activity.tideMark), animated: true)
     }
 
     @objc private func goBack() {
@@ -565,20 +565,20 @@ private final class SuliJoyGuestMetricView: UIView {
         valueLabel.textColor = .black
         valueLabel.textAlignment = .center
 
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = reefHeadline
-        titleLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
-        titleLabel.textColor = .black
-        titleLabel.textAlignment = .center
+        let beachCoverup = UILabel()
+        beachCoverup.translatesAutoresizingMaskIntoConstraints = false
+        beachCoverup.text = reefHeadline
+        beachCoverup.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        beachCoverup.textColor = .black
+        beachCoverup.textAlignment = .center
 
-        [valueLabel, titleLabel].forEach { addSubview($0) }
+        [valueLabel, beachCoverup].forEach { addSubview($0) }
         NSLayoutConstraint.activate([
             valueLabel.topAnchor.constraint(equalTo: topAnchor),
             valueLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: 2),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            beachCoverup.topAnchor.constraint(equalTo: valueLabel.bottomAnchor, constant: 2),
+            beachCoverup.centerXAnchor.constraint(equalTo: centerXAnchor),
+            beachCoverup.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
@@ -705,7 +705,7 @@ private final class SuliJoyGuestMomentPreviewCard: SuliJoyGuestPreviewControl {
 private final class SuliJoyGuestClipPreviewCard: SuliJoyGuestPreviewControl {
     init(clip: SuliJoyShellClip) {
         super.init(frame: .zero)
-        let image = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: clip.media.fallbackCoverAssetName ?? "sulijoy_feed_moment_coast_01"))
+        let image = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: clip.tropicalMotif.sandyNeutral ?? "sulijoy_feed_moment_coast_01"))
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
@@ -717,7 +717,7 @@ private final class SuliJoyGuestClipPreviewCard: SuliJoyGuestPreviewControl {
 
         let caption = UILabel()
         caption.translatesAutoresizingMaskIntoConstraints = false
-        caption.text = clip.reefCaptionLine
+        caption.text = clip.hibiscusShade
         caption.numberOfLines = 2
         caption.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         caption.textColor = .suliInk

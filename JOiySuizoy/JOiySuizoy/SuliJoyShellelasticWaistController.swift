@@ -1,6 +1,6 @@
 import UIKit
 
-final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController, UIGestureRecognizerDelegate {
+final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, UIGestureRecognizerDelegate {
     private enum ShellWardrobeMeasure {
         static let sunriseInset: CGFloat = 18
         static let palmEdgeInset: CGFloat = 24
@@ -162,7 +162,7 @@ final class SuliJoyShellSettingCoveController: SuliJoyTropicCanvasController, UI
 
     @objc private func polishShellCache() {
         wardrobeCoveService.clearSuliJoyLocalCache { [weak self] shellEnvelope in
-            self?.showLagoonToast(shellEnvelope.note)
+            self?.showLagoonToast(shellEnvelope.coastalWardrobe)
         }
     }
 
@@ -532,7 +532,7 @@ final class SuliJoyReefMutedVisitorCoveController: SuliJoyTropicCanvasController
     private func refreshMutedVisitors() {
         mutedShoreService.fetchBlockedLagoonVisitors { [weak self] mutedEnvelope in
             guard let self else { return }
-            let mutedVisitors = mutedEnvelope.data ?? []
+            let mutedVisitors = mutedEnvelope.sandbarLayering ?? []
             self.mutedReefStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
             self.quietShoreLabel.isHidden = !mutedVisitors.isEmpty
             mutedVisitors.forEach { self.mutedReefStack.addArrangedSubview(self.makeMutedVisitorRow(for: $0)) }

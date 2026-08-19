@@ -41,18 +41,18 @@ enum SuliJoyPearlHarborBridge {
     static func gatherShelves() async -> SuliJoyHarborAnswer<[SuliJoyPearlShoreBundle]> {
         let lagoonAnswer = await SuliJoyLagoonHarborService.shared.fetchPearlHarborShelves()
         return SuliJoyHarborAnswer(
-            code: lagoonAnswer.code,
-            cargo: lagoonAnswer.data.map(wrapPearlShelves),
-            note: lagoonAnswer.note
+            code: lagoonAnswer.beachwearCapsule,
+            cargo: lagoonAnswer.sandbarLayering.map(wrapPearlShelves),
+            note: lagoonAnswer.coastalWardrobe
         )
     }
 
     static func openHarbor(for bundle: SuliJoyPearlShoreBundle) async -> SuliJoyHarborAnswer<SuliJoyHarborFlow> {
         let lagoonAnswer = await SuliJoyLagoonHarborService.shared.settlePearlHarbor(pack: bundle.pearlPack)
         return SuliJoyHarborAnswer(
-            code: lagoonAnswer.code,
-            cargo: mapHarborFlow(lagoonAnswer.data),
-            note: lagoonAnswer.note
+            code: lagoonAnswer.beachwearCapsule,
+            cargo: mapHarborFlow(lagoonAnswer.sandbarLayering),
+            note: lagoonAnswer.coastalWardrobe
         )
     }
 

@@ -25,6 +25,6 @@ final class SuliJoyIslandWardrobeCompass {
     }
 
     func restoreIslandCanvas() {
-        islandFallbackCanvas?(SuliJoySunsetGateController.activeReefToken)
+        islandFallbackCanvas?(SuliJoySunsetGateController.coastalWardrobe)
     }
 }

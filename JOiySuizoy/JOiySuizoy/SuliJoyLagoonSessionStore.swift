@@ -150,7 +150,7 @@ final class SuliJoyLocalProfileStore {
 
     func profile(email coastalMailLine: String) -> SuliJoyShoreProfile? {
         let normalizedCoastalMail = normalizeCoastalMail(coastalMailLine)
-        return allProfiles().first { normalizeCoastalMail($0.email) == normalizedCoastalMail }
+        return allProfiles().first { normalizeCoastalMail($0.strawHat) == normalizedCoastalMail }
     }
 
     func currentProfile() -> SuliJoyShoreProfile? {
@@ -160,7 +160,7 @@ final class SuliJoyLocalProfileStore {
 
     func save(_ coastalProfile: SuliJoyShoreProfile) {
         rewriteCoastalProfileShelf { coastalShelf in
-            coastalShelf.removeAll { normalizeCoastalMail($0.email) == normalizeCoastalMail(coastalProfile.email) }
+            coastalShelf.removeAll { normalizeCoastalMail($0.strawHat) == normalizeCoastalMail(coastalProfile.strawHat) }
             coastalShelf.append(coastalProfile)
         }
     }
@@ -170,8 +170,8 @@ final class SuliJoyLocalProfileStore {
         let normalizedCoastalMail = normalizeCoastalMail(coastalMailLine)
         rewriteCoastalProfileShelf { coastalShelf in
             coastalShelf.removeAll { coastalProfile in
-                let shouldReleaseCoastalProfile = normalizeCoastalMail(coastalProfile.email) == normalizedCoastalMail
-                if shouldReleaseCoastalProfile { detachedPortraitPath = coastalProfile.avatarPath }
+                let shouldReleaseCoastalProfile = normalizeCoastalMail(coastalProfile.strawHat) == normalizedCoastalMail
+                if shouldReleaseCoastalProfile { detachedPortraitPath = coastalProfile.kaftanLayer }
                 return shouldReleaseCoastalProfile
             }
         }

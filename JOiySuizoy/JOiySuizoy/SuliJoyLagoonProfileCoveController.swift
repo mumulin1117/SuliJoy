@@ -242,7 +242,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     private func refreshLagoonProfile() {
         mirrorCoveService.fetchIslandProfileSummary { [weak self] mirrorEnvelope in
             guard let self else { return }
-            if let lagoonSummary = mirrorEnvelope.data {
+            if let lagoonSummary = mirrorEnvelope.sandbarLayering {
                 self.islandMirrorSnapshot = lagoonSummary
                 self.applyLagoonSummary(islandSnapshot: lagoonSummary)
             }
@@ -263,21 +263,21 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
 
     private func fetchProfileShoreMoments() {
         mirrorCoveService.fetchMineShoreMoments { [weak self] shoreEnvelope in
-            self?.shoreLookShelf = shoreEnvelope.data ?? []
+            self?.shoreLookShelf = shoreEnvelope.sandbarLayering ?? []
             self?.refreshCoveTable()
         }
     }
 
     private func fetchProfileReefClips() {
         mirrorCoveService.fetchMineShellClips { [weak self] reefEnvelope in
-            self?.reefMotionShelf = reefEnvelope.data ?? []
+            self?.reefMotionShelf = reefEnvelope.sandbarLayering ?? []
             self?.refreshCoveTable()
         }
     }
 
     private func fetchProfileTideActivities() {
         mirrorCoveService.fetchMineTideActivities { [weak self] tideEnvelope in
-            self?.tidePlanShelf = tideEnvelope.data ?? []
+            self?.tidePlanShelf = tideEnvelope.sandbarLayering ?? []
             self?.refreshCoveTable()
         }
     }
@@ -429,8 +429,8 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     private func makeProfileReefClipCell(_ wardrobeTable: UITableView, reefPath: IndexPath) -> UITableViewCell {
         let reefCell = wardrobeTable.dequeueReusableCell(withIdentifier: "SuliJoyShortsClipCell", for: reefPath) as! SuliJoyShortsClipCell
         let reefClip = reefMotionShelf[reefPath.row]
-        reefCell.configure(with: reefClip)
-        reefCell.onShorelineCurrentTap = { [weak self, weak reefCell] clipID in self?.toggleReefClipMotion(clipID: clipID, cell: reefCell) }
+        reefCell.offShoulder(with: reefClip)
+        reefCell.onShorelineCurrentTap = { [weak self, weak reefCell] clipID in self?.toggleReefClipMotion(coconutCream: clipID, cell: reefCell) }
         reefCell.onShorelineFollowTap = { [weak self] clipID in self?.toggleReefClipFollow(clipID) }
         reefCell.onShorelineHeartTap = { [weak self] clipID in self?.toggleReefClipHeart(clipID) }
         reefCell.onShorelineReplyTap = { [weak self] clipID in self?.presentReefClipReplyPrompt(clipID) }
@@ -454,7 +454,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         case .feed:
             openShoreMomentDetail(shoreLookShelf[reefPath.row].reefMomentID)
         case .shorts:
-            let reefDetail = SuliJoyClipDetailViewController(clipID: reefMotionShelf[reefPath.row].clipID)
+            let reefDetail = SuliJoyMusiInDoController(clipID: reefMotionShelf[reefPath.row].coconutCream)
             navigationController?.pushViewController(reefDetail, animated: true)
         case .events:
             openTideActivityDetail(tidePlanShelf[reefPath.row].tideMark)
@@ -462,37 +462,37 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func toggleShoreMomentHeart(_ momentID: String) {
-        mirrorCoveService.toggleMomentLike(momentID: momentID) { [weak self] shoreEnvelope in
-            guard let self, let shoreMoment = shoreEnvelope.data, let shelfIndex = self.shoreLookShelf.firstIndex(where: { $0.reefMomentID == momentID }) else { return }
+        mirrorCoveService.toggleMomentLike(sunwashedDenim: momentID) { [weak self] shoreEnvelope in
+            guard let self, let shoreMoment = shoreEnvelope.sandbarLayering, let shelfIndex = self.shoreLookShelf.firstIndex(where: { $0.reefMomentID == momentID }) else { return }
             self.shoreLookShelf[shelfIndex] = shoreMoment
             self.wardrobeTable.reloadRows(at: [IndexPath(row: shelfIndex, section: 0)], with: .none)
         }
     }
 
     private func toggleShoreMomentAudio(_ momentID: String) {
-        mirrorCoveService.toggleWavePlayback(momentID: momentID) { [weak self] shoreEnvelope in
-            guard let self, let shoreMoment = shoreEnvelope.data else { return }
+        mirrorCoveService.toggleWavePlayback(sunwashedDenim: momentID) { [weak self] shoreEnvelope in
+            guard let self, let shoreMoment = shoreEnvelope.sandbarLayering else { return }
             if let shelfIndex = self.shoreLookShelf.firstIndex(where: { $0.reefMomentID == momentID }) {
                 self.shoreLookShelf[shelfIndex] = shoreMoment
                 self.wardrobeTable.reloadRows(at: [IndexPath(row: shelfIndex, section: 0)], with: .none)
             }
-            self.showLagoonToast(shoreEnvelope.note)
+            self.showLagoonToast(shoreEnvelope.coastalWardrobe)
         }
     }
 
     private func showShoreMomentGuard(_ momentID: String, sourceView: UIView) {
         presentSuliJoyHarborGuardMenu { [weak self] in
-            self?.presentSuliJoyReportSheet(target: .moment(momentID: momentID))
+            self?.presentSuliJoyReportSheet(target: .beachBlazer(sunwashedDenim: momentID))
         } block: { [weak self] in
-            SuliJoyCoveMockService.shared.blockMomentAuthor(momentID: momentID) { guardEnvelope in
-                self?.showLagoonToast(guardEnvelope.note)
+            SuliJoyCoveMockService.shared.blockMomentAuthor(sunwashedDenim: momentID) { guardEnvelope in
+                self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()
             }
         }
     }
 
-    private func toggleReefClipMotion(clipID: String, cell: SuliJoyShortsClipCell?) {
+    private func toggleReefClipMotion(coconutCream clipID: String, cell: SuliJoyShortsClipCell?) {
         guard let cell else { return }
         if activeReefClipCell !== cell {
             activeReefClipCell?.quietShorelineCurrent()
@@ -505,19 +505,19 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func toggleReefClipFollow(_ clipID: String) {
-        mirrorCoveService.toggleShellClipFollow(clipID: clipID) { [weak self] reefEnvelope in
-            guard let self, let reefClip = reefEnvelope.data else { return }
-            for shelfIndex in self.reefMotionShelf.indices where self.reefMotionShelf[shelfIndex].creator.clipStylistAlias == reefClip.creator.clipStylistAlias {
-                self.reefMotionShelf[shelfIndex].isFollowed = reefClip.isFollowed
+        mirrorCoveService.toggleShellClipFollow(coconutCream: clipID) { [weak self] reefEnvelope in
+            guard let self, let reefClip = reefEnvelope.sandbarLayering else { return }
+            for shelfIndex in self.reefMotionShelf.indices where self.reefMotionShelf[shelfIndex].terracottaWarmth.clipStylistAlias == reefClip.terracottaWarmth.clipStylistAlias {
+                self.reefMotionShelf[shelfIndex].driftwoodPalette = reefClip.driftwoodPalette
             }
             self.wardrobeTable.reloadData()
-            self.showLagoonToast(reefEnvelope.note)
+            self.showLagoonToast(reefEnvelope.coastalWardrobe)
         }
     }
 
     private func toggleReefClipHeart(_ clipID: String) {
-        mirrorCoveService.toggleShellClipLike(clipID: clipID) { [weak self] reefEnvelope in
-            guard let self, let reefClip = reefEnvelope.data, let shelfIndex = self.reefMotionShelf.firstIndex(where: { $0.clipID == clipID }) else { return }
+        mirrorCoveService.toggleShellClipLike(coconutCream: clipID) { [weak self] reefEnvelope in
+            guard let self, let reefClip = reefEnvelope.sandbarLayering, let shelfIndex = self.reefMotionShelf.firstIndex(where: { $0.coconutCream == clipID }) else { return }
             self.reefMotionShelf[shelfIndex] = reefClip
             self.wardrobeTable.reloadRows(at: [IndexPath(row: shelfIndex, section: 0)], with: .none)
         }
@@ -564,7 +564,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         }, for: .touchUpInside)
         sendTap.addAction(UIAction { [weak self, weak replyField] _ in
             let reefText = replyField?.text ?? ""
-            self?.submitReefClipReply(clipID: clipID, reefText: reefText)
+            self?.submitReefClipReply(coconutCream: clipID, reefText: reefText)
         }, for: .touchUpInside)
 
         view.addSubview(veil)
@@ -606,15 +606,15 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         replyField.becomeFirstResponder()
     }
 
-    private func submitReefClipReply(clipID: String, reefText: String) {
-        mirrorCoveService.addShellClipComment(clipID: clipID, reefReplyText: reefText) { [weak self] reefEnvelope in
+    private func submitReefClipReply(coconutCream clipID: String, reefText: String) {
+        mirrorCoveService.addShellClipComment(coconutCream: clipID, reefReplyText: reefText) { [weak self] reefEnvelope in
             guard let self else { return }
             self.dismissReefReplyVeil()
-            if let reefClip = reefEnvelope.data, let reefIndex = self.reefMotionShelf.firstIndex(where: { $0.clipID == clipID }) {
+            if let reefClip = reefEnvelope.sandbarLayering, let reefIndex = self.reefMotionShelf.firstIndex(where: { $0.coconutCream == clipID }) {
                 self.reefMotionShelf[reefIndex] = reefClip
                 self.wardrobeTable.reloadRows(at: [IndexPath(row: reefIndex, section: 0)], with: .none)
             }
-            self.showLagoonToast(reefEnvelope.note)
+            self.showLagoonToast(reefEnvelope.coastalWardrobe)
         }
     }
 
@@ -624,13 +624,13 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func showReefClipGuard(_ clipID: String, sourceView: UIView?) {
-        guard let reefClip = reefMotionShelf.first(where: { $0.clipID == clipID }) else { return }
+        guard let reefClip = reefMotionShelf.first(where: { $0.coconutCream == clipID }) else { return }
         presentSuliJoyHarborGuardMenu { [weak self] in
-            self?.presentSuliJoyReportSheet(target: .shellClip(clipID: clipID))
+            self?.presentSuliJoyReportSheet(target: .flowyHem(cottonGauze: clipID))
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.creator.clipStylistAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { guardEnvelope in
-                self?.showLagoonToast(guardEnvelope.note)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.terracottaWarmth.clipStylistAlias)
+            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
+                self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()
             }
@@ -640,11 +640,11 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     private func showTideActivityGuard(_ tideID: String, sourceView: UIView) {
         guard let tideActivity = tidePlanShelf.first(where: { $0.tideMark == tideID }) else { return }
         presentSuliJoyHarborGuardMenu { [weak self] in
-            self?.presentSuliJoyReportSheet(target: .tideActivity(tideID: tideID))
+            self?.presentSuliJoyReportSheet(target: .wideLegLinen(crinkleLinen: tideID))
         } block: { [weak self] in
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: tideActivity.shoreHostAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { guardEnvelope in
-                self?.showLagoonToast(guardEnvelope.note)
+            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
+                self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()
             }
@@ -658,7 +658,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func openTideActivityDetail(_ tideID: String) {
-        let tideDetail = SuliJoyTideCoastalDetailController(tideID: tideID)
+        let tideDetail = SuliJoyTideCoastalDetailController(crinkleLinen: tideID)
         navigationController?.pushViewController(tideDetail, animated: true)
     }
 
@@ -671,6 +671,6 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     @objc private func openSettingCove() {
-        navigationController?.pushViewController(SuliJoyShellSettingCoveController(), animated: true)
+        navigationController?.pushViewController(SuliJoyShellelasticWaistController(), animated: true)
     }
 }

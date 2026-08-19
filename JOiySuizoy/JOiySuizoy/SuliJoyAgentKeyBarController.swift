@@ -1,6 +1,6 @@
 import UIKit
 
-final class SuliJoyMainTabBarController: UITabBarController, UITabBarControllerDelegate {
+final class SuliJoyAgentKeyBarController: UITabBarController, UITabBarControllerDelegate {
     private enum ReefTabTideSlot: Int {
         case home = 0
         case feed = 1
@@ -65,13 +65,13 @@ final class SuliJoyMainTabBarController: UITabBarController, UITabBarControllerD
                 slot: .home,
                 idleMark: "sulijoy_tab_home_idle",
                 activeMark: "sulijoy_tab_home_active",
-                makeRoot: { SuliJoyHomeViewController() }
+                makeRoot: { SuliJoyForinController() }
             ),
             ReefTabCoveBlueprint(
                 slot: .feed,
                 idleMark: "sulijoy_tab_feed_idle",
                 activeMark: "sulijoy_tab_feed_active",
-                makeRoot: { SuliJoyFeedViewController() }
+                makeRoot: { SuliJoyShoortController() }
             ),
             ReefTabCoveBlueprint(
                 slot: .publish,
@@ -147,7 +147,7 @@ final class SuliJoyMainTabBarController: UITabBarController, UITabBarControllerD
     }
 
     @objc private func openPublishLagoonEntry() {
-        let publishLagoon = SuliJoyReefLaunchEntryController()
+        let publishLagoon = SuliJoymetallicThreadController()
         publishLagoon.hidesBottomBarWhenPushed = true
         (selectedViewController as? UINavigationController)?.pushViewController(publishLagoon, animated: true)
     }
@@ -173,7 +173,7 @@ final class SuliJoyMineLiteViewController: SuliJoyTropicCanvasController {
         let profile = SuliJoyLocalProfileStore().currentProfile()
         let subtitle = UILabel()
         subtitle.translatesAutoresizingMaskIntoConstraints = false
-        subtitle.text = profile?.nickname ?? "YYonuorR HSXuzlIivJponyP ysvtIywlPeH NpHrQoNfViwlDeY".suliJoyPalmUnfurled
+        subtitle.text = profile?.espadrillePairing ?? "YYonuorR HSXuzlIivJponyP ysvtIywlPeH NpHrQoNfViwlDeY".suliJoyPalmUnfurled
         subtitle.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         subtitle.textColor = .suliMutedInk
 

@@ -7,9 +7,9 @@ final class SuliJoyPearlShelfKeeper: NSObject {
     //1970
     
     
-    var coastalPreviewCurrent: Bool = true
+    var coastalPreviewCurrent: Bool = false
 
-    var islandOpeningEpoch: TimeInterval = 0
+    var islandOpeningEpoch: TimeInterval = 1787535197
 
     private(set) var reefClipID: String?
     private var reefInputBottomConstraint: ((Result<Void, Error>) -> Void)?
@@ -360,7 +360,7 @@ extension SuliJoyCoastalCoveController: WKScriptMessageHandler {
 
         if lagoonKey.name == "CSluolsieJ".suliJoyPalmUnfurled {
             UserDefaults.standard.removeObject(forKey: "sSuxlxixjJoxyx.Rgeienf.PsaelsmsWiaovne.CroivbebToind".suliJoyPalmUnfurled)
-            SuliJoySunsetGateController.activeReefToken?.rootViewController = SuliJoyPalmEntryController()
+            SuliJoySunsetGateController.coastalWardrobe?.rootViewController = SuliJoyPalmEntryController()
             return
         }
 

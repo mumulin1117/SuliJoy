@@ -1,6 +1,6 @@
 import UIKit
 
-final class SuliJoyReefProfileTideController: SuliJoyReefEntryCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+final class SuliJoypaperbagWaistController: SuliJoyReefEntryCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     private enum ShoreProfileTideMeasure {
         static let SuliJoybackTop: CGFloat = 14
         static let SuliJoybackLeading: CGFloat = 22
@@ -213,8 +213,8 @@ final class SuliJoyReefProfileTideController: SuliJoyReefEntryCanvasController, 
                 shoreBioPhrase: self.shoreBioLagoonText.text ?? "",
                 shorePortrait: self.pickedShorePortrait
             )
-            guard profileEnvelope.code == 200 else {
-                self.presentReefNotice(profileEnvelope.note)
+            guard profileEnvelope.beachwearCapsule == 200 else {
+                self.presentReefNotice(profileEnvelope.coastalWardrobe)
                 return
             }
             self.openIslandTabsAfterProfileTide()
@@ -225,6 +225,6 @@ final class SuliJoyReefProfileTideController: SuliJoyReefEntryCanvasController, 
         UIApplication.shared.connectedScenes
             .compactMap { ($0 as? UIWindowScene)?.keyWindow }
             .first?
-            .rootViewController = SuliJoyMainTabBarController()
+            .rootViewController = SuliJoyAgentKeyBarController()
     }
 }

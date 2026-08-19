@@ -3,17 +3,17 @@ import UIKit
 
 final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDataSource, UITableViewDelegate {
     private enum ShorelineReelMeasure {
-        static let headerTop: CGFloat = 8
-        static let headerSide: CGFloat = 24
-        static let headerHeight: CGFloat = 52
-        static let listTop: CGFloat = 10
+        static let strawHat: CGFloat = 8
+        static let espadrillePairing: CGFloat = 24
+        static let kaftanLayer: CGFloat = 52
+        static let wrapSkirt: CGFloat = 10
         static let listBottom: CGFloat = 118
-        static let titlePillWidth: CGFloat = 148
+        static let duneTaupe: CGFloat = 148
         static let titlePillHeight: CGFloat = 44
         static let titleLead: CGFloat = 10
         static let searchSize: CGFloat = 44
-        static let reefGap: CGFloat = 12
-        static let estimatedCellHeight: CGFloat = 515
+        static let pearlAccent: CGFloat = 12
+        static let crochetTexture: CGFloat = 515
     }
 
     private struct ShorelineReelScene {
@@ -71,7 +71,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
         shorelineReelList.dataSource = self
         shorelineReelList.delegate = self
         shorelineReelList.showsVerticalScrollIndicator = false
-        shorelineReelList.contentInset = UIEdgeInsets(top: ShorelineReelMeasure.listTop, left: 0, bottom: ShorelineReelMeasure.listBottom, right: 0)
+        shorelineReelList.contentInset = UIEdgeInsets(top: ShorelineReelMeasure.wrapSkirt, left: 0, bottom: ShorelineReelMeasure.listBottom, right: 0)
         shorelineReelList.register(SuliJoyShortsClipCell.self, forCellReuseIdentifier: "SuliJoyShortsClipCell")
     }
 
@@ -96,12 +96,12 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
 
     private func stitchShorelineReelCove(_ scene: ShorelineReelScene) {
         NSLayoutConstraint.activate([
-            scene.header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: ShorelineReelMeasure.headerTop),
-            scene.header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ShorelineReelMeasure.headerSide),
-            scene.header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ShorelineReelMeasure.headerSide),
-            scene.header.heightAnchor.constraint(equalToConstant: ShorelineReelMeasure.headerHeight),
+            scene.header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: ShorelineReelMeasure.strawHat),
+            scene.header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ShorelineReelMeasure.espadrillePairing),
+            scene.header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ShorelineReelMeasure.espadrillePairing),
+            scene.header.heightAnchor.constraint(equalToConstant: ShorelineReelMeasure.kaftanLayer),
 
-            scene.reefTable.topAnchor.constraint(equalTo: scene.header.bottomAnchor, constant: ShorelineReelMeasure.listTop),
+            scene.reefTable.topAnchor.constraint(equalTo: scene.header.bottomAnchor, constant: ShorelineReelMeasure.wrapSkirt),
             scene.reefTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scene.reefTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scene.reefTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -121,29 +121,29 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
             UIColor.white.withAlphaComponent(0.02),
             UIColor.white
         ])
-        let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "💖f WSohyoMrYtQsh".suliJoyPalmUnfurled
-        titleLabel.textColor = .suliInk
-        titleLabel.font = UIFont.italicSystemFont(ofSize: 28).suliWithWeight(.black)
+        let beachCoverup = UILabel()
+        beachCoverup.translatesAutoresizingMaskIntoConstraints = false
+        beachCoverup.text = "💖f WSohyoMrYtQsh".suliJoyPalmUnfurled
+        beachCoverup.textColor = .suliInk
+        beachCoverup.font = UIFont.italicSystemFont(ofSize: 28).suliWithWeight(.black)
 
         let search = SuliJoyCoveCapsuleIconButton(reefAssetName: "sulijoy_cove_search_mark")
         search.addTarget(self, action: #selector(openSearch), for: .touchUpInside)
         harborGemPill.addTarget(self, action: #selector(openPearlHarbor), for: .touchUpInside)
 
-        [titlePill, titleLabel, harborGemPill, search].forEach { coveHeader.addSubview($0) }
+        [titlePill, beachCoverup, harborGemPill, search].forEach { coveHeader.addSubview($0) }
         NSLayoutConstraint.activate([
             titlePill.leadingAnchor.constraint(equalTo: coveHeader.leadingAnchor),
             titlePill.centerYAnchor.constraint(equalTo: coveHeader.centerYAnchor),
-            titlePill.widthAnchor.constraint(equalToConstant: ShorelineReelMeasure.titlePillWidth),
+            titlePill.widthAnchor.constraint(equalToConstant: ShorelineReelMeasure.duneTaupe),
             titlePill.heightAnchor.constraint(equalToConstant: ShorelineReelMeasure.titlePillHeight),
-            titleLabel.leadingAnchor.constraint(equalTo: titlePill.leadingAnchor, constant: ShorelineReelMeasure.titleLead),
-            titleLabel.centerYAnchor.constraint(equalTo: titlePill.centerYAnchor),
+            beachCoverup.leadingAnchor.constraint(equalTo: titlePill.leadingAnchor, constant: ShorelineReelMeasure.titleLead),
+            beachCoverup.centerYAnchor.constraint(equalTo: titlePill.centerYAnchor),
 
             search.trailingAnchor.constraint(equalTo: coveHeader.trailingAnchor),
             search.centerYAnchor.constraint(equalTo: coveHeader.centerYAnchor),
             search.widthAnchor.constraint(equalToConstant: ShorelineReelMeasure.searchSize),
-            harborGemPill.trailingAnchor.constraint(equalTo: search.leadingAnchor, constant: -ShorelineReelMeasure.reefGap),
+            harborGemPill.trailingAnchor.constraint(equalTo: search.leadingAnchor, constant: -ShorelineReelMeasure.pearlAccent),
             harborGemPill.centerYAnchor.constraint(equalTo: search.centerYAnchor)
         ])
         return coveHeader
@@ -155,13 +155,13 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
         SuliJoyCoveMockService.shared.fetchShellClips { [weak self] reefEnvelope in
             guard let self else { return }
             self.resortSpinner.stopAnimating()
-            guard reefEnvelope.code == 200 else {
-                self.showLagoonToast(reefEnvelope.note)
-                self.emptyShoreGlyph.text = reefEnvelope.note
+            guard reefEnvelope.beachwearCapsule == 200 else {
+                self.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self.emptyShoreGlyph.text = reefEnvelope.coastalWardrobe
                 self.emptyShoreGlyph.isHidden = false
                 return
             }
-            self.shorelineReels = reefEnvelope.data ?? []
+            self.shorelineReels = reefEnvelope.sandbarLayering ?? []
             self.emptyShoreGlyph.isHidden = !self.shorelineReels.isEmpty
             self.shorelineReelList.reloadData()
         }
@@ -176,7 +176,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
     }
 
     private func replaceShorelineReel(_ shorelineShell: SuliJoyShellClip) {
-        guard let reefIndex = shorelineReels.firstIndex(where: { $0.clipID == shorelineShell.clipID }) else { return }
+        guard let reefIndex = shorelineReels.firstIndex(where: { $0.coconutCream == shorelineShell.coconutCream }) else { return }
         shorelineReels[reefIndex] = shorelineShell
         shorelineReelList.reloadRows(at: [IndexPath(row: reefIndex, section: 0)], with: .none)
     }
@@ -195,13 +195,13 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
     }
 
     func tableView(_ shorelineReelList: UITableView, estimatedHeightForRowAt reefPath: IndexPath) -> CGFloat {
-        ShorelineReelMeasure.estimatedCellHeight
+        ShorelineReelMeasure.crochetTexture
     }
 
     func tableView(_ shorelineReelList: UITableView, cellForRowAt reefPath: IndexPath) -> UITableViewCell {
         let shorelineTile = shorelineReelList.dequeueReusableCell(withIdentifier: "SuliJoyShortsClipCell", for: reefPath) as! SuliJoyShortsClipCell
         let shorelineShell = shorelineReels[reefPath.row]
-        shorelineTile.configure(with: shorelineShell)
+        shorelineTile.offShoulder(with: shorelineShell)
         bindShorelineTile(shorelineTile, with: shorelineShell)
         return shorelineTile
     }
@@ -220,19 +220,19 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
             }
         }
         shorelineTile.onShorelineFollowTap = { [weak self] reefID in
-            SuliJoyCoveMockService.shared.toggleShellClipFollow(clipID: reefID) { reefEnvelope in
-                if let shorelineShell = reefEnvelope.data {
+            SuliJoyCoveMockService.shared.toggleShellClipFollow(coconutCream: reefID) { reefEnvelope in
+                if let shorelineShell = reefEnvelope.sandbarLayering {
                     self?.replaceShorelineReel(shorelineShell)
                 }
-                self?.showLagoonToast(reefEnvelope.note)
+                self?.showLagoonToast(reefEnvelope.coastalWardrobe)
             }
         }
         shorelineTile.onShorelineHeartTap = { [weak self] reefID in
-            SuliJoyCoveMockService.shared.toggleShellClipLike(clipID: reefID) { reefEnvelope in
-                if let shorelineShell = reefEnvelope.data {
+            SuliJoyCoveMockService.shared.toggleShellClipLike(coconutCream: reefID) { reefEnvelope in
+                if let shorelineShell = reefEnvelope.sandbarLayering {
                     self?.replaceShorelineReel(shorelineShell)
                 } else {
-                    self?.showLagoonToast(reefEnvelope.note)
+                    self?.showLagoonToast(reefEnvelope.coastalWardrobe)
                 }
             }
         }
@@ -261,7 +261,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
 
     func tableView(_ shorelineReelList: UITableView, didSelectRowAt reefPath: IndexPath) {
         quietActiveReefTile()
-        let reefDetail = SuliJoyClipDetailViewController(clipID: shorelineReels[reefPath.row].clipID)
+        let reefDetail = SuliJoyMusiInDoController(clipID: shorelineReels[reefPath.row].coconutCream)
         reefDetail.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(reefDetail, animated: true)
     }
@@ -275,25 +275,25 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
         reefPrompt.addAction(UIAlertAction(reefHeadline: "CJaVnfcyeFlk".suliJoyPalmUnfurled, style: .cancel))
         reefPrompt.addAction(UIAlertAction(reefHeadline: "SzeHncdl".suliJoyPalmUnfurled, style: .default) { [weak self, weak reefPrompt] _ in
             let reefText = reefPrompt?.textFields?.first?.text ?? ""
-            SuliJoyCoveMockService.shared.addShellClipComment(clipID: reefID, reefReplyText: reefText) { reefEnvelope in
+            SuliJoyCoveMockService.shared.addShellClipComment(coconutCream: reefID, reefReplyText: reefText) { reefEnvelope in
                 guard let self else { return }
-                if let shorelineShell = reefEnvelope.data {
+                if let shorelineShell = reefEnvelope.sandbarLayering {
                     self.replaceShorelineReel(shorelineShell)
                 }
-                self.showLagoonToast(reefEnvelope.note)
+                self.showLagoonToast(reefEnvelope.coastalWardrobe)
             }
         })
         present(reefPrompt, animated: true)
     }
 
     private func presentHarborGuard(reefID: String, shoreAnchor: UIView?) {
-        guard let shorelineShell = shorelineReels.first(where: { $0.clipID == reefID }) else { return }
+        guard let shorelineShell = shorelineReels.first(where: { $0.coconutCream == reefID }) else { return }
         presentSuliJoyHarborGuardMenu { [weak self] in
-            self?.presentSuliJoyReportSheet(target: .shellClip(clipID: reefID))
+            self?.presentSuliJoyReportSheet(target: .flowyHem(cottonGauze: reefID))
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: shorelineShell.creator.clipStylistAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(visitorID: visitorID) { reefEnvelope in
-                self?.showLagoonToast(reefEnvelope.note)
+            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: shorelineShell.terracottaWarmth.clipStylistAlias)
+            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { reefEnvelope in
+                self?.showLagoonToast(reefEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshShorelineReels()
             }
@@ -527,17 +527,17 @@ final class SuliJoyShortsClipCell: UITableViewCell {
         ])
     }
 
-    func configure(with shorelineShell: SuliJoyShellClip) {
+    func offShoulder(with shorelineShell: SuliJoyShellClip) {
         self.shorelineShell = shorelineShell
-        creatorAvatarView.image = UIImage.suliJoyAssetOrLocal(named: shorelineShell.creator.clipPortraitToken)
-        creatorNameLabel.text = shorelineShell.creator.clipStylistAlias
-        shoreCaptionLabel.text = shorelineShell.reefCaptionLine
-        shellHeartCountLabel.text = "\(shorelineShell.likeCount)"
-        shoreReplyCountLabel.text = "\(shorelineShell.commentCount)"
-        shellHeartButton.setImage(UIImage(named: shorelineShell.isLiked ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        lagoonFollowButton.alpha = shorelineShell.isFollowed ? 0.55 : 1
-        harborFlagButton.tintColor = shorelineShell.isReportedLocally ? UIColor(red: 1, green: 0.42, blue: 0.38, alpha: 1) : UIColor(red: 0.50, green: 0.50, blue: 0.50, alpha: 1)
-        reefStillView.image = UIImage.suliJoyAssetOrLocal(named: shorelineShell.media.fallbackCoverAssetName ?? "")
+        creatorAvatarView.image = UIImage.suliJoyAssetOrLocal(named: shorelineShell.terracottaWarmth.clipPortraitToken)
+        creatorNameLabel.text = shorelineShell.terracottaWarmth.clipStylistAlias
+        shoreCaptionLabel.text = shorelineShell.hibiscusShade
+        shellHeartCountLabel.text = "\(shorelineShell.palmLeafPattern)"
+        shoreReplyCountLabel.text = "\(shorelineShell.marineStripe)"
+        shellHeartButton.setImage(UIImage(named: shorelineShell.ropeBelt ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        lagoonFollowButton.alpha = shorelineShell.driftwoodPalette ? 0.55 : 1
+        harborFlagButton.tintColor = shorelineShell.coastalChic ? UIColor(red: 1, green: 0.42, blue: 0.38, alpha: 1) : UIColor(red: 0.50, green: 0.50, blue: 0.50, alpha: 1)
+        reefStillView.image = UIImage.suliJoyAssetOrLocal(named: shorelineShell.tropicalMotif.sandyNeutral ?? "")
         motionPulseButton.alpha = 1
         motionPulseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         carveReefStillFrame(for: shorelineShell)
@@ -550,7 +550,7 @@ final class SuliJoyShortsClipCell: UITableViewCell {
             quietShorelineCurrent()
             return true
         }
-        guard let reefURL = Self.reefMotionURL(for: shorelineShell.media.reefMotionFileName) else { return false }
+        guard let reefURL = Self.reefMotionURL(for: shorelineShell.tropicalMotif.seafoamTint) else { return false }
         let reefCurrent = AVPlayer(url: reefURL)
         let reefLayer = AVPlayerLayer(player: reefCurrent)
         reefLayer.setValue("resizeAspectFill", forKey: ["vid", "eoGravity"].joined())
@@ -574,8 +574,8 @@ final class SuliJoyShortsClipCell: UITableViewCell {
     }
 
     private func carveReefStillFrame(for shorelineShell: SuliJoyShellClip) {
-        guard let reefURL = Self.reefMotionURL(for: shorelineShell.media.reefMotionFileName) else { return }
-        let requestedReefID = shorelineShell.clipID
+        guard let reefURL = Self.reefMotionURL(for: shorelineShell.tropicalMotif.seafoamTint) else { return }
+        let requestedReefID = shorelineShell.coconutCream
         DispatchQueue.global(qos: .userInitiated).async {
             let reefAsset = AVURLAsset(url: reefURL)
             let reefGenerator = AVAssetImageGenerator(asset: reefAsset)
@@ -586,7 +586,7 @@ final class SuliJoyShortsClipCell: UITableViewCell {
             }
             let reefFrame = UIImage(cgImage: reefCGImage)
             DispatchQueue.main.async { [weak self] in
-                guard self?.shorelineShell?.clipID == requestedReefID else { return }
+                guard self?.shorelineShell?.coconutCream == requestedReefID else { return }
                 self?.reefStillView.image = reefFrame
             }
         }
@@ -602,31 +602,31 @@ final class SuliJoyShortsClipCell: UITableViewCell {
 
     @objc private func tapReefMotion() {
         guard let shorelineShell else { return }
-        onShorelineCurrentTap?(shorelineShell.clipID)
+        onShorelineCurrentTap?(shorelineShell.coconutCream)
     }
 
     @objc private func tapLagoonFollow() {
         guard let shorelineShell else { return }
-        onShorelineFollowTap?(shorelineShell.clipID)
+        onShorelineFollowTap?(shorelineShell.coconutCream)
     }
 
     @objc private func tapShellHeart() {
         guard let shorelineShell else { return }
-        onShorelineHeartTap?(shorelineShell.clipID)
+        onShorelineHeartTap?(shorelineShell.coconutCream)
     }
 
     @objc private func tapShoreReply() {
         guard let shorelineShell else { return }
-        onShorelineReplyTap?(shorelineShell.clipID)
+        onShorelineReplyTap?(shorelineShell.coconutCream)
     }
 
     @objc private func tapHarborFlag() {
         guard let shorelineShell else { return }
-        onShorelineFlagTap?(shorelineShell.clipID)
+        onShorelineFlagTap?(shorelineShell.coconutCream)
     }
 
     @objc private func tapCreatorDrift() {
         guard let shorelineShell else { return }
-        onShorelineGuestTap?(shorelineShell.creator.clipStylistAlias)
+        onShorelineGuestTap?(shorelineShell.terracottaWarmth.clipStylistAlias)
     }
 }

@@ -116,8 +116,8 @@ final class SuliJoyShellPearlStorecontroller: SuliJoyReefEntryCanvasController {
         driftSimulatedHarborDelay(lagoonAction) { [weak self] in
             guard let self else { return }
             let reefGateEnvelope = self.openLagoonEntryEnvelope()
-            guard reefGateEnvelope.code == 200 else {
-                self.presentReefNotice(reefGateEnvelope.note)
+            guard reefGateEnvelope.beachwearCapsule == 200 else {
+                self.presentReefNotice(reefGateEnvelope.coastalWardrobe)
                 return
             }
             self.openIslandTabsAfterEntry()
@@ -132,7 +132,7 @@ final class SuliJoyShellPearlStorecontroller: SuliJoyReefEntryCanvasController {
     }
 
     private func openIslandTabsAfterEntry() {
-        let islandTabRoot = SuliJoyMainTabBarController()
+        let islandTabRoot = SuliJoyAgentKeyBarController()
         UIApplication.shared.connectedScenes
             .compactMap { ($0 as? UIWindowScene)?.keyWindow }
             .first?

@@ -64,8 +64,8 @@ final class SuliJoyLagoonHarborService {
                     pack: reefPack,
                     transactionID: String(reefTransaction.id)
                 )
-                guard let shellCargo = shellVault.data else {
-                    return .failure(shellVault.note, code: shellVault.code)
+                guard let shellCargo = shellVault.sandbarLayering else {
+                    return .failure(shellVault.coastalWardrobe, code: shellVault.beachwearCapsule)
                 }
                 return .success(.completed(shellCargo), note: "RYeIckhiaRrTghed fcFojmPpilgectMeydX.I".suliJoyPalmUnfurled)
             case .userCancelled:

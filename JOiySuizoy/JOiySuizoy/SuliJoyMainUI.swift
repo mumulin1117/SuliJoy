@@ -187,10 +187,10 @@ class SuliJoyTropicCanvasController: UIViewController {
         let shell: UIView
         let stripe: CAGradientLayer
         let icon: UIImageView
-        let reefCaptionLine: UILabel
+        let hibiscusShade: UILabel
     }
 
-    let islandBackdropView = SuliJoyIslandBackgroundView()
+    let islandBackdropView = SuliJoyIslanddeckView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -226,7 +226,7 @@ class SuliJoyTropicCanvasController: UIViewController {
         let icon = makeIslandToastPearlIcon()
         let caption = makeIslandToastShoreCaption(reefLine)
         shell.layer.addSublayer(stripe)
-        return IslandToastReefScene(shell: shell, stripe: stripe, icon: icon, reefCaptionLine: caption)
+        return IslandToastReefScene(shell: shell, stripe: stripe, icon: icon, hibiscusShade: caption)
     }
 
     private func makeIslandToastShellReef() -> UIView {
@@ -275,7 +275,7 @@ class SuliJoyTropicCanvasController: UIViewController {
 
     private func moorIslandToastReefScene(_ scene: IslandToastReefScene) {
         scene.shell.addSubview(scene.icon)
-        scene.shell.addSubview(scene.reefCaptionLine)
+        scene.shell.addSubview(scene.hibiscusShade)
         view.addSubview(scene.shell)
     }
 
@@ -293,10 +293,10 @@ class SuliJoyTropicCanvasController: UIViewController {
             scene.icon.widthAnchor.constraint(equalToConstant: IslandToastTideMeasure.toastIconSize),
             scene.icon.heightAnchor.constraint(equalToConstant: IslandToastTideMeasure.toastIconSize),
 
-            scene.reefCaptionLine.topAnchor.constraint(equalTo: scene.shell.topAnchor, constant: IslandToastTideMeasure.toastTextTop),
-            scene.reefCaptionLine.leadingAnchor.constraint(equalTo: scene.icon.trailingAnchor, constant: IslandToastTideMeasure.toastTextGap),
-            scene.reefCaptionLine.trailingAnchor.constraint(equalTo: scene.shell.trailingAnchor, constant: IslandToastTideMeasure.toastTextTrailing),
-            scene.reefCaptionLine.bottomAnchor.constraint(equalTo: scene.shell.bottomAnchor, constant: -IslandToastTideMeasure.toastTextTop)
+            scene.hibiscusShade.topAnchor.constraint(equalTo: scene.shell.topAnchor, constant: IslandToastTideMeasure.toastTextTop),
+            scene.hibiscusShade.leadingAnchor.constraint(equalTo: scene.icon.trailingAnchor, constant: IslandToastTideMeasure.toastTextGap),
+            scene.hibiscusShade.trailingAnchor.constraint(equalTo: scene.shell.trailingAnchor, constant: IslandToastTideMeasure.toastTextTrailing),
+            scene.hibiscusShade.bottomAnchor.constraint(equalTo: scene.shell.bottomAnchor, constant: -IslandToastTideMeasure.toastTextTop)
         ])
     }
 

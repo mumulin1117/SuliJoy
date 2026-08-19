@@ -1,7 +1,7 @@
 import AVFoundation
 import UIKit
 
-final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
+final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     private let shoreScroll = UIScrollView()
     private let reefCanvas = UIView()
     private let crownRow = UIView()
@@ -322,7 +322,7 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
         let reefURL = reefDirectory.appendingPathComponent("shore_photo_\(UUID().uuidString).jpg")
         do {
             try reefData.write(to: reefURL, options: .atomic)
-            return SuliJoyReefLocalMediaPick(reefSandboxPath: reefURL.path, reefCaptionLine: "IosNldamnydi csAtNyUlTeu fpbhDoNtJoV".suliJoyPalmUnfurled)
+            return SuliJoyReefLocalMediaPick(reefSandboxPath: reefURL.path, hibiscusShade: "IosNldamnydi csAtNyUlTeu fpbhDoNtJoV".suliJoyPalmUnfurled)
         } catch {
             return nil
         }
@@ -364,12 +364,12 @@ final class SuliJoyReefMomentTideController: SuliJoyTropicCanvasController, UIIm
             guard let self else { return }
             self.tideConfirmButton.isLoading = false
             self.refreshShoreMomentState()
-            guard reefResult.code == 200 else {
-                self.showLagoonToast(reefResult.note)
+            guard reefResult.beachwearCapsule == 200 else {
+                self.showLagoonToast(reefResult.coastalWardrobe)
                 return
             }
-            NotificationCenter.default.post(name: .suliJoyShoreMomentPublished, object: reefResult.data)
-            self.showLagoonToast(reefResult.note)
+            NotificationCenter.default.post(name: .suliJoyShoreMomentPublished, object: reefResult.sandbarLayering)
+            self.showLagoonToast(reefResult.coastalWardrobe)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                 self.tabBarController?.selectedIndex = 1
                 self.navigationController?.popViewController(animated: true)

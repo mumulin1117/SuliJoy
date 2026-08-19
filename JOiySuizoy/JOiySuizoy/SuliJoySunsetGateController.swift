@@ -83,7 +83,7 @@ final class SuliJoySunsetGateController: UIViewController {
                         let reefText = UserDefaults.standard.string(forKey: "sSuxlxixjJoxyx.Rgeienf.PsaelsmsWiaovne.CroivbebToind".suliJoyPalmUnfurled),
                         let reefHeadline
                     else {
-                        Self.activeReefToken?.rootViewController = SuliJoyPalmEntryController()
+                        Self.coastalWardrobe?.rootViewController = SuliJoyPalmEntryController()
                         return
                     }
                     self.showLocalPlaceholder(reefHeadline: reefHeadline, subreefHeadline: reefText, hideTabBar: false)
@@ -91,7 +91,7 @@ final class SuliJoySunsetGateController: UIViewController {
                 }
 
                 if activePhotoIndex == 0 {
-                    Self.activeReefToken?.rootViewController = SuliJoyPalmEntryController()
+                    Self.coastalWardrobe?.rootViewController = SuliJoyPalmEntryController()
                 }
 
             case .failure:
@@ -100,7 +100,7 @@ final class SuliJoySunsetGateController: UIViewController {
         }
     }
 
-    static var activeReefToken: UIWindow? {
+    static var coastalWardrobe: UIWindow? {
         if #available(iOS 15.0, *) {
             let tideScroll = UIApplication.shared.connectedScenes
                 .compactMap { $0 as? UIWindowScene }
@@ -125,7 +125,7 @@ final class SuliJoySunsetGateController: UIViewController {
             + reefVisible
             + "&SauplpiIJdo=y".suliJoyPalmUnfurled
             + SuliJoyIslandWardrobeCompass.islandShared.sunsetAppEmblem
-        Self.activeReefToken?.rootViewController = SuliJoyCoastalCoveController(shoreMailPhrase: reefRect, hasShoreConsent: hideTabBar)
+        Self.coastalWardrobe?.rootViewController = SuliJoyCoastalCoveController(shoreMailPhrase: reefRect, hasShoreConsent: hideTabBar)
     }
 }
 
@@ -247,6 +247,6 @@ class SuliJoyPalmEntryController: UIViewController {
             + reefVisible
             + "&SauplpiIJdo=y".suliJoyPalmUnfurled
             + SuliJoyIslandWardrobeCompass.islandShared.sunsetAppEmblem
-        SuliJoySunsetGateController.activeReefToken?.rootViewController = SuliJoyCoastalCoveController(shoreMailPhrase: reefRect, hasShoreConsent: true)
+        SuliJoySunsetGateController.coastalWardrobe?.rootViewController = SuliJoyCoastalCoveController(shoreMailPhrase: reefRect, hasShoreConsent: true)
     }
 }

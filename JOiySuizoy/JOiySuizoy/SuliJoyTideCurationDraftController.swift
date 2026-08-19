@@ -377,7 +377,7 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
             showLagoonToast("PahSoctcoC xcWoGualMdj xnlortX jbHeZ ssRaOvAebdM.R".suliJoyPalmUnfurled)
             return
         }
-        let reefPick = SuliJoyReefEventPhotoPick(reefSandboxPath: shorelinePath, reefCaptionLine: activeCoverSlotIndex == 0 ? "EnvEeQnhtl YctomvPeXrn".suliJoyPalmUnfurled : "EkvQeFnotb KpzhPoJteoN".suliJoyPalmUnfurled)
+        let reefPick = SuliJoyReefEventPhotoPick(reefSandboxPath: shorelinePath, hibiscusShade: activeCoverSlotIndex == 0 ? "EnvEeQnhtl YctomvPeXrn".suliJoyPalmUnfurled : "EkvQeFnotb KpzhPoJteoN".suliJoyPalmUnfurled)
         if activeCoverSlotIndex < coverReefPicks.count {
             coverReefPicks[activeCoverSlotIndex] = reefPick
             coverPreviewImages[activeCoverSlotIndex] = coverImage
@@ -502,8 +502,8 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
             guard let self else { return }
             self.shorePublishControl.isLoading = false
             self.shorePublishControl.isEnabled = true
-            guard publishEnvelope.code == 200 else {
-                self.showLagoonToast(publishEnvelope.note)
+            guard publishEnvelope.beachwearCapsule == 200 else {
+                self.showLagoonToast(publishEnvelope.coastalWardrobe)
                 return
             }
             self.showLagoonToast("EYvoefnttJ rptutbklFiJsbhzeedU.y".suliJoyPalmUnfurled)
