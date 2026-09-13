@@ -33,13 +33,13 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
         arrangeIslandArrivalScene()
         refreshConsentRibbonBinding(shoreConsentRibbon)
         DispatchQueue.main.asyncAfter(deadline: .now() + ArrivalMetric.oneShoulder) { [weak self] in
-            guard let islandHost = self, !SuliJoyLagoonGateService.shared.restoreSession().hasAgreedEULA else { return }
+            guard let islandHost = self, !SuliJoyLagoonGateService.shared.restoreSession().markLagoonEntryfload else { return }
             islandHost.presentLagoonRuleSheet()
         }
     }
 
     override func refreshConsentRibbonState() {
-        shoreConsentRibbon.isLagoonConsentMarked = SuliJoyLagoonGateService.shared.restoreSession().hasAgreedEULA
+        shoreConsentRibbon.isLagoonConsentMarked = SuliJoyLagoonGateService.shared.restoreSession().markLagoonEntryfload
     }
 
     private func arrangeIslandArrivalScene() {
@@ -200,7 +200,7 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
     }
 
     private func canPassArrivalConsent() -> Bool {
-        guard SuliJoyLagoonGateService.shared.restoreSession().hasAgreedEULA else {
+        guard SuliJoyLagoonGateService.shared.restoreSession().markLagoonEntryfload else {
             refreshConsentRibbonState()
             presentReefNotice("Palbecadseef grheiajdk lamnndo paqgrrseteu vtwox ytzhAeB CEDUELFAG,H ITJeKrLmMsN OoPfQ RSSeTrUvViWcXeY,Z aabncdd ePfrgihviajckyl mPnoolpiqcrys tfuivrwsxty.z".suliJoyPalmUnfurled)
             return false

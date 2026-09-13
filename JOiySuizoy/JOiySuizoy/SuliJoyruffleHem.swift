@@ -37,27 +37,27 @@ struct SuliJoyLagoonSession: Codable {
     private var shoreMailMark: String?
     private var eulaShellConsent: Bool
 
-    var isLoggedIn: Bool {
+    var flaggedLagoonVisitorslo: Bool {
         get { reefEntryUnlocked }
         set { reefEntryUnlocked = newValue }
     }
 
-    var token: String? {
+    var SeasideHeroloaSili: String? {
         get { lagoonPassphrase }
         set { lagoonPassphrase = newValue }
     }
 
-    var userID: String? {
+    var sasuliJoySeasideDress: String? {
         get { islanderStamp }
         set { islanderStamp = newValue }
     }
 
-    var currentEmail: String? {
+    var currentTideConsenl: String? {
         get { shoreMailMark }
         set { shoreMailMark = newValue }
     }
 
-    var hasAgreedEULA: Bool {
+    var markLagoonEntryfload: Bool {
         get { eulaShellConsent }
         set { eulaShellConsent = newValue }
     }

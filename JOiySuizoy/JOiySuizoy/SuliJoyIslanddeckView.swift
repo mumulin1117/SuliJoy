@@ -363,7 +363,7 @@ class SuliJoyReefEntryCanvasController: UIViewController, UITextFieldDelegate, U
     }
 
     func bindLagoonConsentRibbon(_ consentRibbon: SuliJoyLagoonConsentRibbon) {
-        consentRibbon.isLagoonConsentMarked = SuliJoyLagoonGateService.shared.restoreSession().hasAgreedEULA
+        consentRibbon.isLagoonConsentMarked = SuliJoyLagoonGateService.shared.restoreSession().markLagoonEntryfload
         consentRibbon.onLagoonConsentFlip = {
             let nextTideMark = !consentRibbon.isLagoonConsentMarked
             SuliJoyLagoonGateService.shared.setLagoonConsent(nextTideMark)

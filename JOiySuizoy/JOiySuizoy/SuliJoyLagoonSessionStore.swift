@@ -25,25 +25,25 @@ final class SuliJoyTideSessionVault {
 
     func setEULATideConsent(_ hasShoreConsent: Bool) {
         rewriteLagoonSession { lagoonState in
-            lagoonState.hasAgreedEULA = hasShoreConsent
+            lagoonState.markLagoonEntryfload = hasShoreConsent
         }
     }
 
     func markLagoonEntry(shoreMail: String, islanderID: String, reefPass: String) {
         rewriteLagoonSession { lagoonState in
-            lagoonState.isLoggedIn = true
-            lagoonState.currentEmail = shoreMail
-            lagoonState.userID = islanderID
-            lagoonState.token = reefPass
+            lagoonState.flaggedLagoonVisitorslo = true
+            lagoonState.currentTideConsenl = shoreMail
+            lagoonState.sasuliJoySeasideDress = islanderID
+            lagoonState.SeasideHeroloaSili = reefPass
         }
     }
 
     func clearLagoonEntryOnly() {
         rewriteLagoonSession { lagoonState in
-            lagoonState.isLoggedIn = false
-            lagoonState.currentEmail = nil
-            lagoonState.token = nil
-            lagoonState.userID = nil
+            lagoonState.flaggedLagoonVisitorslo = false
+            lagoonState.currentTideConsenl = nil
+            lagoonState.SeasideHeroloaSili = nil
+            lagoonState.sasuliJoySeasideDress = nil
         }
     }
 
@@ -154,7 +154,7 @@ final class SuliJoyLocalProfileStore {
     }
 
     func currentProfile() -> SuliJoyShoreProfile? {
-        guard let currentCoastalMail = SuliJoyTideSessionVault().suliJoySeasideHeroload().currentEmail else { return nil }
+        guard let currentCoastalMail = SuliJoyTideSessionVault().suliJoySeasideHeroload().currentTideConsenl else { return nil }
         return profile(email: currentCoastalMail)
     }
 

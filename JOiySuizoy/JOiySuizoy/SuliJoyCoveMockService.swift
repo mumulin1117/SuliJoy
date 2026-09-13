@@ -401,7 +401,7 @@ final class SuliJoyCoveMockService {
             let summary = SuliJoyLagoonProfileSnapshot(
                 lagoonNameText: (name?.isEmpty == false ? name : "David") ?? "David",
                 lagoonAvatarAssetName: avatarName,
-                islandTraceText: Self.stableLagoonID(email: session.currentEmail, fallbackUserID: session.userID),
+                islandTraceText: Self.stableLagoonID(email: session.currentTideConsenl, fallbackUserID: session.sasuliJoySeasideDress),
                 reefTallies: [
                     SuliJoyReefProfileTally(reefLabel: "Friends", reefTotal: self.pairedLagoonNames.count),
                     SuliJoyReefProfileTally(reefLabel: "Following", reefTotal: self.followedLagoonNames.count),

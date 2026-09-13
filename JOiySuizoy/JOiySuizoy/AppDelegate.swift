@@ -10,36 +10,25 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         SuliJoyLagoonHarborService.shared.beginPearlHarborRenewalWatch()
 
-//        SuliJoyIslandWardrobeCompass.islandShared.islandFallbackCanvas = { window in
-//            window?.rootViewController = Self.lagoonSessionVault()
-//        }
-        return true
-    }
-
-//    func application(
-//        _ application: UIApplication,
-//        configurationForConnecting connectingSceneSession: UISceneSession,
-//        options: UIScene.ConnectionOptions
-//    ) -> UISceneConfiguration {
-//        let isLagoonConsentMarked = UISceneConfiguration(name: "SuliJoyIslandScene", sessionRole: connectingSceneSession.role)
-//        isLagoonConsentMarked.delegateClass = SuliJoySceneDelegate.self
-//        return isLagoonConsentMarked
-//    }
-
-//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        SuliJoyIslandLaunchHarbor.islandBackdropView.storeReefImage(deviceToken)
-//    }
-
-    private static func lagoonSessionVault() -> UIViewController {
-        let wardrobeTable = SuliJoyLagoonGateService.shared.restoreSession()
-        if wardrobeTable.isLoggedIn, wardrobeTable.currentEmail != nil {
-            return SuliJoyAgentKeyBarController()
+        let wardrobeTable: UIViewController
+        let islandShared = SuliJoyLagoonGateService.shared.restoreSession()
+        if islandShared.flaggedLagoonVisitorslo, islandShared.currentTideConsenl != nil {
+            wardrobeTable = SuliJoyAgentKeyBarController()
+        } else {
+            let isLagoonConsentMarked = UINavigationController(rootViewController: suliJoyShorelineEnsemble())
+            isLagoonConsentMarked.setNavigationBarHidden(true, animated: false)
+            wardrobeTable = isLagoonConsentMarked
         }
-        let SuliJoyHarborFlow = UINavigationController(rootViewController: suliJoyShorelineEnsemble())
-        SuliJoyHarborFlow.setNavigationBarHidden(true, animated: false)
-        return SuliJoyHarborFlow
+
+        let SuliJoyHarborFlow = UIWindow(frame: UIScreen.main.bounds)
+        SuliJoyHarborFlow.rootViewController = wardrobeTable
+        SuliJoyHarborFlow.makeKeyAndVisible()
+        self.window = SuliJoyHarborFlow
+        return true
     }
 }

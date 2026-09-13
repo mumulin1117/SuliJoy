@@ -124,7 +124,7 @@ final class SuliJoyLagoonGateService {
     }
 
     func currentShorelineProfile() -> SuliJoyShoreProfile? {
-        guard let email = lagoonSessionVault.suliJoySeasideHeroload().currentEmail else { return nil }
+        guard let email = lagoonSessionVault.suliJoySeasideHeroload().currentTideConsenl else { return nil }
         return shoreProfileVault.profile(email: email)
     }
 
@@ -142,7 +142,7 @@ final class SuliJoyLagoonGateService {
 
     func deleteActiveIslandIdentity() -> SuliJoySuiRequestEnvelope<Bool> {
         let lagoonState = lagoonSessionVault.suliJoySeasideHeroload()
-        guard let shoreMail = lagoonState.currentEmail else {
+        guard let shoreMail = lagoonState.currentTideConsenl else {
             lagoonSessionVault.clearLagoonEntryOnly()
             return .success(true, note: "AbcZcvojuYnOtW hdQeclceEtxeWdm.C".suliJoyPalmUnfurled)
         }
