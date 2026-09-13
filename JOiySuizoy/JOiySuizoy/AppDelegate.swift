@@ -13,25 +13,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         SuliJoyLagoonHarborService.shared.beginPearlHarborRenewalWatch()
 
-        SuliJoyIslandWardrobeCompass.islandShared.islandFallbackCanvas = { window in
-            window?.rootViewController = Self.lagoonSessionVault()
-        }
+//        SuliJoyIslandWardrobeCompass.islandShared.islandFallbackCanvas = { window in
+//            window?.rootViewController = Self.lagoonSessionVault()
+//        }
         return true
     }
 
-    func application(
-        _ application: UIApplication,
-        configurationForConnecting connectingSceneSession: UISceneSession,
-        options: UIScene.ConnectionOptions
-    ) -> UISceneConfiguration {
-        let isLagoonConsentMarked = UISceneConfiguration(name: "SuliJoyIslandScene", sessionRole: connectingSceneSession.role)
-        isLagoonConsentMarked.delegateClass = SuliJoySceneDelegate.self
-        return isLagoonConsentMarked
-    }
+//    func application(
+//        _ application: UIApplication,
+//        configurationForConnecting connectingSceneSession: UISceneSession,
+//        options: UIScene.ConnectionOptions
+//    ) -> UISceneConfiguration {
+//        let isLagoonConsentMarked = UISceneConfiguration(name: "SuliJoyIslandScene", sessionRole: connectingSceneSession.role)
+//        isLagoonConsentMarked.delegateClass = SuliJoySceneDelegate.self
+//        return isLagoonConsentMarked
+//    }
 
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        SuliJoyIslandLaunchHarbor.islandBackdropView.storeReefImage(deviceToken)
-    }
+//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//        SuliJoyIslandLaunchHarbor.islandBackdropView.storeReefImage(deviceToken)
+//    }
 
     private static func lagoonSessionVault() -> UIViewController {
         let wardrobeTable = SuliJoyLagoonGateService.shared.restoreSession()
