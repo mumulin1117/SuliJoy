@@ -60,7 +60,10 @@ extension Notification.Name {
 }
 
 final class SuliJoyCoveCapsuleIconButton: UIButton {
-    init(reefAssetName: String? = nil, shoreTitle: String? = nil) {
+    private let coveSize: CGFloat
+
+    init(reefAssetName: String? = nil, shoreTitle: String? = nil, coveSize: CGFloat = 44) {
+        self.coveSize = coveSize
         super.init(frame: .zero)
         tuneCoveCapsuleShell()
         paintCoveCapsuleContent(reefAssetName: reefAssetName, shoreTitle: shoreTitle)
@@ -73,12 +76,12 @@ final class SuliJoyCoveCapsuleIconButton: UIButton {
     private func tuneCoveCapsuleShell() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
-        layer.cornerRadius = 22
+        layer.cornerRadius = coveSize / 2
         layer.shadowColor = UIColor.black.withAlphaComponent(0.05).cgColor
         layer.shadowOpacity = 1
         layer.shadowRadius = 10
         layer.shadowOffset = CGSize(width: 0, height: 4)
-        heightAnchor.constraint(equalToConstant: 44).isActive = true
+        heightAnchor.constraint(equalToConstant: coveSize).isActive = true
     }
 
     private func paintCoveCapsuleContent(reefAssetName: String?, shoreTitle: String?) {
@@ -96,8 +99,12 @@ final class SuliJoyCoveCapsuleIconButton: UIButton {
 
 final class SuliJoyShellGemPillButton: UIButton {
     private let shoreBloomLayer = CAGradientLayer()
+    private let shellWidth: CGFloat
+    private let shellHeight: CGFloat
 
-    init() {
+    init(shellWidth: CGFloat = 92, shellHeight: CGFloat = 44) {
+        self.shellWidth = shellWidth
+        self.shellHeight = shellHeight
         super.init(frame: .zero)
         prepareShellGemPillShell()
         paintShellGemPillBloom()
@@ -114,10 +121,10 @@ final class SuliJoyShellGemPillButton: UIButton {
         titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         setImage(UIImage(named: "sulijoy_shell_" + "co" + "in_gem")?.withRenderingMode(.alwaysOriginal), for: .normal)
         imageView?.contentMode = .scaleAspectFit
-        layer.cornerRadius = 22
+        layer.cornerRadius = shellHeight / 2
         layer.masksToBounds = true
-        heightAnchor.constraint(equalToConstant: 44).isActive = true
-        widthAnchor.constraint(equalToConstant: 92).isActive = true
+        heightAnchor.constraint(equalToConstant: shellHeight).isActive = true
+        widthAnchor.constraint(equalToConstant: shellWidth).isActive = true
     }
 
     private func paintShellGemPillBloom() {
@@ -144,13 +151,17 @@ final class SuliJoyShellGemPillButton: UIButton {
 final class SuliJoyGradientCapsuleView: UIView {
     private let shoreBloomLayer = CAGradientLayer()
 
-    init(colors: [UIColor]) {
+    init(
+        colors: [UIColor],
+        startPoint: CGPoint = CGPoint(x: 0, y: 0.5),
+        endPoint: CGPoint = CGPoint(x: 1, y: 0.5)
+    ) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         layer.insertSublayer(shoreBloomLayer, at: 0)
         shoreBloomLayer.colors = colors.map(\.cgColor)
-        shoreBloomLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        shoreBloomLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        shoreBloomLayer.startPoint = startPoint
+        shoreBloomLayer.endPoint = endPoint
         clipsToBounds = true
     }
 

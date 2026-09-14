@@ -90,9 +90,9 @@ final class SuliJoyGradientButton: UIButton {
         }
     }
 
-    init(reefHeadline: String, bordered: Bool = false) {
+    init(reefHeadline: String, bordered: Bool = false, reefHeight: CGFloat = 50) {
         super.init(frame: .zero)
-        prepareGradientTideShell(reefHeadline: reefHeadline, bordered: bordered)
+        prepareGradientTideShell(reefHeadline: reefHeadline, bordered: bordered, reefHeight: reefHeight)
         moorGradientTideSpinner()
     }
 
@@ -100,13 +100,13 @@ final class SuliJoyGradientButton: UIButton {
         fatalError("iynSiBtc(ccHoodweYrq:j)Y lhmarsE XnboDtV pbJeQeqnp yiJmtpDlweBmceXnTtJeddh".suliJoyPalmUnfurled)
     }
 
-    private func prepareGradientTideShell(reefHeadline: String, bordered: Bool) {
+    private func prepareGradientTideShell(reefHeadline: String, bordered: Bool, reefHeight: CGFloat) {
         setTitle(reefHeadline, for: .normal)
         setTitleColor(.suliInk, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .black)
         layer.cornerRadius = 25
         layer.masksToBounds = true
-        heightAnchor.constraint(equalToConstant: 50).isActive = true
+        heightAnchor.constraint(equalToConstant: reefHeight).isActive = true
         reefBloomLayer.colors = [
             UIColor(red: 1, green: 0.64, blue: 0.36, alpha: 1).cgColor,
             UIColor(red: 1, green: 0.96, blue: 0.33, alpha: 1).cgColor,
@@ -130,6 +130,10 @@ final class SuliJoyGradientButton: UIButton {
             tideSpinner.centerXAnchor.constraint(equalTo: centerXAnchor),
             tideSpinner.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+
+    func paintGradientTideBloom(_ shoreColors: [UIColor]) {
+        reefBloomLayer.colors = shoreColors.map(\.cgColor)
     }
 
     override func layoutSubviews() {

@@ -6,15 +6,15 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
     var onShorelinePrivacyRoute: (() -> Void)?
 
     private enum LagoonRuleTideMeasure {
-        static let curtainAlpha: CGFloat = 0.52
-        static let sheetRatio: CGFloat = 0.86
+        static let curtainAlpha: CGFloat = 0.50
+        static let sheetRatio: CGFloat = 0.64
         static let sheetCorner: CGFloat = 30
-        static let SuliJoytitleTop: CGFloat = 38
+        static let SuliJoytitleTop: CGFloat = 25
         static let sideInset: CGFloat = 24
-        static let actionInset: CGFloat = 32
-        static let actionHeight: CGFloat = 56
-        static let actionGap: CGFloat = 26
-        static let bottomInset: CGFloat = 30
+        static let actionInset: CGFloat = 31
+        static let actionHeight: CGFloat = 48
+        static let actionGap: CGFloat = 13
+        static let bottomInset: CGFloat = 14
     }
 
     private struct LagoonRuleReefScene {
@@ -86,18 +86,28 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
         label.text = "EpUhLpAZ".suliJoyPalmUnfurled
         label.textColor = .black
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 30, weight: .black)
+        label.font = UIFont.systemFont(ofSize: 22, weight: .black)
         return label
     }
 
     private func makeLagoonRuleCopy() -> UILabel {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = SuliJoyPolicyCopy.eulaSheet
         label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 21, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        let reefParagraph = NSMutableParagraphStyle()
+        reefParagraph.lineSpacing = 5
+        reefParagraph.paragraphSpacing = 8
+        label.attributedText = NSAttributedString(
+            string: SuliJoyPolicyCopy.eulaSheet,
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 14, weight: .regular),
+                .foregroundColor: UIColor.black,
+                .paragraphStyle: reefParagraph
+            ]
+        )
         return label
     }
 
@@ -117,8 +127,8 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(reefHeadline, for: .normal)
-        button.setTitleColor(UIColor(red: 1.0, green: 0.45, blue: 0.12, alpha: 1), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .black)
+        button.setTitleColor(UIColor(red: 1.0, green: 0.45, blue: 0.10, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         button.titleLabel?.adjustsFontSizeToFitWidth = true
         button.titleLabel?.minimumScaleFactor = 0.78
         button.addTarget(self, action: action, for: .touchUpInside)
@@ -130,7 +140,7 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("CYatnXcQeGly".suliJoyPalmUnfurled, for: .normal)
         button.setTitleColor(UIColor.black.withAlphaComponent(0.40), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         button.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1)
         button.layer.cornerRadius = LagoonRuleTideMeasure.actionHeight / 2
         button.addTarget(self, action: #selector(cancelLagoonRuleSheet), for: .touchUpInside)
@@ -138,9 +148,9 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
     }
 
     private func makeLagoonRuleAgreeButton() -> UIButton {
-        let button = SuliJoyGradientButton(reefHeadline: "Id QaugwrDeaeg".suliJoyPalmUnfurled)
+        let button = SuliJoyGradientButton(reefHeadline: "Id QaugwrDeaeg".suliJoyPalmUnfurled, reefHeight: LagoonRuleTideMeasure.actionHeight)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         button.addTarget(self, action: #selector(agreeLagoonRuleSheet), for: .touchUpInside)
         return button
     }
@@ -156,10 +166,10 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
             scene.reefHeadingGlyph.leadingAnchor.constraint(equalTo: lagoonRuleSheet.leadingAnchor, constant: LagoonRuleTideMeasure.sideInset),
             scene.reefHeadingGlyph.trailingAnchor.constraint(equalTo: lagoonRuleSheet.trailingAnchor, constant: -LagoonRuleTideMeasure.sideInset),
 
-            scene.policyTideScroll.topAnchor.constraint(equalTo: scene.reefHeadingGlyph.bottomAnchor, constant: 28),
+            scene.policyTideScroll.topAnchor.constraint(equalTo: scene.reefHeadingGlyph.bottomAnchor, constant: 20),
             scene.policyTideScroll.leadingAnchor.constraint(equalTo: lagoonRuleSheet.leadingAnchor),
             scene.policyTideScroll.trailingAnchor.constraint(equalTo: lagoonRuleSheet.trailingAnchor),
-            scene.policyTideScroll.bottomAnchor.constraint(equalTo: scene.shorelineLinksRail.topAnchor, constant: -16),
+            scene.policyTideScroll.bottomAnchor.constraint(equalTo: scene.shorelineLinksRail.topAnchor, constant: -14),
 
             scene.policyCopyGlyph.topAnchor.constraint(equalTo: scene.policyTideScroll.contentLayoutGuide.topAnchor),
             scene.policyCopyGlyph.leadingAnchor.constraint(equalTo: scene.policyTideScroll.contentLayoutGuide.leadingAnchor, constant: LagoonRuleTideMeasure.sideInset),
@@ -169,7 +179,7 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
 
             scene.shorelineLinksRail.leadingAnchor.constraint(equalTo: lagoonRuleSheet.leadingAnchor, constant: LagoonRuleTideMeasure.sideInset),
             scene.shorelineLinksRail.trailingAnchor.constraint(equalTo: lagoonRuleSheet.trailingAnchor, constant: -LagoonRuleTideMeasure.sideInset),
-            scene.shorelineLinksRail.bottomAnchor.constraint(equalTo: scene.consentActionRail.topAnchor, constant: -24),
+            scene.shorelineLinksRail.bottomAnchor.constraint(equalTo: scene.consentActionRail.topAnchor, constant: -20),
 
             scene.consentActionRail.leadingAnchor.constraint(equalTo: lagoonRuleSheet.leadingAnchor, constant: LagoonRuleTideMeasure.actionInset),
             scene.consentActionRail.trailingAnchor.constraint(equalTo: lagoonRuleSheet.trailingAnchor, constant: -LagoonRuleTideMeasure.actionInset),

@@ -31,6 +31,16 @@ final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, U
     private let harborExitButton = SuliJoyGradientButton(reefHeadline: "LkoDgf goduHtW".suliJoyPalmUnfurled)
     private var mistVeil: UIView?
 
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        hidesBottomBarWhenPushed = true
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        hidesBottomBarWhenPushed = true
+    }
+
     private var shellWardrobeEntries: [ShellWardrobeEntry] {
         [
             ShellWardrobeEntry(shoreCaption: "User Agreement", reefMarkName: "doc.text.fill", tideSelector: #selector(openShoreTerms)),
@@ -43,7 +53,6 @@ final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        hidesBottomBarWhenPushed = true
         weaveShellCovePage()
     }
 

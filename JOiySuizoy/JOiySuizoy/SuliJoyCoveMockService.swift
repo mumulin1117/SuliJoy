@@ -381,6 +381,14 @@ final class SuliJoyCoveMockService {
         }
     }
 
+    func finishIslandProfileTide() {
+        followedLagoonNames.removeAll()
+        pairedLagoonNames.removeAll()
+        for clip in clipReef {
+            syncClipReefFollowState(for: clip.terracottaWarmth.clipStylistAlias)
+        }
+    }
+
     func fetchHomeActivities(mode: SuliJoyCoveRequestMode = .reefBloom, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) -> Void) {
         sendCoveEnvelope(mode: mode, empty: [], success: visibleTideShelf(), completion: completion)
     }
@@ -395,9 +403,9 @@ final class SuliJoyCoveMockService {
             let session = SuliJoyTideSessionVault().suliJoySeasideHeroload()
             let name = profile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let avatarName = profile?.kaftanLayer?.isEmpty == false ? (profile?.kaftanLayer ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
-            let localActivityCount = self.tideShelf.filter { $0.tideMark.hasPrefix("tide_local_") || $0.tideState == .tideJoined }.count
-            let localLikes = self.shoreScroll.filter { $0.reefMomentID.hasPrefix("moment_local_") }.reduce(0) { $0 + $1.heartTally }
-                + self.clipReef.filter { $0.coconutCream.hasPrefix("shell_clip_local_") }.reduce(0) { $0 + $1.palmLeafPattern }
+            let localActivityCount = self.tideShelf.filter { name?.isEmpty == false && $0.shoreHostAlias == name }.count
+            let localLikes = self.shoreScroll.filter { name?.isEmpty == false && $0.islandStylistName == name }.reduce(0) { $0 + $1.heartTally }
+                + self.clipReef.filter { name?.isEmpty == false && $0.terracottaWarmth.clipStylistAlias == name }.reduce(0) { $0 + $1.palmLeafPattern }
             let summary = SuliJoyLagoonProfileSnapshot(
                 lagoonNameText: (name?.isEmpty == false ? name : "David") ?? "David",
                 lagoonAvatarAssetName: avatarName,
@@ -417,7 +425,7 @@ final class SuliJoyCoveMockService {
         driftCoveDelay {
             let currentName = SuliJoyLocalProfileStore().currentProfile()?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let ownMoments = self.shoreScroll.filter { moment in
-                self.isShoreScrollItemVisible(moment) && (moment.reefMomentID.hasPrefix("moment_local_") || (currentName?.isEmpty == false && moment.islandStylistName == currentName))
+                self.isShoreScrollItemVisible(moment) && currentName?.isEmpty == false && moment.islandStylistName == currentName
             }
             completion(.success(ownMoments))
         }
@@ -427,7 +435,7 @@ final class SuliJoyCoveMockService {
         driftCoveDelay {
             let currentName = SuliJoyLocalProfileStore().currentProfile()?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let ownClips = self.clipReef.filter { clip in
-                clip.coconutCream.hasPrefix("shell_clip_local_") || (currentName?.isEmpty == false && clip.terracottaWarmth.clipStylistAlias == currentName)
+                currentName?.isEmpty == false && clip.terracottaWarmth.clipStylistAlias == currentName
             }
             completion(.success(ownClips))
         }
@@ -1325,7 +1333,7 @@ final class SuliJoyCoveMockService {
     }
 
     private static var shoreResonanceStripeAsset: String {
-        "sulijoy_feed_" + "au" + "dio_wave"
+        "sulijoy_feed_" + "trver_wave"
     }
 
     private static func shoreResonanceFile(_ reefStem: String) -> String {

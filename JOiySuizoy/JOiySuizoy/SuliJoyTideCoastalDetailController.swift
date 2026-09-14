@@ -119,8 +119,12 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
 
         shoreAvatarRail.axis = .horizontal
         shoreAvatarRail.spacing = -6
-        shoreCrewCountGlyph.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-        shoreCrewCountGlyph.textColor = UIColor(red: 0.64, green: 0.64, blue: 0.64, alpha: 1)
+        shoreCrewCountGlyph.font = UIFont.systemFont(ofSize: 10, weight: .bold)
+        shoreCrewCountGlyph.textColor = .white
+        shoreCrewCountGlyph.textAlignment = .center
+        shoreCrewCountGlyph.backgroundColor = .black
+        shoreCrewCountGlyph.layer.cornerRadius = 12
+        shoreCrewCountGlyph.clipsToBounds = true
 
         let infoBlock = UIView()
         infoBlock.translatesAutoresizingMaskIntoConstraints = false
@@ -131,12 +135,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.backgroundColor = UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1)
 
-        let peopleChevron = UIImageView(image: UIImage(systemName: "chevron.right"))
-        peopleChevron.translatesAutoresizingMaskIntoConstraints = false
-        peopleChevron.tintColor = .suliInk
-        peopleChevron.contentMode = .scaleAspectFit
-
-        [shoreTitleGlyph, shoreStateGlyph, infoBlock, shoreAvatarRail, shoreCrewCountGlyph, peopleChevron].forEach {
+        [shoreTitleGlyph, shoreStateGlyph, infoBlock, shoreAvatarRail, shoreCrewCountGlyph].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             shoreInfoCard.addSubview($0)
         }
@@ -243,12 +242,11 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             shoreAvatarRail.topAnchor.constraint(equalTo: infoBlock.bottomAnchor, constant: 16),
             shoreAvatarRail.leadingAnchor.constraint(equalTo: infoBlock.leadingAnchor, constant: 12),
             shoreAvatarRail.heightAnchor.constraint(equalToConstant: 24),
-            shoreCrewCountGlyph.leadingAnchor.constraint(equalTo: shoreAvatarRail.trailingAnchor, constant: 8),
+            shoreCrewCountGlyph.leadingAnchor.constraint(equalTo: shoreAvatarRail.trailingAnchor, constant: -3),
             shoreCrewCountGlyph.centerYAnchor.constraint(equalTo: shoreAvatarRail.centerYAnchor),
-            peopleChevron.trailingAnchor.constraint(equalTo: infoBlock.trailingAnchor, constant: -6),
-            peopleChevron.centerYAnchor.constraint(equalTo: shoreAvatarRail.centerYAnchor),
-            peopleChevron.widthAnchor.constraint(equalToConstant: 20),
-            peopleChevron.heightAnchor.constraint(equalToConstant: 20),
+            shoreCrewCountGlyph.widthAnchor.constraint(equalToConstant: 24),
+            shoreCrewCountGlyph.heightAnchor.constraint(equalToConstant: 24),
+            shoreCrewCountGlyph.trailingAnchor.constraint(lessThanOrEqualTo: infoBlock.trailingAnchor, constant: -6),
             shoreInfoCard.bottomAnchor.constraint(equalTo: shoreAvatarRail.bottomAnchor, constant: 20),
 
             shoreBriefCard.topAnchor.constraint(equalTo: shoreInfoCard.bottomAnchor, constant: 20),
@@ -326,9 +324,8 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             ? "\(shorelineTideDetail.shoreDayText) \(shorelineTideDetail.sunMeridiemText) \(shorelineTideDetail.shoreClockText)"
             : shorelineTideDetail.tideScheduleLine
         shoreBriefGlyph.text = shorelineTideDetail.shoreBriefLine
-        shoreCrewCountGlyph.text = "\(shorelineTideDetail.tideJoinedTotal)/\(shorelineTideDetail.tideCrewLimit)"
         renderShoreState(shorelineTideDetail.tideState)
-        renderShoreAvatars(shorelineTideDetail.shorelineAvatarTokens)
+        renderShoreAvatars(shorelineTideDetail.shorelineAvatarTokens, reefNumber: shorelineTideDetail.tideJoinedTotal)
         renderShorePrimaryAction(shorelineTideDetail)
     }
 
@@ -381,9 +378,10 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         }
     }
 
-    private func renderShoreAvatars(_ assets: [String]) {
+    private func renderShoreAvatars(_ assets: [String], reefNumber: Int) {
         shoreAvatarRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        for asset in assets.prefix(3) {
+        let heroAssetTokens = Array(assets.prefix(min(6, max(0, reefNumber))))
+        for asset in heroAssetTokens {
             let shoreImageView = UIImageView(image: UIImage(named: asset))
             shoreImageView.translatesAutoresizingMaskIntoConstraints = false
             shoreImageView.contentMode = .scaleAspectFill
@@ -395,6 +393,9 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             shoreImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
             shoreImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
         }
+        let page = max(0, reefNumber - heroAssetTokens.count)
+        shoreCrewCountGlyph.text = "+\(page)"
+        shoreCrewCountGlyph.isHidden = page == 0
     }
 
     private func renderShorePrimaryAction(_ shorelineTideDetail: SuliJoyTideActivity) {
@@ -506,41 +507,62 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
     private func showShorePearlShortageDialog() {
         let shortageVeil = UIControl()
         shortageVeil.translatesAutoresizingMaskIntoConstraints = false
-        shortageVeil.backgroundColor = UIColor.black.withAlphaComponent(0.72)
+        shortageVeil.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         shortageVeil.alpha = 0
         shortageVeil.addTarget(self, action: #selector(dismissShorePearlDialog(_:)), for: .touchUpInside)
 
         let shortageCard = UIView()
         shortageCard.translatesAutoresizingMaskIntoConstraints = false
         shortageCard.backgroundColor = .white
-        shortageCard.layer.cornerRadius = 30
+        shortageCard.layer.cornerRadius = 20
         shortageCard.clipsToBounds = true
 
         let shortageTitleGlyph = UILabel()
         shortageTitleGlyph.translatesAutoresizingMaskIntoConstraints = false
         shortageTitleGlyph.text = "NJoftP OebnxoBuBgBhO U".suliJoyPalmUnfurled + "cxod".suliJoyPalmUnfurled + "iHnOsq".suliJoyPalmUnfurled
-        shortageTitleGlyph.font = UIFont.systemFont(ofSize: 28, weight: .black)
+        shortageTitleGlyph.font = UIFont.systemFont(ofSize: 21, weight: .black)
         shortageTitleGlyph.textColor = .black
         shortageTitleGlyph.textAlignment = .center
         shortageTitleGlyph.adjustsFontSizeToFitWidth = true
-        shortageTitleGlyph.minimumScaleFactor = 0.72
+        shortageTitleGlyph.minimumScaleFactor = 0.8
 
         let shortageNoticeGlyph = UILabel()
         shortageNoticeGlyph.translatesAutoresizingMaskIntoConstraints = false
         shortageNoticeGlyph.text = "SoorrjrXyI,r MyOoEui gdZotnV'YtZ khGaHvceY PeYnEoauwgihv y".suliJoyPalmUnfurled + "cRoj".suliJoyPalmUnfurled + "iFnvsR Stjoi Z".suliJoyPalmUnfurled + "pWat".suliJoyPalmUnfurled + "yY,U OpLlPefaIsbeq Agwoc fthol crgeFcVhTaErKgIeF".suliJoyPalmUnfurled
-        shortageNoticeGlyph.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        shortageNoticeGlyph.textColor = UIColor(red: 0.54, green: 0.54, blue: 0.54, alpha: 1)
+        shortageNoticeGlyph.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        shortageNoticeGlyph.textColor = UIColor(red: 0.55, green: 0.55, blue: 0.55, alpha: 1)
         shortageNoticeGlyph.textAlignment = .center
         shortageNoticeGlyph.numberOfLines = 0
 
         let harborEntryControl = SuliJoyGradientButton(reefHeadline: "BiumyE".suliJoyPalmUnfurled)
         harborEntryControl.translatesAutoresizingMaskIntoConstraints = false
-        harborEntryControl.titleLabel?.font = UIFont.systemFont(ofSize: 23, weight: .black)
+        var harborEntryConfiguration = UIButton.Configuration.plain()
+        harborEntryConfiguration.title = harborEntryControl.title(for: .normal)
+        harborEntryConfiguration.image = UIImage(named: "sulijoy_shell_" + "co" + "in_gem")?.withRenderingMode(.alwaysOriginal)
+        harborEntryConfiguration.imagePadding = 10
+        harborEntryConfiguration.baseForegroundColor = .suliInk
+        harborEntryConfiguration.contentInsets = .zero
+        harborEntryConfiguration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { shoreAttributes in
+            var tropicalAttributes = shoreAttributes
+            tropicalAttributes.font = UIFont.systemFont(ofSize: 20, weight: .black)
+            return tropicalAttributes
+        }
+        harborEntryControl.configuration = harborEntryConfiguration
+        harborEntryControl.imageView?.contentMode = .scaleAspectFit
+        harborEntryControl.constraints.first(where: { $0.firstAttribute == .height })?.constant = 48
+        harborEntryControl.paintGradientTideBloom([
+            UIColor(red: 1, green: 179 / 255, blue: 120 / 255, alpha: 1),
+            UIColor(red: 1, green: 248 / 255, blue: 122 / 255, alpha: 1),
+            UIColor(red: 204 / 255, green: 1, blue: 206 / 255, alpha: 1)
+        ])
         harborEntryControl.addTarget(self, action: #selector(openPearlHarborFromShoreDialog(_:)), for: .touchUpInside)
 
         view.addSubview(shortageVeil)
         shortageVeil.addSubview(shortageCard)
         [shortageTitleGlyph, shortageNoticeGlyph, harborEntryControl].forEach { shortageCard.addSubview($0) }
+
+        let shortageCardWidth = shortageCard.widthAnchor.constraint(equalToConstant: 287)
+        shortageCardWidth.priority = UILayoutPriority(999)
 
         NSLayoutConstraint.activate([
             shortageVeil.topAnchor.constraint(equalTo: view.topAnchor),
@@ -549,18 +571,19 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             shortageVeil.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             shortageCard.centerXAnchor.constraint(equalTo: shortageVeil.centerXAnchor),
             shortageCard.centerYAnchor.constraint(equalTo: shortageVeil.centerYAnchor),
-            shortageCard.leadingAnchor.constraint(equalTo: shortageVeil.leadingAnchor, constant: 36),
-            shortageCard.trailingAnchor.constraint(equalTo: shortageVeil.trailingAnchor, constant: -36),
-            shortageTitleGlyph.topAnchor.constraint(equalTo: shortageCard.topAnchor, constant: 42),
+            shortageCard.leadingAnchor.constraint(greaterThanOrEqualTo: shortageVeil.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            shortageCard.trailingAnchor.constraint(lessThanOrEqualTo: shortageVeil.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            shortageCardWidth,
+            shortageTitleGlyph.topAnchor.constraint(equalTo: shortageCard.topAnchor, constant: 31),
             shortageTitleGlyph.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 18),
             shortageTitleGlyph.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -18),
-            shortageNoticeGlyph.topAnchor.constraint(equalTo: shortageTitleGlyph.bottomAnchor, constant: 24),
-            shortageNoticeGlyph.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 34),
-            shortageNoticeGlyph.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -34),
-            harborEntryControl.topAnchor.constraint(equalTo: shortageNoticeGlyph.bottomAnchor, constant: 34),
-            harborEntryControl.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 38),
-            harborEntryControl.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -38),
-            harborEntryControl.bottomAnchor.constraint(equalTo: shortageCard.bottomAnchor, constant: -36)
+            shortageNoticeGlyph.topAnchor.constraint(equalTo: shortageTitleGlyph.bottomAnchor, constant: 12),
+            shortageNoticeGlyph.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 30),
+            shortageNoticeGlyph.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -30),
+            harborEntryControl.topAnchor.constraint(equalTo: shortageNoticeGlyph.bottomAnchor, constant: 14),
+            harborEntryControl.leadingAnchor.constraint(equalTo: shortageCard.leadingAnchor, constant: 25),
+            harborEntryControl.trailingAnchor.constraint(equalTo: shortageCard.trailingAnchor, constant: -25),
+            harborEntryControl.bottomAnchor.constraint(equalTo: shortageCard.bottomAnchor, constant: -24)
         ])
 
         UIView.animate(withDuration: 0.2) {

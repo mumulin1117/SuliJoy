@@ -73,7 +73,7 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
         crownGlyph.text = lagoonCrownText
         crownGlyph.textColor = .suliInk
         crownGlyph.textAlignment = .center
-        crownGlyph.font = UIFont.systemFont(ofSize: 32, weight: .black)
+        crownGlyph.font = UIFont.systemFont(ofSize: 20, weight: .black)
         crownGlyph.adjustsFontSizeToFitWidth = true
         crownGlyph.minimumScaleFactor = 0.82
 
@@ -91,8 +91,8 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
     private func growLagoonClauseCopy(in clauseStack: UIStackView) {
         let refreshGlyph = UILabel()
         refreshGlyph.text = lagoonRefreshText
-        refreshGlyph.textColor = .suliMutedInk
-        refreshGlyph.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        refreshGlyph.textColor = UIColor(red: 0.53, green: 0.50, blue: 0.44, alpha: 0.82)
+        refreshGlyph.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         refreshGlyph.numberOfLines = 0
         clauseStack.addArrangedSubview(refreshGlyph)
 
@@ -114,18 +114,27 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
         let headingGlyph = UILabel()
         headingGlyph.text = reefText
         headingGlyph.textColor = .suliInk
-        headingGlyph.font = UIFont.systemFont(ofSize: 24, weight: .black)
+        headingGlyph.font = UIFont.systemFont(ofSize: 16, weight: .black)
         headingGlyph.numberOfLines = 0
         return headingGlyph
     }
 
     private func makeLagoonClauseBody(_ reefText: String) -> UILabel {
         let bodyGlyph = UILabel()
-        bodyGlyph.text = reefText
         bodyGlyph.textColor = .suliInk
-        bodyGlyph.font = UIFont.systemFont(ofSize: 21, weight: .regular)
+        bodyGlyph.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         bodyGlyph.numberOfLines = 0
         bodyGlyph.lineBreakMode = .byWordWrapping
+        let reefParagraph = NSMutableParagraphStyle()
+        reefParagraph.lineSpacing = 4
+        bodyGlyph.attributedText = NSAttributedString(
+            string: reefText,
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 14, weight: .regular),
+                .foregroundColor: UIColor.suliInk,
+                .paragraphStyle: reefParagraph
+            ]
+        )
         return bodyGlyph
     }
 

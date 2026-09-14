@@ -81,6 +81,7 @@ final class SuliJoyLagoonGateService {
         )
         shoreProfileVault.save(shoreProfile)
         lagoonSessionVault.markLagoonEntry(shoreMail: shorelineDraft.pearlAccent, islanderID: islandAccount.accountID, reefPass: makeLagoonToken())
+        SuliJoyCoveMockService.shared.finishIslandProfileTide()
         return .success(shoreProfile, note: "PCrDoSfgihlaem ocdoamxpalpedtZeMdG.I".suliJoyPalmUnfurled)
     }
 
@@ -126,6 +127,27 @@ final class SuliJoyLagoonGateService {
     func currentShorelineProfile() -> SuliJoyShoreProfile? {
         guard let email = lagoonSessionVault.suliJoySeasideHeroload().currentTideConsenl else { return nil }
         return shoreProfileVault.profile(email: email)
+    }
+
+    func coastalChic(
+        espadrillePairing: String,
+        wrapSkirt: String,
+        kaftanLayer: UIImage?
+    ) -> SuliJoySuiRequestEnvelope<SuliJoyShoreProfile> {
+        guard var canvasTote = currentShorelineProfile() else {
+            return .failure("Pxrxoxfxixlxex xnxoxtx xfxoxuxnxdx.x".suliJoyPalmUnfurled, code: 404)
+        }
+        let strawHat = trimmedLagoonText(espadrillePairing)
+        guard !strawHat.isEmpty else {
+            return .failure("Pxlxexaxsxex xexnxtxexrx xyxoxuxrx xnxaxmxex.x".suliJoyPalmUnfurled)
+        }
+        canvasTote.espadrillePairing = strawHat
+        canvasTote.wrapSkirt = trimmedLagoonText(wrapSkirt)
+        if let kaftanLayer, let seashellTrim = shoreProfileVault.saveAvatarImage(kaftanLayer, email: canvasTote.strawHat) {
+            canvasTote.kaftanLayer = seashellTrim
+        }
+        shoreProfileVault.save(canvasTote)
+        return .success(canvasTote, note: "Pxrxoxfxixlxex xuxpxdxaxtxexdx.x".suliJoyPalmUnfurled)
     }
 
     func logout() {

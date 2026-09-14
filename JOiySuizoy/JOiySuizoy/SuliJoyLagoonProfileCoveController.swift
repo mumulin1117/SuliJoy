@@ -2,37 +2,45 @@ import UIKit
 
 final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, UITableViewDataSource, UITableViewDelegate {
     private enum LagoonMirrorMeasure {
-        static let coveHeaderTop: CGFloat = 14
-        static let coveHeaderHeight: CGFloat = 420
-        static let crownTop: CGFloat = 6
-        static let crownSide: CGFloat = 24
-        static let crownHeight: CGFloat = 56
-        static let searchShellWidth: CGFloat = 56
-        static let profileReefTop: CGFloat = 50
-        static let profileReefSide: CGFloat = 24
-        static let profileReefHeight: CGFloat = 220
-        static let avatarShellSide: CGFloat = 26
-        static let avatarShellTop: CGFloat = -38
-        static let avatarShellSize: CGFloat = 116
-        static let profileGlyphGap: CGFloat = 20
-        static let nameGlyphTop: CGFloat = 34
-        static let reefSegmentTop: CGFloat = 24
+        static let coveHeaderTop: CGFloat = 0
+        static let coveHeaderHeight: CGFloat = 286
+        static let crownTop: CGFloat = 12
+        static let crownSide: CGFloat = 16
+        static let crownHeight: CGFloat = 40
+        static let searchShellWidth: CGFloat = 38
+        static let profileReefTop: CGFloat = 30
+        static let profileReefSide: CGFloat = 12
+        static let profileReefHeight: CGFloat = 150
+        static let avatarShellSide: CGFloat = 10
+        static let avatarShellTop: CGFloat = -19
+        static let avatarShellSize: CGFloat = 86
+        static let profileGlyphGap: CGFloat = 8
+        static let nameGlyphTop: CGFloat = 14
+        static let reefSegmentTop: CGFloat = 14
         static let reefSegmentSide: CGFloat = 22
-        static let reefSegmentHeight: CGFloat = 42
-        static let tideIndicatorWidth: CGFloat = 44
-        static let tideIndicatorHeight: CGFloat = 10
+        static let reefSegmentHeight: CGFloat = 28
+        static let tideIndicatorWidth: CGFloat = 22
+        static let tideIndicatorHeight: CGFloat = 5
     }
 
     private let mirrorCoveService = SuliJoyCoveMockService.shared
     private let wardrobeTable = UITableView(frame: .zero, style: .plain)
     private let crownHarbor = UIView()
-    private let profileCrownPill = UIView()
+    private let profileCrownPill = SuliJoyGradientCapsuleView(colors: [
+        UIColor.white.withAlphaComponent(0),
+        UIColor.white
+    ], startPoint: CGPoint(x: 0.1225, y: 0.828), endPoint: CGPoint(x: 0.8775, y: 0.172))
     private let profileCrownGlyph = UILabel()
-    private let harborGemPill = SuliJoyShellGemPillButton()
-    private let shellSearchTap = SuliJoyCoveCapsuleIconButton(reefAssetName: "sulijoy_cove_search_mark")
-    private let profileReefCard = UIView()
+    private let harborGemPill = SuliJoyShellGemPillButton(shellWidth: 80, shellHeight: 38)
+    private let shellSearchTap = SuliJoyCoveCapsuleIconButton(reefAssetName: "sulijoy_cove_search_mark", coveSize: 38)
+    private let profileReefCard = SuliJoyGradientCapsuleView(colors: [
+        UIColor.white,
+        UIColor(red: 1, green: 237.0 / 255.0, blue: 178.0 / 255.0, alpha: 1)
+    ], startPoint: CGPoint(x: 0.281, y: 0.9495), endPoint: CGPoint(x: 0.719, y: 0.0505))
     private let avatarShellView = UIImageView()
+    private let avatarShellBadge = UIImageView()
     private let nameShellTap = UIButton(type: .system)
+    private let nameShellArrow = UIImageView()
     private let islandCodeGlyph = UILabel()
     private let reefSettingTap = UIButton(type: .system)
     private let profileTallyStack = UIStackView()
@@ -41,7 +49,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         UIColor(red: 1, green: 0.44, blue: 0.28, alpha: 1),
         UIColor(red: 0.96, green: 1.0, blue: 0.30, alpha: 1),
         UIColor(red: 0.40, green: 1.0, blue: 0.64, alpha: 1)
-    ])
+    ], startPoint: CGPoint(x: 0.25, y: 0.933), endPoint: CGPoint(x: 0.75, y: 0.067))
     private let quietCoveGlyph = UILabel()
 
     private var activeCoveSection: SuliJoyMineCoveSection = .feed
@@ -71,13 +79,12 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
 
     private func weaveLagoonProfileCove() {
         profileCrownPill.translatesAutoresizingMaskIntoConstraints = false
-        profileCrownPill.backgroundColor = UIColor.white.withAlphaComponent(0.74)
-        profileCrownPill.layer.cornerRadius = 28
+        profileCrownPill.layer.cornerRadius = 20
         profileCrownPill.clipsToBounds = true
 
         profileCrownGlyph.translatesAutoresizingMaskIntoConstraints = false
         profileCrownGlyph.text = "🤩u GPZrvoVfPiGlNef".suliJoyPalmUnfurled
-        profileCrownGlyph.font = UIFont.italicSystemFont(ofSize: 31).suliWithWeight(.black)
+        profileCrownGlyph.font = UIFont.italicSystemFont(ofSize: 21).suliWithWeight(.black)
         profileCrownGlyph.textColor = .suliInk
         profileCrownGlyph.adjustsFontSizeToFitWidth = true
         profileCrownGlyph.minimumScaleFactor = 0.75
@@ -87,37 +94,48 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         shellSearchTap.addTarget(self, action: #selector(openSearchCove), for: .touchUpInside)
 
         profileReefCard.translatesAutoresizingMaskIntoConstraints = false
-        profileReefCard.backgroundColor = UIColor.white.withAlphaComponent(0.64)
-        profileReefCard.layer.cornerRadius = 26
-        profileReefCard.layer.borderWidth = 1.5
+        profileReefCard.layer.cornerRadius = 20
+        profileReefCard.layer.borderWidth = 1
         profileReefCard.layer.borderColor = UIColor(red: 1, green: 0.63, blue: 0.31, alpha: 1).cgColor
 
         avatarShellView.translatesAutoresizingMaskIntoConstraints = false
         avatarShellView.contentMode = .scaleAspectFill
         avatarShellView.clipsToBounds = true
-        avatarShellView.layer.cornerRadius = 58
-        avatarShellView.layer.borderWidth = 4
+        avatarShellView.layer.cornerRadius = 43
+        avatarShellView.layer.borderWidth = 3
         avatarShellView.layer.borderColor = UIColor.white.cgColor
         avatarShellView.image = UIImage(named: "sulijoy_mock_avatar_breeze_01")
+
+        avatarShellBadge.translatesAutoresizingMaskIntoConstraints = false
+        avatarShellBadge.image = UIImage(named: "sulijoy_profile_edit_badge")
+        avatarShellBadge.contentMode = .scaleAspectFit
+        avatarShellBadge.isUserInteractionEnabled = true
+        avatarShellBadge.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openLagoonMirror)))
 
         nameShellTap.translatesAutoresizingMaskIntoConstraints = false
         nameShellTap.setTitle("DQauvciOdq".suliJoyPalmUnfurled, for: .normal)
         nameShellTap.setTitleColor(.suliInk, for: .normal)
-        nameShellTap.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        nameShellTap.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .bold)
         nameShellTap.contentHorizontalAlignment = .left
-        nameShellTap.isUserInteractionEnabled = false
+        nameShellTap.addTarget(self, action: #selector(openLagoonMirror), for: .touchUpInside)
+
+        nameShellArrow.translatesAutoresizingMaskIntoConstraints = false
+        nameShellArrow.image = UIImage(named: "sulijoy_profile_name_arrow")
+        nameShellArrow.contentMode = .scaleAspectFit
+        nameShellArrow.isUserInteractionEnabled = true
+        nameShellArrow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openLagoonMirror)))
 
         islandCodeGlyph.translatesAutoresizingMaskIntoConstraints = false
         islandCodeGlyph.text = "IIDN i q3P9N9L4U9M2X0G3h0o4H".suliJoyPalmUnfurled
-        islandCodeGlyph.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        islandCodeGlyph.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         islandCodeGlyph.textColor = .suliMutedInk
         islandCodeGlyph.textAlignment = .left
         islandCodeGlyph.adjustsFontSizeToFitWidth = true
         islandCodeGlyph.minimumScaleFactor = 0.75
 
         reefSettingTap.translatesAutoresizingMaskIntoConstraints = false
-        reefSettingTap.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
-        reefSettingTap.tintColor = UIColor(red: 0.20, green: 0.14, blue: 0.03, alpha: 1)
+        reefSettingTap.setImage(UIImage(named: "sulijoy_profile_setting_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        reefSettingTap.imageView?.contentMode = .scaleAspectFit
         reefSettingTap.addTarget(self, action: #selector(openSettingCove), for: .touchUpInside)
 
         profileTallyStack.translatesAutoresizingMaskIntoConstraints = false
@@ -126,18 +144,18 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         profileTallyStack.alignment = .center
         profileTallyStack.spacing = 4
 
-        [nameShellTap, islandCodeGlyph, reefSettingTap, profileTallyStack].forEach { profileReefCard.addSubview($0) }
+        [nameShellTap, nameShellArrow, islandCodeGlyph, reefSettingTap, profileTallyStack].forEach { profileReefCard.addSubview($0) }
 
         shoreSegmentStack.translatesAutoresizingMaskIntoConstraints = false
         shoreSegmentStack.axis = .horizontal
-        shoreSegmentStack.distribution = .fillEqually
+        shoreSegmentStack.distribution = .fill
         shoreSegmentStack.alignment = .center
-        shoreSegmentStack.spacing = 10
+        shoreSegmentStack.spacing = 32
         for section in SuliJoyMineCoveSection.allCases {
             let button = UIButton(type: .system)
             button.setTitle(section.rawValue, for: .normal)
             button.setTitleColor(.suliInk, for: .normal)
-            button.titleLabel?.font = UIFont.italicSystemFont(ofSize: 24).suliWithWeight(.black)
+            button.titleLabel?.font = UIFont.italicSystemFont(ofSize: 17).suliWithWeight(.black)
             button.tag = SuliJoyMineCoveSection.allCases.firstIndex(of: section) ?? 0
             button.addTarget(self, action: #selector(shiftCoveSection(_:)), for: .touchUpInside)
             sectionShellTaps[section] = button
@@ -146,7 +164,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
 
         crownHarbor.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(crownHarbor)
-        [profileCrownPill, harborGemPill, shellSearchTap, profileReefCard, avatarShellView, shoreSegmentStack, tideIndicator].forEach { crownHarbor.addSubview($0) }
+        [profileCrownPill, harborGemPill, shellSearchTap, profileReefCard, avatarShellView, avatarShellBadge, shoreSegmentStack, tideIndicator].forEach { crownHarbor.addSubview($0) }
 
         wardrobeTable.translatesAutoresizingMaskIntoConstraints = false
         wardrobeTable.backgroundColor = .clear
@@ -170,7 +188,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         quietCoveGlyph.isHidden = true
         view.addSubview(quietCoveGlyph)
 
-        tideIndicatorLead = tideIndicator.leadingAnchor.constraint(equalTo: shoreSegmentStack.leadingAnchor, constant: 20)
+        tideIndicatorLead = tideIndicator.leadingAnchor.constraint(equalTo: shoreSegmentStack.leadingAnchor)
         NSLayoutConstraint.activate([
             crownHarbor.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LagoonMirrorMeasure.coveHeaderTop),
             crownHarbor.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -186,7 +204,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
             profileCrownGlyph.centerYAnchor.constraint(equalTo: profileCrownPill.centerYAnchor),
 
             harborGemPill.centerYAnchor.constraint(equalTo: profileCrownPill.centerYAnchor),
-            harborGemPill.trailingAnchor.constraint(equalTo: shellSearchTap.leadingAnchor, constant: -14),
+            harborGemPill.trailingAnchor.constraint(equalTo: shellSearchTap.leadingAnchor, constant: -20),
             shellSearchTap.centerYAnchor.constraint(equalTo: profileCrownPill.centerYAnchor),
             shellSearchTap.trailingAnchor.constraint(equalTo: crownHarbor.trailingAnchor, constant: -LagoonMirrorMeasure.crownSide),
             shellSearchTap.widthAnchor.constraint(equalToConstant: LagoonMirrorMeasure.searchShellWidth),
@@ -201,25 +219,35 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
             avatarShellView.widthAnchor.constraint(equalToConstant: LagoonMirrorMeasure.avatarShellSize),
             avatarShellView.heightAnchor.constraint(equalToConstant: LagoonMirrorMeasure.avatarShellSize),
 
+            avatarShellBadge.leadingAnchor.constraint(equalTo: avatarShellView.leadingAnchor, constant: 20),
+            avatarShellBadge.topAnchor.constraint(equalTo: avatarShellView.topAnchor, constant: 68),
+            avatarShellBadge.widthAnchor.constraint(equalToConstant: 48),
+            avatarShellBadge.heightAnchor.constraint(equalToConstant: 24),
+
             nameShellTap.leadingAnchor.constraint(equalTo: avatarShellView.trailingAnchor, constant: LagoonMirrorMeasure.profileGlyphGap),
             nameShellTap.topAnchor.constraint(equalTo: profileReefCard.topAnchor, constant: LagoonMirrorMeasure.nameGlyphTop),
-            nameShellTap.trailingAnchor.constraint(equalTo: reefSettingTap.leadingAnchor, constant: -10),
-            islandCodeGlyph.leadingAnchor.constraint(equalTo: nameShellTap.leadingAnchor),
-            islandCodeGlyph.topAnchor.constraint(equalTo: nameShellTap.bottomAnchor, constant: 8),
+            nameShellTap.heightAnchor.constraint(equalToConstant: 24),
+            nameShellArrow.leadingAnchor.constraint(equalTo: nameShellTap.trailingAnchor, constant: 4),
+            nameShellArrow.centerYAnchor.constraint(equalTo: nameShellTap.centerYAnchor),
+            nameShellArrow.widthAnchor.constraint(equalToConstant: 12),
+            nameShellArrow.heightAnchor.constraint(equalToConstant: 12),
+            nameShellArrow.trailingAnchor.constraint(lessThanOrEqualTo: reefSettingTap.leadingAnchor, constant: -8),
+            islandCodeGlyph.leadingAnchor.constraint(equalTo: avatarShellView.trailingAnchor, constant: 6),
+            islandCodeGlyph.topAnchor.constraint(equalTo: nameShellTap.bottomAnchor, constant: 4),
             islandCodeGlyph.trailingAnchor.constraint(equalTo: profileReefCard.trailingAnchor, constant: -12),
-            reefSettingTap.trailingAnchor.constraint(equalTo: profileReefCard.trailingAnchor, constant: -20),
-            reefSettingTap.topAnchor.constraint(equalTo: profileReefCard.topAnchor, constant: 28),
-            reefSettingTap.widthAnchor.constraint(equalToConstant: 52),
-            reefSettingTap.heightAnchor.constraint(equalToConstant: 52),
+            reefSettingTap.trailingAnchor.constraint(equalTo: profileReefCard.trailingAnchor, constant: -16),
+            reefSettingTap.topAnchor.constraint(equalTo: profileReefCard.topAnchor, constant: 11),
+            reefSettingTap.widthAnchor.constraint(equalToConstant: 24),
+            reefSettingTap.heightAnchor.constraint(equalToConstant: 24),
 
             profileTallyStack.leadingAnchor.constraint(equalTo: profileReefCard.leadingAnchor, constant: 18),
             profileTallyStack.trailingAnchor.constraint(equalTo: profileReefCard.trailingAnchor, constant: -18),
-            profileTallyStack.bottomAnchor.constraint(equalTo: profileReefCard.bottomAnchor, constant: -24),
-            profileTallyStack.heightAnchor.constraint(equalToConstant: 58),
+            profileTallyStack.bottomAnchor.constraint(equalTo: profileReefCard.bottomAnchor, constant: -16),
+            profileTallyStack.heightAnchor.constraint(equalToConstant: 48),
 
             shoreSegmentStack.topAnchor.constraint(equalTo: profileReefCard.bottomAnchor, constant: LagoonMirrorMeasure.reefSegmentTop),
             shoreSegmentStack.leadingAnchor.constraint(equalTo: crownHarbor.leadingAnchor, constant: LagoonMirrorMeasure.reefSegmentSide),
-            shoreSegmentStack.trailingAnchor.constraint(equalTo: crownHarbor.trailingAnchor, constant: -LagoonMirrorMeasure.reefSegmentSide),
+            shoreSegmentStack.trailingAnchor.constraint(lessThanOrEqualTo: crownHarbor.trailingAnchor, constant: -LagoonMirrorMeasure.reefSegmentSide),
             shoreSegmentStack.heightAnchor.constraint(equalToConstant: LagoonMirrorMeasure.reefSegmentHeight),
             tideIndicator.topAnchor.constraint(equalTo: shoreSegmentStack.bottomAnchor, constant: 3),
             tideIndicator.widthAnchor.constraint(equalToConstant: LagoonMirrorMeasure.tideIndicatorWidth),
@@ -293,8 +321,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     private func applyLagoonSummary(islandSnapshot: SuliJoyLagoonProfileSnapshot) {
         avatarShellView.image = UIImage.suliJoyAssetOrLocal(named: islandSnapshot.lagoonAvatarAssetName) ?? UIImage(named: "sulijoy_mock_avatar_breeze_01")
         nameShellTap.setTitle(islandSnapshot.lagoonNameText, for: .normal)
-        islandCodeGlyph.attributedText = nil
-        islandCodeGlyph.text = "ID  \(islandSnapshot.islandTraceText)"
+        islandCodeGlyph.attributedText = makeIslandCodeBadgeText(islandSnapshot.islandTraceText)
         profileTallyStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
         islandSnapshot.reefTallies.forEach { shoreTally in
             profileTallyStack.addArrangedSubview(makeTallyReef(shoreTally))
@@ -316,14 +343,14 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         let tallyStack = UIStackView()
         tallyStack.axis = .vertical
         tallyStack.alignment = .center
-        tallyStack.spacing = 8
+        tallyStack.spacing = 4
         let reefValueGlyph = UILabel()
         reefValueGlyph.text = "\(shoreTally.reefTotal)"
-        reefValueGlyph.font = UIFont.systemFont(ofSize: 25, weight: .black)
+        reefValueGlyph.font = UIFont.systemFont(ofSize: 17, weight: .black)
         reefValueGlyph.textColor = .suliInk
         let shoreCaptionGlyph = UILabel()
         shoreCaptionGlyph.text = shoreTally.reefLabel
-        shoreCaptionGlyph.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        shoreCaptionGlyph.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         shoreCaptionGlyph.textColor = .suliMutedInk
         shoreCaptionGlyph.adjustsFontSizeToFitWidth = true
         shoreCaptionGlyph.minimumScaleFactor = 0.75
@@ -333,40 +360,18 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func makeIslandCodeBadgeText(_ islandCode: String) -> NSAttributedString {
-        let badgeGlyph = NSMutableAttributedString(
-            string: "ID",
-            attributes: [
-                .font: UIFont.italicSystemFont(ofSize: 14).suliWithWeight(.black),
-                .foregroundColor: UIColor.white
-            ]
-        )
         let attachment = NSTextAttachment()
-        attachment.image = makeIslandCodeCapsule(badgeSize: CGSize(width: 46, height: 24), badgeGlyph: badgeGlyph.string)
-        attachment.bounds = CGRect(x: 0, y: -5, width: 46, height: 24)
+        attachment.image = UIImage(named: "sulijoy_profile_id_badge")
+        attachment.bounds = CGRect(x: 0, y: -3, width: 26, height: 17)
         let result = NSMutableAttributedString(attachment: attachment)
         result.append(NSAttributedString(
             string: "  \(islandCode)",
             attributes: [
-                .font: UIFont.systemFont(ofSize: 18, weight: .medium),
+                .font: UIFont.systemFont(ofSize: 13, weight: .regular),
                 .foregroundColor: UIColor.suliMutedInk
             ]
         ))
         return result
-    }
-
-    private func makeIslandCodeCapsule(badgeSize: CGSize, badgeGlyph: String) -> UIImage {
-        let pearlRenderer = UIGraphicsImageRenderer(size: badgeSize)
-        return pearlRenderer.image { _ in
-            let badgeRect = CGRect(origin: .zero, size: badgeSize)
-            UIColor(red: 0.21, green: 0.16, blue: 0.04, alpha: 1).setFill()
-            UIBezierPath(roundedRect: badgeRect, cornerRadius: badgeSize.height / 2).fill()
-            let badgeAttributes: [NSAttributedString.Key: Any] = [
-                .font: UIFont.italicSystemFont(ofSize: 14).suliWithWeight(.black),
-                .foregroundColor: UIColor.white
-            ]
-            let glyphSize = badgeGlyph.size(withAttributes: badgeAttributes)
-            badgeGlyph.draw(at: CGPoint(x: (badgeSize.width - glyphSize.width) / 2, y: (badgeSize.height - glyphSize.height) / 2), withAttributes: badgeAttributes)
-        }
     }
 
     @objc private func shiftCoveSection(_ shoreTap: UIButton) {
@@ -376,12 +381,15 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func tuneCoveSectionVisuals(animated isAnimated: Bool) {
-        for (coveSection, shoreTap) in sectionShellTaps {
-            shoreTap.alpha = coveSection == activeCoveSection ? 1 : 0.92
+        for shoreTap in sectionShellTaps.values {
+            shoreTap.alpha = 1
+            shoreTap.transform = .identity
+            shoreTap.titleLabel?.transform = .identity
         }
-        let coveIndex = CGFloat(SuliJoyMineCoveSection.allCases.firstIndex(of: activeCoveSection) ?? 0)
-        let coveSegmentWidth = max(1, (view.bounds.width - 44) / 3)
-        tideIndicatorLead?.constant = 20 + coveSegmentWidth * coveIndex + max(0, (coveSegmentWidth - 44) / 2 - 4)
+        crownHarbor.layoutIfNeeded()
+        if let shoreTap = sectionShellTaps[activeCoveSection] {
+            tideIndicatorLead?.constant = shoreTap.frame.midX - LagoonMirrorMeasure.tideIndicatorWidth / 2
+        }
         let tideRefresh = { self.crownHarbor.layoutIfNeeded() }
         isAnimated ? UIView.animate(withDuration: 0.22, animations: tideRefresh) : tideRefresh()
     }
@@ -672,5 +680,11 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
 
     @objc private func openSettingCove() {
         navigationController?.pushViewController(SuliJoyShellelasticWaistController(), animated: true)
+    }
+
+    @objc private func openLagoonMirror() {
+        let lagoonMirror = SuliJoyLagoonMirrorController()
+        lagoonMirror.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(lagoonMirror, animated: true)
     }
 }

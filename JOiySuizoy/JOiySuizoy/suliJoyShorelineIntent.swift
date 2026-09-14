@@ -3,32 +3,33 @@ import UIKit
 
 final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDataSource, UITableViewDelegate {
     private enum ShorelineReelMeasure {
-        static let strawHat: CGFloat = 8
-        static let espadrillePairing: CGFloat = 24
-        static let kaftanLayer: CGFloat = 52
-        static let wrapSkirt: CGFloat = 10
+        static let strawHat: CGFloat = 12
+        static let espadrillePairing: CGFloat = 16
+        static let kaftanLayer: CGFloat = 40
+        static let wrapSkirt: CGFloat = 6
         static let listBottom: CGFloat = 118
-        static let duneTaupe: CGFloat = 148
-        static let titlePillHeight: CGFloat = 44
+        static let duneTaupe: CGFloat = 143
+        static let titlePillHeight: CGFloat = 40
         static let titleLead: CGFloat = 10
-        static let searchSize: CGFloat = 44
-        static let pearlAccent: CGFloat = 12
-        static let crochetTexture: CGFloat = 515
+        static let searchSize: CGFloat = 38
+        static let pearlAccent: CGFloat = 20
+        static let crochetTexture: CGFloat = 486
     }
 
     private struct ShorelineReelScene {
         let header: UIView
         let reefTable: UITableView
-        let spinner: UIActivityIndicatorView
+        let spinner: UIView
         let emptyView: UILabel
     }
 
     private let shorelineReelList = UITableView(frame: .zero, style: .plain)
-    private let resortSpinner = UIActivityIndicatorView(style: .large)
+    private let resortSpinner = UIView()
     private let emptyShoreGlyph = UILabel()
-    private let harborGemPill = SuliJoyShellGemPillButton()
+    private let harborGemPill = SuliJoyShellGemPillButton(shellWidth: 80, shellHeight: 38)
     private var shorelineReels: [SuliJoyShellClip] = []
     private weak var activeReefTile: SuliJoyShortsClipCell?
+    private var reefBloom = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,14 +72,62 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
         shorelineReelList.dataSource = self
         shorelineReelList.delegate = self
         shorelineReelList.showsVerticalScrollIndicator = false
-        shorelineReelList.contentInset = UIEdgeInsets(top: ShorelineReelMeasure.wrapSkirt, left: 0, bottom: ShorelineReelMeasure.listBottom, right: 0)
+        shorelineReelList.alwaysBounceVertical = true
+        shorelineReelList.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: ShorelineReelMeasure.listBottom, right: 0)
         shorelineReelList.register(SuliJoyShortsClipCell.self, forCellReuseIdentifier: "SuliJoyShortsClipCell")
+        let tideLoadingMark = UIRefreshControl()
+        tideLoadingMark.tintColor = .suliInk
+        tideLoadingMark.addTarget(self, action: #selector(refreshShorelineReels), for: .valueChanged)
+        shorelineReelList.refreshControl = tideLoadingMark
     }
 
     private func tuneResortSpinner() {
         resortSpinner.translatesAutoresizingMaskIntoConstraints = false
-        resortSpinner.hidesWhenStopped = true
-        resortSpinner.color = .suliInk
+        resortSpinner.isHidden = true
+
+        let clauseBlock = UIView()
+        clauseBlock.translatesAutoresizingMaskIntoConstraints = false
+        clauseBlock.backgroundColor = UIColor.white.withAlphaComponent(0.82)
+        clauseBlock.layer.cornerRadius = 20
+
+        let headingGlyph = UIView()
+        headingGlyph.translatesAutoresizingMaskIntoConstraints = false
+        headingGlyph.backgroundColor = UIColor.suliMutedInk.withAlphaComponent(0.16)
+        headingGlyph.layer.cornerRadius = 9
+
+        let bodyGlyph = UIView()
+        bodyGlyph.translatesAutoresizingMaskIntoConstraints = false
+        bodyGlyph.backgroundColor = UIColor.suliMutedInk.withAlphaComponent(0.11)
+        bodyGlyph.layer.cornerRadius = 16
+
+        let refreshGlyph = UIView()
+        refreshGlyph.translatesAutoresizingMaskIntoConstraints = false
+        refreshGlyph.backgroundColor = UIColor.suliMutedInk.withAlphaComponent(0.13)
+        refreshGlyph.layer.cornerRadius = 8
+
+        clauseBlock.addSubview(headingGlyph)
+        clauseBlock.addSubview(bodyGlyph)
+        clauseBlock.addSubview(refreshGlyph)
+        resortSpinner.addSubview(clauseBlock)
+        NSLayoutConstraint.activate([
+            clauseBlock.topAnchor.constraint(equalTo: resortSpinner.topAnchor),
+            clauseBlock.leadingAnchor.constraint(equalTo: resortSpinner.leadingAnchor),
+            clauseBlock.trailingAnchor.constraint(equalTo: resortSpinner.trailingAnchor),
+            clauseBlock.bottomAnchor.constraint(equalTo: resortSpinner.bottomAnchor),
+            headingGlyph.topAnchor.constraint(equalTo: clauseBlock.topAnchor, constant: 16),
+            headingGlyph.leadingAnchor.constraint(equalTo: clauseBlock.leadingAnchor, constant: 16),
+            headingGlyph.widthAnchor.constraint(equalTo: clauseBlock.widthAnchor, multiplier: 0.48),
+            headingGlyph.heightAnchor.constraint(equalToConstant: 18),
+            bodyGlyph.topAnchor.constraint(equalTo: headingGlyph.bottomAnchor, constant: 16),
+            bodyGlyph.leadingAnchor.constraint(equalTo: clauseBlock.leadingAnchor, constant: 14),
+            bodyGlyph.trailingAnchor.constraint(equalTo: clauseBlock.trailingAnchor, constant: -14),
+            bodyGlyph.heightAnchor.constraint(equalTo: bodyGlyph.widthAnchor),
+            refreshGlyph.topAnchor.constraint(equalTo: bodyGlyph.bottomAnchor, constant: 14),
+            refreshGlyph.leadingAnchor.constraint(equalTo: bodyGlyph.leadingAnchor),
+            refreshGlyph.trailingAnchor.constraint(equalTo: bodyGlyph.trailingAnchor, constant: -72),
+            refreshGlyph.heightAnchor.constraint(equalToConstant: 18),
+            refreshGlyph.bottomAnchor.constraint(equalTo: clauseBlock.bottomAnchor, constant: -18)
+        ])
     }
 
     private func tuneEmptyShoreGlyph() {
@@ -106,7 +155,8 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
             scene.reefTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scene.reefTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            scene.spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            scene.spinner.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ShorelineReelMeasure.strawHat),
+            scene.spinner.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ShorelineReelMeasure.strawHat),
             scene.spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             scene.emptyView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             scene.emptyView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
@@ -118,16 +168,16 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
         coveHeader.translatesAutoresizingMaskIntoConstraints = false
 
         let titlePill = SuliJoyGradientCapsuleView(colors: [
-            UIColor.white.withAlphaComponent(0.02),
+            UIColor.white.withAlphaComponent(0),
             UIColor.white
-        ])
+        ], startPoint: CGPoint(x: 0.1225, y: 0.828), endPoint: CGPoint(x: 0.8775, y: 0.172))
         let beachCoverup = UILabel()
         beachCoverup.translatesAutoresizingMaskIntoConstraints = false
         beachCoverup.text = "💖f WSohyoMrYtQsh".suliJoyPalmUnfurled
         beachCoverup.textColor = .suliInk
-        beachCoverup.font = UIFont.italicSystemFont(ofSize: 28).suliWithWeight(.black)
+        beachCoverup.font = UIFont.italicSystemFont(ofSize: 21).suliWithWeight(.black)
 
-        let search = SuliJoyCoveCapsuleIconButton(reefAssetName: "sulijoy_cove_search_mark")
+        let search = SuliJoyCoveCapsuleIconButton(reefAssetName: "sulijoy_cove_search_mark", coveSize: ShorelineReelMeasure.searchSize)
         search.addTarget(self, action: #selector(openSearch), for: .touchUpInside)
         harborGemPill.addTarget(self, action: #selector(openPearlHarbor), for: .touchUpInside)
 
@@ -149,12 +199,22 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
         return coveHeader
     }
 
-    private func refreshShorelineReels() {
+    @objc private func refreshShorelineReels() {
         emptyShoreGlyph.isHidden = true
-        resortSpinner.startAnimating()
+        if reefBloom {
+            reefBloom = false
+            resortSpinner.isHidden = false
+            resortSpinner.alpha = 1
+            UIView.animate(withDuration: 0.78, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction]) {
+                self.resortSpinner.alpha = 0.42
+            }
+        }
         SuliJoyCoveMockService.shared.fetchShellClips { [weak self] reefEnvelope in
             guard let self else { return }
-            self.resortSpinner.stopAnimating()
+            self.shorelineReelList.refreshControl?.endRefreshing()
+            self.resortSpinner.layer.removeAllAnimations()
+            self.resortSpinner.alpha = 1
+            self.resortSpinner.isHidden = true
             guard reefEnvelope.beachwearCapsule == 200 else {
                 self.showLagoonToast(reefEnvelope.coastalWardrobe)
                 self.emptyShoreGlyph.text = reefEnvelope.coastalWardrobe
@@ -223,8 +283,9 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
             SuliJoyCoveMockService.shared.toggleShellClipFollow(coconutCream: reefID) { reefEnvelope in
                 if let shorelineShell = reefEnvelope.sandbarLayering {
                     self?.replaceShorelineReel(shorelineShell)
+                } else {
+                    self?.showLagoonToast(reefEnvelope.coastalWardrobe)
                 }
-                self?.showLagoonToast(reefEnvelope.coastalWardrobe)
             }
         }
         shorelineTile.onShorelineHeartTap = { [weak self] reefID in
@@ -319,7 +380,7 @@ final class SuliJoyShortsClipCell: UITableViewCell {
 
     private let shorelineCard = UIView()
     private let creatorAvatarView = UIImageView()
-    private let lagoonFollowButton = UIButton(type: .custom)
+    private let lagoonFollowButton = SuliJoyFeedFollowBadgeButton(type: .custom)
     private let creatorNameLabel = UILabel()
     private let shoreCaptionLabel = UILabel()
     private let harborFlagButton = UIButton(type: .system)
@@ -357,6 +418,7 @@ final class SuliJoyShortsClipCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         reefPlayerLayer?.frame = reefMotionStage.bounds
+        motionPulseButton.layer.cornerRadius = motionPulseButton.bounds.height / 2
     }
 
     private func weaveShellCard() {
@@ -366,7 +428,7 @@ final class SuliJoyShortsClipCell: UITableViewCell {
 
         shorelineCard.translatesAutoresizingMaskIntoConstraints = false
         shorelineCard.backgroundColor = .white
-        shorelineCard.layer.cornerRadius = 22
+        shorelineCard.layer.cornerRadius = 20
         shorelineCard.clipsToBounds = true
         contentView.addSubview(shorelineCard)
 
@@ -378,30 +440,28 @@ final class SuliJoyShortsClipCell: UITableViewCell {
         creatorAvatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapCreatorDrift)))
 
         lagoonFollowButton.translatesAutoresizingMaskIntoConstraints = false
-        lagoonFollowButton.setImage(UIImage(named: "sulijoy_feed_follow_plus")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        lagoonFollowButton.imageView?.contentMode = .scaleAspectFit
         lagoonFollowButton.addTarget(self, action: #selector(tapLagoonFollow), for: .touchUpInside)
 
         creatorNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        creatorNameLabel.font = UIFont.systemFont(ofSize: 22, weight: .black)
+        creatorNameLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         creatorNameLabel.textColor = .suliInk
         creatorNameLabel.setContentCompressionResistancePriority(.required, for: .vertical)
         creatorNameLabel.isUserInteractionEnabled = true
         creatorNameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapCreatorDrift)))
 
         shoreCaptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        shoreCaptionLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        shoreCaptionLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         shoreCaptionLabel.textColor = .suliInk
         shoreCaptionLabel.numberOfLines = 2
 
         harborFlagButton.translatesAutoresizingMaskIntoConstraints = false
-        harborFlagButton.setImage(UIImage(systemName: "exclamationmark.triangle"), for: .normal)
-        harborFlagButton.tintColor = UIColor(red: 0.50, green: 0.50, blue: 0.50, alpha: 1)
+        harborFlagButton.setImage(UIImage(named: "sulijoy_shorts_flag_mark")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        harborFlagButton.tintColor = UIColor(red: 125 / 255, green: 125 / 255, blue: 125 / 255, alpha: 1)
         harborFlagButton.addTarget(self, action: #selector(tapHarborFlag), for: .touchUpInside)
 
         reefMotionStage.translatesAutoresizingMaskIntoConstraints = false
         reefMotionStage.backgroundColor = UIColor(red: 1, green: 0.90, blue: 0.78, alpha: 1)
-        reefMotionStage.layer.cornerRadius = 18
+        reefMotionStage.layer.cornerRadius = 16
         reefMotionStage.clipsToBounds = true
 
         reefStillView.translatesAutoresizingMaskIntoConstraints = false
@@ -411,10 +471,13 @@ final class SuliJoyShortsClipCell: UITableViewCell {
         motionPulseButton.translatesAutoresizingMaskIntoConstraints = false
         motionPulseButton.backgroundColor = UIColor.black.withAlphaComponent(0.20)
         motionPulseButton.layer.borderColor = UIColor.white.cgColor
-        motionPulseButton.layer.borderWidth = 4
-        motionPulseButton.layer.cornerRadius = 34
+        motionPulseButton.layer.borderWidth = 1
+        motionPulseButton.layer.cornerRadius = 25
+        motionPulseButton.layer.cornerCurve = .continuous
+        motionPulseButton.clipsToBounds = true
         motionPulseButton.tintColor = .white
         motionPulseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        motionPulseButton.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 22, weight: .bold), forImageIn: .normal)
         motionPulseButton.addTarget(self, action: #selector(tapReefMotion), for: .touchUpInside)
 
         shellHeartButton.translatesAutoresizingMaskIntoConstraints = false
@@ -441,8 +504,11 @@ final class SuliJoyShortsClipCell: UITableViewCell {
 
         shoreReplyHintLabel.translatesAutoresizingMaskIntoConstraints = false
         shoreReplyHintLabel.text = "CkoVmWmQePnPtB msooxmWebtthDiunpgN".suliJoyPalmUnfurled
-        shoreReplyHintLabel.textColor = UIColor(red: 0.74, green: 0.74, blue: 0.74, alpha: 1)
-        shoreReplyHintLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        shoreReplyHintLabel.textColor = UIColor(red: 0.68, green: 0.68, blue: 0.68, alpha: 1)
+        shoreReplyHintLabel.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        shoreReplyHintLabel.adjustsFontSizeToFitWidth = true
+        shoreReplyHintLabel.minimumScaleFactor = 0.6
+        shoreReplyHintLabel.lineBreakMode = .byClipping
 
         reefSendMarkView.translatesAutoresizingMaskIntoConstraints = false
         reefSendMarkView.image = UIImage(named: "sulijoy_feed_comment_send_mark") ?? UIImage(named: "sulijoy_feed_send_mark")
@@ -458,36 +524,36 @@ final class SuliJoyShortsClipCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             shorelineCard.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            shorelineCard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            shorelineCard.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            shorelineCard.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12),
+            shorelineCard.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            shorelineCard.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            shorelineCard.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4),
 
-            creatorAvatarView.topAnchor.constraint(equalTo: shorelineCard.topAnchor, constant: 24),
-            creatorAvatarView.leadingAnchor.constraint(equalTo: shorelineCard.leadingAnchor, constant: 24),
+            creatorAvatarView.topAnchor.constraint(equalTo: shorelineCard.topAnchor, constant: 13),
+            creatorAvatarView.leadingAnchor.constraint(equalTo: shorelineCard.leadingAnchor, constant: 12),
             creatorAvatarView.widthAnchor.constraint(equalToConstant: 38),
             creatorAvatarView.heightAnchor.constraint(equalToConstant: 38),
 
             lagoonFollowButton.centerXAnchor.constraint(equalTo: creatorAvatarView.centerXAnchor),
-            lagoonFollowButton.topAnchor.constraint(equalTo: creatorAvatarView.bottomAnchor, constant: -2),
-            lagoonFollowButton.widthAnchor.constraint(equalToConstant: 44),
-            lagoonFollowButton.heightAnchor.constraint(equalToConstant: 30),
+            lagoonFollowButton.topAnchor.constraint(equalTo: creatorAvatarView.bottomAnchor, constant: -12),
+            lagoonFollowButton.widthAnchor.constraint(equalToConstant: 33),
+            lagoonFollowButton.heightAnchor.constraint(equalToConstant: 22),
 
-            creatorNameLabel.topAnchor.constraint(equalTo: creatorAvatarView.topAnchor, constant: 2),
-            creatorNameLabel.leadingAnchor.constraint(equalTo: creatorAvatarView.trailingAnchor, constant: 18),
+            creatorNameLabel.topAnchor.constraint(equalTo: creatorAvatarView.topAnchor),
+            creatorNameLabel.leadingAnchor.constraint(equalTo: creatorAvatarView.trailingAnchor, constant: 8),
             creatorNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: harborFlagButton.leadingAnchor, constant: -12),
 
-            shoreCaptionLabel.topAnchor.constraint(equalTo: creatorNameLabel.bottomAnchor, constant: 8),
+            shoreCaptionLabel.topAnchor.constraint(equalTo: creatorNameLabel.bottomAnchor, constant: 4),
             shoreCaptionLabel.leadingAnchor.constraint(equalTo: creatorNameLabel.leadingAnchor),
-            shoreCaptionLabel.trailingAnchor.constraint(equalTo: shorelineCard.trailingAnchor, constant: -28),
+            shoreCaptionLabel.trailingAnchor.constraint(equalTo: shorelineCard.trailingAnchor, constant: -16),
 
-            harborFlagButton.topAnchor.constraint(equalTo: shorelineCard.topAnchor, constant: 22),
-            harborFlagButton.trailingAnchor.constraint(equalTo: shorelineCard.trailingAnchor, constant: -24),
-            harborFlagButton.widthAnchor.constraint(equalToConstant: 30),
-            harborFlagButton.heightAnchor.constraint(equalToConstant: 30),
+            harborFlagButton.topAnchor.constraint(equalTo: shorelineCard.topAnchor, constant: 9),
+            harborFlagButton.trailingAnchor.constraint(equalTo: shorelineCard.trailingAnchor, constant: -12),
+            harborFlagButton.widthAnchor.constraint(equalToConstant: 24),
+            harborFlagButton.heightAnchor.constraint(equalToConstant: 24),
 
-            reefMotionStage.topAnchor.constraint(equalTo: shoreCaptionLabel.bottomAnchor, constant: 16),
-            reefMotionStage.leadingAnchor.constraint(equalTo: shorelineCard.leadingAnchor, constant: 24),
-            reefMotionStage.trailingAnchor.constraint(equalTo: shorelineCard.trailingAnchor, constant: -24),
+            reefMotionStage.topAnchor.constraint(equalTo: shoreCaptionLabel.bottomAnchor, constant: 11),
+            reefMotionStage.leadingAnchor.constraint(equalTo: shorelineCard.leadingAnchor, constant: 12),
+            reefMotionStage.trailingAnchor.constraint(equalTo: shorelineCard.trailingAnchor, constant: -12),
             reefMotionStage.heightAnchor.constraint(equalTo: reefMotionStage.widthAnchor),
             reefStillView.topAnchor.constraint(equalTo: reefMotionStage.topAnchor),
             reefStillView.leadingAnchor.constraint(equalTo: reefMotionStage.leadingAnchor),
@@ -495,35 +561,35 @@ final class SuliJoyShortsClipCell: UITableViewCell {
             reefStillView.bottomAnchor.constraint(equalTo: reefMotionStage.bottomAnchor),
             motionPulseButton.centerXAnchor.constraint(equalTo: reefMotionStage.centerXAnchor),
             motionPulseButton.centerYAnchor.constraint(equalTo: reefMotionStage.centerYAnchor),
-            motionPulseButton.widthAnchor.constraint(equalToConstant: 68),
-            motionPulseButton.heightAnchor.constraint(equalToConstant: 68),
+            motionPulseButton.widthAnchor.constraint(equalToConstant: 50),
+            motionPulseButton.heightAnchor.constraint(equalToConstant: 50),
 
-            shellHeartButton.topAnchor.constraint(equalTo: reefMotionStage.bottomAnchor, constant: 12),
+            shellHeartButton.topAnchor.constraint(equalTo: reefMotionStage.bottomAnchor, constant: 10),
             shellHeartButton.leadingAnchor.constraint(equalTo: reefMotionStage.leadingAnchor, constant: 8),
-            shellHeartButton.widthAnchor.constraint(equalToConstant: 32),
-            shellHeartButton.heightAnchor.constraint(equalToConstant: 30),
-            shellHeartCountLabel.topAnchor.constraint(equalTo: shellHeartButton.bottomAnchor, constant: -2),
+            shellHeartButton.widthAnchor.constraint(equalToConstant: 24),
+            shellHeartButton.heightAnchor.constraint(equalToConstant: 24),
+            shellHeartCountLabel.topAnchor.constraint(equalTo: shellHeartButton.bottomAnchor),
             shellHeartCountLabel.centerXAnchor.constraint(equalTo: shellHeartButton.centerXAnchor),
 
             shoreReplyButton.topAnchor.constraint(equalTo: shellHeartButton.topAnchor),
-            shoreReplyButton.leadingAnchor.constraint(equalTo: shellHeartButton.trailingAnchor, constant: 34),
-            shoreReplyButton.widthAnchor.constraint(equalToConstant: 32),
-            shoreReplyButton.heightAnchor.constraint(equalToConstant: 30),
-            shoreReplyCountLabel.topAnchor.constraint(equalTo: shoreReplyButton.bottomAnchor, constant: -2),
+            shoreReplyButton.leadingAnchor.constraint(equalTo: shellHeartButton.trailingAnchor, constant: 26),
+            shoreReplyButton.widthAnchor.constraint(equalToConstant: 24),
+            shoreReplyButton.heightAnchor.constraint(equalToConstant: 24),
+            shoreReplyCountLabel.topAnchor.constraint(equalTo: shoreReplyButton.bottomAnchor),
             shoreReplyCountLabel.centerXAnchor.constraint(equalTo: shoreReplyButton.centerXAnchor),
 
-            shoreReplyDock.topAnchor.constraint(equalTo: reefMotionStage.bottomAnchor, constant: 14),
-            shoreReplyDock.leadingAnchor.constraint(equalTo: shoreReplyButton.trailingAnchor, constant: 28),
+            shoreReplyDock.topAnchor.constraint(equalTo: reefMotionStage.bottomAnchor, constant: 13),
+            shoreReplyDock.leadingAnchor.constraint(equalTo: shoreReplyButton.trailingAnchor, constant: 18),
             shoreReplyDock.trailingAnchor.constraint(equalTo: reefMotionStage.trailingAnchor, constant: -4),
-            shoreReplyDock.heightAnchor.constraint(equalToConstant: 38),
-            shoreReplyDock.bottomAnchor.constraint(equalTo: shorelineCard.bottomAnchor, constant: -18),
-            shoreReplyHintLabel.leadingAnchor.constraint(equalTo: shoreReplyDock.leadingAnchor, constant: 14),
+            shoreReplyDock.heightAnchor.constraint(equalToConstant: 34),
+            shoreReplyDock.bottomAnchor.constraint(equalTo: shorelineCard.bottomAnchor, constant: -16),
+            shoreReplyHintLabel.leadingAnchor.constraint(equalTo: shoreReplyDock.leadingAnchor, constant: 12),
             shoreReplyHintLabel.centerYAnchor.constraint(equalTo: shoreReplyDock.centerYAnchor),
-            reefSendMarkView.trailingAnchor.constraint(equalTo: shoreReplyDock.trailingAnchor, constant: -14),
+            reefSendMarkView.trailingAnchor.constraint(equalTo: shoreReplyDock.trailingAnchor, constant: -12),
             reefSendMarkView.centerYAnchor.constraint(equalTo: shoreReplyDock.centerYAnchor),
             reefSendMarkView.widthAnchor.constraint(equalToConstant: 18),
-            reefSendMarkView.heightAnchor.constraint(equalToConstant: 18),
-            shoreReplyHintLabel.trailingAnchor.constraint(lessThanOrEqualTo: reefSendMarkView.leadingAnchor, constant: -8)
+            reefSendMarkView.heightAnchor.constraint(equalToConstant: 17),
+            shoreReplyHintLabel.trailingAnchor.constraint(equalTo: reefSendMarkView.leadingAnchor, constant: -6)
         ])
     }
 
@@ -535,8 +601,8 @@ final class SuliJoyShortsClipCell: UITableViewCell {
         shellHeartCountLabel.text = "\(shorelineShell.palmLeafPattern)"
         shoreReplyCountLabel.text = "\(shorelineShell.marineStripe)"
         shellHeartButton.setImage(UIImage(named: shorelineShell.ropeBelt ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        lagoonFollowButton.alpha = shorelineShell.driftwoodPalette ? 0.55 : 1
-        harborFlagButton.tintColor = shorelineShell.coastalChic ? UIColor(red: 1, green: 0.42, blue: 0.38, alpha: 1) : UIColor(red: 0.50, green: 0.50, blue: 0.50, alpha: 1)
+        lagoonFollowButton.suliJoyCoastalCapsule(isFollowing: shorelineShell.driftwoodPalette)
+        harborFlagButton.tintColor = shorelineShell.coastalChic ? UIColor(red: 1, green: 0.42, blue: 0.38, alpha: 1) : UIColor(red: 125 / 255, green: 125 / 255, blue: 125 / 255, alpha: 1)
         reefStillView.image = UIImage.suliJoyAssetOrLocal(named: shorelineShell.tropicalMotif.sandyNeutral ?? "")
         motionPulseButton.alpha = 1
         motionPulseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
@@ -553,7 +619,7 @@ final class SuliJoyShortsClipCell: UITableViewCell {
         guard let reefURL = Self.reefMotionURL(for: shorelineShell.tropicalMotif.seafoamTint) else { return false }
         let reefCurrent = AVPlayer(url: reefURL)
         let reefLayer = AVPlayerLayer(player: reefCurrent)
-        reefLayer.setValue("resizeAspectFill", forKey: ["vid", "eoGravity"].joined())
+        reefLayer.videoGravity = .resizeAspectFill
         reefLayer.frame = reefMotionStage.bounds
         reefMotionStage.layer.insertSublayer(reefLayer, below: motionPulseButton.layer)
         self.reefPlayer = reefCurrent

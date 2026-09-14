@@ -1,7 +1,7 @@
 import AVFoundation
 import UIKit
 
-private final class SuliJoyWaveResonanceHarbor {
+private final class SuliJoyWaveResonanceHarbor: NSObject, AVAudioPlayerDelegate {
     static let shared = SuliJoyWaveResonanceHarbor()
 
     private enum WaveHarborError {
@@ -11,10 +11,13 @@ private final class SuliJoyWaveResonanceHarbor {
 
     private var resonanceEngine: AVAudioPlayer?
     private var activeShoreMomentID: String?
+    private var onWaveFinished: ((String) -> Void)?
 
-    private init() {}
+    private override init() {
+        super.init()
+    }
 
-    func play(note: SuliJoyWaveSonicNote, sunwashedDenim momentID: String) throws {
+    func play(note: SuliJoyWaveSonicNote, sunwashedDenim momentID: String, onWaveFinished: ((String) -> Void)? = nil) throws {
         guard shouldLaunchWave(for: momentID) else { return }
         stopAll()
         guard let url = findWaveResonanceURL(named: waveFileToken(from: note)) else {
@@ -22,6 +25,7 @@ private final class SuliJoyWaveResonanceHarbor {
         }
         try prepareResonanceSession()
         try startResonanceEngine(url: url, sunwashedDenim: momentID)
+        self.onWaveFinished = onWaveFinished
     }
 
     func stop(sunwashedDenim momentID: String) {
@@ -33,6 +37,7 @@ private final class SuliJoyWaveResonanceHarbor {
         resonanceEngine?.stop()
         resonanceEngine = nil
         activeShoreMomentID = nil
+        onWaveFinished = nil
     }
 
     private func shouldLaunchWave(for momentID: String) -> Bool {
@@ -51,10 +56,23 @@ private final class SuliJoyWaveResonanceHarbor {
 
     private func startResonanceEngine(url: URL, sunwashedDenim momentID: String) throws {
         let nextResonanceEngine = try AVAudioPlayer(contentsOf: url)
+        nextResonanceEngine.delegate = self
         nextResonanceEngine.prepareToPlay()
         nextResonanceEngine.play()
         resonanceEngine = nextResonanceEngine
         activeShoreMomentID = momentID
+    }
+
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        guard let activeShoreMomentID else {
+            stopAll()
+            return
+        }
+        let waveFinished = onWaveFinished
+        resonanceEngine = nil
+        self.activeShoreMomentID = nil
+        onWaveFinished = nil
+        waveFinished?(activeShoreMomentID)
     }
 
     private func findWaveResonanceURL(named fileName: String) -> URL? {
@@ -95,18 +113,19 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
     private struct ShoreFeedScene {
         let header: UIView
         let list: UITableView
-        let spinner: UIActivityIndicatorView
+        let spinner: UIView
         let emptyNote: UILabel
     }
 
     private let shoreListView = UITableView(frame: .zero, style: .plain)
-    private let shoreSpinner = UIActivityIndicatorView(style: .large)
+    private let shoreSpinner = UIView()
     private let shoreEmptyNote = UILabel()
     private let stylistLagoonRow = UIStackView()
     private var shoreMoments: [SuliJoyReefMoment] = []
     private var activeShoreFilter: SuliJoyReefMomentFilter = .coastalPick
     private var shoreFilterButtons: [SuliJoyReefMomentFilter: UIButton] = [:]
     private var shoreFilterIndicators: [SuliJoyReefMomentFilter: UIView] = [:]
+    private var reefBloom = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,14 +161,63 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         raglanEase.dataSource = self
         raglanEase.delegate = self
         raglanEase.showsVerticalScrollIndicator = false
+        raglanEase.alwaysBounceVertical = true
         raglanEase.register(suliJoyCoastalDiary.self, forCellReuseIdentifier: "suliJoyCoastalDiary")
         raglanEase.contentInset = UIEdgeInsets(top: ShoreFeedMetric.topInset, left: 0, bottom: ShoreFeedMetric.listBottomInset, right: 0)
+        let tideLoadingMark = UIRefreshControl()
+        tideLoadingMark.tintColor = .suliInk
+        tideLoadingMark.addTarget(self, action: #selector(loadShorePage(_:)), for: .valueChanged)
+        raglanEase.refreshControl = tideLoadingMark
     }
 
-    private func tuneShoreSpinner(_ spinner: UIActivityIndicatorView) {
+    private func tuneShoreSpinner(_ spinner: UIView) {
         spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.hidesWhenStopped = true
-        spinner.color = .suliInk
+        spinner.isHidden = true
+
+        let clauseStack = UIStackView()
+        clauseStack.translatesAutoresizingMaskIntoConstraints = false
+        clauseStack.axis = .vertical
+        clauseStack.spacing = 14
+        spinner.addSubview(clauseStack)
+
+        for reefIndex in 0..<2 {
+            let clauseBlock = UIView()
+            clauseBlock.translatesAutoresizingMaskIntoConstraints = false
+            clauseBlock.backgroundColor = UIColor.white.withAlphaComponent(0.80)
+            clauseBlock.layer.cornerRadius = 18
+
+            let headingGlyph = UIView()
+            headingGlyph.translatesAutoresizingMaskIntoConstraints = false
+            headingGlyph.backgroundColor = UIColor.suliMutedInk.withAlphaComponent(0.16)
+            headingGlyph.layer.cornerRadius = 8
+
+            let bodyGlyph = UIView()
+            bodyGlyph.translatesAutoresizingMaskIntoConstraints = false
+            bodyGlyph.backgroundColor = UIColor.suliMutedInk.withAlphaComponent(0.11)
+            bodyGlyph.layer.cornerRadius = 12
+
+            clauseBlock.addSubview(headingGlyph)
+            clauseBlock.addSubview(bodyGlyph)
+            clauseStack.addArrangedSubview(clauseBlock)
+            NSLayoutConstraint.activate([
+                clauseBlock.heightAnchor.constraint(equalToConstant: reefIndex == 0 ? 164 : 142),
+                headingGlyph.topAnchor.constraint(equalTo: clauseBlock.topAnchor, constant: 16),
+                headingGlyph.leadingAnchor.constraint(equalTo: clauseBlock.leadingAnchor, constant: 16),
+                headingGlyph.widthAnchor.constraint(equalTo: clauseBlock.widthAnchor, multiplier: 0.52),
+                headingGlyph.heightAnchor.constraint(equalToConstant: 17),
+                bodyGlyph.topAnchor.constraint(equalTo: headingGlyph.bottomAnchor, constant: 14),
+                bodyGlyph.leadingAnchor.constraint(equalTo: headingGlyph.leadingAnchor),
+                bodyGlyph.trailingAnchor.constraint(equalTo: clauseBlock.trailingAnchor, constant: -16),
+                bodyGlyph.bottomAnchor.constraint(equalTo: clauseBlock.bottomAnchor, constant: -16)
+            ])
+        }
+
+        NSLayoutConstraint.activate([
+            clauseStack.topAnchor.constraint(equalTo: spinner.topAnchor),
+            clauseStack.leadingAnchor.constraint(equalTo: spinner.leadingAnchor),
+            clauseStack.trailingAnchor.constraint(equalTo: spinner.trailingAnchor),
+            clauseStack.bottomAnchor.constraint(equalTo: spinner.bottomAnchor)
+        ])
     }
 
     private func tuneShoreEmptyNote(_ emptyNote: UILabel) {
@@ -173,7 +241,8 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             dropShoulder.list.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             dropShoulder.list.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             dropShoulder.list.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            dropShoulder.spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            dropShoulder.spinner.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ShoreFeedMetric.horizontalInset),
+            dropShoulder.spinner.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ShoreFeedMetric.horizontalInset),
             dropShoulder.spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             dropShoulder.emptyNote.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             dropShoulder.emptyNote.centerYAnchor.constraint(equalTo: view.centerYAnchor)
@@ -290,7 +359,14 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
     private func loadShorePage(filter: SuliJoyReefMomentFilter, mode: SuliJoyCoveRequestMode = .reefBloom) {
         activeShoreFilter = filter
         renderShoreFilterTabs()
-        shoreSpinner.startAnimating()
+        if reefBloom {
+            reefBloom = false
+            shoreSpinner.isHidden = false
+            shoreSpinner.alpha = 1
+            UIView.animate(withDuration: 0.78, delay: 0, options: [.autoreverse, .repeat, .allowUserInteraction]) {
+                self.shoreSpinner.alpha = 0.42
+            }
+        }
         shoreEmptyNote.isHidden = true
         SuliJoyCoveMockService.shared.fetchShoreMoments(filter: filter, mode: mode) { [weak self] shoreEnvelope in
             guard let self else { return }
@@ -298,8 +374,16 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         }
     }
 
+    @objc private func loadShorePage(_ tideLoadingMark: UIRefreshControl) {
+        renderStylists()
+        loadShorePage(filter: activeShoreFilter)
+    }
+
     private func renderShorePage(_ shoreEnvelope: SuliJoySuiRequestEnvelope<[SuliJoyReefMoment]>) {
-        shoreSpinner.stopAnimating()
+        shoreListView.refreshControl?.endRefreshing()
+        shoreSpinner.layer.removeAllAnimations()
+        shoreSpinner.alpha = 1
+        shoreSpinner.isHidden = true
         guard shoreEnvelope.beachwearCapsule == 200 else {
             shoreMoments = []
             shoreListView.reloadData()
@@ -316,9 +400,10 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
 
     private func renderShoreFilterTabs() {
         for (reefFilter, filterControl) in shoreFilterButtons {
-            filterControl.alpha = reefFilter == activeShoreFilter ? 1 : 0.72
-            filterControl.setTitleColor(reefFilter == activeShoreFilter ? .suliInk : .suliMutedInk, for: .normal)
-            shoreFilterIndicators[reefFilter]?.isHidden = reefFilter != activeShoreFilter
+            filterControl.alpha = 1
+            filterControl.setTitleColor(.suliInk, for: .normal)
+            shoreFilterIndicators[reefFilter]?.isHidden = false
+            shoreFilterIndicators[reefFilter]?.alpha = reefFilter == activeShoreFilter ? 1 : 0
         }
     }
 
@@ -425,7 +510,9 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             var renderedMoment = refreshedMoment
             if refreshedMoment.waveNote.isWaveRolling {
                 do {
-                    try SuliJoyWaveResonanceHarbor.shared.play(note: refreshedMoment.waveNote, sunwashedDenim: refreshedMoment.reefMomentID)
+                    try SuliJoyWaveResonanceHarbor.shared.play(note: refreshedMoment.waveNote, sunwashedDenim: refreshedMoment.reefMomentID) { [weak self] momentID in
+                        self?.finishShoreWave(momentID)
+                    }
                 } catch {
                     renderedMoment.waveNote.isWaveRolling = false
                     renderedMoment.waveNote.waveProgressRatio = 0
@@ -436,9 +523,19 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             }
             self.shoreMoments[indexPath.row] = renderedMoment
             self.shoreListView.reloadData()
-            if renderedMoment.waveNote.isWaveRolling || !refreshedMoment.waveNote.isWaveRolling {
-                self.showLagoonToast(waveEnvelope.coastalWardrobe)
-            }
+        }
+    }
+
+    private func finishShoreWave(_ momentID: String) {
+        guard shoreMoments.contains(where: { $0.reefMomentID == momentID }) else { return }
+        SuliJoyCoveMockService.shared.toggleWavePlayback(sunwashedDenim: momentID) { [weak self] waveEnvelope in
+            guard let self,
+                  var refreshedMoment = waveEnvelope.sandbarLayering,
+                  let shoreCursor = self.shoreMoments.firstIndex(where: { $0.reefMomentID == momentID }) else { return }
+            refreshedMoment.waveNote.isWaveRolling = false
+            refreshedMoment.waveNote.waveProgressRatio = 0
+            self.shoreMoments[shoreCursor] = refreshedMoment
+            self.shoreListView.reloadRows(at: [IndexPath(row: shoreCursor, section: 0)], with: .none)
         }
     }
 
@@ -481,7 +578,10 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
 
     private func toggleAuthorFollow(name: String) {
         SuliJoyCoveMockService.shared.toggleLagoonFollow(authorName: name) { [weak self] followEnvelope in
-            self?.showLagoonToast(followEnvelope.coastalWardrobe)
+            guard followEnvelope.beachwearCapsule == 200 else {
+                self?.showLagoonToast(followEnvelope.coastalWardrobe)
+                return
+            }
         }
     }
 
@@ -491,7 +591,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
     }
 }
 
-private final class SuliJoyFeedFollowBadgeButton: UIButton {
+final class SuliJoyFeedFollowBadgeButton: UIButton {
     private let suliJoyCoastalStyle = CAGradientLayer()
 
     override init(frame: CGRect) {
@@ -523,6 +623,26 @@ private final class SuliJoyFeedFollowBadgeButton: UIButton {
         suliJoyCoastalStyle.startPoint = CGPoint(x: 0, y: 0.5)
         suliJoyCoastalStyle.endPoint = CGPoint(x: 1, y: 0.5)
         layer.cornerRadius = bounds.height / 2
+    }
+}
+
+private final class SuliJoyWaveRhythmView: UIImageView {
+    private enum WaveRhythmMetric {
+        static let rhythmKey = NSStringFromClass(SuliJoyWaveRhythmView.self)
+        static let rhythmDuration: CFTimeInterval = 0.62
+    }
+
+    func renderWaveState(_ isWaveRolling: Bool) {
+        layer.removeAnimation(forKey: WaveRhythmMetric.rhythmKey)
+        transform = .identity
+        guard isWaveRolling else { return }
+        let waveRhythm = CAKeyframeAnimation(keyPath: "transform.scale.y")
+        waveRhythm.values = [0.72, 1.18, 0.86, 1.08, 0.76, 1]
+        waveRhythm.keyTimes = [0, 0.18, 0.36, 0.56, 0.78, 1]
+        waveRhythm.duration = WaveRhythmMetric.rhythmDuration
+        waveRhythm.repeatCount = .infinity
+        waveRhythm.isRemovedOnCompletion = true
+        layer.add(waveRhythm, forKey: WaveRhythmMetric.rhythmKey)
     }
 }
 
@@ -593,8 +713,8 @@ final class SuliJoyStylistCard: UIView {
             stylistPortrait.heightAnchor.constraint(equalToConstant: 50),
             lagoonFollowBadge.centerXAnchor.constraint(equalTo: stylistPortrait.centerXAnchor, constant: 0),
             lagoonFollowBadge.centerYAnchor.constraint(equalTo: stylistPortrait.centerYAnchor, constant: 18),
-            lagoonFollowBadge.widthAnchor.constraint(equalToConstant: 42),
-            lagoonFollowBadge.heightAnchor.constraint(equalToConstant: 24),
+            lagoonFollowBadge.widthAnchor.constraint(equalToConstant: 33),
+            lagoonFollowBadge.heightAnchor.constraint(equalToConstant: 22),
             stylistNameGlyph.topAnchor.constraint(equalTo: topAnchor, constant: 13),
             stylistNameGlyph.leadingAnchor.constraint(equalTo: stylistPortrait.trailingAnchor, constant: 12),
             stylistNameGlyph.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
@@ -633,11 +753,11 @@ final class suliJoyCoastalDiary: UITableViewCell {
         static let cardCorner: CGFloat = 24
         static let SuliJoyavatarSide: CGFloat = 48
         static let avatarCorner: CGFloat = 24
-        static let followWidth: CGFloat = 46
-        static let followHeight: CGFloat = 26
+        static let followWidth: CGFloat = 33
+        static let followHeight: CGFloat = 22
         static let moreSide: CGFloat = 36
         static let mediaRatio: CGFloat = 0.31
-        static let waveHeight: CGFloat = 100
+        static let waveHeight: CGFloat = 76
         static let publishSide: CGFloat = 18
     }
 
@@ -658,13 +778,16 @@ final class suliJoyCoastalDiary: UITableViewCell {
     private let wavePanelControl = UIButton(type: .system)
     private let wavePlayIsland = UIView()
     private let wavePlayGlyph = UIImageView()
-    private let waveCaptionGlyph = UILabel()
-    private let waveProgressBar = UIProgressView(progressViewStyle: .default)
+    private let waveRhythmView = SuliJoyWaveRhythmView()
     private let waveDurationGlyph = UILabel()
     private let bodyLabel = UILabel()
     private let likeButton = UIButton(type: .system)
     private let suliJoyCoastalState = UIButton(type: .system)
-    private let suliJoyCoastalFlow = UIButton(type: .system)
+    private let shellHeartCountLabel = UILabel()
+    private let shoreReplyCountLabel = UILabel()
+    private let shoreReplyDock = UIControl()
+    private let shoreReplyHintLabel = UILabel()
+    private let reefSendMarkView = UIImageView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -683,6 +806,11 @@ final class suliJoyCoastalDiary: UITableViewCell {
         onHarborMoreTap = nil
         onStylistTap = nil
         onLagoonFollowTap = nil
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        wavePlayIsland.layer.cornerRadius = min(wavePlayIsland.bounds.width, wavePlayIsland.bounds.height) / 2
     }
 
     private func suliJoyCoastalCounter() {
@@ -724,19 +852,17 @@ final class suliJoyCoastalDiary: UITableViewCell {
 
         wavePlayIsland.translatesAutoresizingMaskIntoConstraints = false
         wavePlayIsland.backgroundColor = UIColor.white.withAlphaComponent(0.92)
-        wavePlayIsland.layer.cornerRadius = 15
+        wavePlayIsland.layer.cornerRadius = 10
+        wavePlayIsland.layer.cornerCurve = .continuous
+        wavePlayIsland.clipsToBounds = true
         wavePlayIsland.isUserInteractionEnabled = false
         wavePlayGlyph.translatesAutoresizingMaskIntoConstraints = false
         wavePlayGlyph.tintColor = .suliInk
         wavePlayGlyph.contentMode = .scaleAspectFit
         wavePlayIsland.addSubview(wavePlayGlyph)
 
-        waveCaptionGlyph.translatesAutoresizingMaskIntoConstraints = false
-        waveCaptionGlyph.font = UIFont.systemFont(ofSize: 13, weight: .bold)
-        waveCaptionGlyph.textColor = .suliInk
-        waveProgressBar.translatesAutoresizingMaskIntoConstraints = false
-        waveProgressBar.tintColor = UIColor(red: 1, green: 0.47, blue: 0.31, alpha: 1)
-        waveProgressBar.trackTintColor = UIColor.suliInk.withAlphaComponent(0.18)
+        waveRhythmView.translatesAutoresizingMaskIntoConstraints = false
+        waveRhythmView.contentMode = .scaleAspectFit
         waveDurationGlyph.translatesAutoresizingMaskIntoConstraints = false
         waveDurationGlyph.font = UIFont.systemFont(ofSize: 14, weight: .black)
         waveDurationGlyph.textColor = .suliInk
@@ -748,18 +874,44 @@ final class suliJoyCoastalDiary: UITableViewCell {
         likeButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         likeButton.addTarget(self, action: #selector(likeNow), for: .touchUpInside)
         suliJoyCoastalState.setImage(UIImage(named: "sulijoy_feed_comment_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        suliJoyCoastalState.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         suliJoyCoastalState.addTarget(self, action: #selector(commentNow), for: .touchUpInside)
-        suliJoyCoastalFlow.setImage(UIImage(named: "sulijoy_feed_comment_send_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        suliJoyCoastalFlow.imageView?.contentMode = .scaleAspectFit
-        suliJoyCoastalFlow.addTarget(self, action: #selector(commentNow), for: .touchUpInside)
+
+        [shellHeartCountLabel, shoreReplyCountLabel].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            $0.textColor = UIColor(red: 0.45, green: 0.45, blue: 0.45, alpha: 1)
+            $0.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+            $0.textAlignment = .center
+        }
+
+        shoreReplyDock.translatesAutoresizingMaskIntoConstraints = false
+        shoreReplyDock.backgroundColor = .white
+        shoreReplyDock.layer.cornerRadius = 17
+        shoreReplyDock.layer.cornerCurve = .continuous
+        shoreReplyDock.layer.borderWidth = 1
+        shoreReplyDock.layer.borderColor = UIColor(red: 220 / 255, green: 220 / 255, blue: 220 / 255, alpha: 1).cgColor
+        shoreReplyDock.clipsToBounds = true
+        shoreReplyDock.addTarget(self, action: #selector(commentNow), for: .touchUpInside)
+
+        shoreReplyHintLabel.translatesAutoresizingMaskIntoConstraints = false
+        shoreReplyHintLabel.text = "CkoVmWmQePnPtB msooxmWebtthDiunpgN".suliJoyPalmUnfurled
+        shoreReplyHintLabel.textColor = UIColor(red: 0.68, green: 0.68, blue: 0.68, alpha: 1)
+        shoreReplyHintLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        shoreReplyHintLabel.adjustsFontSizeToFitWidth = true
+        shoreReplyHintLabel.minimumScaleFactor = 0.72
+        shoreReplyHintLabel.lineBreakMode = .byClipping
+
+        reefSendMarkView.translatesAutoresizingMaskIntoConstraints = false
+        reefSendMarkView.image = UIImage(named: "sulijoy_feed_comment_send_mark")?.withRenderingMode(.alwaysOriginal)
+        reefSendMarkView.contentMode = .scaleAspectFit
+        shoreReplyDock.addSubview(shoreReplyHintLabel)
+        shoreReplyDock.addSubview(reefSendMarkView)
 
         [reefCard].forEach { contentView.addSubview($0) }
-        [stylistPortrait, followBadge, stylistNameGlyph, tideAgoGlyph, harborMoreControl, mediaStack, wavePanelControl, likeButton, suliJoyCoastalState, suliJoyCoastalFlow].forEach {
+        [stylistPortrait, followBadge, stylistNameGlyph, tideAgoGlyph, harborMoreControl, mediaStack, wavePanelControl, likeButton, shellHeartCountLabel, suliJoyCoastalState, shoreReplyCountLabel, shoreReplyDock].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             reefCard.addSubview($0)
         }
-        [wavePlayIsland, waveCaptionGlyph, waveProgressBar, waveDurationGlyph, bodyLabel].forEach {
+        [wavePlayIsland, waveRhythmView, waveDurationGlyph, bodyLabel].forEach {
             wavePanelControl.addSubview($0)
         }
         NSLayoutConstraint.activate([
@@ -791,35 +943,49 @@ final class suliJoyCoastalDiary: UITableViewCell {
             wavePanelControl.leadingAnchor.constraint(equalTo: mediaStack.leadingAnchor),
             wavePanelControl.trailingAnchor.constraint(equalTo: mediaStack.trailingAnchor),
             wavePanelControl.heightAnchor.constraint(equalToConstant: ShoreMomentCellMetric.waveHeight),
-            wavePlayIsland.leadingAnchor.constraint(equalTo: wavePanelControl.leadingAnchor, constant: 18),
-            wavePlayIsland.topAnchor.constraint(equalTo: wavePanelControl.topAnchor, constant: 16),
-            wavePlayIsland.widthAnchor.constraint(equalToConstant: 30),
-            wavePlayIsland.heightAnchor.constraint(equalToConstant: 30),
+            wavePlayIsland.leadingAnchor.constraint(equalTo: wavePanelControl.leadingAnchor, constant: 10),
+            wavePlayIsland.topAnchor.constraint(equalTo: wavePanelControl.topAnchor, constant: 8),
+            wavePlayIsland.widthAnchor.constraint(equalToConstant: 20),
+            wavePlayIsland.heightAnchor.constraint(equalToConstant: 20),
             wavePlayGlyph.centerXAnchor.constraint(equalTo: wavePlayIsland.centerXAnchor),
             wavePlayGlyph.centerYAnchor.constraint(equalTo: wavePlayIsland.centerYAnchor),
-            wavePlayGlyph.widthAnchor.constraint(equalToConstant: 14),
-            wavePlayGlyph.heightAnchor.constraint(equalToConstant: 14),
-            waveCaptionGlyph.leadingAnchor.constraint(equalTo: wavePlayIsland.trailingAnchor, constant: 14),
-            waveCaptionGlyph.centerYAnchor.constraint(equalTo: wavePlayIsland.centerYAnchor),
-            waveProgressBar.leadingAnchor.constraint(equalTo: waveCaptionGlyph.trailingAnchor, constant: 12),
-            waveProgressBar.centerYAnchor.constraint(equalTo: waveCaptionGlyph.centerYAnchor),
-            waveProgressBar.trailingAnchor.constraint(equalTo: waveDurationGlyph.leadingAnchor, constant: -12),
+            wavePlayGlyph.widthAnchor.constraint(equalToConstant: 10),
+            wavePlayGlyph.heightAnchor.constraint(equalToConstant: 10),
+            waveRhythmView.leadingAnchor.constraint(equalTo: wavePlayIsland.trailingAnchor, constant: 8),
+            waveRhythmView.centerYAnchor.constraint(equalTo: wavePlayIsland.centerYAnchor),
+            waveRhythmView.widthAnchor.constraint(equalToConstant: 69),
+            waveRhythmView.heightAnchor.constraint(equalToConstant: 20),
             waveDurationGlyph.centerYAnchor.constraint(equalTo: wavePlayIsland.centerYAnchor),
-            waveDurationGlyph.trailingAnchor.constraint(equalTo: wavePanelControl.trailingAnchor, constant: -20),
-            bodyLabel.topAnchor.constraint(equalTo: wavePlayIsland.bottomAnchor, constant: 12),
-            bodyLabel.leadingAnchor.constraint(equalTo: wavePanelControl.leadingAnchor, constant: 20),
-            bodyLabel.trailingAnchor.constraint(equalTo: wavePanelControl.trailingAnchor, constant: -20),
+            waveDurationGlyph.leadingAnchor.constraint(equalTo: waveRhythmView.trailingAnchor, constant: 14),
+            bodyLabel.topAnchor.constraint(equalTo: wavePlayIsland.bottomAnchor, constant: 6),
+            bodyLabel.leadingAnchor.constraint(equalTo: wavePanelControl.leadingAnchor, constant: 10),
+            bodyLabel.trailingAnchor.constraint(equalTo: wavePanelControl.trailingAnchor, constant: -10),
             likeButton.topAnchor.constraint(equalTo: wavePanelControl.bottomAnchor, constant: 18),
-            likeButton.leadingAnchor.constraint(equalTo: mediaStack.leadingAnchor),
-            likeButton.widthAnchor.constraint(equalToConstant: 72),
+            likeButton.centerXAnchor.constraint(equalTo: reefCard.leadingAnchor, constant: 36),
+            likeButton.widthAnchor.constraint(equalToConstant: 28),
+            likeButton.heightAnchor.constraint(equalToConstant: 28),
+            shellHeartCountLabel.topAnchor.constraint(equalTo: likeButton.bottomAnchor),
+            shellHeartCountLabel.centerXAnchor.constraint(equalTo: likeButton.centerXAnchor),
+            shellHeartCountLabel.widthAnchor.constraint(equalToConstant: 48),
+            shellHeartCountLabel.bottomAnchor.constraint(equalTo: reefCard.bottomAnchor, constant: -18),
             suliJoyCoastalState.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor),
-            suliJoyCoastalState.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor, constant: 4),
-            suliJoyCoastalState.widthAnchor.constraint(equalToConstant: 72),
-            suliJoyCoastalFlow.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor),
-            suliJoyCoastalFlow.trailingAnchor.constraint(equalTo: mediaStack.trailingAnchor, constant: -6),
-            suliJoyCoastalFlow.widthAnchor.constraint(equalToConstant: ShoreMomentCellMetric.publishSide),
-            suliJoyCoastalFlow.heightAnchor.constraint(equalToConstant: ShoreMomentCellMetric.publishSide),
-            suliJoyCoastalFlow.bottomAnchor.constraint(equalTo: reefCard.bottomAnchor, constant: -30)
+            suliJoyCoastalState.centerXAnchor.constraint(equalTo: reefCard.leadingAnchor, constant: 76),
+            suliJoyCoastalState.widthAnchor.constraint(equalToConstant: 28),
+            suliJoyCoastalState.heightAnchor.constraint(equalToConstant: 28),
+            shoreReplyCountLabel.topAnchor.constraint(equalTo: suliJoyCoastalState.bottomAnchor),
+            shoreReplyCountLabel.centerXAnchor.constraint(equalTo: suliJoyCoastalState.centerXAnchor),
+            shoreReplyCountLabel.widthAnchor.constraint(equalToConstant: 48),
+            shoreReplyDock.leadingAnchor.constraint(equalTo: reefCard.leadingAnchor, constant: 100),
+            shoreReplyDock.trailingAnchor.constraint(equalTo: reefCard.trailingAnchor, constant: -4),
+            shoreReplyDock.centerYAnchor.constraint(equalTo: likeButton.centerYAnchor),
+            shoreReplyDock.heightAnchor.constraint(equalToConstant: 34),
+            shoreReplyHintLabel.leadingAnchor.constraint(equalTo: shoreReplyDock.leadingAnchor, constant: 12),
+            shoreReplyHintLabel.centerYAnchor.constraint(equalTo: shoreReplyDock.centerYAnchor),
+            shoreReplyHintLabel.trailingAnchor.constraint(equalTo: reefSendMarkView.leadingAnchor, constant: -8),
+            reefSendMarkView.trailingAnchor.constraint(equalTo: shoreReplyDock.trailingAnchor, constant: -12),
+            reefSendMarkView.centerYAnchor.constraint(equalTo: shoreReplyDock.centerYAnchor),
+            reefSendMarkView.widthAnchor.constraint(equalToConstant: ShoreMomentCellMetric.publishSide),
+            reefSendMarkView.heightAnchor.constraint(equalToConstant: ShoreMomentCellMetric.publishSide)
         ])
     }
 
@@ -835,19 +1001,19 @@ final class suliJoyCoastalDiary: UITableViewCell {
     }
 
     private func renderWaveState(_ note: SuliJoyWaveSonicNote) {
-        waveCaptionGlyph.text = note.isWaveRolling ? "PFlDaAykiQnggc".suliJoyPalmUnfurled : "IOsvlbacnJdP SoKuEtHfRihtf ynJogtdef".suliJoyPalmUnfurled
+        let waveStripe = UIImage.suliJoyAssetOrLocal(named: note.waveStripeAssetToken)
+            ?? UIImage(named: "sulijoy_feed_" + "trver_wave")
+        waveRhythmView.image = waveStripe?.withRenderingMode(.alwaysOriginal)
+        waveRhythmView.renderWaveState(note.isWaveRolling)
         waveDurationGlyph.text = "\(note.waveSeconds)s"
         wavePlayGlyph.image = UIImage(systemName: note.isWaveRolling ? "pause.fill" : "play.fill")
-        waveProgressBar.progress = note.waveProgressRatio
     }
 
     private func renderShoreReactions(_ moment: SuliJoyReefMoment) {
         let likeImage = UIImage(named: moment.isHearted ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal)
         likeButton.setImage(likeImage, for: .normal)
-        likeButton.setTitle(" \(moment.heartTally)", for: .normal)
-        likeButton.setTitleColor(UIColor.gray, for: .normal)
-        suliJoyCoastalState.setTitle(" \(moment.reefReplyTally)", for: .normal)
-        suliJoyCoastalState.setTitleColor(UIColor.gray, for: .normal)
+        shellHeartCountLabel.text = "\(moment.heartTally)"
+        shoreReplyCountLabel.text = "\(moment.reefReplyTally)"
     }
 
     private func renderShoreMediaTiles(_ mediaItems: [SuliJoyReefMedia]) {
@@ -872,15 +1038,15 @@ final class suliJoyCoastalDiary: UITableViewCell {
     @objc private func followNow() { onLagoonFollowTap?() }
 }
 
-final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UITextFieldDelegate {
+final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UITextFieldDelegate, UIScrollViewDelegate {
     private enum MomentDetailMetric {
         static let contentTop: CGFloat = 14
-        static let contentSide: CGFloat = 24
+        static let contentSide: CGFloat = 20
         static let contentBottom: CGFloat = -22
         static let stackGap: CGFloat = 16
         static let headerHeight: CGFloat = 44
-        static let mediaRatio: CGFloat = 0.72
-        static let waveOnlyMinHeight: CGFloat = 108
+        static let mediaRatio: CGFloat = 0.776
+        static let waveOnlyMinHeight: CGFloat = 82
         static let inputHeight: CGFloat = 64
         static let keyboardInset: CGFloat = 16
         static let keyboardAnimation: TimeInterval = 0.25
@@ -897,15 +1063,17 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     private let followButton = UIButton(type: .system)
     private let reefFlagControl = UIButton(type: .system)
     private let mediaContainer = UIView()
-    private let heroImageView = UIImageView()
+    private let mediaCarousel = UIScrollView()
+    private let mediaRail = UIStackView()
+    private let mediaPageIndicator = UIPageControl()
     private let imageWaveControl = UIButton(type: .system)
     private let imageWavePlayGlyph = UIImageView()
-    private let imageWaveBarsGlyph = UILabel()
+    private let imageWaveRhythmView = SuliJoyWaveRhythmView()
     private let imageWaveDurationGlyph = UILabel()
     private let waveOnlyControl = UIButton(type: .system)
     private let waveOnlyCaptionGlyph = UILabel()
     private let waveOnlyPlayGlyph = UIImageView()
-    private let waveOnlyBarsGlyph = UILabel()
+    private let waveOnlyRhythmView = SuliJoyWaveRhythmView()
     private let waveOnlyDurationGlyph = UILabel()
     private let bodyLabel = UILabel()
     private let commentsTitleLabel = UILabel()
@@ -1072,55 +1240,77 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         mediaContainer.clipsToBounds = true
         mediaContainer.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.73, alpha: 1)
 
-        heroImageView.translatesAutoresizingMaskIntoConstraints = false
-        heroImageView.contentMode = .scaleAspectFill
-        heroImageView.clipsToBounds = true
-        mediaContainer.addSubview(heroImageView)
+        mediaCarousel.translatesAutoresizingMaskIntoConstraints = false
+        mediaCarousel.isPagingEnabled = true
+        mediaCarousel.showsHorizontalScrollIndicator = false
+        mediaCarousel.alwaysBounceHorizontal = false
+        mediaCarousel.delegate = self
+        mediaRail.translatesAutoresizingMaskIntoConstraints = false
+        mediaRail.axis = .horizontal
+        mediaRail.spacing = 0
+        mediaRail.distribution = .fill
+        mediaPageIndicator.translatesAutoresizingMaskIntoConstraints = false
+        mediaPageIndicator.currentPageIndicatorTintColor = .white
+        mediaPageIndicator.pageIndicatorTintColor = UIColor.white.withAlphaComponent(0.5)
+        mediaPageIndicator.hidesForSinglePage = true
+        mediaPageIndicator.isUserInteractionEnabled = false
+        mediaContainer.addSubview(mediaCarousel)
+        mediaCarousel.addSubview(mediaRail)
+        mediaContainer.addSubview(mediaPageIndicator)
 
         tuneMomentImageWavePill()
         tuneMomentWaveOnlyCard()
 
         NSLayoutConstraint.activate([
-            heroImageView.topAnchor.constraint(equalTo: mediaContainer.topAnchor),
-            heroImageView.leadingAnchor.constraint(equalTo: mediaContainer.leadingAnchor),
-            heroImageView.trailingAnchor.constraint(equalTo: mediaContainer.trailingAnchor),
-            heroImageView.bottomAnchor.constraint(equalTo: mediaContainer.bottomAnchor),
+            mediaCarousel.topAnchor.constraint(equalTo: mediaContainer.topAnchor),
+            mediaCarousel.leadingAnchor.constraint(equalTo: mediaContainer.leadingAnchor),
+            mediaCarousel.trailingAnchor.constraint(equalTo: mediaContainer.trailingAnchor),
+            mediaCarousel.bottomAnchor.constraint(equalTo: mediaContainer.bottomAnchor),
+            mediaRail.topAnchor.constraint(equalTo: mediaCarousel.contentLayoutGuide.topAnchor),
+            mediaRail.leadingAnchor.constraint(equalTo: mediaCarousel.contentLayoutGuide.leadingAnchor),
+            mediaRail.trailingAnchor.constraint(equalTo: mediaCarousel.contentLayoutGuide.trailingAnchor),
+            mediaRail.bottomAnchor.constraint(equalTo: mediaCarousel.contentLayoutGuide.bottomAnchor),
+            mediaRail.heightAnchor.constraint(equalTo: mediaCarousel.frameLayoutGuide.heightAnchor),
+            mediaPageIndicator.centerXAnchor.constraint(equalTo: mediaContainer.centerXAnchor),
+            mediaPageIndicator.bottomAnchor.constraint(equalTo: mediaContainer.bottomAnchor, constant: -8),
 
-            imageWaveControl.topAnchor.constraint(equalTo: mediaContainer.topAnchor, constant: 12),
-            imageWaveControl.leadingAnchor.constraint(equalTo: mediaContainer.leadingAnchor, constant: 12),
-            imageWaveControl.widthAnchor.constraint(equalToConstant: 195),
-            imageWaveControl.heightAnchor.constraint(equalToConstant: 34)
+            imageWaveControl.topAnchor.constraint(equalTo: mediaContainer.topAnchor, constant: 15),
+            imageWaveControl.leadingAnchor.constraint(equalTo: mediaContainer.leadingAnchor, constant: 8),
+            imageWaveControl.widthAnchor.constraint(equalToConstant: 146),
+            imageWaveControl.heightAnchor.constraint(equalToConstant: 22)
         ])
     }
 
     private func tuneMomentImageWavePill() {
         imageWaveControl.translatesAutoresizingMaskIntoConstraints = false
-        imageWaveControl.layer.cornerRadius = 17
+        imageWaveControl.layer.cornerRadius = 11
         imageWaveControl.clipsToBounds = true
         imageWaveControl.setBackgroundImage(UIImage(named: "sulijoy_feed_detail_bottom_gradient"), for: .normal)
         imageWaveControl.addTarget(self, action: #selector(toggleWave), for: .touchUpInside)
 
-        [imageWavePlayGlyph, imageWaveBarsGlyph, imageWaveDurationGlyph].forEach {
+        [imageWavePlayGlyph, imageWaveRhythmView, imageWaveDurationGlyph].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.isUserInteractionEnabled = false
             imageWaveControl.addSubview($0)
         }
-        imageWavePlayGlyph.tintColor = .suliInk
-        imageWaveBarsGlyph.textColor = .suliInk
-        imageWaveBarsGlyph.font = UIFont.monospacedSystemFont(ofSize: 12, weight: .semibold)
-        imageWaveDurationGlyph.textColor = .suliInk
-        imageWaveDurationGlyph.font = UIFont.systemFont(ofSize: 13, weight: .black)
+        imageWavePlayGlyph.tintColor = .white
+        imageWaveRhythmView.contentMode = .scaleAspectFit
+        imageWaveRhythmView.tintColor = .white
+        imageWaveDurationGlyph.textColor = .white
+        imageWaveDurationGlyph.font = UIFont.systemFont(ofSize: 10, weight: .black)
         mediaContainer.addSubview(imageWaveControl)
 
         NSLayoutConstraint.activate([
-            imageWavePlayGlyph.leadingAnchor.constraint(equalTo: imageWaveControl.leadingAnchor, constant: 12),
+            imageWavePlayGlyph.leadingAnchor.constraint(equalTo: imageWaveControl.leadingAnchor, constant: 10),
             imageWavePlayGlyph.centerYAnchor.constraint(equalTo: imageWaveControl.centerYAnchor),
-            imageWavePlayGlyph.widthAnchor.constraint(equalToConstant: 14),
-            imageWavePlayGlyph.heightAnchor.constraint(equalToConstant: 14),
-            imageWaveBarsGlyph.leadingAnchor.constraint(equalTo: imageWavePlayGlyph.trailingAnchor, constant: 9),
-            imageWaveBarsGlyph.centerYAnchor.constraint(equalTo: imageWaveControl.centerYAnchor),
-            imageWaveDurationGlyph.leadingAnchor.constraint(equalTo: imageWaveBarsGlyph.trailingAnchor, constant: 10),
-            imageWaveDurationGlyph.trailingAnchor.constraint(lessThanOrEqualTo: imageWaveControl.trailingAnchor, constant: -12),
+            imageWavePlayGlyph.widthAnchor.constraint(equalToConstant: 9),
+            imageWavePlayGlyph.heightAnchor.constraint(equalToConstant: 9),
+            imageWaveRhythmView.leadingAnchor.constraint(equalTo: imageWavePlayGlyph.trailingAnchor, constant: 7),
+            imageWaveRhythmView.centerYAnchor.constraint(equalTo: imageWaveControl.centerYAnchor),
+            imageWaveRhythmView.widthAnchor.constraint(equalToConstant: 69),
+            imageWaveRhythmView.heightAnchor.constraint(equalToConstant: 14),
+            imageWaveDurationGlyph.leadingAnchor.constraint(equalTo: imageWaveRhythmView.trailingAnchor, constant: 7),
+            imageWaveDurationGlyph.trailingAnchor.constraint(lessThanOrEqualTo: imageWaveControl.trailingAnchor, constant: -8),
             imageWaveDurationGlyph.centerYAnchor.constraint(equalTo: imageWaveControl.centerYAnchor)
         ])
     }
@@ -1134,7 +1324,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         waveOnlyControl.clipsToBounds = true
         waveOnlyControl.addTarget(self, action: #selector(toggleWave), for: .touchUpInside)
 
-        [waveOnlyCaptionGlyph, waveOnlyPlayGlyph, waveOnlyBarsGlyph, waveOnlyDurationGlyph].forEach {
+        [waveOnlyCaptionGlyph, waveOnlyPlayGlyph, waveOnlyRhythmView, waveOnlyDurationGlyph].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             $0.isUserInteractionEnabled = false
             waveOnlyControl.addSubview($0)
@@ -1143,8 +1333,8 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         waveOnlyCaptionGlyph.textColor = .suliInk
         waveOnlyCaptionGlyph.numberOfLines = 2
         waveOnlyPlayGlyph.tintColor = .suliInk
-        waveOnlyBarsGlyph.textColor = .suliInk
-        waveOnlyBarsGlyph.font = UIFont.monospacedSystemFont(ofSize: 15, weight: .black)
+        waveOnlyRhythmView.contentMode = .scaleAspectFit
+        waveOnlyRhythmView.tintColor = .suliInk
         waveOnlyDurationGlyph.textColor = .suliInk
         waveOnlyDurationGlyph.font = UIFont.systemFont(ofSize: 13, weight: .black)
 
@@ -1156,9 +1346,11 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             waveOnlyPlayGlyph.topAnchor.constraint(equalTo: waveOnlyCaptionGlyph.bottomAnchor, constant: 18),
             waveOnlyPlayGlyph.widthAnchor.constraint(equalToConstant: 17),
             waveOnlyPlayGlyph.heightAnchor.constraint(equalToConstant: 17),
-            waveOnlyBarsGlyph.leadingAnchor.constraint(equalTo: waveOnlyPlayGlyph.trailingAnchor, constant: 14),
-            waveOnlyBarsGlyph.centerYAnchor.constraint(equalTo: waveOnlyPlayGlyph.centerYAnchor),
-            waveOnlyDurationGlyph.leadingAnchor.constraint(equalTo: waveOnlyBarsGlyph.trailingAnchor, constant: 14),
+            waveOnlyRhythmView.leadingAnchor.constraint(equalTo: waveOnlyPlayGlyph.trailingAnchor, constant: 14),
+            waveOnlyRhythmView.centerYAnchor.constraint(equalTo: waveOnlyPlayGlyph.centerYAnchor),
+            waveOnlyRhythmView.widthAnchor.constraint(equalToConstant: 69),
+            waveOnlyRhythmView.heightAnchor.constraint(equalToConstant: 20),
+            waveOnlyDurationGlyph.leadingAnchor.constraint(equalTo: waveOnlyRhythmView.trailingAnchor, constant: 14),
             waveOnlyDurationGlyph.centerYAnchor.constraint(equalTo: waveOnlyPlayGlyph.centerYAnchor),
             waveOnlyDurationGlyph.trailingAnchor.constraint(lessThanOrEqualTo: waveOnlyControl.trailingAnchor, constant: -16)
         ])
@@ -1226,9 +1418,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         renderMomentWave()
         mediaContainer.isHidden = !hasReefMedia
         waveOnlyControl.isHidden = hasReefMedia
-        if let firstReefMedia = suliJoyCoastalGalleryf.reefMedia.first {
-            heroImageView.image = UIImage.suliJoyAssetOrLocal(named: firstReefMedia.reefAssetToken)
-        }
+        renderMomentMedia()
         waveOnlyCaptionGlyph.text = suliJoyCoastalGalleryf.islandStyleLine
         bodyLabel.text = suliJoyCoastalGalleryf.islandCaptionText
         reefFlagControl.tintColor = suliJoyCoastalGalleryf.isReefFlagged ? UIColor(red: 1, green: 0.43, blue: 0.34, alpha: 1) : .suliInk
@@ -1245,12 +1435,39 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         [imageWavePlayGlyph, waveOnlyPlayGlyph].forEach {
             $0.image = UIImage(systemName: shoreWaveIconName)
         }
-        let shoreWaveBars = suliJoyCoastalGalleryf.waveNote.isWaveRolling ? "||||||||||||" : "|||||| |||||"
-        imageWaveBarsGlyph.text = shoreWaveBars
-        waveOnlyBarsGlyph.text = shoreWaveBars
+        let waveStripe = UIImage.suliJoyAssetOrLocal(named: suliJoyCoastalGalleryf.waveNote.waveStripeAssetToken)
+            ?? UIImage(named: "sulijoy_feed_" + "trver_wave")
+        imageWaveRhythmView.image = waveStripe?.withRenderingMode(.alwaysTemplate)
+        waveOnlyRhythmView.image = waveStripe?.withRenderingMode(.alwaysTemplate)
+        imageWaveRhythmView.renderWaveState(suliJoyCoastalGalleryf.waveNote.isWaveRolling)
+        waveOnlyRhythmView.renderWaveState(suliJoyCoastalGalleryf.waveNote.isWaveRolling)
         let shoreWaveDuration = "\(suliJoyCoastalGalleryf.waveNote.waveSeconds)s"
         imageWaveDurationGlyph.text = shoreWaveDuration
         waveOnlyDurationGlyph.text = shoreWaveDuration
+    }
+
+    private func renderMomentMedia() {
+        mediaRail.arrangedSubviews.forEach { reefSnapshot in
+            mediaRail.removeArrangedSubview(reefSnapshot)
+            reefSnapshot.removeFromSuperview()
+        }
+        for reefMedia in suliJoyCoastalGalleryf.reefMedia {
+            let reefSnapshot = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: reefMedia.reefAssetToken))
+            reefSnapshot.translatesAutoresizingMaskIntoConstraints = false
+            reefSnapshot.contentMode = .scaleAspectFill
+            reefSnapshot.clipsToBounds = true
+            mediaRail.addArrangedSubview(reefSnapshot)
+            reefSnapshot.widthAnchor.constraint(equalTo: mediaCarousel.frameLayoutGuide.widthAnchor).isActive = true
+        }
+        mediaPageIndicator.numberOfPages = suliJoyCoastalGalleryf.reefMedia.count
+        mediaPageIndicator.currentPage = 0
+        mediaCarousel.setContentOffset(.zero, animated: false)
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard scrollView === mediaCarousel, scrollView.bounds.width > 0 else { return }
+        let shorePage = Int(round(scrollView.contentOffset.x / scrollView.bounds.width))
+        mediaPageIndicator.currentPage = min(max(0, shorePage), max(0, mediaPageIndicator.numberOfPages - 1))
     }
 
     private func renderMomentComments() {
@@ -1398,7 +1615,9 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             var renderedMoment = refreshedMoment
             if refreshedMoment.waveNote.isWaveRolling {
                 do {
-                    try SuliJoyWaveResonanceHarbor.shared.play(note: refreshedMoment.waveNote, sunwashedDenim: refreshedMoment.reefMomentID)
+                    try SuliJoyWaveResonanceHarbor.shared.play(note: refreshedMoment.waveNote, sunwashedDenim: refreshedMoment.reefMomentID) { [weak self] momentID in
+                        self?.finishMomentWave(momentID)
+                    }
                 } catch {
                     renderedMoment.waveNote.isWaveRolling = false
                     renderedMoment.waveNote.waveProgressRatio = 0
@@ -1409,9 +1628,17 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             }
             self.suliJoyCoastalGalleryf = renderedMoment
             self.renderMomentWave()
-            if renderedMoment.waveNote.isWaveRolling || !refreshedMoment.waveNote.isWaveRolling {
-                self.showLagoonToast(waveEnvelope.coastalWardrobe)
-            }
+        }
+    }
+
+    private func finishMomentWave(_ momentID: String) {
+        guard suliJoyCoastalGalleryf.reefMomentID == momentID else { return }
+        SuliJoyCoveMockService.shared.toggleWavePlayback(sunwashedDenim: momentID) { [weak self] waveEnvelope in
+            guard let self, var refreshedMoment = waveEnvelope.sandbarLayering else { return }
+            refreshedMoment.waveNote.isWaveRolling = false
+            refreshedMoment.waveNote.waveProgressRatio = 0
+            self.suliJoyCoastalGalleryf = refreshedMoment
+            self.renderMomentWave()
         }
     }
 

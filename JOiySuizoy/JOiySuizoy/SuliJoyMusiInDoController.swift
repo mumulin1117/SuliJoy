@@ -50,6 +50,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         shorePlayerLayer?.frame = reefCinemaView.bounds
+        paintLagoonFollowGlow()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,7 +67,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         reefScrollView.addSubview(reefContentView)
 
         reefInputBar.translatesAutoresizingMaskIntoConstraints = false
-        reefInputBar.backgroundColor = .white
+        reefInputBar.backgroundColor = UIColor.white.withAlphaComponent(0.96)
         view.addSubview(reefInputBar)
         reefInputBottomConstraint = reefInputBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 
@@ -78,11 +79,11 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
             reefContentView.topAnchor.constraint(equalTo: reefScrollView.contentLayoutGuide.topAnchor),
             reefContentView.leadingAnchor.constraint(equalTo: reefScrollView.contentLayoutGuide.leadingAnchor),
             reefContentView.trailingAnchor.constraint(equalTo: reefScrollView.contentLayoutGuide.trailingAnchor),
-            reefContentView.bottomAnchor.constraint(equalTo: reefScrollView.contentLayoutGuide.bottomAnchor, constant: -20),
+            reefContentView.bottomAnchor.constraint(equalTo: reefScrollView.contentLayoutGuide.bottomAnchor, constant: -16),
             reefContentView.widthAnchor.constraint(equalTo: reefScrollView.frameLayoutGuide.widthAnchor),
             reefInputBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             reefInputBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            reefInputBar.heightAnchor.constraint(equalToConstant: 64),
+            reefInputBar.heightAnchor.constraint(equalToConstant: 60),
             reefInputBottomConstraint!
         ])
 
@@ -102,7 +103,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
 
         let shorelineReturnControl = UIButton(type: .system)
         shorelineReturnControl.translatesAutoresizingMaskIntoConstraints = false
-        shorelineReturnControl.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        shorelineReturnControl.setImage(UIImage(systemName: "arrow.left"), for: .normal)
         shorelineReturnControl.tintColor = .suliInk
         shorelineReturnControl.addTarget(self, action: #selector(driftBackToClips), for: .touchUpInside)
 
@@ -114,7 +115,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         creatorAvatarView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openReefCreatorProfile)))
 
         creatorNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        creatorNameLabel.font = UIFont.systemFont(ofSize: 20, weight: .black)
+        creatorNameLabel.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         creatorNameLabel.textColor = .suliInk
         creatorNameLabel.isUserInteractionEnabled = true
         creatorNameLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openReefCreatorProfile)))
@@ -122,39 +123,39 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         lagoonFollowButton.translatesAutoresizingMaskIntoConstraints = false
         lagoonFollowButton.setTitle("FRoRlhlioXwp".suliJoyPalmUnfurled, for: .normal)
         lagoonFollowButton.setTitleColor(.white, for: .normal)
-        lagoonFollowButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .black)
-        lagoonFollowButton.layer.cornerRadius = 21
+        lagoonFollowButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        lagoonFollowButton.layer.cornerRadius = 14
         lagoonFollowButton.clipsToBounds = true
         lagoonFollowButton.addTarget(self, action: #selector(toggleReefFollow), for: .touchUpInside)
 
         [shorelineReturnControl, creatorAvatarView, creatorNameLabel, lagoonFollowButton].forEach { reefHeader.addSubview($0) }
         NSLayoutConstraint.activate([
-            reefHeader.topAnchor.constraint(equalTo: reefContentView.topAnchor, constant: 8),
-            reefHeader.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 20),
+            reefHeader.topAnchor.constraint(equalTo: reefContentView.topAnchor),
+            reefHeader.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 15),
             reefHeader.trailingAnchor.constraint(equalTo: reefContentView.trailingAnchor, constant: -20),
-            reefHeader.heightAnchor.constraint(equalToConstant: 56),
+            reefHeader.heightAnchor.constraint(equalToConstant: 48),
             shorelineReturnControl.leadingAnchor.constraint(equalTo: reefHeader.leadingAnchor),
             shorelineReturnControl.centerYAnchor.constraint(equalTo: reefHeader.centerYAnchor),
-            shorelineReturnControl.widthAnchor.constraint(equalToConstant: 34),
-            shorelineReturnControl.heightAnchor.constraint(equalToConstant: 34),
-            creatorAvatarView.leadingAnchor.constraint(equalTo: shorelineReturnControl.trailingAnchor, constant: 14),
+            shorelineReturnControl.widthAnchor.constraint(equalToConstant: 24),
+            shorelineReturnControl.heightAnchor.constraint(equalToConstant: 44),
+            creatorAvatarView.leadingAnchor.constraint(equalTo: shorelineReturnControl.trailingAnchor, constant: 12),
             creatorAvatarView.centerYAnchor.constraint(equalTo: reefHeader.centerYAnchor),
             creatorAvatarView.widthAnchor.constraint(equalToConstant: 36),
             creatorAvatarView.heightAnchor.constraint(equalToConstant: 36),
-            creatorNameLabel.leadingAnchor.constraint(equalTo: creatorAvatarView.trailingAnchor, constant: 14),
+            creatorNameLabel.leadingAnchor.constraint(equalTo: creatorAvatarView.trailingAnchor, constant: 8),
             creatorNameLabel.centerYAnchor.constraint(equalTo: reefHeader.centerYAnchor),
             creatorNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: lagoonFollowButton.leadingAnchor, constant: -10),
             lagoonFollowButton.trailingAnchor.constraint(equalTo: reefHeader.trailingAnchor),
             lagoonFollowButton.centerYAnchor.constraint(equalTo: reefHeader.centerYAnchor),
-            lagoonFollowButton.widthAnchor.constraint(equalToConstant: 92),
-            lagoonFollowButton.heightAnchor.constraint(equalToConstant: 42)
+            lagoonFollowButton.widthAnchor.constraint(equalToConstant: 84),
+            lagoonFollowButton.heightAnchor.constraint(equalToConstant: 28)
         ])
     }
 
     private func anchorReefCinema() {
         reefCinemaView.translatesAutoresizingMaskIntoConstraints = false
         reefCinemaView.backgroundColor = UIColor(red: 1, green: 0.90, blue: 0.78, alpha: 1)
-        reefCinemaView.layer.cornerRadius = 18
+        reefCinemaView.layer.cornerRadius = 16
         reefCinemaView.clipsToBounds = true
         reefContentView.addSubview(reefCinemaView)
 
@@ -163,30 +164,21 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         reefPosterView.clipsToBounds = true
 
         reefPlayButton.translatesAutoresizingMaskIntoConstraints = false
-        reefPlayButton.backgroundColor = UIColor.black.withAlphaComponent(0.22)
-        reefPlayButton.layer.borderColor = UIColor.white.cgColor
-        reefPlayButton.layer.borderWidth = 4
-        reefPlayButton.layer.cornerRadius = 34
-        reefPlayButton.tintColor = .white
-        reefPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        reefPlayButton.setImage(UIImage(named: "sulijoy_clip_play_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
         reefPlayButton.addTarget(self, action: #selector(toggleReefPlayback), for: .touchUpInside)
 
         reefFlagButton.translatesAutoresizingMaskIntoConstraints = false
-        reefFlagButton.tintColor = .white
-        reefFlagButton.layer.borderColor = UIColor.white.cgColor
-        reefFlagButton.layer.borderWidth = 2
-        reefFlagButton.layer.cornerRadius = 14
-        reefFlagButton.setImage(UIImage(systemName: "exclamationmark"), for: .normal)
+        reefFlagButton.setImage(UIImage(named: "sulijoy_clip_report_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
         reefFlagButton.addTarget(self, action: #selector(openReefClipModeration), for: .touchUpInside)
 
         reefFloatingStats.translatesAutoresizingMaskIntoConstraints = false
         reefFloatingStats.axis = .vertical
         reefFloatingStats.alignment = .center
-        reefFloatingStats.spacing = 8
+        reefFloatingStats.spacing = 4
         reefFloatingStats.backgroundColor = UIColor.black.withAlphaComponent(0.36)
-        reefFloatingStats.layer.cornerRadius = 28
+        reefFloatingStats.layer.cornerRadius = 22
         reefFloatingStats.isLayoutMarginsRelativeArrangement = true
-        reefFloatingStats.layoutMargins = UIEdgeInsets(top: 12, left: 10, bottom: 12, right: 10)
+        reefFloatingStats.layoutMargins = UIEdgeInsets(top: 10, left: 6, bottom: 10, right: 6)
 
         reefLikeButton.translatesAutoresizingMaskIntoConstraints = false
         reefLikeButton.setImage(UIImage(named: "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal), for: .normal)
@@ -197,7 +189,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
 
         [reefLikeCountLabel, reefViewCountLabel].forEach {
             $0.textColor = UIColor.white.withAlphaComponent(0.78)
-            $0.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+            $0.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
             $0.textAlignment = .center
         }
 
@@ -211,59 +203,59 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         reefCinemaView.addSubview(reefFloatingStats)
 
         NSLayoutConstraint.activate([
-            reefCinemaView.topAnchor.constraint(equalTo: reefHeader.bottomAnchor, constant: 18),
-            reefCinemaView.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 30),
-            reefCinemaView.trailingAnchor.constraint(equalTo: reefContentView.trailingAnchor, constant: -30),
-            reefCinemaView.heightAnchor.constraint(equalTo: reefCinemaView.widthAnchor, multiplier: 1.34),
+            reefCinemaView.topAnchor.constraint(equalTo: reefHeader.bottomAnchor, constant: 8),
+            reefCinemaView.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 15),
+            reefCinemaView.trailingAnchor.constraint(equalTo: reefContentView.trailingAnchor, constant: -15),
+            reefCinemaView.heightAnchor.constraint(equalTo: reefCinemaView.widthAnchor, multiplier: 457.0 / 345.0),
             reefPosterView.topAnchor.constraint(equalTo: reefCinemaView.topAnchor),
             reefPosterView.leadingAnchor.constraint(equalTo: reefCinemaView.leadingAnchor),
             reefPosterView.trailingAnchor.constraint(equalTo: reefCinemaView.trailingAnchor),
             reefPosterView.bottomAnchor.constraint(equalTo: reefCinemaView.bottomAnchor),
             reefPlayButton.centerXAnchor.constraint(equalTo: reefCinemaView.centerXAnchor),
             reefPlayButton.centerYAnchor.constraint(equalTo: reefCinemaView.centerYAnchor),
-            reefPlayButton.widthAnchor.constraint(equalToConstant: 68),
-            reefPlayButton.heightAnchor.constraint(equalToConstant: 68),
-            reefFlagButton.topAnchor.constraint(equalTo: reefCinemaView.topAnchor, constant: 14),
-            reefFlagButton.trailingAnchor.constraint(equalTo: reefCinemaView.trailingAnchor, constant: -14),
-            reefFlagButton.widthAnchor.constraint(equalToConstant: 30),
-            reefFlagButton.heightAnchor.constraint(equalToConstant: 30),
-            reefFloatingStats.trailingAnchor.constraint(equalTo: reefCinemaView.trailingAnchor, constant: -16),
-            reefFloatingStats.bottomAnchor.constraint(equalTo: reefCinemaView.bottomAnchor, constant: -22),
-            reefFloatingStats.widthAnchor.constraint(equalToConstant: 58),
-            reefLikeButton.widthAnchor.constraint(equalToConstant: 28),
-            reefLikeButton.heightAnchor.constraint(equalToConstant: 28),
-            reefViewMark.widthAnchor.constraint(equalToConstant: 24),
-            reefViewMark.heightAnchor.constraint(equalToConstant: 24)
+            reefPlayButton.widthAnchor.constraint(equalToConstant: 64),
+            reefPlayButton.heightAnchor.constraint(equalToConstant: 64),
+            reefFlagButton.topAnchor.constraint(equalTo: reefCinemaView.topAnchor, constant: 12),
+            reefFlagButton.trailingAnchor.constraint(equalTo: reefCinemaView.trailingAnchor, constant: -13),
+            reefFlagButton.widthAnchor.constraint(equalToConstant: 28),
+            reefFlagButton.heightAnchor.constraint(equalToConstant: 28),
+            reefFloatingStats.trailingAnchor.constraint(equalTo: reefCinemaView.trailingAnchor, constant: -12),
+            reefFloatingStats.bottomAnchor.constraint(equalTo: reefCinemaView.bottomAnchor, constant: -14),
+            reefFloatingStats.widthAnchor.constraint(equalToConstant: 44),
+            reefLikeButton.widthAnchor.constraint(equalToConstant: 22),
+            reefLikeButton.heightAnchor.constraint(equalToConstant: 22),
+            reefViewMark.widthAnchor.constraint(equalToConstant: 20),
+            reefViewMark.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 
     private func anchorReefCopyAndReplies() {
         reefCaptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        reefCaptionLabel.textColor = UIColor.black.withAlphaComponent(0.82)
-        reefCaptionLabel.font = UIFont.systemFont(ofSize: 19, weight: .regular)
+        reefCaptionLabel.textColor = .suliInk
+        reefCaptionLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         reefCaptionLabel.numberOfLines = 0
         reefContentView.addSubview(reefCaptionLabel)
 
         reefCommentsTitle.translatesAutoresizingMaskIntoConstraints = false
         reefCommentsTitle.text = "CHohmkmFesnEtasJ".suliJoyPalmUnfurled
         reefCommentsTitle.textColor = .suliInk
-        reefCommentsTitle.font = UIFont.systemFont(ofSize: 22, weight: .black)
+        reefCommentsTitle.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         reefContentView.addSubview(reefCommentsTitle)
 
         reefCommentsStack.translatesAutoresizingMaskIntoConstraints = false
         reefCommentsStack.axis = .vertical
-        reefCommentsStack.spacing = 14
+        reefCommentsStack.spacing = 10
         reefContentView.addSubview(reefCommentsStack)
 
         NSLayoutConstraint.activate([
-            reefCaptionLabel.topAnchor.constraint(equalTo: reefCinemaView.bottomAnchor, constant: 22),
-            reefCaptionLabel.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 30),
-            reefCaptionLabel.trailingAnchor.constraint(equalTo: reefContentView.trailingAnchor, constant: -30),
-            reefCommentsTitle.topAnchor.constraint(equalTo: reefCaptionLabel.bottomAnchor, constant: 18),
-            reefCommentsTitle.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 40),
-            reefCommentsStack.topAnchor.constraint(equalTo: reefCommentsTitle.bottomAnchor, constant: 16),
-            reefCommentsStack.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 40),
-            reefCommentsStack.trailingAnchor.constraint(equalTo: reefContentView.trailingAnchor, constant: -40),
+            reefCaptionLabel.topAnchor.constraint(equalTo: reefCinemaView.bottomAnchor, constant: 12),
+            reefCaptionLabel.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 15),
+            reefCaptionLabel.trailingAnchor.constraint(equalTo: reefContentView.trailingAnchor, constant: -15),
+            reefCommentsTitle.topAnchor.constraint(equalTo: reefCaptionLabel.bottomAnchor, constant: 12),
+            reefCommentsTitle.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 20),
+            reefCommentsStack.topAnchor.constraint(equalTo: reefCommentsTitle.bottomAnchor, constant: 10),
+            reefCommentsStack.leadingAnchor.constraint(equalTo: reefContentView.leadingAnchor, constant: 20),
+            reefCommentsStack.trailingAnchor.constraint(equalTo: reefContentView.trailingAnchor, constant: -20),
             reefCommentsStack.bottomAnchor.constraint(equalTo: reefContentView.bottomAnchor)
         ])
     }
@@ -271,29 +263,30 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
     private func anchorReefInputDock() {
         reefInputField.translatesAutoresizingMaskIntoConstraints = false
         reefInputField.placeholder = "WchxaFtY Bdeow qygoPua UdCoV bocnO TwHeveWkVecnPdWsz?R".suliJoyPalmUnfurled
-        reefInputField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        reefInputField.backgroundColor = UIColor(red: 0.97, green: 0.98, blue: 0.98, alpha: 1)
-        reefInputField.layer.cornerRadius = 22
-        reefInputField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: 1))
+        reefInputField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        reefInputField.textColor = .suliInk
+        reefInputField.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1)
+        reefInputField.layer.cornerRadius = 20
+        reefInputField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 1))
         reefInputField.leftViewMode = .always
         reefInputField.returnKeyType = .send
         reefInputField.addTarget(self, action: #selector(sendReefComment), for: .editingDidEndOnExit)
 
         reefSendButton.translatesAutoresizingMaskIntoConstraints = false
-        reefSendButton.setImage((UIImage(named: "sulijoy_feed_comment_send_mark") ?? UIImage(named: "sulijoy_feed_send_mark"))?.withRenderingMode(.alwaysOriginal), for: .normal)
+        reefSendButton.setImage(UIImage(named: "sulijoy_clip_send_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
         reefSendButton.addTarget(self, action: #selector(sendReefComment), for: .touchUpInside)
 
         reefInputBar.addSubview(reefInputField)
         reefInputBar.addSubview(reefSendButton)
         NSLayoutConstraint.activate([
-            reefInputField.leadingAnchor.constraint(equalTo: reefInputBar.leadingAnchor, constant: 30),
+            reefInputField.leadingAnchor.constraint(equalTo: reefInputBar.leadingAnchor, constant: 15),
             reefInputField.centerYAnchor.constraint(equalTo: reefInputBar.centerYAnchor),
-            reefInputField.trailingAnchor.constraint(equalTo: reefSendButton.leadingAnchor, constant: -18),
-            reefInputField.heightAnchor.constraint(equalToConstant: 44),
-            reefSendButton.trailingAnchor.constraint(equalTo: reefInputBar.trailingAnchor, constant: -30),
+            reefInputField.trailingAnchor.constraint(equalTo: reefSendButton.leadingAnchor, constant: -9),
+            reefInputField.heightAnchor.constraint(equalToConstant: 40),
+            reefSendButton.trailingAnchor.constraint(equalTo: reefInputBar.trailingAnchor, constant: -15),
             reefSendButton.centerYAnchor.constraint(equalTo: reefInputBar.centerYAnchor),
-            reefSendButton.widthAnchor.constraint(equalToConstant: 44),
-            reefSendButton.heightAnchor.constraint(equalToConstant: 44)
+            reefSendButton.widthAnchor.constraint(equalToConstant: 36),
+            reefSendButton.heightAnchor.constraint(equalToConstant: 36)
         ])
     }
 
@@ -343,9 +336,9 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
             UIColor(red: 0.54, green: 0.45, blue: 1, alpha: 1).cgColor,
             UIColor(red: 1, green: 0.29, blue: 0.96, alpha: 1).cgColor
         ]
-        gradient.startPoint = CGPoint(x: 0, y: 0.5)
-        gradient.endPoint = CGPoint(x: 1, y: 0.5)
-        gradient.frame = CGRect(x: 0, y: 0, width: 92, height: 42)
+        gradient.startPoint = CGPoint(x: 0, y: 1)
+        gradient.endPoint = CGPoint(x: 1, y: 0)
+        gradient.frame = lagoonFollowButton.bounds
         lagoonFollowButton.layer.insertSublayer(gradient, at: 0)
     }
 
@@ -380,12 +373,15 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
     }
 
     private func pauseReefPlayback() {
+        if let shorePlayer {
+            NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: shorePlayer.currentItem)
+        }
         shorePlayer?.pause()
         shorePlayer = nil
         shorePlayerLayer?.removeFromSuperlayer()
         shorePlayerLayer = nil
         reefPlayButton.alpha = 1
-        reefPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+        reefPlayButton.setImage(UIImage(named: "sulijoy_clip_play_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
 
     @objc private func driftBackToClips() {
@@ -413,9 +409,15 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         reefCinemaView.layer.insertSublayer(shoreMotionLayer, above: reefPosterView.layer)
         self.shorePlayer = shoreMotionEngine
         self.shorePlayerLayer = shoreMotionLayer
-        reefPlayButton.alpha = 0.28
-        reefPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+        reefPlayButton.alpha = 0.82
+        reefPlayButton.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        reefPlayButton.tintColor = .white
+        NotificationCenter.default.addObserver(self, selector: #selector(reefPlaybackDidSettle), name: .AVPlayerItemDidPlayToEndTime, object: shoreMotionEngine.currentItem)
         shoreMotionEngine.play()
+    }
+
+    @objc private func reefPlaybackDidSettle() {
+        pauseReefPlayback()
     }
 
     @objc private func toggleReefFollow() {
@@ -500,8 +502,8 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         guard let shorelineKeyboardFrame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let reefOverlap = max(0, view.bounds.maxY - view.convert(shorelineKeyboardFrame, from: nil).minY)
         reefInputBottomConstraint?.constant = -reefOverlap + view.safeAreaInsets.bottom
-        reefScrollView.contentInset.bottom = reefOverlap + 18
-        reefScrollView.scrollIndicatorInsets.bottom = reefOverlap + 18
+        reefScrollView.contentInset.bottom = 12
+        reefScrollView.scrollIndicatorInsets.bottom = 12
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
@@ -535,7 +537,7 @@ final class SuliJoyClipCommentCard: UIView {
     private func raiseReefDetailScene() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
-        layer.cornerRadius = 16
+        layer.cornerRadius = 15
         clipsToBounds = true
 
         let reefReplyPortrait = UIImageView()
@@ -549,46 +551,46 @@ final class SuliJoyClipCommentCard: UIView {
         reefReplyNameGlyph.translatesAutoresizingMaskIntoConstraints = false
         reefReplyNameGlyph.text = reefReply.reefReplyAuthorAlias
         reefReplyNameGlyph.textColor = .suliInk
-        reefReplyNameGlyph.font = UIFont.systemFont(ofSize: 16, weight: .black)
+        reefReplyNameGlyph.font = UIFont.systemFont(ofSize: 15, weight: .bold)
 
         let reefReplyCopyGlyph = UILabel()
         reefReplyCopyGlyph.translatesAutoresizingMaskIntoConstraints = false
         reefReplyCopyGlyph.text = reefReply.reefReplyText
         reefReplyCopyGlyph.textColor = UIColor.black.withAlphaComponent(0.48)
-        reefReplyCopyGlyph.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        reefReplyCopyGlyph.numberOfLines = 2
+        reefReplyCopyGlyph.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        reefReplyCopyGlyph.numberOfLines = 0
 
         let reefReplyTimeGlyph = UILabel()
         reefReplyTimeGlyph.translatesAutoresizingMaskIntoConstraints = false
         reefReplyTimeGlyph.text = reefReply.reefReplyMomentLine
         reefReplyTimeGlyph.textColor = UIColor.black.withAlphaComponent(0.30)
-        reefReplyTimeGlyph.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        reefReplyTimeGlyph.font = UIFont.systemFont(ofSize: 12, weight: .regular)
 
         reefFlagButton.translatesAutoresizingMaskIntoConstraints = false
-        reefFlagButton.setImage(UIImage(systemName: "exclamationmark.triangle"), for: .normal)
-        reefFlagButton.tintColor = reefReply.isReefFlagged ? UIColor(red: 1, green: 0.42, blue: 0.38, alpha: 1) : UIColor(red: 0.87, green: 0.80, blue: 0.74, alpha: 1)
+        reefFlagButton.setImage(UIImage(named: "sulijoy_shorts_flag_mark")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        reefFlagButton.tintColor = reefReply.isReefFlagged ? UIColor(red: 1, green: 0.42, blue: 0.38, alpha: 1) : UIColor(red: 0.94, green: 0.89, blue: 0.84, alpha: 1)
         reefFlagButton.addTarget(self, action: #selector(raiseReefCommentFlag), for: .touchUpInside)
 
         [reefReplyPortrait, reefReplyNameGlyph, reefReplyCopyGlyph, reefReplyTimeGlyph, reefFlagButton].forEach { addSubview($0) }
         NSLayoutConstraint.activate([
-            heightAnchor.constraint(greaterThanOrEqualToConstant: 76),
-            reefReplyPortrait.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 14),
-            reefReplyPortrait.topAnchor.constraint(equalTo: topAnchor, constant: 14),
+            heightAnchor.constraint(greaterThanOrEqualToConstant: 74),
+            reefReplyPortrait.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            reefReplyPortrait.topAnchor.constraint(equalTo: topAnchor, constant: 12),
             reefReplyPortrait.widthAnchor.constraint(equalToConstant: 30),
             reefReplyPortrait.heightAnchor.constraint(equalToConstant: 30),
-            reefReplyNameGlyph.leadingAnchor.constraint(equalTo: reefReplyPortrait.trailingAnchor, constant: 14),
-            reefReplyNameGlyph.topAnchor.constraint(equalTo: topAnchor, constant: 14),
+            reefReplyNameGlyph.leadingAnchor.constraint(equalTo: reefReplyPortrait.trailingAnchor, constant: 10),
+            reefReplyNameGlyph.topAnchor.constraint(equalTo: topAnchor, constant: 11),
             reefReplyNameGlyph.trailingAnchor.constraint(lessThanOrEqualTo: reefFlagButton.leadingAnchor, constant: -10),
             reefReplyCopyGlyph.leadingAnchor.constraint(equalTo: reefReplyNameGlyph.leadingAnchor),
             reefReplyCopyGlyph.topAnchor.constraint(equalTo: reefReplyNameGlyph.bottomAnchor, constant: 2),
             reefReplyCopyGlyph.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -48),
             reefReplyTimeGlyph.leadingAnchor.constraint(equalTo: reefReplyNameGlyph.leadingAnchor),
             reefReplyTimeGlyph.topAnchor.constraint(equalTo: reefReplyCopyGlyph.bottomAnchor, constant: 2),
-            reefReplyTimeGlyph.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -12),
-            reefFlagButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14),
-            reefFlagButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14),
-            reefFlagButton.widthAnchor.constraint(equalToConstant: 30),
-            reefFlagButton.heightAnchor.constraint(equalToConstant: 30)
+            reefReplyTimeGlyph.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            reefFlagButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            reefFlagButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            reefFlagButton.widthAnchor.constraint(equalToConstant: 24),
+            reefFlagButton.heightAnchor.constraint(equalToConstant: 24)
         ])
     }
 
