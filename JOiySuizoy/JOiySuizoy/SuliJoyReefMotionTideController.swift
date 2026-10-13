@@ -324,7 +324,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
 
     private func refreshReefMotionPreview(with reefSaved: SuliJoyLagoonClipMedia) {
         if let coverPath = reefSaved.coverImagePath {
-            reefPreviewImageView.image = UIImage(contentsOfFile: coverPath)
+            reefPreviewImageView.image = UIImage(contentsOfFile: coverPath) ?? UIImage.suliJoyPhoto(named: nil)
             reefPreviewImageView.isHidden = false
         }
         reefAddGlyph.image = UIImage(systemName: "play.circle.fill")
@@ -393,7 +393,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
             return
         }
         tideConfirmButton.isLoading = true
-        SuliJoyCoveMockService.shared.publishReefClip(draft: reefDraft) { [weak self] reefEnvelope in
+        SuliJoyLagoonProfileRemoteService.shared.publishReefClip(draft: reefDraft) { [weak self] reefEnvelope in
             self?.settleReefMotionPublish(reefEnvelope)
         }
     }

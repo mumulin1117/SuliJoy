@@ -206,13 +206,15 @@ final class SuliJoypaperbagWaistController: SuliJoyReefEntryCanvasController, UI
     }
 
     @objc private func finishShoreSignup(_ finishTide: SuliJoyGradientButton) {
-        driftSimulatedHarborDelay(finishTide) { [weak self] in
+        finishTide.isLoading = true
+        Task { @MainActor [weak self] in
             guard let self else { return }
-            let profileEnvelope = SuliJoyLagoonGateService.shared.finishIslandProfileTide(
+            let profileEnvelope = await SuliJoyLagoonGateService.shared.finishIslandProfileTide(
                 shorelineDraft: self.lagoonDraft,
                 shoreBioPhrase: self.shoreBioLagoonText.text ?? "",
                 shorePortrait: self.pickedShorePortrait
             )
+            finishTide.isLoading = false
             guard profileEnvelope.beachwearCapsule == 200 else {
                 self.presentReefNotice(profileEnvelope.coastalWardrobe)
                 return

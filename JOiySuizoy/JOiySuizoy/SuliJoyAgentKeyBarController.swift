@@ -65,13 +65,13 @@ final class SuliJoyAgentKeyBarController: UITabBarController, UITabBarController
                 slot: .home,
                 idleMark: "sulijoy_tab_home_idle",
                 activeMark: "sulijoy_tab_home_active",
-                makeRoot: { SuliJoyForinController() }
+                makeRoot: { SuliJoyLagoonVoiceBoardController() }
             ),
             ReefTabCoveBlueprint(
                 slot: .feed,
-                idleMark: "sulijoy_tab_feed_idle",
-                activeMark: "sulijoy_tab_feed_active",
-                makeRoot: { SuliJoyShoortController() }
+                idleMark: "sulijoy_tab_dacaner_idle",
+                activeMark: "sulijoy_tab_adcaner_active",
+                makeRoot: { SuliJoyLagoonLiveBoardController() }
             ),
             ReefTabCoveBlueprint(
                 slot: .publish,
@@ -87,9 +87,9 @@ final class SuliJoyAgentKeyBarController: UITabBarController, UITabBarController
             ),
             ReefTabCoveBlueprint(
                 slot: .shorts,
-                idleMark: "sulijoy_tab_dacaner_idle",
-                activeMark: "sulijoy_tab_adcaner_active",
-                makeRoot: { suliJoyShorelineIntent() }
+                idleMark: "sulijoy_tab_feed_idle",
+                activeMark: "sulijoy_tab_feed_active",
+                makeRoot: { SuliJoyShoreCatalogController() }
             ),
             ReefTabCoveBlueprint(
                 slot: .profile,

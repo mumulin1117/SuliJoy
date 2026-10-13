@@ -360,7 +360,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
         )
         tideConfirmButton.isLoading = true
         refreshShoreMomentState()
-        SuliJoyCoveMockService.shared.publishShoreMoment(draft: shoreDraft) { [weak self] reefResult in
+        SuliJoyLagoonProfileRemoteService.shared.publishShoreMoment(draft: shoreDraft) { [weak self] reefResult in
             guard let self else { return }
             self.tideConfirmButton.isLoading = false
             self.refreshShoreMomentState()

@@ -35,6 +35,29 @@ final class SuliJoyTideSessionVault {
             lagoonState.currentTideConsenl = shoreMail
             lagoonState.sasuliJoySeasideDress = islanderID
             lagoonState.SeasideHeroloaSili = reefPass
+            lagoonState.lagoonRefreshPass = nil
+        }
+    }
+
+    func markRemoteLagoonEntry(
+        shoreMail: String,
+        islanderID: String,
+        accessToken: String,
+        refreshToken: String
+    ) {
+        rewriteLagoonSession { lagoonState in
+            lagoonState.flaggedLagoonVisitorslo = true
+            lagoonState.currentTideConsenl = shoreMail
+            lagoonState.sasuliJoySeasideDress = islanderID
+            lagoonState.SeasideHeroloaSili = accessToken
+            lagoonState.lagoonRefreshPass = refreshToken
+        }
+    }
+
+    func refreshRemoteTokens(accessToken: String, refreshToken: String) {
+        rewriteLagoonSession { lagoonState in
+            lagoonState.SeasideHeroloaSili = accessToken
+            lagoonState.lagoonRefreshPass = refreshToken
         }
     }
 
@@ -43,6 +66,7 @@ final class SuliJoyTideSessionVault {
             lagoonState.flaggedLagoonVisitorslo = false
             lagoonState.currentTideConsenl = nil
             lagoonState.SeasideHeroloaSili = nil
+            lagoonState.lagoonRefreshPass = nil
             lagoonState.sasuliJoySeasideDress = nil
         }
     }
@@ -67,7 +91,8 @@ final class SuliJoyTideSessionVault {
             token: nil,
             userID: nil,
             currentEmail: nil,
-            hasAgreedEULA: false
+            hasAgreedEULA: false,
+            refreshToken: nil
         )
     }
 }

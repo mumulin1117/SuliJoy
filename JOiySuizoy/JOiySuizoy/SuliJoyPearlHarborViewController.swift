@@ -73,12 +73,14 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
         super.viewDidLoad()
         arrangePearlHarborScene()
         refreshShellTotal()
+        syncRemoteShellTotal()
         gatherPearlShelves()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshShellTotal()
+        syncRemoteShellTotal()
     }
 
     private func arrangePearlHarborScene() {
@@ -231,6 +233,13 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
 
     private func refreshShellTotal() {
         shellTotalLabel.text = "\(SuliJoyPearlHarborBridge.currentShellTotal())"
+    }
+
+    private func syncRemoteShellTotal() {
+        SuliJoyLagoonProfileRemoteService.shared.syncCurrentPearlBalance { [weak self] result in
+            guard result.beachwearCapsule == 200, let balance = result.sandbarLayering else { return }
+            self?.shellTotalLabel.text = "\(balance)"
+        }
     }
 
     private func gatherPearlShelves() {

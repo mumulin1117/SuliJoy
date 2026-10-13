@@ -23,7 +23,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         static let tideIndicatorHeight: CGFloat = 5
     }
 
-    private let mirrorCoveService = SuliJoyCoveMockService.shared
+    private let mirrorCoveService = SuliJoyLagoonProfileRemoteService.shared
     private let wardrobeTable = UITableView(frame: .zero, style: .plain)
     private let crownHarbor = UIView()
     private let profileCrownPill = SuliJoyGradientCapsuleView(colors: [
@@ -304,7 +304,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func fetchProfileTideActivities() {
-        mirrorCoveService.fetchMineTideActivities { [weak self] tideEnvelope in
+        SuliJoyCoveMockService.shared.fetchMineTideActivities { [weak self] tideEnvelope in
             self?.tidePlanShelf = tideEnvelope.sandbarLayering ?? []
             self?.refreshCoveTable()
         }
@@ -319,7 +319,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func applyLagoonSummary(islandSnapshot: SuliJoyLagoonProfileSnapshot) {
-        avatarShellView.image = UIImage.suliJoyAssetOrLocal(named: islandSnapshot.lagoonAvatarAssetName) ?? UIImage(named: "sulijoy_mock_avatar_breeze_01")
+        avatarShellView.image = UIImage.suliJoyPortrait(named: islandSnapshot.lagoonAvatarAssetName)
         nameShellTap.setTitle(islandSnapshot.lagoonNameText, for: .normal)
         islandCodeGlyph.attributedText = makeIslandCodeBadgeText(islandSnapshot.islandTraceText)
         profileTallyStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
@@ -425,7 +425,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     private func makeProfileShoreMomentCell(_ wardrobeTable: UITableView, reefPath: IndexPath) -> UITableViewCell {
         let shoreCell = wardrobeTable.dequeueReusableCell(withIdentifier: "suliJoyCoastalDiary", for: reefPath) as! suliJoyCoastalDiary
         let shoreMoment = shoreLookShelf[reefPath.row]
-        shoreCell.configure(with: shoreMoment, isFollowing: SuliJoyCoveMockService.shared.isLagoonFollowing(authorName: shoreMoment.islandStylistName))
+        shoreCell.configure(with: shoreMoment, isFollowing: SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(authorName: shoreMoment.islandStylistName))
         shoreCell.onHeartTap = { [weak self] in self?.toggleShoreMomentHeart(shoreMoment.reefMomentID) }
         shoreCell.onReplyTap = { [weak self] in self?.openShoreMomentDetail(shoreMoment.reefMomentID) }
         shoreCell.onWaveTap = { [weak self] in self?.toggleShoreMomentAudio(shoreMoment.reefMomentID) }
@@ -462,7 +462,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         case .feed:
             openShoreMomentDetail(shoreLookShelf[reefPath.row].reefMomentID)
         case .shorts:
-            let reefDetail = SuliJoyMusiInDoController(clipID: reefMotionShelf[reefPath.row].coconutCream)
+            let reefDetail = SuliJoyMusiInDoController(clip: reefMotionShelf[reefPath.row])
             navigationController?.pushViewController(reefDetail, animated: true)
         case .events:
             openTideActivityDetail(tidePlanShelf[reefPath.row].tideMark)
@@ -492,7 +492,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         presentSuliJoyHarborGuardMenu { [weak self] in
             self?.presentSuliJoyReportSheet(target: .beachBlazer(sunwashedDenim: momentID))
         } block: { [weak self] in
-            SuliJoyCoveMockService.shared.blockMomentAuthor(sunwashedDenim: momentID) { guardEnvelope in
+            SuliJoyLagoonProfileRemoteService.shared.blockMomentAuthor(sunwashedDenim: momentID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()
@@ -636,8 +636,8 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         presentSuliJoyHarborGuardMenu { [weak self] in
             self?.presentSuliJoyReportSheet(target: .flowyHem(cottonGauze: clipID))
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.terracottaWarmth.clipStylistAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
+            let visitorID = reefClip.terracottaWarmth.clipStylistMark
+            SuliJoyLagoonProfileRemoteService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()
@@ -651,7 +651,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
             self?.presentSuliJoyReportSheet(target: .wideLegLinen(crinkleLinen: tideID))
         } block: { [weak self] in
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: tideActivity.shoreHostAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
+            SuliJoyLagoonProfileRemoteService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()

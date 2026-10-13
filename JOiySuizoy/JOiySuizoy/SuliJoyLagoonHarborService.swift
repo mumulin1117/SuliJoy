@@ -11,6 +11,11 @@ private enum SuliJoyLagoonHarborFault: Error {
     case failedVerification
 }
 
+private enum SuliJoyLagoonDiamondRecord {
+    static let recharge = "RECHARGE"
+    static let consume = "CONSUME"
+}
+
 final class SuliJoyLagoonHarborService {
     static let shared = SuliJoyLagoonHarborService()
 
@@ -59,14 +64,27 @@ final class SuliJoyLagoonHarborService {
             switch harborResult {
             case .success(let reefVerification):
                 let reefTransaction = try checkVerified(reefVerification)
-                await reefTransaction.finish()
-                let shellVault = SuliJoyShellPearlStore.shared.addPearlHarborBundle(
-                    pack: reefPack,
-                    transactionID: String(reefTransaction.id)
-                )
-                guard let shellCargo = shellVault.sandbarLayering else {
-                    return .failure(shellVault.coastalWardrobe, code: shellVault.beachwearCapsule)
+                let transactionID = String(reefTransaction.id)
+                guard let confirmedPack = SuliJoyPearlAmountPack.localPacks.first(where: { $0.storeProductID == reefTransaction.productID }) else {
+                    return .failure("The purchased pearl pack is unavailable.", code: 400)
                 }
+                if SuliJoyShellPearlStore.shared.containsPearlReference(transactionID) {
+                    let shellCargo = SuliJoyShellPearlStore.shared.fetchShellPearlVault().sandbarLayering ?? SuliJoyShellWallet(shellPearlTotal: 0, coralLedgerTrail: [])
+                    await reefTransaction.finish()
+                    return .success(.completed(shellCargo))
+                }
+                let remoteClient = SuliJoyLagoonRemoteClient(sessionVault: SuliJoyTideSessionVault())
+                let remoteDiamond = try await remoteClient.changeIslandDiamonds(
+                    amount: confirmedPack.pearlAmount,
+                    recordType: SuliJoyLagoonDiamondRecord.recharge
+                )
+                let shellCargo = SuliJoyShellPearlStore.shared.applyRemotePearlChange(
+                    remoteBalance: remoteDiamond.diamondBalance,
+                    delta: confirmedPack.pearlAmount,
+                    kind: .iapRecharge,
+                    referenceID: transactionID
+                )
+                await reefTransaction.finish()
                 return .success(.completed(shellCargo), note: "RYeIckhiaRrTghed fcFojmPpilgectMeydX.I".suliJoyPalmUnfurled)
             case .userCancelled:
                 return .success(.cancelled, note: "RyepcdhQairPgNeP XcuaznjcceylKlIeTdT.Y".suliJoyPalmUnfurled)
@@ -77,6 +95,28 @@ final class SuliJoyLagoonHarborService {
             }
         } catch {
             return .failure("RFeRcihnayrjgWeD MfmaHiClveIdb.r".suliJoyPalmUnfurled)
+        }
+    }
+
+    func consumePearlHarbor(amount: Int, referenceID: String) async -> SuliJoySuiRequestEnvelope<SuliJoyShellWallet> {
+        guard amount > 0 else {
+            return .failure("Invalid pearl amount.", code: 400)
+        }
+        do {
+            let remoteClient = SuliJoyLagoonRemoteClient(sessionVault: SuliJoyTideSessionVault())
+            let remoteDiamond = try await remoteClient.changeIslandDiamonds(
+                amount: amount,
+                recordType: SuliJoyLagoonDiamondRecord.consume
+            )
+            let wallet = SuliJoyShellPearlStore.shared.applyRemotePearlChange(
+                remoteBalance: remoteDiamond.diamondBalance,
+                delta: -amount,
+                kind: .joinedActivity,
+                referenceID: referenceID
+            )
+            return .success(wallet)
+        } catch {
+            return .failure(error.localizedDescription, code: (error as? SuliJoyLagoonRemoteError)?.statusCode ?? 400)
         }
     }
 
@@ -91,12 +131,24 @@ final class SuliJoyLagoonHarborService {
 
     private func absorbPearlHarborRenewal(_ shorelineUpdate: VerificationResult<Transaction>) async {
         guard let shorelineTransaction = try? checkVerified(shorelineUpdate) else { return }
-        if let shorelinePack = SuliJoyPearlAmountPack.localPacks.first(where: { $0.storeProductID == shorelineTransaction.productID }) {
-            _ = SuliJoyShellPearlStore.shared.addPearlHarborBundle(
-                pack: shorelinePack,
-                transactionID: String(shorelineTransaction.id)
-            )
+        guard let shorelinePack = SuliJoyPearlAmountPack.localPacks.first(where: { $0.storeProductID == shorelineTransaction.productID }) else { return }
+        let transactionID = String(shorelineTransaction.id)
+        if SuliJoyShellPearlStore.shared.containsPearlReference(transactionID) {
+            await shorelineTransaction.finish()
+            return
         }
-        await shorelineTransaction.finish()
+        let remoteClient = SuliJoyLagoonRemoteClient(sessionVault: SuliJoyTideSessionVault())
+        if let remoteDiamond = try? await remoteClient.changeIslandDiamonds(
+            amount: shorelinePack.pearlAmount,
+            recordType: SuliJoyLagoonDiamondRecord.recharge
+        ) {
+            _ = SuliJoyShellPearlStore.shared.applyRemotePearlChange(
+                remoteBalance: remoteDiamond.diamondBalance,
+                delta: shorelinePack.pearlAmount,
+                kind: .iapRecharge,
+                referenceID: transactionID
+            )
+            await shorelineTransaction.finish()
+        }
     }
 }

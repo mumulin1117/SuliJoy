@@ -121,11 +121,13 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
     private let shoreSpinner = UIView()
     private let shoreEmptyNote = UILabel()
     private let stylistLagoonRow = UIStackView()
+    private var lagoonStylists: [SuliJoyLagoonStylist] = []
     private var shoreMoments: [SuliJoyReefMoment] = []
     private var activeShoreFilter: SuliJoyReefMomentFilter = .coastalPick
     private var shoreFilterButtons: [SuliJoyReefMomentFilter: UIButton] = [:]
     private var shoreFilterIndicators: [SuliJoyReefMomentFilter: UIView] = [:]
     private var reefBloom = true
+    var hidesShoreCrown = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -234,7 +236,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
 
     private func stitchShoreFeedScene(_ dropShoulder: ShoreFeedScene) {
         NSLayoutConstraint.activate([
-            dropShoulder.header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: ShoreFeedMetric.topInset),
+            dropShoulder.header.topAnchor.constraint(equalTo: hidesShoreCrown ? view.topAnchor : view.safeAreaLayoutGuide.topAnchor, constant: hidesShoreCrown ? 0 : ShoreFeedMetric.topInset),
             dropShoulder.header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ShoreFeedMetric.horizontalInset),
             dropShoulder.header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ShoreFeedMetric.horizontalInset),
             dropShoulder.list.topAnchor.constraint(equalTo: dropShoulder.header.bottomAnchor, constant: ShoreFeedMetric.listTop),
@@ -325,17 +327,21 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             shoreFilterIndicators[reefFilter] = tideIndicator
         }
 
+        let crownVisible = !hidesShoreCrown
+        feedMarkPill.isHidden = !crownVisible
+        reefGemPill.isHidden = !crownVisible
+        shoreSearchControl.isHidden = !crownVisible
         [feedMarkPill, reefGemPill, shoreSearchControl, stylistHeadlineGlyph, stylistLagoonScroll, filterRibbon].forEach { shorelineHeaderDeck.addSubview($0) }
         NSLayoutConstraint.activate([
             feedMarkPill.topAnchor.constraint(equalTo: shorelineHeaderDeck.topAnchor),
             feedMarkPill.leadingAnchor.constraint(equalTo: shorelineHeaderDeck.leadingAnchor),
-            feedMarkPill.widthAnchor.constraint(equalToConstant: ShoreFeedMetric.logoWidth),
-            feedMarkPill.heightAnchor.constraint(equalToConstant: ShoreFeedMetric.logoHeight),
+            feedMarkPill.widthAnchor.constraint(equalToConstant: crownVisible ? ShoreFeedMetric.logoWidth : 0),
+            feedMarkPill.heightAnchor.constraint(equalToConstant: crownVisible ? ShoreFeedMetric.logoHeight : 0),
             shoreSearchControl.topAnchor.constraint(equalTo: feedMarkPill.topAnchor),
             shoreSearchControl.trailingAnchor.constraint(equalTo: shorelineHeaderDeck.trailingAnchor),
             reefGemPill.centerYAnchor.constraint(equalTo: shoreSearchControl.centerYAnchor),
             reefGemPill.trailingAnchor.constraint(equalTo: shoreSearchControl.leadingAnchor, constant: ShoreFeedMetric.pearlGap),
-            stylistHeadlineGlyph.topAnchor.constraint(equalTo: feedMarkPill.bottomAnchor, constant: ShoreFeedMetric.stylistTitleDrop),
+            stylistHeadlineGlyph.topAnchor.constraint(equalTo: crownVisible ? feedMarkPill.bottomAnchor : shorelineHeaderDeck.topAnchor, constant: crownVisible ? ShoreFeedMetric.stylistTitleDrop : 4),
             stylistHeadlineGlyph.leadingAnchor.constraint(equalTo: shorelineHeaderDeck.leadingAnchor),
             stylistLagoonScroll.topAnchor.constraint(equalTo: stylistHeadlineGlyph.bottomAnchor, constant: ShoreFeedMetric.stylistScrollDrop),
             stylistLagoonScroll.leadingAnchor.constraint(equalTo: shorelineHeaderDeck.leadingAnchor),
@@ -368,7 +374,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             }
         }
         shoreEmptyNote.isHidden = true
-        SuliJoyCoveMockService.shared.fetchShoreMoments(filter: filter, mode: mode) { [weak self] shoreEnvelope in
+        SuliJoyLagoonProfileRemoteService.shared.fetchShoreMoments(filter: filter) { [weak self] shoreEnvelope in
             guard let self else { return }
             self.renderShorePage(shoreEnvelope)
         }
@@ -434,15 +440,24 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             stylistLagoonRow.removeArrangedSubview(stylistTile)
             stylistTile.removeFromSuperview()
         }
-        SuliJoyCoveMockService.shared.fetchLagoonStylists(mode: .reefBloom) { [weak self] stylistEnvelope in
+        SuliJoyLagoonProfileRemoteService.shared.fetchRecommendedStylists { [weak self] stylistEnvelope in
             guard let self else { return }
-            for stylist in stylistEnvelope.sandbarLayering ?? [] {
+            self.lagoonStylists = (stylistEnvelope.sandbarLayering ?? []).map { stylist in
+                var row = stylist
+                row.suliJoyCoastalMeter = SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(visitorID: row.stylistID)
+                    || row.suliJoyCoastalMeter
+                return row
+            }
+            for stylist in self.lagoonStylists {
                 let stylistCard = SuliJoyStylistCard(stylist: stylist)
                 stylistCard.suliJoyCoastalPalette = { [weak self] in
-                    self?.openVisitor(displayName: stylist.displayName)
+                    self?.openVisitor(visitorID: stylist.stylistID, shelf: .moments)
                 }
-                stylistCard.suliJoyCoastalTexture = { [weak self] in
-                    self?.toggleAuthorFollow(name: stylist.displayName)
+                stylistCard.suliJoyCoastalTexture = { [weak self, weak stylistCard] in
+                    self?.toggleLagoonFollow(
+                        visitorID: stylist.stylistID,
+                        stylistCard: stylistCard
+                    )
                 }
                 self.stylistLagoonRow.addArrangedSubview(stylistCard)
                 stylistCard.widthAnchor.constraint(equalToConstant: ShoreFeedMetric.stylistCardWidth).isActive = true
@@ -465,18 +480,26 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reefCell = tableView.dequeueReusableCell(withIdentifier: "suliJoyCoastalDiary", for: indexPath) as! suliJoyCoastalDiary
         let shoreMoment = shoreMoments[indexPath.row]
-        reefCell.configure(with: shoreMoment, isFollowing: SuliJoyCoveMockService.shared.isLagoonFollowing(authorName: shoreMoment.islandStylistName))
+        reefCell.configure(
+            with: shoreMoment,
+            isFollowing: SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(visitorID: shoreMoment.islandStylistMark)
+        )
         reefCell.onHeartTap = { [weak self] in self?.toggleShoreLike(at: indexPath) }
         reefCell.onReplyTap = { [weak self] in self?.presentShoreCommentPrompt(at: indexPath) }
         reefCell.onWaveTap = { [weak self] in self?.toggleShoreWave(at: indexPath) }
         reefCell.onHarborMoreTap = { [weak self] in self?.presentShoreMore(at: indexPath) }
         reefCell.onLagoonFollowTap = { [weak self] in
             guard let self, self.shoreMoments.indices.contains(indexPath.row) else { return }
-            self.toggleAuthorFollow(name: self.shoreMoments[indexPath.row].islandStylistName)
+            let moment = self.shoreMoments[indexPath.row]
+            self.toggleLagoonFollow(
+                visitorID: moment.islandStylistMark,
+                momentIndexPath: indexPath,
+                momentCell: reefCell
+            )
         }
         reefCell.onStylistTap = { [weak self] in
             guard let self, self.shoreMoments.indices.contains(indexPath.row) else { return }
-            self.openVisitor(displayName: self.shoreMoments[indexPath.row].islandStylistName)
+            self.openVisitor(visitorID: self.shoreMoments[indexPath.row].islandStylistMark, shelf: .moments)
         }
         return reefCell
     }
@@ -489,7 +512,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
 
     private func toggleShoreLike(at indexPath: IndexPath) {
         guard shoreMoments.indices.contains(indexPath.row) else { return }
-        SuliJoyCoveMockService.shared.toggleMomentLike(sunwashedDenim: shoreMoments[indexPath.row].reefMomentID) { [weak self] reefEnvelope in
+        SuliJoyLagoonProfileRemoteService.shared.toggleMomentLike(sunwashedDenim: shoreMoments[indexPath.row].reefMomentID) { [weak self] reefEnvelope in
             guard let self, let refreshedMoment = reefEnvelope.sandbarLayering else { return }
             self.shoreMoments[indexPath.row] = refreshedMoment
             self.shoreListView.reloadRows(at: [indexPath], with: .none)
@@ -549,7 +572,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         reefReplyAlert.addAction(UIAlertAction(reefHeadline: "SueAnudU".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
             guard let self else { return }
             let reefReplyText = reefReplyAlert.textFields?.first?.text ?? ""
-            SuliJoyCoveMockService.shared.addShoreComment(sunwashedDenim: self.shoreMoments[indexPath.row].reefMomentID, text: reefReplyText) { reefEnvelope in
+            SuliJoyLagoonProfileRemoteService.shared.addShoreComment(momentID: self.shoreMoments[indexPath.row].reefMomentID, text: reefReplyText) { reefEnvelope in
                 guard let refreshedMoment = reefEnvelope.sandbarLayering else {
                     self.showLagoonToast(reefEnvelope.coastalWardrobe)
                     return
@@ -568,7 +591,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         presentSuliJoyHarborGuardMenu { [weak self] in
             self?.presentSuliJoyReportSheet(target: .beachBlazer(sunwashedDenim: shoreMoment.reefMomentID))
         } block: { [weak self] in
-            SuliJoyCoveMockService.shared.blockMomentAuthor(sunwashedDenim: shoreMoment.reefMomentID) { guardEnvelope in
+            SuliJoyLagoonProfileRemoteService.shared.blockMomentAuthor(sunwashedDenim: shoreMoment.reefMomentID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.loadShorePage(filter: self?.activeShoreFilter ?? .coastalPick)
@@ -576,17 +599,45 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         }
     }
 
-    private func toggleAuthorFollow(name: String) {
-        SuliJoyCoveMockService.shared.toggleLagoonFollow(authorName: name) { [weak self] followEnvelope in
+    private func toggleLagoonFollow(
+        visitorID: String,
+        momentIndexPath: IndexPath? = nil,
+        momentCell: suliJoyCoastalDiary? = nil,
+        stylistCard: SuliJoyStylistCard? = nil
+    ) {
+        guard Int64(visitorID) != nil else {
+            showLagoonToast("Unable to follow this user.")
+            return
+        }
+        momentCell?.setFollowBusy(true)
+        stylistCard?.setFollowBusy(true)
+        SuliJoyLagoonProfileRemoteService.shared.toggleLagoonVisitorFollow(seersuckerStripe: visitorID) { [weak self] followEnvelope in
+            guard let self else { return }
+            momentCell?.setFollowBusy(false)
+            stylistCard?.setFollowBusy(false)
             guard followEnvelope.beachwearCapsule == 200 else {
-                self?.showLagoonToast(followEnvelope.coastalWardrobe)
+                self.showLagoonToast(followEnvelope.coastalWardrobe)
                 return
             }
+            let isFollowing = SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(visitorID: visitorID)
+            stylistCard?.updateFollowing(isFollowing)
+            if let stylistCard, let index = self.lagoonStylists.firstIndex(where: { $0.stylistID == visitorID }) {
+                self.lagoonStylists[index].suliJoyCoastalMeter = isFollowing
+            }
+            if let momentIndexPath, self.shoreMoments.indices.contains(momentIndexPath.row) {
+                if let cell = self.shoreListView.cellForRow(at: momentIndexPath) as? suliJoyCoastalDiary {
+                    cell.configure(with: self.shoreMoments[momentIndexPath.row], isFollowing: isFollowing)
+                } else {
+                    self.shoreListView.reloadRows(at: [momentIndexPath], with: .none)
+                }
+            }
+            NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
+            self.showLagoonToast(followEnvelope.coastalWardrobe)
         }
     }
 
-    private func openVisitor(displayName: String) {
-        let islandGuestController = SuliJoyIslandGuestProfileViewController(displayName: displayName)
+    private func openVisitor(visitorID: String, shelf: SuliJoyGuestProfileShelf) {
+        let islandGuestController = SuliJoyIslandGuestProfileViewController(visitorID: visitorID, shelf: shelf)
         navigationController?.pushViewController(islandGuestController, animated: true)
     }
 }
@@ -650,6 +701,7 @@ final class SuliJoyStylistCard: UIView {
     var suliJoyCoastalPalette: (() -> Void)?
     var suliJoyCoastalTexture: (() -> Void)?
     private let lagoonFollowBadge = SuliJoyFeedFollowBadgeButton(type: .custom)
+    private(set) var stylistID: String = ""
 
     init(stylist: SuliJoyLagoonStylist) {
         super.init(frame: .zero)
@@ -657,9 +709,10 @@ final class SuliJoyStylistCard: UIView {
         backgroundColor = .white
         layer.cornerRadius = 18
         isUserInteractionEnabled = true
+        stylistID = stylist.stylistID
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapCard)))
 
-        let stylistPortrait = UIImageView(image: UIImage(named: stylist.avatarAssetName))
+        let stylistPortrait = UIImageView(image: UIImage.suliJoyPortrait(named: stylist.avatarAssetName))
         stylistPortrait.translatesAutoresizingMaskIntoConstraints = false
         stylistPortrait.contentMode = .scaleAspectFill
         stylistPortrait.clipsToBounds = true
@@ -743,6 +796,15 @@ final class SuliJoyStylistCard: UIView {
 
     @objc private func tapFollow() {
         suliJoyCoastalTexture?()
+    }
+
+    func updateFollowing(_ isFollowing: Bool) {
+        lagoonFollowBadge.suliJoyCoastalCapsule(isFollowing: isFollowing)
+    }
+
+    func setFollowBusy(_ busy: Bool) {
+        lagoonFollowBadge.isEnabled = !busy
+        lagoonFollowBadge.alpha = busy ? 0.55 : 1
     }
 }
 
@@ -989,9 +1051,16 @@ final class suliJoyCoastalDiary: UITableViewCell {
         ])
     }
 
+    func setFollowBusy(_ busy: Bool) {
+        followBadge.isEnabled = !busy
+        followBadge.alpha = busy ? 0.55 : 1
+    }
+
     func configure(with moment: SuliJoyReefMoment, isFollowing: Bool) {
-        stylistPortrait.image = UIImage.suliJoyAssetOrLocal(named: moment.islandStylistAvatarAssetName)
+        stylistPortrait.image = UIImage.suliJoyPortrait(named: moment.islandStylistAvatarAssetName)
         followBadge.suliJoyCoastalCapsule(isFollowing: isFollowing)
+        followBadge.isEnabled = true
+        followBadge.alpha = 1
         stylistNameGlyph.text = moment.islandStylistName
         tideAgoGlyph.text = "\(moment.islandStylistMark) · \(moment.tideAgoText)"
         bodyLabel.text = moment.islandCaptionText
@@ -1021,7 +1090,7 @@ final class suliJoyCoastalDiary: UITableViewCell {
         let shownMedia = mediaItems.prefix(3)
         mediaStack.isHidden = shownMedia.isEmpty
         for reefMedia in shownMedia {
-            let reefSnapshotView = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: reefMedia.reefAssetToken))
+            let reefSnapshotView = UIImageView(image: UIImage.suliJoyPhoto(named: reefMedia.reefAssetToken))
             reefSnapshotView.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.73, alpha: 1)
             reefSnapshotView.contentMode = .scaleAspectFill
             reefSnapshotView.clipsToBounds = true
@@ -1047,7 +1116,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         static let headerHeight: CGFloat = 44
         static let mediaRatio: CGFloat = 0.776
         static let waveOnlyMinHeight: CGFloat = 82
-        static let inputHeight: CGFloat = 64
+        static let inputContentBandHeight: CGFloat = 56
         static let keyboardInset: CGFloat = 16
         static let keyboardAnimation: TimeInterval = 0.25
     }
@@ -1060,7 +1129,8 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     private let reefBackControl = UIButton(type: .system)
     private let authorPortraitView = UIImageView()
     private let authorNameGlyph = UILabel()
-    private let followButton = UIButton(type: .system)
+    private let followButton = UIButton(type: .custom)
+    private let followGradientLayer = CAGradientLayer()
     private let reefFlagControl = UIButton(type: .system)
     private let mediaContainer = UIView()
     private let mediaCarousel = UIScrollView()
@@ -1080,8 +1150,9 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     private let commentsStack = UIStackView()
     private let bottomInputBar = UIView()
     private let commentField = UITextField()
-    private let sendButton = UIButton(type: .system)
+    private let sendButton = UIButton(type: .custom)
     private var bottomInputBottomConstraint: NSLayoutConstraint?
+    private var bottomInputBarHeightConstraint: NSLayoutConstraint?
     private var isFollowingAuthor = false
 
     init(moment: SuliJoyReefMoment) {
@@ -1104,6 +1175,13 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         raiseMomentDetailScene()
         registerKeyboardObservers()
         renderMomentDetail()
+        loadMomentComments()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        bottomInputBarHeightConstraint?.constant = MomentDetailMetric.inputContentBandHeight + view.safeAreaInsets.bottom
+        paintMomentFollowGradient()
     }
 
     private func raiseMomentDetailScene() {
@@ -1133,7 +1211,10 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         suliJoyIslandCapsule.setCustomSpacing(14, after: waveOnlyControl)
         suliJoyIslandCapsule.setCustomSpacing(18, after: bodyLabel)
 
-        bottomInputBottomConstraint = bottomInputBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        bottomInputBottomConstraint = bottomInputBar.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        bottomInputBarHeightConstraint = bottomInputBar.heightAnchor.constraint(
+            equalToConstant: MomentDetailMetric.inputContentBandHeight
+        )
         bottomInputBottomConstraint?.isActive = true
 
         NSLayoutConstraint.activate([
@@ -1159,7 +1240,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
             bottomInputBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bottomInputBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bottomInputBar.heightAnchor.constraint(equalToConstant: MomentDetailMetric.inputHeight)
+            bottomInputBarHeightConstraint!
         ])
 
         let reefDismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -1195,7 +1276,10 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         followButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .black)
         followButton.layer.cornerRadius = 14
         followButton.clipsToBounds = true
-        followButton.backgroundColor = UIColor.purple
+        followButton.backgroundColor = .clear
+        followGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        followGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        followButton.layer.insertSublayer(followGradientLayer, at: 0)
         followButton.addTarget(self, action: #selector(toggleFollow), for: .touchUpInside)
 
         reefFlagControl.translatesAutoresizingMaskIntoConstraints = false
@@ -1389,20 +1473,19 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         commentField.leftViewMode = .always
 
         sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.setImage(UIImage(named: "sulijoy_feed_comment_send_mark"), for: .normal)
-        sendButton.tintColor = .suliInk
+        sendButton.setImage(UIImage(named: "sulijoy_clip_send_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
         sendButton.imageView?.contentMode = .scaleAspectFit
-        sendButton.imageEdgeInsets = UIEdgeInsets(top: 9, left: 9, bottom: 9, right: 9)
         sendButton.addTarget(self, action: #selector(sendComment), for: .touchUpInside)
 
         bottomInputBar.addSubview(commentField)
         bottomInputBar.addSubview(sendButton)
         NSLayoutConstraint.activate([
-            commentField.leadingAnchor.constraint(equalTo: bottomInputBar.leadingAnchor, constant: 48),
-            commentField.centerYAnchor.constraint(equalTo: bottomInputBar.centerYAnchor),
+            commentField.leadingAnchor.constraint(equalTo: bottomInputBar.leadingAnchor, constant: 15),
+            commentField.topAnchor.constraint(equalTo: bottomInputBar.topAnchor, constant: 10),
+            commentField.bottomAnchor.constraint(equalTo: bottomInputBar.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             commentField.heightAnchor.constraint(equalToConstant: 36),
-            sendButton.leadingAnchor.constraint(equalTo: commentField.trailingAnchor, constant: 12),
-            sendButton.trailingAnchor.constraint(equalTo: bottomInputBar.trailingAnchor, constant: -44),
+            sendButton.leadingAnchor.constraint(equalTo: commentField.trailingAnchor, constant: 9),
+            sendButton.trailingAnchor.constraint(equalTo: bottomInputBar.trailingAnchor, constant: -15),
             sendButton.centerYAnchor.constraint(equalTo: commentField.centerYAnchor),
             sendButton.widthAnchor.constraint(equalToConstant: 36),
             sendButton.heightAnchor.constraint(equalToConstant: 36)
@@ -1411,9 +1494,9 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
     private func renderMomentDetail() {
         let hasReefMedia = !suliJoyCoastalGalleryf.reefMedia.isEmpty
-        authorPortraitView.image = UIImage.suliJoyAssetOrLocal(named: suliJoyCoastalGalleryf.islandStylistAvatarAssetName)
+        authorPortraitView.image = UIImage.suliJoyPortrait(named: suliJoyCoastalGalleryf.islandStylistAvatarAssetName)
         authorNameGlyph.text = suliJoyCoastalGalleryf.islandStylistName
-        isFollowingAuthor = SuliJoyCoveMockService.shared.isLagoonFollowing(authorName: suliJoyCoastalGalleryf.islandStylistName)
+        isFollowingAuthor = SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(authorName: suliJoyCoastalGalleryf.islandStylistName)
         renderMomentFollow()
         renderMomentWave()
         mediaContainer.isHidden = !hasReefMedia
@@ -1428,6 +1511,24 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     private func renderMomentFollow() {
         followButton.setTitle(isFollowingAuthor ? "FJoblslvoBwqimnogL".suliJoyPalmUnfurled : "FSoLlDlJoVwu".suliJoyPalmUnfurled, for: .normal)
         followButton.alpha = isFollowingAuthor ? 0.72 : 1
+        paintMomentFollowGradient()
+    }
+
+    private func paintMomentFollowGradient() {
+        guard followButton.bounds.width > 0 else { return }
+        followGradientLayer.frame = followButton.bounds
+        followGradientLayer.cornerRadius = followButton.layer.cornerRadius
+        if isFollowingAuthor {
+            followGradientLayer.colors = [
+                UIColor(red: 0.98, green: 0.72, blue: 0.52, alpha: 1).cgColor,
+                UIColor(red: 1, green: 0.82, blue: 0.62, alpha: 1).cgColor
+            ]
+        } else {
+            followGradientLayer.colors = [
+                UIColor(red: 0.54, green: 0.45, blue: 1, alpha: 1).cgColor,
+                UIColor(red: 1, green: 0.29, blue: 0.96, alpha: 1).cgColor
+            ]
+        }
     }
 
     private func renderMomentWave() {
@@ -1452,7 +1553,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             reefSnapshot.removeFromSuperview()
         }
         for reefMedia in suliJoyCoastalGalleryf.reefMedia {
-            let reefSnapshot = UIImageView(image: UIImage.suliJoyAssetOrLocal(named: reefMedia.reefAssetToken))
+            let reefSnapshot = UIImageView(image: UIImage.suliJoyPhoto(named: reefMedia.reefAssetToken))
             reefSnapshot.translatesAutoresizingMaskIntoConstraints = false
             reefSnapshot.contentMode = .scaleAspectFill
             reefSnapshot.clipsToBounds = true
@@ -1490,6 +1591,15 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         }
     }
 
+    private func loadMomentComments() {
+        SuliJoyLagoonProfileRemoteService.shared.fetchMomentComments(momentID: suliJoyCoastalGalleryf.reefMomentID) { [weak self] result in
+            guard let self, let comments = result.sandbarLayering else { return }
+            self.suliJoyCoastalGalleryf.reefReplies = comments
+            self.suliJoyCoastalGalleryf.reefReplyTally = comments.count
+            self.renderMomentComments()
+        }
+    }
+
     private func makeMomentCommentCard(_ reefReply: SuliJoyReefReply) -> UIView {
         let replyCard = UIView()
         replyCard.translatesAutoresizingMaskIntoConstraints = false
@@ -1500,7 +1610,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         replyCard.layer.shadowRadius = 10
         replyCard.layer.shadowOffset = CGSize(width: 0, height: 6)
 
-        let replyPortrait = UIImageView(image: UIImage(named: reefReply.reefEchoAvatarAssetName))
+        let replyPortrait = UIImageView(image: UIImage.suliJoyPortrait(named: reefReply.reefEchoAvatarAssetName))
         replyPortrait.translatesAutoresizingMaskIntoConstraints = false
         replyPortrait.contentMode = .scaleAspectFill
         replyPortrait.clipsToBounds = true
@@ -1565,7 +1675,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
     @objc private func keyboardWillShow(_ note: Notification) {
         guard let frame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-        let overlap = max(0, frame.height - view.safeAreaInsets.bottom)
+        let overlap = max(0, view.bounds.maxY - view.convert(frame, from: nil).minY)
         bottomInputBottomConstraint?.constant = -overlap
         reefDetailScroll.contentInset.bottom = MomentDetailMetric.keyboardInset
         reefDetailScroll.scrollIndicatorInsets.bottom = MomentDetailMetric.keyboardInset
@@ -1590,10 +1700,10 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
     @objc private func toggleFollow() {
         followButton.isEnabled = false
-        SuliJoyCoveMockService.shared.toggleLagoonFollow(authorName: suliJoyCoastalGalleryf.islandStylistName) { [weak self] followEnvelope in
+        SuliJoyLagoonProfileRemoteService.shared.toggleLagoonVisitorFollow(seersuckerStripe: suliJoyCoastalGalleryf.islandStylistMark) { [weak self] followEnvelope in
             guard let self else { return }
             self.followButton.isEnabled = true
-            self.isFollowingAuthor = followEnvelope.sandbarLayering ?? self.isFollowingAuthor
+            self.isFollowingAuthor = followEnvelope.sandbarLayering?.suliJoyIslandEnsemble ?? self.isFollowingAuthor
             self.renderMomentFollow()
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
             self.showLagoonToast(followEnvelope.coastalWardrobe)
@@ -1601,7 +1711,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     }
 
     @objc private func openMomentAuthor() {
-        let islandGuestController = SuliJoyIslandGuestProfileViewController(displayName: suliJoyCoastalGalleryf.islandStylistName)
+        let islandGuestController = SuliJoyIslandGuestProfileViewController(visitorID: suliJoyCoastalGalleryf.islandStylistMark, shelf: .moments)
         navigationController?.pushViewController(islandGuestController, animated: true)
     }
 
@@ -1649,7 +1759,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             return
         }
         sendButton.isEnabled = false
-        SuliJoyCoveMockService.shared.addShoreComment(sunwashedDenim: suliJoyCoastalGalleryf.reefMomentID, text: reefReplyText) { [weak self] reefEnvelope in
+        SuliJoyLagoonProfileRemoteService.shared.addShoreComment(momentID: suliJoyCoastalGalleryf.reefMomentID, text: reefReplyText) { [weak self] reefEnvelope in
             guard let self else { return }
             self.sendButton.isEnabled = true
             if let refreshedMoment = reefEnvelope.sandbarLayering {
@@ -1668,7 +1778,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             self.presentSuliJoyReportSheet(target: .linenVest(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID, washedCotton: reefReply.reefReplyID))
         } block: { [weak self] in
             guard let self else { return }
-            SuliJoyCoveMockService.shared.blockMomentAuthor(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID) { guardEnvelope in
+            SuliJoyLagoonProfileRemoteService.shared.blockMomentAuthor(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID) { guardEnvelope in
                 self.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self.navigationController?.popViewController(animated: true)
@@ -1685,7 +1795,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             }
         } block: { [weak self] in
             guard let self else { return }
-            SuliJoyCoveMockService.shared.blockMomentAuthor(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID) { guardEnvelope in
+            SuliJoyLagoonProfileRemoteService.shared.blockMomentAuthor(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID) { guardEnvelope in
                 self.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self.navigationController?.popViewController(animated: true)

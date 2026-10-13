@@ -51,6 +51,20 @@ extension UIImage {
     static func suliJoyAssetOrLocal(named name: String) -> UIImage? {
         suliJoyReefAssetOrSandPath(named: name)
     }
+
+    static func suliJoyPortrait(named name: String?) -> UIImage? {
+        if let name, !name.isEmpty, let image = suliJoyAssetOrLocal(named: name) {
+            return image
+        }
+        return UIImage(named: "sulijoy_mock_avatar_breeze_01")
+    }
+
+    static func suliJoyPhoto(named name: String?) -> UIImage? {
+        if let name, !name.isEmpty, let image = suliJoyAssetOrLocal(named: name) {
+            return image
+        }
+        return UIImage(named: "sulijoy_feed_moment_coast_01")
+    }
 }
 
 extension Notification.Name {

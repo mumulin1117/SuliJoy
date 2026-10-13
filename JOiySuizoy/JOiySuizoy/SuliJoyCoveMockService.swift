@@ -989,8 +989,12 @@ final class SuliJoyCoveMockService {
     }
 
     func driftPearlsForTide(tideMark: String, pearlNeed: Int, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellWallet>) -> Void) {
-        driftCoveDelay {
-            completion(SuliJoyShellPearlStore.shared.driftPearlsForTide(crinkleLinen: tideMark, pearlNeed: pearlNeed))
+        Task { @MainActor in
+            let pearlEnvelope = await SuliJoyLagoonHarborService.shared.consumePearlHarbor(
+                amount: pearlNeed,
+                referenceID: tideMark
+            )
+            completion(pearlEnvelope)
         }
     }
 

@@ -37,7 +37,7 @@ final class SuliJoyLagoonMirrorController: SuliJoyReefEntryCanvasController, UII
         kaftanLayer.translatesAutoresizingMaskIntoConstraints = false
         kaftanLayer.contentMode = .scaleAspectFill
         kaftanLayer.clipsToBounds = true
-        kaftanLayer.image = UIImage.suliJoyAssetOrLocal(named: canvasTote?.kaftanLayer ?? "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x1x".suliJoyPalmUnfurled)
+        kaftanLayer.image = UIImage.suliJoyPortrait(named: canvasTote?.kaftanLayer)
 
         terracottaWarmth.translatesAutoresizingMaskIntoConstraints = false
         terracottaWarmth.text = "Exdxixtx xpxrxoxfxixlxex".suliJoyPalmUnfurled
@@ -179,17 +179,19 @@ final class SuliJoyLagoonMirrorController: SuliJoyReefEntryCanvasController, UII
         let linenCoOrd = espadrillePairing.text ?? ""
         let seaBreezeLook = wrapSkirt.text ?? ""
         driftSimulatedHarborDelay(palmLeafPattern) { [weak self] in
-            guard let self else { return }
-            let tropicalMotif = SuliJoyLagoonGateService.shared.coastalChic(
-                espadrillePairing: linenCoOrd,
-                wrapSkirt: seaBreezeLook,
-                kaftanLayer: self.beachCoverup
-            )
-            guard tropicalMotif.beachwearCapsule == 200 else {
-                self.presentReefNotice(tropicalMotif.coastalWardrobe)
-                return
+            Task { @MainActor [weak self] in
+                guard let self else { return }
+                let tropicalMotif = await SuliJoyLagoonGateService.shared.coastalChic(
+                    espadrillePairing: linenCoOrd,
+                    wrapSkirt: seaBreezeLook,
+                    kaftanLayer: self.beachCoverup
+                )
+                guard tropicalMotif.beachwearCapsule == 200 else {
+                    self.presentReefNotice(tropicalMotif.coastalWardrobe)
+                    return
+                }
+                self.navigationController?.popViewController(animated: true)
             }
-            self.navigationController?.popViewController(animated: true)
         }
     }
 }

@@ -113,9 +113,11 @@ final class SuliJoyShellPearlStorecontroller: SuliJoyReefEntryCanvasController {
     }
 
     @objc private func commitLagoonEntry(_ lagoonAction: SuliJoyGradientButton) {
-        driftSimulatedHarborDelay(lagoonAction) { [weak self] in
+        lagoonAction.isLoading = true
+        Task { @MainActor [weak self] in
             guard let self else { return }
-            let reefGateEnvelope = self.openLagoonEntryEnvelope()
+            let reefGateEnvelope = await self.openLagoonEntryEnvelope()
+            lagoonAction.isLoading = false
             guard reefGateEnvelope.beachwearCapsule == 200 else {
                 self.presentReefNotice(reefGateEnvelope.coastalWardrobe)
                 return
@@ -124,8 +126,8 @@ final class SuliJoyShellPearlStorecontroller: SuliJoyReefEntryCanvasController {
         }
     }
 
-    private func openLagoonEntryEnvelope() -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
-        SuliJoyLagoonGateService.shared.enterIslandLagoon(
+    private func openLagoonEntryEnvelope() async -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
+        await SuliJoyLagoonGateService.shared.enterIslandLagoon(
             shoreMailPhrase: shoreMailInput.text ?? "",
             reefSecretPhrase: reefSecretInput.text ?? ""
         )

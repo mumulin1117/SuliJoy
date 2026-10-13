@@ -22,6 +22,34 @@ final class SuliJoyShellPearlStore {
         openPearlVault().shellPearlTotal
     }
 
+    func containsPearlReference(_ referenceID: String) -> Bool {
+        openPearlVault().coralLedgerTrail.contains { $0.referenceID == referenceID }
+    }
+
+    func syncPearlBalance(_ remoteBalance: Int) {
+        var pearlVault = openPearlVault()
+        pearlVault.shellPearlTotal = max(0, remoteBalance)
+        sealPearlVault(pearlVault)
+    }
+
+    func applyRemotePearlChange(
+        remoteBalance: Int,
+        delta: Int,
+        kind: SuliJoyCoralPearlLedgerKind,
+        referenceID: String
+    ) -> SuliJoyShellWallet {
+        var pearlVault = openPearlVault()
+        pearlVault.shellPearlTotal = max(0, remoteBalance)
+        if !referenceID.isEmpty, !pearlVault.coralLedgerTrail.contains(where: { $0.referenceID == referenceID }) {
+            prependPearlLedger(
+                makePearlLedger(kind: kind, delta: delta, reefMark: referenceID),
+                into: &pearlVault
+            )
+        }
+        sealPearlVault(pearlVault)
+        return pearlVault
+    }
+
     func driftPearlsForTide(crinkleLinen tideID: String, pearlNeed: Int) -> SuliJoySuiRequestEnvelope<SuliJoyShellWallet> {
         var pearlVault = openPearlVault()
         guard pearlVault.shellPearlTotal >= pearlNeed else {

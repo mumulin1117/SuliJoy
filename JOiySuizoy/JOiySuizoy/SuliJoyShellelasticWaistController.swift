@@ -360,8 +360,15 @@ final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, U
     }
 
     @objc private func removeIslandAccountNow() {
-        _ = lagoonAccessStore.deleteCurrentIslandAccount()
-        closeMistAndSailToArrival()
+        Task { @MainActor [weak self] in
+            guard let self else { return }
+            let result = await lagoonAccessStore.deleteCurrentIslandAccount()
+            guard result.beachwearCapsule == 200 else {
+                self.showLagoonToast(result.coastalWardrobe)
+                return
+            }
+            self.closeMistAndSailToArrival()
+        }
     }
 
     private func closeMistAndSailToArrival() {
@@ -460,7 +467,7 @@ private final class SuliJoyShellCoveHairline: UIView {
 }
 
 final class SuliJoyReefMutedVisitorCoveController: SuliJoyTropicCanvasController {
-    private let mutedShoreService = SuliJoyCoveMockService.shared
+    private let mutedShoreService = SuliJoyLagoonProfileRemoteService.shared
     private let mutedReefStack = UIStackView()
     private let quietShoreLabel = UILabel()
 
@@ -557,7 +564,7 @@ final class SuliJoyReefMutedVisitorCoveController: SuliJoyTropicCanvasController
 
         let avatarGlyph = UIImageView()
         avatarGlyph.translatesAutoresizingMaskIntoConstraints = false
-        avatarGlyph.image = UIImage.suliJoyAssetOrLocal(named: islandGuest.portraitAssetToken) ?? UIImage(named: "sulijoy_mock_avatar_breeze_01")
+        avatarGlyph.image = UIImage.suliJoyPortrait(named: islandGuest.portraitAssetToken)
         avatarGlyph.contentMode = .scaleAspectFill
         avatarGlyph.layer.cornerRadius = 24
         avatarGlyph.clipsToBounds = true

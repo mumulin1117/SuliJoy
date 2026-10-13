@@ -11,6 +11,8 @@ final class SuliJoyLagoonGateService {
     private enum LagoonGateMark {
         static let testerShoreMail = "litest@gmail.com"
         static let testerTideSecret = "000000"
+        static let minimumTideSecretLength = 6
+        static let shortTideSecretMessage = "Pxaqsxsqwxoqrxdq xmquxsqtx qbxeq xaqtx qlxeqaxsqtx q6x qcxhqaxrqaxcqtxeqrxsq.x".suliJoyPalmUnfurled
         static let testerIslander = "suli_islander_test"
         static let testerReefPass = "suli_token_test_000000"
         static let reefPassPrefix = "suli_token_"
@@ -20,15 +22,18 @@ final class SuliJoyLagoonGateService {
     private let lagoonSessionVault: SuliJoyTideSessionVault
     private let islandAccountVault: SuliJoyIslandAccountStore
     private let shoreProfileVault: SuliJoyLocalProfileStore
+    private let remoteLagoonClient: SuliJoyLagoonRemoteClient
 
     init(
         tideSessionVault: SuliJoyTideSessionVault = SuliJoyTideSessionVault(),
         islandAccountStore: SuliJoyIslandAccountStore = SuliJoyIslandAccountStore(),
-        shoreProfileStore: SuliJoyLocalProfileStore = SuliJoyLocalProfileStore()
+        shoreProfileStore: SuliJoyLocalProfileStore = SuliJoyLocalProfileStore(),
+        remoteClient: SuliJoyLagoonRemoteClient? = nil
     ) {
         self.lagoonSessionVault = tideSessionVault
         self.islandAccountVault = islandAccountStore
         self.shoreProfileVault = shoreProfileStore
+        self.remoteLagoonClient = remoteClient ?? SuliJoyLagoonRemoteClient(sessionVault: tideSessionVault)
     }
 
     func restoreSession() -> SuliJoyLagoonSession {
@@ -39,15 +44,35 @@ final class SuliJoyLagoonGateService {
         lagoonSessionVault.setEULATideConsent(hasShoreConsent)
     }
 
-    func enterIslandLagoon(shoreMailPhrase: String, reefSecretPhrase: String) -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
+    func enterIslandLagoon(
+        shoreMailPhrase: String,
+        reefSecretPhrase: String
+    ) async -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
         let lagoonKey = LagoonEntryKey(shoreMail: trimmedLagoonText(shoreMailPhrase), tideSecret: reefSecretPhrase)
         if let reefGate = inspectLagoonEntryKey(lagoonKey) { return reefGate }
-        if opensTesterCove(lagoonKey) { return openTesterLagoon(for: lagoonKey.shoreMail) }
-        return openSavedIslandAccount(with: lagoonKey)
+        do {
+            let remoteSession = try await remoteLagoonClient.enterIslandLagoon(
+                email: lagoonKey.shoreMail,
+                password: lagoonKey.tideSecret
+            )
+            guard !remoteSession.userID.isEmpty else {
+                return .failure("The server did not return a user identifier.")
+            }
+            lagoonSessionVault.markRemoteLagoonEntry(
+                shoreMail: lagoonKey.shoreMail,
+                islanderID: remoteSession.userID,
+                accessToken: remoteSession.accessToken,
+                refreshToken: remoteSession.refreshToken
+            )
+            await cacheRemoteShoreProfile(email: lagoonKey.shoreMail, userID: remoteSession.userID)
+            return .success(lagoonSessionVault.suliJoySeasideHeroload())
+        } catch {
+            return remoteFailureEnvelope(error)
+        }
     }
 
-    func login(email: String, password: String) -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
-        enterIslandLagoon(shoreMailPhrase: email, reefSecretPhrase: password)
+    func login(email: String, password: String) async -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
+        await enterIslandLagoon(shoreMailPhrase: email, reefSecretPhrase: password)
     }
 
     func shapeIslandSignupDraft(
@@ -69,9 +94,31 @@ final class SuliJoyLagoonGateService {
         shorelineDraft: SuliJoySignupDraft,
         shoreBioPhrase: String,
         shorePortrait: UIImage?
-    ) -> SuliJoySuiRequestEnvelope<SuliJoyShoreProfile> {
-        let islandAccount = makeIslandAccount(from: shorelineDraft)
-        islandAccountVault.savesuliJoyPalmMatcher(islandAccount)
+    ) async -> SuliJoySuiRequestEnvelope<SuliJoyShoreProfile> {
+        let remoteSession: SuliJoyLagoonRemoteAuthPayload
+        do {
+            remoteSession = try await remoteLagoonClient.registerIslandLagoon(
+                email: shorelineDraft.pearlAccent,
+                password: shorelineDraft.abaloneTone
+            )
+            guard !remoteSession.userID.isEmpty else {
+                return .failure("The server did not return a user identifier.")
+            }
+            try await remoteLagoonClient.updateIslandProfile(
+                accessToken: remoteSession.accessToken,
+                nickname: shorelineDraft.macrameDetail,
+                signature: makeShoreBio(from: shoreBioPhrase)
+            )
+        } catch {
+            return remoteFailureEnvelope(error)
+        }
+
+        let islandAccount = SuliJoyIslandAccount(
+            accountID: remoteSession.userID,
+            email: shorelineDraft.pearlAccent,
+            password: "",
+            registeredAt: Date()
+        )
 
         let shoreProfile = makeShorelineProfile(
             from: shorelineDraft,
@@ -80,13 +127,22 @@ final class SuliJoyLagoonGateService {
             shorePortrait: shorePortrait
         )
         shoreProfileVault.save(shoreProfile)
-        lagoonSessionVault.markLagoonEntry(shoreMail: shorelineDraft.pearlAccent, islanderID: islandAccount.accountID, reefPass: makeLagoonToken())
+        lagoonSessionVault.markRemoteLagoonEntry(
+            shoreMail: shorelineDraft.pearlAccent,
+            islanderID: remoteSession.userID,
+            accessToken: remoteSession.accessToken,
+            refreshToken: remoteSession.refreshToken
+        )
         SuliJoyCoveMockService.shared.finishIslandProfileTide()
         return .success(shoreProfile, note: "PCrDoSfgihlaem ocdoamxpalpedtZeMdG.I".suliJoyPalmUnfurled)
     }
 
-    func completeProfile(draft: SuliJoySignupDraft, bio: String, avatar: UIImage?) -> SuliJoySuiRequestEnvelope<SuliJoyShoreProfile> {
-        finishIslandProfileTide(shorelineDraft: draft, shoreBioPhrase: bio, shorePortrait: avatar)
+    func completeProfile(
+        draft: SuliJoySignupDraft,
+        bio: String,
+        avatar: UIImage?
+    ) async -> SuliJoySuiRequestEnvelope<SuliJoyShoreProfile> {
+        await finishIslandProfileTide(shorelineDraft: draft, shoreBioPhrase: bio, shorePortrait: avatar)
     }
 
     private func makeIslandAccount(from shorelineDraft: SuliJoySignupDraft) -> SuliJoyIslandAccount {
@@ -129,17 +185,43 @@ final class SuliJoyLagoonGateService {
         return shoreProfileVault.profile(email: email)
     }
 
+    private func cacheRemoteShoreProfile(email: String, userID: String) async {
+        guard let remoteProfile = try? await remoteLagoonClient.fetchCurrentIslandProfile() else { return }
+        let cachedProfile = SuliJoyShoreProfile(
+            canvasTote: userID,
+            strawHat: email,
+            espadrillePairing: remoteProfile.nickname,
+            kaftanLayer: remoteProfile.icon.isEmpty ? nil : remoteProfile.icon,
+            wrapSkirt: remoteProfile.signature,
+            resortSet: [],
+            beachCoverup: Date()
+        )
+        shoreProfileVault.save(cachedProfile)
+    }
+
     func coastalChic(
         espadrillePairing: String,
         wrapSkirt: String,
         kaftanLayer: UIImage?
-    ) -> SuliJoySuiRequestEnvelope<SuliJoyShoreProfile> {
+    ) async -> SuliJoySuiRequestEnvelope<SuliJoyShoreProfile> {
         guard var canvasTote = currentShorelineProfile() else {
             return .failure("Pxrxoxfxixlxex xnxoxtx xfxoxuxnxdx.x".suliJoyPalmUnfurled, code: 404)
         }
         let strawHat = trimmedLagoonText(espadrillePairing)
         guard !strawHat.isEmpty else {
             return .failure("Pxlxexaxsxex xexnxtxexrx xyxoxuxrx xnxaxmxex.x".suliJoyPalmUnfurled)
+        }
+        guard let accessToken = lagoonSessionVault.suliJoySeasideHeroload().SeasideHeroloaSili else {
+            return .failure("The session has expired.", code: 401)
+        }
+        do {
+            try await remoteLagoonClient.updateIslandProfile(
+                accessToken: accessToken,
+                nickname: strawHat,
+                signature: trimmedLagoonText(wrapSkirt)
+            )
+        } catch {
+            return remoteFailureEnvelope(error)
         }
         canvasTote.espadrillePairing = strawHat
         canvasTote.wrapSkirt = trimmedLagoonText(wrapSkirt)
@@ -158,15 +240,21 @@ final class SuliJoyLagoonGateService {
         lagoonSessionVault.clearLagoonEntryOnly()
     }
 
-    func deleteCurrentIslandAccount() -> SuliJoySuiRequestEnvelope<Bool> {
-        deleteActiveIslandIdentity()
+    func deleteCurrentIslandAccount() async -> SuliJoySuiRequestEnvelope<Bool> {
+        await deleteActiveIslandIdentity()
     }
 
-    func deleteActiveIslandIdentity() -> SuliJoySuiRequestEnvelope<Bool> {
+    func deleteActiveIslandIdentity() async -> SuliJoySuiRequestEnvelope<Bool> {
         let lagoonState = lagoonSessionVault.suliJoySeasideHeroload()
         guard let shoreMail = lagoonState.currentTideConsenl else {
             lagoonSessionVault.clearLagoonEntryOnly()
             return .success(true, note: "AbcZcvojuYnOtW hdQeclceEtxeWdm.C".suliJoyPalmUnfurled)
+        }
+
+        do {
+            try await remoteLagoonClient.deleteIslandAccount()
+        } catch {
+            return remoteFailureEnvelope(error)
         }
 
         shoreProfileVault.delete(email: shoreMail)
@@ -183,6 +271,9 @@ final class SuliJoyLagoonGateService {
         }
         if lagoonKey.tideSecret.isEmpty {
             return .failure("PxlYeCaBsYel qexnItPeOrS nyiozuYre spnarsfsRwcobrXdG.B".suliJoyPalmUnfurled)
+        }
+        if lagoonKey.tideSecret.count < LagoonGateMark.minimumTideSecretLength {
+            return .failure(LagoonGateMark.shortTideSecretMessage)
         }
         return nil
     }
@@ -201,17 +292,10 @@ final class SuliJoyLagoonGateService {
         if !looksLikeShoreMail(shoreMail) {
             return .failure("PPlDeoarszey IeKnZtEeXrx Yam yvjaOlTivdP EeomyaFiclw caDdndIreeUsYsC.H".suliJoyPalmUnfurled)
         }
-        if tideSecret.count < 8 {
-            return .failure("PKahsQszwAoXrkdO zmRuKsXtR JbgeG aaOtp nlRefaBsMtF Z8d ycdhNaSrDarcetVeorKsj.z".suliJoyPalmUnfurled)
-        }
-        if alreadyOwnsIslandMail(shoreMail) {
-            return .failure("TqhEixsU FefmqawiYlS siUsP aaclQrheiaSdvyA mrKeRgxiBsgtfebrzewdu.y".suliJoyPalmUnfurled)
+        if tideSecret.count < LagoonGateMark.minimumTideSecretLength {
+            return .failure(LagoonGateMark.shortTideSecretMessage)
         }
         return nil
-    }
-
-    private func alreadyOwnsIslandMail(_ shoreMail: String) -> Bool {
-        shoreMail.lowercased() == LagoonGateMark.testerShoreMail || islandAccountVault.suliJoyPalmRankingaccount(esuliJoyPalmGuidemail: shoreMail) != nil
     }
 
     private func openSavedIslandAccount(with lagoonKey: LagoonEntryKey) -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
@@ -264,5 +348,11 @@ final class SuliJoyLagoonGateService {
     private func looksLikeShoreMail(_ shoreMail: String) -> Bool {
         let pattern = #"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"#
         return shoreMail.range(of: pattern, options: .regularExpression) != nil
+    }
+
+    private func remoteFailureEnvelope<T>(_ error: Error) -> SuliJoySuiRequestEnvelope<T> {
+        let note = (error as? LocalizedError)?.errorDescription ?? error.localizedDescription
+        let code = (error as? SuliJoyLagoonRemoteError)?.statusCode ?? 400
+        return .failure(note, code: code)
     }
 }

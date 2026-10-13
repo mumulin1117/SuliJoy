@@ -29,9 +29,21 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
     private let reefInputField = UITextField()
     private let reefSendButton = UIButton(type: .custom)
     private var reefInputBottomConstraint: NSLayoutConstraint?
+    private var reefInputBarHeightConstraint: NSLayoutConstraint?
+
+    private enum ReefInputBarMetric {
+        static let contentBandHeight: CGFloat = 56
+    }
 
     init(clipID reefClipID: String) {
         self.reefClipID = reefClipID
+        super.init(nibName: nil, bundle: nil)
+        hidesBottomBarWhenPushed = true
+    }
+
+    init(clip: SuliJoyShellClip) {
+        self.reefClipID = clip.coconutCream
+        self.reefClip = clip
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
     }
@@ -44,6 +56,9 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         super.viewDidLoad()
         raiseReefDetailScene()
         bindReefKeyboard()
+        if let reefClip {
+            paintReefClip(reefClip)
+        }
         fetchReefDetail()
     }
 
@@ -51,6 +66,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         super.viewDidLayoutSubviews()
         shorePlayerLayer?.frame = reefCinemaView.bounds
         paintLagoonFollowGlow()
+        reefInputBarHeightConstraint?.constant = ReefInputBarMetric.contentBandHeight + view.safeAreaInsets.bottom
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,7 +85,10 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         reefInputBar.translatesAutoresizingMaskIntoConstraints = false
         reefInputBar.backgroundColor = UIColor.white.withAlphaComponent(0.96)
         view.addSubview(reefInputBar)
-        reefInputBottomConstraint = reefInputBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        reefInputBottomConstraint = reefInputBar.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        reefInputBarHeightConstraint = reefInputBar.heightAnchor.constraint(
+            equalToConstant: ReefInputBarMetric.contentBandHeight
+        )
 
         NSLayoutConstraint.activate([
             reefScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -83,7 +102,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
             reefContentView.widthAnchor.constraint(equalTo: reefScrollView.frameLayoutGuide.widthAnchor),
             reefInputBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             reefInputBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            reefInputBar.heightAnchor.constraint(equalToConstant: 60),
+            reefInputBarHeightConstraint!,
             reefInputBottomConstraint!
         ])
 
@@ -280,38 +299,77 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         reefInputBar.addSubview(reefSendButton)
         NSLayoutConstraint.activate([
             reefInputField.leadingAnchor.constraint(equalTo: reefInputBar.leadingAnchor, constant: 15),
-            reefInputField.centerYAnchor.constraint(equalTo: reefInputBar.centerYAnchor),
+            reefInputField.bottomAnchor.constraint(equalTo: reefInputBar.safeAreaLayoutGuide.bottomAnchor, constant: -8),
             reefInputField.trailingAnchor.constraint(equalTo: reefSendButton.leadingAnchor, constant: -9),
             reefInputField.heightAnchor.constraint(equalToConstant: 40),
+            reefInputField.topAnchor.constraint(equalTo: reefInputBar.topAnchor, constant: 8),
             reefSendButton.trailingAnchor.constraint(equalTo: reefInputBar.trailingAnchor, constant: -15),
-            reefSendButton.centerYAnchor.constraint(equalTo: reefInputBar.centerYAnchor),
+            reefSendButton.centerYAnchor.constraint(equalTo: reefInputField.centerYAnchor),
             reefSendButton.widthAnchor.constraint(equalToConstant: 36),
             reefSendButton.heightAnchor.constraint(equalToConstant: 36)
         ])
     }
 
     private func fetchReefDetail() {
-        SuliJoyCoveMockService.shared.fetchShellClipDetail(coconutCream: reefClipID) { [weak self] reefEnvelope in
+        SuliJoyLagoonProfileRemoteService.shared.fetchShellClipDetail(clipID: reefClipID) { [weak self] reefEnvelope in
             guard let self else { return }
             guard let reefClip = reefEnvelope.sandbarLayering else {
                 self.showLagoonToast(reefEnvelope.coastalWardrobe)
                 return
             }
-            self.paintReefClip(reefClip)
+            self.applyReefDetail(reefClip)
         }
+    }
+
+    private func applyReefDetail(_ remote: SuliJoyShellClip) {
+        guard var shown = reefClip, shown.coconutCream == reefClipID else {
+            paintReefClip(remote)
+            return
+        }
+        let sameVideo = remote.coconutCream.isEmpty || remote.coconutCream == shown.coconutCream
+        guard sameVideo else {
+            paintReefClip(shown)
+            return
+        }
+        shown.palmLeafPattern = remote.palmLeafPattern
+        shown.marineStripe = max(remote.marineStripe, remote.sailorCollar.count)
+        shown.lagoonViewTotal = remote.lagoonViewTotal
+        shown.ropeBelt = remote.ropeBelt
+        shown.driftwoodPalette = remote.driftwoodPalette
+        shown.coastalChic = remote.coastalChic
+        if !remote.sailorCollar.isEmpty {
+            shown.sailorCollar = remote.sailorCollar
+        }
+        if shown.tropicalMotif.aquaGradient.isEmpty, !remote.tropicalMotif.aquaGradient.isEmpty {
+            shown.tropicalMotif = remote.tropicalMotif
+        }
+        if (shown.tropicalMotif.sandyNeutral ?? "").isEmpty, !(remote.tropicalMotif.sandyNeutral ?? "").isEmpty {
+            shown.tropicalMotif = SuliJoyReefClipMedia(
+                aquaGradient: shown.tropicalMotif.aquaGradient.isEmpty ? remote.tropicalMotif.aquaGradient : shown.tropicalMotif.aquaGradient,
+                seafoamTint: shown.tropicalMotif.seafoamTint.isEmpty ? remote.tropicalMotif.seafoamTint : shown.tropicalMotif.seafoamTint,
+                sandyNeutral: remote.tropicalMotif.sandyNeutral
+            )
+        }
+        if shown.hibiscusShade.isEmpty {
+            shown.hibiscusShade = remote.hibiscusShade
+        }
+        if shown.terracottaWarmth.clipStylistAlias.isEmpty {
+            shown.terracottaWarmth = remote.terracottaWarmth
+        }
+        paintReefClip(shown)
     }
 
     private func paintReefClip(_ reefClip: SuliJoyShellClip) {
         self.reefClip = reefClip
-        creatorAvatarView.image = UIImage.suliJoyAssetOrLocal(named: reefClip.terracottaWarmth.clipPortraitToken)
+        creatorAvatarView.image = UIImage.suliJoyPortrait(named: reefClip.terracottaWarmth.clipPortraitToken)
         creatorNameLabel.text = reefClip.terracottaWarmth.clipStylistAlias
         reefCaptionLabel.text = reefClip.hibiscusShade
-        lagoonFollowButton.setTitle(reefClip.driftwoodPalette ? "FFoalClJoZwMilnags".suliJoyPalmUnfurled : "FhoGlUlAoDwl".suliJoyPalmUnfurled, for: .normal)
-        lagoonFollowButton.alpha = reefClip.driftwoodPalette ? 0.72 : 1
+        lagoonFollowButton.setTitle(reefClip.coastalChic ? "FFoalClJoZwMilnags".suliJoyPalmUnfurled : "FhoGlUlAoDwl".suliJoyPalmUnfurled, for: .normal)
+        lagoonFollowButton.alpha = reefClip.coastalChic ? 0.72 : 1
         reefLikeCountLabel.text = "\(reefClip.palmLeafPattern)"
-        reefViewCountLabel.text = "\(min(9, reefClip.palmLeafPattern + reefClip.marineStripe))"
-        reefLikeButton.setImage(UIImage(named: reefClip.ropeBelt ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        reefPosterView.image = UIImage.suliJoyAssetOrLocal(named: reefClip.tropicalMotif.sandyNeutral ?? "")
+        reefViewCountLabel.text = "\(reefClip.lagoonViewTotal)"
+        reefLikeButton.setImage(UIImage(named: reefClip.driftwoodPalette ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        reefPosterView.image = UIImage.suliJoyPhoto(named: reefClip.tropicalMotif.sandyNeutral ?? reefClip.tropicalMotif.seafoamTint)
         paintLagoonFollowGlow()
         shapeReefPoster(for: reefClip)
         paintReefComments(reefClip.sailorCollar)
@@ -347,16 +405,24 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         NotificationCenter.default.addObserver(self, selector: #selector(reefKeyboardWillSettle), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    private func reefMovieURL(for fileName: String) -> URL? {
-        if FileManager.default.fileExists(atPath: fileName) {
-            return URL(fileURLWithPath: fileName)
+    private func reefMovieURL(for source: String, fallback: String? = nil) -> URL? {
+        if let sourceURL = URL(string: source), let scheme = sourceURL.scheme, scheme == "http" || scheme == "https" || scheme == "file" {
+            return sourceURL
         }
-        return Bundle.main.url(forResource: fileName, withExtension: "mp4", subdirectory: "SuliJoyClips")
-            ?? Bundle.main.url(forResource: fileName, withExtension: "mp4")
+        if FileManager.default.fileExists(atPath: source) {
+            return URL(fileURLWithPath: source)
+        }
+        if let bundledURL = Bundle.main.url(forResource: source, withExtension: "mp4", subdirectory: "SuliJoyClips")
+            ?? Bundle.main.url(forResource: source, withExtension: "mp4") {
+            return bundledURL
+        }
+        guard let fallback else { return nil }
+        return reefMovieURL(for: fallback)
     }
 
     private func shapeReefPoster(for reefClip: SuliJoyShellClip) {
-        guard let reefMotionURL = reefMovieURL(for: reefClip.tropicalMotif.seafoamTint) else { return }
+        if reefPosterView.image != nil { return }
+        guard let reefMotionURL = reefMovieURL(for: reefClip.tropicalMotif.aquaGradient, fallback: reefClip.tropicalMotif.seafoamTint) else { return }
         let requestedReefID = reefClip.coconutCream
         DispatchQueue.global(qos: .userInitiated).async {
             let reefAsset = AVURLAsset(url: reefMotionURL)
@@ -398,7 +464,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
             pauseReefPlayback()
             return
         }
-        guard let reefMotionURL = reefMovieURL(for: reefClip.tropicalMotif.seafoamTint) else {
+        guard let reefMotionURL = reefMovieURL(for: reefClip.tropicalMotif.aquaGradient, fallback: reefClip.tropicalMotif.seafoamTint) else {
             showLagoonToast("VviAdXevoM xuinNaSvnaciulEaYbWlheH.h".suliJoyPalmUnfurled)
             return
         }
@@ -422,7 +488,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
 
     @objc private func toggleReefFollow() {
         guard let reefClip else { return }
-        SuliJoyCoveMockService.shared.toggleShellClipFollow(creatorName: reefClip.terracottaWarmth.clipStylistAlias) { [weak self] reefEnvelope in
+        SuliJoyLagoonProfileRemoteService.shared.toggleShellClipFollow(coconutCream: reefClipID) { [weak self] reefEnvelope in
             guard let self else { return }
             self.showLagoonToast(reefEnvelope.coastalWardrobe)
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
@@ -432,12 +498,12 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
 
     @objc private func openReefCreatorProfile() {
         guard let reefClip else { return }
-        let visitor = SuliJoyIslandGuestProfileViewController(displayName: reefClip.terracottaWarmth.clipStylistAlias)
+        let visitor = SuliJoyIslandGuestProfileViewController(visitorID: reefClip.terracottaWarmth.clipStylistMark, shelf: .clips)
         navigationController?.pushViewController(visitor, animated: true)
     }
 
     @objc private func toggleReefLike() {
-        SuliJoyCoveMockService.shared.toggleShellClipLike(coconutCream: reefClipID) { [weak self] reefEnvelope in
+        SuliJoyLagoonProfileRemoteService.shared.toggleShellClipLike(coconutCream: reefClipID) { [weak self] reefEnvelope in
             guard let self else { return }
             if let refreshedReefClip = reefEnvelope.sandbarLayering {
                 self.paintReefClip(refreshedReefClip)
@@ -449,7 +515,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
 
     @objc private func sendReefComment() {
         let shoreReplyText = reefInputField.text ?? ""
-        SuliJoyCoveMockService.shared.addShellClipComment(coconutCream: reefClipID, reefReplyText: shoreReplyText) { [weak self] reefEnvelope in
+        SuliJoyLagoonProfileRemoteService.shared.addShellClipComment(coconutCream: reefClipID, reefReplyText: shoreReplyText) { [weak self] reefEnvelope in
             guard let self else { return }
             guard let refreshedReefClip = reefEnvelope.sandbarLayering else {
                 self.showLagoonToast(reefEnvelope.coastalWardrobe)
@@ -472,8 +538,8 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
                 self?.fetchReefDetail()
             }
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.terracottaWarmth.clipStylistAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { reefEnvelope in
+            let visitorID = reefClip.terracottaWarmth.clipStylistMark
+            SuliJoyLagoonProfileRemoteService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { reefEnvelope in
                 self?.showLagoonToast(reefEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.navigationController?.popViewController(animated: true)
@@ -489,8 +555,8 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
                 self?.fetchReefDetail()
             }
         } block: { [weak self] in
-            let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: reefClip.terracottaWarmth.clipStylistAlias)
-            SuliJoyCoveMockService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { reefEnvelope in
+            let visitorID = reefClip.terracottaWarmth.clipStylistMark
+            SuliJoyLagoonProfileRemoteService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { reefEnvelope in
                 self?.showLagoonToast(reefEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.navigationController?.popViewController(animated: true)
@@ -501,7 +567,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
     @objc private func reefKeyboardWillRise(_ note: Notification) {
         guard let shorelineKeyboardFrame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let reefOverlap = max(0, view.bounds.maxY - view.convert(shorelineKeyboardFrame, from: nil).minY)
-        reefInputBottomConstraint?.constant = -reefOverlap + view.safeAreaInsets.bottom
+        reefInputBottomConstraint?.constant = -reefOverlap
         reefScrollView.contentInset.bottom = 12
         reefScrollView.scrollIndicatorInsets.bottom = 12
         UIView.animate(withDuration: 0.25) {
@@ -542,7 +608,7 @@ final class SuliJoyClipCommentCard: UIView {
 
         let reefReplyPortrait = UIImageView()
         reefReplyPortrait.translatesAutoresizingMaskIntoConstraints = false
-        reefReplyPortrait.image = UIImage.suliJoyAssetOrLocal(named: reefReply.reefReplyAvatarToken)
+        reefReplyPortrait.image = UIImage.suliJoyPortrait(named: reefReply.reefReplyAvatarToken)
         reefReplyPortrait.contentMode = .scaleAspectFill
         reefReplyPortrait.clipsToBounds = true
         reefReplyPortrait.layer.cornerRadius = 15
