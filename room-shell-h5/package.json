@@ -10,7 +10,8 @@
   },
   "scripts": {
     "dev": "vite --host 0.0.0.0",
-    "build": "pnpm verify:app-config && vue-tsc --noEmit && vite build && node scripts/write-build-manifest.mjs && pnpm verify:build",
+    "generate:opi": "node scripts/generate-opi-registry.mjs",
+    "build": "npm run generate:opi && npm run verify:app-config && vue-tsc --noEmit && vite build && node scripts/write-build-manifest.mjs && npm run verify:build",
     "preview": "vite preview",
     "lint": "eslint src scripts vite.config.ts postcss.config.ts eslint.config.mjs commitlint.config.ts",
     "lint:fix": "pnpm lint --fix",

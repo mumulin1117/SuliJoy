@@ -1,6 +1,7 @@
 import UIKit
 
 final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    var onShellPurchaseSettled: ((String?) -> Void)?
     private enum PearlHarborMetric {
         static let rowGap: CGFloat = 12
         static let lineGap: CGFloat = 14
@@ -301,6 +302,7 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
             switch harborAnswer.cargo {
             case .settled:
                 self.refreshShellTotal()
+                self.onShellPurchaseSettled?(shoreBundle.reefToken)
                 self.showLagoonToast("RKercBhRairmgleK EcXohmWpAlTeOtweUdj.r".suliJoyPalmUnfurled)
             case .backedOut:
                 self.showLagoonToast(["PmuOrW".suliJoyPalmUnfurled, "cxheahsQee SctaOnBcSeelFleeNdz.b".suliJoyPalmUnfurled].joined())

@@ -119,39 +119,130 @@ final class SuliJoyLagoonModuleCrown: UIView {
     }
 }
 
-final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    private let crown = SuliJoyLagoonModuleCrown(style: .brand)
-    private let roomCollection: UICollectionView
-    private let emptyNote = UILabel()
-    private let spinner = UIActivityIndicatorView(style: .medium)
-    private var laneButtons: [SuliJoyVoiceRoomLane: UIButton] = [:]
-    private var laneMarks: [SuliJoyVoiceRoomLane: UIView] = [:]
-    private var rooms: [SuliJoyLagoonVoiceCard] = []
-    private var lane: SuliJoyVoiceRoomLane = .islandVibes
+final class SuliJoyShorePageDeck: UIView, UIScrollViewDelegate {
+    let scrollView = UIScrollView()
+    private(set) var pageIndex = 0
+    var onPageChange: ((Int) -> Void)?
+    var onScrollProgress: ((CGFloat) -> Void)?
+    private var pages: [UIView] = []
+    private var isProgrammaticScroll = false
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        let flow = UICollectionViewFlowLayout()
-        flow.minimumInteritemSpacing = 12
-        flow.minimumLineSpacing = 12
-        roomCollection = UICollectionView(frame: .zero, collectionViewLayout: flow)
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.bounces = true
+        scrollView.isDirectionalLockEnabled = true
+        scrollView.delegate = self
+        scrollView.backgroundColor = .clear
+        addSubview(scrollView)
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func install(_ pages: [UIView]) {
+        self.pages.forEach { $0.removeFromSuperview() }
+        self.pages = pages
+        pages.forEach { page in
+            page.translatesAutoresizingMaskIntoConstraints = true
+            page.autoresizingMask = []
+            scrollView.addSubview(page)
+        }
+        setNeedsLayout()
+    }
+
+    func show(page index: Int, animated: Bool) {
+        let clamped = max(0, min(pages.count - 1, index))
+        pageIndex = clamped
+        let width = bounds.width
+        guard width > 0 else { return }
+        isProgrammaticScroll = true
+        scrollView.setContentOffset(CGPoint(x: width * CGFloat(clamped), y: 0), animated: animated)
+        if !animated {
+            isProgrammaticScroll = false
+            onScrollProgress?(CGFloat(clamped))
+        }
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let width = bounds.width
+        let height = bounds.height
+        guard width > 1, height > 1, !pages.isEmpty else { return }
+        scrollView.contentSize = CGSize(width: width * CGFloat(pages.count), height: height)
+        for (index, page) in pages.enumerated() {
+            page.frame = CGRect(x: width * CGFloat(index), y: 0, width: width, height: height)
+        }
+        if !scrollView.isDragging, !scrollView.isDecelerating, !isProgrammaticScroll {
+            scrollView.contentOffset = CGPoint(x: width * CGFloat(pageIndex), y: 0)
+        }
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let width = bounds.width
+        guard width > 1 else { return }
+        let progress = scrollView.contentOffset.x / width
+        onScrollProgress?(progress)
+        let nearest = max(0, min(pages.count - 1, Int(round(progress))))
+        guard nearest != pageIndex, !isProgrammaticScroll else { return }
+        pageIndex = nearest
+        onPageChange?(nearest)
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        finishScroll()
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate { finishScroll() }
+    }
+
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        isProgrammaticScroll = false
+        finishScroll()
+    }
+
+    private func finishScroll() {
+        let width = bounds.width
+        guard width > 1, !pages.isEmpty else { return }
+        let nearest = max(0, min(pages.count - 1, Int(round(scrollView.contentOffset.x / width))))
+        let changed = nearest != pageIndex
+        pageIndex = nearest
+        onScrollProgress?(CGFloat(nearest))
+        if changed { onPageChange?(nearest) }
+    }
+}
+
+final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    private let crown = SuliJoyLagoonModuleCrown(style: .brand)
+    private let pageDeck = SuliJoyShorePageDeck()
+    private let lanes: [SuliJoyVoiceRoomLane] = [.islandVibes, .styleTalk, .meetMingle]
+    private var laneButtons: [SuliJoyVoiceRoomLane: UIButton] = [:]
+    private var laneMarks: [SuliJoyVoiceRoomLane: UIView] = [:]
+    private var laneCollections: [UICollectionView] = []
+    private var laneEmptyNotes: [UILabel] = []
+    private var laneSpinners: [UIActivityIndicatorView] = []
+    private var laneRooms: [[SuliJoyLagoonVoiceCard]] = [[], [], []]
+    private var lane: SuliJoyVoiceRoomLane = .islandVibes
+
     override func viewDidLoad() {
         super.viewDidLoad()
         crown.pearlButton.addTarget(self, action: #selector(openPearlHarbor), for: .touchUpInside)
         crown.chatButton.addTarget(self, action: #selector(openChatList), for: .touchUpInside)
         let banner = makeActivityBanner()
-        let lanes = makeLaneRow()
-        tuneCollection()
-        tuneEmptyNote()
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.hidesWhenStopped = true
-        [crown, banner, lanes, roomCollection, emptyNote, spinner].forEach { view.addSubview($0) }
+        let laneRow = makeLaneRow()
+        tunePager()
+        [crown, banner, laneRow, pageDeck].forEach { view.addSubview($0) }
         NSLayoutConstraint.activate([
             crown.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: SuliJoyLagoonBoardMeasure.headerTop),
             crown.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: SuliJoyLagoonBoardMeasure.pageSide),
@@ -160,23 +251,17 @@ final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UI
             banner.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             banner.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
             banner.heightAnchor.constraint(equalTo: banner.widthAnchor, multiplier: 168.0 / 750.0),
-            lanes.topAnchor.constraint(equalTo: banner.bottomAnchor, constant: 16),
-            lanes.leadingAnchor.constraint(equalTo: crown.leadingAnchor),
-            lanes.trailingAnchor.constraint(equalTo: crown.trailingAnchor),
-            lanes.heightAnchor.constraint(equalToConstant: 36),
-            roomCollection.topAnchor.constraint(equalTo: lanes.bottomAnchor, constant: 8),
-            roomCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            roomCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            roomCollection.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            emptyNote.centerXAnchor.constraint(equalTo: roomCollection.centerXAnchor),
-            emptyNote.centerYAnchor.constraint(equalTo: roomCollection.centerYAnchor),
-            emptyNote.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            emptyNote.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            spinner.centerXAnchor.constraint(equalTo: roomCollection.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: roomCollection.centerYAnchor)
+            laneRow.topAnchor.constraint(equalTo: banner.bottomAnchor, constant: 16),
+            laneRow.leadingAnchor.constraint(equalTo: crown.leadingAnchor),
+            laneRow.trailingAnchor.constraint(equalTo: crown.trailingAnchor),
+            laneRow.heightAnchor.constraint(equalToConstant: 36),
+            pageDeck.topAnchor.constraint(equalTo: laneRow.bottomAnchor, constant: 8),
+            pageDeck.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pageDeck.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pageDeck.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         paintLanes()
-        reloadVoiceBoard()
+        lanes.enumerated().forEach { reloadVoiceLane($0.offset) }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -185,26 +270,66 @@ final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UI
         crown.refreshPearlBalance()
     }
 
-    private func tuneCollection() {
-        roomCollection.translatesAutoresizingMaskIntoConstraints = false
-        roomCollection.backgroundColor = .clear
-        roomCollection.dataSource = self
-        roomCollection.delegate = self
-        roomCollection.alwaysBounceVertical = true
-        roomCollection.contentInset = UIEdgeInsets(top: 4, left: 16, bottom: SuliJoyLagoonBoardMeasure.listBottom, right: 16)
-        roomCollection.register(SuliJoyLagoonVoiceTileCell.self, forCellWithReuseIdentifier: "SuliJoyLagoonVoiceTileCell")
-        let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(reloadVoiceBoard), for: .valueChanged)
-        roomCollection.refreshControl = refresh
-    }
+    private func tunePager() {
+        pageDeck.translatesAutoresizingMaskIntoConstraints = false
+        var pages: [UIView] = []
+        for index in lanes.indices {
+            let page = UIView()
+            let flow = UICollectionViewFlowLayout()
+            flow.minimumInteritemSpacing = 12
+            flow.minimumLineSpacing = 12
+            let collection = UICollectionView(frame: .zero, collectionViewLayout: flow)
+            collection.translatesAutoresizingMaskIntoConstraints = false
+            collection.backgroundColor = .clear
+            collection.dataSource = self
+            collection.delegate = self
+            collection.tag = index
+            collection.alwaysBounceVertical = true
+            collection.contentInset = UIEdgeInsets(top: 4, left: 16, bottom: SuliJoyLagoonBoardMeasure.listBottom, right: 16)
+            collection.register(SuliJoyLagoonVoiceTileCell.self, forCellWithReuseIdentifier: "SuliJoyLagoonVoiceTileCell")
+            let refresh = UIRefreshControl()
+            refresh.tag = index
+            refresh.addTarget(self, action: #selector(reloadVoiceLaneFromRefresh(_:)), for: .valueChanged)
+            collection.refreshControl = refresh
 
-    private func tuneEmptyNote() {
-        emptyNote.translatesAutoresizingMaskIntoConstraints = false
-        emptyNote.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        emptyNote.textColor = .suliMutedInk
-        emptyNote.textAlignment = .center
-        emptyNote.numberOfLines = 0
-        emptyNote.isHidden = true
+            let emptyNote = UILabel()
+            emptyNote.translatesAutoresizingMaskIntoConstraints = false
+            emptyNote.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+            emptyNote.textColor = .suliMutedInk
+            emptyNote.textAlignment = .center
+            emptyNote.numberOfLines = 0
+            emptyNote.isHidden = true
+
+            let spinner = UIActivityIndicatorView(style: .medium)
+            spinner.translatesAutoresizingMaskIntoConstraints = false
+            spinner.hidesWhenStopped = true
+
+            page.addSubview(collection)
+            page.addSubview(emptyNote)
+            page.addSubview(spinner)
+            NSLayoutConstraint.activate([
+                collection.topAnchor.constraint(equalTo: page.topAnchor),
+                collection.leadingAnchor.constraint(equalTo: page.leadingAnchor),
+                collection.trailingAnchor.constraint(equalTo: page.trailingAnchor),
+                collection.bottomAnchor.constraint(equalTo: page.bottomAnchor),
+                emptyNote.centerXAnchor.constraint(equalTo: page.centerXAnchor),
+                emptyNote.centerYAnchor.constraint(equalTo: page.centerYAnchor),
+                emptyNote.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 32),
+                emptyNote.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -32),
+                spinner.centerXAnchor.constraint(equalTo: page.centerXAnchor),
+                spinner.centerYAnchor.constraint(equalTo: page.centerYAnchor)
+            ])
+            laneCollections.append(collection)
+            laneEmptyNotes.append(emptyNote)
+            laneSpinners.append(spinner)
+            pages.append(page)
+        }
+        pageDeck.install(pages)
+        pageDeck.onPageChange = { [weak self] index in
+            guard let self else { return }
+            self.lane = self.lanes[index]
+            self.paintLanes()
+        }
     }
 
     private func makeActivityBanner() -> UIControl {
@@ -300,32 +425,38 @@ final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UI
         guard next != lane else { return }
         lane = next
         paintLanes()
-        rooms = []
-        roomCollection.reloadData()
-        reloadVoiceBoard()
+        pageDeck.show(page: sender.tag, animated: true)
     }
 
-    @objc private func reloadVoiceBoard() {
-        if rooms.isEmpty {
-            spinner.startAnimating()
-            emptyNote.isHidden = true
+    @objc private func reloadVoiceLaneFromRefresh(_ sender: UIRefreshControl) {
+        reloadVoiceLane(sender.tag)
+    }
+
+    private func reloadVoiceLane(_ index: Int) {
+        guard lanes.indices.contains(index) else { return }
+        let selectedLane = lanes[index]
+        if laneRooms[index].isEmpty {
+            laneSpinners[index].startAnimating()
+            laneEmptyNotes[index].isHidden = true
         }
-        SuliJoyLagoonProfileRemoteService.shared.fetchVoiceBoard(lane: lane) { [weak self] result in
+        SuliJoyLagoonProfileRemoteService.shared.fetchVoiceBoard(lane: selectedLane) { [weak self] result in
             guard let self else { return }
-            self.spinner.stopAnimating()
-            self.roomCollection.refreshControl?.endRefreshing()
+            self.laneSpinners[index].stopAnimating()
+            self.laneCollections[index].refreshControl?.endRefreshing()
             guard result.beachwearCapsule == 200 else {
-                self.rooms = []
-                self.roomCollection.reloadData()
-                self.emptyNote.text = result.coastalWardrobe
-                self.emptyNote.isHidden = false
-                self.showLagoonToast(result.coastalWardrobe)
+                self.laneRooms[index] = []
+                self.laneCollections[index].reloadData()
+                self.laneEmptyNotes[index].text = result.coastalWardrobe
+                self.laneEmptyNotes[index].isHidden = false
+                if self.pageDeck.pageIndex == index {
+                    self.showLagoonToast(result.coastalWardrobe)
+                }
                 return
             }
-            self.rooms = result.sandbarLayering ?? []
-            self.roomCollection.reloadData()
-            self.emptyNote.text = "No voice rooms right now."
-            self.emptyNote.isHidden = !self.rooms.isEmpty
+            self.laneRooms[index] = result.sandbarLayering ?? []
+            self.laneCollections[index].reloadData()
+            self.laneEmptyNotes[index].text = "No voice rooms right now."
+            self.laneEmptyNotes[index].isHidden = !self.laneRooms[index].isEmpty
         }
     }
 
@@ -347,12 +478,12 @@ final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        rooms.count
+        laneRooms[collectionView.tag].count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SuliJoyLagoonVoiceTileCell", for: indexPath) as! SuliJoyLagoonVoiceTileCell
-        cell.applyVoiceCard(rooms[indexPath.item])
+        cell.applyVoiceCard(laneRooms[collectionView.tag][indexPath.item])
         return cell
     }
 
@@ -362,14 +493,8 @@ final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let room = rooms[indexPath.item]
-        let preview = SuliJoyLagoonRoomPreviewController(
-            shoreTitle: room.place,
-            hostLine: "Voice room",
-            coverToken: room.coverToken,
-            detailLine: room.summary
-        )
-        pushShorePage(preview)
+        let room = laneRooms[collectionView.tag][indexPath.item]
+        SuliJoyRoomShellNavigator.openRoom(kind: .voice, roomID: room.roomID, from: self)
     }
 }
 
@@ -381,14 +506,14 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
     }
 
     private let crown = SuliJoyLagoonModuleCrown(style: .islandLive)
-    private let roomTable = UITableView(frame: .zero, style: .plain)
-    private let emptyNote = UILabel()
-    private let spinner = UIActivityIndicatorView(style: .medium)
+    private let pageDeck = SuliJoyShorePageDeck()
     private let categoryRow = UIStackView()
-    private var categoryButtons: [String: UIControl] = [:]
     private var categoryCounts: [String: UILabel] = [:]
     private var sortButtons: [LiveSort: UIButton] = [:]
     private var sortMarks: [LiveSort: UIView] = [:]
+    private var sortTables: [UITableView] = []
+    private var sortEmptyNotes: [UILabel] = []
+    private let sorts: [LiveSort] = [.forYou, .following, .trending]
     private var rooms: [SuliJoyLagoonLiveCard] = []
     private var sort: LiveSort = .forYou
     private let categories = ["Chill & Chat", "Style & Beauty", "Lifestyle"]
@@ -398,12 +523,9 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
         crown.pearlButton.addTarget(self, action: #selector(openPearlHarbor), for: .touchUpInside)
         crown.chatButton.addTarget(self, action: #selector(openChatList), for: .touchUpInside)
         tuneCategoryRow()
-        let sorts = makeSortRow()
-        tuneTable()
-        tuneEmptyNote()
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.hidesWhenStopped = true
-        [crown, categoryRow, sorts, roomTable, emptyNote, spinner].forEach { view.addSubview($0) }
+        let sortRow = makeSortRow()
+        tuneSortPager()
+        [crown, categoryRow, sortRow, pageDeck].forEach { view.addSubview($0) }
         NSLayoutConstraint.activate([
             crown.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: SuliJoyLagoonBoardMeasure.headerTop),
             crown.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: SuliJoyLagoonBoardMeasure.pageSide),
@@ -411,20 +533,14 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
             categoryRow.topAnchor.constraint(equalTo: crown.bottomAnchor, constant: 14),
             categoryRow.leadingAnchor.constraint(equalTo: crown.leadingAnchor),
             categoryRow.trailingAnchor.constraint(equalTo: crown.trailingAnchor),
-            sorts.topAnchor.constraint(equalTo: categoryRow.bottomAnchor, constant: 16),
-            sorts.leadingAnchor.constraint(equalTo: crown.leadingAnchor),
-            sorts.trailingAnchor.constraint(equalTo: crown.trailingAnchor),
-            sorts.heightAnchor.constraint(equalToConstant: 34),
-            roomTable.topAnchor.constraint(equalTo: sorts.bottomAnchor, constant: 8),
-            roomTable.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            roomTable.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            roomTable.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            emptyNote.centerXAnchor.constraint(equalTo: roomTable.centerXAnchor),
-            emptyNote.topAnchor.constraint(equalTo: roomTable.topAnchor, constant: 36),
-            emptyNote.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            emptyNote.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            spinner.centerXAnchor.constraint(equalTo: roomTable.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: roomTable.centerYAnchor)
+            sortRow.topAnchor.constraint(equalTo: categoryRow.bottomAnchor, constant: 16),
+            sortRow.leadingAnchor.constraint(equalTo: crown.leadingAnchor),
+            sortRow.trailingAnchor.constraint(equalTo: crown.trailingAnchor),
+            sortRow.heightAnchor.constraint(equalToConstant: 34),
+            pageDeck.topAnchor.constraint(equalTo: sortRow.bottomAnchor, constant: 8),
+            pageDeck.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pageDeck.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pageDeck.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         paintSorts()
         reloadLiveBoard()
@@ -510,7 +626,6 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
                 count.centerYAnchor.constraint(equalTo: countChip.centerYAnchor)
             ])
             categoryRow.addArrangedSubview(card)
-            categoryButtons[name] = card
             categoryCounts[name] = count
         }
     }
@@ -556,7 +671,7 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
         }
     }
 
-    private var visibleRooms: [SuliJoyLagoonLiveCard] {
+    private func cards(for sort: LiveSort) -> [SuliJoyLagoonLiveCard] {
         switch sort {
         case .forYou:
             return rooms
@@ -568,62 +683,95 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
     }
 
     @objc private func changeCategory(_ sender: UIControl) {
-        let page = SuliJoyLagoonLiveCategoryController(category: categories[sender.tag])
+        let name = categories[sender.tag]
+        let page = SuliJoyLagoonLiveCategoryController(title: name, sourceRooms: rooms)
         page.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(page, animated: true)
     }
 
     @objc private func changeSort(_ sender: UIButton) {
-        sort = sender.tag == 1 ? .following : sender.tag == 2 ? .trending : .forYou
+        let next = sorts[sender.tag]
+        guard next != sort else { return }
+        sort = next
         paintSorts()
-        roomTable.reloadData()
-        emptyNote.isHidden = !visibleRooms.isEmpty
-        emptyNote.text = "No live rooms right now."
+        pageDeck.show(page: sender.tag, animated: true)
     }
 
-    private func tuneTable() {
-        roomTable.translatesAutoresizingMaskIntoConstraints = false
-        roomTable.backgroundColor = .clear
-        roomTable.separatorStyle = .none
-        roomTable.dataSource = self
-        roomTable.delegate = self
-        roomTable.rowHeight = 118
-        roomTable.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: SuliJoyLagoonBoardMeasure.listBottom, right: 0)
-        roomTable.register(SuliJoyLagoonLiveRowCell.self, forCellReuseIdentifier: "SuliJoyLagoonLiveRowCell")
-        let refresh = UIRefreshControl()
-        refresh.addTarget(self, action: #selector(reloadLiveBoard), for: .valueChanged)
-        roomTable.refreshControl = refresh
-    }
+    private func tuneSortPager() {
+        pageDeck.translatesAutoresizingMaskIntoConstraints = false
+        var pages: [UIView] = []
+        for index in sorts.indices {
+            let page = UIView()
+            let table = UITableView(frame: .zero, style: .plain)
+            table.translatesAutoresizingMaskIntoConstraints = false
+            table.backgroundColor = .clear
+            table.separatorStyle = .none
+            table.dataSource = self
+            table.delegate = self
+            table.tag = index
+            table.rowHeight = 118
+            table.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: SuliJoyLagoonBoardMeasure.listBottom, right: 0)
+            table.register(SuliJoyLagoonLiveRowCell.self, forCellReuseIdentifier: "SuliJoyLagoonLiveRowCell")
+            let refresh = UIRefreshControl()
+            refresh.addTarget(self, action: #selector(reloadLiveBoard), for: .valueChanged)
+            table.refreshControl = refresh
 
-    private func tuneEmptyNote() {
-        emptyNote.translatesAutoresizingMaskIntoConstraints = false
-        emptyNote.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        emptyNote.textColor = .suliMutedInk
-        emptyNote.textAlignment = .center
-        emptyNote.numberOfLines = 0
-        emptyNote.isHidden = true
+            let emptyNote = UILabel()
+            emptyNote.translatesAutoresizingMaskIntoConstraints = false
+            emptyNote.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+            emptyNote.textColor = .suliMutedInk
+            emptyNote.textAlignment = .center
+            emptyNote.numberOfLines = 0
+            emptyNote.isHidden = true
+
+            page.addSubview(table)
+            page.addSubview(emptyNote)
+            NSLayoutConstraint.activate([
+                table.topAnchor.constraint(equalTo: page.topAnchor),
+                table.leadingAnchor.constraint(equalTo: page.leadingAnchor),
+                table.trailingAnchor.constraint(equalTo: page.trailingAnchor),
+                table.bottomAnchor.constraint(equalTo: page.bottomAnchor),
+                emptyNote.centerXAnchor.constraint(equalTo: page.centerXAnchor),
+                emptyNote.topAnchor.constraint(equalTo: page.topAnchor, constant: 36),
+                emptyNote.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 32),
+                emptyNote.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -32)
+            ])
+            sortTables.append(table)
+            sortEmptyNotes.append(emptyNote)
+            pages.append(page)
+        }
+        pageDeck.install(pages)
+        pageDeck.onPageChange = { [weak self] index in
+            guard let self else { return }
+            self.sort = self.sorts[index]
+            self.paintSorts()
+        }
     }
 
     @objc private func reloadLiveBoard() {
-        if rooms.isEmpty { spinner.startAnimating() }
         SuliJoyLagoonProfileRemoteService.shared.fetchLiveBoard { [weak self] result in
             guard let self else { return }
-            self.spinner.stopAnimating()
-            self.roomTable.refreshControl?.endRefreshing()
+            self.sortTables.forEach { $0.refreshControl?.endRefreshing() }
             guard result.beachwearCapsule == 200, let shelf = result.sandbarLayering else {
                 self.rooms = []
-                self.roomTable.reloadData()
-                self.emptyNote.text = result.coastalWardrobe
-                self.emptyNote.isHidden = false
+                self.sortTables.forEach { $0.reloadData() }
+                self.refreshSortEmptyNotes(message: result.coastalWardrobe)
                 self.showLagoonToast(result.coastalWardrobe)
                 return
             }
             self.rooms = shelf.cards
             let tally = "\(shelf.total)"
             self.categoryCounts.values.forEach { $0.text = tally }
-            self.roomTable.reloadData()
-            self.emptyNote.text = "No live rooms right now."
-            self.emptyNote.isHidden = !self.visibleRooms.isEmpty
+            self.sortTables.forEach { $0.reloadData() }
+            self.refreshSortEmptyNotes(message: "No live rooms right now.")
+        }
+    }
+
+    private func refreshSortEmptyNotes(message: String) {
+        for (index, note) in sortEmptyNotes.enumerated() {
+            let cards = cards(for: sorts[index])
+            note.text = message
+            note.isHidden = !cards.isEmpty
         }
     }
 
@@ -638,38 +786,32 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        visibleRooms.count
+        cards(for: sorts[tableView.tag]).count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SuliJoyLagoonLiveRowCell", for: indexPath) as! SuliJoyLagoonLiveRowCell
-        cell.applyLiveCard(visibleRooms[indexPath.row])
+        cell.applyLiveCard(cards(for: sorts[tableView.tag])[indexPath.row])
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let room = visibleRooms[indexPath.row]
-        let preview = SuliJoyLagoonRoomPreviewController(
-            shoreTitle: room.title,
-            hostLine: room.subtitle,
-            coverToken: room.coverToken,
-            detailLine: "\(room.onlineCount) watching"
-        )
-        preview.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(preview, animated: true)
+        let room = cards(for: sorts[tableView.tag])[indexPath.row]
+        SuliJoyRoomShellNavigator.openRoom(kind: .live, roomID: room.roomID, from: self)
     }
 }
 
 final class SuliJoyLagoonLiveCategoryController: SuliJoyTropicCanvasController, UITableViewDataSource, UITableViewDelegate {
     private let categoryName: String
+    private let sourceRooms: [SuliJoyLagoonLiveCard]
     private let roomTable = UITableView(frame: .zero, style: .plain)
     private let emptyNote = UILabel()
-    private let spinner = UIActivityIndicatorView(style: .medium)
     private var rooms: [SuliJoyLagoonLiveCard] = []
 
-    init(category: String) {
-        categoryName = category
+    init(title: String, sourceRooms: [SuliJoyLagoonLiveCard]) {
+        categoryName = title
+        self.sourceRooms = sourceRooms
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
     }
@@ -683,9 +825,7 @@ final class SuliJoyLagoonLiveCategoryController: SuliJoyTropicCanvasController, 
         let header = makeShoreHeader()
         tuneTable()
         tuneEmptyNote()
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.hidesWhenStopped = true
-        [header, roomTable, emptyNote, spinner].forEach { view.addSubview($0) }
+        [header, roomTable, emptyNote].forEach { view.addSubview($0) }
         NSLayoutConstraint.activate([
             header.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
             header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
@@ -698,9 +838,7 @@ final class SuliJoyLagoonLiveCategoryController: SuliJoyTropicCanvasController, 
             emptyNote.centerXAnchor.constraint(equalTo: roomTable.centerXAnchor),
             emptyNote.topAnchor.constraint(equalTo: roomTable.topAnchor, constant: 36),
             emptyNote.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            emptyNote.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            spinner.centerXAnchor.constraint(equalTo: roomTable.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: roomTable.centerYAnchor)
+            emptyNote.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32)
         ])
         reloadCategoryBoard()
     }
@@ -765,24 +903,11 @@ final class SuliJoyLagoonLiveCategoryController: SuliJoyTropicCanvasController, 
     }
 
     @objc private func reloadCategoryBoard() {
-        if rooms.isEmpty { spinner.startAnimating() }
-        SuliJoyLagoonProfileRemoteService.shared.fetchLiveBoard(category: categoryName) { [weak self] result in
-            guard let self else { return }
-            self.spinner.stopAnimating()
-            self.roomTable.refreshControl?.endRefreshing()
-            guard result.beachwearCapsule == 200, let shelf = result.sandbarLayering else {
-                self.rooms = []
-                self.roomTable.reloadData()
-                self.emptyNote.text = result.coastalWardrobe
-                self.emptyNote.isHidden = false
-                self.showLagoonToast(result.coastalWardrobe)
-                return
-            }
-            self.rooms = shelf.cards
-            self.roomTable.reloadData()
-            self.emptyNote.text = "No live rooms right now."
-            self.emptyNote.isHidden = !self.rooms.isEmpty
-        }
+        rooms = Array(sourceRooms.shuffled().prefix(3))
+        roomTable.reloadData()
+        roomTable.refreshControl?.endRefreshing()
+        emptyNote.text = "No live rooms right now."
+        emptyNote.isHidden = !rooms.isEmpty
     }
 
     @objc private func returnToLiveBoard() {
@@ -802,14 +927,7 @@ final class SuliJoyLagoonLiveCategoryController: SuliJoyTropicCanvasController, 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let room = rooms[indexPath.row]
-        let preview = SuliJoyLagoonRoomPreviewController(
-            shoreTitle: room.title,
-            hostLine: room.subtitle,
-            coverToken: room.coverToken,
-            detailLine: "\(room.onlineCount) watching"
-        )
-        preview.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(preview, animated: true)
+        SuliJoyRoomShellNavigator.openRoom(kind: .live, roomID: room.roomID, from: self)
     }
 }
 
@@ -823,6 +941,7 @@ final class SuliJoyShoreCatalogController: SuliJoyTropicCanvasController {
     ])
     private let postFeed = SuliJoyShoortController()
     private let shortsFeed = suliJoyShorelineIntent()
+    private let pageDeck = SuliJoyShorePageDeck()
     private var showsPosts = true
     private var selectionLeading: NSLayoutConstraint?
 
@@ -831,11 +950,10 @@ final class SuliJoyShoreCatalogController: SuliJoyTropicCanvasController {
         crown.pearlButton.addTarget(self, action: #selector(openPearlHarbor), for: .touchUpInside)
         crown.chatButton.addTarget(self, action: #selector(openChatList), for: .touchUpInside)
         let switcher = makeSwitcher()
-        let stage = UIView()
-        stage.translatesAutoresizingMaskIntoConstraints = false
+        pageDeck.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(crown)
         view.addSubview(switcher)
-        view.addSubview(stage)
+        view.addSubview(pageDeck)
         NSLayoutConstraint.activate([
             crown.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: SuliJoyLagoonBoardMeasure.headerTop),
             crown.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: SuliJoyLagoonBoardMeasure.pageSide),
@@ -844,16 +962,25 @@ final class SuliJoyShoreCatalogController: SuliJoyTropicCanvasController {
             switcher.leadingAnchor.constraint(equalTo: crown.leadingAnchor),
             switcher.trailingAnchor.constraint(equalTo: crown.trailingAnchor),
             switcher.heightAnchor.constraint(equalToConstant: 48),
-            stage.topAnchor.constraint(equalTo: switcher.bottomAnchor, constant: 6),
-            stage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            stage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            pageDeck.topAnchor.constraint(equalTo: switcher.bottomAnchor, constant: 6),
+            pageDeck.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            pageDeck.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            pageDeck.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         postFeed.hidesShoreCrown = true
         shortsFeed.hidesShorelineCrown = true
-        mount(postFeed, in: stage)
-        mount(shortsFeed, in: stage)
-        shortsFeed.view.isHidden = true
+        let postPage = UIView()
+        let shortsPage = UIView()
+        mount(postFeed, in: postPage)
+        mount(shortsFeed, in: shortsPage)
+        pageDeck.install([postPage, shortsPage])
+        pageDeck.onPageChange = { [weak self] index in
+            self?.showsPosts = index == 0
+            self?.paintSwitcher()
+        }
+        pageDeck.onScrollProgress = { [weak self] progress in
+            self?.syncSelectionWash(progress: progress)
+        }
         paintSwitcher()
     }
 
@@ -914,25 +1041,27 @@ final class SuliJoyShoreCatalogController: SuliJoyTropicCanvasController {
     private func paintSwitcher() {
         postButton.setTitleColor(showsPosts ? .suliInk : .suliMutedInk, for: .normal)
         shortsButton.setTitleColor(showsPosts ? .suliMutedInk : .suliInk, for: .normal)
-        postFeed.view.isHidden = !showsPosts
-        shortsFeed.view.isHidden = showsPosts
+    }
+
+    private func syncSelectionWash(progress: CGFloat) {
+        let width = postButton.superview?.bounds.width ?? 0
+        let travel = max(width / 2 - 4, 0)
+        selectionLeading?.constant = 4 + min(max(progress, 0), 1) * travel
+        postButton.superview?.layoutIfNeeded()
     }
 
     @objc private func showPosts() {
         guard !showsPosts else { return }
         showsPosts = true
-        selectionLeading?.constant = 4
-        UIView.animate(withDuration: 0.2) { self.view.layoutIfNeeded() }
         paintSwitcher()
+        pageDeck.show(page: 0, animated: true)
     }
 
     @objc private func showShorts() {
         guard showsPosts else { return }
         showsPosts = false
-        let travel = (postButton.superview?.bounds.width ?? 0) / 2
-        selectionLeading?.constant = max(travel, 4)
-        UIView.animate(withDuration: 0.2) { self.view.layoutIfNeeded() }
         paintSwitcher()
+        pageDeck.show(page: 1, animated: true)
     }
 
     @objc private func openPearlHarbor() {
@@ -1026,6 +1155,69 @@ final class SuliJoyLagoonRoomPreviewController: SuliJoyTropicCanvasController {
     }
 }
 
+private final class SuliJoyVoiceMeterView: UIView {
+    private let barCount = 7
+    private var bars: [UIView] = []
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        isUserInteractionEnabled = false
+        backgroundColor = .clear
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard bars.isEmpty, bounds.width > 0, bounds.height > 0 else { return }
+        let gap: CGFloat = 4
+        let barWidth = (bounds.width - gap * CGFloat(barCount - 1)) / CGFloat(barCount)
+        let restingHeight = bounds.height * 0.32
+        for index in 0..<barCount {
+            let bar = UIView()
+            bar.backgroundColor = .white
+            bar.layer.cornerRadius = 2
+            bar.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
+            let originX = CGFloat(index) * (barWidth + gap)
+            bar.frame = CGRect(x: originX, y: bounds.height - restingHeight, width: barWidth, height: restingHeight)
+            addSubview(bar)
+            bars.append(bar)
+        }
+        startPulsing()
+    }
+
+    func startPulsing() {
+        guard !bars.isEmpty else { return }
+        let patterns: [[CGFloat]] = [
+            [0.28, 0.92, 0.46, 1, 0.38],
+            [0.72, 0.34, 1, 0.5, 0.82],
+            [0.4, 1, 0.55, 0.3, 0.88],
+            [1, 0.42, 0.78, 0.36, 0.95],
+            [0.5, 0.86, 0.32, 1, 0.58],
+            [0.9, 0.38, 0.7, 1, 0.44],
+            [0.33, 0.8, 1, 0.48, 0.66]
+        ]
+        for (index, bar) in bars.enumerated() {
+            guard bar.layer.animation(forKey: "voiceMeter") == nil else { continue }
+            let pulse = CAKeyframeAnimation(keyPath: "transform.scale.y")
+            pulse.values = patterns[index % patterns.count]
+            pulse.keyTimes = [0, 0.25, 0.5, 0.75, 1]
+            pulse.duration = 0.72 + Double(index % 3) * 0.14
+            pulse.repeatCount = .infinity
+            pulse.autoreverses = true
+            pulse.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            pulse.isRemovedOnCompletion = false
+            bar.layer.add(pulse, forKey: "voiceMeter")
+        }
+    }
+
+    func stopPulsing() {
+        bars.forEach { $0.layer.removeAnimation(forKey: "voiceMeter") }
+    }
+}
+
 private final class SuliJoyLagoonVoiceTileCell: UICollectionViewCell {
     private let coverView = UIImageView()
     private let hostChip = UIView()
@@ -1037,6 +1229,7 @@ private final class SuliJoyLagoonVoiceTileCell: UICollectionViewCell {
     private let peopleChip = UIView()
     private let faceRow = UIStackView()
     private let extraLabel = UILabel()
+    private let voiceMeter = SuliJoyVoiceMeterView()
     private let summaryLabel = UILabel()
 
     override init(frame: CGRect) {
@@ -1089,6 +1282,8 @@ private final class SuliJoyLagoonVoiceTileCell: UICollectionViewCell {
         extraLabel.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         extraLabel.textColor = .white
 
+        voiceMeter.translatesAutoresizingMaskIntoConstraints = false
+
         summaryLabel.translatesAutoresizingMaskIntoConstraints = false
         summaryLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
         summaryLabel.textColor = .white
@@ -1104,6 +1299,7 @@ private final class SuliJoyLagoonVoiceTileCell: UICollectionViewCell {
         contentView.addSubview(peopleChip)
         peopleChip.addSubview(faceRow)
         peopleChip.addSubview(extraLabel)
+        contentView.addSubview(voiceMeter)
         contentView.addSubview(summaryLabel)
 
         hostChip.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
@@ -1141,9 +1337,13 @@ private final class SuliJoyLagoonVoiceTileCell: UICollectionViewCell {
             summaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             summaryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             peopleChip.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            peopleChip.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -8),
+            peopleChip.trailingAnchor.constraint(lessThanOrEqualTo: voiceMeter.leadingAnchor, constant: -6),
             peopleChip.bottomAnchor.constraint(equalTo: summaryLabel.topAnchor, constant: -6),
             peopleChip.heightAnchor.constraint(equalToConstant: 28),
+            voiceMeter.centerYAnchor.constraint(equalTo: peopleChip.centerYAnchor),
+            voiceMeter.trailingAnchor.constraint(equalTo: summaryLabel.trailingAnchor),
+            voiceMeter.widthAnchor.constraint(equalToConstant: 70),
+            voiceMeter.heightAnchor.constraint(equalToConstant: 30),
             faceRow.leadingAnchor.constraint(equalTo: peopleChip.leadingAnchor, constant: 4),
             faceRow.centerYAnchor.constraint(equalTo: peopleChip.centerYAnchor),
             faceRow.heightAnchor.constraint(equalToConstant: 22),
@@ -1162,6 +1362,16 @@ private final class SuliJoyLagoonVoiceTileCell: UICollectionViewCell {
         faceRow.arrangedSubviews.forEach {
             faceRow.removeArrangedSubview($0)
             $0.removeFromSuperview()
+        }
+        voiceMeter.stopPulsing()
+    }
+
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window == nil {
+            voiceMeter.stopPulsing()
+        } else {
+            voiceMeter.startPulsing()
         }
     }
 
@@ -1186,6 +1396,7 @@ private final class SuliJoyLagoonVoiceTileCell: UICollectionViewCell {
             face.heightAnchor.constraint(equalToConstant: 22).isActive = true
         }
         extraLabel.text = "+\(max(card.audience, shown.count))"
+        voiceMeter.startPulsing()
     }
 }
 

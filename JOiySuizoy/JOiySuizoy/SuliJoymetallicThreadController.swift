@@ -114,11 +114,15 @@ final class SuliJoymetallicThreadController: SuliJoyTropicCanvasController {
     }
 
     @objc private func openGoLive() {
-        showLocalPlaceholder(reefHeadline: "Go Live", subreefHeadline: "Live setup will open here.")
+        let page = SuliJoyGoLiveDraftController()
+        page.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(page, animated: true)
     }
 
     @objc private func openStartRoom() {
-        showLocalPlaceholder(reefHeadline: "Start a Room", subreefHeadline: "Room setup will open here.")
+        let page = SuliJoyVoiceRoomDraftController()
+        page.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(page, animated: true)
     }
 
     @objc private func openShoreMomentMaker() {

@@ -9,6 +9,13 @@ import axios, {
 } from 'axios'
 import type { ZodType } from 'zod'
 import { getClientContext } from '@/core/device/client-context'
+import {
+  aliasRequestBody,
+  applyOpiHeaderAliases,
+  readSemanticEnvelope,
+  resolveOpiWirePath,
+  semanticResponseBody,
+} from './opi-alias'
 import { decryptOpiResult, encryptOpiPayload } from './opi-v2-codec'
 import { getProductModeOrNull } from '@/core/product-mode/runtime'
 
@@ -100,21 +107,28 @@ export class ApiClient {
           'AUTH_TOKEN_MISSING',
         )
       }
+      const semanticPath = request.url ?? ''
+      const wirePath = resolveOpiWirePath(semanticPath)
       let data = request.data
-      const url = request.url
       const clientContext = getClientContext()
       const appLanguage = document.documentElement.lang || runtime.app.defaultLocale
       headers.set('Accept', 'application/json, text/plain')
       headers.set('Accept-Language', appLanguage)
       headers.set('Content-Type', 'application/json;charset=UTF-8')
-      // Use the backend's semantic paths, headers and fields without alias mapping.
       headers.set('appId', runtime.app.appId)
       headers.set('appVersion', clientContext.appVersion)
       headers.set('deviceNo', clientContext.deviceNo)
       headers.set('language', appLanguage)
       moveOptionalOpiHeaders(headers)
-      if (token) headers.set('Authorization', `Bearer ${token}`)
-      if (!url) throw new Error('An OPI V2 request path is required.')
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`)
+        headers.set('loginToken', token)
+      }
+      if (!semanticPath) throw new Error('An OPI V2 request path is required.')
+      applyWireHeaderAliases(headers)
+      if (data && typeof data === 'object') {
+        data = aliasRequestBody(semanticPath, data)
+      }
       data = await encryptOpiPayload(data ?? {}, apiClient)
       const {
         authRecoveryAttempts: _authRecoveryAttempts,
@@ -128,7 +142,7 @@ export class ApiClient {
         data,
         headers,
         signal: controller.signal,
-        url,
+        url: wirePath,
         // Send the AES-CBC payload as a hexadecimal string.
         transformRequest:
           data !== undefined ? [(value) => value] : transportRequest.transformRequest,
@@ -136,7 +150,7 @@ export class ApiClient {
       const traceId = String(response.headers['x-trace-id'] ?? '')
       this.observability.metric('api.duration', performance.now() - startedAt, {
         method: request.method ?? 'GET',
-        path: request.url ?? '',
+        path: semanticPath,
         status: String(response.status),
       })
       const responseData = await unwrapOpiResponse(
@@ -144,6 +158,7 @@ export class ApiClient {
         apiClient,
         response.status,
         traceId,
+        semanticPath,
       )
       if (!request.schema) return responseData as T
       const parsed = request.schema.safeParse(responseData)
@@ -194,6 +209,7 @@ async function unwrapOpiResponse(
   config: ReturnType<typeof getRuntimeConfig>['api'],
   status: number,
   traceId: string,
+  semanticPath: string,
 ): Promise<unknown> {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     throw new ApiClientError(
@@ -203,14 +219,10 @@ async function unwrapOpiResponse(
       'INVALID_ENVELOPE',
       traceId,
     )
-  const envelope = value as {
-    code?: unknown
-    message?: unknown
-    requestId?: unknown
-    result?: unknown
-  }
+  const envelope = readSemanticEnvelope(value as Record<string, unknown>)
   const code = String(envelope.code ?? '')
-  const requestId = typeof envelope.requestId === 'string' ? envelope.requestId : traceId
+  const requestId =
+    typeof envelope.requestId === 'string' && envelope.requestId ? envelope.requestId : traceId
   const message =
     typeof envelope.message === 'string' && envelope.message.trim()
       ? envelope.message
@@ -230,6 +242,7 @@ async function unwrapOpiResponse(
       )
     }
   }
+  const semanticDecoded = semanticResponseBody(semanticPath, decoded)
   if (code !== '0') {
     const unauthorized = isUnauthorizedResponse(code, message)
     throw new ApiClientError(
@@ -239,10 +252,10 @@ async function unwrapOpiResponse(
       code,
       requestId,
       undefined,
-      decoded,
+      semanticDecoded,
     )
   }
-  return decoded
+  return semanticDecoded
 }
 
 function moveOptionalOpiHeaders(headers: InstanceType<typeof axios.AxiosHeaders>): void {
@@ -250,6 +263,19 @@ function moveOptionalOpiHeaders(headers: InstanceType<typeof axios.AxiosHeaders>
     const value = headers.get(semanticName)
     headers.delete(semanticName)
     if (value !== undefined && value !== null) headers.set(semanticName, value)
+  }
+}
+
+function applyWireHeaderAliases(headers: InstanceType<typeof axios.AxiosHeaders>): void {
+  const snapshot = Object.fromEntries(
+    ['appId', 'deviceNo', 'appVersion', 'language', 'Authorization', 'loginToken', 'pushToken', 'refreshToken']
+      .map((name) => [name, headers.get(name)])
+      .filter(([, value]) => value !== undefined && value !== null),
+  ) as Record<string, string>
+  for (const name of Object.keys(snapshot)) headers.delete(name)
+  const wired = applyOpiHeaderAliases(snapshot)
+  for (const [name, value] of Object.entries(wired)) {
+    if (value !== undefined && value !== null) headers.set(name, String(value))
   }
 }
 

@@ -463,7 +463,7 @@ struct SuliJoyReefMedia: Codable, Equatable {
 
 struct SuliJoyWaveSonicNote: Codable, Equatable {
     let waveNoteStamp: String
-    let waveSeconds: Int
+    var waveSeconds: Int
     let waveStripeAssetToken: String
     let waveFileToken: String
     var isWaveRolling: Bool

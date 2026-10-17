@@ -4,28 +4,64 @@ import UIKit
 private final class SuliJoyWaveResonanceHarbor: NSObject, AVAudioPlayerDelegate {
     static let shared = SuliJoyWaveResonanceHarbor()
 
-    private enum WaveHarborError {
-        static let missingWaveCode = 404
-        static let missingWaveDomain = "SuliJoyWaveResonanceHarbor"
+    private enum WaveHarborError: Error {
+        case missingWave
+        case downloadFailed
     }
 
     private var resonanceEngine: AVAudioPlayer?
     private var activeShoreMomentID: String?
+    private var downloadTask: URLSessionDownloadTask?
+    private var playGeneration = 0
     private var onWaveFinished: ((String) -> Void)?
 
     private override init() {
         super.init()
     }
 
-    func play(note: SuliJoyWaveSonicNote, sunwashedDenim momentID: String, onWaveFinished: ((String) -> Void)? = nil) throws {
-        guard shouldLaunchWave(for: momentID) else { return }
-        stopAll()
-        guard let url = findWaveResonanceURL(named: waveFileToken(from: note)) else {
-            throw NSError(domain: WaveHarborError.missingWaveDomain, code: WaveHarborError.missingWaveCode)
+    var playingMomentID: String? {
+        activeShoreMomentID
+    }
+
+    func toggle(
+        note: SuliJoyWaveSonicNote,
+        sunwashedDenim momentID: String,
+        onPreparing: @escaping () -> Void,
+        onPlaying: @escaping (_ seconds: Int) -> Void,
+        onStopped: @escaping (_ momentID: String) -> Void,
+        onFailed: @escaping (_ message: String) -> Void
+    ) {
+        if activeShoreMomentID == momentID {
+            let stoppedID = momentID
+            stopAll()
+            onStopped(stoppedID)
+            return
         }
-        try prepareResonanceSession()
-        try startResonanceEngine(url: url, sunwashedDenim: momentID)
-        self.onWaveFinished = onWaveFinished
+        stopAll()
+        let generation = playGeneration
+        activeShoreMomentID = momentID
+        onPreparing()
+        resolveWaveFile(token: note.waveFileToken) { [weak self] result in
+            DispatchQueue.main.async {
+                guard let self, self.playGeneration == generation, self.activeShoreMomentID == momentID else { return }
+                switch result {
+                case .failure:
+                    self.activeShoreMomentID = nil
+                    onFailed("Unable to play this audio.")
+                case .success(let url):
+                    do {
+                        try self.prepareResonanceSession()
+                        try self.startResonanceEngine(url: url, sunwashedDenim: momentID)
+                        self.onWaveFinished = onStopped
+                        let playedSeconds = Int((self.resonanceEngine?.duration ?? 0).rounded())
+                        onPlaying(max(note.waveSeconds, playedSeconds))
+                    } catch {
+                        self.stopAll()
+                        onFailed("Unable to play this audio.")
+                    }
+                }
+            }
+        }
     }
 
     func stop(sunwashedDenim momentID: String) {
@@ -34,18 +70,26 @@ private final class SuliJoyWaveResonanceHarbor: NSObject, AVAudioPlayerDelegate 
     }
 
     func stopAll() {
+        playGeneration += 1
+        downloadTask?.cancel()
+        downloadTask = nil
         resonanceEngine?.stop()
         resonanceEngine = nil
         activeShoreMomentID = nil
         onWaveFinished = nil
     }
 
-    private func shouldLaunchWave(for momentID: String) -> Bool {
-        !(activeShoreMomentID == momentID && resonanceEngine?.isPlaying == true)
-    }
-
-    private func waveFileToken(from note: SuliJoyWaveSonicNote) -> String {
-        note.waveFileToken
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        guard let activeShoreMomentID else {
+            stopAll()
+            return
+        }
+        let waveFinished = onWaveFinished
+        let finishedID = activeShoreMomentID
+        resonanceEngine = nil
+        self.activeShoreMomentID = nil
+        onWaveFinished = nil
+        waveFinished?(finishedID)
     }
 
     private func prepareResonanceSession() throws {
@@ -63,16 +107,62 @@ private final class SuliJoyWaveResonanceHarbor: NSObject, AVAudioPlayerDelegate 
         activeShoreMomentID = momentID
     }
 
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        guard let activeShoreMomentID else {
-            stopAll()
+    private func resolveWaveFile(token: String, completion: @escaping (Result<URL, Error>) -> Void) {
+        let trimmed = token.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            completion(.failure(WaveHarborError.missingWave))
             return
         }
-        let waveFinished = onWaveFinished
-        resonanceEngine = nil
-        self.activeShoreMomentID = nil
-        onWaveFinished = nil
-        waveFinished?(activeShoreMomentID)
+        if let remoteURL = URL(string: trimmed), let scheme = remoteURL.scheme?.lowercased(), scheme == "http" || scheme == "https" {
+            let cachedURL = cacheURL(for: remoteURL)
+            if FileManager.default.fileExists(atPath: cachedURL.path) {
+                completion(.success(cachedURL))
+                return
+            }
+            var task: URLSessionDownloadTask?
+            task = URLSession.shared.downloadTask(with: remoteURL) { [weak self] temporaryURL, _, error in
+                if self?.downloadTask === task {
+                    self?.downloadTask = nil
+                }
+                if error != nil || temporaryURL == nil {
+                    completion(.failure(error ?? WaveHarborError.downloadFailed))
+                    return
+                }
+                guard let temporaryURL else {
+                    completion(.failure(WaveHarborError.downloadFailed))
+                    return
+                }
+                do {
+                    let directory = cachedURL.deletingLastPathComponent()
+                    try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+                    if FileManager.default.fileExists(atPath: cachedURL.path) {
+                        try FileManager.default.removeItem(at: cachedURL)
+                    }
+                    try FileManager.default.moveItem(at: temporaryURL, to: cachedURL)
+                    completion(.success(cachedURL))
+                } catch {
+                    completion(.failure(error))
+                }
+            }
+            downloadTask = task
+            task?.resume()
+            return
+        }
+        if let localURL = findWaveResonanceURL(named: trimmed) {
+            completion(.success(localURL))
+        } else {
+            completion(.failure(WaveHarborError.missingWave))
+        }
+    }
+
+    private func cacheURL(for remoteURL: URL) -> URL {
+        let directory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("SuliJoyPostAudio", isDirectory: true)
+        let extensionName = remoteURL.pathExtension.isEmpty ? "m4a" : remoteURL.pathExtension
+        let fileName = Data(remoteURL.absoluteString.utf8).base64EncodedString()
+            .replacingOccurrences(of: "/", with: "_")
+            .replacingOccurrences(of: "+", with: "-")
+        return directory.appendingPathComponent(fileName).appendingPathExtension(extensionName)
     }
 
     private func findWaveResonanceURL(named fileName: String) -> URL? {
@@ -519,47 +609,80 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        syncShoreWavePlayback()
+    }
+
     private func toggleShoreWave(at indexPath: IndexPath) {
         guard shoreMoments.indices.contains(indexPath.row) else { return }
-        guard shoreMoments[indexPath.row].waveNote.waveSeconds > 0 else {
-            showLagoonToast("Neos AwWaZvKeb InnoItreV bajtNtmaHcghbebdL.n".suliJoyPalmUnfurled)
+        let moment = shoreMoments[indexPath.row]
+        guard hasPlayableWave(moment.waveNote) else {
+            showLagoonToast("No audio on this post.")
             return
         }
-        SuliJoyCoveMockService.shared.toggleWavePlayback(sunwashedDenim: shoreMoments[indexPath.row].reefMomentID) { [weak self] waveEnvelope in
-            guard let self, let refreshedMoment = waveEnvelope.sandbarLayering else { return }
-            for shoreCursor in self.shoreMoments.indices {
-                self.shoreMoments[shoreCursor].waveNote.isWaveRolling = false
+        let momentID = moment.reefMomentID
+        SuliJoyWaveResonanceHarbor.shared.toggle(
+            note: moment.waveNote,
+            sunwashedDenim: momentID,
+            onPreparing: { [weak self] in
+                self?.markShoreWavePlaying(momentID: momentID, seconds: moment.waveNote.waveSeconds)
+            },
+            onPlaying: { [weak self] seconds in
+                self?.markShoreWavePlaying(momentID: momentID, seconds: seconds)
+            },
+            onStopped: { [weak self] stoppedID in
+                self?.markShoreWaveStopped(momentID: stoppedID)
+            },
+            onFailed: { [weak self] message in
+                self?.markShoreWaveStopped(momentID: momentID)
+                self?.showLagoonToast(message)
             }
-            var renderedMoment = refreshedMoment
-            if refreshedMoment.waveNote.isWaveRolling {
-                do {
-                    try SuliJoyWaveResonanceHarbor.shared.play(note: refreshedMoment.waveNote, sunwashedDenim: refreshedMoment.reefMomentID) { [weak self] momentID in
-                        self?.finishShoreWave(momentID)
-                    }
-                } catch {
-                    renderedMoment.waveNote.isWaveRolling = false
-                    renderedMoment.waveNote.waveProgressRatio = 0
-                    self.showLagoonToast("WNabvteh DnDoOtfex iuBnHaWvNauiplUaBbKlaeu.R".suliJoyPalmUnfurled)
-                }
-            } else {
-                SuliJoyWaveResonanceHarbor.shared.stop(sunwashedDenim: refreshedMoment.reefMomentID)
+        )
+    }
+
+    private func syncShoreWavePlayback() {
+        let playingID = SuliJoyWaveResonanceHarbor.shared.playingMomentID
+        var changed = false
+        for index in shoreMoments.indices {
+            let rolling = shoreMoments[index].reefMomentID == playingID
+            if shoreMoments[index].waveNote.isWaveRolling != rolling {
+                shoreMoments[index].waveNote.isWaveRolling = rolling
+                changed = true
             }
-            self.shoreMoments[indexPath.row] = renderedMoment
-            self.shoreListView.reloadData()
+        }
+        if changed {
+            shoreListView.reloadData()
         }
     }
 
-    private func finishShoreWave(_ momentID: String) {
-        guard shoreMoments.contains(where: { $0.reefMomentID == momentID }) else { return }
-        SuliJoyCoveMockService.shared.toggleWavePlayback(sunwashedDenim: momentID) { [weak self] waveEnvelope in
-            guard let self,
-                  var refreshedMoment = waveEnvelope.sandbarLayering,
-                  let shoreCursor = self.shoreMoments.firstIndex(where: { $0.reefMomentID == momentID }) else { return }
-            refreshedMoment.waveNote.isWaveRolling = false
-            refreshedMoment.waveNote.waveProgressRatio = 0
-            self.shoreMoments[shoreCursor] = refreshedMoment
-            self.shoreListView.reloadRows(at: [IndexPath(row: shoreCursor, section: 0)], with: .none)
+    private func markShoreWavePlaying(momentID: String, seconds: Int) {
+        var changed = false
+        for index in shoreMoments.indices {
+            let rolling = shoreMoments[index].reefMomentID == momentID
+            if shoreMoments[index].waveNote.isWaveRolling != rolling {
+                shoreMoments[index].waveNote.isWaveRolling = rolling
+                changed = true
+            }
+            if rolling, seconds > 0, shoreMoments[index].waveNote.waveSeconds != seconds {
+                shoreMoments[index].waveNote.waveSeconds = seconds
+                changed = true
+            }
         }
+        if changed {
+            shoreListView.reloadData()
+        }
+    }
+
+    private func markShoreWaveStopped(momentID: String) {
+        guard let index = shoreMoments.firstIndex(where: { $0.reefMomentID == momentID }) else { return }
+        shoreMoments[index].waveNote.isWaveRolling = false
+        shoreMoments[index].waveNote.waveProgressRatio = 0
+        shoreListView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+    }
+
+    private func hasPlayableWave(_ note: SuliJoyWaveSonicNote) -> Bool {
+        !note.waveFileToken.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
     private func presentShoreCommentPrompt(at indexPath: IndexPath) {
@@ -1715,41 +1838,52 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         navigationController?.pushViewController(islandGuestController, animated: true)
     }
 
-    @objc private func toggleWave() {
-        guard suliJoyCoastalGalleryf.waveNote.waveSeconds > 0 else {
-            showLagoonToast("NTog mwbaDvAeV XnooZtEel TaytwtdadcIhueNdU.G".suliJoyPalmUnfurled)
-            return
-        }
-        SuliJoyCoveMockService.shared.toggleWavePlayback(sunwashedDenim: suliJoyCoastalGalleryf.reefMomentID) { [weak self] waveEnvelope in
-            guard let self, let refreshedMoment = waveEnvelope.sandbarLayering else { return }
-            var renderedMoment = refreshedMoment
-            if refreshedMoment.waveNote.isWaveRolling {
-                do {
-                    try SuliJoyWaveResonanceHarbor.shared.play(note: refreshedMoment.waveNote, sunwashedDenim: refreshedMoment.reefMomentID) { [weak self] momentID in
-                        self?.finishMomentWave(momentID)
-                    }
-                } catch {
-                    renderedMoment.waveNote.isWaveRolling = false
-                    renderedMoment.waveNote.waveProgressRatio = 0
-                    self.showLagoonToast("WQaSvkeL vnZoGtyeI yuhndapvnarislFaTbylneF.m".suliJoyPalmUnfurled)
-                }
-            } else {
-                SuliJoyWaveResonanceHarbor.shared.stop(sunwashedDenim: refreshedMoment.reefMomentID)
-            }
-            self.suliJoyCoastalGalleryf = renderedMoment
-            self.renderMomentWave()
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let playingID = SuliJoyWaveResonanceHarbor.shared.playingMomentID
+        suliJoyCoastalGalleryf.waveNote.isWaveRolling = playingID == suliJoyCoastalGalleryf.reefMomentID
+        renderMomentWave()
     }
 
-    private func finishMomentWave(_ momentID: String) {
-        guard suliJoyCoastalGalleryf.reefMomentID == momentID else { return }
-        SuliJoyCoveMockService.shared.toggleWavePlayback(sunwashedDenim: momentID) { [weak self] waveEnvelope in
-            guard let self, var refreshedMoment = waveEnvelope.sandbarLayering else { return }
-            refreshedMoment.waveNote.isWaveRolling = false
-            refreshedMoment.waveNote.waveProgressRatio = 0
-            self.suliJoyCoastalGalleryf = refreshedMoment
-            self.renderMomentWave()
+    @objc private func toggleWave() {
+        guard hasPlayableWave(suliJoyCoastalGalleryf.waveNote) else {
+            showLagoonToast("No audio on this post.")
+            return
         }
+        let momentID = suliJoyCoastalGalleryf.reefMomentID
+        SuliJoyWaveResonanceHarbor.shared.toggle(
+            note: suliJoyCoastalGalleryf.waveNote,
+            sunwashedDenim: momentID,
+            onPreparing: { [weak self] in
+                self?.applyMomentWave(momentID: momentID, playing: true, seconds: self?.suliJoyCoastalGalleryf.waveNote.waveSeconds ?? 0)
+            },
+            onPlaying: { [weak self] seconds in
+                self?.applyMomentWave(momentID: momentID, playing: true, seconds: seconds)
+            },
+            onStopped: { [weak self] stoppedID in
+                self?.applyMomentWave(momentID: stoppedID, playing: false, seconds: 0)
+            },
+            onFailed: { [weak self] message in
+                self?.applyMomentWave(momentID: momentID, playing: false, seconds: 0)
+                self?.showLagoonToast(message)
+            }
+        )
+    }
+
+    private func applyMomentWave(momentID: String, playing: Bool, seconds: Int) {
+        guard suliJoyCoastalGalleryf.reefMomentID == momentID else { return }
+        suliJoyCoastalGalleryf.waveNote.isWaveRolling = playing
+        if playing, seconds > 0 {
+            suliJoyCoastalGalleryf.waveNote.waveSeconds = seconds
+        }
+        if !playing {
+            suliJoyCoastalGalleryf.waveNote.waveProgressRatio = 0
+        }
+        renderMomentWave()
+    }
+
+    private func hasPlayableWave(_ note: SuliJoyWaveSonicNote) -> Bool {
+        !note.waveFileToken.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
     @objc private func sendComment() {

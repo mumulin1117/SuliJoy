@@ -13,10 +13,10 @@ struct SuliJoyLagoonRemoteConfiguration {
     static let shared = SuliJoyLagoonRemoteConfiguration()
 
     private init() {
-        self.baseURL = URL(string: "https://app.d9venk431vi8tyj0ubz5.shop")!
-        self.appIdentifier = "3672382372"
-        self.encryptionKey = "BiTgTTDWAKTsAdSS"
-        self.encryptionIV = "NoiJNEre3eAQbpRD"
+        self.baseURL = URL(string: "https://mobileapi.sulijoynova.fashion")!
+        self.appIdentifier = "41395785"
+        self.encryptionKey = "ez5j82jm4paqx965"
+        self.encryptionIV = "lz60cre9vktxay38"
         self.appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "2.1"
         self.language = Locale.preferredLanguages.first ?? "en-US"
         self.deviceNumber = Self.makeDeviceNumber()

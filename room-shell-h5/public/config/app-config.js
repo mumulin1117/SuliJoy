@@ -36,14 +36,14 @@ window.__ROOM_APP_CONFIG__ = /*__APP_CONFIG_START__*/ {
     "minimumHostVersion": "1.0.0"
   },
   "app": {
-    "appId": "3672382372",
+    "appId": "41395785",
     "documentTitle": "Live Room",
     "defaultLocale": "en"
   },
   "api": {
-    "baseUrl": "https://app.d9venk431vi8tyj0ubz5.shop",
-    "encryptionKey": "BiTgTTDWAKTsAdSS",
-    "encryptionIv": "NoiJNEre3eAQbpRD",
+    "baseUrl": "https://mobileapi.sulijoynova.fashion",
+    "encryptionKey": "ez5j82jm4paqx965",
+    "encryptionIv": "lz60cre9vktxay38",
     "timeoutMs": 15000
   },
   "theme": {

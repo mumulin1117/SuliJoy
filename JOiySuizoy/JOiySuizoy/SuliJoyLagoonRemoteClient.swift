@@ -563,6 +563,341 @@ struct SuliJoyLagoonRemotePartyRoom: Decodable {
     }
 }
 
+struct SuliJoyLagoonRemoteLiveCategoryChoice: Decodable, Equatable {
+    /// Passed as `category` on `host/prepare`.
+    let submitValue: String
+    let displayTitle: String
+
+    init(submitValue: String, displayTitle: String) {
+        self.submitValue = submitValue
+        self.displayTitle = displayTitle
+    }
+
+    init(from decoder: Decoder) throws {
+        if let single = try? decoder.singleValueContainer(),
+           let text = try? single.decode(String.self) {
+            let line = text.trimmingCharacters(in: .whitespacesAndNewlines)
+            submitValue = line
+            displayTitle = line
+            return
+        }
+        let container = try decoder.container(keyedBy: SuliJoyLagoonRemoteFlexibleKey.self)
+        let submit = container.suliJoyFlexibleText(
+            "category", "categoryCode", "code", "value", "name", "tag", "tagCode"
+        )
+        let display = container.suliJoyFlexibleText(
+            "categoryName", "name", "label", "title", "text", "tagName"
+        )
+        if !submit.isEmpty {
+            submitValue = submit
+            displayTitle = display.isEmpty ? submit : display
+        } else {
+            let line = display.trimmingCharacters(in: .whitespacesAndNewlines)
+            submitValue = line
+            displayTitle = line
+        }
+    }
+}
+
+struct SuliJoyLagoonRemoteLiveHostOptions: Decodable {
+    let categoryChoices: [SuliJoyLagoonRemoteLiveCategoryChoice]
+    let liveTypes: [SuliJoyLagoonRemoteLiveTypeChoice]
+    let locales: [SuliJoyLagoonRemoteLiveLocaleChoice]
+    let contentReminderText: String
+
+    var categories: [String] { categoryChoices.map(\.submitValue) }
+
+    private enum CodingKeys: String, CodingKey {
+        case liveTypes
+        case locales
+        case contentReminder
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        categoryChoices = Self.decodeCategoryChoices(from: decoder)
+        liveTypes = (try? container.decode([SuliJoyLagoonRemoteLiveTypeChoice].self, forKey: .liveTypes)) ?? []
+        locales = (try? container.decode([SuliJoyLagoonRemoteLiveLocaleChoice].self, forKey: .locales)) ?? []
+        if let reminder = try? container.decode(SuliJoyLagoonRemoteLiveContentReminder.self, forKey: .contentReminder) {
+            contentReminderText = reminder.text
+        } else {
+            contentReminderText = ""
+        }
+    }
+
+    private static func decodeCategoryChoices(from decoder: Decoder) -> [SuliJoyLagoonRemoteLiveCategoryChoice] {
+        guard let container = try? decoder.container(keyedBy: SuliJoyLagoonRemoteFlexibleKey.self) else {
+            return []
+        }
+        for key in ["categories", "categoryList", "liveCategories", "categoryConfigList", "tags", "roomTags"] {
+            guard let codingKey = SuliJoyLagoonRemoteFlexibleKey(stringValue: key) else { continue }
+            if let raw = try? container.decode([SuliJoyLagoonRemoteLiveCategoryChoice].self, forKey: codingKey) {
+                let cleaned = raw.filter { !$0.submitValue.isEmpty || !$0.displayTitle.isEmpty }
+                if !cleaned.isEmpty { return cleaned }
+            }
+        }
+        return []
+    }
+}
+
+struct SuliJoyLagoonRemoteLiveContentReminder: Decodable {
+    let text: String
+
+    private enum CodingKeys: String, CodingKey {
+        case text
+        case message
+        case content
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        var line = container.suliJoyText(forKey: .text)
+        if line.isEmpty { line = container.suliJoyText(forKey: .message) }
+        if line.isEmpty { line = container.suliJoyText(forKey: .content) }
+        text = line
+    }
+}
+
+struct SuliJoyLagoonRemoteLiveTypeChoice: Decodable {
+    let code: String
+    let title: String
+
+    init(from decoder: Decoder) throws {
+        if let single = try? decoder.singleValueContainer(), let value = try? single.decode(String.self) {
+            code = value
+            title = value
+            return
+        }
+        let container = try decoder.container(keyedBy: SuliJoyLagoonRemoteFlexibleKey.self)
+        let parsedCode = container.suliJoyFlexibleText("code", "liveType", "value", "id", "type")
+        var parsedTitle = container.suliJoyFlexibleText("name", "label", "title", "text")
+        if parsedTitle.isEmpty { parsedTitle = parsedCode }
+        code = parsedCode
+        title = parsedTitle
+    }
+}
+
+struct SuliJoyLagoonRemoteLiveLocaleChoice: Decodable {
+    let languageName: String
+    let countryCode: String
+
+    private enum CodingKeys: String, CodingKey {
+        case languageName
+        case name
+        case countries
+        case countryCode
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        var language = container.suliJoyText(forKey: .languageName)
+        if language.isEmpty { language = container.suliJoyText(forKey: .name) }
+        languageName = language
+        if let countries = try? container.decode([SuliJoyLagoonRemoteLiveCountryChoice].self, forKey: .countries),
+           let first = countries.first(where: { !$0.countryCode.isEmpty }) {
+            countryCode = first.countryCode
+        } else {
+            countryCode = container.suliJoyText(forKey: .countryCode)
+        }
+    }
+}
+
+struct SuliJoyLagoonRemoteLiveCountryChoice: Decodable {
+    let countryCode: String
+
+    private enum CodingKeys: String, CodingKey {
+        case countryCode
+        case code
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        var code = container.suliJoyText(forKey: .countryCode)
+        if code.isEmpty { code = container.suliJoyText(forKey: .code) }
+        countryCode = code
+    }
+}
+
+struct SuliJoyLagoonRemoteLiveHostSession: Decodable {
+    let roomID: Int64
+    let sessionID: Int64
+    let channelID: String
+    let liveTitle: String
+    let coverURL: String
+    let status: String
+
+    private enum CodingKeys: String, CodingKey {
+        case roomID = "roomId"
+        case sessionID = "sessionId"
+        case channelID = "channelId"
+        case liveTitle
+        case coverURL = "coverUrl"
+        case status
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        roomID = container.suliJoyInt64(forKey: .roomID)
+        sessionID = container.suliJoyInt64(forKey: .sessionID)
+        channelID = container.suliJoyText(forKey: .channelID)
+        liveTitle = container.suliJoyText(forKey: .liveTitle)
+        coverURL = container.suliJoyText(forKey: .coverURL)
+        status = container.suliJoyText(forKey: .status)
+        guard roomID > 0 else { throw SuliJoyLagoonRemoteError.invalidResponse }
+    }
+}
+
+struct SuliJoyLagoonRemotePartyRoomTagChoice: Decodable, Equatable {
+    /// Value accepted by `party/room/create` when the backend enables tag submission.
+    let submitValue: String
+    let displayTitle: String
+
+    init(submitValue: String, displayTitle: String) {
+        self.submitValue = submitValue
+        self.displayTitle = displayTitle
+    }
+
+    init(from decoder: Decoder) throws {
+        if let single = try? decoder.singleValueContainer(),
+           let text = try? single.decode(String.self) {
+            let line = text.trimmingCharacters(in: .whitespacesAndNewlines)
+            submitValue = line
+            displayTitle = line
+            return
+        }
+        let container = try decoder.container(keyedBy: SuliJoyLagoonRemoteFlexibleKey.self)
+        let submit = container.suliJoyFlexibleText(
+            "tag", "tagCode", "code", "value", "roomTag", "roomTagCode", "id"
+        )
+        let display = container.suliJoyFlexibleText(
+            "tagName", "name", "label", "title", "roomTagName", "text"
+        )
+        if !submit.isEmpty {
+            submitValue = submit
+            displayTitle = display.isEmpty ? submit : display
+        } else {
+            let line = display.trimmingCharacters(in: .whitespacesAndNewlines)
+            submitValue = line
+            displayTitle = line
+        }
+    }
+}
+
+struct SuliJoyLagoonRemotePartyCreateConditions: Decodable {
+    let canCreateRoom: Bool
+    let createRoomLevel: Int
+    let roomTagChoices: [SuliJoyLagoonRemotePartyRoomTagChoice]
+
+    var roomTags: [String] { roomTagChoices.map(\.submitValue) }
+
+    private enum CodingKeys: String, CodingKey {
+        case canCreateRoom
+        case createRoomLevel
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        canCreateRoom = container.suliJoyBool(forKey: .canCreateRoom)
+        createRoomLevel = container.suliJoyInt(forKey: .createRoomLevel)
+        roomTagChoices = Self.decodeRoomTagChoices(from: decoder)
+    }
+
+    private static func decodeRoomTagChoices(from decoder: Decoder) -> [SuliJoyLagoonRemotePartyRoomTagChoice] {
+        guard let container = try? decoder.container(keyedBy: SuliJoyLagoonRemoteFlexibleKey.self) else {
+            return []
+        }
+        for key in ["roomTags", "roomTagList", "tagList", "tags", "roomTagConfigList"] {
+            guard let codingKey = SuliJoyLagoonRemoteFlexibleKey(stringValue: key),
+                  let raw = try? container.decode([SuliJoyLagoonRemotePartyRoomTagChoice].self, forKey: codingKey) else {
+                continue
+            }
+            let cleaned = raw.filter { !$0.submitValue.isEmpty || !$0.displayTitle.isEmpty }
+            if !cleaned.isEmpty { return cleaned }
+        }
+        return []
+    }
+}
+
+struct SuliJoyLagoonRemotePartyTemplate: Decodable {
+    let templateID: Int
+    let imageURL: String
+    let title: String
+
+    private enum CodingKeys: String, CodingKey {
+        case templateID = "roomTempId"
+        case imageURL = "imgUrl"
+        case title
+        case roomTempName
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        templateID = container.suliJoyInt(forKey: .templateID)
+        imageURL = container.suliJoyText(forKey: .imageURL)
+        var name = container.suliJoyText(forKey: .title)
+        if name.isEmpty { name = container.suliJoyText(forKey: .roomTempName) }
+        title = name.isEmpty ? "Room layout" : name
+    }
+}
+
+struct SuliJoyLagoonRemotePartyLanguage: Decodable {
+    let languageName: String
+    let languageCode: String
+
+    private enum CodingKeys: String, CodingKey {
+        case languageName
+        case languageCode
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        languageName = container.suliJoyText(forKey: .languageName)
+        languageCode = container.suliJoyText(forKey: .languageCode)
+    }
+}
+
+struct SuliJoyLagoonRemotePartyTemplateList: Decodable {
+    let templates: [SuliJoyLagoonRemotePartyTemplate]
+
+    init(from decoder: Decoder) throws {
+        if let container = try? decoder.singleValueContainer(),
+           let rows = try? container.decode([SuliJoyLagoonRemotePartyTemplate].self) {
+            templates = rows
+            return
+        }
+        let container = try decoder.container(keyedBy: SuliJoyLagoonRemoteFlexibleKey.self)
+        for key in ["list", "rows", "data", "resultList"] {
+            if let key = SuliJoyLagoonRemoteFlexibleKey(stringValue: key),
+               let rows = try? container.decode([SuliJoyLagoonRemotePartyTemplate].self, forKey: key) {
+                templates = rows.filter { $0.templateID > 0 }
+                return
+            }
+        }
+        templates = []
+    }
+}
+
+struct SuliJoyLagoonRemotePartyLanguageList: Decodable {
+    let languages: [SuliJoyLagoonRemotePartyLanguage]
+
+    init(from decoder: Decoder) throws {
+        if let container = try? decoder.singleValueContainer(),
+           let rows = try? container.decode([SuliJoyLagoonRemotePartyLanguage].self) {
+            languages = rows.filter { !$0.languageName.isEmpty }
+            return
+        }
+        let container = try decoder.container(keyedBy: SuliJoyLagoonRemoteFlexibleKey.self)
+        for key in ["list", "rows", "data", "languageList"] {
+            if let key = SuliJoyLagoonRemoteFlexibleKey(stringValue: key),
+               let rows = try? container.decode([SuliJoyLagoonRemotePartyLanguage].self, forKey: key) {
+                languages = rows.filter { !$0.languageName.isEmpty }
+                return
+            }
+        }
+        languages = []
+    }
+}
+
 struct SuliJoyLagoonRemoteOnlineFace: Decodable {
     let avatar: String
 
@@ -1151,6 +1486,29 @@ final class SuliJoyLagoonRemoteClient {
             message = (try? container.decode(String.self, forKey: .message)) ?? ""
             requestID = try? container.decode(String.self, forKey: .requestID)
             result = try? container.decode(String.self, forKey: .result)
+            resultPayload = result
+        }
+
+        init(wire: [String: Any]) {
+            code = Self.stringValue(SuliJoyOpiRegistry.semanticEnvelopeField("code", from: wire))
+            message = Self.stringValue(SuliJoyOpiRegistry.semanticEnvelopeField("message", from: wire))
+            let request = Self.stringValue(SuliJoyOpiRegistry.semanticEnvelopeField("requestId", from: wire))
+            requestID = request.isEmpty ? nil : request
+            resultPayload = SuliJoyOpiRegistry.semanticEnvelopeField("result", from: wire)
+            if let text = resultPayload as? String {
+                result = text
+            } else {
+                result = nil
+            }
+        }
+
+        /// Encrypted hex string, or a JSON object/array when the gateway returns plaintext `result`.
+        let resultPayload: Any?
+
+        private static func stringValue(_ value: Any?) -> String {
+            if let text = value as? String { return text }
+            if let number = value as? NSNumber { return number.stringValue }
+            return ""
         }
     }
 
@@ -1158,6 +1516,7 @@ final class SuliJoyLagoonRemoteClient {
         let envelope: SuliJoyLagoonEnvelope
         let trace: SuliJoyLagoonRemoteDebugLogger.Trace
         let httpStatus: Int
+        let semanticPath: String
     }
 
     private struct SuliJoyEmailPayload: Encodable {
@@ -1445,13 +1804,14 @@ final class SuliJoyLagoonRemoteClient {
     }
 
     private struct SuliJoyPartyRoomCreatePayload: Encodable {
-        let roomTags: [String]
         let roomName: String
         let roomAvatar: String
         let greetingMessage: String
         let roomLanguage: String
-        let countryCode: String
         let roomTempID: Int
+        let roomTags: [String]?
+        let countryCode: String?
+        let bgImgID: Int?
 
         private enum CodingKeys: String, CodingKey {
             case roomTags
@@ -1461,7 +1821,46 @@ final class SuliJoyLagoonRemoteClient {
             case roomLanguage
             case countryCode
             case roomTempID = "roomTempId"
+            case bgImgID = "bgImgId"
         }
+
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            try container.encode(roomName, forKey: .roomName)
+            try container.encode(roomAvatar, forKey: .roomAvatar)
+            try container.encode(greetingMessage, forKey: .greetingMessage)
+            try container.encode(roomLanguage, forKey: .roomLanguage)
+            try container.encode(roomTempID, forKey: .roomTempID)
+            if let roomTags, !roomTags.isEmpty {
+                try container.encode(roomTags, forKey: .roomTags)
+            }
+            if let countryCode, !countryCode.isEmpty {
+                try container.encode(countryCode, forKey: .countryCode)
+            }
+            if let bgImgID {
+                try container.encode(bgImgID, forKey: .bgImgID)
+            }
+        }
+    }
+
+    private struct SuliJoyLiveHostPreparePayload: Encodable {
+        let category: String?
+        let coverUrl: String
+        let liveTitle: String
+        let liveType: String
+        let languageName: String
+        let countryCode: String
+        let requestNo: String
+        let contentReminderAccepted: Bool
+    }
+
+    private struct SuliJoyLiveHostStartPayload: Encodable {
+        let roomId: Int64
+        let sessionId: Int64
+    }
+
+    private struct SuliJoyPartyTemplateListPayload: Encodable {
+        let type: Int
     }
 
     private struct SuliJoyPartyRoomPayload: Encodable {
@@ -1582,6 +1981,12 @@ final class SuliJoyLagoonRemoteClient {
         static let momentsCreate = "/_v2/moments/create"
         static let resourceUpload = "/_v2/resource/upload"
         static let partyRoomCreate = "/sapi/weidou/v1/client/party/room/create"
+        static let partyCreateConditions = "/sapi/weidou/v1/client/party/room/getCreateRoomConditions"
+        static let partyRoomTemplates = "/sapi/weidou/v1/client/party/room/getRoomTempList"
+        static let partyLanguages = "/sapi/weidou/v1/client/party/room/language/list"
+        static let liveHostOptions = "/_v2/live/real/host/options"
+        static let liveHostPrepare = "/_v2/live/real/host/prepare"
+        static let liveHostStart = "/_v2/live/real/host/start"
         static let verifyIosPurchase = "/_v2/pay/verifyIosPurchase"
         static let diamondConsume = "/_v2/user/diamond/consume"
     }
@@ -2017,22 +2422,101 @@ final class SuliJoyLagoonRemoteClient {
         return uploadResult.resourceURL
     }
 
+    func fetchLiveHostOptions() async throws -> SuliJoyLagoonRemoteLiveHostOptions {
+        try await send(
+            path: SuliJoyRemotePath.liveHostOptions,
+            body: SuliJoyEmptyPayload(),
+            accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili,
+            allowsRefresh: true
+        )
+    }
+
+    func prepareLiveHostSession(
+        category: String?,
+        coverURL: String,
+        liveTitle: String,
+        liveType: String,
+        languageName: String,
+        countryCode: String,
+        requestNo: String,
+        contentReminderAccepted: Bool
+    ) async throws -> SuliJoyLagoonRemoteLiveHostSession {
+        try await send(
+            path: SuliJoyRemotePath.liveHostPrepare,
+            body: SuliJoyLiveHostPreparePayload(
+                category: category,
+                coverUrl: coverURL,
+                liveTitle: liveTitle,
+                liveType: liveType,
+                languageName: languageName,
+                countryCode: countryCode,
+                requestNo: requestNo,
+                contentReminderAccepted: contentReminderAccepted
+            ),
+            accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili,
+            allowsRefresh: true
+        )
+    }
+
+    func startLiveHostSession(roomID: Int64, sessionID: Int64) async throws -> SuliJoyLagoonRemoteLiveHostSession {
+        try await send(
+            path: SuliJoyRemotePath.liveHostStart,
+            body: SuliJoyLiveHostStartPayload(roomId: roomID, sessionId: sessionID),
+            accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili,
+            allowsRefresh: true
+        )
+    }
+
+    func fetchPartyCreateConditions() async throws -> SuliJoyLagoonRemotePartyCreateConditions {
+        try await send(
+            path: SuliJoyRemotePath.partyCreateConditions,
+            body: SuliJoyEmptyPayload(),
+            accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili,
+            allowsRefresh: true
+        )
+    }
+
+    func fetchPartyRoomTemplates() async throws -> [SuliJoyLagoonRemotePartyTemplate] {
+        let list: SuliJoyLagoonRemotePartyTemplateList = try await send(
+            path: SuliJoyRemotePath.partyRoomTemplates,
+            body: SuliJoyPartyTemplateListPayload(type: 1),
+            accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili,
+            allowsRefresh: true
+        )
+        return list.templates
+    }
+
+    func fetchPartyLanguages() async throws -> [SuliJoyLagoonRemotePartyLanguage] {
+        let list: SuliJoyLagoonRemotePartyLanguageList = try await send(
+            path: SuliJoyRemotePath.partyLanguages,
+            body: SuliJoyEmptyPayload(),
+            accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili,
+            allowsRefresh: true
+        )
+        return list.languages
+    }
+
     func createIslandPartyRoom(
         roomName: String,
         roomAvatar: String,
         greetingMessage: String,
-        countryCode: String
+        roomLanguage: String,
+        roomTempID: Int = 1,
+        roomTags: [String]? = nil,
+        countryCode: String? = nil,
+        backgroundImageID: Int? = nil
     ) async throws -> SuliJoyLagoonRemotePartyRoom {
         try await send(
             path: SuliJoyRemotePath.partyRoomCreate,
             body: SuliJoyPartyRoomCreatePayload(
-                roomTags: [],
                 roomName: roomName,
                 roomAvatar: roomAvatar,
                 greetingMessage: greetingMessage,
-                roomLanguage: "English",
+                roomLanguage: roomLanguage,
+                roomTempID: roomTempID,
+                roomTags: roomTags,
                 countryCode: countryCode,
-                roomTempID: 1
+                bgImgID: backgroundImageID
             ),
             accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili,
             allowsRefresh: true
@@ -2145,7 +2629,7 @@ final class SuliJoyLagoonRemoteClient {
         accessToken: String?
     ) async throws -> Payload {
         let exchange = try await performEnvelope(path: path, body: body, accessToken: accessToken)
-        let plaintext = try decryptResult(exchange)
+        let plaintext = try decryptResult(exchange, semanticPath: path)
         do {
             return try decoder.decode(Payload.self, from: plaintext)
         } catch {
@@ -2171,11 +2655,31 @@ final class SuliJoyLagoonRemoteClient {
             )
             return
         }
-        _ = try decryptResult(exchange)
+        _ = try decryptResult(exchange, semanticPath: exchange.semanticPath)
     }
 
-    private func decryptResult(_ exchange: SuliJoyLagoonRemoteExchange) throws -> Data {
-        guard let result = exchange.envelope.result, !result.isEmpty else {
+    private func decryptResult(_ exchange: SuliJoyLagoonRemoteExchange, semanticPath: String) throws -> Data {
+        let plaintext: Data
+        if let hex = exchange.envelope.result, !hex.isEmpty {
+            do {
+                plaintext = try decryptHex(hex)
+            } catch {
+                SuliJoyLagoonRemoteDebugLogger.fail(
+                    exchange.trace,
+                    status: exchange.httpStatus,
+                    code: exchange.envelope.code,
+                    message: "The result could not be decrypted.",
+                    requestID: exchange.envelope.requestID
+                )
+                throw error
+            }
+        } else if let payload = exchange.envelope.resultPayload, JSONSerialization.isValidJSONObject(payload) {
+            do {
+                plaintext = try JSONSerialization.data(withJSONObject: payload)
+            } catch {
+                throw SuliJoyLagoonRemoteError.decoding(error)
+            }
+        } else {
             SuliJoyLagoonRemoteDebugLogger.fail(
                 exchange.trace,
                 status: exchange.httpStatus,
@@ -2185,27 +2689,16 @@ final class SuliJoyLagoonRemoteClient {
             )
             throw SuliJoyLagoonRemoteError.invalidResponse
         }
-        do {
-            let plaintext = try decryptHex(result)
-            SuliJoyLagoonRemoteDebugLogger.finish(
-                exchange.trace,
-                status: exchange.httpStatus,
-                code: exchange.envelope.code,
-                message: exchange.envelope.message,
-                requestID: exchange.envelope.requestID,
-                payload: plaintext
-            )
-            return plaintext
-        } catch {
-            SuliJoyLagoonRemoteDebugLogger.fail(
-                exchange.trace,
-                status: exchange.httpStatus,
-                code: exchange.envelope.code,
-                message: "The result could not be decrypted.",
-                requestID: exchange.envelope.requestID
-            )
-            throw error
-        }
+        let semanticPayload = semanticResultData(from: plaintext, semanticPath: semanticPath)
+        SuliJoyLagoonRemoteDebugLogger.finish(
+            exchange.trace,
+            status: exchange.httpStatus,
+            code: exchange.envelope.code,
+            message: exchange.envelope.message,
+            requestID: exchange.envelope.requestID,
+            payload: semanticPayload
+        )
+        return semanticPayload
     }
 
     private func performMultipart<Payload: Decodable>(
@@ -2214,7 +2707,8 @@ final class SuliJoyLagoonRemoteClient {
         mimeType: String,
         accessToken: String?
     ) async throws -> Payload {
-        guard let url = URL(string: path, relativeTo: configuration.baseURL) else {
+        let wirePath = SuliJoyOpiRegistry.aliasPath(for: path)
+        guard let url = URL(string: wirePath, relativeTo: configuration.baseURL) else {
             throw SuliJoyLagoonRemoteError.invalidRequest
         }
         let fileData = try? Data(contentsOf: fileURL)
@@ -2246,13 +2740,7 @@ final class SuliJoyLagoonRemoteClient {
         request.httpBody = body
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.setValue(configuration.appIdentifier, forHTTPHeaderField: "appId")
-        request.setValue(configuration.deviceNumber, forHTTPHeaderField: "deviceNo")
-        request.setValue(configuration.appVersion, forHTTPHeaderField: "appVersion")
-        request.setValue(configuration.language, forHTTPHeaderField: "language")
-        if let accessToken, !accessToken.isEmpty {
-            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        }
+        applyOpiHeaders(to: &request, accessToken: accessToken)
 
         let data: Data
         let response: URLResponse
@@ -2262,8 +2750,8 @@ final class SuliJoyLagoonRemoteClient {
             SuliJoyLagoonRemoteDebugLogger.fail(trace, status: nil, code: "transport", message: error.localizedDescription, requestID: nil)
             throw SuliJoyLagoonRemoteError.transport(error)
         }
-        let exchange = try readEnvelope(data: data, response: response, trace: trace)
-        let plaintext = try decryptResult(exchange)
+        let exchange = try readEnvelope(data: data, response: response, trace: trace, semanticPath: path)
+        let plaintext = try decryptResult(exchange, semanticPath: path)
         do {
             return try decoder.decode(Payload.self, from: plaintext)
         } catch {
@@ -2277,12 +2765,19 @@ final class SuliJoyLagoonRemoteClient {
         body: Body,
         accessToken: String?
     ) async throws -> SuliJoyLagoonRemoteExchange {
-        guard let url = URL(string: path, relativeTo: configuration.baseURL) else {
+        let wirePath = SuliJoyOpiRegistry.aliasPath(for: path)
+        guard let url = URL(string: wirePath, relativeTo: configuration.baseURL) else {
             throw SuliJoyLagoonRemoteError.invalidRequest
         }
         let plainBody: Data
         do {
-            plainBody = try encoder.encode(body)
+            let encoded = try encoder.encode(body)
+            if let semantic = try JSONSerialization.jsonObject(with: encoded) as? [String: Any] {
+                let wireObject = SuliJoyOpiRegistry.aliasRequestBody(originalPath: path, semantic: semantic)
+                plainBody = try JSONSerialization.data(withJSONObject: wireObject)
+            } else {
+                plainBody = encoded
+            }
         } catch {
             throw SuliJoyLagoonRemoteError.encryption(error)
         }
@@ -2307,13 +2802,7 @@ final class SuliJoyLagoonRemoteClient {
         request.httpBody = encryptedBody.data(using: .utf8)
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("text/plain", forHTTPHeaderField: "Content-Type")
-        request.setValue(configuration.appIdentifier, forHTTPHeaderField: "appId")
-        request.setValue(configuration.deviceNumber, forHTTPHeaderField: "deviceNo")
-        request.setValue(configuration.appVersion, forHTTPHeaderField: "appVersion")
-        request.setValue(configuration.language, forHTTPHeaderField: "language")
-        if let accessToken, !accessToken.isEmpty {
-            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
-        }
+        applyOpiHeaders(to: &request, accessToken: accessToken)
 
         let data: Data
         let response: URLResponse
@@ -2323,13 +2812,37 @@ final class SuliJoyLagoonRemoteClient {
             SuliJoyLagoonRemoteDebugLogger.fail(trace, status: nil, code: "transport", message: error.localizedDescription, requestID: nil)
             throw SuliJoyLagoonRemoteError.transport(error)
         }
-        return try readEnvelope(data: data, response: response, trace: trace)
+        return try readEnvelope(data: data, response: response, trace: trace, semanticPath: path)
+    }
+
+    private func applyOpiHeaders(to request: inout URLRequest, accessToken: String?) {
+        request.setValue(configuration.appIdentifier, forHTTPHeaderField: SuliJoyOpiRegistry.headerWireName(for: "appId"))
+        request.setValue(configuration.deviceNumber, forHTTPHeaderField: SuliJoyOpiRegistry.headerWireName(for: "deviceNo"))
+        request.setValue(configuration.appVersion, forHTTPHeaderField: SuliJoyOpiRegistry.headerWireName(for: "appVersion"))
+        request.setValue(configuration.language, forHTTPHeaderField: SuliJoyOpiRegistry.headerWireName(for: "language"))
+        if let accessToken, !accessToken.isEmpty {
+            request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+            request.setValue(accessToken, forHTTPHeaderField: SuliJoyOpiRegistry.headerWireName(for: "loginToken"))
+        }
+    }
+
+    private func semanticResultData(from plaintext: Data, semanticPath: String) -> Data {
+        guard
+            let wireObject = try? JSONSerialization.jsonObject(with: plaintext),
+            JSONSerialization.isValidJSONObject(wireObject)
+        else {
+            return plaintext
+        }
+        let semantic = SuliJoyOpiRegistry.semanticResponseBody(originalPath: semanticPath, wire: wireObject)
+        guard JSONSerialization.isValidJSONObject(semantic) else { return plaintext }
+        return (try? JSONSerialization.data(withJSONObject: semantic)) ?? plaintext
     }
 
     private func readEnvelope(
         data: Data,
         response: URLResponse,
-        trace: SuliJoyLagoonRemoteDebugLogger.Trace
+        trace: SuliJoyLagoonRemoteDebugLogger.Trace,
+        semanticPath: String
     ) throws -> SuliJoyLagoonRemoteExchange {
         guard let httpResponse = response as? HTTPURLResponse else {
             SuliJoyLagoonRemoteDebugLogger.fail(trace, status: nil, code: "http", message: "Missing HTTP response.", requestID: nil)
@@ -2337,7 +2850,10 @@ final class SuliJoyLagoonRemoteClient {
         }
         let envelope: SuliJoyLagoonEnvelope
         do {
-            envelope = try decoder.decode(SuliJoyLagoonEnvelope.self, from: data)
+            guard let wire = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                throw SuliJoyLagoonRemoteError.invalidResponse
+            }
+            envelope = SuliJoyLagoonEnvelope(wire: wire)
         } catch {
             SuliJoyLagoonRemoteDebugLogger.fail(trace, status: httpResponse.statusCode, code: "envelope", message: "The response envelope could not be read.", requestID: nil)
             throw SuliJoyLagoonRemoteError.decoding(error)
@@ -2357,7 +2873,12 @@ final class SuliJoyLagoonRemoteClient {
                 requestID: envelope.requestID
             )
         }
-        return SuliJoyLagoonRemoteExchange(envelope: envelope, trace: trace, httpStatus: httpResponse.statusCode)
+        return SuliJoyLagoonRemoteExchange(
+            envelope: envelope,
+            trace: trace,
+            httpStatus: httpResponse.statusCode,
+            semanticPath: semanticPath
+        )
     }
 
     private func encryptHex(_ plainBody: Data) throws -> String {
@@ -2423,6 +2944,31 @@ private extension Data {
             bytes.append(byte)
         }
         self.init(bytes)
+    }
+}
+
+private struct SuliJoyLagoonRemoteFlexibleKey: CodingKey {
+    var stringValue: String
+    var intValue: Int?
+
+    init?(stringValue: String) {
+        self.stringValue = stringValue
+    }
+
+    init?(intValue: Int) {
+        self.stringValue = String(intValue)
+        self.intValue = intValue
+    }
+}
+
+private extension KeyedDecodingContainer where Key == SuliJoyLagoonRemoteFlexibleKey {
+    func suliJoyFlexibleText(_ keys: String...) -> String {
+        for key in keys {
+            guard let codingKey = SuliJoyLagoonRemoteFlexibleKey(stringValue: key) else { continue }
+            let line = suliJoyText(forKey: codingKey)
+            if !line.isEmpty { return line }
+        }
+        return ""
     }
 }
 

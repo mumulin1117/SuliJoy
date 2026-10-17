@@ -13,6 +13,112 @@ struct SuliJoyLagoonVoiceCard: Equatable {
     let faceTokens: [String]
 }
 
+struct SuliJoyLagoonLiveCategoryChoice: Equatable {
+    let submitValue: String
+    let displayTitle: String
+}
+
+struct SuliJoyLagoonLiveHostSetup {
+    let categoryChoices: [SuliJoyLagoonLiveCategoryChoice]
+    let liveTypes: [(code: String, title: String)]
+    let locales: [(languageName: String, countryCode: String)]
+    let contentReminderText: String
+
+    var categories: [String] { categoryChoices.map(\.submitValue) }
+}
+
+struct SuliJoyLagoonVoiceRoomTagChoice: Equatable {
+    let submitValue: String
+    let displayTitle: String
+}
+
+struct SuliJoyLagoonVoiceRoomSetup {
+    let canCreateRoom: Bool
+    let createRoomLevel: Int
+    let roomTagChoices: [SuliJoyLagoonVoiceRoomTagChoice]
+    let templates: [(id: Int, title: String, imageURL: String)]
+    let languages: [(name: String, code: String)]
+}
+
+enum SuliJoyGoLiveCatalog {
+    /// Live-list row tags. Two labels are chosen from this fixed pool for each room.
+    static let displayShoreCategories = ["Chill", "Style", "Lifestyle", "Beachwear", "Resort Look", "Coastal Vibes"]
+
+    private static let shelfLock = NSLock()
+    private static var publishCategoriesStorage: [String] = []
+
+    /// Latest `categories` from live host options — sole source for Go Live chips and live list tag pool.
+    static var publishCategories: [String] {
+        shelfLock.lock()
+        defer { shelfLock.unlock() }
+        return publishCategoriesStorage
+    }
+
+    static func replacePublishCategories(_ raw: [String]) {
+        var seen = Set<String>()
+        var cleaned: [String] = []
+        for name in raw {
+            let line = name.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !line.isEmpty else { continue }
+            let key = line.lowercased()
+            guard !seen.contains(key) else { continue }
+            seen.insert(key)
+            cleaned.append(line)
+        }
+        shelfLock.lock()
+        publishCategoriesStorage = cleaned
+        shelfLock.unlock()
+    }
+
+    /// Backend `liveType` — pass the option `code` from host options, not the chip label.
+    static let defaultLiveTypes: [(code: String, title: String)] = [
+        ("VIDEO", "Style cam"),
+        ("AUDIO", "Voice chat"),
+    ]
+    static let defaultLanguageName = "English"
+    static let defaultCountryCode = "US"
+}
+
+struct SuliJoyGoLiveDraft {
+    let coverSandboxPath: String
+    let liveTitle: String
+    let category: String?
+    let liveType: String
+    let contentReminderAccepted: Bool
+
+    var languageName: String { SuliJoyGoLiveCatalog.defaultLanguageName }
+    var countryCode: String { SuliJoyGoLiveCatalog.defaultCountryCode }
+}
+
+enum SuliJoyVoiceRoomCatalog {
+    static let defaultLanguageName = "English"
+    private static let shelfLock = NSLock()
+    private static var roomLanguageCodeStorage = ""
+
+    /// `roomLanguage` on create — language **code** from party languages API (H5 parity).
+    static var defaultRoomLanguageCode: String {
+        shelfLock.lock()
+        defer { shelfLock.unlock() }
+        return roomLanguageCodeStorage
+    }
+
+    static func replaceDefaultRoomLanguageCode(_ code: String) {
+        let line = code.trimmingCharacters(in: .whitespacesAndNewlines)
+        shelfLock.lock()
+        roomLanguageCodeStorage = line
+        shelfLock.unlock()
+    }
+}
+
+struct SuliJoyVoiceRoomDraft {
+    let coverSandboxPath: String
+    let roomName: String
+    let greetingMessage: String
+    let roomTempID: Int
+
+    var roomLanguageCode: String { SuliJoyVoiceRoomCatalog.defaultRoomLanguageCode }
+}
+
 struct SuliJoyLagoonLiveCard: Equatable {
     let roomID: String
     let hostID: String
@@ -247,14 +353,7 @@ final class SuliJoyLagoonProfileRemoteService {
             guard let self else { return }
             do {
                 let rooms = try await remoteClient.fetchDiscoverLiveRooms(category: category)
-                var cards = await rooms.rows.filter { $0.roomID > 0 }.asyncMap { await self.makeLiveCard(from: $0) }
-                if let category, !category.isEmpty, cards.isEmpty {
-                    let fallbackRooms = try await remoteClient.fetchDiscoverLiveRooms(category: nil)
-                    let pool = await fallbackRooms.rows
-                        .filter { $0.roomID > 0 }
-                        .asyncMap { await self.makeLiveCard(from: $0) }
-                    cards = Array(pool.shuffled().prefix(3)).map { self.relabelLiveCard($0, category: category) }
-                }
+                let cards = await rooms.rows.filter { $0.roomID > 0 }.asyncMap { await self.makeLiveCard(from: $0) }
                 let shelf = SuliJoyLagoonLiveShelf(cards: cards, total: max(rooms.total, cards.count))
                 self.finishBoard { completion(.success(shelf)) }
             } catch {
@@ -575,6 +674,139 @@ final class SuliJoyLagoonProfileRemoteService {
         }
     }
 
+    func fetchLiveHostSetup(completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonLiveHostSetup>) -> Void) {
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                let options = try await remoteClient.fetchLiveHostOptions()
+                SuliJoyGoLiveCatalog.replacePublishCategories(options.categories)
+                let categoryChoices = options.categoryChoices.map {
+                    SuliJoyLagoonLiveCategoryChoice(submitValue: $0.submitValue, displayTitle: $0.displayTitle)
+                }
+                let setup = SuliJoyLagoonLiveHostSetup(
+                    categoryChoices: categoryChoices,
+                    liveTypes: options.liveTypes.map { ($0.code, $0.title) },
+                    locales: options.locales.map { ($0.languageName, $0.countryCode) },
+                    contentReminderText: options.contentReminderText
+                )
+                completion(.success(setup))
+            } catch {
+                completion(.failure(error.localizedDescription, code: error.suliJoyLagoonCode))
+            }
+        }
+    }
+
+    func publishLiveBroadcast(
+        draft: SuliJoyGoLiveDraft,
+        completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonRemoteLiveHostSession>) -> Void
+    ) {
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                let title = draft.liveTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+                guard !title.isEmpty else {
+                    completion(.failure("Enter a live title."))
+                    return
+                }
+                let options = try await remoteClient.fetchLiveHostOptions()
+                SuliJoyGoLiveCatalog.replacePublishCategories(options.categories)
+                let allowedCategories = options.categories.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+                guard let pickedCategory = draft.category?.trimmingCharacters(in: .whitespacesAndNewlines),
+                      !pickedCategory.isEmpty,
+                      let category = allowedCategories.first(where: { $0.caseInsensitiveCompare(pickedCategory) == .orderedSame }) else {
+                    completion(.failure("Select a category from the list."))
+                    return
+                }
+                let allowedTypeCodes = Set(options.liveTypes.map(\.code))
+                let liveType = allowedTypeCodes.contains(draft.liveType) ? draft.liveType : (options.liveTypes.first?.code ?? draft.liveType)
+                let coverURL = try await uploadIslandResource(path: draft.coverSandboxPath, mimeType: "image/jpeg")
+                let requestNo = UUID().uuidString
+                let prepared = try await remoteClient.prepareLiveHostSession(
+                    category: category,
+                    coverURL: coverURL,
+                    liveTitle: title,
+                    liveType: liveType,
+                    languageName: draft.languageName,
+                    countryCode: draft.countryCode,
+                    requestNo: requestNo,
+                    contentReminderAccepted: true
+                )
+                let started = try await remoteClient.startLiveHostSession(
+                    roomID: prepared.roomID,
+                    sessionID: prepared.sessionID
+                )
+                completion(.success(started, note: "You are live."))
+            } catch {
+                completion(.failure(error.localizedDescription, code: error.suliJoyLagoonCode))
+            }
+        }
+    }
+
+    func fetchVoiceRoomSetup(completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonVoiceRoomSetup>) -> Void) {
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                async let conditionsTask = remoteClient.fetchPartyCreateConditions()
+                async let templatesTask = remoteClient.fetchPartyRoomTemplates()
+                async let languagesTask = remoteClient.fetchPartyLanguages()
+                let conditions = try await conditionsTask
+                let templates = try await templatesTask
+                let languages = try await languagesTask
+                let languageCode = Self.resolvePartyRoomLanguageCode(from: languages)
+                SuliJoyVoiceRoomCatalog.replaceDefaultRoomLanguageCode(languageCode)
+                let tagChoices = conditions.roomTagChoices.map {
+                    SuliJoyLagoonVoiceRoomTagChoice(submitValue: $0.submitValue, displayTitle: $0.displayTitle)
+                }
+                let setup = SuliJoyLagoonVoiceRoomSetup(
+                    canCreateRoom: conditions.canCreateRoom,
+                    createRoomLevel: conditions.createRoomLevel,
+                    roomTagChoices: tagChoices,
+                    templates: templates.map { ($0.templateID, $0.title, $0.imageURL) },
+                    languages: languages.map { ($0.languageName, $0.languageCode) }
+                )
+                completion(.success(setup))
+            } catch {
+                completion(.failure(error.localizedDescription, code: error.suliJoyLagoonCode))
+            }
+        }
+    }
+
+    func publishVoiceRoom(
+        draft: SuliJoyVoiceRoomDraft,
+        completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonRemotePartyRoom>) -> Void
+    ) {
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                let roomName = draft.roomName.trimmingCharacters(in: .whitespacesAndNewlines)
+                let greeting = draft.greetingMessage.trimmingCharacters(in: .whitespacesAndNewlines)
+                guard !roomName.isEmpty else {
+                    completion(.failure("Enter a room name."))
+                    return
+                }
+                guard !greeting.isEmpty else {
+                    completion(.failure("Add a short greeting for listeners."))
+                    return
+                }
+                let languages = try await remoteClient.fetchPartyLanguages()
+                let roomLanguageCode = Self.resolvePartyRoomLanguageCode(from: languages)
+                SuliJoyVoiceRoomCatalog.replaceDefaultRoomLanguageCode(roomLanguageCode)
+                let avatarURL = try await uploadIslandResource(path: draft.coverSandboxPath, mimeType: "image/jpeg")
+                // Match room-shell H5: create payload omits `roomTags` (backend 4002 when tags are not exact codes).
+                let room = try await remoteClient.createIslandPartyRoom(
+                    roomName: roomName,
+                    roomAvatar: avatarURL,
+                    greetingMessage: greeting,
+                    roomLanguage: draft.roomLanguageCode.isEmpty ? roomLanguageCode : draft.roomLanguageCode,
+                    roomTempID: draft.roomTempID
+                )
+                completion(.success(room, note: "Room created."))
+            } catch {
+                completion(.failure(error.localizedDescription, code: error.suliJoyLagoonCode))
+            }
+        }
+    }
+
     func publishTideActivity(
         draft: SuliJoyTideDraftActivity,
         completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyTideActivity>) -> Void
@@ -603,11 +835,13 @@ final class SuliJoyLagoonProfileRemoteService {
                     "Group size: \(draft.tideCrewLimit)",
                     "Activity fee: \(draft.pearlNeed)"
                 ].joined(separator: "\n")
+                let languages = try await remoteClient.fetchPartyLanguages()
+                let roomLanguageCode = Self.resolvePartyRoomLanguageCode(from: languages)
                 let room = try await remoteClient.createIslandPartyRoom(
                     roomName: title,
                     roomAvatar: avatarURL,
                     greetingMessage: detail,
-                    countryCode: "US"
+                    roomLanguage: roomLanguageCode
                 )
                 completion(.success(await makeActivity(from: room), note: "Published."))
             } catch {
@@ -1277,50 +1511,47 @@ final class SuliJoyLagoonProfileRemoteService {
             heat: heat,
             onlineCount: onlineCount,
             viewerPortraitTokens: viewerTokens,
-            tagLabels: lagoonLiveTagLabels(category: lane, remoteTags: room.tagLabels),
+            tagLabels: lagoonLiveTagLabels(roomID: room.roomID),
             category: lane,
             followed: room.followed
         )
     }
 
-    private func relabelLiveCard(_ card: SuliJoyLagoonLiveCard, category: String) -> SuliJoyLagoonLiveCard {
-        SuliJoyLagoonLiveCard(
-            roomID: card.roomID,
-            hostID: card.hostID,
-            title: card.title,
-            subtitle: card.subtitle,
-            coverToken: card.coverToken,
-            portraitToken: card.portraitToken,
-            heat: card.heat,
-            onlineCount: card.onlineCount,
-            viewerPortraitTokens: card.viewerPortraitTokens,
-            tagLabels: lagoonLiveTagLabels(category: category, remoteTags: card.tagLabels),
-            category: category,
-            followed: card.followed
-        )
+    /// Two display tags from the fixed Go Live category labels.
+    private func lagoonLiveTagLabels(roomID: Int64) -> [String] {
+        lagoonLivePairedPublishTags(from: SuliJoyGoLiveCatalog.displayShoreCategories, roomID: max(roomID, 1))
     }
 
-    private func lagoonLiveTagLabels(category: String, remoteTags: [String]) -> [String] {
-        let cleaned = remoteTags.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
-        if cleaned.count >= 2 {
-            return Array(cleaned.prefix(2))
+    private func lagoonLivePairedPublishTags(from pool: [String], roomID: Int64) -> [String] {
+        let tags = pool.filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
+        guard tags.count >= 2 else { return Array(tags.prefix(2)) }
+        var seed = UInt64(bitPattern: roomID) ^ 0x9E37_79B9_7F4A_7C15
+        func nextIndex(_ upper: Int) -> Int {
+            seed = seed &* 2_862_933_555_777_941_757 &+ 3_037_000_493
+            return Int(seed % UInt64(upper))
         }
-        let primary = category.isEmpty ? "Style" : category
-        let secondary: String
-        switch category {
-        case "Chill & Chat":
-            secondary = "Coastal Vibes"
-        case "Style & Beauty":
-            secondary = "Summer Looks"
-        case "Lifestyle":
-            secondary = "Beach Day"
-        default:
-            secondary = cleaned.first ?? "Summer Looks"
+        let first = nextIndex(tags.count)
+        var second = nextIndex(tags.count - 1)
+        if second >= first { second += 1 }
+        let a = tags[first]
+        let b = tags[second]
+        if a.caseInsensitiveCompare(b) == .orderedSame, tags.count > 2 {
+            let third = (second + 1) % tags.count
+            return [a, tags[third]]
         }
-        if primary.caseInsensitiveCompare(secondary) == .orderedSame {
-            return [primary]
+        return [a, b]
+    }
+
+    private static func resolvePartyRoomLanguageCode(from languages: [SuliJoyLagoonRemotePartyLanguage]) -> String {
+        if let english = languages.first(where: {
+            $0.languageName.caseInsensitiveCompare(SuliJoyVoiceRoomCatalog.defaultLanguageName) == .orderedSame
+        }), !english.languageCode.isEmpty {
+            return english.languageCode
         }
-        return [primary, secondary]
+        if let first = languages.first(where: { !$0.languageCode.isEmpty }) {
+            return first.languageCode
+        }
+        return ""
     }
 
     private func finishBoard(_ work: @escaping () -> Void) {

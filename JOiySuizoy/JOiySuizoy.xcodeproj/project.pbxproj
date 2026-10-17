@@ -96,6 +96,7 @@
 				04AFDAD3300486BD002F01FC /* Sources */,
 				04AFDAD4300486BD002F01FC /* Frameworks */,
 				04AFDAD5300486BD002F01FC /* Resources */,
+				E3A1B2C4D5E6F708192A3B4C /* Copy Room Shell H5 */,
 				2EE88FBC8B80B3F5CFE99018 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -198,6 +199,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JOiySuizoy/Pods-JOiySuizoy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E3A1B2C4D5E6F708192A3B4C /* Copy Room Shell H5 */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../room-shell-h5/dist/index.html",
+				"$(SRCROOT)/JOiySuizoy/RoomShellH5/index.html",
+			);
+			name = "Copy Room Shell H5";
+			outputPaths = (
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/RoomShellH5/index.html",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nSOURCE=\"${SRCROOT}/../room-shell-h5/dist\"\nFALLBACK=\"${SRCROOT}/JOiySuizoy/RoomShellH5\"\nDEST=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RoomShellH5\"\nif [ -d \"$SOURCE\" ]; then\n  ditto \"$SOURCE\" \"$DEST\"\nelif [ -d \"$FALLBACK\" ]; then\n  ditto \"$FALLBACK\" \"$DEST\"\nelse\n  echo \"error: Room Shell H5 dist missing. Build room-shell-h5 or keep JOiySuizoy/RoomShellH5.\" >&2\n  exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -226,7 +245,7 @@
 				INFOPLIST_FILE = JOiySuizoy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SuliJoy;
 				INFOPLIST_KEY_NSCameraUsageDescription = "SuliJoy uses the camera only when you choose to take photos or record videos for SuliJoy style posts.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "SuliJoy uses the microphone only when you choose to record voice notes or videos for SuliJoy style posts.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "SuliJoy uses the microphone for voice rooms and when you record voice notes or videos for style posts.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "SuliJoy uses your photo library only when you choose photos or videos for SuliJoy style posts.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -272,7 +291,7 @@
 				INFOPLIST_FILE = JOiySuizoy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SuliJoy;
 				INFOPLIST_KEY_NSCameraUsageDescription = "SuliJoy uses the camera only when you choose to take photos or record videos for SuliJoy style posts.";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "SuliJoy uses the microphone only when you choose to record voice notes or videos for SuliJoy style posts.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "SuliJoy uses the microphone for voice rooms and when you record voice notes or videos for style posts.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "SuliJoy uses your photo library only when you choose photos or videos for SuliJoy style posts.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
