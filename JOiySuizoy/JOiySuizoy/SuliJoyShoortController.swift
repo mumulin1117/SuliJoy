@@ -1,18 +1,17 @@
 import AVFoundation
 import UIKit
 
-private final class SuliJoyWaveResonanceHarbor: NSObject, AVAudioPlayerDelegate {
+private final class SuliJoyWaveResonanceHarbor: NSObject {
     static let shared = SuliJoyWaveResonanceHarbor()
 
-    private enum WaveHarborError: Error {
-        case missingWave
-        case downloadFailed
-    }
-
-    private var resonanceEngine: AVAudioPlayer?
+    private var player: AVPlayer?
+    private var statusObservation: NSKeyValueObservation?
+    private var endObserver: NSObjectProtocol?
     private var activeShoreMomentID: String?
     private var downloadTask: URLSessionDownloadTask?
     private var playGeneration = 0
+    private var announcedPlayback = false
+    private var triedFileFallback = false
     private var onWaveFinished: ((String) -> Void)?
 
     private override init() {
@@ -40,28 +39,22 @@ private final class SuliJoyWaveResonanceHarbor: NSObject, AVAudioPlayerDelegate 
         stopAll()
         let generation = playGeneration
         activeShoreMomentID = momentID
+        onWaveFinished = onStopped
         onPreparing()
-        resolveWaveFile(token: note.waveFileToken) { [weak self] result in
-            DispatchQueue.main.async {
-                guard let self, self.playGeneration == generation, self.activeShoreMomentID == momentID else { return }
-                switch result {
-                case .failure:
-                    self.activeShoreMomentID = nil
-                    onFailed("Unable to play this audio.")
-                case .success(let url):
-                    do {
-                        try self.prepareResonanceSession()
-                        try self.startResonanceEngine(url: url, sunwashedDenim: momentID)
-                        self.onWaveFinished = onStopped
-                        let playedSeconds = Int((self.resonanceEngine?.duration ?? 0).rounded())
-                        onPlaying(max(note.waveSeconds, playedSeconds))
-                    } catch {
-                        self.stopAll()
-                        onFailed("Unable to play this audio.")
-                    }
-                }
-            }
+        guard let source = playableSource(from: note.waveFileToken) else {
+            activeShoreMomentID = nil
+            onFailed("Unable to play this audio.")
+            return
         }
+        beginPlayback(
+            url: source.url,
+            remoteURL: source.remoteURL,
+            momentID: momentID,
+            generation: generation,
+            noteSeconds: note.waveSeconds,
+            onPlaying: onPlaying,
+            onFailed: onFailed
+        )
     }
 
     func stop(sunwashedDenim momentID: String) {
@@ -73,23 +66,177 @@ private final class SuliJoyWaveResonanceHarbor: NSObject, AVAudioPlayerDelegate 
         playGeneration += 1
         downloadTask?.cancel()
         downloadTask = nil
-        resonanceEngine?.stop()
-        resonanceEngine = nil
+        tearDownPlayer()
         activeShoreMomentID = nil
+        announcedPlayback = false
+        triedFileFallback = false
         onWaveFinished = nil
     }
 
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        guard let activeShoreMomentID else {
-            stopAll()
+    private func beginPlayback(
+        url: URL,
+        remoteURL: URL?,
+        momentID: String,
+        generation: Int,
+        noteSeconds: Int,
+        onPlaying: @escaping (_ seconds: Int) -> Void,
+        onFailed: @escaping (_ message: String) -> Void
+    ) {
+        do {
+            try prepareResonanceSession()
+        } catch {
+            activeShoreMomentID = nil
+            onFailed("Unable to play this audio.")
             return
         }
+        let item = AVPlayerItem(url: url)
+        let nextPlayer = AVPlayer(playerItem: item)
+        nextPlayer.automaticallyWaitsToMinimizeStalling = false
+        player = nextPlayer
+        statusObservation = item.observe(\.status, options: [.new]) { [weak self] item, _ in
+            DispatchQueue.main.async {
+                self?.handleItemStatus(
+                    item,
+                    player: nextPlayer,
+                    remoteURL: remoteURL,
+                    momentID: momentID,
+                    generation: generation,
+                    noteSeconds: noteSeconds,
+                    onPlaying: onPlaying,
+                    onFailed: onFailed
+                )
+            }
+        }
+        endObserver = NotificationCenter.default.addObserver(
+            forName: .AVPlayerItemDidPlayToEndTime,
+            object: item,
+            queue: .main
+        ) { [weak self] _ in
+            self?.finishPlayback(momentID: momentID, generation: generation)
+        }
+        if item.status == .readyToPlay || item.status == .failed {
+            handleItemStatus(
+                item,
+                player: nextPlayer,
+                remoteURL: remoteURL,
+                momentID: momentID,
+                generation: generation,
+                noteSeconds: noteSeconds,
+                onPlaying: onPlaying,
+                onFailed: onFailed
+            )
+        }
+    }
+
+    private func handleItemStatus(
+        _ item: AVPlayerItem,
+        player: AVPlayer,
+        remoteURL: URL?,
+        momentID: String,
+        generation: Int,
+        noteSeconds: Int,
+        onPlaying: @escaping (_ seconds: Int) -> Void,
+        onFailed: @escaping (_ message: String) -> Void
+    ) {
+        guard playGeneration == generation, activeShoreMomentID == momentID else { return }
+        switch item.status {
+        case .readyToPlay:
+            guard !announcedPlayback else { return }
+            announcedPlayback = true
+            player.play()
+            let rawSeconds = CMTimeGetSeconds(item.duration)
+            let playedSeconds = rawSeconds.isFinite && rawSeconds > 0 ? Int(rawSeconds.rounded()) : noteSeconds
+            onPlaying(max(noteSeconds, playedSeconds))
+        case .failed:
+            if let remoteURL, !triedFileFallback {
+                triedFileFallback = true
+                announcedPlayback = false
+                tearDownPlayer()
+                downloadAndPlay(
+                    remoteURL: remoteURL,
+                    momentID: momentID,
+                    generation: generation,
+                    noteSeconds: noteSeconds,
+                    onPlaying: onPlaying,
+                    onFailed: onFailed
+                )
+                return
+            }
+            tearDownPlayer()
+            activeShoreMomentID = nil
+            onFailed("Unable to play this audio.")
+        default:
+            break
+        }
+    }
+
+    private func finishPlayback(momentID: String, generation: Int) {
+        guard playGeneration == generation, activeShoreMomentID == momentID else { return }
         let waveFinished = onWaveFinished
-        let finishedID = activeShoreMomentID
-        resonanceEngine = nil
-        self.activeShoreMomentID = nil
+        tearDownPlayer()
+        activeShoreMomentID = nil
+        announcedPlayback = false
         onWaveFinished = nil
-        waveFinished?(finishedID)
+        waveFinished?(momentID)
+    }
+
+    private func downloadAndPlay(
+        remoteURL: URL,
+        momentID: String,
+        generation: Int,
+        noteSeconds: Int,
+        onPlaying: @escaping (_ seconds: Int) -> Void,
+        onFailed: @escaping (_ message: String) -> Void
+    ) {
+        var task: URLSessionDownloadTask?
+        task = URLSession.shared.downloadTask(with: remoteURL) { [weak self] temporaryURL, response, error in
+            let mimeType = (response as? HTTPURLResponse)?.mimeType
+            DispatchQueue.main.async {
+                guard let self, self.playGeneration == generation, self.activeShoreMomentID == momentID else { return }
+                if self.downloadTask === task {
+                    self.downloadTask = nil
+                }
+                guard error == nil, let temporaryURL else {
+                    self.activeShoreMomentID = nil
+                    onFailed("Unable to play this audio.")
+                    return
+                }
+                do {
+                    let cachedURL = self.cacheURL(for: remoteURL, mimeType: mimeType)
+                    let directory = cachedURL.deletingLastPathComponent()
+                    try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+                    if FileManager.default.fileExists(atPath: cachedURL.path) {
+                        try FileManager.default.removeItem(at: cachedURL)
+                    }
+                    try FileManager.default.moveItem(at: temporaryURL, to: cachedURL)
+                    self.beginPlayback(
+                        url: cachedURL,
+                        remoteURL: nil,
+                        momentID: momentID,
+                        generation: generation,
+                        noteSeconds: noteSeconds,
+                        onPlaying: onPlaying,
+                        onFailed: onFailed
+                    )
+                } catch {
+                    self.activeShoreMomentID = nil
+                    onFailed("Unable to play this audio.")
+                }
+            }
+        }
+        downloadTask = task
+        task?.resume()
+    }
+
+    private func tearDownPlayer() {
+        statusObservation?.invalidate()
+        statusObservation = nil
+        if let endObserver {
+            NotificationCenter.default.removeObserver(endObserver)
+            self.endObserver = nil
+        }
+        player?.pause()
+        player = nil
     }
 
     private func prepareResonanceSession() throws {
@@ -98,71 +245,62 @@ private final class SuliJoyWaveResonanceHarbor: NSObject, AVAudioPlayerDelegate 
         try waveSession.setActive(true)
     }
 
-    private func startResonanceEngine(url: URL, sunwashedDenim momentID: String) throws {
-        let nextResonanceEngine = try AVAudioPlayer(contentsOf: url)
-        nextResonanceEngine.delegate = self
-        nextResonanceEngine.prepareToPlay()
-        nextResonanceEngine.play()
-        resonanceEngine = nextResonanceEngine
-        activeShoreMomentID = momentID
-    }
-
-    private func resolveWaveFile(token: String, completion: @escaping (Result<URL, Error>) -> Void) {
+    private func playableSource(from token: String) -> (url: URL, remoteURL: URL?)? {
         let trimmed = token.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else {
-            completion(.failure(WaveHarborError.missingWave))
-            return
-        }
-        if let remoteURL = URL(string: trimmed), let scheme = remoteURL.scheme?.lowercased(), scheme == "http" || scheme == "https" {
-            let cachedURL = cacheURL(for: remoteURL)
-            if FileManager.default.fileExists(atPath: cachedURL.path) {
-                completion(.success(cachedURL))
-                return
-            }
-            var task: URLSessionDownloadTask?
-            task = URLSession.shared.downloadTask(with: remoteURL) { [weak self] temporaryURL, _, error in
-                if self?.downloadTask === task {
-                    self?.downloadTask = nil
-                }
-                if error != nil || temporaryURL == nil {
-                    completion(.failure(error ?? WaveHarborError.downloadFailed))
-                    return
-                }
-                guard let temporaryURL else {
-                    completion(.failure(WaveHarborError.downloadFailed))
-                    return
-                }
-                do {
-                    let directory = cachedURL.deletingLastPathComponent()
-                    try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-                    if FileManager.default.fileExists(atPath: cachedURL.path) {
-                        try FileManager.default.removeItem(at: cachedURL)
-                    }
-                    try FileManager.default.moveItem(at: temporaryURL, to: cachedURL)
-                    completion(.success(cachedURL))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-            downloadTask = task
-            task?.resume()
-            return
+        guard !trimmed.isEmpty else { return nil }
+        if let remoteURL = remoteURL(from: trimmed) {
+            return (remoteURL, remoteURL)
         }
         if let localURL = findWaveResonanceURL(named: trimmed) {
-            completion(.success(localURL))
-        } else {
-            completion(.failure(WaveHarborError.missingWave))
+            return (localURL, nil)
         }
+        return nil
     }
 
-    private func cacheURL(for remoteURL: URL) -> URL {
+    private func remoteURL(from token: String) -> URL? {
+        let candidates = token.hasPrefix("//") ? ["https:\(token)", token] : [token]
+        for candidate in candidates {
+            guard let url = URL(string: candidate),
+                  let scheme = url.scheme?.lowercased(),
+                  scheme == "http" || scheme == "https",
+                  url.host != nil else { continue }
+            return url
+        }
+        return nil
+    }
+
+    private func cacheURL(for remoteURL: URL, mimeType: String?) -> URL {
         let directory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("SuliJoyPostAudio", isDirectory: true)
-        let extensionName = remoteURL.pathExtension.isEmpty ? "m4a" : remoteURL.pathExtension
-        let fileName = Data(remoteURL.absoluteString.utf8).base64EncodedString()
-            .replacingOccurrences(of: "/", with: "_")
-            .replacingOccurrences(of: "+", with: "-")
-        return directory.appendingPathComponent(fileName).appendingPathExtension(extensionName)
+        let extensionName = fileExtension(for: remoteURL, mimeType: mimeType)
+        return directory.appendingPathComponent(stableFileName(for: remoteURL.absoluteString)).appendingPathExtension(extensionName)
+    }
+
+    private func fileExtension(for remoteURL: URL, mimeType: String?) -> String {
+        switch mimeType?.lowercased() {
+        case "audio/mpeg", "audio/mp3":
+            return "mp3"
+        case "audio/wav", "audio/x-wav", "audio/wave":
+            return "wav"
+        case "audio/aac", "audio/mp4", "audio/m4a", "audio/x-m4a":
+            return "m4a"
+        default:
+            break
+        }
+        let pathExtension = remoteURL.pathExtension.lowercased()
+        if ["mp3", "m4a", "aac", "wav", "caf", "mp4"].contains(pathExtension) {
+            return pathExtension
+        }
+        return "m4a"
+    }
+
+    private func stableFileName(for value: String) -> String {
+        var hash: UInt64 = 14_695_981_039_346_656_037
+        for byte in value.utf8 {
+            hash ^= UInt64(byte)
+            hash &*= 1_099_511_628_211
+        }
+        return String(hash, radix: 16)
     }
 
     private func findWaveResonanceURL(named fileName: String) -> URL? {

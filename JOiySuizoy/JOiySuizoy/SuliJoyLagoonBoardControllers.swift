@@ -1172,7 +1172,7 @@ private final class SuliJoyVoiceMeterView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         guard bars.isEmpty, bounds.width > 0, bounds.height > 0 else { return }
-        let gap: CGFloat = 4
+        let gap: CGFloat = 2
         let barWidth = (bounds.width - gap * CGFloat(barCount - 1)) / CGFloat(barCount)
         let restingHeight = bounds.height * 0.32
         for index in 0..<barCount {
@@ -1340,10 +1340,10 @@ private final class SuliJoyLagoonVoiceTileCell: UICollectionViewCell {
             peopleChip.trailingAnchor.constraint(lessThanOrEqualTo: voiceMeter.leadingAnchor, constant: -6),
             peopleChip.bottomAnchor.constraint(equalTo: summaryLabel.topAnchor, constant: -6),
             peopleChip.heightAnchor.constraint(equalToConstant: 28),
-            voiceMeter.centerYAnchor.constraint(equalTo: peopleChip.centerYAnchor),
+            voiceMeter.centerYAnchor.constraint(equalTo: peopleChip.centerYAnchor, constant: -7),
             voiceMeter.trailingAnchor.constraint(equalTo: summaryLabel.trailingAnchor),
-            voiceMeter.widthAnchor.constraint(equalToConstant: 70),
-            voiceMeter.heightAnchor.constraint(equalToConstant: 30),
+            voiceMeter.widthAnchor.constraint(equalToConstant: 25),
+            voiceMeter.heightAnchor.constraint(equalToConstant: 40),
             faceRow.leadingAnchor.constraint(equalTo: peopleChip.leadingAnchor, constant: 4),
             faceRow.centerYAnchor.constraint(equalTo: peopleChip.centerYAnchor),
             faceRow.heightAnchor.constraint(equalToConstant: 22),
