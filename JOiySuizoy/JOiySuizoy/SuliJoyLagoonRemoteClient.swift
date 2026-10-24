@@ -1012,6 +1012,8 @@ struct SuliJoyLagoonRemoteLiveRoom: Decodable {
         case heatNum
         case hotNum
         case hotValue
+        case hotScore
+        case liveName
         case liveTitle = "title"
         case roomTitle
         case roomName
@@ -1033,13 +1035,15 @@ struct SuliJoyLagoonRemoteLiveRoom: Decodable {
         icon = container.suliJoyText(forKey: .icon)
         coverURL = container.suliJoyText(forKey: .coverURL)
         audienceCount = container.suliJoyInt(forKey: .audienceCount)
-        var heat = container.suliJoyInt(forKey: .heatValue)
+        var heat = container.suliJoyInt(forKey: .hotScore)
+        if heat == 0 { heat = container.suliJoyInt(forKey: .heatValue) }
         if heat == 0 { heat = container.suliJoyInt(forKey: .heatNum) }
         if heat == 0 { heat = container.suliJoyInt(forKey: .hotNum) }
         if heat == 0 { heat = container.suliJoyInt(forKey: .hotValue) }
         heatValue = heat
         var titleLine = container.suliJoyText(forKey: .liveTitle)
         if titleLine.isEmpty { titleLine = container.suliJoyText(forKey: .roomTitle) }
+        if titleLine.isEmpty { titleLine = container.suliJoyText(forKey: .liveName) }
         if titleLine.isEmpty { titleLine = container.suliJoyText(forKey: .roomName) }
         liveTitle = titleLine
         tagLabels = (try? container.decode([String].self, forKey: .tags))
@@ -1231,28 +1235,6 @@ struct SuliJoyLagoonRemoteResourceUploadResult: Decodable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         resourceURL = container.suliJoyText(forKey: .resourceURL)
-    }
-}
-
-struct SuliJoyLagoonRemotePurchaseResult: Decodable {
-    let success: Bool
-    let balance: Int
-    let creditedDiamonds: Int
-    let duplicate: Bool
-
-    private enum CodingKeys: String, CodingKey {
-        case success
-        case balance
-        case creditedDiamonds
-        case duplicate
-    }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        success = container.suliJoyBool(forKey: .success)
-        balance = container.suliJoyInt(forKey: .balance)
-        creditedDiamonds = container.suliJoyInt(forKey: .creditedDiamonds)
-        duplicate = container.suliJoyBool(forKey: .duplicate)
     }
 }
 
@@ -1740,18 +1722,6 @@ final class SuliJoyLagoonRemoteClient {
         }
     }
 
-    private struct SuliJoyPurchaseVerificationPayload: Encodable {
-        let productID: String
-        let transactionID: String
-        let payload: String
-
-        private enum CodingKeys: String, CodingKey {
-            case productID = "productId"
-            case transactionID = "transactionId"
-            case payload
-        }
-    }
-
     private struct SuliJoyDiamondChangePayload: Encodable {
         let recordType: String
         let diamondNum: Int
@@ -1987,7 +1957,6 @@ final class SuliJoyLagoonRemoteClient {
         static let liveHostOptions = "/_v2/live/real/host/options"
         static let liveHostPrepare = "/_v2/live/real/host/prepare"
         static let liveHostStart = "/_v2/live/real/host/start"
-        static let verifyIosPurchase = "/_v2/pay/verifyIosPurchase"
         static let diamondConsume = "/_v2/user/diamond/consume"
     }
 
@@ -2121,7 +2090,7 @@ final class SuliJoyLagoonRemoteClient {
 
     func fetchDiscoverLiveRooms(page: Int = 1, category: String? = nil) async throws -> SuliJoyLagoonRemoteLiveList {
         try await send(
-            path: "/_v2/discover/live/list",
+            path: "/_v2/discover/live/pool",
             body: SuliJoyLiveListPayload(currentPage: page, pageSize: 20, category: category),
             accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili,
             allowsRefresh: true
@@ -2151,20 +2120,6 @@ final class SuliJoyLagoonRemoteClient {
         )
     }
 
-    func fetchLagoonVoiceSeats(tideID: Int64) async throws -> [SuliJoyLagoonRemoteVoiceSeat] {
-        try await send(
-            path: "/sapi/weidou/v1/client/party/seat/list", body: SuliJoyTideTalkPayload(roomId: tideID),
-            accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili, allowsRefresh: true
-        )
-    }
-
-    func fetchShoreBreeze(tideID: Int64) async throws -> [SuliJoyLagoonRemoteShoreBubble] {
-        try await send(
-            path: "/sapi/weidou/v1/client/party/room/message/list", body: SuliJoyTideTalkPayload(roomId: tideID, limit: 50),
-            accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili, allowsRefresh: true
-        )
-    }
-
     func sendShoreBreeze(tideID: Int64, text: String) async throws -> SuliJoyLagoonRemoteShoreBubble {
         try await send(
             path: "/sapi/weidou/v1/client/party/room/message/send", body: SuliJoyTideTalkPayload(roomId: tideID, content: text),
@@ -2176,14 +2131,6 @@ final class SuliJoyLagoonRemoteClient {
         try await sendWithoutPayload(
             path: "/sapi/weidou/v1/client/party/seat/onSeat",
             body: SuliJoyTideTalkPayload(roomId: room.roomID, seatIndex: seatIndex, yxRoomId: room.yxRoomId, roomTempId: room.roomTempId),
-            accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili, allowsRefresh: true
-        )
-    }
-
-    func leaveTideTalkSpace(room: SuliJoyLagoonRemotePartyRoom, seatIndex: Int) async throws {
-        try await sendWithoutPayload(
-            path: "/sapi/weidou/v1/client/party/room/exitRoom",
-            body: SuliJoyTideTalkPayload(roomId: room.roomID, seatIndex: seatIndex, yxRoomId: room.yxRoomId),
             accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili, allowsRefresh: true
         )
     }
@@ -2518,15 +2465,6 @@ final class SuliJoyLagoonRemoteClient {
                 countryCode: countryCode,
                 bgImgID: backgroundImageID
             ),
-            accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili,
-            allowsRefresh: true
-        )
-    }
-
-    func verifyIslandPurchase(productID: String, transactionID: String, payload: String) async throws -> SuliJoyLagoonRemotePurchaseResult {
-        try await send(
-            path: SuliJoyRemotePath.verifyIosPurchase,
-            body: SuliJoyPurchaseVerificationPayload(productID: productID, transactionID: transactionID, payload: payload),
             accessToken: sessionVault.suliJoySeasideHeroload().SeasideHeroloaSili,
             allowsRefresh: true
         )

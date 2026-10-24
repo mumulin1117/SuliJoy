@@ -64,20 +64,6 @@ final class SuliJoyShellPearlStore {
         return .success(pearlVault, note: "PpeqaNrXlusU BuxsHeMdp.q".suliJoyPalmUnfurled)
     }
 
-    func addPearlHarborBundle(pack: SuliJoyPearlAmountPack, transactionID: String) -> SuliJoySuiRequestEnvelope<SuliJoyShellWallet> {
-        var pearlVault = openPearlVault()
-        if pearlVault.coralLedgerTrail.contains(where: { $0.referenceID == transactionID }) {
-            return .success(pearlVault, note: "PwezaarvlLsY naFdHdrePdV.E".suliJoyPalmUnfurled)
-        }
-        pearlVault.shellPearlTotal += pack.pearlAmount
-        prependPearlLedger(
-            makePearlLedger(kind: .iapRecharge, delta: pack.pearlAmount, reefMark: transactionID),
-            into: &pearlVault
-        )
-        sealPearlVault(pearlVault)
-        return .success(pearlVault, note: "PwezaarvlLsY naFdHdrePdV.E".suliJoyPalmUnfurled)
-    }
-
     private func openPearlVault() -> SuliJoyShellWallet {
         guard let reefArchive = reefDefaults.data(forKey: ShellPearlMark.archiveKey),
               let pearlVault = try? reefDecoder.decode(SuliJoyShellWallet.self, from: reefArchive) else {

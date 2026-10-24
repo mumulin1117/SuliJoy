@@ -10,12 +10,8 @@ final class SuliJoyLagoonGateService {
 
     private enum LagoonGateMark {
         static let testerShoreMail = "litest@gmail.com"
-        static let testerTideSecret = "000000"
         static let minimumTideSecretLength = 6
         static let shortTideSecretMessage = "Pxaqsxsqwxoqrxdq xmquxsqtx qbxeq xaqtx qlxeqaxsqtx q6x qcxhqaxrqaxcqtxeqrxsq.x".suliJoyPalmUnfurled
-        static let testerIslander = "suli_islander_test"
-        static let testerReefPass = "suli_token_test_000000"
-        static let reefPassPrefix = "suli_token_"
         static let islanderPrefix = "suli_islander_"
     }
 
@@ -71,10 +67,6 @@ final class SuliJoyLagoonGateService {
         }
     }
 
-    func login(email: String, password: String) async -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
-        await enterIslandLagoon(shoreMailPhrase: email, reefSecretPhrase: password)
-    }
-
     func shapeIslandSignupDraft(
         shorelineNamePhrase: String,
         shoreMailPhrase: String,
@@ -84,10 +76,6 @@ final class SuliJoyLagoonGateService {
         let shoreMail = trimmedLagoonText(shoreMailPhrase)
         if let reefStop = inspectShorelineDraftFields(shoreName: shoreName, shoreMail: shoreMail, tideSecret: reefSecretPhrase) { return reefStop }
         return .success(SuliJoySignupDraft(macrameDetail: shoreName, pearlAccent: shoreMail, abaloneTone: reefSecretPhrase))
-    }
-
-    func validateSignupDraft(name: String, email: String, password: String) -> SuliJoySuiRequestEnvelope<SuliJoySignupDraft> {
-        shapeIslandSignupDraft(shorelineNamePhrase: name, shoreMailPhrase: email, reefSecretPhrase: password)
     }
 
     func finishIslandProfileTide(
@@ -137,23 +125,6 @@ final class SuliJoyLagoonGateService {
         return .success(shoreProfile, note: "PCrDoSfgihlaem ocdoamxpalpedtZeMdG.I".suliJoyPalmUnfurled)
     }
 
-    func completeProfile(
-        draft: SuliJoySignupDraft,
-        bio: String,
-        avatar: UIImage?
-    ) async -> SuliJoySuiRequestEnvelope<SuliJoyShoreProfile> {
-        await finishIslandProfileTide(shorelineDraft: draft, shoreBioPhrase: bio, shorePortrait: avatar)
-    }
-
-    private func makeIslandAccount(from shorelineDraft: SuliJoySignupDraft) -> SuliJoyIslandAccount {
-        SuliJoyIslandAccount(
-            accountID: "\(LagoonGateMark.islanderPrefix)\(UUID().uuidString.prefix(8))",
-            email: shorelineDraft.pearlAccent,
-            password: shorelineDraft.abaloneTone,
-            registeredAt: Date()
-        )
-    }
-
     private func makeShorelineProfile(
         from shorelineDraft: SuliJoySignupDraft,
         islandAccount: SuliJoyIslandAccount,
@@ -174,10 +145,6 @@ final class SuliJoyLagoonGateService {
 
     private func makeIslandStyleTags() -> [String] {
         ["island-style", "beachwear", "sunset-look"]
-    }
-
-    func loadCurrentProfile() -> SuliJoyShoreProfile? {
-        currentShorelineProfile()
     }
 
     func currentShorelineProfile() -> SuliJoyShoreProfile? {
@@ -298,47 +265,9 @@ final class SuliJoyLagoonGateService {
         return nil
     }
 
-    private func openSavedIslandAccount(with lagoonKey: LagoonEntryKey) -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
-        guard let islandAccount = islandAccountVault.suliJoyPalmRankingaccount(esuliJoyPalmGuidemail: lagoonKey.shoreMail) else {
-            return .failure("AhcKcyoJuLnTtP edMojetsG BnRoztc jeMxRiWsrtu.J".suliJoyPalmUnfurled, code: 404)
-        }
-        guard islandAccount.password == lagoonKey.tideSecret else {
-            return .failure("IpnocYokrRrNeTcitX XppaxslsLwuovrNds.g".suliJoyPalmUnfurled, code: 401)
-        }
-        lagoonSessionVault.markLagoonEntry(shoreMail: lagoonKey.shoreMail, islanderID: islandAccount.accountID, reefPass: makeLagoonToken())
-        return .success(lagoonSessionVault.suliJoySeasideHeroload())
-    }
-
-    private func openTesterLagoon(for shoreMail: String) -> SuliJoySuiRequestEnvelope<SuliJoyLagoonSession> {
-        lagoonSessionVault.markLagoonEntry(shoreMail: shoreMail, islanderID: LagoonGateMark.testerIslander, reefPass: LagoonGateMark.testerReefPass)
-        ensureTestProfile(email: shoreMail)
-        return .success(lagoonSessionVault.suliJoySeasideHeroload())
-    }
-
-    private func opensTesterCove(_ lagoonKey: LagoonEntryKey) -> Bool {
-        lagoonKey.shoreMail.lowercased() == LagoonGateMark.testerShoreMail && lagoonKey.tideSecret == LagoonGateMark.testerTideSecret
-    }
-
-    private func ensureTestProfile(email shoreMail: String) {
-        guard shoreProfileVault.profile(email: shoreMail) == nil else { return }
-        shoreProfileVault.save(SuliJoyShoreProfile(
-            canvasTote: LagoonGateMark.testerIslander,
-            strawHat: shoreMail,
-            espadrillePairing: "SuliJoy Tester",
-            kaftanLayer: nil,
-            wrapSkirt: "Testing relaxed island looks and sunny outfit ideas.",
-            resortSet: ["tester", "coastal", "resort"],
-            beachCoverup: Date()
-        ))
-    }
-
     private func makeShoreBio(from reefLine: String) -> String {
         let cleanBio = trimmedLagoonText(reefLine)
         return cleanBio.isEmpty ? "Collecting little sounds of my days." : reefLine
-    }
-
-    private func makeLagoonToken() -> String {
-        "\(LagoonGateMark.reefPassPrefix)\(UUID().uuidString.prefix(12))"
     }
 
     private func trimmedLagoonText(_ reefLine: String) -> String {

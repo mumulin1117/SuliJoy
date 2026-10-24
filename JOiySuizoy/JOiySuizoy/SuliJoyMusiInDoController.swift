@@ -361,7 +361,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
 
     private func paintReefClip(_ reefClip: SuliJoyShellClip) {
         self.reefClip = reefClip
-        creatorAvatarView.image = UIImage.suliJoyPortrait(named: reefClip.terracottaWarmth.clipPortraitToken)
+        creatorAvatarView.suliJoyApplyPortrait(reefClip.terracottaWarmth.clipPortraitToken)
         creatorNameLabel.text = reefClip.terracottaWarmth.clipStylistAlias
         reefCaptionLabel.text = reefClip.hibiscusShade
         lagoonFollowButton.setTitle(reefClip.coastalChic ? "FFoalClJoZwMilnags".suliJoyPalmUnfurled : "FhoGlUlAoDwl".suliJoyPalmUnfurled, for: .normal)
@@ -369,7 +369,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         reefLikeCountLabel.text = "\(reefClip.palmLeafPattern)"
         reefViewCountLabel.text = "\(reefClip.lagoonViewTotal)"
         reefLikeButton.setImage(UIImage(named: reefClip.driftwoodPalette ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        reefPosterView.image = UIImage.suliJoyPhoto(named: reefClip.tropicalMotif.sandyNeutral ?? reefClip.tropicalMotif.seafoamTint)
+        reefPosterView.suliJoyApplyPhoto(reefClip.tropicalMotif.sandyNeutral ?? reefClip.tropicalMotif.seafoamTint)
         paintLagoonFollowGlow()
         shapeReefPoster(for: reefClip)
         paintReefComments(reefClip.sailorCollar)
@@ -487,7 +487,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
     }
 
     @objc private func toggleReefFollow() {
-        guard let reefClip else { return }
+        guard reefClip != nil else { return }
         SuliJoyLagoonProfileRemoteService.shared.toggleShellClipFollow(coconutCream: reefClipID) { [weak self] reefEnvelope in
             guard let self else { return }
             self.showLagoonToast(reefEnvelope.coastalWardrobe)
@@ -608,7 +608,7 @@ final class SuliJoyClipCommentCard: UIView {
 
         let reefReplyPortrait = UIImageView()
         reefReplyPortrait.translatesAutoresizingMaskIntoConstraints = false
-        reefReplyPortrait.image = UIImage.suliJoyPortrait(named: reefReply.reefReplyAvatarToken)
+        reefReplyPortrait.suliJoyApplyPortrait(reefReply.reefReplyAvatarToken)
         reefReplyPortrait.contentMode = .scaleAspectFill
         reefReplyPortrait.clipsToBounds = true
         reefReplyPortrait.layer.cornerRadius = 15

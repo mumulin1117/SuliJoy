@@ -283,8 +283,8 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         shoreTitleGlyph.text = shorelineTideDetail.tideTitleLine
         let handle = shorelineTideDetail.shoreHostAlias.replacingOccurrences(of: " ", with: "").lowercased()
         shorePlaceGlyph.text = "by @\(handle)"
-        let faceToken = shorelineTideDetail.shorelineAvatarTokens.first ?? "sulijoy_mock_avatar_breeze_01"
-        (shoreDetailDeck.viewWithTag(410) as? UIImageView)?.image = UIImage.suliJoyPortrait(named: faceToken)
+        let faceToken = shorelineTideDetail.shorelineAvatarTokens.first
+        (shoreDetailDeck.viewWithTag(410) as? UIImageView)?.suliJoyApplyPortrait(faceToken)
         shoreTimingGlyph.text = "\(shorelineTideDetail.tideJoinedTotal) joined · \(suliJoyChallengeDaysLeft(shorelineTideDetail.shoreDayText))"
         renderShoreState(shorelineTideDetail)
         renderShoreAvatars(shorelineTideDetail.shorelineAvatarTokens, reefNumber: shorelineTideDetail.tideJoinedTotal)
@@ -306,7 +306,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             shoreImageView.contentMode = .scaleAspectFill
             shoreImageView.clipsToBounds = true
             shoreImageView.backgroundColor = UIColor(red: 1, green: 0.84, blue: 0.58, alpha: 1)
-            shoreImageView.image = UIImage.suliJoyPhoto(named: heroAssetToken) ?? UIImage.suliJoyPhoto(named: shorelineTideDetail.tideFallbackHeroToken)
+            shoreImageView.suliJoyApplyPhoto(heroAssetToken)
             shoreHeroRibbon.addArrangedSubview(shoreImageView)
             NSLayoutConstraint.activate([
                 shoreImageView.widthAnchor.constraint(equalTo: shoreHeroCarousel.frameLayoutGuide.widthAnchor),
@@ -375,7 +375,8 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         shoreAvatarRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
         let heroAssetTokens = Array(assets.prefix(min(6, max(0, reefNumber))))
         for asset in heroAssetTokens {
-            let shoreImageView = UIImageView(image: UIImage.suliJoyPortrait(named: asset))
+            let shoreImageView = UIImageView()
+            shoreImageView.suliJoyApplyPortrait(asset)
             shoreImageView.translatesAutoresizingMaskIntoConstraints = false
             shoreImageView.contentMode = .scaleAspectFill
             shoreImageView.clipsToBounds = true
@@ -650,12 +651,13 @@ private final class SuliJoyCoastalSuggestionCard: UIControl {
     }
 
     private func render(_ shorelineTideDetail: SuliJoyTideActivity) {
-        shoreImageView.image = UIImage.suliJoyPhoto(named: shorelineTideDetail.reefGallery.first?.reefAssetToken ?? shorelineTideDetail.tideFallbackHeroToken)
+        shoreImageView.suliJoyApplyPhoto(shorelineTideDetail.reefGallery.first?.reefAssetToken ?? shorelineTideDetail.tideFallbackHeroToken)
         let place = shorelineTideDetail.shoreSpotLine.split(separator: " ").first.map(String.init) ?? shorelineTideDetail.shoreHostAlias
         shoreTitleGlyph.text = place.count > 16 ? shorelineTideDetail.shoreHostAlias : place
         shoreDateGlyph.text = "♡  \(shorelineTideDetail.tideJoinedTotal)"
         shoreAvatarRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        let shoreAvatarView = UIImageView(image: UIImage.suliJoyPortrait(named: shorelineTideDetail.shorelineAvatarTokens.first))
+        let shoreAvatarView = UIImageView()
+        shoreAvatarView.suliJoyApplyPortrait(shorelineTideDetail.shorelineAvatarTokens.first)
         shoreAvatarView.translatesAutoresizingMaskIntoConstraints = false
         shoreAvatarView.contentMode = .scaleAspectFill
         shoreAvatarView.clipsToBounds = true
@@ -927,7 +929,8 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
     private func renderHarborParticipants(_ participantAssets: [String]) {
         harborParticipantRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
         for participantAsset in participantAssets.prefix(3) {
-            let shoreAvatarView = UIImageView(image: UIImage.suliJoyPortrait(named: participantAsset))
+            let shoreAvatarView = UIImageView()
+            shoreAvatarView.suliJoyApplyPortrait(participantAsset)
             shoreAvatarView.translatesAutoresizingMaskIntoConstraints = false
             shoreAvatarView.contentMode = .scaleAspectFill
             shoreAvatarView.clipsToBounds = true
@@ -1028,17 +1031,6 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
 
     @objc private func confirmHarborLeave() {
         showHarborLeaveDialog()
-    }
-
-    private func showHarborWarningDialog() {
-        presentHarborNoticeDialog(
-            badgeName: "sulijoy_tide_room_warning_badge",
-            reefHeadline: "Warning",
-            shoreNotice: "Be careful. No explicit content or revealing outfits allowed.",
-            primaryTitle: "OK",
-            secondaryTitle: nil,
-            runShorePrimaryAction: nil
-        )
     }
 
     private func showHarborLeaveDialog() {
@@ -1290,7 +1282,7 @@ private final class SuliJoyLagoonSeatShellControl: UIControl {
             seatAvatarView.backgroundColor = UIColor.black.withAlphaComponent(0.22)
             seatNameGlyph.textColor = UIColor.white.withAlphaComponent(0.86)
         } else {
-            seatAvatarView.image = UIImage.suliJoyPortrait(named: seat.seatAvatarToken)
+            seatAvatarView.suliJoyApplyPortrait(seat.seatAvatarToken)
             seatMarkView.isHidden = true
             seatAvatarView.backgroundColor = UIColor.white.withAlphaComponent(0.16)
             seatNameGlyph.textColor = .white
@@ -1365,7 +1357,7 @@ private final class SuliJoyShoreNoteBubbleCell: UITableViewCell {
     }
 
     func render(_ bubble: SuliJoyShoreBubble) {
-        shoreAvatarView.image = UIImage.suliJoyPortrait(named: bubble.avatarAssetName)
+        shoreAvatarView.suliJoyApplyPortrait(bubble.avatarAssetName)
         seatNameGlyph.text = bubble.senderName
         bubbleTextGlyph.text = bubble.text
         bubbleShellView.backgroundColor = bubble.isMine ? UIColor(red: 0.84, green: 1, blue: 0.76, alpha: 1) : .white

@@ -29,16 +29,6 @@ final class SuliJoyTideSessionVault {
         }
     }
 
-    func markLagoonEntry(shoreMail: String, islanderID: String, reefPass: String) {
-        rewriteLagoonSession { lagoonState in
-            lagoonState.flaggedLagoonVisitorslo = true
-            lagoonState.currentTideConsenl = shoreMail
-            lagoonState.sasuliJoySeasideDress = islanderID
-            lagoonState.SeasideHeroloaSili = reefPass
-            lagoonState.lagoonRefreshPass = nil
-        }
-    }
-
     func markRemoteLagoonEntry(
         shoreMail: String,
         islanderID: String,
@@ -112,18 +102,6 @@ final class SuliJoyIslandAccountStore {
 
     func allAsuliJoyShorelineStoreccounts() -> [SuliJoyIslandAccount] {
         restoreIslandArray(for: IslandArchiveMark.reefKey)
-    }
-
-    func suliJoyPalmRankingaccount(esuliJoyPalmGuidemail: String) -> SuliJoyIslandAccount? {
-        let shoreMail = normalizeShoreMail(esuliJoyPalmGuidemail)
-        return allAsuliJoyShorelineStoreccounts().first { normalizeShoreMail($0.email) == shoreMail }
-    }
-
-    func savesuliJoyPalmMatcher(_ account: SuliJoyIslandAccount) {
-        rewriteIslandAccounts { islandShelf in
-            islandShelf.removeAll { normalizeShoreMail($0.email) == normalizeShoreMail(account.email) }
-            islandShelf.append(account)
-        }
     }
 
     func desuliJoyPalmMatcherlete(emsuliJoyPalmMatrixail: String) {

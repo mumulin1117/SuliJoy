@@ -471,9 +471,9 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             dropShoulder.list.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             dropShoulder.list.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             dropShoulder.list.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            dropShoulder.spinner.topAnchor.constraint(equalTo: dropShoulder.header.bottomAnchor, constant: ShoreFeedMetric.listTop + ShoreFeedMetric.topInset),
             dropShoulder.spinner.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ShoreFeedMetric.horizontalInset),
             dropShoulder.spinner.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ShoreFeedMetric.horizontalInset),
-            dropShoulder.spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             dropShoulder.emptyNote.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             dropShoulder.emptyNote.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
@@ -882,7 +882,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             }
             let isFollowing = SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(visitorID: visitorID)
             stylistCard?.updateFollowing(isFollowing)
-            if let stylistCard, let index = self.lagoonStylists.firstIndex(where: { $0.stylistID == visitorID }) {
+            if stylistCard != nil, let index = self.lagoonStylists.firstIndex(where: { $0.stylistID == visitorID }) {
                 self.lagoonStylists[index].suliJoyCoastalMeter = isFollowing
             }
             if let momentIndexPath, self.shoreMoments.indices.contains(momentIndexPath.row) {
@@ -973,7 +973,8 @@ final class SuliJoyStylistCard: UIView {
         stylistID = stylist.stylistID
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapCard)))
 
-        let stylistPortrait = UIImageView(image: UIImage.suliJoyPortrait(named: stylist.avatarAssetName))
+        let stylistPortrait = UIImageView()
+        stylistPortrait.suliJoyApplyPortrait(stylist.avatarAssetName)
         stylistPortrait.translatesAutoresizingMaskIntoConstraints = false
         stylistPortrait.contentMode = .scaleAspectFill
         stylistPortrait.clipsToBounds = true
@@ -1318,7 +1319,7 @@ final class suliJoyCoastalDiary: UITableViewCell {
     }
 
     func configure(with moment: SuliJoyReefMoment, isFollowing: Bool) {
-        stylistPortrait.image = UIImage.suliJoyPortrait(named: moment.islandStylistAvatarAssetName)
+        stylistPortrait.suliJoyApplyPortrait(moment.islandStylistAvatarAssetName)
         followBadge.suliJoyCoastalCapsule(isFollowing: isFollowing)
         followBadge.isEnabled = true
         followBadge.alpha = 1
@@ -1351,7 +1352,8 @@ final class suliJoyCoastalDiary: UITableViewCell {
         let shownMedia = mediaItems.prefix(3)
         mediaStack.isHidden = shownMedia.isEmpty
         for reefMedia in shownMedia {
-            let reefSnapshotView = UIImageView(image: UIImage.suliJoyPhoto(named: reefMedia.reefAssetToken))
+            let reefSnapshotView = UIImageView()
+            reefSnapshotView.suliJoyApplyPhoto(reefMedia.reefAssetToken)
             reefSnapshotView.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.73, alpha: 1)
             reefSnapshotView.contentMode = .scaleAspectFill
             reefSnapshotView.clipsToBounds = true
@@ -1755,7 +1757,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
     private func renderMomentDetail() {
         let hasReefMedia = !suliJoyCoastalGalleryf.reefMedia.isEmpty
-        authorPortraitView.image = UIImage.suliJoyPortrait(named: suliJoyCoastalGalleryf.islandStylistAvatarAssetName)
+        authorPortraitView.suliJoyApplyPortrait(suliJoyCoastalGalleryf.islandStylistAvatarAssetName)
         authorNameGlyph.text = suliJoyCoastalGalleryf.islandStylistName
         isFollowingAuthor = SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(authorName: suliJoyCoastalGalleryf.islandStylistName)
         renderMomentFollow()
@@ -1814,7 +1816,8 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             reefSnapshot.removeFromSuperview()
         }
         for reefMedia in suliJoyCoastalGalleryf.reefMedia {
-            let reefSnapshot = UIImageView(image: UIImage.suliJoyPhoto(named: reefMedia.reefAssetToken))
+            let reefSnapshot = UIImageView()
+            reefSnapshot.suliJoyApplyPhoto(reefMedia.reefAssetToken)
             reefSnapshot.translatesAutoresizingMaskIntoConstraints = false
             reefSnapshot.contentMode = .scaleAspectFill
             reefSnapshot.clipsToBounds = true
@@ -1871,7 +1874,8 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         replyCard.layer.shadowRadius = 10
         replyCard.layer.shadowOffset = CGSize(width: 0, height: 6)
 
-        let replyPortrait = UIImageView(image: UIImage.suliJoyPortrait(named: reefReply.reefEchoAvatarAssetName))
+        let replyPortrait = UIImageView()
+        replyPortrait.suliJoyApplyPortrait(reefReply.reefEchoAvatarAssetName)
         replyPortrait.translatesAutoresizingMaskIntoConstraints = false
         replyPortrait.contentMode = .scaleAspectFill
         replyPortrait.clipsToBounds = true

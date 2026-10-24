@@ -273,7 +273,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     private func renderGuestHeader() {
         guard let lagoonGuest else { return }
         guestTitleLabel.text = lagoonGuest.islandStylistAlias
-        guestPortraitRing.portraitView.image = UIImage.suliJoyPortrait(named: lagoonGuest.portraitAssetToken)
+        guestPortraitRing.portraitView.suliJoyApplyPortrait(lagoonGuest.portraitAssetToken)
         guestPortraitRing.liveBadge.isHidden = true
         lagoonFollowButton.render(state: lagoonGuest.coveAffinityState)
         renderReefMetrics(lagoonGuest)
@@ -426,14 +426,6 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
             let detail = SuliJoyLagoonLetterDetailController(thread: thread)
             self.navigationController?.pushViewController(detail, animated: true)
         }
-    }
-
-    @objc private func openReefMotionPreview() {
-        guard lagoonGuest?.coveAffinityState == .reefMutualBond else {
-            showReefUnlockNotice()
-            return
-        }
-        showLocalPlaceholder(reefHeadline: ["VBiv".suliJoyPalmUnfurled, "dLecoQ WCLaLlJlJ cPYrZeCvqiZeawV".suliJoyPalmUnfurled].joined(), subreefHeadline: ["MtuKtxulaylY-EfMoNlnlEoSwT Nvdie".suliJoyPalmUnfurled, "dXeAop jcMaflYlk KpkrgePvMisePwM.A".suliJoyPalmUnfurled].joined())
     }
 
     private func showReefUnlockNotice() {
@@ -832,7 +824,8 @@ private final class SuliJoyGuestClipPreviewCard: SuliJoyGuestPreviewControl {
         backgroundColor = .clear
         layer.cornerRadius = 24
 
-        let image = UIImageView(image: UIImage.suliJoyPhoto(named: clip.tropicalMotif.sandyNeutral))
+        let image = UIImageView()
+        image.suliJoyApplyPhoto(clip.tropicalMotif.sandyNeutral)
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
@@ -881,7 +874,8 @@ private final class SuliJoyGuestClipPreviewCard: SuliJoyGuestPreviewControl {
 private final class SuliJoyGuestActivityPreviewCard: SuliJoyGuestPreviewControl {
     init(activity: SuliJoyTideActivity) {
         super.init(frame: .zero)
-        let image = UIImageView(image: UIImage.suliJoyPhoto(named: activity.reefGallery.first?.reefAssetToken ?? activity.tideFallbackHeroToken))
+        let image = UIImageView()
+        image.suliJoyApplyPhoto(activity.reefGallery.first?.reefAssetToken ?? activity.tideFallbackHeroToken)
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true

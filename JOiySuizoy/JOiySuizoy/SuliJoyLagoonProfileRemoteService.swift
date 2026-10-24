@@ -378,48 +378,6 @@ final class SuliJoyLagoonProfileRemoteService {
         }
     }
 
-    func fetchTideActivity(
-        tideID: String,
-        completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyTideActivity>) -> Void
-    ) {
-        guard let numericID = Int64(tideID) else {
-            completion(.failure("Activity is unavailable.", code: 400))
-            return
-        }
-        Task { [weak self] in
-            guard let self else { return }
-            do {
-                let rooms = try await remoteClient.fetchIslandPartyRooms()
-                guard let room = rooms.rows.first(where: { $0.roomID == numericID }) else {
-                    completion(.failure("Activity is unavailable.", code: 404))
-                    return
-                }
-                completion(.success(await makeActivity(from: room)))
-            } catch {
-                completion(.failure(error.localizedDescription, code: error.suliJoyLagoonCode))
-            }
-        }
-    }
-
-    func fetchRelatedTideActivities(
-        tideID: String,
-        completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyTideActivity]>) -> Void
-    ) {
-        Task { [weak self] in
-            guard let self else { return }
-            do {
-                let rooms = try await remoteClient.fetchIslandPartyRooms()
-                let activities = await rooms.rows
-                    .filter { String($0.roomID) != tideID }
-                    .prefix(2)
-                    .asyncMap { await self.makeActivity(from: $0) }
-                completion(.success(Array(activities)))
-            } catch {
-                completion(.failure(error.localizedDescription, code: error.suliJoyLagoonCode))
-            }
-        }
-    }
-
     func fetchShoreMoments(
         filter: SuliJoyReefMomentFilter,
         completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyReefMoment]>) -> Void
@@ -457,7 +415,7 @@ final class SuliJoyLagoonProfileRemoteService {
             guard let self else { return }
             do {
                 let remoteComments = try await remoteClient.fetchIslandMomentComments(momentID: numericID)
-                let comments = await remoteComments.rows.asyncMap { [weak self] row in
+                let comments = await remoteComments.rows.asyncMap { row in
                     let avatarToken = await SuliJoyLagoonProfileAssetVault.shared.localToken(for: row.icon)
                     return SuliJoyReefReply(
                         reefReplyID: String(row.commentID),
@@ -1483,15 +1441,7 @@ final class SuliJoyLagoonProfileRemoteService {
         let coverSource = room.coverURL.isEmpty ? room.icon : room.coverURL
         let coverToken = await SuliJoyLagoonProfileAssetVault.shared.localToken(for: coverSource)
         let title = room.nickname.isEmpty ? "Live host" : room.nickname
-        let lane = room.category
-        let subtitle: String
-        if !room.liveTitle.isEmpty {
-            subtitle = room.liveTitle
-        } else if lane.isEmpty {
-            subtitle = "Beach Looks Live"
-        } else {
-            subtitle = "\(lane) Live"
-        }
+        let subtitle = room.liveTitle
         var viewerTokens = await room.viewerFaces.prefix(3).asyncMap { face in
             await SuliJoyLagoonProfileAssetVault.shared.localToken(for: face.avatar)
         }
@@ -1512,7 +1462,7 @@ final class SuliJoyLagoonProfileRemoteService {
             onlineCount: onlineCount,
             viewerPortraitTokens: viewerTokens,
             tagLabels: lagoonLiveTagLabels(roomID: room.roomID),
-            category: lane,
+            category: room.category,
             followed: room.followed
         )
     }
@@ -1560,12 +1510,6 @@ final class SuliJoyLagoonProfileRemoteService {
         } else {
             DispatchQueue.main.async(execute: work)
         }
-    }
-
-    private func currentVisitor(for visitorID: String) -> SuliJoyLagoonVisitor? {
-        shelfLock.lock()
-        defer { shelfLock.unlock() }
-        return visitorShelf[visitorID]
     }
 
     private func updateFollowingMark(_ mark: String, isFollowing: Bool) {
@@ -1676,29 +1620,11 @@ private enum SuliJoyLagoonProfileRemoteMapper {
 private actor SuliJoyLagoonProfileAssetVault {
     static let shared = SuliJoyLagoonProfileAssetVault()
 
-    private var localShelf: [String: String] = [:]
-
     func localToken(for remoteToken: String) async -> String {
-        guard !remoteToken.isEmpty, let remoteURL = URL(string: remoteToken), remoteURL.scheme != nil else {
-            return remoteToken
+        if let cached = SuliJoyLagoonImageShelf.existingFilePath(for: remoteToken) {
+            return cached
         }
-        if let cached = localShelf[remoteToken] { return cached }
-        do {
-            let (data, _) = try await URLSession.shared.data(from: remoteURL)
-            let directory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-                .appendingPathComponent("SuliJoyLagoonAssets", isDirectory: true)
-            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-            let fileName = Data(remoteToken.utf8).base64EncodedString()
-                .replacingOccurrences(of: "/", with: "_")
-                .replacingOccurrences(of: "+", with: "-")
-            let fileURL = directory.appendingPathComponent(fileName)
-            try data.write(to: fileURL, options: .atomic)
-            let localPath = fileURL.path
-            localShelf[remoteToken] = localPath
-            return localPath
-        } catch {
-            return remoteToken
-        }
+        return remoteToken
     }
 }
 

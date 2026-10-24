@@ -104,7 +104,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         avatarShellView.layer.cornerRadius = 43
         avatarShellView.layer.borderWidth = 3
         avatarShellView.layer.borderColor = UIColor.white.cgColor
-        avatarShellView.image = UIImage(named: "sulijoy_mock_avatar_breeze_01")
+        avatarShellView.image = SuliJoyImagePlaceholder.portrait
 
         avatarShellBadge.translatesAutoresizingMaskIntoConstraints = false
         avatarShellBadge.image = UIImage(named: "sulijoy_profile_edit_badge")
@@ -319,7 +319,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func applyLagoonSummary(islandSnapshot: SuliJoyLagoonProfileSnapshot) {
-        avatarShellView.image = UIImage.suliJoyPortrait(named: islandSnapshot.lagoonAvatarAssetName)
+        avatarShellView.suliJoyApplyPortrait(islandSnapshot.lagoonAvatarAssetName)
         nameShellTap.setTitle(islandSnapshot.lagoonNameText, for: .normal)
         islandCodeGlyph.attributedText = makeIslandCodeBadgeText(islandSnapshot.islandTraceText)
         profileTallyStack.arrangedSubviews.forEach { $0.removeFromSuperview() }

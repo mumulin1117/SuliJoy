@@ -85,7 +85,7 @@ final class SuliJoyChallengeShareLookController: SuliJoyTropicCanvasController, 
         photoPreview.translatesAutoresizingMaskIntoConstraints = false
         photoPreview.contentMode = .scaleAspectFill
         photoPreview.clipsToBounds = true
-        photoPreview.image = UIImage.suliJoyPhoto(named: "sulijoy_feed_moment_coast_01")
+        photoPreview.image = SuliJoyImagePlaceholder.photo
 
         editPhotoPill.translatesAutoresizingMaskIntoConstraints = false
         editPhotoPill.backgroundColor = UIColor.black.withAlphaComponent(0.55)

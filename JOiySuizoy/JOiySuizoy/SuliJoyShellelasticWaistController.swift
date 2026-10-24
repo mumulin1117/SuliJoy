@@ -564,7 +564,7 @@ final class SuliJoyReefMutedVisitorCoveController: SuliJoyTropicCanvasController
 
         let avatarGlyph = UIImageView()
         avatarGlyph.translatesAutoresizingMaskIntoConstraints = false
-        avatarGlyph.image = UIImage.suliJoyPortrait(named: islandGuest.portraitAssetToken)
+        avatarGlyph.suliJoyApplyPortrait(islandGuest.portraitAssetToken)
         avatarGlyph.contentMode = .scaleAspectFill
         avatarGlyph.layer.cornerRadius = 24
         avatarGlyph.clipsToBounds = true

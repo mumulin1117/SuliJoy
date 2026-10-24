@@ -7,10 +7,6 @@ private enum SuliJoyLagoonBoardMeasure {
     static let listBottom: CGFloat = 116
 }
 
-private func suliJoyCoverImage(named token: String) -> UIImage? {
-    UIImage.suliJoyPhoto(named: token)
-}
-
 private enum SuliJoyLagoonCrownStyle {
     case brand
     case islandLive
@@ -1087,86 +1083,6 @@ final class SuliJoyShoreCatalogController: SuliJoyTropicCanvasController {
     }
 }
 
-final class SuliJoyLagoonRoomPreviewController: SuliJoyTropicCanvasController {
-    private let shoreTitle: String
-    private let hostLine: String
-    private let coverToken: String
-    private let detailLine: String
-
-    init(shoreTitle: String, hostLine: String, coverToken: String, detailLine: String) {
-        self.shoreTitle = shoreTitle
-        self.hostLine = hostLine
-        self.coverToken = coverToken
-        self.detailLine = detailLine
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        hidesBottomBarWhenPushed = true
-        let back = UIButton(type: .system)
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        back.tintColor = .suliInk
-        back.addTarget(self, action: #selector(sailBack), for: .touchUpInside)
-        let cover = UIImageView(image: suliJoyCoverImage(named: coverToken))
-        cover.translatesAutoresizingMaskIntoConstraints = false
-        cover.contentMode = .scaleAspectFill
-        cover.clipsToBounds = true
-        cover.layer.cornerRadius = 24
-        let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = shoreTitle
-        title.font = UIFont.systemFont(ofSize: 24, weight: .black)
-        title.textColor = .suliInk
-        title.numberOfLines = 2
-        let host = UILabel()
-        host.translatesAutoresizingMaskIntoConstraints = false
-        host.text = hostLine
-        host.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        host.textColor = .suliMutedInk
-        let detail = UILabel()
-        detail.translatesAutoresizingMaskIntoConstraints = false
-        detail.text = detailLine
-        detail.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        detail.textColor = .suliInk
-        detail.numberOfLines = 0
-        [back, cover, title, host, detail].forEach { view.addSubview($0) }
-        NSLayoutConstraint.activate([
-            back.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            back.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            back.widthAnchor.constraint(equalToConstant: 44),
-            back.heightAnchor.constraint(equalToConstant: 44),
-            cover.topAnchor.constraint(equalTo: back.bottomAnchor, constant: 12),
-            cover.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            cover.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            cover.heightAnchor.constraint(equalTo: cover.widthAnchor, multiplier: 0.62),
-            title.topAnchor.constraint(equalTo: cover.bottomAnchor, constant: 16),
-            title.leadingAnchor.constraint(equalTo: cover.leadingAnchor),
-            title.trailingAnchor.constraint(equalTo: cover.trailingAnchor),
-            host.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 6),
-            host.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            host.trailingAnchor.constraint(equalTo: title.trailingAnchor),
-            detail.topAnchor.constraint(equalTo: host.bottomAnchor, constant: 12),
-            detail.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            detail.trailingAnchor.constraint(equalTo: title.trailingAnchor)
-        ])
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = true
-    }
-
-    @objc private func sailBack() {
-        navigationController?.popViewController(animated: true)
-    }
-}
-
 private final class SuliJoyVoiceMeterView: UIView {
     private let barCount = 7
     private var bars: [UIView] = []
@@ -1388,15 +1304,16 @@ private final class SuliJoyLagoonVoiceTileCell: UICollectionViewCell {
     }
 
     func applyVoiceCard(_ card: SuliJoyLagoonVoiceCard) {
-        coverView.image = suliJoyCoverImage(named: card.coverToken)
-        hostAvatar.image = UIImage.suliJoyPortrait(named: card.hostPortraitToken)
+        coverView.suliJoyApplyPhoto(card.coverToken)
+        hostAvatar.suliJoyApplyPortrait(card.hostPortraitToken)
         hostName.text = card.hostName
         heatLabel.text = "\(card.heat)"
         summaryLabel.text = card.summary
         let faces = Array(card.faceTokens.prefix(2))
         let shown = faces.isEmpty ? [""] : faces
         for token in shown {
-            let face = UIImageView(image: UIImage.suliJoyPortrait(named: token))
+            let face = UIImageView()
+            face.suliJoyApplyPortrait(token)
             face.translatesAutoresizingMaskIntoConstraints = false
             face.contentMode = .scaleAspectFill
             face.clipsToBounds = true
@@ -1433,6 +1350,7 @@ private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
     private let liveBadge = UIImageView()
     private let titleLabel = UILabel()
     private let subtitleLabel = UILabel()
+    private var subtitleHeightConstraint: NSLayoutConstraint?
     private let heatChip = UIView()
     private let heatIcon = UIImageView()
     private let heatLabel = UILabel()
@@ -1584,6 +1502,9 @@ private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
             extraChip.heightAnchor.constraint(equalToConstant: 22),
             extraChip.widthAnchor.constraint(greaterThanOrEqualToConstant: 34)
         ])
+        let collapsedSubtitle = subtitleLabel.heightAnchor.constraint(equalToConstant: 0)
+        collapsedSubtitle.priority = .required
+        subtitleHeightConstraint = collapsedSubtitle
     }
 
     required init?(coder: NSCoder) {
@@ -1618,9 +1539,12 @@ private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
     }
 
     func applyLiveCard(_ card: SuliJoyLagoonLiveCard) {
-        portraitView.image = UIImage.suliJoyPortrait(named: card.portraitToken)
+        portraitView.suliJoyApplyPortrait(card.portraitToken)
         titleLabel.text = card.title
+        let showsSubtitle = !card.subtitle.isEmpty
         subtitleLabel.text = card.subtitle
+        subtitleLabel.isHidden = !showsSubtitle
+        subtitleHeightConstraint?.isActive = !showsSubtitle
         heatLabel.text = "\(max(card.heat, 0))"
         let tags = card.tagLabels
         tagPrimary.text = tags.first ?? ""
@@ -1634,7 +1558,8 @@ private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
         } else {
             faceRow.isHidden = false
             for token in faces {
-                let face = UIImageView(image: UIImage.suliJoyPortrait(named: token))
+                let face = UIImageView()
+                face.suliJoyApplyPortrait(token)
                 face.translatesAutoresizingMaskIntoConstraints = false
                 face.contentMode = .scaleAspectFill
                 face.clipsToBounds = true

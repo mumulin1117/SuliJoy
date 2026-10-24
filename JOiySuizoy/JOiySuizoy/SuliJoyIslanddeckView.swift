@@ -417,10 +417,6 @@ class SuliJoyReefEntryCanvasController: UIViewController, UITextFieldDelegate, U
         (presenter ?? self).present(reefClauseDeck, animated: true)
     }
 
-    func refreshLagoonAgreementState() {
-        refreshConsentRibbonState()
-    }
-
     func refreshConsentRibbonState() {}
 
     @objc private func foldReefKeys() {

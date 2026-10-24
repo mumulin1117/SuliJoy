@@ -600,7 +600,7 @@ final class SuliJoyShortsClipCell: UITableViewCell {
 
     func offShoulder(with shorelineShell: SuliJoyShellClip) {
         self.shorelineShell = shorelineShell
-        creatorAvatarView.image = UIImage.suliJoyPortrait(named: shorelineShell.terracottaWarmth.clipPortraitToken)
+        creatorAvatarView.suliJoyApplyPortrait(shorelineShell.terracottaWarmth.clipPortraitToken)
         creatorNameLabel.text = shorelineShell.terracottaWarmth.clipStylistAlias
         shoreCaptionLabel.text = shorelineShell.hibiscusShade
         shellHeartCountLabel.text = "\(shorelineShell.palmLeafPattern)"
@@ -608,7 +608,7 @@ final class SuliJoyShortsClipCell: UITableViewCell {
         shellHeartButton.setImage(UIImage(named: shorelineShell.driftwoodPalette ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal), for: .normal)
         lagoonFollowButton.suliJoyCoastalCapsule(isFollowing: shorelineShell.coastalChic)
         harborFlagButton.tintColor = shorelineShell.coastalChic ? UIColor(red: 1, green: 0.42, blue: 0.38, alpha: 1) : UIColor(red: 125 / 255, green: 125 / 255, blue: 125 / 255, alpha: 1)
-        reefStillView.image = UIImage.suliJoyPhoto(named: shorelineShell.tropicalMotif.sandyNeutral)
+        reefStillView.suliJoyApplyPhoto(shorelineShell.tropicalMotif.sandyNeutral)
         motionPulseButton.alpha = 1
         motionPulseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         carveReefStillFrame(for: shorelineShell)

@@ -471,7 +471,7 @@ private final class SuliJoyLagoonLetterCell: UITableViewCell {
     }
 
     func apply(_ thread: SuliJoyLagoonLetterThread) {
-        portrait.image = UIImage.suliJoyPortrait(named: thread.portraitToken)
+        portrait.suliJoyApplyPortrait(thread.portraitToken)
         nameLabel.text = thread.peerName.isEmpty ? "Stylist" : thread.peerName
         previewLabel.text = thread.blocked ? "This chat is unavailable." : thread.preview
         timeLabel.text = thread.momentLine
@@ -595,7 +595,7 @@ private final class SuliJoyLagoonLetterNoteCell: UITableViewCell {
             bubbleLabel.textColor = .white
             peerPortrait.isHidden = true
             ownPortrait.isHidden = !showsOwnAvatar
-            ownPortrait.image = UIImage.suliJoyPortrait(named: ownPortraitToken)
+            ownPortrait.suliJoyApplyPortrait(ownPortraitToken)
             outgoingPortraitWidth?.constant = showsOwnAvatar ? NoteMetric.portraitSide : 0
             if showsOwnAvatar {
                 outgoingTrailing?.isActive = true
@@ -607,7 +607,7 @@ private final class SuliJoyLagoonLetterNoteCell: UITableViewCell {
             bubbleLabel.textColor = .suliInk
             ownPortrait.isHidden = true
             peerPortrait.isHidden = !showsPeerAvatar
-            peerPortrait.image = UIImage.suliJoyPortrait(named: peerPortraitToken)
+            peerPortrait.suliJoyApplyPortrait(peerPortraitToken)
             incomingPortraitWidth?.constant = showsPeerAvatar ? NoteMetric.portraitSide : 0
             if showsPeerAvatar {
                 incomingLeading?.isActive = true

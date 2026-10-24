@@ -37,7 +37,7 @@ final class SuliJoyLagoonMirrorController: SuliJoyReefEntryCanvasController, UII
         kaftanLayer.translatesAutoresizingMaskIntoConstraints = false
         kaftanLayer.contentMode = .scaleAspectFill
         kaftanLayer.clipsToBounds = true
-        kaftanLayer.image = UIImage.suliJoyPortrait(named: canvasTote?.kaftanLayer)
+        kaftanLayer.suliJoyApplyPortrait(canvasTote?.kaftanLayer)
 
         terracottaWarmth.translatesAutoresizingMaskIntoConstraints = false
         terracottaWarmth.text = "Exdxixtx xpxrxoxfxixlxex".suliJoyPalmUnfurled

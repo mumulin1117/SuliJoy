@@ -1027,88 +1027,6 @@ enum SuliJoyespadrillePairing: Codable, Equatable {
     case softDrape(seersuckerStripe: String)
     case breezyFit(crinkleLinen: String)
 
-    private enum ShoreReportCoveKey: CodingKey {
-    case kind
-    case sunwashedDenim
-    case washedCotton
-    case crinkleLinen
-    case cottonGauze
-    case seersuckerStripe
-    case beachBlazer
-    case linenVest
-    case wideLegLinen
-    case flowyHem
-    case relaxedTailor
-    case softDrape
-    case breezyFit
-
-    var stringValue: String {
-        switch self {
-        case .kind:
-            return "kSiunldi".suliJoyPalmUnfurled
-        case .sunwashedDenim:
-            return "mSoumleinJtoIyDR".suliJoyPalmUnfurled
-        case .washedCotton:
-            return "cSoumlmieJnotyIRDe".suliJoyPalmUnfurled
-        case .crinkleLinen:
-            return "tSiudleiIJDo".suliJoyPalmUnfurled
-        case .cottonGauze:
-            return "cSluilpiIJDo".suliJoyPalmUnfurled
-        case .seersuckerStripe:
-            return "vSiuslixtJoxryIRDe".suliJoyPalmUnfurled
-        case .beachBlazer:
-            return "mSoumleinJto".suliJoyPalmUnfurled
-        case .linenVest:
-            return "sShuolrieJCooymRmeexnftP".suliJoyPalmUnfurled
-        case .wideLegLinen:
-            return "tSiudleiAJcotyiRveietfyP".suliJoyPalmUnfurled
-        case .flowyHem:
-            return "sShuellilJColyiRpe".suliJoyPalmUnfurled
-        case .relaxedTailor:
-            return "sShuellilJColyiRpeCeofmPmaelnmtW".suliJoyPalmUnfurled
-        case .softDrape:
-            return "lSaugloioJnoVyiRseietfoPra".suliJoyPalmUnfurled
-        case .breezyFit:
-            return "tSiudleiTJaolykRSepeafcPea".suliJoyPalmUnfurled
-        }
-    }
-
-    init?(stringValue: String) {
-        switch stringValue {
-        case "kSiunldi".suliJoyPalmUnfurled:
-            self = .kind
-        case "mSoumleinJtoIyDR".suliJoyPalmUnfurled:
-            self = .sunwashedDenim
-        case "cSoumlmieJnotyIRDe".suliJoyPalmUnfurled:
-            self = .washedCotton
-        case "tSiudleiIJDo".suliJoyPalmUnfurled:
-            self = .crinkleLinen
-        case "cSluilpiIJDo".suliJoyPalmUnfurled:
-            self = .cottonGauze
-        case "vSiuslixtJoxryIRDe".suliJoyPalmUnfurled:
-            self = .seersuckerStripe
-        case "mSoumleinJto".suliJoyPalmUnfurled:
-            self = .beachBlazer
-        case "sShuolrieJCooymRmeexnftP".suliJoyPalmUnfurled:
-            self = .linenVest
-        case "tSiudleiAJcotyiRveietfyP".suliJoyPalmUnfurled:
-            self = .wideLegLinen
-        case "sShuellilJColyiRpe".suliJoyPalmUnfurled:
-            self = .flowyHem
-        case "sShuellilJColyiRpeCeofmPmaelnmtW".suliJoyPalmUnfurled:
-            self = .relaxedTailor
-        case "lSaugloioJnoVyiRseietfoPra".suliJoyPalmUnfurled:
-            self = .softDrape
-        case "tSiudleiTJaolykRSepeafcPea".suliJoyPalmUnfurled:
-            self = .breezyFit
-        default:
-            return nil
-        }
-    }
-
-    var intValue: Int? { nil }
-    init?(intValue: Int) { nil }
-}
 }
 
 struct SuliJoyShoreReportDraft: Codable, Equatable {
@@ -1215,13 +1133,6 @@ struct SuliJoyLagoonVisitor: Equatable {
             shorelineSlug.isEmpty ? "sShuolrieJ_ogyuRexsetf".suliJoyPalmUnfurled : shorelineSlug
         ].joined()
     }
-}
-
-struct SuliJoyVisitorShoreBundle: Equatable {
-    let visitor: SuliJoyLagoonVisitor
-    let moments: [SuliJoyReefMoment]
-    let clips: [SuliJoyShellClip]
-    let activities: [SuliJoyTideActivity]
 }
 
 enum SuliJoyMineCoveSection: CaseIterable {

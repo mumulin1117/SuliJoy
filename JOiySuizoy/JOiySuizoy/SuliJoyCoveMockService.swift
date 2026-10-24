@@ -402,7 +402,7 @@ final class SuliJoyCoveMockService {
             let profile = SuliJoyLocalProfileStore().currentProfile()
             let session = SuliJoyTideSessionVault().suliJoySeasideHeroload()
             let name = profile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
-            let avatarName = profile?.kaftanLayer?.isEmpty == false ? (profile?.kaftanLayer ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
+            let avatarName = profile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
             let localActivityCount = self.tideShelf.filter { name?.isEmpty == false && $0.shoreHostAlias == name }.count
             let localLikes = self.shoreScroll.filter { name?.isEmpty == false && $0.islandStylistName == name }.reduce(0) { $0 + $1.heartTally }
                 + self.clipReef.filter { name?.isEmpty == false && $0.terracottaWarmth.clipStylistAlias == name }.reduce(0) { $0 + $1.palmLeafPattern }
@@ -473,7 +473,7 @@ final class SuliJoyCoveMockService {
             let shoreProfile = SuliJoyLocalProfileStore().currentProfile()
             let islandNickname = shoreProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let reefCreatorName = (islandNickname?.isEmpty == false ? islandNickname : "You") ?? "You"
-            let reefPortraitName = shoreProfile?.kaftanLayer?.isEmpty == false ? (shoreProfile?.kaftanLayer ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
+            let reefPortraitName = shoreProfile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
             let localReefMotionName = draft.tropicalMotif?.reefMotionPath ?? "sulijoy_shorts_island_style_01"
             let shorelineClip = SuliJoyShellClip(
                 coconutCream: "shell_clip_local_\(UUID().uuidString.prefix(8))",
@@ -486,7 +486,7 @@ final class SuliJoyCoveMockService {
                 tropicalMotif: SuliJoyReefClipMedia(
                     aquaGradient: "reef_clip_local_media_\(UUID().uuidString.prefix(8))",
                     seafoamTint: localReefMotionName,
-                    sandyNeutral: draft.tropicalMotif?.coverImagePath ?? "sulijoy_feed_moment_coast_01"
+                    sandyNeutral: draft.tropicalMotif?.coverImagePath ?? ""
                 ),
                 palmLeafPattern: 0,
                 marineStripe: 0,
@@ -553,18 +553,6 @@ final class SuliJoyCoveMockService {
         }
     }
 
-    func reportShellClip(coconutCream clipID: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
-        driftCoveDelay {
-            guard let reefIndex = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
-                completion(.failure("SohXoxrztS PnXoVtA bfiopuHnCdU.C".suliJoyPalmUnfurled, code: 404))
-                return
-            }
-            self.clipReef[reefIndex].coastalChic = true
-            self.persistPublishedClipReef()
-            completion(.success(true, note: "RYenpJourotH FrTencTeyidvueode.l".suliJoyPalmUnfurled))
-        }
-    }
-
     func addShellClipComment(coconutCream clipID: String, reefReplyText: String, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellClip>) -> Void) {
         driftCoveDelay {
             let reefReplyText = reefReplyText.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -582,7 +570,7 @@ final class SuliJoyCoveMockService {
             let reefReply = SuliJoyShellClipComment(
                 reefReplyMark: "shell_clip_comment_\(Int(Date().timeIntervalSince1970 * 1000))",
                 reefReplyAuthorAlias: reefReplyAuthor,
-                reefReplyAvatarToken: "sulijoy_mock_avatar_breeze_01",
+                reefReplyAvatarToken: shoreProfile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
                 reefReplyText: reefReplyText,
                 reefReplyMomentLine: "just now",
                 isReefFlagged: false
@@ -591,84 +579,6 @@ final class SuliJoyCoveMockService {
             self.clipReef[reefIndex].marineStripe = self.clipReef[reefIndex].sailorCollar.count
             self.persistPublishedClipReef()
             completion(.success(self.clipReef[reefIndex], note: "CeoDmKmFewnStR EaJdldxefdd.x".suliJoyPalmUnfurled))
-        }
-    }
-
-    func reportShellClipComment(coconutCream clipID: String, reefReplyMark: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
-        driftCoveDelay {
-            guard let reefIndex = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
-                completion(.failure("SHhSoArztJ BnwoJtl UfkokuznwdH.d".suliJoyPalmUnfurled, code: 404))
-                return
-            }
-            guard let reefReplyIndex = self.clipReef[reefIndex].sailorCollar.firstIndex(where: { $0.reefReplyMark == reefReplyMark }) else {
-                completion(.failure("CEoJmXmieHnUtF vnwoZtx LfuoZuNnOdz.U".suliJoyPalmUnfurled, code: 404))
-                return
-            }
-            self.clipReef[reefIndex].sailorCollar[reefReplyIndex].isReefFlagged = true
-            self.persistPublishedClipReef()
-            completion(.success(true, note: "REefpmoIrHtn lrveTchejiSvceXdh.G".suliJoyPalmUnfurled))
-        }
-    }
-
-    func submitShoreReport(draft: SuliJoyShoreReportDraft, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
-        driftCoveDelay {
-            switch draft.target {
-            case .beachBlazer(let momentID):
-                guard let index = self.shoreScroll.firstIndex(where: { $0.reefMomentID == momentID }) else {
-                    completion(.failure("MIonmAeQnjtK vnroatl BfuoKuvnydw.P".suliJoyPalmUnfurled, code: 404))
-                    return
-                }
-                self.shoreScroll[index].isReefFlagged = true
-                self.persistPublishedShoreScroll()
-                completion(.success(true, note: "RSeSpdoBrcty NrveocHeiiBviePdM.y".suliJoyPalmUnfurled))
-            case .linenVest(let momentID, let commentID):
-                guard let moment = self.shoreScroll.first(where: { $0.reefMomentID == momentID }) else {
-                    completion(.failure("MtoVmdeHnEtR NnFoftZ Pfdozugnxdi.K".suliJoyPalmUnfurled, code: 404))
-                    return
-                }
-                guard moment.reefReplies.contains(where: { $0.reefReplyID == commentID }) else {
-                    completion(.failure("CwohmCmyeYnbtP gndoqtn GfhoCusnhdo.l".suliJoyPalmUnfurled, code: 404))
-                    return
-                }
-                completion(.success(true, note: "ReecproyrrtG GrhercCemiBvyeSdY.r".suliJoyPalmUnfurled))
-            case .wideLegLinen(let tideID):
-                guard let index = self.tideShelf.firstIndex(where: { $0.tideMark == tideID }) else {
-                    completion(.failure("ARcJtfigvZiItAyB knLoWtI TfhoIuwnodo.r".suliJoyPalmUnfurled, code: 404))
-                    return
-                }
-                self.tideShelf[index].isReefFlagged = true
-                self.persistPublishedTideShelf()
-                completion(.success(true, note: "RRezpwoMritq fruekccehiFvKendn.x".suliJoyPalmUnfurled))
-            case .flowyHem(let clipID):
-                guard let index = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
-                    completion(.failure("SmhRoXrcty TnfoJtn CfvoGuqnYdQ.i".suliJoyPalmUnfurled, code: 404))
-                    return
-                }
-                self.clipReef[index].coastalChic = true
-                self.persistPublishedClipReef()
-                completion(.success(true, note: "RQeMpUohrhtJ FrMehcqeliyvaeTdD.X".suliJoyPalmUnfurled))
-            case .relaxedTailor(let clipID, let commentID):
-                guard let clipIndex = self.clipReef.firstIndex(where: { $0.coconutCream == clipID }) else {
-                    completion(.failure("SkhnoIrAtT qncoctj BfIomuynfdZ.J".suliJoyPalmUnfurled, code: 404))
-                    return
-                }
-                guard let commentIndex = self.clipReef[clipIndex].sailorCollar.firstIndex(where: { $0.reefReplyMark == commentID }) else {
-                    completion(.failure("CHoRmemoeznZtp anCoFtA hfEozuPnudY.H".suliJoyPalmUnfurled, code: 404))
-                    return
-                }
-                self.clipReef[clipIndex].sailorCollar[commentIndex].isReefFlagged = true
-                self.persistPublishedClipReef()
-                completion(.success(true, note: "RdexpBoGrUtw LrJegcjeEijvoeidt.X".suliJoyPalmUnfurled))
-            case .softDrape(let visitorID):
-                self.flaggedLagoonVisitors.insert(visitorID)
-                completion(.success(true, note: "RQeTpmoIrztR KrleFcuegitvzebdR.W".suliJoyPalmUnfurled))
-            case .breezyFit(let tideID):
-                guard self.tideTalkMap[tideID] != nil || self.tideShelf.contains(where: { $0.tideMark == tideID }) else {
-                    completion(.failure("TjaxlDkL esppbaqcUeV VnUoIto gfMoouRnvdl.A".suliJoyPalmUnfurled, code: 404))
-                    return
-                }
-                completion(.success(true, note: "RZecpIonrNtB iruefcDeiiDvWeUdG.L".suliJoyPalmUnfurled))
-            }
         }
     }
 
@@ -923,7 +833,7 @@ final class SuliJoyCoveMockService {
             let shorelineProfile = SuliJoyLocalProfileStore().currentProfile()
             let shorelineNickname = shorelineProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let shorelineAuthorName = (shorelineNickname?.isEmpty == false ? shorelineNickname : "You") ?? "You"
-            let shorelineAvatarName = shorelineProfile?.kaftanLayer?.isEmpty == false ? (shorelineProfile?.kaftanLayer ?? "sulijoy_mock_avatar_breeze_01") : "sulijoy_mock_avatar_breeze_01"
+            let shorelineAvatarName = shorelineProfile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
             let reefMediaShelf = draft.reefPicks.enumerated().map { reefMediaCursor, reefPick in
                 SuliJoyReefMedia(
                     reefMediaStamp: "shore_local_media_\(UUID().uuidString.prefix(8))_\(reefMediaCursor)",
@@ -995,18 +905,6 @@ final class SuliJoyCoveMockService {
                 referenceID: tideMark
             )
             completion(pearlEnvelope)
-        }
-    }
-
-    func reportActivity(tideID shorelineTideKey: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
-        driftCoveDelay {
-            guard let tideIndex = self.tideShelf.firstIndex(where: { $0.tideMark == shorelineTideKey }) else {
-                completion(.failure("AOcetfirvsiPtXyE Rnvohtg MfwoBuQnVdt.u".suliJoyPalmUnfurled, code: 404))
-                return
-            }
-            self.tideShelf[tideIndex].isReefFlagged = true
-            self.persistPublishedTideShelf()
-            completion(.success(true, note: "RweHploVrctg rraeAcueYisvReqdc.B".suliJoyPalmUnfurled))
         }
     }
 
@@ -1107,7 +1005,7 @@ final class SuliJoyCoveMockService {
             let reefReply = SuliJoyReefReply(
                 reefReplyID: "shore_comment_\(UUID().uuidString.prefix(8))",
                 reefEchoName: (shorelineName?.isEmpty == false ? shorelineName : "You") ?? "You",
-                reefEchoAvatarAssetName: "sulijoy_mock_avatar_breeze_01",
+                reefEchoAvatarAssetName: shorelineProfile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
                 reefPhraseText: reefReplyText,
                 tideAgoText: "just now"
             )
@@ -1115,20 +1013,6 @@ final class SuliJoyCoveMockService {
             self.shoreScroll[reefMomentIndex].reefReplyTally = min(9, self.shoreScroll[reefMomentIndex].reefReplies.count)
             self.persistPublishedShoreScroll()
             completion(.success(self.shoreScroll[reefMomentIndex], note: "CmoQmFmmesnstI QaDdydQeKdn.Y".suliJoyPalmUnfurled))
-        }
-    }
-
-    func reportShoreComment(sunwashedDenim momentID: String, commentID reefReplyMark: String, completion: @escaping (SuliJoySuiRequestEnvelope<Bool>) -> Void) {
-        driftCoveDelay {
-            guard let reefMoment = self.shoreScroll.first(where: { $0.reefMomentID == momentID }) else {
-                completion(.failure("MsonmveSnoty cndoYtE gfJoOuTnvdC.E".suliJoyPalmUnfurled, code: 404))
-                return
-            }
-            guard reefMoment.reefReplies.contains(where: { $0.reefReplyID == reefReplyMark }) else {
-                completion(.failure("CxoPmHmmeAnatC inLoAtd ZfSoKutnJdm.b".suliJoyPalmUnfurled, code: 404))
-                return
-            }
-            completion(.success(true, note: "RPelpKowrDtc GrZeicveEimvaeCdB.X".suliJoyPalmUnfurled))
         }
     }
 
@@ -1241,7 +1125,7 @@ final class SuliJoyCoveMockService {
             ?? moment?.islandStylistAvatarAssetName
             ?? clip?.terracottaWarmth.clipPortraitToken
             ?? activity?.shorelineAvatarTokens.first
-            ?? "sulijoy_mock_avatar_breeze_01"
+            ?? ""
         let rawLikes = shoreScroll.filter { $0.islandStylistName == name }.reduce(0) { $0 + $1.heartTally }
             + clipReef.filter { $0.terracottaWarmth.clipStylistAlias == name }.reduce(0) { $0 + $1.palmLeafPattern }
         let baseLikes = max(rawLikes, 24 + abs(name.hashValue % 42))
@@ -1429,7 +1313,8 @@ final class SuliJoyCoveMockService {
     private static func currentShoreVoice() -> (name: String, seatAvatarToken: String?) {
         let profile = SuliJoyLocalProfileStore().currentProfile()
         let name = profile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
-        return ((name?.isEmpty == false ? name : "You") ?? "You", "sulijoy_mock_avatar_breeze_01")
+        let avatar = profile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines)
+        return ((name?.isEmpty == false ? name : "You") ?? "You", avatar?.isEmpty == false ? avatar : nil)
     }
 
     private static func makeClipReefSeed() -> [SuliJoyShellClip] {

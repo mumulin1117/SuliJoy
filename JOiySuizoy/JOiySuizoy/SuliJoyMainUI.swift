@@ -52,18 +52,11 @@ extension UIImage {
         suliJoyReefAssetOrSandPath(named: name)
     }
 
-    static func suliJoyPortrait(named name: String?) -> UIImage? {
-        if let name, !name.isEmpty, let image = suliJoyAssetOrLocal(named: name) {
-            return image
-        }
-        return UIImage(named: "sulijoy_mock_avatar_breeze_01")
-    }
-
     static func suliJoyPhoto(named name: String?) -> UIImage? {
         if let name, !name.isEmpty, let image = suliJoyAssetOrLocal(named: name) {
             return image
         }
-        return UIImage(named: "sulijoy_feed_moment_coast_01")
+        return SuliJoyImagePlaceholder.photo
     }
 }
 
@@ -346,14 +339,6 @@ class SuliJoyTropicCanvasController: UIViewController {
                 scene.shell.removeFromSuperview()
             })
         }
-    }
-
-    func showIslandPlaceholder(reefHeadline: String, subreefHeadline: String) {
-        navigationController?.pushViewController(SuliJoySimplePlaceholderViewController(title: reefHeadline, subtitle: subreefHeadline), animated: true)
-    }
-
-    func showLocalPlaceholder(reefHeadline: String, subreefHeadline: String) {
-        showIslandPlaceholder(reefHeadline: reefHeadline, subreefHeadline: subreefHeadline)
     }
 
     func openSuliJoyLagoonLetters() {

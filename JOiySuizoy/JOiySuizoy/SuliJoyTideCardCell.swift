@@ -221,7 +221,7 @@ final class SuliJoyTideCardCell: UITableViewCell {
         reefPreviewViews = shoreMediaShelf.prefix(3).map { tideMedia in
             let reefImage = UIImageView()
             reefImage.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.73, alpha: 1)
-            reefImage.image = UIImage.suliJoyAssetOrLocal(named: tideMedia.reefAssetToken)
+            reefImage.suliJoyApplyPhoto(tideMedia.reefAssetToken)
             reefImage.contentMode = .scaleAspectFill
             reefImage.clipsToBounds = true
             reefImage.layer.cornerRadius = 9
@@ -233,7 +233,8 @@ final class SuliJoyTideCardCell: UITableViewCell {
     private func renderTideCrewRail(_ avatarTokens: [String]) {
         lagoonFaceRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
         for reefAsset in avatarTokens.prefix(3) {
-            let lagoonFace = UIImageView(image: UIImage.suliJoyPortrait(named: reefAsset))
+            let lagoonFace = UIImageView()
+            lagoonFace.suliJoyApplyPortrait(reefAsset)
             lagoonFace.translatesAutoresizingMaskIntoConstraints = false
             lagoonFace.contentMode = .scaleAspectFill
             lagoonFace.clipsToBounds = true

@@ -67,7 +67,7 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         coverPreview.translatesAutoresizingMaskIntoConstraints = false
         coverPreview.contentMode = .scaleAspectFill
         coverPreview.clipsToBounds = true
-        coverPreview.image = UIImage.suliJoyPhoto(named: "sulijoy_home_activity_sunset_01")
+        coverPreview.image = SuliJoyImagePlaceholder.photo
 
         let camera = UIImageView(image: UIImage(systemName: "camera.fill"))
         camera.translatesAutoresizingMaskIntoConstraints = false
