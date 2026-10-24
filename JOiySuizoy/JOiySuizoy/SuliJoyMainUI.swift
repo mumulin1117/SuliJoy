@@ -239,16 +239,17 @@ class SuliJoyTropicCanvasController: UIViewController {
     }
 
     func showLagoonToast(_ reefLine: String) {
-        let toastScene = harvestIslandToastReefScene(reefLine)
+        let succeeded = reefLine.suliJoyReadsAsSuccessNotice
+        let toastScene = harvestIslandToastReefScene(reefLine, succeeded: succeeded)
         moorIslandToastReefScene(toastScene)
         stitchIslandToastReefScene(toastScene)
         animateIslandToastReefScene(toastScene)
     }
 
-    private func harvestIslandToastReefScene(_ reefLine: String) -> IslandToastReefScene {
+    private func harvestIslandToastReefScene(_ reefLine: String, succeeded: Bool) -> IslandToastReefScene {
         let shell = makeIslandToastShellReef()
         let stripe = makeIslandToastSunStripe()
-        let icon = makeIslandToastPearlIcon()
+        let icon = makeIslandToastPearlIcon(succeeded: succeeded)
         let caption = makeIslandToastShoreCaption(reefLine)
         shell.layer.addSublayer(stripe)
         return IslandToastReefScene(shell: shell, stripe: stripe, icon: icon, hibiscusShade: caption)
@@ -279,10 +280,12 @@ class SuliJoyTropicCanvasController: UIViewController {
         return stripe
     }
 
-    private func makeIslandToastPearlIcon() -> UIImageView {
-        let icon = UIImageView(image: UIImage(systemName: "exclamationmark.triangle.fill"))
+    private func makeIslandToastPearlIcon(succeeded: Bool) -> UIImageView {
+        let icon = UIImageView(image: UIImage(systemName: succeeded ? "checkmark.circle.fill" : "exclamationmark.triangle.fill"))
         icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.tintColor = UIColor(red: 1, green: 0.45, blue: 0.12, alpha: 1)
+        icon.tintColor = succeeded
+            ? UIColor(red: 0.18, green: 0.72, blue: 0.42, alpha: 1)
+            : UIColor(red: 1, green: 0.45, blue: 0.12, alpha: 1)
         icon.contentMode = .scaleAspectFit
         return icon
     }
@@ -433,15 +436,20 @@ extension UIViewController {
         islandNoticeCard.layer.shadowRadius = 22
         islandNoticeCard.layer.shadowOffset = CGSize(width: 0, height: 12)
 
+        let succeeded = reefNote.suliJoyReadsAsSuccessNotice
         let pearlBadgeShell = UIView()
         pearlBadgeShell.translatesAutoresizingMaskIntoConstraints = false
-        pearlBadgeShell.backgroundColor = UIColor(red: 1, green: 0.95, blue: 0.72, alpha: 1)
+        pearlBadgeShell.backgroundColor = succeeded
+            ? UIColor(red: 0.86, green: 0.96, blue: 0.88, alpha: 1)
+            : UIColor(red: 1, green: 0.95, blue: 0.72, alpha: 1)
         pearlBadgeShell.layer.cornerRadius = 27
         pearlBadgeShell.clipsToBounds = true
 
-        let pearlBadgeMark = UIImageView(image: UIImage(systemName: "exclamationmark.triangle.fill"))
+        let pearlBadgeMark = UIImageView(image: UIImage(systemName: succeeded ? "checkmark.circle.fill" : "exclamationmark.triangle.fill"))
         pearlBadgeMark.translatesAutoresizingMaskIntoConstraints = false
-        pearlBadgeMark.tintColor = UIColor(red: 1, green: 0.45, blue: 0.12, alpha: 1)
+        pearlBadgeMark.tintColor = succeeded
+            ? UIColor(red: 0.18, green: 0.72, blue: 0.42, alpha: 1)
+            : UIColor(red: 1, green: 0.45, blue: 0.12, alpha: 1)
         pearlBadgeMark.contentMode = .scaleAspectFit
 
         let headlineGlyph = UILabel()
@@ -587,6 +595,22 @@ final class SuliJoySimplePlaceholderViewController: SuliJoyTropicCanvasControlle
 
     @objc private func returnFromIslandPrompt() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+private extension String {
+    var suliJoyReadsAsSuccessNotice: Bool {
+        let line = lowercased()
+        let blockers = ["unable", "fail", "error", "invalid", "cannot", "can't", "please", "not ", "missing", "empty", "denied"]
+        if blockers.contains(where: { line.contains($0) }) {
+            return false
+        }
+        let marks = [
+            "success", "published", "created", "sent", "followed", "unfollowed",
+            "saved", "joined", "shared", "updated", "added", "received",
+            "completed", "you are live", "room created"
+        ]
+        return marks.contains { line.contains($0) }
     }
 }
 

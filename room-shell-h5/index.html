@@ -6,7 +6,6 @@
     <script>
       if (window.location.protocol !== 'file:') document.querySelector('base').href = '/'
     </script>
-    <link rel="preload" as="image" href="./assets/common/app-loading.svg" type="image/svg+xml" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no"
@@ -33,11 +32,62 @@
         place-items: center;
         background: var(--color-bg);
       }
-      .boot-splash img {
+      .boot-splash .shore-load {
+        position: relative;
+        display: grid;
+        width: 72px;
+        height: 72px;
+        place-items: center;
+      }
+      .boot-splash .shore-ring {
+        position: absolute;
+        border-radius: 50%;
+        border-style: dashed;
+      }
+      .boot-splash .shore-ring-outer {
+        width: 86%;
+        height: 86%;
+        border: 2.5px dashed #ff7347;
+        animation: shore-load-spin 2.4s linear infinite;
+      }
+      .boot-splash .shore-ring-inner {
+        width: 62%;
+        height: 62%;
+        border: 2px dashed #8cf266;
+        animation: shore-load-spin 1.8s linear infinite reverse;
+      }
+      .boot-splash .shore-bars {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        width: 46%;
+        height: 34%;
+        gap: 3px;
+      }
+      .boot-splash .shore-bars i {
         display: block;
-        width: 60px;
-        height: 60px;
-        object-fit: contain;
+        width: 4px;
+        height: 10px;
+        border-radius: 999px;
+        background: #ff7347;
+        transform-origin: center bottom;
+        animation: shore-load-bar 0.9s ease-in-out infinite alternate;
+      }
+      .boot-splash .shore-bars i:nth-child(even) {
+        background: #8cf266;
+      }
+      @keyframes shore-load-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes shore-load-bar {
+        from {
+          transform: scaleY(0.4);
+        }
+        to {
+          transform: scaleY(1);
+        }
       }
     </style>
     <script src="./config/app-config.js"></script>
@@ -60,7 +110,11 @@
   <body>
     <div id="app">
       <div class="boot-splash" aria-hidden="true">
-        <img src="./assets/common/app-loading.svg" alt="" decoding="sync" fetchpriority="high" />
+        <span class="shore-load" role="status" aria-label="Loading">
+          <span class="shore-ring shore-ring-outer"></span>
+          <span class="shore-ring shore-ring-inner"></span>
+          <span class="shore-bars"><i></i><i></i><i></i><i></i><i></i></span>
+        </span>
       </div>
     </div>
     <script type="module" src="./src/main/main.ts"></script>

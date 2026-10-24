@@ -15,8 +15,7 @@ final class SuliJoyRoomShellWebController: SuliJoyTropicCanvasController {
 
     private var webView: WKWebView!
     private var bridgeCoordinator: RoomShellBridgeCoordinator?
-    private let splashOverlay = UIView()
-    private let splashGlyph = UIImageView()
+    private let splashOverlay = SuliJoyShoreRoomLoadingView()
 
     init(roomKind: SuliJoyRoomShellKind, roomID: String, credentials: SuliJoyRoomShellCredentials) {
         self.roomKind = roomKind
@@ -65,21 +64,8 @@ final class SuliJoyRoomShellWebController: SuliJoyTropicCanvasController {
         webView.uiDelegate = coordinator
         webView.navigationDelegate = coordinator
 
-        splashOverlay.translatesAutoresizingMaskIntoConstraints = false
-        splashOverlay.backgroundColor = ShellBridge.splashColor
-        splashOverlay.isUserInteractionEnabled = false
-        splashGlyph.translatesAutoresizingMaskIntoConstraints = false
-        splashGlyph.contentMode = .scaleAspectFit
-        if let dist = SuliJoyRoomShellBundleLocator.distDirectoryURL() {
-            let loadingURL = dist.appendingPathComponent("assets/common/app-loading.svg")
-            if FileManager.default.fileExists(atPath: loadingURL.path) {
-                splashGlyph.image = UIImage(contentsOfFile: loadingURL.path)
-            }
-        }
-
         view.addSubview(webView)
         view.addSubview(splashOverlay)
-        splashOverlay.addSubview(splashGlyph)
         NSLayoutConstraint.activate([
             webView.topAnchor.constraint(equalTo: view.topAnchor),
             webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -89,13 +75,9 @@ final class SuliJoyRoomShellWebController: SuliJoyTropicCanvasController {
             splashOverlay.topAnchor.constraint(equalTo: view.topAnchor),
             splashOverlay.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             splashOverlay.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            splashOverlay.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-
-            splashGlyph.centerXAnchor.constraint(equalTo: splashOverlay.centerXAnchor),
-            splashGlyph.centerYAnchor.constraint(equalTo: splashOverlay.centerYAnchor),
-            splashGlyph.widthAnchor.constraint(equalToConstant: 96),
-            splashGlyph.heightAnchor.constraint(equalToConstant: 96)
+            splashOverlay.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+        splashOverlay.showShore(kind: roomKind)
     }
 
     fileprivate func loadRoomShellEntry(forceFreshCredentials: Bool) {
@@ -115,14 +97,16 @@ final class SuliJoyRoomShellWebController: SuliJoyTropicCanvasController {
             navigationController?.popViewController(animated: true)
             return
         }
-        splashOverlay.alpha = 1
+        splashOverlay.showShore(kind: roomKind)
         webView.loadFileURL(entry, allowingReadAccessTo: dist)
     }
 
     fileprivate func revealRoomShellContent() {
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.25, animations: {
             self.splashOverlay.alpha = 0
-        }
+        }, completion: { _ in
+            self.splashOverlay.hideShore()
+        })
     }
 
     fileprivate func closeRoomShell(reason: String) {

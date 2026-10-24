@@ -231,7 +231,7 @@ final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UI
     private var laneMarks: [SuliJoyVoiceRoomLane: UIView] = [:]
     private var laneCollections: [UICollectionView] = []
     private var laneEmptyNotes: [UILabel] = []
-    private var laneSpinners: [UIActivityIndicatorView] = []
+    private var laneSkeletons: [SuliJoyVoiceBoardSkeleton] = []
     private var laneRooms: [[SuliJoyLagoonVoiceCard]] = [[], [], []]
     private var lane: SuliJoyVoiceRoomLane = .islandVibes
 
@@ -300,13 +300,11 @@ final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UI
             emptyNote.numberOfLines = 0
             emptyNote.isHidden = true
 
-            let spinner = UIActivityIndicatorView(style: .medium)
-            spinner.translatesAutoresizingMaskIntoConstraints = false
-            spinner.hidesWhenStopped = true
+            let skeleton = SuliJoyVoiceBoardSkeleton()
 
             page.addSubview(collection)
             page.addSubview(emptyNote)
-            page.addSubview(spinner)
+            page.addSubview(skeleton)
             NSLayoutConstraint.activate([
                 collection.topAnchor.constraint(equalTo: page.topAnchor),
                 collection.leadingAnchor.constraint(equalTo: page.leadingAnchor),
@@ -316,12 +314,13 @@ final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UI
                 emptyNote.centerYAnchor.constraint(equalTo: page.centerYAnchor),
                 emptyNote.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 32),
                 emptyNote.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -32),
-                spinner.centerXAnchor.constraint(equalTo: page.centerXAnchor),
-                spinner.centerYAnchor.constraint(equalTo: page.centerYAnchor)
+                skeleton.topAnchor.constraint(equalTo: page.topAnchor, constant: 4),
+                skeleton.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 16),
+                skeleton.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -16)
             ])
             laneCollections.append(collection)
             laneEmptyNotes.append(emptyNote)
-            laneSpinners.append(spinner)
+            laneSkeletons.append(skeleton)
             pages.append(page)
         }
         pageDeck.install(pages)
@@ -436,12 +435,12 @@ final class SuliJoyLagoonVoiceBoardController: SuliJoyTropicCanvasController, UI
         guard lanes.indices.contains(index) else { return }
         let selectedLane = lanes[index]
         if laneRooms[index].isEmpty {
-            laneSpinners[index].startAnimating()
+            laneSkeletons[index].setShoreBonesVisible(true)
             laneEmptyNotes[index].isHidden = true
         }
         SuliJoyLagoonProfileRemoteService.shared.fetchVoiceBoard(lane: selectedLane) { [weak self] result in
             guard let self else { return }
-            self.laneSpinners[index].stopAnimating()
+            self.laneSkeletons[index].setShoreBonesVisible(false)
             self.laneCollections[index].refreshControl?.endRefreshing()
             guard result.beachwearCapsule == 200 else {
                 self.laneRooms[index] = []
@@ -513,6 +512,7 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
     private var sortMarks: [LiveSort: UIView] = [:]
     private var sortTables: [UITableView] = []
     private var sortEmptyNotes: [UILabel] = []
+    private var sortSkeletons: [SuliJoyLiveBoardSkeleton] = []
     private let sorts: [LiveSort] = [.forYou, .following, .trending]
     private var rooms: [SuliJoyLagoonLiveCard] = []
     private var sort: LiveSort = .forYou
@@ -724,8 +724,11 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
             emptyNote.numberOfLines = 0
             emptyNote.isHidden = true
 
+            let skeleton = SuliJoyLiveBoardSkeleton()
+
             page.addSubview(table)
             page.addSubview(emptyNote)
+            page.addSubview(skeleton)
             NSLayoutConstraint.activate([
                 table.topAnchor.constraint(equalTo: page.topAnchor),
                 table.leadingAnchor.constraint(equalTo: page.leadingAnchor),
@@ -734,10 +737,14 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
                 emptyNote.centerXAnchor.constraint(equalTo: page.centerXAnchor),
                 emptyNote.topAnchor.constraint(equalTo: page.topAnchor, constant: 36),
                 emptyNote.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 32),
-                emptyNote.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -32)
+                emptyNote.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -32),
+                skeleton.topAnchor.constraint(equalTo: page.topAnchor, constant: 4),
+                skeleton.leadingAnchor.constraint(equalTo: page.leadingAnchor, constant: 16),
+                skeleton.trailingAnchor.constraint(equalTo: page.trailingAnchor, constant: -16)
             ])
             sortTables.append(table)
             sortEmptyNotes.append(emptyNote)
+            sortSkeletons.append(skeleton)
             pages.append(page)
         }
         pageDeck.install(pages)
@@ -749,8 +756,13 @@ final class SuliJoyLagoonLiveBoardController: SuliJoyTropicCanvasController, UIT
     }
 
     @objc private func reloadLiveBoard() {
+        if rooms.isEmpty {
+            sortSkeletons.forEach { $0.setShoreBonesVisible(true) }
+            sortEmptyNotes.forEach { $0.isHidden = true }
+        }
         SuliJoyLagoonProfileRemoteService.shared.fetchLiveBoard { [weak self] result in
             guard let self else { return }
+            self.sortSkeletons.forEach { $0.setShoreBonesVisible(false) }
             self.sortTables.forEach { $0.refreshControl?.endRefreshing() }
             guard result.beachwearCapsule == 200, let shelf = result.sandbarLayering else {
                 self.rooms = []
@@ -1400,6 +1412,19 @@ private final class SuliJoyLagoonVoiceTileCell: UICollectionViewCell {
     }
 }
 
+private final class SuliJoyLiveTagLabel: UILabel {
+    var horizontalInset: CGFloat = 0
+
+    override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.insetBy(dx: horizontalInset, dy: 0))
+    }
+
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width + horizontalInset * 2, height: size.height)
+    }
+}
+
 private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
     private let card = UIView()
     private let portraitRing = UIView()
@@ -1413,8 +1438,8 @@ private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
     private let heatLabel = UILabel()
     private let tagRow = UIStackView()
     private let bottomRow = UIStackView()
-    private let tagPrimary = UILabel()
-    private let tagSecondary = UILabel()
+    private let tagPrimary = SuliJoyLiveTagLabel()
+    private let tagSecondary = SuliJoyLiveTagLabel()
     private let faceRow = UIStackView()
     private let extraChip = UILabel()
 
@@ -1477,6 +1502,9 @@ private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
             tag.backgroundColor = UIColor(red: 1, green: 0.93, blue: 0.94, alpha: 1)
             tag.layer.cornerRadius = 10
             tag.clipsToBounds = true
+            tag.horizontalInset = 4
+            tag.setContentHuggingPriority(.required, for: .horizontal)
+            tag.setContentCompressionResistancePriority(.required, for: .horizontal)
             tagRow.addArrangedSubview(tag)
         }
 
@@ -1504,7 +1532,13 @@ private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
         heatChip.addSubview(heatIcon)
         heatChip.addSubview(heatLabel)
         card.addSubview(bottomRow)
+        let tagSpacer = UIView()
+        tagSpacer.translatesAutoresizingMaskIntoConstraints = false
+        tagSpacer.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        tagSpacer.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        tagRow.setContentHuggingPriority(.required, for: .horizontal)
         bottomRow.addArrangedSubview(tagRow)
+        bottomRow.addArrangedSubview(tagSpacer)
         bottomRow.addArrangedSubview(faceRow)
         bottomRow.addArrangedSubview(extraChip)
 
@@ -1564,8 +1598,18 @@ private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
         portraitRingLayer.frame = portraitRing.bounds
     }
 
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        if window == nil {
+            stopHaloBreath()
+        } else {
+            startHaloBreath()
+        }
+    }
+
     override func prepareForReuse() {
         super.prepareForReuse()
+        stopHaloBreath()
         faceRow.isHidden = false
         faceRow.arrangedSubviews.forEach {
             faceRow.removeArrangedSubview($0)
@@ -1579,10 +1623,10 @@ private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
         subtitleLabel.text = card.subtitle
         heatLabel.text = "\(max(card.heat, 0))"
         let tags = card.tagLabels
-        tagPrimary.text = tags.first.map { "  \($0)  " } ?? ""
+        tagPrimary.text = tags.first ?? ""
         tagPrimary.isHidden = tags.isEmpty
         tagSecondary.isHidden = tags.count < 2
-        tagSecondary.text = tags.count > 1 ? "  \(tags[1])  " : ""
+        tagSecondary.text = tags.count > 1 ? tags[1] : ""
         extraChip.text = " +\(max(card.onlineCount, 0)) "
         let faces = card.viewerPortraitTokens.prefix(3)
         if faces.isEmpty {
@@ -1602,5 +1646,38 @@ private final class SuliJoyLagoonLiveRowCell: UITableViewCell {
                 face.heightAnchor.constraint(equalToConstant: 22).isActive = true
             }
         }
+        startHaloBreath()
+    }
+
+    private func startHaloBreath() {
+        let scaleKey = "suliJoyLiveHaloScale"
+        let glowKey = "suliJoyLiveHaloGlow"
+        guard portraitRing.layer.animation(forKey: scaleKey) == nil else { return }
+        let scale = CABasicAnimation(keyPath: "transform.scale")
+        scale.fromValue = 0.96
+        scale.toValue = 1.08
+        scale.duration = 1.15
+        scale.autoreverses = true
+        scale.repeatCount = .infinity
+        scale.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        scale.isRemovedOnCompletion = false
+        portraitRing.layer.add(scale, forKey: scaleKey)
+
+        let glow = CABasicAnimation(keyPath: "opacity")
+        glow.fromValue = 1
+        glow.toValue = 0.62
+        glow.duration = 1.15
+        glow.autoreverses = true
+        glow.repeatCount = .infinity
+        glow.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        glow.isRemovedOnCompletion = false
+        portraitRing.layer.add(glow, forKey: glowKey)
+    }
+
+    private func stopHaloBreath() {
+        portraitRing.layer.removeAnimation(forKey: "suliJoyLiveHaloScale")
+        portraitRing.layer.removeAnimation(forKey: "suliJoyLiveHaloGlow")
+        portraitRing.layer.transform = CATransform3DIdentity
+        portraitRing.layer.opacity = 1
     }
 }
