@@ -31,7 +31,7 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
     private let lagoonClauses: [SuliJoyLagoonClause]
     private let lagoonIslandWash = SuliJoyIslanddeckView()
 
-    init(lagoonCrownText: String, lagoonRefreshText: String = "Last updated: July 2026", lagoonClauses: [SuliJoyLagoonClause]) {
+    init(lagoonCrownText: String, lagoonRefreshText: String = "Lxaxsxtx xuxpxdxaxtxexdx:x xJxuxlxyx x2x0x2x6x".suliJoyPalmUnfurled, lagoonClauses: [SuliJoyLagoonClause]) {
         self.lagoonCrownText = lagoonCrownText
         self.lagoonRefreshText = lagoonRefreshText
         self.lagoonClauses = lagoonClauses
@@ -39,7 +39,7 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
         modalPresentationStyle = .fullScreen
     }
 
-    convenience init(shoreTitle: String, tideStamp: String = "Last updated: July 2026", reefClauses: [SuliJoyLagoonClause]) {
+    convenience init(shoreTitle: String, tideStamp: String = "Lxaxsxtx xuxpxdxaxtxexdx:x xJxuxlxyx x2x0x2x6x".suliJoyPalmUnfurled, reefClauses: [SuliJoyLagoonClause]) {
         self.init(lagoonCrownText: shoreTitle, lagoonRefreshText: tideStamp, lagoonClauses: reefClauses)
     }
 
@@ -64,7 +64,7 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
 
         let reefBackShell = UIButton(type: .system)
         reefBackShell.translatesAutoresizingMaskIntoConstraints = false
-        reefBackShell.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        reefBackShell.setImage(UIImage(systemName: "axrxrxoxwx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
         reefBackShell.tintColor = .black
         reefBackShell.addTarget(self, action: #selector(closeLagoonScrollText), for: .touchUpInside)
 
@@ -105,7 +105,7 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
         let clauseBlock = UIStackView()
         clauseBlock.axis = .vertical
         clauseBlock.spacing = LagoonScrollTextMeasure.sectionGap
-        clauseBlock.addArrangedSubview(makeLagoonClauseHeading("\(reefNumber). \(clause.reefHeadline)"))
+        clauseBlock.addArrangedSubview(makeLagoonClauseHeading("\(reefNumber)\(".x x".suliJoyPalmUnfurled)\(clause.reefHeadline)"))
         clauseBlock.addArrangedSubview(makeLagoonClauseBody(clause.body))
         return clauseBlock
     }

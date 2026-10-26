@@ -1,243 +1,243 @@
 import UIKit
 
-final class SuliJoyShoreBone: UIView {
-    private let sheen = CAGradientLayer()
+final class lagoonLetterCanvas: UIView {
+    private let comment = CAGradientLayer()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         isUserInteractionEnabled = false
         backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.93, alpha: 1)
-        sheen.colors = [
+        comment.colors = [
             UIColor(white: 1, alpha: 0).cgColor,
             UIColor(white: 1, alpha: 0.78).cgColor,
             UIColor(white: 1, alpha: 0).cgColor
         ]
-        sheen.startPoint = CGPoint(x: 0, y: 0.5)
-        sheen.endPoint = CGPoint(x: 1, y: 0.5)
-        sheen.locations = [-1, -0.5, 0]
-        layer.addSublayer(sheen)
+        comment.startPoint = CGPoint(x: 0, y: 0.5)
+        comment.endPoint = CGPoint(x: 1, y: 0.5)
+        comment.locations = [-1, -0.5, 0]
+        layer.addSublayer(comment)
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        sheen.frame = bounds
-        sheen.cornerRadius = layer.cornerRadius
+        comment.frame = bounds
+        comment.cornerRadius = layer.cornerRadius
     }
 
-    func startSheen() {
-        guard sheen.animation(forKey: "shoreSheen") == nil else { return }
-        let slide = CABasicAnimation(keyPath: "locations")
-        slide.fromValue = [-1.0, -0.5, 0.0]
-        slide.toValue = [1.0, 1.5, 2.0]
-        slide.duration = 1.15
-        slide.repeatCount = .infinity
-        slide.isRemovedOnCompletion = false
-        sheen.add(slide, forKey: "shoreSheen")
+    func reefReplies() {
+        guard comment.animation(forKey: "sxhxoxrxexSxhxexexnx".suliJoyPalmUnfurled) == nil else { return }
+        let presentShoreCalendarWheel = CABasicAnimation(keyPath: "lxoxcxaxtxixoxnxsx".suliJoyPalmUnfurled)
+        presentShoreCalendarWheel.fromValue = [-1.0, -0.5, 0.0]
+        presentShoreCalendarWheel.toValue = [1.0, 1.5, 2.0]
+        presentShoreCalendarWheel.duration = 1.15
+        presentShoreCalendarWheel.repeatCount = .infinity
+        presentShoreCalendarWheel.isRemovedOnCompletion = false
+        comment.add(presentShoreCalendarWheel, forKey: "sxhxoxrxexSxhxexexnx".suliJoyPalmUnfurled)
     }
 
-    func stopSheen() {
-        sheen.removeAnimation(forKey: "shoreSheen")
+    func dismissReefKeyboard() {
+        comment.removeAnimation(forKey: "sxhxoxrxexSxhxexexnx".suliJoyPalmUnfurled)
     }
 }
 
-final class SuliJoyVoiceBoardSkeleton: UIView {
+final class makeCurationChoiceRail: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = false
         isHidden = true
-        accessibilityLabel = "Loading voice rooms"
-        let grid = UIStackView()
-        grid.translatesAutoresizingMaskIntoConstraints = false
-        grid.axis = .vertical
-        grid.spacing = 12
-        addSubview(grid)
+        accessibilityLabel = "Lxoxaxdxixnxgx xvxoxixcxex xrxoxoxmxsx".suliJoyPalmUnfurled
+        let reefNumber = UIStackView()
+        reefNumber.translatesAutoresizingMaskIntoConstraints = false
+        reefNumber.axis = .vertical
+        reefNumber.spacing = 12
+        addSubview(reefNumber)
         NSLayoutConstraint.activate([
-            grid.topAnchor.constraint(equalTo: topAnchor),
-            grid.leadingAnchor.constraint(equalTo: leadingAnchor),
-            grid.trailingAnchor.constraint(equalTo: trailingAnchor),
-            grid.bottomAnchor.constraint(equalTo: bottomAnchor)
+            reefNumber.topAnchor.constraint(equalTo: topAnchor),
+            reefNumber.leadingAnchor.constraint(equalTo: leadingAnchor),
+            reefNumber.trailingAnchor.constraint(equalTo: trailingAnchor),
+            reefNumber.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         for _ in 0..<2 {
-            let line = UIStackView()
-            line.axis = .horizontal
-            line.spacing = 12
-            line.distribution = .fillEqually
-            let leadingCard = SuliJoyVoiceBoneCard()
-            let trailingCard = SuliJoyVoiceBoneCard()
-            line.addArrangedSubview(leadingCard)
-            line.addArrangedSubview(trailingCard)
-            grid.addArrangedSubview(line)
-            leadingCard.heightAnchor.constraint(equalTo: leadingCard.widthAnchor, multiplier: 1.28).isActive = true
+            let islandCode = UIStackView()
+            islandCode.axis = .horizontal
+            islandCode.spacing = 12
+            islandCode.distribution = .fillEqually
+            let renderMomentMedia = coverPreviewImages()
+            let reefBloomLayer = coverPreviewImages()
+            islandCode.addArrangedSubview(renderMomentMedia)
+            islandCode.addArrangedSubview(reefBloomLayer)
+            reefNumber.addArrangedSubview(islandCode)
+            renderMomentMedia.heightAnchor.constraint(equalTo: renderMomentMedia.widthAnchor, multiplier: 1.28).isActive = true
         }
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 
-    func setShoreBonesVisible(_ visible: Bool) {
-        isHidden = !visible
-        walkBones { visible ? $0.startSheen() : $0.stopSheen() }
+    func weaveShellCovePage(_ loadHarborSpace: Bool) {
+        isHidden = !loadHarborSpace
+        shortageCardWidth { loadHarborSpace ? $0.reefReplies() : $0.dismissReefKeyboard() }
     }
 
-    private func walkBones(_ apply: (SuliJoyShoreBone) -> Void) {
-        func visit(_ view: UIView) {
-            if let bone = view as? SuliJoyShoreBone {
-                apply(bone)
+    private func shortageCardWidth(_ islandStyleTagline: (lagoonLetterCanvas) -> Void) {
+        func suliJoyIslandEnsemble(_ view: UIView) {
+            if let duskVeilView = view as? lagoonLetterCanvas {
+                islandStyleTagline(duskVeilView)
             }
-            view.subviews.forEach(visit)
+            view.subviews.forEach(suliJoyIslandEnsemble)
         }
-        visit(self)
+        suliJoyIslandEnsemble(self)
     }
 }
 
-private final class SuliJoyVoiceBoneCard: UIView {
+private final class coverPreviewImages: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         clipsToBounds = true
         layer.cornerRadius = 18
-        let cover = SuliJoyShoreBone()
-        cover.translatesAutoresizingMaskIntoConstraints = false
-        cover.layer.cornerRadius = 18
-        let host = SuliJoyShoreBone()
-        host.translatesAutoresizingMaskIntoConstraints = false
-        host.layer.cornerRadius = 13
-        host.backgroundColor = UIColor.white.withAlphaComponent(0.55)
-        let heat = SuliJoyShoreBone()
-        heat.translatesAutoresizingMaskIntoConstraints = false
-        heat.layer.cornerRadius = 13
-        heat.backgroundColor = UIColor.white.withAlphaComponent(0.55)
-        let summary = SuliJoyShoreBone()
+        let shoreResonanceStripeAsset = lagoonLetterCanvas()
+        shoreResonanceStripeAsset.translatesAutoresizingMaskIntoConstraints = false
+        shoreResonanceStripeAsset.layer.cornerRadius = 18
+        let motionPulseButton = lagoonLetterCanvas()
+        motionPulseButton.translatesAutoresizingMaskIntoConstraints = false
+        motionPulseButton.layer.cornerRadius = 13
+        motionPulseButton.backgroundColor = UIColor.white.withAlphaComponent(0.55)
+        let suliJoyShoreMomentPublished = lagoonLetterCanvas()
+        suliJoyShoreMomentPublished.translatesAutoresizingMaskIntoConstraints = false
+        suliJoyShoreMomentPublished.layer.cornerRadius = 13
+        suliJoyShoreMomentPublished.backgroundColor = UIColor.white.withAlphaComponent(0.55)
+        let summary = lagoonLetterCanvas()
         summary.translatesAutoresizingMaskIntoConstraints = false
         summary.layer.cornerRadius = 6
         summary.backgroundColor = UIColor.white.withAlphaComponent(0.55)
-        let people = SuliJoyShoreBone()
-        people.translatesAutoresizingMaskIntoConstraints = false
-        people.layer.cornerRadius = 14
-        people.backgroundColor = UIColor.white.withAlphaComponent(0.55)
-        [cover, host, heat, people, summary].forEach(addSubview)
+        let bindShoreKeyboardTides = lagoonLetterCanvas()
+        bindShoreKeyboardTides.translatesAutoresizingMaskIntoConstraints = false
+        bindShoreKeyboardTides.layer.cornerRadius = 14
+        bindShoreKeyboardTides.backgroundColor = UIColor.white.withAlphaComponent(0.55)
+        [shoreResonanceStripeAsset, motionPulseButton, suliJoyShoreMomentPublished, bindShoreKeyboardTides, summary].forEach(addSubview)
         NSLayoutConstraint.activate([
-            cover.topAnchor.constraint(equalTo: topAnchor),
-            cover.leadingAnchor.constraint(equalTo: leadingAnchor),
-            cover.trailingAnchor.constraint(equalTo: trailingAnchor),
-            cover.bottomAnchor.constraint(equalTo: bottomAnchor),
-            host.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-            host.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            host.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.42),
-            host.heightAnchor.constraint(equalToConstant: 26),
-            heat.topAnchor.constraint(equalTo: host.topAnchor),
-            heat.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
-            heat.widthAnchor.constraint(equalToConstant: 52),
-            heat.heightAnchor.constraint(equalToConstant: 26),
+            shoreResonanceStripeAsset.topAnchor.constraint(equalTo: topAnchor),
+            shoreResonanceStripeAsset.leadingAnchor.constraint(equalTo: leadingAnchor),
+            shoreResonanceStripeAsset.trailingAnchor.constraint(equalTo: trailingAnchor),
+            shoreResonanceStripeAsset.bottomAnchor.constraint(equalTo: bottomAnchor),
+            motionPulseButton.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            motionPulseButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            motionPulseButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.42),
+            motionPulseButton.heightAnchor.constraint(equalToConstant: 26),
+            suliJoyShoreMomentPublished.topAnchor.constraint(equalTo: motionPulseButton.topAnchor),
+            suliJoyShoreMomentPublished.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            suliJoyShoreMomentPublished.widthAnchor.constraint(equalToConstant: 52),
+            suliJoyShoreMomentPublished.heightAnchor.constraint(equalToConstant: 26),
             summary.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             summary.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             summary.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
             summary.heightAnchor.constraint(equalToConstant: 12),
-            people.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            people.bottomAnchor.constraint(equalTo: summary.topAnchor, constant: -8),
-            people.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.46),
-            people.heightAnchor.constraint(equalToConstant: 28)
+            bindShoreKeyboardTides.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            bindShoreKeyboardTides.bottomAnchor.constraint(equalTo: summary.topAnchor, constant: -8),
+            bindShoreKeyboardTides.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.46),
+            bindShoreKeyboardTides.heightAnchor.constraint(equalToConstant: 28)
         ])
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 }
 
-final class SuliJoyLiveBoardSkeleton: UIView {
+final class LagoonLetterMeasure: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         isUserInteractionEnabled = false
         isHidden = true
-        accessibilityLabel = "Loading live rooms"
-        let column = UIStackView()
-        column.translatesAutoresizingMaskIntoConstraints = false
-        column.axis = .vertical
-        column.spacing = 12
-        addSubview(column)
+        accessibilityLabel = "Lxoxaxdxixnxgx xlxixvxex xrxoxoxmxsx".suliJoyPalmUnfurled
+        let clipPortraitToken = UIStackView()
+        clipPortraitToken.translatesAutoresizingMaskIntoConstraints = false
+        clipPortraitToken.axis = .vertical
+        clipPortraitToken.spacing = 12
+        addSubview(clipPortraitToken)
         NSLayoutConstraint.activate([
-            column.topAnchor.constraint(equalTo: topAnchor),
-            column.leadingAnchor.constraint(equalTo: leadingAnchor),
-            column.trailingAnchor.constraint(equalTo: trailingAnchor),
-            column.bottomAnchor.constraint(equalTo: bottomAnchor)
+            clipPortraitToken.topAnchor.constraint(equalTo: topAnchor),
+            clipPortraitToken.leadingAnchor.constraint(equalTo: leadingAnchor),
+            clipPortraitToken.trailingAnchor.constraint(equalTo: trailingAnchor),
+            clipPortraitToken.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         for _ in 0..<4 {
-            let row = SuliJoyLiveBoneRow()
-            column.addArrangedSubview(row)
+            let row = reefLettersButton()
+            clipPortraitToken.addArrangedSubview(row)
             row.heightAnchor.constraint(equalToConstant: 106).isActive = true
         }
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 
-    func setShoreBonesVisible(_ visible: Bool) {
-        isHidden = !visible
-        func visit(_ view: UIView) {
-            if let bone = view as? SuliJoyShoreBone {
-                visible ? bone.startSheen() : bone.stopSheen()
+    func weaveShellCovePage(_ loadHarborSpace: Bool) {
+        isHidden = !loadHarborSpace
+        func suliJoyIslandEnsemble(_ view: UIView) {
+            if let duskVeilView = view as? lagoonLetterCanvas {
+                loadHarborSpace ? duskVeilView.reefReplies() : duskVeilView.dismissReefKeyboard()
             }
-            view.subviews.forEach(visit)
+            view.subviews.forEach(suliJoyIslandEnsemble)
         }
-        visit(self)
+        suliJoyIslandEnsemble(self)
     }
 }
 
-private final class SuliJoyLiveBoneRow: UIView {
+private final class reefLettersButton: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
         layer.cornerRadius = 24
         clipsToBounds = true
-        let portrait = SuliJoyShoreBone()
-        portrait.translatesAutoresizingMaskIntoConstraints = false
-        portrait.layer.cornerRadius = 28
-        let title = SuliJoyShoreBone()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.layer.cornerRadius = 6
-        let subtitle = SuliJoyShoreBone()
+        let hideTabBar = lagoonLetterCanvas()
+        hideTabBar.translatesAutoresizingMaskIntoConstraints = false
+        hideTabBar.layer.cornerRadius = 28
+        let lagoonSeatMarkbighb = lagoonLetterCanvas()
+        lagoonSeatMarkbighb.translatesAutoresizingMaskIntoConstraints = false
+        lagoonSeatMarkbighb.layer.cornerRadius = 6
+        let subtitle = lagoonLetterCanvas()
         subtitle.translatesAutoresizingMaskIntoConstraints = false
         subtitle.layer.cornerRadius = 5
-        let tagA = SuliJoyShoreBone()
-        tagA.translatesAutoresizingMaskIntoConstraints = false
-        tagA.layer.cornerRadius = 10
-        let tagB = SuliJoyShoreBone()
-        tagB.translatesAutoresizingMaskIntoConstraints = false
-        tagB.layer.cornerRadius = 10
-        [portrait, title, subtitle, tagA, tagB].forEach(addSubview)
+        let ShoreSignupReefScene = lagoonLetterCanvas()
+        ShoreSignupReefScene.translatesAutoresizingMaskIntoConstraints = false
+        ShoreSignupReefScene.layer.cornerRadius = 10
+        let joinTideControl = lagoonLetterCanvas()
+        joinTideControl.translatesAutoresizingMaskIntoConstraints = false
+        joinTideControl.layer.cornerRadius = 10
+        [hideTabBar, lagoonSeatMarkbighb, subtitle, ShoreSignupReefScene, joinTideControl].forEach(addSubview)
         NSLayoutConstraint.activate([
-            portrait.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            portrait.centerYAnchor.constraint(equalTo: centerYAnchor),
-            portrait.widthAnchor.constraint(equalToConstant: 56),
-            portrait.heightAnchor.constraint(equalToConstant: 56),
-            title.leadingAnchor.constraint(equalTo: portrait.trailingAnchor, constant: 12),
-            title.topAnchor.constraint(equalTo: portrait.topAnchor, constant: 4),
-            title.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.42),
-            title.heightAnchor.constraint(equalToConstant: 14),
-            subtitle.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            subtitle.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 8),
-            subtitle.widthAnchor.constraint(equalTo: title.widthAnchor, multiplier: 0.72),
+            hideTabBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            hideTabBar.centerYAnchor.constraint(equalTo: centerYAnchor),
+            hideTabBar.widthAnchor.constraint(equalToConstant: 56),
+            hideTabBar.heightAnchor.constraint(equalToConstant: 56),
+            lagoonSeatMarkbighb.leadingAnchor.constraint(equalTo: hideTabBar.trailingAnchor, constant: 12),
+            lagoonSeatMarkbighb.topAnchor.constraint(equalTo: hideTabBar.topAnchor, constant: 4),
+            lagoonSeatMarkbighb.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.42),
+            lagoonSeatMarkbighb.heightAnchor.constraint(equalToConstant: 14),
+            subtitle.leadingAnchor.constraint(equalTo: lagoonSeatMarkbighb.leadingAnchor),
+            subtitle.topAnchor.constraint(equalTo: lagoonSeatMarkbighb.bottomAnchor, constant: 8),
+            subtitle.widthAnchor.constraint(equalTo: lagoonSeatMarkbighb.widthAnchor, multiplier: 0.72),
             subtitle.heightAnchor.constraint(equalToConstant: 12),
-            tagA.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            tagA.bottomAnchor.constraint(equalTo: portrait.bottomAnchor, constant: -2),
-            tagA.widthAnchor.constraint(equalToConstant: 64),
-            tagA.heightAnchor.constraint(equalToConstant: 20),
-            tagB.leadingAnchor.constraint(equalTo: tagA.trailingAnchor, constant: 6),
-            tagB.centerYAnchor.constraint(equalTo: tagA.centerYAnchor),
-            tagB.widthAnchor.constraint(equalToConstant: 48),
-            tagB.heightAnchor.constraint(equalToConstant: 20)
+            ShoreSignupReefScene.leadingAnchor.constraint(equalTo: lagoonSeatMarkbighb.leadingAnchor),
+            ShoreSignupReefScene.bottomAnchor.constraint(equalTo: hideTabBar.bottomAnchor, constant: -2),
+            ShoreSignupReefScene.widthAnchor.constraint(equalToConstant: 64),
+            ShoreSignupReefScene.heightAnchor.constraint(equalToConstant: 20),
+            joinTideControl.leadingAnchor.constraint(equalTo: ShoreSignupReefScene.trailingAnchor, constant: 6),
+            joinTideControl.centerYAnchor.constraint(equalTo: ShoreSignupReefScene.centerYAnchor),
+            joinTideControl.widthAnchor.constraint(equalToConstant: 48),
+            joinTideControl.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 }

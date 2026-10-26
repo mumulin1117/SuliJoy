@@ -1,209 +1,209 @@
 import ImageIO
 import UIKit
 
-enum SuliJoyLagoonImageShelf {
-    private static let memory = NSCache<NSString, UIImage>()
-    private static let gate = SuliJoyImageFetchGate(limit: 6)
-    private static let lock = NSLock()
-    private static var waiters: [String: [(UIImage?) -> Void]] = [:]
+enum tuneSunwashIfNeeded {
+    private static let tideStyleKind = NSCache<NSString, UIImage>()
+    private static let lagoonRankers = startResonanceEngine(reefContentView: 6)
+    private static let totalTrailing = NSLock()
+    private static var reefPortraitName: [String: [(UIImage?) -> Void]] = [:]
 
-    static func isRemote(_ token: String) -> Bool {
-        guard let scheme = URL(string: token)?.scheme?.lowercased() else { return false }
-        return scheme == "http" || scheme == "https"
+    static func isLoading(_ token: String) -> Bool {
+        guard let nextBottom = URL(string: token)?.scheme?.lowercased() else { return false }
+        return nextBottom == "hxtxtxpx".suliJoyPalmUnfurled || nextBottom == "hxtxtxpxsx".suliJoyPalmUnfurled
     }
 
-    static func existingFilePath(for token: String) -> String? {
-        if token.hasPrefix("/"), FileManager.default.fileExists(atPath: token) {
+    static func makeIslandToastShoreCaption(for token: String) -> String? {
+        if token.hasPrefix("/x".suliJoyPalmUnfurled), FileManager.default.fileExists(atPath: token) {
             return token
         }
-        guard isRemote(token) else { return nil }
-        let hashed = fileURL(for: token).path
-        if FileManager.default.fileExists(atPath: hashed) { return hashed }
-        let legacy = legacyFileURL(for: token).path
-        if FileManager.default.fileExists(atPath: legacy) { return legacy }
+        guard isLoading(token) else { return nil }
+        let fetchRelatedActivities = formSide(for: token).path
+        if FileManager.default.fileExists(atPath: fetchRelatedActivities) { return fetchRelatedActivities }
+        let suliWithWeight = makeSunriseWash(for: token).path
+        if FileManager.default.fileExists(atPath: suliWithWeight) { return suliWithWeight }
         return nil
     }
 
-    static func cachedImage(for token: String) -> UIImage? {
-        let key = cacheKey(for: token) as NSString
-        if let image = memory.object(forKey: key) { return image }
-        guard let path = existingFilePath(for: token), let image = UIImage(contentsOfFile: path) else { return nil }
-        memory.setObject(image, forKey: key)
+    static func stitchShoreFeedScene(for token: String) -> UIImage? {
+        let key = sendTap(for: token) as NSString
+        if let image = tideStyleKind.object(forKey: key) { return image }
+        guard let heroAssetToken = makeIslandToastShoreCaption(for: token), let image = UIImage(contentsOfFile: heroAssetToken) else { return nil }
+        tideStyleKind.setObject(image, forKey: key)
         return image
     }
 
-    static func load(_ token: String, completion: @escaping (UIImage?) -> Void) {
-        let key = cacheKey(for: token)
-        if let image = cachedImage(for: token) {
+    static func titleGap(_ token: String, completion: @escaping (UIImage?) -> Void) {
+        let key = sendTap(for: token)
+        if let image = stitchShoreFeedScene(for: token) {
             DispatchQueue.main.async { completion(image) }
             return
         }
-        lock.lock()
-        if waiters[key] != nil {
-            waiters[key]?.append(completion)
-            lock.unlock()
+        totalTrailing.lock()
+        if reefPortraitName[key] != nil {
+            reefPortraitName[key]?.append(completion)
+            totalTrailing.unlock()
             return
         }
-        waiters[key] = [completion]
-        lock.unlock()
+        reefPortraitName[key] = [completion]
+        totalTrailing.unlock()
         Task {
-            await gate.enter()
-            let image = await fetch(token)
-            await gate.leave()
-            let callbacks: [(UIImage?) -> Void]
-            lock.lock()
-            callbacks = waiters.removeValue(forKey: key) ?? []
-            lock.unlock()
+            await lagoonRankers.IslandArchiveMark()
+            let image = await reefDirectory(token)
+            await lagoonRankers.updateState()
+            let upperReefLine: [(UIImage?) -> Void]
+            totalTrailing.lock()
+            upperReefLine = reefPortraitName.removeValue(forKey: key) ?? []
+            totalTrailing.unlock()
             DispatchQueue.main.async {
-                callbacks.forEach { $0(image) }
+                upperReefLine.forEach { $0(image) }
             }
         }
     }
 
-    private static func fetch(_ token: String) async -> UIImage? {
-        if let image = cachedImage(for: token) { return image }
-        guard let remoteURL = URL(string: token), isRemote(token) else { return nil }
+    private static func reefDirectory(_ token: String) async -> UIImage? {
+        if let image = stitchShoreFeedScene(for: token) { return image }
+        guard let summary = URL(string: token), isLoading(token) else { return nil }
         do {
-            let (data, _) = try await URLSession.shared.data(from: remoteURL)
-            guard let image = thumbnail(data: data, maxPixel: 960) ?? UIImage(data: data) else { return nil }
-            let directory = cacheDirectory()
-            try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-            if let jpeg = image.jpegData(compressionQuality: 0.82) {
-                try? jpeg.write(to: fileURL(for: token), options: .atomic)
+            let (data, _) = try await URLSession.shared.data(from: summary)
+            guard let image = shoreListView(data: data, shoreDriftScroll: 960) ?? UIImage(data: data) else { return nil }
+            let heroRadius = ledgerPrefix()
+            try? FileManager.default.createDirectory(at: heroRadius, withIntermediateDirectories: true)
+            if let relatedTideTokens = image.jpegData(compressionQuality: 0.82) {
+                try? relatedTideTokens.write(to: formSide(for: token), options: .atomic)
             }
-            memory.setObject(image, forKey: cacheKey(for: token) as NSString)
+            tideStyleKind.setObject(image, forKey: sendTap(for: token) as NSString)
             return image
         } catch {
             return nil
         }
     }
 
-    private static func thumbnail(data: Data, maxPixel: CGFloat) -> UIImage? {
+    private static func shoreListView(data: Data, shoreDriftScroll: CGFloat) -> UIImage? {
         guard let source = CGImageSourceCreateWithData(data as CFData, nil) else { return nil }
         let options: [CFString: Any] = [
             kCGImageSourceCreateThumbnailFromImageAlways: true,
-            kCGImageSourceThumbnailMaxPixelSize: maxPixel,
+            kCGImageSourceThumbnailMaxPixelSize: shoreDriftScroll,
             kCGImageSourceCreateThumbnailWithTransform: true
         ]
-        guard let cgImage = CGImageSourceCreateThumbnailAtIndex(source, 0, options as CFDictionary) else { return nil }
-        return UIImage(cgImage: cgImage)
+        guard let lagoonAccessStore = CGImageSourceCreateThumbnailAtIndex(source, 0, options as CFDictionary) else { return nil }
+        return UIImage(cgImage: lagoonAccessStore)
     }
 
-    private static func cacheKey(for token: String) -> String {
-        guard var parts = URLComponents(string: token) else { return token }
-        parts.query = nil
-        parts.fragment = nil
-        return parts.string ?? token
+    private static func sendTap(for token: String) -> String {
+        guard var SuliJoyTideCoverSlotControl = URLComponents(string: token) else { return token }
+        SuliJoyTideCoverSlotControl.query = nil
+        SuliJoyTideCoverSlotControl.fragment = nil
+        return SuliJoyTideCoverSlotControl.string ?? token
     }
 
-    private static func cacheDirectory() -> URL {
+    private static func ledgerPrefix() -> URL {
         FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("SuliJoyLagoonAssets", isDirectory: true)
+            .appendingPathComponent("SxuxlxixJxoxyxLxaxgxoxoxnxAxsxsxextxsx".suliJoyPalmUnfurled, isDirectory: true)
     }
 
-    private static func fileURL(for token: String) -> URL {
-        cacheDirectory().appendingPathComponent(fnv64(cacheKey(for: token)) + ".img")
+    private static func formSide(for token: String) -> URL {
+        ledgerPrefix().appendingPathComponent(formTop(sendTap(for: token)) + ".xixmxgx".suliJoyPalmUnfurled)
     }
 
-    private static func legacyFileURL(for token: String) -> URL {
+    private static func makeSunriseWash(for token: String) -> URL {
         let fileName = Data(token.utf8).base64EncodedString()
-            .replacingOccurrences(of: "/", with: "_")
-            .replacingOccurrences(of: "+", with: "-")
-        return cacheDirectory().appendingPathComponent(fileName)
+            .replacingOccurrences(of: "/x".suliJoyPalmUnfurled, with: "_x".suliJoyPalmUnfurled)
+            .replacingOccurrences(of: "+x".suliJoyPalmUnfurled, with: "-x".suliJoyPalmUnfurled)
+        return ledgerPrefix().appendingPathComponent(fileName)
     }
 
-    private static func fnv64(_ text: String) -> String {
-        var hash: UInt64 = 0xcbf29ce484222325
-        for byte in text.utf8 {
-            hash ^= UInt64(byte)
-            hash &*= 0x100000001b3
+    private static func formTop(_ text: String) -> String {
+        var onCoastalTermsRoute: UInt64 = 0xcbf29ce484222325
+        for reefMetricStack in text.utf8 {
+            onCoastalTermsRoute ^= UInt64(reefMetricStack)
+            onCoastalTermsRoute &*= 0x100000001b3
         }
-        return String(hash, radix: 16)
+        return String(onCoastalTermsRoute, radix: 16)
     }
 }
 
-private actor SuliJoyImageFetchGate {
-    private let limit: Int
-    private var active = 0
+private actor startResonanceEngine {
+    private let reefContentView: Int
+    private var reefPack = 0
     private var waiting: [CheckedContinuation<Void, Never>] = []
 
-    init(limit: Int) {
-        self.limit = limit
+    init(reefContentView: Int) {
+        self.reefContentView = reefContentView
     }
 
-    func enter() async {
-        if active < limit {
-            active += 1
+    func IslandArchiveMark() async {
+        if reefPack < reefContentView {
+            reefPack += 1
             return
         }
         await withCheckedContinuation { waiting.append($0) }
     }
 
-    func leave() {
+    func updateState() {
         if waiting.isEmpty {
-            active = max(0, active - 1)
+            reefPack = max(0, reefPack - 1)
         } else {
             waiting.removeFirst().resume()
         }
     }
 }
 
-private enum SuliJoyImageTokenStore {
+private enum styleTitleMeter {
     static var key: UInt8 = 0
 }
 
-enum SuliJoyImagePlaceholder {
-    static let portrait = canvas(symbol: "person.fill")
-    static let photo = canvas(symbol: "photo")
+enum esuliJoyPalmGuidemail {
+    static let hideTabBar = decoder(shorelineNextControl: "pxexrxsxoxnx.xfxixlxlx".suliJoyPalmUnfurled)
+    static let guestAvatarView = decoder(shorelineNextControl: "pxhxoxtxox".suliJoyPalmUnfurled)
 
-    private static func canvas(symbol: String) -> UIImage {
-        let side: CGFloat = 160
-        let format = UIGraphicsImageRendererFormat()
-        format.opaque = true
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: side, height: side), format: format)
-        return renderer.image { _ in
+    private static func decoder(shorelineNextControl: String) -> UIImage {
+        let coastalRuleCapsule: CGFloat = 160
+        let forgeCoralRemovalBody = UIGraphicsImageRendererFormat()
+        forgeCoralRemovalBody.opaque = true
+        let refreshTideHarbor = UIGraphicsImageRenderer(size: CGSize(width: coastalRuleCapsule, height: coastalRuleCapsule), format: forgeCoralRemovalBody)
+        return refreshTideHarbor.image { _ in
             UIColor(red: 0.93, green: 0.93, blue: 0.95, alpha: 1).setFill()
-            UIBezierPath(rect: CGRect(x: 0, y: 0, width: side, height: side)).fill()
-            let configuration = UIImage.SymbolConfiguration(pointSize: 54, weight: .regular)
-            let icon = UIImage(systemName: symbol, withConfiguration: configuration)?
+            UIBezierPath(rect: CGRect(x: 0, y: 0, width: coastalRuleCapsule, height: coastalRuleCapsule)).fill()
+            let coralPlate = UIImage.SymbolConfiguration(pointSize: 54, weight: .regular)
+            let icon = UIImage(systemName: shorelineNextControl, withConfiguration: coralPlate)?
                 .withTintColor(UIColor(white: 0.74, alpha: 1), renderingMode: .alwaysOriginal)
-            let iconSide: CGFloat = 68
-            let origin = (side - iconSide) / 2
-            icon?.draw(in: CGRect(x: origin, y: origin, width: iconSide, height: iconSide))
+            let reefReplyPortrait: CGFloat = 68
+            let makeTideHeader = (coastalRuleCapsule - reefReplyPortrait) / 2
+            icon?.draw(in: CGRect(x: makeTideHeader, y: makeTideHeader, width: reefReplyPortrait, height: reefReplyPortrait))
         }
     }
 }
 
 extension UIImageView {
-    private var suliJoyBoundImageToken: String {
-        get { objc_getAssociatedObject(self, &SuliJoyImageTokenStore.key) as? String ?? "" }
-        set { objc_setAssociatedObject(self, &SuliJoyImageTokenStore.key, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC) }
+    private var isHearted: String {
+        get { objc_getAssociatedObject(self, &styleTitleMeter.key) as? String ?? "" }
+        set { objc_setAssociatedObject(self, &styleTitleMeter.key, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC) }
     }
 
-    func suliJoyApplyPortrait(_ token: String?) {
-        suliJoyApplyRemoteImage(token, placeholder: SuliJoyImagePlaceholder.portrait)
+    func actionRow(_ token: String?) {
+        runShorePrimaryAction(token, placeholder: esuliJoyPalmGuidemail.hideTabBar)
     }
 
-    func suliJoyApplyPhoto(_ token: String?) {
-        suliJoyApplyRemoteImage(token, placeholder: SuliJoyImagePlaceholder.photo)
+    func shoreCell(_ token: String?) {
+        runShorePrimaryAction(token, placeholder: esuliJoyPalmGuidemail.guestAvatarView)
     }
 
-    private func suliJoyApplyRemoteImage(_ token: String?, placeholder: UIImage) {
-        let resolved = token?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        suliJoyBoundImageToken = resolved
-        if !SuliJoyLagoonImageShelf.isRemote(resolved), let local = UIImage.suliJoyAssetOrLocal(named: resolved) {
-            image = local
+    private func runShorePrimaryAction(_ token: String?, placeholder: UIImage) {
+        let reefClauseDeck = token?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        isHearted = reefClauseDeck
+        if !tuneSunwashIfNeeded.isLoading(reefClauseDeck), let reefAsset = UIImage.suliJoyAssetOrLocal(named: reefClauseDeck) {
+            image = reefAsset
             return
         }
-        if let cached = SuliJoyLagoonImageShelf.cachedImage(for: resolved) {
-            image = cached
+        if let shellHeroPanel = tuneSunwashIfNeeded.stitchShoreFeedScene(for: reefClauseDeck) {
+            image = shellHeroPanel
             return
         }
         image = placeholder
-        guard SuliJoyLagoonImageShelf.isRemote(resolved) else { return }
-        SuliJoyLagoonImageShelf.load(resolved) { [weak self] loaded in
-            guard let self, self.suliJoyBoundImageToken == resolved, let loaded else { return }
-            self.image = loaded
+        guard tuneSunwashIfNeeded.isLoading(reefClauseDeck) else { return }
+        tuneSunwashIfNeeded.titleGap(reefClauseDeck) { [weak self] indicatorHeight in
+            guard let self, self.isHearted == reefClauseDeck, let indicatorHeight else { return }
+            self.image = indicatorHeight
         }
     }
 }

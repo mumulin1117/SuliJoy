@@ -2,43 +2,43 @@ import UIKit
 
 // MARK: - Go Live
 
-final class SuliJoyGoLiveDraftController: SuliJoyTropicCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-    private enum GoLiveMeasure {
+final class coralMood: SuliJoyTropicCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+    private enum suliJoySunsetBoardController {
         static let pageSide: CGFloat = 20
-        static let navHeight: CGFloat = 44
-        static let coverHeight: CGFloat = 188
-        static let coverCorner: CGFloat = 22
-        static let fieldHeight: CGFloat = 52
-        static let fieldCorner: CGFloat = 16
-        static let publishHeight: CGFloat = 54
-        static let publishBottom: CGFloat = 8
-        static let sectionSpacing: CGFloat = 18
+        static let toggleShoreMomentAudio: CGFloat = 44
+        static let arrivalScene: CGFloat = 188
+        static let toastSide: CGFloat = 22
+        static let tideScrollTop: CGFloat = 52
+        static let crownRow: CGFloat = 16
+        static let shoreNameInput: CGFloat = 54
+        static let completeProfile: CGFloat = 8
+        static let wrapCoastalEnvelope: CGFloat = 18
     }
 
     private let shoreScroll = UIScrollView()
-    private let reefDeck = UIView()
-    private let coverPreview = UIImageView()
-    private let coverPromptStack = UIStackView()
-    private let titleField = UITextField()
-    private let categoryWrap = UIStackView()
-    private let categoryEmptyNote = UILabel()
-    private let liveTypeWrap = UIStackView()
-    private let publishButton = SuliJoyGradientButton(reefHeadline: "Go Live", reefHeight: GoLiveMeasure.publishHeight)
-    private let loadingMark = UIActivityIndicatorView(style: .medium)
+    private let driftwoodPalette = UIView()
+    private let reefShelves = UIImageView()
+    private let returnAcrossReef = UIStackView()
+    private let harborEnvelope = UITextField()
+    private let openClip = UIStackView()
+    private let onShoreTap = UILabel()
+    private let profileScene = UIStackView()
+    private let fieldColumn = SuliJoyGradientButton(reefHeadline: "Gxox xLxixvxex".suliJoyPalmUnfurled, reefHeight: suliJoySunsetBoardController.shoreNameInput)
+    private let reefGemPill = UIActivityIndicatorView(style: .medium)
 
-    private var coverSandboxPath: String?
-    private var setup = SuliJoyLagoonLiveHostSetup(categoryChoices: [], liveTypes: [], locales: [], contentReminderText: "")
-    private var selectedCategory: String?
-    private var selectedLiveTypeCode = ""
-    private var categoryButtons: [UIButton] = []
-    private var liveTypeButtons: [UIButton] = []
+    private var themeWrap: String?
+    private var reefExtension = reportShellClipComment(showShoreMomentGuard: [], topInset: [], tideArrowGlyph: [], searchSide: "")
+    private var forgeHarborExitCancel: String?
+    private var reefMediaKind = ""
+    private var baseFollowers: [UIButton] = []
+    private var logo: [UIButton] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
-        assembleGoLiveScene()
-        registerGoLiveKeyboardObservers()
-        loadGoLiveSetup()
+        renderStylists()
+        pauseReefPlayback()
+        currentEmail()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,171 +50,171 @@ final class SuliJoyGoLiveDraftController: SuliJoyTropicCanvasController, UIImage
         NotificationCenter.default.removeObserver(self)
     }
 
-    private func assembleGoLiveScene() {
+    private func renderStylists() {
         shoreScroll.translatesAutoresizingMaskIntoConstraints = false
         shoreScroll.keyboardDismissMode = .interactive
         shoreScroll.showsVerticalScrollIndicator = false
-        reefDeck.translatesAutoresizingMaskIntoConstraints = false
+        driftwoodPalette.translatesAutoresizingMaskIntoConstraints = false
 
-        let nav = makeGoLiveNav(title: "Go Live")
-        let coverCard = makeCoverCard(action: #selector(chooseGoLiveCover))
-        let form = UIStackView()
-        form.translatesAutoresizingMaskIntoConstraints = false
-        form.axis = .vertical
-        form.spacing = GoLiveMeasure.sectionSpacing
+        let gemView = reefPreviewImageView(title: "Gxox xLxixvxex".suliJoyPalmUnfurled)
+        let anchorCurationDraftNav = toastInDuration(action: #selector(softDrape))
+        let shoreContentGlyph = UIStackView()
+        shoreContentGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shoreContentGlyph.axis = .vertical
+        shoreContentGlyph.spacing = suliJoySunsetBoardController.wrapCoastalEnvelope
 
-        configureTitleField()
-        categoryWrap.axis = .vertical
-        categoryWrap.spacing = 10
-        categoryEmptyNote.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        categoryEmptyNote.textColor = .suliMutedInk
-        categoryEmptyNote.numberOfLines = 0
-        categoryEmptyNote.isHidden = true
-        liveTypeWrap.axis = .vertical
-        liveTypeWrap.spacing = 10
+        publishLagoon()
+        openClip.axis = .vertical
+        openClip.spacing = 10
+        onShoreTap.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        onShoreTap.textColor = .suliMutedInk
+        onShoreTap.numberOfLines = 0
+        onShoreTap.isHidden = true
+        profileScene.axis = .vertical
+        profileScene.spacing = 10
 
-        publishButton.translatesAutoresizingMaskIntoConstraints = false
-        publishButton.addTarget(self, action: #selector(submitGoLive), for: .touchUpInside)
+        fieldColumn.translatesAutoresizingMaskIntoConstraints = false
+        fieldColumn.addTarget(self, action: #selector(reefCell), for: .touchUpInside)
 
-        loadingMark.translatesAutoresizingMaskIntoConstraints = false
-        loadingMark.hidesWhenStopped = true
+        reefGemPill.translatesAutoresizingMaskIntoConstraints = false
+        reefGemPill.hidesWhenStopped = true
 
-        form.addArrangedSubview(makeSectionHeading("Live title"))
-        form.addArrangedSubview(titleField)
-        form.addArrangedSubview(makeSectionHeading("Category"))
-        form.addArrangedSubview(categoryEmptyNote)
-        form.addArrangedSubview(categoryWrap)
-        form.addArrangedSubview(makeSectionHeading("Live type"))
-        form.addArrangedSubview(liveTypeWrap)
+        shoreContentGlyph.addArrangedSubview(into("Lxixvxex xtxixtxlxex".suliJoyPalmUnfurled))
+        shoreContentGlyph.addArrangedSubview(harborEnvelope)
+        shoreContentGlyph.addArrangedSubview(into("Cxaxtxexgxoxrxyx".suliJoyPalmUnfurled))
+        shoreContentGlyph.addArrangedSubview(onShoreTap)
+        shoreContentGlyph.addArrangedSubview(openClip)
+        shoreContentGlyph.addArrangedSubview(into("Lxixvxex xtxyxpxex".suliJoyPalmUnfurled))
+        shoreContentGlyph.addArrangedSubview(profileScene)
 
-        titleField.heightAnchor.constraint(equalToConstant: GoLiveMeasure.fieldHeight).isActive = true
+        harborEnvelope.heightAnchor.constraint(equalToConstant: suliJoySunsetBoardController.tideScrollTop).isActive = true
 
         view.addSubview(shoreScroll)
-        view.addSubview(publishButton)
-        view.addSubview(loadingMark)
-        shoreScroll.addSubview(reefDeck)
-        [nav, coverCard, form].forEach { reefDeck.addSubview($0) }
+        view.addSubview(fieldColumn)
+        view.addSubview(reefGemPill)
+        shoreScroll.addSubview(driftwoodPalette)
+        [gemView, anchorCurationDraftNav, shoreContentGlyph].forEach { driftwoodPalette.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            publishButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: GoLiveMeasure.pageSide),
-            publishButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -GoLiveMeasure.pageSide),
-            publishButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -GoLiveMeasure.publishBottom),
+            fieldColumn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: suliJoySunsetBoardController.pageSide),
+            fieldColumn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -suliJoySunsetBoardController.pageSide),
+            fieldColumn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -suliJoySunsetBoardController.completeProfile),
 
             shoreScroll.topAnchor.constraint(equalTo: view.topAnchor),
             shoreScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             shoreScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            shoreScroll.bottomAnchor.constraint(equalTo: publishButton.topAnchor, constant: -12),
+            shoreScroll.bottomAnchor.constraint(equalTo: fieldColumn.topAnchor, constant: -12),
 
-            reefDeck.topAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.topAnchor),
-            reefDeck.leadingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.leadingAnchor),
-            reefDeck.trailingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.trailingAnchor),
-            reefDeck.bottomAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.bottomAnchor),
-            reefDeck.widthAnchor.constraint(equalTo: shoreScroll.frameLayoutGuide.widthAnchor),
+            driftwoodPalette.topAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.topAnchor),
+            driftwoodPalette.leadingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.leadingAnchor),
+            driftwoodPalette.trailingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.trailingAnchor),
+            driftwoodPalette.bottomAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.bottomAnchor),
+            driftwoodPalette.widthAnchor.constraint(equalTo: shoreScroll.frameLayoutGuide.widthAnchor),
 
-            nav.topAnchor.constraint(equalTo: reefDeck.safeAreaLayoutGuide.topAnchor, constant: 8),
-            nav.leadingAnchor.constraint(equalTo: reefDeck.leadingAnchor, constant: GoLiveMeasure.pageSide),
-            nav.trailingAnchor.constraint(equalTo: reefDeck.trailingAnchor, constant: -GoLiveMeasure.pageSide),
-            nav.heightAnchor.constraint(equalToConstant: GoLiveMeasure.navHeight),
+            gemView.topAnchor.constraint(equalTo: driftwoodPalette.safeAreaLayoutGuide.topAnchor, constant: 8),
+            gemView.leadingAnchor.constraint(equalTo: driftwoodPalette.leadingAnchor, constant: suliJoySunsetBoardController.pageSide),
+            gemView.trailingAnchor.constraint(equalTo: driftwoodPalette.trailingAnchor, constant: -suliJoySunsetBoardController.pageSide),
+            gemView.heightAnchor.constraint(equalToConstant: suliJoySunsetBoardController.toggleShoreMomentAudio),
 
-            coverCard.topAnchor.constraint(equalTo: nav.bottomAnchor, constant: 16),
-            coverCard.leadingAnchor.constraint(equalTo: reefDeck.leadingAnchor, constant: GoLiveMeasure.pageSide),
-            coverCard.trailingAnchor.constraint(equalTo: reefDeck.trailingAnchor, constant: -GoLiveMeasure.pageSide),
-            coverCard.heightAnchor.constraint(equalToConstant: GoLiveMeasure.coverHeight),
+            anchorCurationDraftNav.topAnchor.constraint(equalTo: gemView.bottomAnchor, constant: 16),
+            anchorCurationDraftNav.leadingAnchor.constraint(equalTo: driftwoodPalette.leadingAnchor, constant: suliJoySunsetBoardController.pageSide),
+            anchorCurationDraftNav.trailingAnchor.constraint(equalTo: driftwoodPalette.trailingAnchor, constant: -suliJoySunsetBoardController.pageSide),
+            anchorCurationDraftNav.heightAnchor.constraint(equalToConstant: suliJoySunsetBoardController.arrivalScene),
 
-            form.topAnchor.constraint(equalTo: coverCard.bottomAnchor, constant: 22),
-            form.leadingAnchor.constraint(equalTo: coverCard.leadingAnchor),
-            form.trailingAnchor.constraint(equalTo: coverCard.trailingAnchor),
-            form.bottomAnchor.constraint(equalTo: reefDeck.bottomAnchor, constant: -24),
+            shoreContentGlyph.topAnchor.constraint(equalTo: anchorCurationDraftNav.bottomAnchor, constant: 22),
+            shoreContentGlyph.leadingAnchor.constraint(equalTo: anchorCurationDraftNav.leadingAnchor),
+            shoreContentGlyph.trailingAnchor.constraint(equalTo: anchorCurationDraftNav.trailingAnchor),
+            shoreContentGlyph.bottomAnchor.constraint(equalTo: driftwoodPalette.bottomAnchor, constant: -24),
 
-            loadingMark.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loadingMark.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            reefGemPill.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            reefGemPill.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(foldGoLiveKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(filterControl))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
 
-    private func makeGoLiveNav(title: String) -> UIView {
-        let nav = UIView()
-        nav.translatesAutoresizingMaskIntoConstraints = false
-        let back = UIButton(type: .system)
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)), for: .normal)
-        back.tintColor = .suliInk
-        back.addTarget(self, action: #selector(driftBackFromGoLive), for: .touchUpInside)
+    private func reefPreviewImageView(title: String) -> UIView {
+        let gemView = UIView()
+        gemView.translatesAutoresizingMaskIntoConstraints = false
+        let presentShorePortraitPicker = UIButton(type: .system)
+        presentShorePortraitPicker.translatesAutoresizingMaskIntoConstraints = false
+        presentShorePortraitPicker.setImage(UIImage(systemName: "cxhxexvxrxoxnx.xlxexfxtx".suliJoyPalmUnfurled, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)), for: .normal)
+        presentShorePortraitPicker.tintColor = .suliInk
+        presentShorePortraitPicker.addTarget(self, action: #selector(rowEstimate), for: .touchUpInside)
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = title
         label.font = UIFont.systemFont(ofSize: 18, weight: .black)
         label.textColor = .suliInk
         label.textAlignment = .center
-        nav.addSubview(back)
-        nav.addSubview(label)
+        gemView.addSubview(presentShorePortraitPicker)
+        gemView.addSubview(label)
         NSLayoutConstraint.activate([
-            back.leadingAnchor.constraint(equalTo: nav.leadingAnchor),
-            back.centerYAnchor.constraint(equalTo: nav.centerYAnchor),
-            back.widthAnchor.constraint(equalToConstant: 40),
-            back.heightAnchor.constraint(equalToConstant: 40),
-            label.centerXAnchor.constraint(equalTo: nav.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: nav.centerYAnchor)
+            presentShorePortraitPicker.leadingAnchor.constraint(equalTo: gemView.leadingAnchor),
+            presentShorePortraitPicker.centerYAnchor.constraint(equalTo: gemView.centerYAnchor),
+            presentShorePortraitPicker.widthAnchor.constraint(equalToConstant: 40),
+            presentShorePortraitPicker.heightAnchor.constraint(equalToConstant: 40),
+            label.centerXAnchor.constraint(equalTo: gemView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: gemView.centerYAnchor)
         ])
-        return nav
+        return gemView
     }
 
-    private func makeCoverCard(action: Selector) -> UIControl {
+    private func toastInDuration(action: Selector) -> UIControl {
         let card = UIControl()
         card.translatesAutoresizingMaskIntoConstraints = false
         card.backgroundColor = UIColor(red: 0.98, green: 0.86, blue: 0.62, alpha: 1)
-        card.layer.cornerRadius = GoLiveMeasure.coverCorner
+        card.layer.cornerRadius = suliJoySunsetBoardController.toastSide
         card.clipsToBounds = true
         card.addTarget(self, action: action, for: .touchUpInside)
-        coverPreview.translatesAutoresizingMaskIntoConstraints = false
-        coverPreview.contentMode = .scaleAspectFill
-        coverPreview.clipsToBounds = true
-        let camera = UIImageView(image: UIImage(systemName: "camera.fill"))
-        camera.tintColor = .white
-        camera.contentMode = .scaleAspectFit
-        let prompt = UILabel()
-        prompt.text = "Add a live cover"
-        prompt.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        prompt.textColor = .white
-        coverPromptStack.axis = .vertical
-        coverPromptStack.alignment = .center
-        coverPromptStack.spacing = 8
-        coverPromptStack.translatesAutoresizingMaskIntoConstraints = false
-        coverPromptStack.isUserInteractionEnabled = false
-        coverPromptStack.addArrangedSubview(camera)
-        coverPromptStack.addArrangedSubview(prompt)
-        card.addSubview(coverPreview)
-        card.addSubview(coverPromptStack)
+        reefShelves.translatesAutoresizingMaskIntoConstraints = false
+        reefShelves.contentMode = .scaleAspectFill
+        reefShelves.clipsToBounds = true
+        let tideCardShell = UIImageView(image: UIImage(systemName: "cxaxmxexrxax.xfxixlxlx".suliJoyPalmUnfurled))
+        tideCardShell.tintColor = .white
+        tideCardShell.contentMode = .scaleAspectFit
+        let renderHarborParticipants = UILabel()
+        renderHarborParticipants.text = "Axdxdx xax xlxixvxex xcxoxvxexrx".suliJoyPalmUnfurled
+        renderHarborParticipants.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        renderHarborParticipants.textColor = .white
+        returnAcrossReef.axis = .vertical
+        returnAcrossReef.alignment = .center
+        returnAcrossReef.spacing = 8
+        returnAcrossReef.translatesAutoresizingMaskIntoConstraints = false
+        returnAcrossReef.isUserInteractionEnabled = false
+        returnAcrossReef.addArrangedSubview(tideCardShell)
+        returnAcrossReef.addArrangedSubview(renderHarborParticipants)
+        card.addSubview(reefShelves)
+        card.addSubview(returnAcrossReef)
         NSLayoutConstraint.activate([
-            coverPreview.topAnchor.constraint(equalTo: card.topAnchor),
-            coverPreview.leadingAnchor.constraint(equalTo: card.leadingAnchor),
-            coverPreview.trailingAnchor.constraint(equalTo: card.trailingAnchor),
-            coverPreview.bottomAnchor.constraint(equalTo: card.bottomAnchor),
-            coverPromptStack.centerXAnchor.constraint(equalTo: card.centerXAnchor),
-            coverPromptStack.centerYAnchor.constraint(equalTo: card.centerYAnchor),
-            camera.widthAnchor.constraint(equalToConstant: 28),
-            camera.heightAnchor.constraint(equalToConstant: 24)
+            reefShelves.topAnchor.constraint(equalTo: card.topAnchor),
+            reefShelves.leadingAnchor.constraint(equalTo: card.leadingAnchor),
+            reefShelves.trailingAnchor.constraint(equalTo: card.trailingAnchor),
+            reefShelves.bottomAnchor.constraint(equalTo: card.bottomAnchor),
+            returnAcrossReef.centerXAnchor.constraint(equalTo: card.centerXAnchor),
+            returnAcrossReef.centerYAnchor.constraint(equalTo: card.centerYAnchor),
+            tideCardShell.widthAnchor.constraint(equalToConstant: 28),
+            tideCardShell.heightAnchor.constraint(equalToConstant: 24)
         ])
         return card
     }
 
-    private func configureTitleField() {
-        titleField.translatesAutoresizingMaskIntoConstraints = false
-        titleField.placeholder = "Share your beach style live"
-        titleField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        titleField.textColor = .suliInk
-        titleField.backgroundColor = .white
-        titleField.layer.cornerRadius = GoLiveMeasure.fieldCorner
-        titleField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
-        titleField.leftViewMode = .always
-        titleField.delegate = self
-        titleField.returnKeyType = .done
+    private func publishLagoon() {
+        harborEnvelope.translatesAutoresizingMaskIntoConstraints = false
+        harborEnvelope.placeholder = "Sxhxaxrxex xyxoxuxrx xbxexaxcxhx xsxtxyxlxex xlxixvxex".suliJoyPalmUnfurled
+        harborEnvelope.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        harborEnvelope.textColor = .suliInk
+        harborEnvelope.backgroundColor = .white
+        harborEnvelope.layer.cornerRadius = suliJoySunsetBoardController.crownRow
+        harborEnvelope.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
+        harborEnvelope.leftViewMode = .always
+        harborEnvelope.delegate = self
+        harborEnvelope.returnKeyType = .done
     }
 
-    private func makeSectionHeading(_ text: String) -> UILabel {
+    private func into(_ text: String) -> UILabel {
         let label = UILabel()
         label.text = text
         label.font = UIFont.systemFont(ofSize: 18, weight: .black)
@@ -222,278 +222,278 @@ final class SuliJoyGoLiveDraftController: SuliJoyTropicCanvasController, UIImage
         return label
     }
 
-    private func loadGoLiveSetup() {
-        loadingMark.startAnimating()
-        publishButton.isEnabled = false
-        SuliJoyLagoonProfileRemoteService.shared.fetchLiveHostSetup { [weak self] envelope in
+    private func currentEmail() {
+        reefGemPill.startAnimating()
+        fieldColumn.isEnabled = false
+        suliJoyPalmRankingaccount.shared.forgeHarborExitSheet { [weak self] stitchLagoonEntryReefScene in
             guard let self else { return }
-            self.loadingMark.stopAnimating()
-            self.publishButton.isEnabled = true
-            guard envelope.beachwearCapsule == 200, let setup = envelope.sandbarLayering else {
-                self.showLagoonToast(envelope.coastalWardrobe)
-                self.applyGoLiveFallbackSetup(message: envelope.coastalWardrobe)
+            self.reefGemPill.stopAnimating()
+            self.fieldColumn.isEnabled = true
+            guard stitchLagoonEntryReefScene.beachwearCapsule == 200, let reefExtension = stitchLagoonEntryReefScene.sandbarLayering else {
+                self.showLagoonToast(stitchLagoonEntryReefScene.coastalWardrobe)
+                self.islanderStamp(tideJoined: stitchLagoonEntryReefScene.coastalWardrobe)
                 return
             }
-            self.setup = setup
-            self.selectedCategory = self.goLiveCategoryChoices(from: setup).first?.submitValue
-            self.selectedLiveTypeCode = self.mergedGoLiveTypes(from: setup).first?.code ?? "VIDEO"
-            self.rebuildGoLiveChips()
+            self.reefExtension = reefExtension
+            self.forgeHarborExitCancel = self.moments(from: reefExtension).first?.ReefMotionMetric
+            self.reefMediaKind = self.topBorder(from: reefExtension).first?.code ?? "VxIxDxExOx".suliJoyPalmUnfurled
+            self.assembleLagoonScrollText()
         }
     }
 
-    private func applyGoLiveFallbackSetup(message: String? = nil) {
-        let cached = SuliJoyGoLiveCatalog.publishCategories.map {
-            SuliJoyLagoonLiveCategoryChoice(submitValue: $0, displayTitle: $0)
+    private func islanderStamp(tideJoined: String? = nil) {
+        let shellHeroPanel = ShoreReportCoveKey.removeSize.map {
+            showIslandPlaceholder(ReefMotionMetric: $0, bottomActionBar: $0)
         }
-        setup = SuliJoyLagoonLiveHostSetup(
-            categoryChoices: cached,
-            liveTypes: [],
-            locales: [],
-            contentReminderText: "I agree to follow community live guidelines."
+        reefExtension = reportShellClipComment(
+            showShoreMomentGuard: shellHeroPanel,
+            topInset: [],
+            tideArrowGlyph: [],
+            searchSide: "Ix xaxgxrxexex xtxox xfxoxlxlxoxwx xcxoxmxmxuxnxixtxyx xlxixvxex xgxuxixdxexlxixnxexsx.x".suliJoyPalmUnfurled
         )
-        selectedCategory = cached.first?.submitValue
-        selectedLiveTypeCode = SuliJoyGoLiveCatalog.defaultLiveTypes.first?.code ?? "VIDEO"
-        rebuildGoLiveChips()
-        if let message, !message.isEmpty {
-            showLagoonToast(message)
+        forgeHarborExitCancel = shellHeroPanel.first?.ReefMotionMetric
+        reefMediaKind = ShoreReportCoveKey.TideSessionArchiveMark.first?.code ?? "VxIxDxExOx".suliJoyPalmUnfurled
+        assembleLagoonScrollText()
+        if let tideJoined, !tideJoined.isEmpty {
+            showLagoonToast(tideJoined)
         }
     }
 
-    private func goLiveCategoryChoices(from setup: SuliJoyLagoonLiveHostSetup) -> [SuliJoyLagoonLiveCategoryChoice] {
-        setup.categoryChoices.filter { !$0.submitValue.isEmpty || !$0.displayTitle.isEmpty }
+    private func moments(from reefExtension: reportShellClipComment) -> [showIslandPlaceholder] {
+        reefExtension.showShoreMomentGuard.filter { !$0.ReefMotionMetric.isEmpty || !$0.bottomActionBar.isEmpty }
     }
 
-    private func mergedGoLiveTypes(from setup: SuliJoyLagoonLiveHostSetup) -> [(code: String, title: String)] {
-        let remote = setup.liveTypes.map { pair in
-            (code: pair.code, title: displayLiveTypeTitle(code: pair.code, fallback: pair.title))
+    private func topBorder(from reefExtension: reportShellClipComment) -> [(code: String, title: String)] {
+        let reefSourceRoute = reefExtension.topInset.map { reefReplyVeil in
+            (code: reefReplyVeil.code, title: stylistTitleDrop(code: reefReplyVeil.code, makeRoot: reefReplyVeil.title))
         }
-        if !remote.isEmpty { return remote }
-        return SuliJoyGoLiveCatalog.defaultLiveTypes
+        if !reefSourceRoute.isEmpty { return reefSourceRoute }
+        return ShoreReportCoveKey.TideSessionArchiveMark
     }
 
-    private func displayLiveTypeTitle(code: String, fallback: String) -> String {
+    private func stylistTitleDrop(code: String, makeRoot: String) -> String {
         switch code.uppercased() {
-        case "VIDEO": return "Style cam"
-        case "AUDIO": return "Voice chat"
-        default: return fallback.isEmpty ? code : fallback
+        case "VxIxDxExOx".suliJoyPalmUnfurled: return "Sxtxyxlxex xcxaxmx".suliJoyPalmUnfurled
+        case "AxUxDxIxOx".suliJoyPalmUnfurled: return "Vxoxixcxex xcxhxaxtx".suliJoyPalmUnfurled
+        default: return makeRoot.isEmpty ? code : makeRoot
         }
     }
 
-    private func rebuildGoLiveChips() {
-        categoryWrap.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        liveTypeWrap.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        categoryButtons = []
-        liveTypeButtons = []
+    private func assembleLagoonScrollText() {
+        openClip.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        profileScene.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        baseFollowers = []
+        logo = []
 
-        let categories = goLiveCategoryChoices(from: setup)
-        categoryEmptyNote.isHidden = !categories.isEmpty
-        categoryEmptyNote.text = categories.isEmpty
-            ? "Categories are loading from the live host options. Check your connection and reopen Go Live."
+        let ShoreMomentCellMetric = moments(from: reefExtension)
+        onShoreTap.isHidden = !ShoreMomentCellMetric.isEmpty
+        onShoreTap.text = ShoreMomentCellMetric.isEmpty
+            ? "Cxaxtxexgxoxrxixexsx xaxrxex xlxoxaxdxixnxgx xfxrxoxmx xtxhxex xlxixvxex xhxoxsxtx xoxpxtxixoxnxsx.x xCxhxexcxkx xyxoxuxrx xcxoxnxnxexcxtxixoxnx xaxnxdx xrxexoxpxexnx xGxox xLxixvxex.x".suliJoyPalmUnfurled
             : nil
-        let categoryOptions = categories.map {
-            SuliJoyShareDraftChipOption(displayTitle: $0.displayTitle, apiValue: $0.submitValue)
+        let harvestShoreSignupReefScene = ShoreMomentCellMetric.map {
+            waveEnvelope(bottomActionBar: $0.bottomActionBar, onReplyTap: $0.ReefMotionMetric)
         }
-        if selectedCategory == nil
-            || !categories.contains(where: { $0.submitValue.caseInsensitiveCompare(selectedCategory ?? "") == .orderedSame }) {
-            selectedCategory = categories.first?.submitValue
+        if forgeHarborExitCancel == nil
+            || !ShoreMomentCellMetric.contains(where: { $0.ReefMotionMetric.caseInsensitiveCompare(forgeHarborExitCancel ?? "") == .orderedSame }) {
+            forgeHarborExitCancel = ShoreMomentCellMetric.first?.ReefMotionMetric
         }
-        if !categoryOptions.isEmpty {
-            categoryWrap.addArrangedSubview(
-                SuliJoyShareDraftChipRow.makeFlow(
-                    options: categoryOptions,
-                    selectedValue: selectedCategory ?? categories.first?.submitValue ?? "",
-                    storage: &categoryButtons,
+        if !harvestShoreSignupReefScene.isEmpty {
+            openClip.addArrangedSubview(
+                bodyTop.absorbPearlHarborRenewal(
+                    options: harvestShoreSignupReefScene,
+                    shoreAnchor: forgeHarborExitCancel ?? ShoreMomentCellMetric.first?.ReefMotionMetric ?? "",
+                    heroTop: &baseFollowers,
                     target: self,
-                    action: #selector(selectGoLiveCategory(_:))
+                    action: #selector(tuneShoreSpinner(_:))
                 )
             )
         }
 
-        let types = mergedGoLiveTypes(from: setup)
-        if !types.contains(where: { $0.code == selectedLiveTypeCode }) {
-            selectedLiveTypeCode = types.first?.code ?? "VIDEO"
+        let visitorID = topBorder(from: reefExtension)
+        if !visitorID.contains(where: { $0.code == reefMediaKind }) {
+            reefMediaKind = visitorID.first?.code ?? "VxIxDxExOx".suliJoyPalmUnfurled
         }
-        let typeOptions = types.map { SuliJoyShareDraftChipOption(displayTitle: $0.title, apiValue: $0.code) }
-        liveTypeWrap.addArrangedSubview(
-            SuliJoyShareDraftChipRow.makeFlow(
-                options: typeOptions,
-                selectedValue: selectedLiveTypeCode,
-                storage: &liveTypeButtons,
+        let authorPortraitView = visitorID.map { waveEnvelope(bottomActionBar: $0.title, onReplyTap: $0.code) }
+        profileScene.addArrangedSubview(
+            bodyTop.absorbPearlHarborRenewal(
+                options: authorPortraitView,
+                shoreAnchor: reefMediaKind,
+                heroTop: &logo,
                 target: self,
-                action: #selector(selectGoLiveType(_:))
+                action: #selector(shellCount(_:))
             )
         )
     }
 
-    @objc private func selectGoLiveCategory(_ sender: UIButton) {
-        selectedCategory = sender.accessibilityIdentifier ?? sender.title(for: .normal)
-        SuliJoyShareDraftChipRow.paint(buttons: categoryButtons, selected: sender)
+    @objc private func tuneShoreSpinner(_ sender: UIButton) {
+        forgeHarborExitCancel = sender.accessibilityIdentifier ?? sender.title(for: .normal)
+        bodyTop.commentsStack(buttons: baseFollowers, selected: sender)
     }
 
-    @objc private func selectGoLiveType(_ sender: UIButton) {
-        selectedLiveTypeCode = sender.accessibilityIdentifier ?? sender.title(for: .normal) ?? selectedLiveTypeCode
-        SuliJoyShareDraftChipRow.paint(buttons: liveTypeButtons, selected: sender)
+    @objc private func shellCount(_ sender: UIButton) {
+        reefMediaKind = sender.accessibilityIdentifier ?? sender.title(for: .normal) ?? reefMediaKind
+        bodyTop.commentsStack(buttons: logo, selected: sender)
     }
 
-    @objc private func chooseGoLiveCover() {
-        foldGoLiveKeyboard()
+    @objc private func softDrape() {
+        filterControl()
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            sheet.addAction(UIAlertAction(title: "Take Photo", style: .default) { [weak self] _ in
-                self?.presentCoverPicker(source: .camera)
+            sheet.addAction(UIAlertAction(title: "Txaxkxex xPxhxoxtxox".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
+                self?.harborResult(source: .camera)
             })
         }
-        sheet.addAction(UIAlertAction(title: "Choose from Library", style: .default) { [weak self] _ in
-            self?.presentCoverPicker(source: .photoLibrary)
+        sheet.addAction(UIAlertAction(title: "Cxhxoxoxsxex xfxrxoxmx xLxixbxrxaxrxyx".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
+            self?.harborResult(source: .photoLibrary)
         })
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        sheet.popoverPresentationController?.sourceView = coverPreview
-        sheet.popoverPresentationController?.sourceRect = coverPreview.bounds
+        sheet.addAction(UIAlertAction(title: "Cxaxnxcxexlx".suliJoyPalmUnfurled, style: .cancel))
+        sheet.popoverPresentationController?.sourceView = reefShelves
+        sheet.popoverPresentationController?.sourceRect = reefShelves.bounds
         present(sheet, animated: true)
     }
 
-    private func presentCoverPicker(source: UIImagePickerController.SourceType) {
+    private func harborResult(source: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(source) else {
-            showLagoonToast("Source unavailable.")
+            showLagoonToast("Sxoxuxrxcxex xuxnxaxvxaxixlxaxbxlxex.x".suliJoyPalmUnfurled)
             return
         }
-        let picker = UIImagePickerController()
-        picker.sourceType = source
-        picker.mediaTypes = ["public.image"]
-        picker.delegate = self
-        picker.allowsEditing = true
-        present(picker, animated: true)
+        let fieldBottom = UIImagePickerController()
+        fieldBottom.sourceType = source
+        fieldBottom.mediaTypes = ["pxuxbxlxixcx.xixmxaxgxex".suliJoyPalmUnfurled]
+        fieldBottom.delegate = self
+        fieldBottom.allowsEditing = true
+        present(fieldBottom, animated: true)
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        picker.dismiss(animated: true)
+    func imagePickerController(_ fieldBottom: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        fieldBottom.dismiss(animated: true)
         let image = (info[.editedImage] as? UIImage) ?? (info[.originalImage] as? UIImage)
-        guard let image, let path = SuliJoyShareDraftMediaStore.persistJPEG(image) else {
-            showLagoonToast("Could not save cover photo.")
+        guard let image, let heroAssetToken = raisePearlLetterCove.reefNotice(image) else {
+            showLagoonToast("Cxoxuxlxdx xnxoxtx xsxaxvxex xcxoxvxexrx xpxhxoxtxox.x".suliJoyPalmUnfurled)
             return
         }
-        coverSandboxPath = path
-        coverPreview.image = image
-        coverPromptStack.isHidden = true
+        themeWrap = heroAssetToken
+        reefShelves.image = image
+        returnAcrossReef.isHidden = true
     }
 
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true)
+    func imagePickerControllerDidCancel(_ fieldBottom: UIImagePickerController) {
+        fieldBottom.dismiss(animated: true)
     }
 
-    @objc private func submitGoLive() {
-        foldGoLiveKeyboard()
-        guard let coverSandboxPath else {
-            showLagoonToast("Add a live cover photo.")
+    @objc private func reefCell() {
+        filterControl()
+        guard let themeWrap else {
+            showLagoonToast("Axdxdx xax xlxixvxex xcxoxvxexrx xpxhxoxtxox.x".suliJoyPalmUnfurled)
             return
         }
-        let allowed = goLiveCategoryChoices(from: setup)
-        guard let picked = selectedCategory,
-              let category = allowed.first(where: { $0.submitValue.caseInsensitiveCompare(picked) == .orderedSame }) else {
-            showLagoonToast("Select a category from the list.")
+        let sunDress = moments(from: reefExtension)
+        guard let onShorelineFollowTap = forgeHarborExitCancel,
+              let cameraPhrase = sunDress.first(where: { $0.ReefMotionMetric.caseInsensitiveCompare(onShorelineFollowTap) == .orderedSame }) else {
+            showLagoonToast("Sxexlxexcxtx xax xcxaxtxexgxoxrxyx xfxrxoxmx xtxhxex xlxixsxtx.x".suliJoyPalmUnfurled)
             return
         }
-        let draft = SuliJoyGoLiveDraft(
-            coverSandboxPath: coverSandboxPath,
-            liveTitle: titleField.text ?? "",
-            category: category.submitValue,
-            liveType: selectedLiveTypeCode,
-            contentReminderAccepted: true
+        let draft = optionText(
+            themeWrap: themeWrap,
+            shoreHeroCarousel: harborEnvelope.text ?? "",
+            cameraPhrase: cameraPhrase.ReefMotionMetric,
+            driftBackFromCurationDraft: reefMediaKind,
+            shoreConfirmDock: true
         )
-        publishButton.isLoading = true
-        publishButton.isEnabled = false
-        SuliJoyLagoonProfileRemoteService.shared.publishLiveBroadcast(draft: draft) { [weak self] envelope in
+        fieldColumn.isLoading = true
+        fieldColumn.isEnabled = false
+        suliJoyPalmRankingaccount.shared.tuneCaption(lagoonSeatertMarkbigh: draft) { [weak self] stitchLagoonEntryReefScene in
             guard let self else { return }
-            self.publishButton.isLoading = false
-            self.publishButton.isEnabled = true
-            guard envelope.beachwearCapsule == 200, let session = envelope.sandbarLayering else {
-                self.showLagoonToast(envelope.coastalWardrobe)
+            self.fieldColumn.isLoading = false
+            self.fieldColumn.isEnabled = true
+            guard stitchLagoonEntryReefScene.beachwearCapsule == 200, let session = stitchLagoonEntryReefScene.sandbarLayering else {
+                self.showLagoonToast(stitchLagoonEntryReefScene.coastalWardrobe)
                 return
             }
-            self.showLagoonToast(envelope.coastalWardrobe)
-            let roomID = String(session.roomID)
+            self.showLagoonToast(stitchLagoonEntryReefScene.coastalWardrobe)
+            let abaloneTone = String(session.abaloneTone)
             self.navigationController?.popViewController(animated: false)
-            if let host = self.navigationController?.topViewController {
-                SuliJoyRoomShellNavigator.openRoom(kind: .live, roomID: roomID, from: host, animated: true)
+            if let motionPulseButton = self.navigationController?.topViewController {
+                sunlit.coveSection(kind: .moorShoreProfileReefScene, abaloneTone: abaloneTone, from: motionPulseButton, animated: true)
             }
         }
     }
 
-    private func registerGoLiveKeyboardObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(goLiveKeyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(goLiveKeyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    private func pauseReefPlayback() {
+        NotificationCenter.default.addObserver(self, selector: #selector(removalTap(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(raiseLagoonEntryReefScene(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc private func goLiveKeyboardWillShow(_ note: Notification) {
+    @objc private func removalTap(_ note: Notification) {
         guard let frame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let inset = frame.height - view.safeAreaInsets.bottom + 18
         shoreScroll.contentInset.bottom = inset
         shoreScroll.verticalScrollIndicatorInsets.bottom = inset
     }
 
-    @objc private func goLiveKeyboardWillHide(_ note: Notification) {
+    @objc private func raiseLagoonEntryReefScene(_ note: Notification) {
         shoreScroll.contentInset.bottom = 0
         shoreScroll.verticalScrollIndicatorInsets.bottom = 0
     }
 
-    @objc private func foldGoLiveKeyboard() {
+    @objc private func filterControl() {
         view.endEditing(true)
     }
 
-    @objc private func driftBackFromGoLive() {
+    @objc private func rowEstimate() {
         navigationController?.popViewController(animated: true)
     }
 }
 
 // MARK: - Voice room
 
-final class SuliJoyVoiceRoomDraftController: SuliJoyTropicCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
-    private enum VoiceRoomMeasure {
+final class typeWrap: SuliJoyTropicCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
+    private enum shellBackSize {
         static let pageSide: CGFloat = 20
-        static let navHeight: CGFloat = 44
-        static let coverHeight: CGFloat = 188
-        static let coverCorner: CGFloat = 22
-        static let fieldHeight: CGFloat = 52
-        static let fieldCorner: CGFloat = 16
-        static let greetingMinHeight: CGFloat = 96
-        static let publishHeight: CGFloat = 54
-        static let publishBottom: CGFloat = 8
-        static let sectionSpacing: CGFloat = 18
+        static let toggleShoreMomentAudio: CGFloat = 44
+        static let arrivalScene: CGFloat = 188
+        static let toastSide: CGFloat = 22
+        static let tideScrollTop: CGFloat = 52
+        static let crownRow: CGFloat = 16
+        static let blockLagoonVisitor: CGFloat = 96
+        static let shoreNameInput: CGFloat = 54
+        static let completeProfile: CGFloat = 8
+        static let wrapCoastalEnvelope: CGFloat = 18
     }
 
     private let shoreScroll = UIScrollView()
-    private let reefDeck = UIView()
-    private let coverPreview = UIImageView()
-    private let coverPromptStack = UIStackView()
-    private let nameField = UITextField()
-    private let greetingView = UITextView()
-    private let greetingPlaceholder = UILabel()
-    private let gateNote = UILabel()
-    private let templateWrap = UIStackView()
-    private let vibeHeading = UILabel()
-    private let tagWrap = UIStackView()
-    private let publishButton = SuliJoyGradientButton(reefHeadline: "Start Room", reefHeight: VoiceRoomMeasure.publishHeight)
-    private let loadingMark = UIActivityIndicatorView(style: .medium)
+    private let driftwoodPalette = UIView()
+    private let reefShelves = UIImageView()
+    private let returnAcrossReef = UIStackView()
+    private let keyboardInView = UITextField()
+    private let shoreEmptyNote = UITextView()
+    private let harborFlagDrift = UILabel()
+    private let lagoonGuestToken = UILabel()
+    private let growShellCoveRows = UIStackView()
+    private let arrangePearlTileScene = UILabel()
+    private let allProfiles = UIStackView()
+    private let fieldColumn = SuliJoyGradientButton(reefHeadline: "Sxtxaxrxtx xRxoxoxmx".suliJoyPalmUnfurled, reefHeight: shellBackSize.shoreNameInput)
+    private let reefGemPill = UIActivityIndicatorView(style: .medium)
 
-    private var coverSandboxPath: String?
-    private var setup = SuliJoyLagoonVoiceRoomSetup(
-        canCreateRoom: true,
-        createRoomLevel: 0,
-        roomTagChoices: [],
-        templates: [],
-        languages: []
+    private var themeWrap: String?
+    private var reefExtension = tideArrowSide(
+        tropicBackdropToken: true,
+        shorelineTideKey: 0,
+        oneShoulder: [],
+        rhythmDuration: [],
+        tuneReefTextCard: []
     )
-    private var selectedTemplateID = 1
-    private var selectedVibeSubmitValue: String?
-    private var templateButtons: [UIButton] = []
-    private var tagButtons: [UIButton] = []
+    private var reefSheet = 1
+    private var pattern: String?
+    private var loadCurrentProfile: [UIButton] = []
+    private var tapCard: [UIButton] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
-        assembleVoiceRoomScene()
-        registerVoiceRoomKeyboardObservers()
-        loadVoiceRoomSetup()
+        shellCountLabel()
+        lagoonKey()
+        shellEnvelope()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -505,188 +505,188 @@ final class SuliJoyVoiceRoomDraftController: SuliJoyTropicCanvasController, UIIm
         NotificationCenter.default.removeObserver(self)
     }
 
-    private func assembleVoiceRoomScene() {
+    private func shellCountLabel() {
         shoreScroll.translatesAutoresizingMaskIntoConstraints = false
         shoreScroll.keyboardDismissMode = .interactive
         shoreScroll.showsVerticalScrollIndicator = false
-        reefDeck.translatesAutoresizingMaskIntoConstraints = false
+        driftwoodPalette.translatesAutoresizingMaskIntoConstraints = false
 
-        let nav = makeVoiceNav()
-        let coverCard = makeVoiceCoverCard()
-        let form = UIStackView()
-        form.translatesAutoresizingMaskIntoConstraints = false
-        form.axis = .vertical
-        form.spacing = VoiceRoomMeasure.sectionSpacing
+        let gemView = fieldSide()
+        let anchorCurationDraftNav = askLagoonExit()
+        let shoreContentGlyph = UIStackView()
+        shoreContentGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shoreContentGlyph.axis = .vertical
+        shoreContentGlyph.spacing = shellBackSize.wrapCoastalEnvelope
 
-        gateNote.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
-        gateNote.textColor = UIColor(red: 0.72, green: 0.38, blue: 0.12, alpha: 1)
-        gateNote.numberOfLines = 0
-        gateNote.isHidden = true
+        lagoonGuestToken.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        lagoonGuestToken.textColor = UIColor(red: 0.72, green: 0.38, blue: 0.12, alpha: 1)
+        lagoonGuestToken.numberOfLines = 0
+        lagoonGuestToken.isHidden = true
 
-        nameField.translatesAutoresizingMaskIntoConstraints = false
-        nameField.placeholder = "Name your voice room"
-        nameField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        nameField.backgroundColor = .white
-        nameField.layer.cornerRadius = VoiceRoomMeasure.fieldCorner
-        nameField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
-        nameField.leftViewMode = .always
-        nameField.delegate = self
+        keyboardInView.translatesAutoresizingMaskIntoConstraints = false
+        keyboardInView.placeholder = "Nxaxmxex xyxoxuxrx xvxoxixcxex xrxoxoxmx".suliJoyPalmUnfurled
+        keyboardInView.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        keyboardInView.backgroundColor = .white
+        keyboardInView.layer.cornerRadius = shellBackSize.crownRow
+        keyboardInView.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
+        keyboardInView.leftViewMode = .always
+        keyboardInView.delegate = self
 
-        greetingView.translatesAutoresizingMaskIntoConstraints = false
-        greetingView.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        greetingView.textColor = .suliInk
-        greetingView.backgroundColor = .white
-        greetingView.layer.cornerRadius = VoiceRoomMeasure.fieldCorner
-        greetingView.textContainerInset = UIEdgeInsets(top: 14, left: 12, bottom: 14, right: 12)
-        greetingView.delegate = self
+        shoreEmptyNote.translatesAutoresizingMaskIntoConstraints = false
+        shoreEmptyNote.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        shoreEmptyNote.textColor = .suliInk
+        shoreEmptyNote.backgroundColor = .white
+        shoreEmptyNote.layer.cornerRadius = shellBackSize.crownRow
+        shoreEmptyNote.textContainerInset = UIEdgeInsets(top: 14, left: 12, bottom: 14, right: 12)
+        shoreEmptyNote.delegate = self
 
-        greetingPlaceholder.translatesAutoresizingMaskIntoConstraints = false
-        greetingPlaceholder.text = "Tell listeners what this room is about"
-        greetingPlaceholder.font = greetingView.font
-        greetingPlaceholder.textColor = UIColor(red: 0.72, green: 0.71, blue: 0.70, alpha: 1)
+        harborFlagDrift.translatesAutoresizingMaskIntoConstraints = false
+        harborFlagDrift.text = "Txexlxlx xlxixsxtxexnxexrxsx xwxhxaxtx xtxhxixsx xrxoxoxmx xixsx xaxbxoxuxtx".suliJoyPalmUnfurled
+        harborFlagDrift.font = shoreEmptyNote.font
+        harborFlagDrift.textColor = UIColor(red: 0.72, green: 0.71, blue: 0.70, alpha: 1)
 
-        templateWrap.axis = .vertical
-        templateWrap.spacing = 10
-        tagWrap.axis = .vertical
-        tagWrap.spacing = 10
+        growShellCoveRows.axis = .vertical
+        growShellCoveRows.spacing = 10
+        allProfiles.axis = .vertical
+        allProfiles.spacing = 10
 
-        publishButton.translatesAutoresizingMaskIntoConstraints = false
-        publishButton.addTarget(self, action: #selector(submitVoiceRoom), for: .touchUpInside)
-        loadingMark.translatesAutoresizingMaskIntoConstraints = false
-        loadingMark.hidesWhenStopped = true
+        fieldColumn.translatesAutoresizingMaskIntoConstraints = false
+        fieldColumn.addTarget(self, action: #selector(clearReefMotionPreview), for: .touchUpInside)
+        reefGemPill.translatesAutoresizingMaskIntoConstraints = false
+        reefGemPill.hidesWhenStopped = true
 
-        form.addArrangedSubview(gateNote)
-        form.addArrangedSubview(makeVoiceHeading("Room name"))
-        form.addArrangedSubview(nameField)
-        form.addArrangedSubview(makeVoiceHeading("Greeting"))
-        form.addArrangedSubview(greetingView)
-        form.addArrangedSubview(makeVoiceHeading("Room layout"))
-        form.addArrangedSubview(templateWrap)
-        vibeHeading.text = "Room vibe"
-        vibeHeading.font = UIFont.systemFont(ofSize: 18, weight: .black)
-        vibeHeading.textColor = .suliInk
-        vibeHeading.isHidden = true
-        tagWrap.isHidden = true
-        form.addArrangedSubview(vibeHeading)
-        form.addArrangedSubview(tagWrap)
+        shoreContentGlyph.addArrangedSubview(lagoonGuestToken)
+        shoreContentGlyph.addArrangedSubview(onReport("Rxoxoxmx xnxaxmxex".suliJoyPalmUnfurled))
+        shoreContentGlyph.addArrangedSubview(keyboardInView)
+        shoreContentGlyph.addArrangedSubview(onReport("Gxrxexextxixnxgx".suliJoyPalmUnfurled))
+        shoreContentGlyph.addArrangedSubview(shoreEmptyNote)
+        shoreContentGlyph.addArrangedSubview(onReport("Rxoxoxmx xlxaxyxoxuxtx".suliJoyPalmUnfurled))
+        shoreContentGlyph.addArrangedSubview(growShellCoveRows)
+        arrangePearlTileScene.text = "Rxoxoxmx xvxixbxex".suliJoyPalmUnfurled
+        arrangePearlTileScene.font = UIFont.systemFont(ofSize: 18, weight: .black)
+        arrangePearlTileScene.textColor = .suliInk
+        arrangePearlTileScene.isHidden = true
+        allProfiles.isHidden = true
+        shoreContentGlyph.addArrangedSubview(arrangePearlTileScene)
+        shoreContentGlyph.addArrangedSubview(allProfiles)
 
-        nameField.heightAnchor.constraint(equalToConstant: VoiceRoomMeasure.fieldHeight).isActive = true
-        greetingView.heightAnchor.constraint(greaterThanOrEqualToConstant: VoiceRoomMeasure.greetingMinHeight).isActive = true
+        keyboardInView.heightAnchor.constraint(equalToConstant: shellBackSize.tideScrollTop).isActive = true
+        shoreEmptyNote.heightAnchor.constraint(greaterThanOrEqualToConstant: shellBackSize.blockLagoonVisitor).isActive = true
 
         view.addSubview(shoreScroll)
-        view.addSubview(publishButton)
-        view.addSubview(loadingMark)
-        shoreScroll.addSubview(reefDeck)
-        reefDeck.addSubview(greetingPlaceholder)
-        [nav, coverCard, form].forEach { reefDeck.addSubview($0) }
+        view.addSubview(fieldColumn)
+        view.addSubview(reefGemPill)
+        shoreScroll.addSubview(driftwoodPalette)
+        driftwoodPalette.addSubview(harborFlagDrift)
+        [gemView, anchorCurationDraftNav, shoreContentGlyph].forEach { driftwoodPalette.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            publishButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: VoiceRoomMeasure.pageSide),
-            publishButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -VoiceRoomMeasure.pageSide),
-            publishButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -VoiceRoomMeasure.publishBottom),
+            fieldColumn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: shellBackSize.pageSide),
+            fieldColumn.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -shellBackSize.pageSide),
+            fieldColumn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -shellBackSize.completeProfile),
 
             shoreScroll.topAnchor.constraint(equalTo: view.topAnchor),
             shoreScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             shoreScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            shoreScroll.bottomAnchor.constraint(equalTo: publishButton.topAnchor, constant: -12),
+            shoreScroll.bottomAnchor.constraint(equalTo: fieldColumn.topAnchor, constant: -12),
 
-            reefDeck.topAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.topAnchor),
-            reefDeck.leadingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.leadingAnchor),
-            reefDeck.trailingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.trailingAnchor),
-            reefDeck.bottomAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.bottomAnchor),
-            reefDeck.widthAnchor.constraint(equalTo: shoreScroll.frameLayoutGuide.widthAnchor),
+            driftwoodPalette.topAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.topAnchor),
+            driftwoodPalette.leadingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.leadingAnchor),
+            driftwoodPalette.trailingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.trailingAnchor),
+            driftwoodPalette.bottomAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.bottomAnchor),
+            driftwoodPalette.widthAnchor.constraint(equalTo: shoreScroll.frameLayoutGuide.widthAnchor),
 
-            nav.topAnchor.constraint(equalTo: reefDeck.safeAreaLayoutGuide.topAnchor, constant: 8),
-            nav.leadingAnchor.constraint(equalTo: reefDeck.leadingAnchor, constant: VoiceRoomMeasure.pageSide),
-            nav.trailingAnchor.constraint(equalTo: reefDeck.trailingAnchor, constant: -VoiceRoomMeasure.pageSide),
-            nav.heightAnchor.constraint(equalToConstant: VoiceRoomMeasure.navHeight),
+            gemView.topAnchor.constraint(equalTo: driftwoodPalette.safeAreaLayoutGuide.topAnchor, constant: 8),
+            gemView.leadingAnchor.constraint(equalTo: driftwoodPalette.leadingAnchor, constant: shellBackSize.pageSide),
+            gemView.trailingAnchor.constraint(equalTo: driftwoodPalette.trailingAnchor, constant: -shellBackSize.pageSide),
+            gemView.heightAnchor.constraint(equalToConstant: shellBackSize.toggleShoreMomentAudio),
 
-            coverCard.topAnchor.constraint(equalTo: nav.bottomAnchor, constant: 16),
-            coverCard.leadingAnchor.constraint(equalTo: reefDeck.leadingAnchor, constant: VoiceRoomMeasure.pageSide),
-            coverCard.trailingAnchor.constraint(equalTo: reefDeck.trailingAnchor, constant: -VoiceRoomMeasure.pageSide),
-            coverCard.heightAnchor.constraint(equalToConstant: VoiceRoomMeasure.coverHeight),
+            anchorCurationDraftNav.topAnchor.constraint(equalTo: gemView.bottomAnchor, constant: 16),
+            anchorCurationDraftNav.leadingAnchor.constraint(equalTo: driftwoodPalette.leadingAnchor, constant: shellBackSize.pageSide),
+            anchorCurationDraftNav.trailingAnchor.constraint(equalTo: driftwoodPalette.trailingAnchor, constant: -shellBackSize.pageSide),
+            anchorCurationDraftNav.heightAnchor.constraint(equalToConstant: shellBackSize.arrivalScene),
 
-            form.topAnchor.constraint(equalTo: coverCard.bottomAnchor, constant: 22),
-            form.leadingAnchor.constraint(equalTo: coverCard.leadingAnchor),
-            form.trailingAnchor.constraint(equalTo: coverCard.trailingAnchor),
-            form.bottomAnchor.constraint(equalTo: reefDeck.bottomAnchor, constant: -24),
+            shoreContentGlyph.topAnchor.constraint(equalTo: anchorCurationDraftNav.bottomAnchor, constant: 22),
+            shoreContentGlyph.leadingAnchor.constraint(equalTo: anchorCurationDraftNav.leadingAnchor),
+            shoreContentGlyph.trailingAnchor.constraint(equalTo: anchorCurationDraftNav.trailingAnchor),
+            shoreContentGlyph.bottomAnchor.constraint(equalTo: driftwoodPalette.bottomAnchor, constant: -24),
 
-            greetingPlaceholder.topAnchor.constraint(equalTo: greetingView.topAnchor, constant: 14),
-            greetingPlaceholder.leadingAnchor.constraint(equalTo: greetingView.leadingAnchor, constant: 16),
+            harborFlagDrift.topAnchor.constraint(equalTo: shoreEmptyNote.topAnchor, constant: 14),
+            harborFlagDrift.leadingAnchor.constraint(equalTo: shoreEmptyNote.leadingAnchor, constant: 16),
 
-            loadingMark.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loadingMark.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            reefGemPill.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            reefGemPill.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(foldVoiceRoomKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onHarborFlag))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
 
-    private func makeVoiceNav() -> UIView {
-        let nav = UIView()
-        nav.translatesAutoresizingMaskIntoConstraints = false
-        let back = UIButton(type: .system)
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)), for: .normal)
-        back.tintColor = .suliInk
-        back.addTarget(self, action: #selector(driftBackFromVoiceRoom), for: .touchUpInside)
+    private func fieldSide() -> UIView {
+        let gemView = UIView()
+        gemView.translatesAutoresizingMaskIntoConstraints = false
+        let presentShorePortraitPicker = UIButton(type: .system)
+        presentShorePortraitPicker.translatesAutoresizingMaskIntoConstraints = false
+        presentShorePortraitPicker.setImage(UIImage(systemName: "cxhxexvxrxoxnx.xlxexfxtx".suliJoyPalmUnfurled, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)), for: .normal)
+        presentShorePortraitPicker.tintColor = .suliInk
+        presentShorePortraitPicker.addTarget(self, action: #selector(isTideHidden), for: .touchUpInside)
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Start a Room"
+        label.text = "Sxtxaxrxtx xax xRxoxoxmx".suliJoyPalmUnfurled
         label.font = UIFont.systemFont(ofSize: 18, weight: .black)
         label.textColor = .suliInk
         label.textAlignment = .center
-        nav.addSubview(back)
-        nav.addSubview(label)
+        gemView.addSubview(presentShorePortraitPicker)
+        gemView.addSubview(label)
         NSLayoutConstraint.activate([
-            back.leadingAnchor.constraint(equalTo: nav.leadingAnchor),
-            back.centerYAnchor.constraint(equalTo: nav.centerYAnchor),
-            back.widthAnchor.constraint(equalToConstant: 40),
-            back.heightAnchor.constraint(equalToConstant: 40),
-            label.centerXAnchor.constraint(equalTo: nav.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: nav.centerYAnchor)
+            presentShorePortraitPicker.leadingAnchor.constraint(equalTo: gemView.leadingAnchor),
+            presentShorePortraitPicker.centerYAnchor.constraint(equalTo: gemView.centerYAnchor),
+            presentShorePortraitPicker.widthAnchor.constraint(equalToConstant: 40),
+            presentShorePortraitPicker.heightAnchor.constraint(equalToConstant: 40),
+            label.centerXAnchor.constraint(equalTo: gemView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: gemView.centerYAnchor)
         ])
-        return nav
+        return gemView
     }
 
-    private func makeVoiceCoverCard() -> UIControl {
+    private func askLagoonExit() -> UIControl {
         let card = UIControl()
         card.translatesAutoresizingMaskIntoConstraints = false
         card.backgroundColor = UIColor(red: 0.98, green: 0.86, blue: 0.62, alpha: 1)
-        card.layer.cornerRadius = VoiceRoomMeasure.coverCorner
+        card.layer.cornerRadius = shellBackSize.toastSide
         card.clipsToBounds = true
-        card.addTarget(self, action: #selector(chooseVoiceCover), for: .touchUpInside)
-        coverPreview.translatesAutoresizingMaskIntoConstraints = false
-        coverPreview.contentMode = .scaleAspectFill
-        coverPreview.clipsToBounds = true
-        let camera = UIImageView(image: UIImage(systemName: "camera.fill"))
-        camera.tintColor = .white
-        let prompt = UILabel()
-        prompt.text = "Add a room cover"
-        prompt.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        prompt.textColor = .white
-        coverPromptStack.axis = .vertical
-        coverPromptStack.alignment = .center
-        coverPromptStack.spacing = 8
-        coverPromptStack.translatesAutoresizingMaskIntoConstraints = false
-        coverPromptStack.isUserInteractionEnabled = false
-        coverPromptStack.addArrangedSubview(camera)
-        coverPromptStack.addArrangedSubview(prompt)
-        card.addSubview(coverPreview)
-        card.addSubview(coverPromptStack)
+        card.addTarget(self, action: #selector(carveReefStillFrame), for: .touchUpInside)
+        reefShelves.translatesAutoresizingMaskIntoConstraints = false
+        reefShelves.contentMode = .scaleAspectFill
+        reefShelves.clipsToBounds = true
+        let tideCardShell = UIImageView(image: UIImage(systemName: "cxaxmxexrxax.xfxixlxlx".suliJoyPalmUnfurled))
+        tideCardShell.tintColor = .white
+        let renderHarborParticipants = UILabel()
+        renderHarborParticipants.text = "Axdxdx xax xrxoxoxmx xcxoxvxexrx".suliJoyPalmUnfurled
+        renderHarborParticipants.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        renderHarborParticipants.textColor = .white
+        returnAcrossReef.axis = .vertical
+        returnAcrossReef.alignment = .center
+        returnAcrossReef.spacing = 8
+        returnAcrossReef.translatesAutoresizingMaskIntoConstraints = false
+        returnAcrossReef.isUserInteractionEnabled = false
+        returnAcrossReef.addArrangedSubview(tideCardShell)
+        returnAcrossReef.addArrangedSubview(renderHarborParticipants)
+        card.addSubview(reefShelves)
+        card.addSubview(returnAcrossReef)
         NSLayoutConstraint.activate([
-            coverPreview.topAnchor.constraint(equalTo: card.topAnchor),
-            coverPreview.leadingAnchor.constraint(equalTo: card.leadingAnchor),
-            coverPreview.trailingAnchor.constraint(equalTo: card.trailingAnchor),
-            coverPreview.bottomAnchor.constraint(equalTo: card.bottomAnchor),
-            coverPromptStack.centerXAnchor.constraint(equalTo: card.centerXAnchor),
-            coverPromptStack.centerYAnchor.constraint(equalTo: card.centerYAnchor)
+            reefShelves.topAnchor.constraint(equalTo: card.topAnchor),
+            reefShelves.leadingAnchor.constraint(equalTo: card.leadingAnchor),
+            reefShelves.trailingAnchor.constraint(equalTo: card.trailingAnchor),
+            reefShelves.bottomAnchor.constraint(equalTo: card.bottomAnchor),
+            returnAcrossReef.centerXAnchor.constraint(equalTo: card.centerXAnchor),
+            returnAcrossReef.centerYAnchor.constraint(equalTo: card.centerYAnchor)
         ])
         return card
     }
 
-    private func makeVoiceHeading(_ text: String) -> UILabel {
+    private func onReport(_ text: String) -> UILabel {
         let label = UILabel()
         label.text = text
         label.font = UIFont.systemFont(ofSize: 18, weight: .black)
@@ -694,343 +694,343 @@ final class SuliJoyVoiceRoomDraftController: SuliJoyTropicCanvasController, UIIm
         return label
     }
 
-    private func loadVoiceRoomSetup() {
-        loadingMark.startAnimating()
-        publishButton.isEnabled = false
-        SuliJoyLagoonProfileRemoteService.shared.fetchVoiceRoomSetup { [weak self] envelope in
+    private func shellEnvelope() {
+        reefGemPill.startAnimating()
+        fieldColumn.isEnabled = false
+        suliJoyPalmRankingaccount.shared.harborSafetyGlyph { [weak self] stitchLagoonEntryReefScene in
             guard let self else { return }
-            self.loadingMark.stopAnimating()
-            self.publishButton.isEnabled = true
-            guard envelope.beachwearCapsule == 200, let setup = envelope.sandbarLayering else {
-                self.showLagoonToast(envelope.coastalWardrobe)
-                self.applyVoiceRoomFallbackSetup(message: envelope.coastalWardrobe)
+            self.reefGemPill.stopAnimating()
+            self.fieldColumn.isEnabled = true
+            guard stitchLagoonEntryReefScene.beachwearCapsule == 200, let reefExtension = stitchLagoonEntryReefScene.sandbarLayering else {
+                self.showLagoonToast(stitchLagoonEntryReefScene.coastalWardrobe)
+                self.feed(tideJoined: stitchLagoonEntryReefScene.coastalWardrobe)
                 return
             }
-            self.setup = setup
-            self.selectedTemplateID = self.voiceLayouts(from: setup).first?.id ?? 0
-            self.selectedVibeSubmitValue = self.voiceTagChoices(from: setup).first?.submitValue
-            if !setup.canCreateRoom {
-                self.gateNote.isHidden = false
-                self.gateNote.text = "Reach Lv\(setup.createRoomLevel) to create a voice room. You can still preview the form."
+            self.reefExtension = reefExtension
+            self.reefSheet = self.reportComment(from: reefExtension).first?.lagoonScene ?? 0
+            self.pattern = self.sailToShoreSignup(from: reefExtension).first?.ReefMotionMetric
+            if !reefExtension.tropicBackdropToken {
+                self.lagoonGuestToken.isHidden = false
+                self.lagoonGuestToken.text = "\("Rxexaxcxhx xLxvx".suliJoyPalmUnfurled)\(reefExtension.shorelineTideKey)\(" xtxox xcxrxexaxtxex xax xvxoxixcxex xrxoxoxmx.x xYxoxux xcxaxnx xsxtxixlxlx xpxrxexvxixexwx xtxhxex xfxoxrxmx.x".suliJoyPalmUnfurled)"
             } else {
-                self.gateNote.isHidden = true
+                self.lagoonGuestToken.isHidden = true
             }
-            self.rebuildVoiceRoomChips()
+            self.shoreAnimated()
         }
     }
 
-    private func applyVoiceRoomFallbackSetup(message: String? = nil) {
-        setup = SuliJoyLagoonVoiceRoomSetup(
-            canCreateRoom: true,
-            createRoomLevel: 0,
-            roomTagChoices: [],
-            templates: [],
-            languages: []
+    private func feed(tideJoined: String? = nil) {
+        reefExtension = tideArrowSide(
+            tropicBackdropToken: true,
+            shorelineTideKey: 0,
+            oneShoulder: [],
+            rhythmDuration: [],
+            tuneReefTextCard: []
         )
-        selectedTemplateID = 0
-        selectedVibeSubmitValue = nil
-        gateNote.isHidden = false
-        gateNote.text = message ?? "Could not load room options. Check your connection and try again."
-        rebuildVoiceRoomChips()
+        reefSheet = 0
+        pattern = nil
+        lagoonGuestToken.isHidden = false
+        lagoonGuestToken.text = tideJoined ?? "Cxoxuxlxdx xnxoxtx xlxoxaxdx xrxoxoxmx xoxpxtxixoxnxsx.x xCxhxexcxkx xyxoxuxrx xcxoxnxnxexcxtxixoxnx xaxnxdx xtxrxyx xaxgxaxixnx.x".suliJoyPalmUnfurled
+        shoreAnimated()
     }
 
-    private func voiceLayouts(from setup: SuliJoyLagoonVoiceRoomSetup) -> [(id: Int, title: String)] {
-        setup.templates.map { ($0.id, displayVoiceLayoutTitle(id: $0.id, fallback: $0.title)) }
+    private func reportComment(from reefExtension: tideArrowSide) -> [(lagoonScene: Int, title: String)] {
+        reefExtension.rhythmDuration.map { ($0.lagoonScene, stretchIslandWashLayers(lagoonScene: $0.lagoonScene, makeRoot: $0.title)) }
     }
 
-    private func displayVoiceLayoutTitle(id: Int, fallback: String) -> String {
-        switch id {
-        case 1: return fallback.isEmpty ? "Classic circle" : fallback
-        case 2: return fallback.isEmpty ? "Coastal lounge" : fallback
-        default: return fallback.isEmpty ? "Room layout \(id)" : fallback
+    private func stretchIslandWashLayers(lagoonScene: Int, makeRoot: String) -> String {
+        switch lagoonScene {
+        case 1: return makeRoot.isEmpty ? "Cxlxaxsxsxixcx xcxixrxcxlxex".suliJoyPalmUnfurled : makeRoot
+        case 2: return makeRoot.isEmpty ? "Cxoxaxsxtxaxlx xlxoxuxnxgxex".suliJoyPalmUnfurled : makeRoot
+        default: return makeRoot.isEmpty ? "\("Rxoxoxmx xlxaxyxoxuxtx x".suliJoyPalmUnfurled)\(lagoonScene)" : makeRoot
         }
     }
 
-    private func voiceTagChoices(from setup: SuliJoyLagoonVoiceRoomSetup) -> [SuliJoyLagoonVoiceRoomTagChoice] {
-        setup.roomTagChoices.filter { !$0.displayTitle.isEmpty || !$0.submitValue.isEmpty }
+    private func sailToShoreSignup(from reefExtension: tideArrowSide) -> [testerTideSecret] {
+        reefExtension.oneShoulder.filter { !$0.bottomActionBar.isEmpty || !$0.ReefMotionMetric.isEmpty }
     }
 
-    private func rebuildVoiceRoomChips() {
-        templateWrap.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        tagWrap.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        templateButtons = []
-        tagButtons = []
+    private func shoreAnimated() {
+        growShellCoveRows.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        allProfiles.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        loadCurrentProfile = []
+        tapCard = []
 
-        let layouts = voiceLayouts(from: setup)
-        if !layouts.contains(where: { $0.id == selectedTemplateID }) {
-            selectedTemplateID = layouts.first?.id ?? 0
+        let reefRect = reportComment(from: reefExtension)
+        if !reefRect.contains(where: { $0.lagoonScene == reefSheet }) {
+            reefSheet = reefRect.first?.lagoonScene ?? 0
         }
-        let layoutOptions = layouts.map {
-            SuliJoyShareDraftChipOption(displayTitle: $0.title, apiValue: String($0.id))
+        let shoreConsentRibbon = reefRect.map {
+            waveEnvelope(bottomActionBar: $0.title, onReplyTap: String($0.lagoonScene))
         }
-        templateWrap.addArrangedSubview(
-            SuliJoyShareDraftChipRow.makeFlow(
-                options: layoutOptions,
-                selectedValue: String(selectedTemplateID),
-                storage: &templateButtons,
+        growShellCoveRows.addArrangedSubview(
+            bodyTop.absorbPearlHarborRenewal(
+                options: shoreConsentRibbon,
+                shoreAnchor: String(reefSheet),
+                heroTop: &loadCurrentProfile,
                 target: self,
-                action: #selector(selectVoiceTemplate(_:))
+                action: #selector(idleRing(_:))
             )
         )
 
-        let vibes = voiceTagChoices(from: setup)
-        let showVibes = false
-        vibeHeading.isHidden = !showVibes || vibes.isEmpty
-        tagWrap.isHidden = !showVibes || vibes.isEmpty
-        guard showVibes, !vibes.isEmpty else { return }
+        let shoreBaseWash = sailToShoreSignup(from: reefExtension)
+        let referenceID = false
+        arrangePearlTileScene.isHidden = !referenceID || shoreBaseWash.isEmpty
+        allProfiles.isHidden = !referenceID || shoreBaseWash.isEmpty
+        guard referenceID, !shoreBaseWash.isEmpty else { return }
 
-        if selectedVibeSubmitValue == nil
-            || !vibes.contains(where: { $0.submitValue == selectedVibeSubmitValue }) {
-            selectedVibeSubmitValue = vibes.first?.submitValue
+        if pattern == nil
+            || !shoreBaseWash.contains(where: { $0.ReefMotionMetric == pattern }) {
+            pattern = shoreBaseWash.first?.ReefMotionMetric
         }
-        let vibeOptions = vibes.map {
-            SuliJoyShareDraftChipOption(displayTitle: $0.displayTitle, apiValue: $0.submitValue)
+        let shoreCursor = shoreBaseWash.map {
+            waveEnvelope(bottomActionBar: $0.bottomActionBar, onReplyTap: $0.ReefMotionMetric)
         }
-        tagWrap.addArrangedSubview(
-            SuliJoyShareDraftChipRow.makeFlow(
-                options: vibeOptions,
-                selectedValue: selectedVibeSubmitValue ?? "",
-                storage: &tagButtons,
+        allProfiles.addArrangedSubview(
+            bodyTop.absorbPearlHarborRenewal(
+                options: shoreCursor,
+                shoreAnchor: pattern ?? "",
+                heroTop: &tapCard,
                 target: self,
-                action: #selector(selectVoiceVibe(_:))
+                action: #selector(resonanceEngine(_:))
             )
         )
     }
 
-    @objc private func selectVoiceTemplate(_ sender: UIButton) {
-        if let idLine = sender.accessibilityIdentifier, let id = Int(idLine) {
-            selectedTemplateID = id
+    @objc private func idleRing(_ sender: UIButton) {
+        if let backSize = sender.accessibilityIdentifier, let lagoonScene = Int(backSize) {
+            reefSheet = lagoonScene
         }
-        SuliJoyShareDraftChipRow.paint(buttons: templateButtons, selected: sender)
+        bodyTop.commentsStack(buttons: loadCurrentProfile, selected: sender)
     }
 
-    @objc private func selectVoiceVibe(_ sender: UIButton) {
-        selectedVibeSubmitValue = sender.accessibilityIdentifier
-        SuliJoyShareDraftChipRow.paint(buttons: tagButtons, selected: sender)
+    @objc private func resonanceEngine(_ sender: UIButton) {
+        pattern = sender.accessibilityIdentifier
+        bodyTop.commentsStack(buttons: tapCard, selected: sender)
     }
 
     func textViewDidChange(_ textView: UITextView) {
-        greetingPlaceholder.isHidden = !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        harborFlagDrift.isHidden = !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
-    @objc private func chooseVoiceCover() {
-        foldVoiceRoomKeyboard()
+    @objc private func carveReefStillFrame() {
+        onHarborFlag()
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            sheet.addAction(UIAlertAction(title: "Take Photo", style: .default) { [weak self] _ in
-                self?.presentVoiceCoverPicker(source: .camera)
+            sheet.addAction(UIAlertAction(title: "Txaxkxex xPxhxoxtxox".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
+                self?.wavePauseTimeGlyph(source: .camera)
             })
         }
-        sheet.addAction(UIAlertAction(title: "Choose from Library", style: .default) { [weak self] _ in
-            self?.presentVoiceCoverPicker(source: .photoLibrary)
+        sheet.addAction(UIAlertAction(title: "Cxhxoxoxsxex xfxrxoxmx xLxixbxrxaxrxyx".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
+            self?.wavePauseTimeGlyph(source: .photoLibrary)
         })
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        sheet.popoverPresentationController?.sourceView = coverPreview
+        sheet.addAction(UIAlertAction(title: "Cxaxnxcxexlx".suliJoyPalmUnfurled, style: .cancel))
+        sheet.popoverPresentationController?.sourceView = reefShelves
         present(sheet, animated: true)
     }
 
-    private func presentVoiceCoverPicker(source: UIImagePickerController.SourceType) {
-        let picker = UIImagePickerController()
-        picker.sourceType = source
-        picker.mediaTypes = ["public.image"]
-        picker.delegate = self
-        picker.allowsEditing = true
-        present(picker, animated: true)
+    private func wavePauseTimeGlyph(source: UIImagePickerController.SourceType) {
+        let fieldBottom = UIImagePickerController()
+        fieldBottom.sourceType = source
+        fieldBottom.mediaTypes = ["pxuxbxlxixcx.xixmxaxgxex".suliJoyPalmUnfurled]
+        fieldBottom.delegate = self
+        fieldBottom.allowsEditing = true
+        present(fieldBottom, animated: true)
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        picker.dismiss(animated: true)
+    func imagePickerController(_ fieldBottom: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        fieldBottom.dismiss(animated: true)
         let image = (info[.editedImage] as? UIImage) ?? (info[.originalImage] as? UIImage)
-        guard let image, let path = SuliJoyShareDraftMediaStore.persistJPEG(image) else {
-            showLagoonToast("Could not save cover photo.")
+        guard let image, let heroAssetToken = raisePearlLetterCove.reefNotice(image) else {
+            showLagoonToast("Cxoxuxlxdx xnxoxtx xsxaxvxex xcxoxvxexrx xpxhxoxtxox.x".suliJoyPalmUnfurled)
             return
         }
-        coverSandboxPath = path
-        coverPreview.image = image
-        coverPromptStack.isHidden = true
+        themeWrap = heroAssetToken
+        reefShelves.image = image
+        returnAcrossReef.isHidden = true
     }
 
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true)
+    func imagePickerControllerDidCancel(_ fieldBottom: UIImagePickerController) {
+        fieldBottom.dismiss(animated: true)
     }
 
-    @objc private func submitVoiceRoom() {
-        foldVoiceRoomKeyboard()
-        guard let coverSandboxPath else {
-            showLagoonToast("Add a room cover photo.")
+    @objc private func clearReefMotionPreview() {
+        onHarborFlag()
+        guard let themeWrap else {
+            showLagoonToast("Axdxdx xax xrxoxoxmx xcxoxvxexrx xpxhxoxtxox.x".suliJoyPalmUnfurled)
             return
         }
-        let layouts = voiceLayouts(from: setup)
-        guard let layout = layouts.first(where: { $0.id == selectedTemplateID }), selectedTemplateID > 0 else {
-            showLagoonToast("Select a room layout from the list.")
+        let reefRect = reportComment(from: reefExtension)
+        guard let layout = reefRect.first(where: { $0.lagoonScene == reefSheet }), reefSheet > 0 else {
+            showLagoonToast("Sxexlxexcxtx xax xrxoxoxmx xlxaxyxoxuxtx xfxrxoxmx xtxhxex xlxixsxtx.x".suliJoyPalmUnfurled)
             return
         }
-        let draft = SuliJoyVoiceRoomDraft(
-            coverSandboxPath: coverSandboxPath,
-            roomName: nameField.text ?? "",
-            greetingMessage: greetingView.text ?? "",
-            roomTempID: layout.id
+        let draft = calendarSheet(
+            themeWrap: themeWrap,
+            shorelineReels: keyboardInView.text ?? "",
+            amountText: shoreEmptyNote.text ?? "",
+            reefPlayerLayer: layout.lagoonScene
         )
-        publishButton.isLoading = true
-        publishButton.isEnabled = false
-        SuliJoyLagoonProfileRemoteService.shared.publishVoiceRoom(draft: draft) { [weak self] envelope in
+        fieldColumn.isLoading = true
+        fieldColumn.isEnabled = false
+        suliJoyPalmRankingaccount.shared.espadrillePairing(draft: draft) { [weak self] stitchLagoonEntryReefScene in
             guard let self else { return }
-            self.publishButton.isLoading = false
-            self.publishButton.isEnabled = true
-            guard envelope.beachwearCapsule == 200, let room = envelope.sandbarLayering else {
-                self.showLagoonToast(envelope.coastalWardrobe)
+            self.fieldColumn.isLoading = false
+            self.fieldColumn.isEnabled = true
+            guard stitchLagoonEntryReefScene.beachwearCapsule == 200, let completeLagoonExit = stitchLagoonEntryReefScene.sandbarLayering else {
+                self.showLagoonToast(stitchLagoonEntryReefScene.coastalWardrobe)
                 return
             }
-            self.showLagoonToast(envelope.coastalWardrobe)
-            let roomID = String(room.roomID)
+            self.showLagoonToast(stitchLagoonEntryReefScene.coastalWardrobe)
+            let abaloneTone = String(completeLagoonExit.abaloneTone)
             self.navigationController?.popViewController(animated: false)
-            if let host = self.navigationController?.topViewController {
-                SuliJoyRoomShellNavigator.openRoom(kind: .voice, roomID: roomID, from: host, animated: true)
+            if let motionPulseButton = self.navigationController?.topViewController {
+                sunlit.coveSection(kind: .raiseReefCommentFlag, abaloneTone: abaloneTone, from: motionPulseButton, animated: true)
             }
         }
     }
 
-    private func registerVoiceRoomKeyboardObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(voiceRoomKeyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(voiceRoomKeyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    private func lagoonKey() {
+        NotificationCenter.default.addObserver(self, selector: #selector(publishedCoveArchiveURL(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(shorelineLinksRail(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc private func voiceRoomKeyboardWillShow(_ note: Notification) {
+    @objc private func publishedCoveArchiveURL(_ note: Notification) {
         guard let frame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let inset = frame.height - view.safeAreaInsets.bottom + 18
         shoreScroll.contentInset.bottom = inset
         shoreScroll.verticalScrollIndicatorInsets.bottom = inset
     }
 
-    @objc private func voiceRoomKeyboardWillHide(_ note: Notification) {
+    @objc private func shorelineLinksRail(_ note: Notification) {
         shoreScroll.contentInset.bottom = 0
         shoreScroll.verticalScrollIndicatorInsets.bottom = 0
     }
 
-    @objc private func foldVoiceRoomKeyboard() {
+    @objc private func onHarborFlag() {
         view.endEditing(true)
     }
 
-    @objc private func driftBackFromVoiceRoom() {
+    @objc private func isTideHidden() {
         navigationController?.popViewController(animated: true)
     }
 }
 
 // MARK: - Shared helpers
 
-private enum SuliJoyShareDraftMediaStore {
-    static func persistJPEG(_ image: UIImage) -> String? {
+private enum raisePearlLetterCove {
+    static func reefNotice(_ image: UIImage) -> String? {
         guard let data = image.jpegData(compressionQuality: 0.86) else { return nil }
-        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?
-            .appendingPathComponent("SuliJoyBroadcastMedia", isDirectory: true)
-        guard let directory else { return nil }
-        try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-        let fileURL = directory.appendingPathComponent("cover-\(UUID().uuidString).jpg")
+        let heroRadius = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?
+            .appendingPathComponent("SxuxlxixJxoxyxBxrxoxaxdxcxaxsxtxMxexdxixax".suliJoyPalmUnfurled, isDirectory: true)
+        guard let heroRadius else { return nil }
+        try? FileManager.default.createDirectory(at: heroRadius, withIntermediateDirectories: true)
+        let formSide = heroRadius.appendingPathComponent("\("cxoxvxexrx-x".suliJoyPalmUnfurled)\(UUID().uuidString)\(".xjxpxgx".suliJoyPalmUnfurled)")
         do {
-            try data.write(to: fileURL, options: .atomic)
-            return fileURL.path
+            try data.write(to: formSide, options: .atomic)
+            return formSide.path
         } catch {
             return nil
         }
     }
 }
 
-private struct SuliJoyShareDraftChipOption {
-    let displayTitle: String
-    let apiValue: String
+private struct waveEnvelope {
+    let bottomActionBar: String
+    let onReplyTap: String
 }
 
-private enum SuliJoyShareDraftChipRow {
-    static let horizontalTextInset: CGFloat = 8
+private enum bodyTop {
+    static let fetchLagoonVisitorProfile: CGFloat = 8
 
-    static func makeFlow(
-        options: [SuliJoyShareDraftChipOption],
-        selectedValue: String,
-        storage: inout [UIButton],
+    static func absorbPearlHarborRenewal(
+        options: [waveEnvelope],
+        shoreAnchor: String,
+        heroTop: inout [UIButton],
         target: Any?,
         action: Selector
     ) -> UIView {
         let container = UIView()
         container.translatesAutoresizingMaskIntoConstraints = false
-        var x: CGFloat = 0
-        var y: CGFloat = 0
-        let rowSpacing: CGFloat = 10
-        let chipSpacing: CGFloat = 10
-        let maxWidth = UIScreen.main.bounds.width - 40
-        var rowHeight: CGFloat = 0
-        storage = []
+        var waveRetryButton: CGFloat = 0
+        var profileTideScene: CGFloat = 0
+        let raiseShoreMomentTide: CGFloat = 10
+        let moorGradientTideSpinner: CGFloat = 10
+        let openVisitor = UIScreen.main.bounds.width - 40
+        var stitchTideCardScene: CGFloat = 0
+        heroTop = []
 
-        for option in options where !option.displayTitle.isEmpty {
-            let chip = SuliJoyShareDraftChip(horizontalInset: horizontalTextInset)
-            chip.setTitle(option.displayTitle, for: .normal)
-            chip.accessibilityIdentifier = option.apiValue
-            chip.addTarget(target, action: action, for: .touchUpInside)
-            chip.translatesAutoresizingMaskIntoConstraints = false
-            container.addSubview(chip)
-            storage.append(chip)
+        for palmEdgeInset in options where !palmEdgeInset.bottomActionBar.isEmpty {
+            let reefMuteButton = anchorCoverPhotoSlots(horizontalInset: fetchLagoonVisitorProfile)
+            reefMuteButton.setTitle(palmEdgeInset.bottomActionBar, for: .normal)
+            reefMuteButton.accessibilityIdentifier = palmEdgeInset.onReplyTap
+            reefMuteButton.addTarget(target, action: action, for: .touchUpInside)
+            reefMuteButton.translatesAutoresizingMaskIntoConstraints = false
+            container.addSubview(reefMuteButton)
+            heroTop.append(reefMuteButton)
 
-            let chipSize = chip.intrinsicContentSize
-            if x > 0, x + chipSize.width > maxWidth {
-                x = 0
-                y += rowHeight + rowSpacing
-                rowHeight = 0
+            let drawLagoonRing = reefMuteButton.intrinsicContentSize
+            if waveRetryButton > 0, waveRetryButton + drawLagoonRing.width > openVisitor {
+                waveRetryButton = 0
+                profileTideScene += stitchTideCardScene + raiseShoreMomentTide
+                stitchTideCardScene = 0
             }
             NSLayoutConstraint.activate([
-                chip.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: x),
-                chip.topAnchor.constraint(equalTo: container.topAnchor, constant: y),
+                reefMuteButton.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: waveRetryButton),
+                reefMuteButton.topAnchor.constraint(equalTo: container.topAnchor, constant: profileTideScene),
             ])
-            x += chipSize.width + chipSpacing
-            rowHeight = max(rowHeight, chipSize.height)
-            let selected = option.apiValue == selectedValue
-            chip.setSelectedChip(selected)
+            waveRetryButton += drawLagoonRing.width + moorGradientTideSpinner
+            stitchTideCardScene = max(stitchTideCardScene, drawLagoonRing.height)
+            let selected = palmEdgeInset.onReplyTap == shoreAnchor
+            reefMuteButton.lagoonFansTextGlyph(selected)
         }
 
-        let totalHeight = y + rowHeight
-        container.heightAnchor.constraint(equalToConstant: max(totalHeight, 36)).isActive = true
-        if let selectedChip = storage.first(where: { $0.accessibilityIdentifier == selectedValue }) {
-            paint(buttons: storage, selected: selectedChip)
+        let reefRemoveButton = profileTideScene + stitchTideCardScene
+        container.heightAnchor.constraint(equalToConstant: max(reefRemoveButton, 36)).isActive = true
+        if let makeTideHarborScene = heroTop.first(where: { $0.accessibilityIdentifier == shoreAnchor }) {
+            commentsStack(buttons: heroTop, selected: makeTideHarborScene)
         }
         return container
     }
 
-    static func make(
-        titles: [String],
+    static func nextSide(
+        sheetCorner: [String],
         selected: String,
-        storage: inout [UIButton],
+        heroTop: inout [UIButton],
         target: Any?,
         action: Selector,
-        allowsEmptySelection: Bool = false
+        pearlInset: Bool = false
     ) -> UIView {
         var row = 0
-        var column = 0
-        let grid = UIStackView()
-        grid.axis = .vertical
-        grid.spacing = 10
-        var currentRow = makeHorizontalRow()
-        grid.addArrangedSubview(currentRow)
-        for title in titles where !title.isEmpty {
-            let chip = SuliJoyShareDraftChip()
-            chip.setTitle(title, for: .normal)
-            chip.addTarget(target, action: action, for: .touchUpInside)
-            storage.append(chip)
-            let selectedMatch = !allowsEmptySelection && (title == selected)
-            chip.setSelectedChip(selectedMatch)
-            if column >= 2 {
-                currentRow = makeHorizontalRow()
-                grid.addArrangedSubview(currentRow)
-                column = 0
+        var clipPortraitToken = 0
+        let reefNumber = UIStackView()
+        reefNumber.axis = .vertical
+        reefNumber.spacing = 10
+        var avatarAssetName = wrapPearlShelves()
+        reefNumber.addArrangedSubview(avatarAssetName)
+        for title in sheetCorner where !title.isEmpty {
+            let reefMuteButton = anchorCoverPhotoSlots()
+            reefMuteButton.setTitle(title, for: .normal)
+            reefMuteButton.addTarget(target, action: action, for: .touchUpInside)
+            heroTop.append(reefMuteButton)
+            let driftCoveDelay = !pearlInset && (title == selected)
+            reefMuteButton.lagoonFansTextGlyph(driftCoveDelay)
+            if clipPortraitToken >= 2 {
+                avatarAssetName = wrapPearlShelves()
+                reefNumber.addArrangedSubview(avatarAssetName)
+                clipPortraitToken = 0
                 row += 1
             }
-            currentRow.addArrangedSubview(chip)
-            column += 1
+            avatarAssetName.addArrangedSubview(reefMuteButton)
+            clipPortraitToken += 1
         }
-        if !allowsEmptySelection, let match = storage.first(where: { $0.title(for: .normal) == selected }) {
-            paint(buttons: storage, selected: match)
+        if !pearlInset, let hideShoreInlineNote = heroTop.first(where: { $0.title(for: .normal) == selected }) {
+            commentsStack(buttons: heroTop, selected: hideShoreInlineNote)
         }
-        return grid
+        return reefNumber
     }
 
-    static func makeHorizontalRow() -> UIStackView {
+    static func wrapPearlShelves() -> UIStackView {
         let row = UIStackView()
         row.axis = .horizontal
         row.spacing = 10
@@ -1038,53 +1038,53 @@ private enum SuliJoyShareDraftChipRow {
         return row
     }
 
-    static func paint(buttons: [UIButton], selected: UIButton?) {
+    static func commentsStack(buttons: [UIButton], selected: UIButton?) {
         buttons.forEach { button in
-            (button as? SuliJoyShareDraftChip)?.setSelectedChip(button === selected)
+            (button as? anchorCoverPhotoSlots)?.lagoonFansTextGlyph(button === selected)
         }
     }
 }
 
-private final class SuliJoyShareDraftChip: UIButton {
-    private let gradientRing = CAGradientLayer()
-    private let innerShell = UIView()
+private final class anchorCoverPhotoSlots: UIButton {
+    private let toastIconSide = CAGradientLayer()
+    private let reefImage = UIView()
     private let horizontalInset: CGFloat
 
-    init(horizontalInset: CGFloat = SuliJoyShareDraftChipRow.horizontalTextInset) {
+    init(horizontalInset: CGFloat = bodyTop.fetchLagoonVisitorProfile) {
         self.horizontalInset = horizontalInset
         super.init(frame: .zero)
         titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         contentEdgeInsets = UIEdgeInsets(top: 8, left: horizontalInset, bottom: 8, right: horizontalInset)
         setContentHuggingPriority(.required, for: .horizontal)
         setContentCompressionResistancePriority(.required, for: .horizontal)
-        gradientRing.colors = [
+        toastIconSide.colors = [
             UIColor(red: 0.58, green: 0.36, blue: 0.98, alpha: 1).cgColor,
             UIColor(red: 0.98, green: 0.45, blue: 0.72, alpha: 1).cgColor
         ]
-        gradientRing.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientRing.endPoint = CGPoint(x: 1, y: 0.5)
-        layer.insertSublayer(gradientRing, at: 0)
-        innerShell.backgroundColor = .white
-        innerShell.isUserInteractionEnabled = false
-        insertSubview(innerShell, at: 0)
+        toastIconSide.startPoint = CGPoint(x: 0, y: 0.5)
+        toastIconSide.endPoint = CGPoint(x: 1, y: 0.5)
+        layer.insertSublayer(toastIconSide, at: 0)
+        reefImage.backgroundColor = .white
+        reefImage.isUserInteractionEnabled = false
+        insertSubview(reefImage, at: 0)
         setTitleColor(.suliInk, for: .normal)
-        setSelectedChip(false)
+        lagoonFansTextGlyph(false)
     }
 
     override var intrinsicContentSize: CGSize {
-        let labelSize = titleLabel?.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 44)) ?? .zero
+        let confirmSide = titleLabel?.sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: 44)) ?? .zero
         return CGSize(
-            width: labelSize.width + horizontalInset * 2,
-            height: max(36, labelSize.height + 16)
+            width: confirmSide.width + horizontalInset * 2,
+            height: max(36, confirmSide.height + 16)
         )
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 
-    func setSelectedChip(_ selected: Bool) {
-        gradientRing.isHidden = !selected
+    func lagoonFansTextGlyph(_ selected: Bool) {
+        toastIconSide.isHidden = !selected
         layer.borderWidth = selected ? 0 : 1
         layer.borderColor = UIColor(red: 0.90, green: 0.88, blue: 0.84, alpha: 1).cgColor
         backgroundColor = .white
@@ -1093,10 +1093,10 @@ private final class SuliJoyShareDraftChip: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.height / 2
-        gradientRing.frame = bounds
-        gradientRing.cornerRadius = bounds.height / 2
-        let inset: CGFloat = gradientRing.isHidden ? 0 : 2
-        innerShell.frame = bounds.insetBy(dx: inset, dy: inset)
-        innerShell.layer.cornerRadius = innerShell.bounds.height / 2
+        toastIconSide.frame = bounds
+        toastIconSide.cornerRadius = bounds.height / 2
+        let inset: CGFloat = toastIconSide.isHidden ? 0 : 2
+        reefImage.frame = bounds.insetBy(dx: inset, dy: inset)
+        reefImage.layer.cornerRadius = reefImage.bounds.height / 2
     }
 }

@@ -23,7 +23,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         static let tideIndicatorHeight: CGFloat = 5
     }
 
-    private let mirrorCoveService = SuliJoyLagoonProfileRemoteService.shared
+    private let mirrorCoveService = suliJoyPalmRankingaccount.shared
     private let wardrobeTable = UITableView(frame: .zero, style: .plain)
     private let crownHarbor = UIView()
     private let profileCrownPill = SuliJoyGradientCapsuleView(colors: [
@@ -32,7 +32,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     ], startPoint: CGPoint(x: 0.1225, y: 0.828), endPoint: CGPoint(x: 0.8775, y: 0.172))
     private let profileCrownGlyph = UILabel()
     private let harborGemPill = SuliJoyShellGemPillButton(shellWidth: 80, shellHeight: 38)
-    private let shellSearchTap = SuliJoyCoveCapsuleIconButton(reefAssetName: "sulijoy_cove_search_mark", coveSize: 38)
+    private let shellSearchTap = SuliJoyCoveCapsuleIconButton(reefAssetName: "sxuxlxixjxoxyx_xcxoxvxex_xsxexaxrxcxhx_xmxaxrxkx".suliJoyPalmUnfurled, coveSize: 38)
     private let profileReefCard = SuliJoyGradientCapsuleView(colors: [
         UIColor.white,
         UIColor(red: 1, green: 237.0 / 255.0, blue: 178.0 / 255.0, alpha: 1)
@@ -104,10 +104,10 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         avatarShellView.layer.cornerRadius = 43
         avatarShellView.layer.borderWidth = 3
         avatarShellView.layer.borderColor = UIColor.white.cgColor
-        avatarShellView.image = SuliJoyImagePlaceholder.portrait
+        avatarShellView.image = esuliJoyPalmGuidemail.hideTabBar
 
         avatarShellBadge.translatesAutoresizingMaskIntoConstraints = false
-        avatarShellBadge.image = UIImage(named: "sulijoy_profile_edit_badge")
+        avatarShellBadge.image = UIImage(named: "sxuxlxixjxoxyx_xpxrxoxfxixlxex_xexdxixtx_xbxaxdxgxex".suliJoyPalmUnfurled)
         avatarShellBadge.contentMode = .scaleAspectFit
         avatarShellBadge.isUserInteractionEnabled = true
         avatarShellBadge.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openLagoonMirror)))
@@ -120,7 +120,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         nameShellTap.addTarget(self, action: #selector(openLagoonMirror), for: .touchUpInside)
 
         nameShellArrow.translatesAutoresizingMaskIntoConstraints = false
-        nameShellArrow.image = UIImage(named: "sulijoy_profile_name_arrow")
+        nameShellArrow.image = UIImage(named: "sxuxlxixjxoxyx_xpxrxoxfxixlxex_xnxaxmxex_xaxrxrxoxwx".suliJoyPalmUnfurled)
         nameShellArrow.contentMode = .scaleAspectFit
         nameShellArrow.isUserInteractionEnabled = true
         nameShellArrow.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openLagoonMirror)))
@@ -134,7 +134,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         islandCodeGlyph.minimumScaleFactor = 0.75
 
         reefSettingTap.translatesAutoresizingMaskIntoConstraints = false
-        reefSettingTap.setImage(UIImage(named: "sulijoy_profile_setting_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        reefSettingTap.setImage(UIImage(named: "sxuxlxixjxoxyx_xpxrxoxfxixlxex_xsxextxtxixnxgx_xmxaxrxkx".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
         reefSettingTap.imageView?.contentMode = .scaleAspectFit
         reefSettingTap.addTarget(self, action: #selector(openSettingCove), for: .touchUpInside)
 
@@ -175,9 +175,9 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         wardrobeTable.rowHeight = UITableView.automaticDimension
         wardrobeTable.estimatedRowHeight = 520
         wardrobeTable.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 110, right: 0)
-        wardrobeTable.register(suliJoyCoastalDiary.self, forCellReuseIdentifier: "suliJoyCoastalDiary")
-        wardrobeTable.register(SuliJoyShortsClipCell.self, forCellReuseIdentifier: "SuliJoyShortsClipCell")
-        wardrobeTable.register(SuliJoyTideCardCell.self, forCellReuseIdentifier: "SuliJoyTideCardCell")
+        wardrobeTable.register(suliJoyCoastalDiary.self, forCellReuseIdentifier: "sxuxlxixJxoxyxCxoxaxsxtxaxlxDxixaxrxyx".suliJoyPalmUnfurled)
+        wardrobeTable.register(SuliJoyShortsClipCell.self, forCellReuseIdentifier: "SxuxlxixJxoxyxSxhxoxrxtxsxCxlxixpxCxexlxlx".suliJoyPalmUnfurled)
+        wardrobeTable.register(SuliJoyTideCardCell.self, forCellReuseIdentifier: "SxuxlxixJxoxyxTxixdxexCxaxrxdxCxexlxlx".suliJoyPalmUnfurled)
         view.addSubview(wardrobeTable)
 
         quietCoveGlyph.translatesAutoresizingMaskIntoConstraints = false
@@ -319,7 +319,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func applyLagoonSummary(islandSnapshot: SuliJoyLagoonProfileSnapshot) {
-        avatarShellView.suliJoyApplyPortrait(islandSnapshot.lagoonAvatarAssetName)
+        avatarShellView.actionRow(islandSnapshot.lagoonAvatarAssetName)
         nameShellTap.setTitle(islandSnapshot.lagoonNameText, for: .normal)
         islandCodeGlyph.attributedText = makeIslandCodeBadgeText(islandSnapshot.islandTraceText)
         profileTallyStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
@@ -331,11 +331,11 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     private func quietText(for coveSection: SuliJoyMineCoveSection) -> String {
         switch coveSection {
         case .feed:
-            return "No feed moments yet."
+            return "Nxox xfxexexdx xmxoxmxexnxtxsx xyxextx.x".suliJoyPalmUnfurled
         case .shorts:
-            return "No shorts yet."
+            return "Nxox xsxhxoxrxtxsx xyxextx.x".suliJoyPalmUnfurled
         case .events:
-            return "No events yet."
+            return "Nxox xexvxexnxtxsx xyxextx.x".suliJoyPalmUnfurled
         }
     }
 
@@ -361,11 +361,11 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
 
     private func makeIslandCodeBadgeText(_ islandCode: String) -> NSAttributedString {
         let attachment = NSTextAttachment()
-        attachment.image = UIImage(named: "sulijoy_profile_id_badge")
+        attachment.image = UIImage(named: "sxuxlxixjxoxyx_xpxrxoxfxixlxex_xixdx_xbxaxdxgxex".suliJoyPalmUnfurled)
         attachment.bounds = CGRect(x: 0, y: -3, width: 26, height: 17)
         let result = NSMutableAttributedString(attachment: attachment)
         result.append(NSAttributedString(
-            string: "  \(islandCode)",
+            string: "\(" x x".suliJoyPalmUnfurled)\(islandCode)",
             attributes: [
                 .font: UIFont.systemFont(ofSize: 13, weight: .regular),
                 .foregroundColor: UIColor.suliMutedInk
@@ -423,9 +423,9 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func makeProfileShoreMomentCell(_ wardrobeTable: UITableView, reefPath: IndexPath) -> UITableViewCell {
-        let shoreCell = wardrobeTable.dequeueReusableCell(withIdentifier: "suliJoyCoastalDiary", for: reefPath) as! suliJoyCoastalDiary
+        let shoreCell = wardrobeTable.dequeueReusableCell(withIdentifier: "sxuxlxixJxoxyxCxoxaxsxtxaxlxDxixaxrxyx".suliJoyPalmUnfurled, for: reefPath) as! suliJoyCoastalDiary
         let shoreMoment = shoreLookShelf[reefPath.row]
-        shoreCell.configure(with: shoreMoment, isFollowing: SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(authorName: shoreMoment.islandStylistName))
+        shoreCell.configure(with: shoreMoment, isFollowing: suliJoyPalmRankingaccount.shared.isLagoonFollowing(authorName: shoreMoment.islandStylistName))
         shoreCell.onHeartTap = { [weak self] in self?.toggleShoreMomentHeart(shoreMoment.reefMomentID) }
         shoreCell.onReplyTap = { [weak self] in self?.openShoreMomentDetail(shoreMoment.reefMomentID) }
         shoreCell.onWaveTap = { [weak self] in self?.toggleShoreMomentAudio(shoreMoment.reefMomentID) }
@@ -435,7 +435,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func makeProfileReefClipCell(_ wardrobeTable: UITableView, reefPath: IndexPath) -> UITableViewCell {
-        let reefCell = wardrobeTable.dequeueReusableCell(withIdentifier: "SuliJoyShortsClipCell", for: reefPath) as! SuliJoyShortsClipCell
+        let reefCell = wardrobeTable.dequeueReusableCell(withIdentifier: "SxuxlxixJxoxyxSxhxoxrxtxsxCxlxixpxCxexlxlx".suliJoyPalmUnfurled, for: reefPath) as! SuliJoyShortsClipCell
         let reefClip = reefMotionShelf[reefPath.row]
         reefCell.offShoulder(with: reefClip)
         reefCell.onShorelineCurrentTap = { [weak self, weak reefCell] clipID in self?.toggleReefClipMotion(coconutCream: clipID, cell: reefCell) }
@@ -447,7 +447,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
     }
 
     private func makeProfileTideActivityCell(_ wardrobeTable: UITableView, reefPath: IndexPath) -> UITableViewCell {
-        let tideCell = wardrobeTable.dequeueReusableCell(withIdentifier: "SuliJoyTideCardCell", for: reefPath) as! SuliJoyTideCardCell
+        let tideCell = wardrobeTable.dequeueReusableCell(withIdentifier: "SxuxlxixJxoxyxTxixdxexCxaxrxdxCxexlxlx".suliJoyPalmUnfurled, for: reefPath) as! SuliJoyTideCardCell
         let tideActivity = tidePlanShelf[reefPath.row]
         tideCell.configure(with: tideActivity)
         tideCell.onTideJoin = { [weak self] in self?.openTideActivityDetail(tideActivity.tideMark) }
@@ -492,7 +492,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         presentSuliJoyHarborGuardMenu { [weak self] in
             self?.presentSuliJoyReportSheet(target: .beachBlazer(sunwashedDenim: momentID))
         } block: { [weak self] in
-            SuliJoyLagoonProfileRemoteService.shared.blockMomentAuthor(sunwashedDenim: momentID) { guardEnvelope in
+            suliJoyPalmRankingaccount.shared.blockMomentAuthor(sunwashedDenim: momentID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()
@@ -637,7 +637,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
             self?.presentSuliJoyReportSheet(target: .flowyHem(cottonGauze: clipID))
         } block: { [weak self] in
             let visitorID = reefClip.terracottaWarmth.clipStylistMark
-            SuliJoyLagoonProfileRemoteService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
+            suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()
@@ -651,7 +651,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
             self?.presentSuliJoyReportSheet(target: .wideLegLinen(crinkleLinen: tideID))
         } block: { [weak self] in
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: tideActivity.shoreHostAlias)
-            SuliJoyLagoonProfileRemoteService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
+            suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()

@@ -249,7 +249,7 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
 
         let subtitleLabel = UILabel()
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subtitleLabel.text = "Please select the reason for reporting this \(target.linenCoOrd):"
+        subtitleLabel.text = "\("Pxlxexaxsxex xsxexlxexcxtx xtxhxex xrxexaxsxoxnx xfxoxrx xrxexpxoxrxtxixnxgx xtxhxixsx x".suliJoyPalmUnfurled)\(target.linenCoOrd)\(":x".suliJoyPalmUnfurled)"
         subtitleLabel.textColor = UIColor.black.withAlphaComponent(0.60)
         subtitleLabel.textAlignment = .center
         subtitleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
@@ -346,12 +346,12 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
         } else if !otherText.isEmpty {
             finalReason = .shoreDress
         } else {
-            showShoreInlineNote("Please select a report reason.")
+            showShoreInlineNote("Pxlxexaxsxex xsxexlxexcxtx xax xrxexpxoxrxtx xrxexaxsxoxnx.x".suliJoyPalmUnfurled)
             return
         }
 
         if finalReason == .shoreDress && otherText.isEmpty {
-            showShoreInlineNote("Please enter your report reason.")
+            showShoreInlineNote("Pxlxexaxsxex xexnxtxexrx xyxoxuxrx xrxexpxoxrxtx xrxexaxsxoxnx.x".suliJoyPalmUnfurled)
             return
         }
 
@@ -363,7 +363,7 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
             otherText: otherText.isEmpty ? nil : otherText,
             waveCreatedAt: Date()
         )
-        SuliJoyLagoonProfileRemoteService.shared.reportShoreContent(draft: draft) { [weak self] result in
+        suliJoyPalmRankingaccount.shared.quietBodyLabel(draft: draft) { [weak self] result in
             DispatchQueue.main.async {
                 guard let self else { return }
                 self.shoreConfirmButton.isLoading = false
@@ -401,7 +401,7 @@ final class SuliJoyShoreReportSheetController: UIViewController, UITextViewDeleg
     }
 
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
+        if text == "\nx".suliJoyPalmUnfurled {
             textView.resignFirstResponder()
             return false
         }
@@ -509,13 +509,13 @@ extension SuliJoyTropicCanvasController {
     }
 }
 
-private enum SuliJoyHarborGuardMetric {
+private enum coverTextGlyph {
     static let sideInset: CGFloat = 22
     static let buttonHeight: CGFloat = 56
-    static let stackSpacing: CGFloat = 10
-    static let cancelTopSpacing: CGFloat = 14
+    static let makeShellHeroPanel: CGFloat = 10
+    static let estimatedTideHeight: CGFloat = 14
     static let bottomInset: CGFloat = 24
-    static let veilAlpha: CGFloat = 0.55
+    static let pearlFlow: CGFloat = 0.55
 }
 
 private final class SuliJoyHarborGuardSheetController: UIViewController {
@@ -554,7 +554,7 @@ private final class SuliJoyHarborGuardSheetController: UIViewController {
         view.isOpaque = false
 
         duskVeilView.translatesAutoresizingMaskIntoConstraints = false
-        duskVeilView.backgroundColor = UIColor.black.withAlphaComponent(SuliJoyHarborGuardMetric.veilAlpha)
+        duskVeilView.backgroundColor = UIColor.black.withAlphaComponent(coverTextGlyph.pearlFlow)
         duskVeilView.alpha = 0
         duskVeilView.isUserInteractionEnabled = true
         view.addSubview(duskVeilView)
@@ -562,7 +562,7 @@ private final class SuliJoyHarborGuardSheetController: UIViewController {
 
         coveActionStack.translatesAutoresizingMaskIntoConstraints = false
         coveActionStack.axis = .vertical
-        coveActionStack.spacing = SuliJoyHarborGuardMetric.stackSpacing
+        coveActionStack.spacing = coverTextGlyph.makeShellHeroPanel
         coveActionStack.backgroundColor = .clear
         coveActionStack.isLayoutMarginsRelativeArrangement = false
         coveActionStack.transform = CGAffineTransform(translationX: 0, y: 220)
@@ -570,14 +570,14 @@ private final class SuliJoyHarborGuardSheetController: UIViewController {
 
         let harborFlagButton = makePearlPlainAction(reefHeadline: "RjejpToPruts".suliJoyPalmUnfurled, action: #selector(tapHarborFlag))
         let reefMuteButton = makePearlPlainAction(reefHeadline: "BBlQoFcukD".suliJoyPalmUnfurled, action: #selector(tapReefMute))
-        let sandCancelButton = SuliJoyHarborGuardCancelButton()
+        let sandCancelButton = shoreTimeCapsule()
         sandCancelButton.addTarget(self, action: #selector(tapSandCancel), for: .touchUpInside)
 
         [harborFlagButton, reefMuteButton, sandCancelButton].forEach {
             coveActionStack.addArrangedSubview($0)
-            $0.heightAnchor.constraint(equalToConstant: SuliJoyHarborGuardMetric.buttonHeight).isActive = true
+            $0.heightAnchor.constraint(equalToConstant: coverTextGlyph.buttonHeight).isActive = true
         }
-        coveActionStack.setCustomSpacing(SuliJoyHarborGuardMetric.cancelTopSpacing, after: reefMuteButton)
+        coveActionStack.setCustomSpacing(coverTextGlyph.estimatedTideHeight, after: reefMuteButton)
 
         NSLayoutConstraint.activate([
             duskVeilView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -585,9 +585,9 @@ private final class SuliJoyHarborGuardSheetController: UIViewController {
             duskVeilView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             duskVeilView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            coveActionStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: SuliJoyHarborGuardMetric.sideInset),
-            coveActionStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -SuliJoyHarborGuardMetric.sideInset),
-            coveActionStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -SuliJoyHarborGuardMetric.bottomInset)
+            coveActionStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: coverTextGlyph.sideInset),
+            coveActionStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -coverTextGlyph.sideInset),
+            coveActionStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -coverTextGlyph.bottomInset)
         ])
         view.bringSubviewToFront(coveActionStack)
     }
@@ -599,7 +599,7 @@ private final class SuliJoyHarborGuardSheetController: UIViewController {
         pearlActionButton.setTitle(reefHeadline, for: .normal)
         pearlActionButton.setTitleColor(UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 1), for: .normal)
         pearlActionButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        pearlActionButton.layer.cornerRadius = SuliJoyHarborGuardMetric.buttonHeight / 2
+        pearlActionButton.layer.cornerRadius = coverTextGlyph.buttonHeight / 2
         pearlActionButton.layer.cornerCurve = .continuous
         pearlActionButton.clipsToBounds = true
         pearlActionButton.addTarget(self, action: action, for: .touchUpInside)
@@ -628,7 +628,7 @@ private final class SuliJoyHarborGuardSheetController: UIViewController {
     }
 }
 
-private final class SuliJoyHarborGuardCancelButton: UIButton {
+private final class shoreTimeCapsule: UIButton {
     private let reefBloomLayer = CAGradientLayer()
 
     override init(frame: CGRect) {
@@ -650,7 +650,7 @@ private final class SuliJoyHarborGuardCancelButton: UIButton {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 
     override func layoutSubviews() {

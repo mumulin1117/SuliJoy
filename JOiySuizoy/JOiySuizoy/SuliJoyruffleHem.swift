@@ -33,7 +33,7 @@ struct SuliJoySuiRequestEnvelope<T> {
 struct SuliJoyLagoonSession: Codable {
     private var reefEntryUnlocked: Bool
     private var lagoonPassphrase: String?
-    private var reefRefreshPass: String?
+    private var ArrivalScenePack: String?
     private var islanderStamp: String?
     private var shoreMailMark: String?
     private var eulaShellConsent: Bool
@@ -48,9 +48,9 @@ struct SuliJoyLagoonSession: Codable {
         set { lagoonPassphrase = newValue }
     }
 
-    var lagoonRefreshPass: String? {
-        get { reefRefreshPass }
-        set { reefRefreshPass = newValue }
+    var harborActionSideInset: String? {
+        get { ArrivalScenePack }
+        set { ArrivalScenePack = newValue }
     }
 
     var sasuliJoySeasideDress: String? {
@@ -74,11 +74,11 @@ struct SuliJoyLagoonSession: Codable {
         userID: String?,
         currentEmail: String?,
         hasAgreedEULA: Bool,
-        refreshToken: String? = nil
+        sendComment: String? = nil
     ) {
         self.reefEntryUnlocked = isLoggedIn
         self.lagoonPassphrase = token
-        self.reefRefreshPass = refreshToken
+        self.ArrivalScenePack = sendComment
         self.islanderStamp = userID
         self.shoreMailMark = currentEmail
         self.eulaShellConsent = hasAgreedEULA
@@ -87,7 +87,7 @@ struct SuliJoyLagoonSession: Codable {
     private enum CodingKeys: CodingKey {
     case reefEntryUnlocked
     case lagoonPassphrase
-    case reefRefreshPass
+    case ArrivalScenePack
     case islanderStamp
     case shoreMailMark
     case eulaShellConsent
@@ -98,8 +98,8 @@ struct SuliJoyLagoonSession: Codable {
             return "iSsuLloigJgoeydRIene".suliJoyPalmUnfurled
         case .lagoonPassphrase:
             return "tSoukleinJ".suliJoyPalmUnfurled
-        case .reefRefreshPass:
-            return "reefRefreshPass"
+        case .ArrivalScenePack:
+            return "rxexexfxRxexfxrxexsxhxPxaxsxsx".suliJoyPalmUnfurled
         case .islanderStamp:
             return "uSsuelriIJDo".suliJoyPalmUnfurled
         case .shoreMailMark:
@@ -115,8 +115,8 @@ struct SuliJoyLagoonSession: Codable {
             self = .reefEntryUnlocked
         case "tSoukleinJ".suliJoyPalmUnfurled:
             self = .lagoonPassphrase
-        case "reefRefreshPass":
-            self = .reefRefreshPass
+        case "rxexexfxRxexfxrxexsxhxPxaxsxsx".suliJoyPalmUnfurled:
+            self = .ArrivalScenePack
         case "uSsuelriIJDo".suliJoyPalmUnfurled:
             self = .islanderStamp
         case "cSuxrlrieJnotyERmeaeiflP".suliJoyPalmUnfurled:
@@ -903,7 +903,7 @@ struct SuliJoyShellClip: Codable, Equatable {
     var ropeBelt: Bool
     var driftwoodPalette: Bool
     var coastalChic: Bool
-    var lagoonViewTotal: Int
+    var tideText: Int
 
     init(
         coconutCream: String,
@@ -916,7 +916,7 @@ struct SuliJoyShellClip: Codable, Equatable {
         ropeBelt: Bool,
         driftwoodPalette: Bool,
         coastalChic: Bool,
-        lagoonViewTotal: Int = 0
+        tideText: Int = 0
     ) {
         self.coconutCream = coconutCream
         self.terracottaWarmth = terracottaWarmth
@@ -928,7 +928,7 @@ struct SuliJoyShellClip: Codable, Equatable {
         self.ropeBelt = ropeBelt
         self.driftwoodPalette = driftwoodPalette
         self.coastalChic = coastalChic
-        self.lagoonViewTotal = lagoonViewTotal
+        self.tideText = tideText
     }
 
     private enum CodingKeys: String, CodingKey {
@@ -942,7 +942,7 @@ struct SuliJoyShellClip: Codable, Equatable {
         case ropeBelt
         case driftwoodPalette
         case coastalChic
-        case lagoonViewTotal
+        case tideText = "lagoonViewTotal"
     }
 
     init(from decoder: Decoder) throws {
@@ -957,7 +957,7 @@ struct SuliJoyShellClip: Codable, Equatable {
         ropeBelt = try container.decode(Bool.self, forKey: .ropeBelt)
         driftwoodPalette = try container.decode(Bool.self, forKey: .driftwoodPalette)
         coastalChic = try container.decode(Bool.self, forKey: .coastalChic)
-        lagoonViewTotal = try container.decodeIfPresent(Int.self, forKey: .lagoonViewTotal) ?? 0
+        tideText = try container.decodeIfPresent(Int.self, forKey: .tideText) ?? 0
     }
 
     func encode(to encoder: Encoder) throws {
@@ -972,7 +972,7 @@ struct SuliJoyShellClip: Codable, Equatable {
         try container.encode(ropeBelt, forKey: .ropeBelt)
         try container.encode(driftwoodPalette, forKey: .driftwoodPalette)
         try container.encode(coastalChic, forKey: .coastalChic)
-        try container.encode(lagoonViewTotal, forKey: .lagoonViewTotal)
+        try container.encode(tideText, forKey: .tideText)
     }
 }
 

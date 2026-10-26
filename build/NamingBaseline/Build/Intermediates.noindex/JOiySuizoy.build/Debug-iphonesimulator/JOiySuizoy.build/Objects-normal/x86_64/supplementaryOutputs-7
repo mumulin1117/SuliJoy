@@ -1,0 +1,37 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyIslandVisitorProfileViewController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyIslandVisitorProfileViewController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyIslandVisitorProfileViewController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyIslandVisitorProfileViewController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyIslandVisitorProfileViewController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyIslandVisitorProfileViewController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyJokerAuthUserService.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyJokerAuthUserService.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyJokerAuthUserService.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyJokerAuthUserService.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyJokerAuthUserService.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyJokerAuthUserService.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonBoardControllers.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonBoardControllers.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonBoardControllers.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonBoardControllers.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonBoardControllers.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonBoardControllers.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonConsentScrollController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonConsentScrollController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonConsentScrollController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonConsentScrollController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonConsentScrollController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonConsentScrollController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonHarborService.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonHarborService.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonHarborService.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonHarborService.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonHarborService.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonHarborService.swiftdeps"
+  }
+}

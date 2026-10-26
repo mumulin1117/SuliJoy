@@ -11,9 +11,9 @@ private enum SuliJoyLagoonHarborFault: Error {
     case failedVerification
 }
 
-private enum SuliJoyLagoonDiamondRecord {
-    static let recharge = "RECHARGE"
-    static let consume = "CONSUME"
+private enum shouldLaunchWave {
+    static let formDrop = "RxExCxHxAxRxGxEx".suliJoyPalmUnfurled
+    static let gatherShellWardrobeCrown = "CxOxNxSxUxMxEx".suliJoyPalmUnfurled
 }
 
 final class SuliJoyLagoonHarborService {
@@ -65,22 +65,22 @@ final class SuliJoyLagoonHarborService {
             case .success(let reefVerification):
                 let reefTransaction = try checkVerified(reefVerification)
                 let transactionID = String(reefTransaction.id)
-                guard let confirmedPack = SuliJoyPearlAmountPack.localPacks.first(where: { $0.storeProductID == reefTransaction.productID }) else {
-                    return .failure("The purchased pearl pack is unavailable.", code: 400)
+                guard let activeReefInput = SuliJoyPearlAmountPack.localPacks.first(where: { $0.storeProductID == reefTransaction.productID }) else {
+                    return .failure("Txhxex xpxuxrxcxhxaxsxexdx xpxexaxrxlx xpxaxcxkx xixsx xuxnxaxvxaxixlxaxbxlxex.x".suliJoyPalmUnfurled, code: 400)
                 }
-                if SuliJoyShellPearlStore.shared.containsPearlReference(transactionID) {
+                if SuliJoyShellPearlStore.shared.filterDrop(transactionID) {
                     let shellCargo = SuliJoyShellPearlStore.shared.fetchShellPearlVault().sandbarLayering ?? SuliJoyShellWallet(shellPearlTotal: 0, coralLedgerTrail: [])
                     await reefTransaction.finish()
                     return .success(.completed(shellCargo))
                 }
-                let remoteClient = SuliJoyLagoonRemoteClient(sessionVault: SuliJoyTideSessionVault())
-                let remoteDiamond = try await remoteClient.changeIslandDiamonds(
-                    amount: confirmedPack.pearlAmount,
-                    recordType: SuliJoyLagoonDiamondRecord.recharge
+                let reefSegmentHeight = reefMarkGlyph(assembleReefMotionTide: SuliJoyTideSessionVault())
+                let events = try await reefSegmentHeight.islandFrame(
+                    reefSymbol: activeReefInput.pearlAmount,
+                    tideCandidates: shouldLaunchWave.formDrop
                 )
-                let shellCargo = SuliJoyShellPearlStore.shared.applyRemotePearlChange(
-                    remoteBalance: remoteDiamond.diamondBalance,
-                    delta: confirmedPack.pearlAmount,
+                let shellCargo = SuliJoyShellPearlStore.shared.reefImageView(
+                    assembleReefLaunchDock: events.hasShoreCaption,
+                    delta: activeReefInput.pearlAmount,
                     kind: .iapRecharge,
                     referenceID: transactionID
                 )
@@ -98,25 +98,25 @@ final class SuliJoyLagoonHarborService {
         }
     }
 
-    func consumePearlHarbor(amount: Int, referenceID: String) async -> SuliJoySuiRequestEnvelope<SuliJoyShellWallet> {
-        guard amount > 0 else {
-            return .failure("Invalid pearl amount.", code: 400)
+    func shorelineBriefShell(reefSymbol: Int, referenceID: String) async -> SuliJoySuiRequestEnvelope<SuliJoyShellWallet> {
+        guard reefSymbol > 0 else {
+            return .failure("Ixnxvxaxlxixdx xpxexaxrxlx xaxmxoxuxnxtx.x".suliJoyPalmUnfurled, code: 400)
         }
         do {
-            let remoteClient = SuliJoyLagoonRemoteClient(sessionVault: SuliJoyTideSessionVault())
-            let remoteDiamond = try await remoteClient.changeIslandDiamonds(
-                amount: amount,
-                recordType: SuliJoyLagoonDiamondRecord.consume
+            let reefSegmentHeight = reefMarkGlyph(assembleReefMotionTide: SuliJoyTideSessionVault())
+            let events = try await reefSegmentHeight.islandFrame(
+                reefSymbol: reefSymbol,
+                tideCandidates: shouldLaunchWave.gatherShellWardrobeCrown
             )
-            let wallet = SuliJoyShellPearlStore.shared.applyRemotePearlChange(
-                remoteBalance: remoteDiamond.diamondBalance,
-                delta: -amount,
+            let digits = SuliJoyShellPearlStore.shared.reefImageView(
+                assembleReefLaunchDock: events.hasShoreCaption,
+                delta: -reefSymbol,
                 kind: .joinedActivity,
                 referenceID: referenceID
             )
-            return .success(wallet)
+            return .success(digits)
         } catch {
-            return .failure(error.localizedDescription, code: (error as? SuliJoyLagoonRemoteError)?.statusCode ?? 400)
+            return .failure(error.localizedDescription, code: (error as? makeCurationSection)?.tapReefPhoto ?? 400)
         }
     }
 
@@ -133,17 +133,17 @@ final class SuliJoyLagoonHarborService {
         guard let shorelineTransaction = try? checkVerified(shorelineUpdate) else { return }
         guard let shorelinePack = SuliJoyPearlAmountPack.localPacks.first(where: { $0.storeProductID == shorelineTransaction.productID }) else { return }
         let transactionID = String(shorelineTransaction.id)
-        if SuliJoyShellPearlStore.shared.containsPearlReference(transactionID) {
+        if SuliJoyShellPearlStore.shared.filterDrop(transactionID) {
             await shorelineTransaction.finish()
             return
         }
-        let remoteClient = SuliJoyLagoonRemoteClient(sessionVault: SuliJoyTideSessionVault())
-        if let remoteDiamond = try? await remoteClient.changeIslandDiamonds(
-            amount: shorelinePack.pearlAmount,
-            recordType: SuliJoyLagoonDiamondRecord.recharge
+        let reefSegmentHeight = reefMarkGlyph(assembleReefMotionTide: SuliJoyTideSessionVault())
+        if let events = try? await reefSegmentHeight.islandFrame(
+            reefSymbol: shorelinePack.pearlAmount,
+            tideCandidates: shouldLaunchWave.formDrop
         ) {
-            _ = SuliJoyShellPearlStore.shared.applyRemotePearlChange(
-                remoteBalance: remoteDiamond.diamondBalance,
+            _ = SuliJoyShellPearlStore.shared.reefImageView(
+                assembleReefLaunchDock: events.hasShoreCaption,
                 delta: shorelinePack.pearlAmount,
                 kind: .iapRecharge,
                 referenceID: transactionID

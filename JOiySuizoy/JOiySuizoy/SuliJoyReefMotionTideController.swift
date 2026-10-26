@@ -75,7 +75,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
     private func harvestReefMotionScene() -> ReefMotionScene {
         let shorebeachwearCapsule = UIButton(type: .system)
         shorebeachwearCapsule.translatesAutoresizingMaskIntoConstraints = false
-        shorebeachwearCapsule.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        shorebeachwearCapsule.setImage(UIImage(systemName: "cxhxexvxrxoxnx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
         shorebeachwearCapsule.tintColor = .suliInk
         shorebeachwearCapsule.addTarget(self, action: #selector(returnToPublishReef), for: .touchUpInside)
 
@@ -116,12 +116,12 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
         reefPreviewImageView.isHidden = true
 
         reefAddGlyph.translatesAutoresizingMaskIntoConstraints = false
-        reefAddGlyph.image = UIImage(systemName: "plus.circle")
+        reefAddGlyph.image = UIImage(systemName: "pxlxuxsx.xcxixrxcxlxex".suliJoyPalmUnfurled)
         reefAddGlyph.tintColor = UIColor(red: 0.78, green: 0.70, blue: 0.96, alpha: 0.48)
         reefAddGlyph.contentMode = .scaleAspectFit
 
         reefRemoveButton.translatesAutoresizingMaskIntoConstraints = false
-        reefRemoveButton.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
+        reefRemoveButton.setImage(UIImage(systemName: "xxmxaxrxkx.xcxixrxcxlxex.xfxixlxlx".suliJoyPalmUnfurled), for: .normal)
         reefRemoveButton.tintColor = .suliInk
         reefRemoveButton.backgroundColor = .white.withAlphaComponent(0.85)
         reefRemoveButton.layer.cornerRadius = 15
@@ -277,8 +277,8 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
         let reefSheet = craftSuliJoyReefPickerSheet(
             reefHeadline: nil,
             shoreAnchor: reefMotionCard,
-            cameraPhrase: "Record Clip",
-            galleryPhrase: "Choose from Library"
+            cameraPhrase: "Rxexcxoxrxdx xCxlxixpx".suliJoyPalmUnfurled,
+            galleryPhrase: "Cxhxoxoxsxex xfxrxoxmx xLxixbxrxaxrxyx".suliJoyPalmUnfurled
         ) { [weak self] reefSource in
             self?.presentReefMotionPicker(source: reefSource)
         }
@@ -293,7 +293,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
         let reefPicker = UIImagePickerController()
         reefPicker.sourceType = reefSource
         reefPicker.mediaTypes = [UTType.movie.identifier]
-        reefPicker.setValue(UIImagePickerController.QualityType.typeMedium.rawValue, forKey: "vid" + "eoQuality")
+        reefPicker.setValue(UIImagePickerController.QualityType.typeMedium.rawValue, forKey: "vxixdx".suliJoyPalmUnfurled + "exoxQxuxaxlxixtxyx".suliJoyPalmUnfurled)
         reefPicker.delegate = self
         present(reefPicker, animated: true)
     }
@@ -324,25 +324,25 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
 
     private func refreshReefMotionPreview(with reefSaved: SuliJoyLagoonClipMedia) {
         if let coverPath = reefSaved.coverImagePath {
-            reefPreviewImageView.image = UIImage(contentsOfFile: coverPath) ?? UIImage.suliJoyPhoto(named: nil)
+            reefPreviewImageView.image = UIImage(contentsOfFile: coverPath) ?? UIImage.gemSize(named: nil)
             reefPreviewImageView.isHidden = false
         }
-        reefAddGlyph.image = UIImage(systemName: "play.circle.fill")
+        reefAddGlyph.image = UIImage(systemName: "pxlxaxyx.xcxixrxcxlxex.xfxixlxlx".suliJoyPalmUnfurled)
         reefAddGlyph.tintColor = .white.withAlphaComponent(0.92)
         reefRemoveButton.isHidden = false
     }
 
     private func saveReefMotionToSandbox(from reefSourceURL: URL) throws -> SuliJoyLagoonClipMedia {
         let reefDirectory = try Self.localReefMotionDirectory()
-        let reefExtension = reefSourceURL.pathExtension.isEmpty ? "mov" : reefSourceURL.pathExtension
-        let reefMotionURL = reefDirectory.appendingPathComponent("sulijoy_clip_local_\(UUID().uuidString).\(reefExtension)")
+        let reefExtension = reefSourceURL.pathExtension.isEmpty ? "mxoxvx".suliJoyPalmUnfurled : reefSourceURL.pathExtension
+        let reefMotionURL = reefDirectory.appendingPathComponent("\("sxuxlxixjxoxyx_xcxlxixpx_xlxoxcxaxlx_x".suliJoyPalmUnfurled)\(UUID().uuidString)\(".x".suliJoyPalmUnfurled)\(reefExtension)")
         if FileManager.default.fileExists(atPath: reefMotionURL.path) {
             try FileManager.default.removeItem(at: reefMotionURL)
         }
         try FileManager.default.copyItem(at: reefSourceURL, to: reefMotionURL)
         let reefAsset = AVURLAsset(url: reefMotionURL)
         let reefDuration = CMTimeGetSeconds(reefAsset.duration)
-        let reefCoverURL = reefDirectory.appendingPathComponent("sulijoy_clip_cover_\(UUID().uuidString).jpg")
+        let reefCoverURL = reefDirectory.appendingPathComponent("\("sxuxlxixjxoxyx_xcxlxixpx_xcxoxvxexrx_x".suliJoyPalmUnfurled)\(UUID().uuidString)\(".xjxpxgx".suliJoyPalmUnfurled)")
         let reefCoverPath = try? generateReefCoverImage(for: reefAsset, to: reefCoverURL)
         return SuliJoyLagoonClipMedia(
             reefMotionPath: reefMotionURL.path,
@@ -358,7 +358,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
         let reefCGImage = try reefGenerator.copyCGImage(at: CMTime(seconds: 0.1, preferredTimescale: 600), actualTime: nil)
         let reefImage = UIImage(cgImage: reefCGImage)
         guard let reefData = reefImage.jpegData(compressionQuality: 0.82) else {
-            throw NSError(domain: "SuliJoyPostClip", code: 1)
+            throw NSError(domain: "SxuxlxixJxoxyxPxoxsxtxCxlxixpx".suliJoyPalmUnfurled, code: 1)
         }
         try reefData.write(to: reefDestination, options: [.atomic])
         return reefDestination.path
@@ -366,7 +366,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
 
     private static func localReefMotionDirectory() throws -> URL {
         let reefDocuments = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first ?? FileManager.default.temporaryDirectory
-        let reefDirectory = reefDocuments.appendingPathComponent("SuliJoyLocalClips", isDirectory: true)
+        let reefDirectory = reefDocuments.appendingPathComponent("SxuxlxixJxoxyxLxoxcxaxlxCxlxixpxsx".suliJoyPalmUnfurled, isDirectory: true)
         if !FileManager.default.fileExists(atPath: reefDirectory.path) {
             try FileManager.default.createDirectory(at: reefDirectory, withIntermediateDirectories: true)
         }
@@ -382,7 +382,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
     private func clearReefMotionPreview() {
         reefPreviewImageView.image = nil
         reefPreviewImageView.isHidden = true
-        reefAddGlyph.image = UIImage(systemName: "plus.circle")
+        reefAddGlyph.image = UIImage(systemName: "pxlxuxsx.xcxixrxcxlxex".suliJoyPalmUnfurled)
         reefAddGlyph.tintColor = UIColor(red: 0.78, green: 0.70, blue: 0.96, alpha: 0.48)
         reefRemoveButton.isHidden = true
     }
@@ -393,7 +393,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
             return
         }
         tideConfirmButton.isLoading = true
-        SuliJoyLagoonProfileRemoteService.shared.publishReefClip(draft: reefDraft) { [weak self] reefEnvelope in
+        suliJoyPalmRankingaccount.shared.publishReefClip(draft: reefDraft) { [weak self] reefEnvelope in
             self?.settleReefMotionPublish(reefEnvelope)
         }
     }

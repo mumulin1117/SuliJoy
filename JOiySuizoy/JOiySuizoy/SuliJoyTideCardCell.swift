@@ -18,7 +18,7 @@ final class SuliJoyTideCardCell: UITableViewCell {
     private let joinTideControl = SuliJoyGradientButton(reefHeadline: "JkoMiRnK PETvJeJnEtz".suliJoyPalmUnfurled)
     private let joinTideInnerStack = UIStackView()
     private let joinTideTitleGlyph = UILabel()
-    private let gemSparkView = UIImageView(image: UIImage(named: "sulijoy_shell_" + "co" + "in_gem"))
+    private let gemSparkView = UIImageView(image: UIImage(named: "sxuxlxixjxoxyx_xsxhxexlxlx_x".suliJoyPalmUnfurled + "cxox".suliJoyPalmUnfurled + "ixnx_xgxexmx".suliJoyPalmUnfurled))
     private let gemNeedGlyph = UILabel()
     private var reefPreviewViews: [UIImageView] = []
 
@@ -74,7 +74,7 @@ final class SuliJoyTideCardCell: UITableViewCell {
     private func prepareTideCardControls() {
         harborFlagControl.backgroundColor = UIColor(red: 1, green: 0.94, blue: 0.89, alpha: 1)
         harborFlagControl.layer.cornerRadius = 15
-        harborFlagControl.setImage(UIImage(systemName: "flag.fill"), for: .normal)
+        harborFlagControl.setImage(UIImage(systemName: "fxlxaxgx.xfxixlxlx".suliJoyPalmUnfurled), for: .normal)
         harborFlagControl.tintColor = UIColor(red: 1, green: 0.42, blue: 0.18, alpha: 1)
         harborFlagControl.addTarget(self, action: #selector(raiseHarborFlag), for: .touchUpInside)
 
@@ -182,15 +182,15 @@ final class SuliJoyTideCardCell: UITableViewCell {
 
     func configure(with tideSnapshot: SuliJoyTideActivity) {
         tideDayGlyph.text = tideSnapshot.shoreDayText
-        tideClockGlyph.text = "\(tideSnapshot.sunMeridiemText)\n\(tideSnapshot.shoreClockText)"
+        tideClockGlyph.text = "\(tideSnapshot.sunMeridiemText)\("\nx".suliJoyPalmUnfurled)\(tideSnapshot.shoreClockText)"
         tideTitleGlyph.text = tideSnapshot.tideTitleLine
-        shoreSpotGlyph.text = "●  \(tideSnapshot.shoreSpotLine)"
+        shoreSpotGlyph.text = "\("●x x x".suliJoyPalmUnfurled)\(tideSnapshot.shoreSpotLine)"
         shoreBriefGlyph.text = tideSnapshot.shoreSummaryLine
         renderTideCardState(tideSnapshot.tideState)
         renderTideJoinControl(tideSnapshot)
         renderTidePreviewRail(tideSnapshot.reefGallery)
         renderTideCrewRail(tideSnapshot.shorelineAvatarTokens)
-        crewTallyGlyph.text = "\(tideSnapshot.tideJoinedTotal)/\(tideSnapshot.tideCrewLimit)"
+        crewTallyGlyph.text = "\(tideSnapshot.tideJoinedTotal)\("/x".suliJoyPalmUnfurled)\(tideSnapshot.tideCrewLimit)"
     }
 
     private func renderTideCardState(_ shoreState: SuliJoyTideActivityStatus) {
@@ -203,11 +203,11 @@ final class SuliJoyTideCardCell: UITableViewCell {
         let joinGlyphText: String
         switch tideSnapshot.tideState {
         case .tideJoined:
-            joinGlyphText = "Joined"
+            joinGlyphText = "Jxoxixnxexdx".suliJoyPalmUnfurled
         case .tideClosed:
-            joinGlyphText = "Closed"
+            joinGlyphText = "Cxlxoxsxexdx".suliJoyPalmUnfurled
         case .tideOpen:
-            joinGlyphText = "Join Event"
+            joinGlyphText = "Jxoxixnx xExvxexnxtx".suliJoyPalmUnfurled
         }
         joinTideControl.setTitle("", for: .normal)
         joinTideTitleGlyph.text = joinGlyphText
@@ -221,7 +221,7 @@ final class SuliJoyTideCardCell: UITableViewCell {
         reefPreviewViews = shoreMediaShelf.prefix(3).map { tideMedia in
             let reefImage = UIImageView()
             reefImage.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.73, alpha: 1)
-            reefImage.suliJoyApplyPhoto(tideMedia.reefAssetToken)
+            reefImage.shoreCell(tideMedia.reefAssetToken)
             reefImage.contentMode = .scaleAspectFill
             reefImage.clipsToBounds = true
             reefImage.layer.cornerRadius = 9
@@ -234,7 +234,7 @@ final class SuliJoyTideCardCell: UITableViewCell {
         lagoonFaceRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
         for reefAsset in avatarTokens.prefix(3) {
             let lagoonFace = UIImageView()
-            lagoonFace.suliJoyApplyPortrait(reefAsset)
+            lagoonFace.actionRow(reefAsset)
             lagoonFace.translatesAutoresizingMaskIntoConstraints = false
             lagoonFace.contentMode = .scaleAspectFill
             lagoonFace.clipsToBounds = true

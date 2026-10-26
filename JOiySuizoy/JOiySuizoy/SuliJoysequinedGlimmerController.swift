@@ -107,7 +107,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
 
         let backShell = UIButton(type: .system)
         backShell.translatesAutoresizingMaskIntoConstraints = false
-        backShell.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        backShell.setImage(UIImage(systemName: "cxhxexvxrxoxnx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
         backShell.tintColor = .suliInk
         backShell.addTarget(self, action: #selector(returnToPreviousReef), for: .touchUpInside)
 
@@ -194,7 +194,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
         waveButton.addTarget(self, action: #selector(openWaveRecorder), for: .touchUpInside)
 
         waveIconView.translatesAutoresizingMaskIntoConstraints = false
-        waveIconView.image = UIImage(named: "sulijoy_post_record_mic")?.withRenderingMode(.alwaysOriginal)
+        waveIconView.image = UIImage(named: "sxuxlxixjxoxyx_xpxoxsxtx_xrxexcxoxrxdx_xmxixcx".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal)
         waveIconView.contentMode = .scaleAspectFit
         waveIconView.isUserInteractionEnabled = false
 
@@ -204,7 +204,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
         waveStatusGlyph.isUserInteractionEnabled = false
 
         waveRetryButton.translatesAutoresizingMaskIntoConstraints = false
-        waveRetryButton.setImage(UIImage(named: "sulijoy_post_record_retry")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        waveRetryButton.setImage(UIImage(named: "sxuxlxixjxoxyx_xpxoxsxtx_xrxexcxoxrxdx_xrxextxrxyx".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
         waveRetryButton.addTarget(self, action: #selector(openWaveRecorder), for: .touchUpInside)
 
         [waveIconView, waveStatusGlyph, waveRetryButton].forEach { waveButton.addSubview($0) }
@@ -237,7 +237,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
         }
         shorePlaceholderGlyph.isHidden = !shoreTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
         if let waveDraft {
-            waveStatusGlyph.text = "\(waveDraft.waveSeconds)s"
+            waveStatusGlyph.text = "\(waveDraft.waveSeconds)\("sx".suliJoyPalmUnfurled)"
             waveRetryButton.isHidden = false
         } else {
             waveStatusGlyph.text = "RfeOcxoErbdsiWnOgq".suliJoyPalmUnfurled
@@ -258,8 +258,8 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
         let reefSheet = craftSuliJoyReefPickerSheet(
             reefHeadline: nil,
             shoreAnchor: reefPhotoSlots[activePhotoIndex],
-            cameraPhrase: "Photo",
-            galleryPhrase: "Album"
+            cameraPhrase: "Pxhxoxtxox".suliJoyPalmUnfurled,
+            galleryPhrase: "Axlxbxuxmx".suliJoyPalmUnfurled
         ) { [weak self] reefSource in
             self?.openReefImagePicker(source: reefSource)
         }
@@ -273,7 +273,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
         }
         let reefPicker = UIImagePickerController()
         reefPicker.sourceType = reefSource
-        reefPicker.mediaTypes = ["public.image"]
+        reefPicker.mediaTypes = ["pxuxbxlxixcx.xixmxaxgxex".suliJoyPalmUnfurled]
         reefPicker.allowsEditing = false
         reefPicker.delegate = self
         present(reefPicker, animated: true)
@@ -317,9 +317,9 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
 
     private func saveReefImageToSandbox(_ reefImage: UIImage) -> SuliJoyReefLocalMediaPick? {
         guard let reefData = reefImage.jpegData(compressionQuality: 0.86) else { return nil }
-        let reefDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("SuliJoyPostMedia", isDirectory: true)
+        let reefDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("SxuxlxixJxoxyxPxoxsxtxMxexdxixax".suliJoyPalmUnfurled, isDirectory: true)
         try? FileManager.default.createDirectory(at: reefDirectory, withIntermediateDirectories: true)
-        let reefURL = reefDirectory.appendingPathComponent("shore_photo_\(UUID().uuidString).jpg")
+        let reefURL = reefDirectory.appendingPathComponent("\("sxhxoxrxex_xpxhxoxtxox_x".suliJoyPalmUnfurled)\(UUID().uuidString)\(".xjxpxgx".suliJoyPalmUnfurled)")
         do {
             try reefData.write(to: reefURL, options: .atomic)
             return SuliJoyReefLocalMediaPick(reefSandboxPath: reefURL.path, hibiscusShade: "IosNldamnydi csAtNyUlTeu fpbhDoNtJoV".suliJoyPalmUnfurled)
@@ -360,7 +360,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
         )
         tideConfirmButton.isLoading = true
         refreshShoreMomentState()
-        SuliJoyLagoonProfileRemoteService.shared.publishShoreMoment(draft: shoreDraft) { [weak self] reefResult in
+        suliJoyPalmRankingaccount.shared.publishShoreMoment(draft: shoreDraft) { [weak self] reefResult in
             guard let self else { return }
             self.tideConfirmButton.isLoading = false
             self.refreshShoreMomentState()
@@ -431,12 +431,12 @@ private final class SuliJoyReefPhotoSlotControl: UIControl {
         reefImageView.clipsToBounds = true
 
         reefCameraView.translatesAutoresizingMaskIntoConstraints = false
-        reefCameraView.image = UIImage(named: "sulijoy_post_photo_slot_camera")?.withRenderingMode(.alwaysOriginal)
+        reefCameraView.image = UIImage(named: "sxuxlxixjxoxyx_xpxoxsxtx_xpxhxoxtxox_xsxlxoxtx_xcxaxmxexrxax".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal)
         reefCameraView.contentMode = .scaleAspectFit
         reefCameraView.isUserInteractionEnabled = false
 
         reefRemoveButton.translatesAutoresizingMaskIntoConstraints = false
-        reefRemoveButton.setImage(UIImage(named: "sulijoy_post_media_remove_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        reefRemoveButton.setImage(UIImage(named: "sxuxlxixjxoxyx_xpxoxsxtx_xmxexdxixax_xrxexmxoxvxex_xmxaxrxkx".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
         reefRemoveButton.addTarget(self, action: #selector(tapReefRemove), for: .touchUpInside)
 
         [reefImageView, reefCameraView, reefRemoveButton].forEach { addSubview($0) }
@@ -512,13 +512,13 @@ private final class SuliJoyWaveDraftReefOverlay: UIView, AVAudioRecorderDelegate
         waveStartButton.translatesAutoresizingMaskIntoConstraints = false
         waveStartButton.backgroundColor = UIColor.white.withAlphaComponent(0.70)
         waveStartButton.layer.cornerRadius = 70
-        waveStartButton.setImage(UIImage(named: "sulijoy_post_record_play")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        waveStartButton.setImage(UIImage(named: "sxuxlxixjxoxyx_xpxoxsxtx_xrxexcxoxrxdx_xpxlxaxyx".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
         waveStartButton.addTarget(self, action: #selector(startOrResumeWave), for: .touchUpInside)
 
         wavePauseButton.translatesAutoresizingMaskIntoConstraints = false
         wavePauseButton.backgroundColor = UIColor.white.withAlphaComponent(0.70)
         wavePauseButton.layer.cornerRadius = 70
-        wavePauseButton.setImage(UIImage(named: "sulijoy_post_record_pause")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        wavePauseButton.setImage(UIImage(named: "sxuxlxixjxoxyx_xpxoxsxtx_xrxexcxoxrxdx_xpxaxuxsxex".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
         wavePauseButton.addTarget(self, action: #selector(pauseWaveRecording), for: .touchUpInside)
 
         [waveTimeGlyph, wavePauseTimeGlyph].forEach {
@@ -531,14 +531,14 @@ private final class SuliJoyWaveDraftReefOverlay: UIView, AVAudioRecorderDelegate
         waveRetryButton.translatesAutoresizingMaskIntoConstraints = false
         waveRetryButton.backgroundColor = UIColor(red: 1, green: 0.29, blue: 0.29, alpha: 1)
         waveRetryButton.layer.cornerRadius = 28
-        waveRetryButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        waveRetryButton.setImage(UIImage(systemName: "pxlxuxsx".suliJoyPalmUnfurled), for: .normal)
         waveRetryButton.tintColor = .white
         waveRetryButton.addTarget(self, action: #selector(resetWaveRecording), for: .touchUpInside)
 
         waveDoneButton.translatesAutoresizingMaskIntoConstraints = false
         waveDoneButton.backgroundColor = UIColor(red: 0.28, green: 0.90, blue: 0.22, alpha: 1)
         waveDoneButton.layer.cornerRadius = 28
-        waveDoneButton.setImage(UIImage(systemName: "checkmark"), for: .normal)
+        waveDoneButton.setImage(UIImage(systemName: "cxhxexcxkxmxaxrxkx".suliJoyPalmUnfurled), for: .normal)
         waveDoneButton.tintColor = .white
         waveDoneButton.addTarget(self, action: #selector(confirmWaveRecording), for: .touchUpInside)
 
@@ -579,7 +579,7 @@ private final class SuliJoyWaveDraftReefOverlay: UIView, AVAudioRecorderDelegate
     }
 
     private func makeWaveTimeText() -> String {
-        "0:\(String(format: "%02d", waveElapsed))/0:60"
+        "\("0x:x".suliJoyPalmUnfurled)\(String(format: "%x0x2xdx".suliJoyPalmUnfurled, waveElapsed))\("/x0x:x6x0x".suliJoyPalmUnfurled)"
     }
 
     @objc private func startOrResumeWave() {
@@ -587,7 +587,7 @@ private final class SuliJoyWaveDraftReefOverlay: UIView, AVAudioRecorderDelegate
             DispatchQueue.main.async {
                 guard let self else { return }
                 guard granted else {
-                    self.onReefIssue?("Microphone permission is required.")
+                    self.onReefIssue?("Mxixcxrxoxpxhxoxnxex xpxexrxmxixsxsxixoxnx xixsx xrxexqxuxixrxexdx.x".suliJoyPalmUnfurled)
                     return
                 }
                 self.prepareWaveRecorderIfNeeded()
@@ -599,9 +599,9 @@ private final class SuliJoyWaveDraftReefOverlay: UIView, AVAudioRecorderDelegate
 
     private func prepareWaveRecorderIfNeeded() {
         if waveRecorder != nil { return }
-        let waveDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("SuliJoyPostAudio", isDirectory: true)
+        let waveDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("SxuxlxixJxoxyxPxoxsxtxAxuxdxixox".suliJoyPalmUnfurled, isDirectory: true)
         try? FileManager.default.createDirectory(at: waveDirectory, withIntermediateDirectories: true)
-        let waveURL = waveFileURL ?? waveDirectory.appendingPathComponent("shore_audio_\(UUID().uuidString).m4a")
+        let waveURL = waveFileURL ?? waveDirectory.appendingPathComponent("\("sxhxoxrxex_xaxuxdxixox_x".suliJoyPalmUnfurled)\(UUID().uuidString)\(".xmx4xax".suliJoyPalmUnfurled)")
         waveFileURL = waveURL
         let waveSession = AVAudioSession.sharedInstance()
         try? waveSession.setCategory(.playAndRecord, mode: .default)
@@ -617,7 +617,7 @@ private final class SuliJoyWaveDraftReefOverlay: UIView, AVAudioRecorderDelegate
             waveRecorder?.delegate = self
             waveRecorder?.prepareToRecord()
         } catch {
-            onReefIssue?("Recorder could not start.")
+            onReefIssue?("Rxexcxoxrxdxexrx xcxoxuxlxdx xnxoxtx xsxtxaxrxtx.x".suliJoyPalmUnfurled)
         }
     }
 
@@ -654,7 +654,7 @@ private final class SuliJoyWaveDraftReefOverlay: UIView, AVAudioRecorderDelegate
     @objc private func confirmWaveRecording() {
         pauseWaveRecording()
         guard let waveFileURL, waveElapsed > 0 else {
-            onReefIssue?("Please record audio first.")
+            onReefIssue?("Pxlxexaxsxex xrxexcxoxrxdx xaxuxdxixox xfxixrxsxtx.x".suliJoyPalmUnfurled)
             return
         }
         onReefComplete?(SuliJoyWaveResonanceDraft(waveSandboxPath: waveFileURL.path, waveSeconds: waveElapsed, waveCreatedAt: Date()))

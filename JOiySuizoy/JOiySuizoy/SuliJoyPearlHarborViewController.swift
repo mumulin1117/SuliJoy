@@ -1,7 +1,7 @@
 import UIKit
 
 final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    var onShellPurchaseSettled: ((String?) -> Void)?
+    var timeFormatter: ((String?) -> Void)?
     private enum PearlHarborMetric {
         static let rowGap: CGFloat = 12
         static let lineGap: CGFloat = 14
@@ -74,14 +74,14 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
         super.viewDidLoad()
         arrangePearlHarborScene()
         refreshShellTotal()
-        syncRemoteShellTotal()
+        shoreView()
         gatherPearlShelves()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshShellTotal()
-        syncRemoteShellTotal()
+        shoreView()
     }
 
     private func arrangePearlHarborScene() {
@@ -115,7 +115,7 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
     private func makeCoveBackControl() -> UIButton {
         let coveBackControl = UIButton(type: .system)
         coveBackControl.translatesAutoresizingMaskIntoConstraints = false
-        coveBackControl.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        coveBackControl.setImage(UIImage(systemName: "cxhxexvxrxoxnx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
         coveBackControl.tintColor = .black
         coveBackControl.addTarget(self, action: #selector(returnToIslandCove), for: .touchUpInside)
         return coveBackControl
@@ -147,7 +147,7 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
     }
 
     private func makeGemstoneMark() -> UIImageView {
-        let gemstoneMark = UIImageView(image: UIImage(named: ["sulijoy", "_wal", "let_gem_large"].joined()))
+        let gemstoneMark = UIImageView(image: UIImage(named: ["sxuxlxixjxoxyx".suliJoyPalmUnfurled, "_xwxaxlx".suliJoyPalmUnfurled, "lxextx_xgxexmx_xlxaxrxgxex".suliJoyPalmUnfurled].joined()))
         gemstoneMark.translatesAutoresizingMaskIntoConstraints = false
         gemstoneMark.contentMode = .scaleAspectFit
         return gemstoneMark
@@ -183,7 +183,7 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
         pearlGridView.dataSource = self
         pearlGridView.delegate = self
         pearlGridView.alwaysBounceVertical = true
-        pearlGridView.register(SuliJoyPearlPackCell.self, forCellWithReuseIdentifier: "SuliJoyPearlPackCell")
+        pearlGridView.register(SuliJoyPearlPackCell.self, forCellWithReuseIdentifier: "SxuxlxixJxoxyxPxexaxrxlxPxaxcxkxCxexlxlx".suliJoyPalmUnfurled)
     }
 
     private func moorPearlHarborScene(_ scene: PearlHarborScene) {
@@ -236,10 +236,10 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
         shellTotalLabel.text = "\(SuliJoyPearlHarborBridge.currentShellTotal())"
     }
 
-    private func syncRemoteShellTotal() {
-        SuliJoyLagoonProfileRemoteService.shared.syncCurrentPearlBalance { [weak self] result in
-            guard result.beachwearCapsule == 200, let balance = result.sandbarLayering else { return }
-            self?.shellTotalLabel.text = "\(balance)"
+    private func shoreView() {
+        suliJoyPalmRankingaccount.shared.actionHeight { [weak self] result in
+            guard result.beachwearCapsule == 200, let refreshReefConfirmState = result.sandbarLayering else { return }
+            self?.shellTotalLabel.text = "\(refreshReefConfirmState)"
         }
     }
 
@@ -267,7 +267,7 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
     }
 
     func collectionView(_ shoreGrid: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let pearlCell = shoreGrid.dequeueReusableCell(withReuseIdentifier: "SuliJoyPearlPackCell", for: indexPath) as! SuliJoyPearlPackCell
+        let pearlCell = shoreGrid.dequeueReusableCell(withReuseIdentifier: "SxuxlxixJxoxyxPxexaxrxlxPxaxcxkxCxexlxlx".suliJoyPalmUnfurled, for: indexPath) as! SuliJoyPearlPackCell
         let shoreBundle = pearlShelves[indexPath.item]
         tunePearlCell(pearlCell, with: shoreBundle)
         return pearlCell
@@ -302,7 +302,7 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
             switch harborAnswer.cargo {
             case .settled:
                 self.refreshShellTotal()
-                self.onShellPurchaseSettled?(shoreBundle.reefToken)
+                self.timeFormatter?(shoreBundle.reefToken)
                 self.showLagoonToast("RKercBhRairmgleK EcXohmWpAlTeOtweUdj.r".suliJoyPalmUnfurled)
             case .backedOut:
                 self.showLagoonToast(["PmuOrW".suliJoyPalmUnfurled, "cxheahsQee SctaOnBcSeelFleeNdz.b".suliJoyPalmUnfurled].joined())
@@ -348,7 +348,7 @@ private final class SuliJoyPearlPackCell: UICollectionViewCell {
     }
 
     var onSunTap: (() -> Void)?
-    private let gemView = UIImageView(image: UIImage(named: ["sulijoy", "_wal", "let_gem_small"].joined()))
+    private let gemView = UIImageView(image: UIImage(named: ["sxuxlxixjxoxyx".suliJoyPalmUnfurled, "_xwxaxlx".suliJoyPalmUnfurled, "lxextx_xgxexmx_xsxmxaxlxlx".suliJoyPalmUnfurled].joined()))
     private let shellCountLabel = UILabel()
     private let tideTagLabel = UILabel()
     private let sunBloomButton = SuliJoyGradientButton(reefHeadline: "RWetczhyaCrEgheb".suliJoyPalmUnfurled)

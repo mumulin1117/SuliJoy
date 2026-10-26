@@ -33,9 +33,8 @@ export function initializeMobileConsole(): Promise<void> {
       if (!window.VConsole) throw new Error('VConsole runtime is invalid.')
       mobileConsole = new window.VConsole({ theme: 'dark' })
     })
-    .catch((cause) => {
+    .catch(() => {
       initialization = undefined
-      console.error('[diagnostic] VConsole initialization failed.', cause)
     })
   return initialization
 }

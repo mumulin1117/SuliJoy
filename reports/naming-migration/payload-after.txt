@@ -1,0 +1,12 @@
+SuliJoyEmailPayload:{"deviceNo":"fixture","email":"fixture","password":"fixture"}
+SuliJoyRefreshPayload:{"refreshToken":"fixture"}
+SuliJoyProfilePayload:{"icon":"fixture","nickname":"fixture","signature":"fixture"}
+SuliJoyEmptyPayload:{}
+SuliJoyUserIDPayload:{"userId":7}
+SuliJoyUserFollowPayload:{"followType":7,"followUserId":7}
+SuliJoyLetterListPayload:{"cursor":7,"limit":7}
+SuliJoyLetterHistoryPayload:{"conversationId":"fixture","cursor":7,"limit":7}
+SuliJoyLetterSendPayload:{"clientMessageId":"fixture","conversationId":"fixture","kind":"fixture","text":"fixture"}
+SuliJoyLetterReadPayload:{"conversationId":"fixture"}
+SuliJoyLetterOpenPayload:{"userId":"fixture"}
+SuliJoyUserBlockPayload:{"type":7,"userId":7}

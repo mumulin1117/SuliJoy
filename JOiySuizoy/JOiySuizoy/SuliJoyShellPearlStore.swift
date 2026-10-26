@@ -4,8 +4,8 @@ final class SuliJoyShellPearlStore {
     static let shared = SuliJoyShellPearlStore()
 
     private enum ShellPearlMark {
-        static let archiveKey = "sulijoy.shell.wallet.v1"
-        static let ledgerPrefix = "suli_ledger_"
+        static let archiveKey = "sxuxlxixjxoxyx.xsxhxexlxlx.xwxaxlxlxextx.xvx1x".suliJoyPalmUnfurled
+        static let ledgerPrefix = "sxuxlxix_xlxexdxgxexrx_x".suliJoyPalmUnfurled
     }
 
     private let reefDefaults = UserDefaults.standard
@@ -22,24 +22,24 @@ final class SuliJoyShellPearlStore {
         openPearlVault().shellPearlTotal
     }
 
-    func containsPearlReference(_ referenceID: String) -> Bool {
+    func filterDrop(_ referenceID: String) -> Bool {
         openPearlVault().coralLedgerTrail.contains { $0.referenceID == referenceID }
     }
 
-    func syncPearlBalance(_ remoteBalance: Int) {
+    func sectionShellTaps(_ assembleReefLaunchDock: Int) {
         var pearlVault = openPearlVault()
-        pearlVault.shellPearlTotal = max(0, remoteBalance)
+        pearlVault.shellPearlTotal = max(0, assembleReefLaunchDock)
         sealPearlVault(pearlVault)
     }
 
-    func applyRemotePearlChange(
-        remoteBalance: Int,
+    func reefImageView(
+        assembleReefLaunchDock: Int,
         delta: Int,
         kind: SuliJoyCoralPearlLedgerKind,
         referenceID: String
     ) -> SuliJoyShellWallet {
         var pearlVault = openPearlVault()
-        pearlVault.shellPearlTotal = max(0, remoteBalance)
+        pearlVault.shellPearlTotal = max(0, assembleReefLaunchDock)
         if !referenceID.isEmpty, !pearlVault.coralLedgerTrail.contains(where: { $0.referenceID == referenceID }) {
             prependPearlLedger(
                 makePearlLedger(kind: kind, delta: delta, reefMark: referenceID),

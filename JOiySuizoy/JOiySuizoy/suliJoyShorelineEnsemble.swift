@@ -50,7 +50,7 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
 
     private func harvestArrivalScenePack() -> ArrivalScenePack {
         let coastalRuleCapsule = forgeLagoonRuleCapsule()
-        let suliJoyWordmark = carveSuliJoyWordmark("SULIJOY", size: ArrivalMetric.wordmarkSize)
+        let suliJoyWordmark = carveSuliJoyWordmark("SxUxLxIxJxOxYx".suliJoyPalmUnfurled, size: ArrivalMetric.wordmarkSize)
         let islandStyleTagline = makeIslandTagline()
         let resortCollage = craftResortLayeredLook()
         let lagoonEntryControl = makeLagoonEntryControl()
@@ -132,7 +132,7 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
     }
 
     private func plantShoreMailBadge(on shoreSignupControl: UIControl) {
-        let shorelineMailBadge = UIImageView(image: UIImage(named: "sulijoy_auth_mail_badge"))
+        let shorelineMailBadge = UIImageView(image: UIImage(named: "sxuxlxixjxoxyx_xaxuxtxhx_xmxaxixlx_xbxaxdxgxex".suliJoyPalmUnfurled))
         shorelineMailBadge.translatesAutoresizingMaskIntoConstraints = false
         shoreSignupControl.addSubview(shorelineMailBadge)
         NSLayoutConstraint.activate([
@@ -155,9 +155,9 @@ final class suliJoyShorelineEnsemble: SuliJoyReefEntryCanvasController {
     private func craftResortLayeredLook() -> UIView {
         let resortFrame = UIView()
         resortFrame.translatesAutoresizingMaskIntoConstraints = false
-        let breezyLeftLook = islandLookFrame(named: "sulijoy_auth_hero_left")
-        let sunriseRightLook = islandLookFrame(named: "sulijoy_auth_hero_right")
-        let palmFrontLook = islandLookFrame(named: "sulijoy_auth_hero_front")
+        let breezyLeftLook = islandLookFrame(named: "sxuxlxixjxoxyx_xaxuxtxhx_xhxexrxox_xlxexfxtx".suliJoyPalmUnfurled)
+        let sunriseRightLook = islandLookFrame(named: "sxuxlxixjxoxyx_xaxuxtxhx_xhxexrxox_xrxixgxhxtx".suliJoyPalmUnfurled)
+        let palmFrontLook = islandLookFrame(named: "sxuxlxixjxoxyx_xaxuxtxhx_xhxexrxox_xfxrxoxnxtx".suliJoyPalmUnfurled)
         breezyLeftLook.transform = CGAffineTransform(rotationAngle: -0.18)
         sunriseRightLook.transform = CGAffineTransform(rotationAngle: 0.10)
         [breezyLeftLook, sunriseRightLook, palmFrontLook].forEach { resortFrame.addSubview($0) }

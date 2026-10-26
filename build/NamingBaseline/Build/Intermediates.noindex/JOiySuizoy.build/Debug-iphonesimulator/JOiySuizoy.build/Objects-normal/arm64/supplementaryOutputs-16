@@ -1,0 +1,30 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyShoreSkeleton.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShoreSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShoreSkeleton.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShoreSkeleton.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShoreSkeleton.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShoreSkeleton.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyTideCardCell.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCardCell.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCardCell.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCardCell.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCardCell.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCardCell.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyTideCoastalDetailController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCoastalDetailController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCoastalDetailController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCoastalDetailController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCoastalDetailController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCoastalDetailController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyTideCurationDraftController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCurationDraftController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCurationDraftController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCurationDraftController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCurationDraftController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyTideCurationDraftController.swiftdeps"
+  }
+}

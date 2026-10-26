@@ -52,18 +52,18 @@ extension UIImage {
         suliJoyReefAssetOrSandPath(named: name)
     }
 
-    static func suliJoyPhoto(named name: String?) -> UIImage? {
+    static func gemSize(named name: String?) -> UIImage? {
         if let name, !name.isEmpty, let image = suliJoyAssetOrLocal(named: name) {
             return image
         }
-        return SuliJoyImagePlaceholder.photo
+        return esuliJoyPalmGuidemail.guestAvatarView
     }
 }
 
 extension Notification.Name {
-    static let suliJoyShoreMomentPublished = Notification.Name("suliJoyShoreMomentPublished")
-    static let suliJoyShellClipPublished = Notification.Name("suliJoyShellClipPublished")
-    static let suliJoyLagoonVisitorChanged = Notification.Name("suliJoyLagoonVisitorChanged")
+    static let suliJoyShoreMomentPublished = Notification.Name("sxuxlxixJxoxyxSxhxoxrxexMxoxmxexnxtxPxuxbxlxixsxhxexdx".suliJoyPalmUnfurled)
+    static let suliJoyShellClipPublished = Notification.Name("sxuxlxixJxoxyxSxhxexlxlxCxlxixpxPxuxbxlxixsxhxexdx".suliJoyPalmUnfurled)
+    static let suliJoyLagoonVisitorChanged = Notification.Name("sxuxlxixJxoxyxLxaxgxoxoxnxVxixsxixtxoxrxCxhxaxnxgxexdx".suliJoyPalmUnfurled)
 }
 
 final class SuliJoyCoveCapsuleIconButton: UIButton {
@@ -126,7 +126,7 @@ final class SuliJoyShellGemPillButton: UIButton {
         setShellGemTally(SuliJoyShellPearlStore.shared.currentPearlBalance())
         setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        setImage(UIImage(named: "sulijoy_shell_" + "co" + "in_gem")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        setImage(UIImage(named: "sxuxlxixjxoxyx_xsxhxexlxlx_x".suliJoyPalmUnfurled + "cxox".suliJoyPalmUnfurled + "ixnx_xgxexmx".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
         imageView?.contentMode = .scaleAspectFit
         layer.cornerRadius = shellHeight / 2
         layer.masksToBounds = true
@@ -232,17 +232,17 @@ class SuliJoyTropicCanvasController: UIViewController {
     }
 
     func showLagoonToast(_ reefLine: String) {
-        let succeeded = reefLine.suliJoyReadsAsSuccessNotice
-        let toastScene = harvestIslandToastReefScene(reefLine, succeeded: succeeded)
+        let info = reefLine.shoreNoteField
+        let toastScene = harvestIslandToastReefScene(reefLine, info: info)
         moorIslandToastReefScene(toastScene)
         stitchIslandToastReefScene(toastScene)
         animateIslandToastReefScene(toastScene)
     }
 
-    private func harvestIslandToastReefScene(_ reefLine: String, succeeded: Bool) -> IslandToastReefScene {
+    private func harvestIslandToastReefScene(_ reefLine: String, info: Bool) -> IslandToastReefScene {
         let shell = makeIslandToastShellReef()
         let stripe = makeIslandToastSunStripe()
-        let icon = makeIslandToastPearlIcon(succeeded: succeeded)
+        let icon = makeIslandToastPearlIcon(info: info)
         let caption = makeIslandToastShoreCaption(reefLine)
         shell.layer.addSublayer(stripe)
         return IslandToastReefScene(shell: shell, stripe: stripe, icon: icon, hibiscusShade: caption)
@@ -273,10 +273,10 @@ class SuliJoyTropicCanvasController: UIViewController {
         return stripe
     }
 
-    private func makeIslandToastPearlIcon(succeeded: Bool) -> UIImageView {
-        let icon = UIImageView(image: UIImage(systemName: succeeded ? "checkmark.circle.fill" : "exclamationmark.triangle.fill"))
+    private func makeIslandToastPearlIcon(info: Bool) -> UIImageView {
+        let icon = UIImageView(image: UIImage(systemName: info ? "cxhxexcxkxmxaxrxkx.xcxixrxcxlxex.xfxixlxlx".suliJoyPalmUnfurled : "exxxcxlxaxmxaxtxixoxnxmxaxrxkx.xtxrxixaxnxgxlxex.xfxixlxlx".suliJoyPalmUnfurled))
         icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.tintColor = succeeded
+        icon.tintColor = info
             ? UIColor(red: 0.18, green: 0.72, blue: 0.42, alpha: 1)
             : UIColor(red: 1, green: 0.45, blue: 0.12, alpha: 1)
         icon.contentMode = .scaleAspectFit
@@ -401,9 +401,9 @@ extension UIViewController {
     }
 
     func presentSuliJoyCoastalNotice(
-        reefHeadline: String = "SuliJoy",
+        reefHeadline: String = "SxuxlxixJxoxyx".suliJoyPalmUnfurled,
         reefNote: String,
-        primaryPhrase: String = "OK",
+        primaryPhrase: String = "OxKx".suliJoyPalmUnfurled,
         primaryFlow: (() -> Void)? = nil
     ) {
         let noticeVeilControl = UIControl()
@@ -421,18 +421,18 @@ extension UIViewController {
         islandNoticeCard.layer.shadowRadius = 22
         islandNoticeCard.layer.shadowOffset = CGSize(width: 0, height: 12)
 
-        let succeeded = reefNote.suliJoyReadsAsSuccessNotice
+        let info = reefNote.shoreNoteField
         let pearlBadgeShell = UIView()
         pearlBadgeShell.translatesAutoresizingMaskIntoConstraints = false
-        pearlBadgeShell.backgroundColor = succeeded
+        pearlBadgeShell.backgroundColor = info
             ? UIColor(red: 0.86, green: 0.96, blue: 0.88, alpha: 1)
             : UIColor(red: 1, green: 0.95, blue: 0.72, alpha: 1)
         pearlBadgeShell.layer.cornerRadius = 27
         pearlBadgeShell.clipsToBounds = true
 
-        let pearlBadgeMark = UIImageView(image: UIImage(systemName: succeeded ? "checkmark.circle.fill" : "exclamationmark.triangle.fill"))
+        let pearlBadgeMark = UIImageView(image: UIImage(systemName: info ? "cxhxexcxkxmxaxrxkx.xcxixrxcxlxex.xfxixlxlx".suliJoyPalmUnfurled : "exxxcxlxaxmxaxtxixoxnxmxaxrxkx.xtxrxixaxnxgxlxex.xfxixlxlx".suliJoyPalmUnfurled))
         pearlBadgeMark.translatesAutoresizingMaskIntoConstraints = false
-        pearlBadgeMark.tintColor = succeeded
+        pearlBadgeMark.tintColor = info
             ? UIColor(red: 0.18, green: 0.72, blue: 0.42, alpha: 1)
             : UIColor(red: 1, green: 0.45, blue: 0.12, alpha: 1)
         pearlBadgeMark.contentMode = .scaleAspectFit
@@ -551,7 +551,7 @@ final class SuliJoySimplePlaceholderViewController: SuliJoyTropicCanvasControlle
     private func makePlaceholderReturnControl() -> UIButton {
         let islandReturnControl = UIButton(type: .system)
         islandReturnControl.translatesAutoresizingMaskIntoConstraints = false
-        islandReturnControl.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        islandReturnControl.setImage(UIImage(systemName: "cxhxexvxrxoxnx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
         islandReturnControl.tintColor = .suliInk
         islandReturnControl.addTarget(self, action: #selector(returnFromIslandPrompt), for: .touchUpInside)
         return islandReturnControl
@@ -584,18 +584,18 @@ final class SuliJoySimplePlaceholderViewController: SuliJoyTropicCanvasControlle
 }
 
 private extension String {
-    var suliJoyReadsAsSuccessNotice: Bool {
-        let line = lowercased()
-        let blockers = ["unable", "fail", "error", "invalid", "cannot", "can't", "please", "not ", "missing", "empty", "denied"]
-        if blockers.contains(where: { line.contains($0) }) {
+    var shoreNoteField: Bool {
+        let islandCode = lowercased()
+        let meta = ["uxnxaxbxlxex".suliJoyPalmUnfurled, "fxaxixlx".suliJoyPalmUnfurled, "exrxrxoxrx".suliJoyPalmUnfurled, "ixnxvxaxlxixdx".suliJoyPalmUnfurled, "cxaxnxnxoxtx".suliJoyPalmUnfurled, "cxaxnx'xtx".suliJoyPalmUnfurled, "pxlxexaxsxex".suliJoyPalmUnfurled, "nxoxtx x".suliJoyPalmUnfurled, "mxixsxsxixnxgx".suliJoyPalmUnfurled, "exmxpxtxyx".suliJoyPalmUnfurled, "dxexnxixexdx".suliJoyPalmUnfurled]
+        if meta.contains(where: { islandCode.contains($0) }) {
             return false
         }
-        let marks = [
-            "success", "published", "created", "sent", "followed", "unfollowed",
-            "saved", "joined", "shared", "updated", "added", "received",
-            "completed", "you are live", "room created"
+        let openMomentAuthor = [
+            "sxuxcxcxexsxsx".suliJoyPalmUnfurled, "pxuxbxlxixsxhxexdx".suliJoyPalmUnfurled, "cxrxexaxtxexdx".suliJoyPalmUnfurled, "sxexnxtx".suliJoyPalmUnfurled, "fxoxlxlxoxwxexdx".suliJoyPalmUnfurled, "uxnxfxoxlxlxoxwxexdx".suliJoyPalmUnfurled,
+            "sxaxvxexdx".suliJoyPalmUnfurled, "jxoxixnxexdx".suliJoyPalmUnfurled, "sxhxaxrxexdx".suliJoyPalmUnfurled, "uxpxdxaxtxexdx".suliJoyPalmUnfurled, "axdxdxexdx".suliJoyPalmUnfurled, "rxexcxexixvxexdx".suliJoyPalmUnfurled,
+            "cxoxmxpxlxextxexdx".suliJoyPalmUnfurled, "yxoxux xaxrxex xlxixvxex".suliJoyPalmUnfurled, "rxoxoxmx xcxrxexaxtxexdx".suliJoyPalmUnfurled
         ]
-        return marks.contains { line.contains($0) }
+        return openMomentAuthor.contains { islandCode.contains($0) }
     }
 }
 

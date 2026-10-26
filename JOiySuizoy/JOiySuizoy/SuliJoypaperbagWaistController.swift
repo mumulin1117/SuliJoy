@@ -60,7 +60,7 @@ final class SuliJoypaperbagWaistController: SuliJoyReefEntryCanvasController, UI
 
     private func harvestShoreProfileReefScene() -> ShoreProfileReefScene {
         let backShell = forgeReefReturnControl()
-        let titleGlyph = carveSuliJoyWordmark("Complete\nYour Profile", size: 30)
+        let titleGlyph = carveSuliJoyWordmark("Cxoxmxpxlxextxex\nxYxoxuxrx xPxrxoxfxixlxex".suliJoyPalmUnfurled, size: 30)
         let portraitCard = makeShorePortraitCard()
         let bioShell = makeShoreBioShell()
         let bioGlyph = makeShoreBioHeading()
@@ -150,7 +150,7 @@ final class SuliJoypaperbagWaistController: SuliJoyReefEntryCanvasController, UI
         shorePortraitPreview.contentMode = .scaleAspectFill
         shorePortraitPreview.clipsToBounds = true
         shorePortraitPreview.layer.cornerRadius = 48
-        shorePortraitPreview.image = UIImage(named: "sulijoy_auth_camera_badge")
+        shorePortraitPreview.image = UIImage(named: "sxuxlxixjxoxyx_xaxuxtxhx_xcxaxmxexrxax_xbxaxdxgxex".suliJoyPalmUnfurled)
         let portraitGlyph = UILabel()
         portraitGlyph.translatesAutoresizingMaskIntoConstraints = false
         portraitGlyph.text = "AMdTdV BPerloWfCiNlZeE lPnhHoKtuoe.z".suliJoyPalmUnfurled
@@ -175,7 +175,7 @@ final class SuliJoypaperbagWaistController: SuliJoyReefEntryCanvasController, UI
     }
 
     @objc private func chooseShorePortrait() {
-        let portraitSheet = craftSuliJoyPortraitTideSheet(reefHeadline: "Profile Photo", shoreAnchor: shorePortraitControl) { [weak self] reefSource in
+        let portraitSheet = craftSuliJoyPortraitTideSheet(reefHeadline: "Pxrxoxfxixlxex xPxhxoxtxox".suliJoyPalmUnfurled, shoreAnchor: shorePortraitControl) { [weak self] reefSource in
             self?.presentShorePortraitPicker(reefSource)
         }
         present(portraitSheet, animated: true)

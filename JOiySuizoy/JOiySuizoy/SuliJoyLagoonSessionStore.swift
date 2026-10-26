@@ -2,7 +2,7 @@ import UIKit
 
 final class SuliJoyTideSessionVault {
     private enum TideSessionArchiveMark {
-        static let session = "sulijoy_lagoon_session"
+        static let session = "sxuxlxixjxoxyx_xlxaxgxoxoxnx_xsxexsxsxixoxnx".suliJoyPalmUnfurled
     }
 
     private let tideDefaults: UserDefaults
@@ -29,25 +29,25 @@ final class SuliJoyTideSessionVault {
         }
     }
 
-    func markRemoteLagoonEntry(
+    func tideAgoGlyph(
         shoreMail: String,
         islanderID: String,
-        accessToken: String,
-        refreshToken: String
+        headerTop: String,
+        sendComment: String
     ) {
         rewriteLagoonSession { lagoonState in
             lagoonState.flaggedLagoonVisitorslo = true
             lagoonState.currentTideConsenl = shoreMail
             lagoonState.sasuliJoySeasideDress = islanderID
-            lagoonState.SeasideHeroloaSili = accessToken
-            lagoonState.lagoonRefreshPass = refreshToken
+            lagoonState.SeasideHeroloaSili = headerTop
+            lagoonState.harborActionSideInset = sendComment
         }
     }
 
-    func refreshRemoteTokens(accessToken: String, refreshToken: String) {
+    func chosenShoreReason(headerTop: String, sendComment: String) {
         rewriteLagoonSession { lagoonState in
-            lagoonState.SeasideHeroloaSili = accessToken
-            lagoonState.lagoonRefreshPass = refreshToken
+            lagoonState.SeasideHeroloaSili = headerTop
+            lagoonState.harborActionSideInset = sendComment
         }
     }
 
@@ -56,7 +56,7 @@ final class SuliJoyTideSessionVault {
             lagoonState.flaggedLagoonVisitorslo = false
             lagoonState.currentTideConsenl = nil
             lagoonState.SeasideHeroloaSili = nil
-            lagoonState.lagoonRefreshPass = nil
+            lagoonState.harborActionSideInset = nil
             lagoonState.sasuliJoySeasideDress = nil
         }
     }
@@ -82,14 +82,14 @@ final class SuliJoyTideSessionVault {
             userID: nil,
             currentEmail: nil,
             hasAgreedEULA: false,
-            refreshToken: nil
+            sendComment: nil
         )
     }
 }
 
 final class SuliJoyIslandAccountStore {
     private enum IslandArchiveMark {
-        static let reefKey = "sulijoy_island_accounts"
+        static let reefKey = "sxuxlxixjxoxyx_xixsxlxaxnxdx_xaxcxcxoxuxnxtxsx".suliJoyPalmUnfurled
     }
 
     private let suliJoyShorelineStore: UserDefaults
@@ -134,9 +134,9 @@ final class SuliJoyIslandAccountStore {
 
 final class SuliJoyLocalProfileStore {
     private enum SuliJoyCoastalVaultMark {
-        static let shorelineProfileLedgerKey = "sulijoy_shore_profiles"
-        static let islandPortraitVaultFolder = "SuliJoyAvatars"
-        static let reefMailJoiner = "_at_"
+        static let shorelineProfileLedgerKey = "sxuxlxixjxoxyx_xsxhxoxrxex_xpxrxoxfxixlxexsx".suliJoyPalmUnfurled
+        static let islandPortraitVaultFolder = "SxuxlxixJxoxyxAxvxaxtxaxrxsx".suliJoyPalmUnfurled
+        static let reefMailJoiner = "_xaxtx_x".suliJoyPalmUnfurled
     }
 
     private let islandDefaultsVault: UserDefaults
@@ -178,7 +178,7 @@ final class SuliJoyLocalProfileStore {
                 return shouldReleaseCoastalProfile
             }
         }
-        if let detachedPortraitPath, detachedPortraitPath.hasPrefix("/") {
+        if let detachedPortraitPath, detachedPortraitPath.hasPrefix("/x".suliJoyPalmUnfurled) {
             try? FileManager.default.removeItem(atPath: detachedPortraitPath)
         }
     }
@@ -188,7 +188,7 @@ final class SuliJoyLocalProfileStore {
         let portraitDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent(SuliJoyCoastalVaultMark.islandPortraitVaultFolder, isDirectory: true)
         try? FileManager.default.createDirectory(at: portraitDirectory, withIntermediateDirectories: true)
-        let portraitFileName = "sulijoy_avatar_\(normalizeCoastalMail(coastalMailLine).replacingOccurrences(of: "@", with: SuliJoyCoastalVaultMark.reefMailJoiner)).jpg"
+        let portraitFileName = "\("sxuxlxixjxoxyx_xaxvxaxtxaxrx_x".suliJoyPalmUnfurled)\(normalizeCoastalMail(coastalMailLine).replacingOccurrences(of: "@x".suliJoyPalmUnfurled, with: SuliJoyCoastalVaultMark.reefMailJoiner))\(".xjxpxgx".suliJoyPalmUnfurled)"
         let portraitURL = portraitDirectory.appendingPathComponent(portraitFileName)
         do {
             try portraitData.write(to: portraitURL, options: .atomic)

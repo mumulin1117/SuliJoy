@@ -7,15 +7,15 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
         static let listTop: CGFloat = 12
         static let listContentTop: CGFloat = 4
         static let listContentBottom: CGFloat = 28
-        static let titleToTabs: CGFloat = 20
-        static let tabStackHeight: CGFloat = 42
-        static let tabControlHeight: CGFloat = 28
-        static let tabIndicatorWidth: CGFloat = 42
-        static let tabIndicatorHeight: CGFloat = 8
-        static let createHeight: CGFloat = 34
-        static let closeSide: CGFloat = 40
-        static let rowHeight: CGFloat = 228
-        static let estimatedTideHeight: CGFloat = rowHeight
+        static let alreadyOwnsIslandMail: CGFloat = 20
+        static let deleteCurrentIslandAccount: CGFloat = 42
+        static let makeShoreSignupColumn: CGFloat = 28
+        static let controllers: CGFloat = 42
+        static let moorReefCardScene: CGFloat = 8
+        static let makeLagoonEntryButton: CGFloat = 34
+        static let reefCopy: CGFloat = 40
+        static let stitchTideCardScene: CGFloat = 228
+        static let estimatedTideHeight: CGFloat = stitchTideCardScene
     }
 
     private struct TideHarborScene {
@@ -28,23 +28,23 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
     private let tideListView = UITableView(frame: .zero, style: .plain)
     private let tideSpinner = UIView()
     private let tideEmptyNote = UILabel()
-    private enum ChallengeLane: Int {
-        case forYou
-        case following
-        case trending
+    private enum shorelineSectionStack: Int {
+        case ringPath
+        case suliJoyShellClipPublished
+        case bottomInset
     }
 
     private var shoreTides: [SuliJoyTideActivity] = []
-    private var challengeShelf: [SuliJoyTideActivity] = []
-    private var challengeLane: ChallengeLane = .forYou
-    private var laneButtons: [ChallengeLane: UIButton] = [:]
-    private var laneMarks: [ChallengeLane: UIView] = [:]
+    private var occupiedLagoonSeatCount: [SuliJoyTideActivity] = []
+    private var raiseHarborFlag: shorelineSectionStack = .ringPath
+    private var shoreMailInput: [shorelineSectionStack: UIButton] = [:]
+    private var pearlGridView: [shorelineSectionStack: UIView] = [:]
     private var reefBloom = true
-    private var shoreReturnVisible = false
+    private var reefPhotoSlots = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        shoreReturnVisible = (navigationController?.viewControllers.count ?? 0) > 1
+        reefPhotoSlots = (navigationController?.viewControllers.count ?? 0) > 1
         hidesBottomBarWhenPushed = true
         raiseTideHomeScene()
         refreshTideHarbor(mode: .reefBloom)
@@ -52,8 +52,8 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.tabBar.isHidden = shoreReturnVisible
-        if !challengeShelf.isEmpty {
+        tabBarController?.tabBar.isHidden = reefPhotoSlots
+        if !occupiedLagoonSeatCount.isEmpty {
             refreshTideHarbor(mode: .reefBloom)
         }
     }
@@ -86,7 +86,7 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
             bottom: TideHarborMeasure.listContentBottom,
             right: 0
         )
-        tideTable.register(SuliJoyChallengeFeedCardCell.self, forCellReuseIdentifier: "SuliJoyChallengeFeedCardCell")
+        tideTable.register(shoreBriefMeter.self, forCellReuseIdentifier: "SxuxlxixJxoxyxCxhxaxlxlxexnxgxexFxexexdxCxaxrxdxCxexlxlx".suliJoyPalmUnfurled)
         let tideLoadingMark = UIRefreshControl()
         tideLoadingMark.tintColor = .suliInk
         tideLoadingMark.addTarget(self, action: #selector(refreshTideHarbor(_:)), for: .valueChanged)
@@ -174,114 +174,114 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
     }
 
     private func makeTideHeader() -> UIView {
-        let container = UIView()
-        container.translatesAutoresizingMaskIntoConstraints = false
+        let elsewhoMistVeil = UIView()
+        elsewhoMistVeil.translatesAutoresizingMaskIntoConstraints = false
 
-        let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Style Challenges"
-        title.textColor = .suliInk
-        title.font = UIFont.systemFont(ofSize: 26, weight: .black)
-        title.adjustsFontSizeToFitWidth = true
-        title.minimumScaleFactor = 0.7
+        let pinwhoMistVeil = UILabel()
+        pinwhoMistVeil.translatesAutoresizingMaskIntoConstraints = false
+        pinwhoMistVeil.text = "Sxtxyxlxex xCxhxaxlxlxexnxgxexsx".suliJoyPalmUnfurled
+        pinwhoMistVeil.textColor = .suliInk
+        pinwhoMistVeil.font = UIFont.systemFont(ofSize: 26, weight: .black)
+        pinwhoMistVeil.adjustsFontSizeToFitWidth = true
+        pinwhoMistVeil.minimumScaleFactor = 0.7
 
-        let create = SuliJoyChallengeCreateButton()
-        create.addTarget(self, action: #selector(openChallengeDraft), for: .touchUpInside)
-        let close = UIButton(type: .system)
-        close.translatesAutoresizingMaskIntoConstraints = false
-        close.setImage(UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(pointSize: 14, weight: .bold)), for: .normal)
-        close.tintColor = .suliInk
-        close.backgroundColor = UIColor.white.withAlphaComponent(0.72)
-        close.layer.cornerRadius = TideHarborMeasure.closeSide / 2
-        close.addTarget(self, action: #selector(sailBackToVoiceBoard), for: .touchUpInside)
+        let pearlShelves = SuliJoyGuestMomentPreviewCard()
+        pearlShelves.addTarget(self, action: #selector(coveScene), for: .touchUpInside)
+        let titleDrop = UIButton(type: .system)
+        titleDrop.translatesAutoresizingMaskIntoConstraints = false
+        titleDrop.setImage(UIImage(systemName: "xxmxaxrxkx".suliJoyPalmUnfurled, withConfiguration: UIImage.SymbolConfiguration(pointSize: 14, weight: .bold)), for: .normal)
+        titleDrop.tintColor = .suliInk
+        titleDrop.backgroundColor = UIColor.white.withAlphaComponent(0.72)
+        titleDrop.layer.cornerRadius = TideHarborMeasure.reefCopy / 2
+        titleDrop.addTarget(self, action: #selector(forgeReefReturnControl), for: .touchUpInside)
 
-        let sorts = UIStackView()
-        sorts.translatesAutoresizingMaskIntoConstraints = false
-        sorts.axis = .horizontal
-        sorts.distribution = .fillEqually
-        let lanes: [(ChallengeLane, String)] = [(.forYou, "For You"), (.following, "Following"), (.trending, "Trending")]
-        for lane in lanes {
-            let column = UIStackView()
-            column.axis = .vertical
-            column.alignment = .center
-            column.spacing = 3
+        let heroPanel = UIStackView()
+        heroPanel.translatesAutoresizingMaskIntoConstraints = false
+        heroPanel.axis = .horizontal
+        heroPanel.distribution = .fillEqually
+        let profileEnvelope: [(shorelineSectionStack, String)] = [(.ringPath, "Fxoxrx xYxoxux".suliJoyPalmUnfurled), (.suliJoyShellClipPublished, "Fxoxlxlxoxwxixnxgx".suliJoyPalmUnfurled), (.bottomInset, "Txrxexnxdxixnxgx".suliJoyPalmUnfurled)]
+        for nextTideMark in profileEnvelope {
+            let clipPortraitToken = UIStackView()
+            clipPortraitToken.axis = .vertical
+            clipPortraitToken.alignment = .center
+            clipPortraitToken.spacing = 3
             let button = UIButton(type: .system)
-            button.setTitle(lane.1, for: .normal)
+            button.setTitle(nextTideMark.1, for: .normal)
             button.titleLabel?.font = UIFont.italicSystemFont(ofSize: 15).suliWithWeight(.black)
-            button.tag = lane.0.rawValue
-            button.addTarget(self, action: #selector(changeChallengeLane(_:)), for: .touchUpInside)
-            let mark = SuliJoyGradientCapsuleView(colors: [
+            button.tag = nextTideMark.0.rawValue
+            button.addTarget(self, action: #selector(fetchShellClips(_:)), for: .touchUpInside)
+            let tideIndicatorWidth = SuliJoyGradientCapsuleView(colors: [
                 UIColor(red: 1, green: 0.43, blue: 0.25, alpha: 1),
                 UIColor(red: 1, green: 0.96, blue: 0.32, alpha: 1),
                 UIColor(red: 0.47, green: 1, blue: 0.47, alpha: 1)
             ])
-            mark.translatesAutoresizingMaskIntoConstraints = false
-            column.addArrangedSubview(button)
-            column.addArrangedSubview(mark)
-            button.heightAnchor.constraint(equalToConstant: TideHarborMeasure.tabControlHeight).isActive = true
-            mark.widthAnchor.constraint(equalToConstant: TideHarborMeasure.tabIndicatorWidth).isActive = true
-            mark.heightAnchor.constraint(equalToConstant: TideHarborMeasure.tabIndicatorHeight).isActive = true
-            sorts.addArrangedSubview(column)
-            laneButtons[lane.0] = button
-            laneMarks[lane.0] = mark
+            tideIndicatorWidth.translatesAutoresizingMaskIntoConstraints = false
+            clipPortraitToken.addArrangedSubview(button)
+            clipPortraitToken.addArrangedSubview(tideIndicatorWidth)
+            button.heightAnchor.constraint(equalToConstant: TideHarborMeasure.makeShoreSignupColumn).isActive = true
+            tideIndicatorWidth.widthAnchor.constraint(equalToConstant: TideHarborMeasure.controllers).isActive = true
+            tideIndicatorWidth.heightAnchor.constraint(equalToConstant: TideHarborMeasure.moorReefCardScene).isActive = true
+            heroPanel.addArrangedSubview(clipPortraitToken)
+            shoreMailInput[nextTideMark.0] = button
+            pearlGridView[nextTideMark.0] = tideIndicatorWidth
         }
-        paintChallengeLanes()
+        portraitSheet()
 
-        [title, create, close, sorts].forEach { container.addSubview($0) }
+        [pinwhoMistVeil, pearlShelves, titleDrop, heroPanel].forEach { elsewhoMistVeil.addSubview($0) }
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: container.topAnchor),
-            title.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            title.trailingAnchor.constraint(lessThanOrEqualTo: create.leadingAnchor, constant: -8),
-            create.centerYAnchor.constraint(equalTo: title.centerYAnchor),
-            create.trailingAnchor.constraint(equalTo: close.leadingAnchor, constant: -8),
-            create.heightAnchor.constraint(equalToConstant: TideHarborMeasure.createHeight),
-            close.centerYAnchor.constraint(equalTo: title.centerYAnchor),
-            close.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            close.widthAnchor.constraint(equalToConstant: TideHarborMeasure.closeSide),
-            close.heightAnchor.constraint(equalToConstant: TideHarborMeasure.closeSide),
-            sorts.topAnchor.constraint(equalTo: title.bottomAnchor, constant: TideHarborMeasure.titleToTabs),
-            sorts.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            sorts.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-            sorts.heightAnchor.constraint(equalToConstant: TideHarborMeasure.tabStackHeight),
-            sorts.bottomAnchor.constraint(equalTo: container.bottomAnchor)
+            pinwhoMistVeil.topAnchor.constraint(equalTo: elsewhoMistVeil.topAnchor),
+            pinwhoMistVeil.leadingAnchor.constraint(equalTo: elsewhoMistVeil.leadingAnchor),
+            pinwhoMistVeil.trailingAnchor.constraint(lessThanOrEqualTo: pearlShelves.leadingAnchor, constant: -8),
+            pearlShelves.centerYAnchor.constraint(equalTo: pinwhoMistVeil.centerYAnchor),
+            pearlShelves.trailingAnchor.constraint(equalTo: titleDrop.leadingAnchor, constant: -8),
+            pearlShelves.heightAnchor.constraint(equalToConstant: TideHarborMeasure.makeLagoonEntryButton),
+            titleDrop.centerYAnchor.constraint(equalTo: pinwhoMistVeil.centerYAnchor),
+            titleDrop.trailingAnchor.constraint(equalTo: elsewhoMistVeil.trailingAnchor),
+            titleDrop.widthAnchor.constraint(equalToConstant: TideHarborMeasure.reefCopy),
+            titleDrop.heightAnchor.constraint(equalToConstant: TideHarborMeasure.reefCopy),
+            heroPanel.topAnchor.constraint(equalTo: pinwhoMistVeil.bottomAnchor, constant: TideHarborMeasure.alreadyOwnsIslandMail),
+            heroPanel.leadingAnchor.constraint(equalTo: elsewhoMistVeil.leadingAnchor),
+            heroPanel.trailingAnchor.constraint(equalTo: elsewhoMistVeil.trailingAnchor),
+            heroPanel.heightAnchor.constraint(equalToConstant: TideHarborMeasure.deleteCurrentIslandAccount),
+            heroPanel.bottomAnchor.constraint(equalTo: elsewhoMistVeil.bottomAnchor)
         ])
-        return container
+        return elsewhoMistVeil
     }
 
-    private func paintChallengeLanes() {
-        for item in laneButtons {
-            let selected = item.key == challengeLane
+    private func portraitSheet() {
+        for item in shoreMailInput {
+            let selected = item.key == raiseHarborFlag
             item.value.setTitleColor(selected ? .suliInk : .suliMutedInk, for: .normal)
             item.value.titleLabel?.font = UIFont.italicSystemFont(ofSize: 15).suliWithWeight(selected ? .black : .semibold)
-            laneMarks[item.key]?.alpha = selected ? 1 : 0
+            pearlGridView[item.key]?.alpha = selected ? 1 : 0
         }
     }
 
-    private func applyChallengeLane() {
-        switch challengeLane {
-        case .forYou:
-            shoreTides = challengeShelf
-        case .following:
-            let host = SuliJoyLocalProfileStore().currentProfile()?.espadrillePairing
+    private func suliJoyCoastalModeration() {
+        switch raiseHarborFlag {
+        case .ringPath:
+            shoreTides = occupiedLagoonSeatCount
+        case .suliJoyShellClipPublished:
+            let motionPulseButton = SuliJoyLocalProfileStore().currentProfile()?.espadrillePairing
                 .trimmingCharacters(in: .whitespacesAndNewlines)
-            shoreTides = challengeShelf.filter { activity in
-                activity.tideState == .tideJoined || (host?.isEmpty == false && activity.shoreHostAlias == host)
+            shoreTides = occupiedLagoonSeatCount.filter { activity in
+                activity.tideState == .tideJoined || (motionPulseButton?.isEmpty == false && activity.shoreHostAlias == motionPulseButton)
             }
-        case .trending:
-            shoreTides = challengeShelf.sorted { $0.tideJoinedTotal > $1.tideJoinedTotal }
+        case .bottomInset:
+            shoreTides = occupiedLagoonSeatCount.sorted { $0.tideJoinedTotal > $1.tideJoinedTotal }
         }
         tideListView.reloadData()
-        tideEmptyNote.text = "No style challenges right now."
+        tideEmptyNote.text = "Nxox xsxtxyxlxex xcxhxaxlxlxexnxgxexsx xrxixgxhxtx xnxoxwx.x".suliJoyPalmUnfurled
         tideEmptyNote.isHidden = !shoreTides.isEmpty
     }
 
-    @objc private func changeChallengeLane(_ sender: UIButton) {
-        challengeLane = ChallengeLane(rawValue: sender.tag) ?? .forYou
-        paintChallengeLanes()
-        applyChallengeLane()
+    @objc private func fetchShellClips(_ sender: UIButton) {
+        raiseHarborFlag = shorelineSectionStack(rawValue: sender.tag) ?? .ringPath
+        portraitSheet()
+        suliJoyCoastalModeration()
     }
 
-    @objc private func openChallengeDraft() {
+    @objc private func coveScene() {
         let draft = SuliJoyTideCurationDraftController()
         draft.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(draft, animated: true)
@@ -303,7 +303,7 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
         }
     }
 
-    @objc private func sailBackToVoiceBoard() {
+    @objc private func forgeReefReturnControl() {
         navigationController?.popViewController(animated: true)
     }
 
@@ -324,8 +324,8 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
             showLagoonToast(result.coastalWardrobe)
             return
         }
-        challengeShelf = result.sandbarLayering ?? []
-        applyChallengeLane()
+        occupiedLagoonSeatCount = result.sandbarLayering ?? []
+        suliJoyCoastalModeration()
     }
 
     @objc private func openSearch() {
@@ -341,7 +341,7 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        TideHarborMeasure.rowHeight
+        TideHarborMeasure.stitchTideCardScene
     }
 
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -349,8 +349,8 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SuliJoyChallengeFeedCardCell", for: indexPath) as! SuliJoyChallengeFeedCardCell
-        cell.configure(with: shoreTides[indexPath.row], titleLeads: indexPath.row % 2 == 0)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SxuxlxixJxoxyxCxhxaxlxlxexnxgxexFxexexdxCxaxrxdxCxexlxlx".suliJoyPalmUnfurled, for: indexPath) as! shoreBriefMeter
+        cell.configure(with: shoreTides[indexPath.row], shellWidth: indexPath.row % 2 == 0)
         return cell
     }
 
@@ -363,36 +363,36 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
 
 }
 
-final class SuliJoyChallengeFeedCardCell: UITableViewCell {
-    private enum ChallengeCardMeasure {
-        static let side: CGFloat = 16
-        static let verticalInset: CGFloat = 6
-        static let cornerRadius: CGFloat = 24
-        static let contentInset: CGFloat = 16
-        static let titleToHost: CGFloat = 10
-        static let hostToMeta: CGFloat = 6
-        static let avatarSide: CGFloat = 26
-        static let chevronSide: CGFloat = 14
+final class shoreBriefMeter: UITableViewCell {
+    private enum tuneLagoonLetterCanvas {
+        static let coastalRuleCapsule: CGFloat = 16
+        static let reefCancelTap: CGFloat = 6
+        static let lagoonAnswer: CGFloat = 24
+        static let launchOptions: CGFloat = 16
+        static let ShellWardrobeMeasure: CGFloat = 10
+        static let onLagoonConsentAccept: CGFloat = 6
+        static let imageWaveRhythmView: CGFloat = 26
+        static let shorePrimaryControl: CGFloat = 14
     }
 
     private let tideCardShell = UIView()
-    private let coverView = UIImageView()
-    private let shadeView = UIView()
-    private let shadeLayer = CAGradientLayer()
-    private let titleLabel = UILabel()
-    private let faceView = UIImageView()
-    private let hostLabel = UILabel()
-    private let metaLabel = UILabel()
-    private let chevron = UIImageView(image: UIImage(systemName: "chevron.right"))
-    private var titleLeadingConstraint: NSLayoutConstraint?
-    private var titleTrailingChevronConstraint: NSLayoutConstraint?
-    private var titleTrailingAlignConstraint: NSLayoutConstraint?
-    private var faceLeadingConstraint: NSLayoutConstraint?
-    private var faceTrailingConstraint: NSLayoutConstraint?
-    private var metaLeadingConstraint: NSLayoutConstraint?
-    private var metaTrailingAlignConstraint: NSLayoutConstraint?
-    private var hostLeadingConstraint: NSLayoutConstraint?
-    private var hostTrailingConstraint: NSLayoutConstraint?
+    private let breezyFit = UIImageView()
+    private let lagoonCrownText = UIView()
+    private let tideActivity = CAGradientLayer()
+    private let stitchShorelineReelCove = UILabel()
+    private let tapReefMotion = UIImageView()
+    private let presentShoreCommentPrompt = UILabel()
+    private let tideSessionVault = UILabel()
+    private let allAsuliJoyShorelineStoreccounts = UIImageView(image: UIImage(systemName: "cxhxexvxrxoxnx.xrxixgxhxtx".suliJoyPalmUnfurled))
+    private var reefCameraView: NSLayoutConstraint?
+    private var safeCargo: NSLayoutConstraint?
+    private var prepareGradientTideShell: NSLayoutConstraint?
+    private var localReefMotionDirectory: NSLayoutConstraint?
+    private var lagoonEntryControl: NSLayoutConstraint?
+    private var shell: NSLayoutConstraint?
+    private var reefPreviewViews: NSLayoutConstraint?
+    private var senderName: NSLayoutConstraint?
+    private var toastMaxInset: NSLayoutConstraint?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -408,155 +408,155 @@ final class SuliJoyChallengeFeedCardCell: UITableViewCell {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
         tideCardShell.translatesAutoresizingMaskIntoConstraints = false
-        tideCardShell.layer.cornerRadius = ChallengeCardMeasure.cornerRadius
+        tideCardShell.layer.cornerRadius = tuneLagoonLetterCanvas.lagoonAnswer
         tideCardShell.clipsToBounds = true
-        coverView.translatesAutoresizingMaskIntoConstraints = false
-        coverView.contentMode = .scaleAspectFill
-        coverView.clipsToBounds = true
-        shadeView.translatesAutoresizingMaskIntoConstraints = false
-        shadeView.isUserInteractionEnabled = false
-        shadeLayer.colors = [
+        breezyFit.translatesAutoresizingMaskIntoConstraints = false
+        breezyFit.contentMode = .scaleAspectFill
+        breezyFit.clipsToBounds = true
+        lagoonCrownText.translatesAutoresizingMaskIntoConstraints = false
+        lagoonCrownText.isUserInteractionEnabled = false
+        tideActivity.colors = [
             UIColor.black.withAlphaComponent(0).cgColor,
             UIColor.black.withAlphaComponent(0.18).cgColor,
             UIColor.black.withAlphaComponent(0.62).cgColor
         ]
-        shadeLayer.locations = [0, 0.42, 1]
-        shadeLayer.startPoint = CGPoint(x: 0.5, y: 0)
-        shadeLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        shadeView.layer.addSublayer(shadeLayer)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont(name: "SnellRoundhand-Bold", size: 34) ?? UIFont.italicSystemFont(ofSize: 32)
-        titleLabel.textColor = .white
-        titleLabel.numberOfLines = 2
-        faceView.translatesAutoresizingMaskIntoConstraints = false
-        faceView.contentMode = .scaleAspectFill
-        faceView.clipsToBounds = true
-        faceView.layer.cornerRadius = ChallengeCardMeasure.avatarSide / 2
-        faceView.layer.borderWidth = 1.5
-        faceView.layer.borderColor = UIColor.white.cgColor
-        hostLabel.translatesAutoresizingMaskIntoConstraints = false
-        hostLabel.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
-        hostLabel.textColor = UIColor.white.withAlphaComponent(0.96)
-        metaLabel.translatesAutoresizingMaskIntoConstraints = false
-        metaLabel.font = UIFont.systemFont(ofSize: 12, weight: .medium)
-        metaLabel.textColor = UIColor.white.withAlphaComponent(0.84)
-        chevron.translatesAutoresizingMaskIntoConstraints = false
-        chevron.tintColor = UIColor.white.withAlphaComponent(0.92)
-        chevron.contentMode = .scaleAspectFit
-        chevron.setContentHuggingPriority(.required, for: .horizontal)
+        tideActivity.locations = [0, 0.42, 1]
+        tideActivity.startPoint = CGPoint(x: 0.5, y: 0)
+        tideActivity.endPoint = CGPoint(x: 0.5, y: 1)
+        lagoonCrownText.layer.addSublayer(tideActivity)
+        stitchShorelineReelCove.translatesAutoresizingMaskIntoConstraints = false
+        stitchShorelineReelCove.font = UIFont(name: "SxnxexlxlxRxoxuxnxdxhxaxnxdx-xBxoxlxdx".suliJoyPalmUnfurled, size: 34) ?? UIFont.italicSystemFont(ofSize: 32)
+        stitchShorelineReelCove.textColor = .white
+        stitchShorelineReelCove.numberOfLines = 2
+        tapReefMotion.translatesAutoresizingMaskIntoConstraints = false
+        tapReefMotion.contentMode = .scaleAspectFill
+        tapReefMotion.clipsToBounds = true
+        tapReefMotion.layer.cornerRadius = tuneLagoonLetterCanvas.imageWaveRhythmView / 2
+        tapReefMotion.layer.borderWidth = 1.5
+        tapReefMotion.layer.borderColor = UIColor.white.cgColor
+        presentShoreCommentPrompt.translatesAutoresizingMaskIntoConstraints = false
+        presentShoreCommentPrompt.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        presentShoreCommentPrompt.textColor = UIColor.white.withAlphaComponent(0.96)
+        tideSessionVault.translatesAutoresizingMaskIntoConstraints = false
+        tideSessionVault.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        tideSessionVault.textColor = UIColor.white.withAlphaComponent(0.84)
+        allAsuliJoyShorelineStoreccounts.translatesAutoresizingMaskIntoConstraints = false
+        allAsuliJoyShorelineStoreccounts.tintColor = UIColor.white.withAlphaComponent(0.92)
+        allAsuliJoyShorelineStoreccounts.contentMode = .scaleAspectFit
+        allAsuliJoyShorelineStoreccounts.setContentHuggingPriority(.required, for: .horizontal)
         contentView.addSubview(tideCardShell)
-        [coverView, shadeView, titleLabel, faceView, hostLabel, metaLabel, chevron].forEach { tideCardShell.addSubview($0) }
+        [breezyFit, lagoonCrownText, stitchShorelineReelCove, tapReefMotion, presentShoreCommentPrompt, tideSessionVault, allAsuliJoyShorelineStoreccounts].forEach { tideCardShell.addSubview($0) }
 
-        titleLeadingConstraint = titleLabel.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor, constant: ChallengeCardMeasure.contentInset)
-        titleTrailingChevronConstraint = titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: chevron.leadingAnchor, constant: -10)
-        titleTrailingAlignConstraint = titleLabel.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor, constant: -ChallengeCardMeasure.contentInset)
-        faceLeadingConstraint = faceView.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor, constant: ChallengeCardMeasure.contentInset)
-        faceTrailingConstraint = faceView.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor, constant: -ChallengeCardMeasure.contentInset)
-        hostLeadingConstraint = hostLabel.leadingAnchor.constraint(equalTo: faceView.trailingAnchor, constant: 8)
-        hostTrailingConstraint = hostLabel.trailingAnchor.constraint(equalTo: faceView.leadingAnchor, constant: -8)
-        metaLeadingConstraint = metaLabel.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor, constant: ChallengeCardMeasure.contentInset)
-        metaTrailingAlignConstraint = metaLabel.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor, constant: -ChallengeCardMeasure.contentInset)
+        reefCameraView = stitchShorelineReelCove.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor, constant: tuneLagoonLetterCanvas.launchOptions)
+        safeCargo = stitchShorelineReelCove.trailingAnchor.constraint(lessThanOrEqualTo: allAsuliJoyShorelineStoreccounts.leadingAnchor, constant: -10)
+        prepareGradientTideShell = stitchShorelineReelCove.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor, constant: -tuneLagoonLetterCanvas.launchOptions)
+        localReefMotionDirectory = tapReefMotion.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor, constant: tuneLagoonLetterCanvas.launchOptions)
+        lagoonEntryControl = tapReefMotion.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor, constant: -tuneLagoonLetterCanvas.launchOptions)
+        senderName = presentShoreCommentPrompt.leadingAnchor.constraint(equalTo: tapReefMotion.trailingAnchor, constant: 8)
+        toastMaxInset = presentShoreCommentPrompt.trailingAnchor.constraint(equalTo: tapReefMotion.leadingAnchor, constant: -8)
+        shell = tideSessionVault.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor, constant: tuneLagoonLetterCanvas.launchOptions)
+        reefPreviewViews = tideSessionVault.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor, constant: -tuneLagoonLetterCanvas.launchOptions)
 
         NSLayoutConstraint.activate([
-            tideCardShell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ChallengeCardMeasure.verticalInset),
-            tideCardShell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ChallengeCardMeasure.side),
-            tideCardShell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -ChallengeCardMeasure.side),
-            tideCardShell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -ChallengeCardMeasure.verticalInset),
-            coverView.topAnchor.constraint(equalTo: tideCardShell.topAnchor),
-            coverView.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor),
-            coverView.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor),
-            coverView.bottomAnchor.constraint(equalTo: tideCardShell.bottomAnchor),
-            shadeView.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor),
-            shadeView.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor),
-            shadeView.bottomAnchor.constraint(equalTo: tideCardShell.bottomAnchor),
-            shadeView.heightAnchor.constraint(equalTo: tideCardShell.heightAnchor, multiplier: 0.62),
-            titleLabel.bottomAnchor.constraint(equalTo: faceView.topAnchor, constant: -ChallengeCardMeasure.titleToHost),
-            faceView.bottomAnchor.constraint(equalTo: metaLabel.topAnchor, constant: -ChallengeCardMeasure.hostToMeta),
-            faceView.widthAnchor.constraint(equalToConstant: ChallengeCardMeasure.avatarSide),
-            faceView.heightAnchor.constraint(equalToConstant: ChallengeCardMeasure.avatarSide),
-            hostLabel.centerYAnchor.constraint(equalTo: faceView.centerYAnchor),
-            metaLabel.bottomAnchor.constraint(equalTo: tideCardShell.bottomAnchor, constant: -ChallengeCardMeasure.contentInset),
-            chevron.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor, constant: -ChallengeCardMeasure.contentInset),
-            chevron.centerYAnchor.constraint(equalTo: metaLabel.centerYAnchor),
-            chevron.widthAnchor.constraint(equalToConstant: ChallengeCardMeasure.chevronSide),
-            chevron.heightAnchor.constraint(equalToConstant: ChallengeCardMeasure.chevronSide)
+            tideCardShell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: tuneLagoonLetterCanvas.reefCancelTap),
+            tideCardShell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: tuneLagoonLetterCanvas.coastalRuleCapsule),
+            tideCardShell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -tuneLagoonLetterCanvas.coastalRuleCapsule),
+            tideCardShell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -tuneLagoonLetterCanvas.reefCancelTap),
+            breezyFit.topAnchor.constraint(equalTo: tideCardShell.topAnchor),
+            breezyFit.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor),
+            breezyFit.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor),
+            breezyFit.bottomAnchor.constraint(equalTo: tideCardShell.bottomAnchor),
+            lagoonCrownText.leadingAnchor.constraint(equalTo: tideCardShell.leadingAnchor),
+            lagoonCrownText.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor),
+            lagoonCrownText.bottomAnchor.constraint(equalTo: tideCardShell.bottomAnchor),
+            lagoonCrownText.heightAnchor.constraint(equalTo: tideCardShell.heightAnchor, multiplier: 0.62),
+            stitchShorelineReelCove.bottomAnchor.constraint(equalTo: tapReefMotion.topAnchor, constant: -tuneLagoonLetterCanvas.ShellWardrobeMeasure),
+            tapReefMotion.bottomAnchor.constraint(equalTo: tideSessionVault.topAnchor, constant: -tuneLagoonLetterCanvas.onLagoonConsentAccept),
+            tapReefMotion.widthAnchor.constraint(equalToConstant: tuneLagoonLetterCanvas.imageWaveRhythmView),
+            tapReefMotion.heightAnchor.constraint(equalToConstant: tuneLagoonLetterCanvas.imageWaveRhythmView),
+            presentShoreCommentPrompt.centerYAnchor.constraint(equalTo: tapReefMotion.centerYAnchor),
+            tideSessionVault.bottomAnchor.constraint(equalTo: tideCardShell.bottomAnchor, constant: -tuneLagoonLetterCanvas.launchOptions),
+            allAsuliJoyShorelineStoreccounts.trailingAnchor.constraint(equalTo: tideCardShell.trailingAnchor, constant: -tuneLagoonLetterCanvas.launchOptions),
+            allAsuliJoyShorelineStoreccounts.centerYAnchor.constraint(equalTo: tideSessionVault.centerYAnchor),
+            allAsuliJoyShorelineStoreccounts.widthAnchor.constraint(equalToConstant: tuneLagoonLetterCanvas.shorePrimaryControl),
+            allAsuliJoyShorelineStoreccounts.heightAnchor.constraint(equalToConstant: tuneLagoonLetterCanvas.shorePrimaryControl)
         ])
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        shadeLayer.frame = shadeView.bounds
+        tideActivity.frame = lagoonCrownText.bounds
     }
 
-    func configure(with tideSnapshot: SuliJoyTideActivity, titleLeads: Bool = true) {
+    func configure(with tideSnapshot: SuliJoyTideActivity, shellWidth: Bool = true) {
         let token = tideSnapshot.reefGallery.first?.reefAssetToken ?? tideSnapshot.tideFallbackHeroToken
-        coverView.suliJoyApplyPhoto(token)
-        titleLabel.text = tideSnapshot.tideTitleLine
-        titleLabel.textAlignment = titleLeads ? .left : .right
-        faceView.suliJoyApplyPortrait(tideSnapshot.shorelineAvatarTokens.first)
-        let handle = tideSnapshot.shoreHostAlias.replacingOccurrences(of: " ", with: "").lowercased()
-        hostLabel.text = "by @\(handle)"
-        hostLabel.textAlignment = titleLeads ? .left : .right
-        metaLabel.text = "\(tideSnapshot.tideJoinedTotal) joined · \(suliJoyChallengeDaysLeft(tideSnapshot.shoreDayText))"
-        metaLabel.textAlignment = titleLeads ? .left : .right
+        breezyFit.shoreCell(token)
+        stitchShorelineReelCove.text = tideSnapshot.tideTitleLine
+        stitchShorelineReelCove.textAlignment = shellWidth ? .left : .right
+        tapReefMotion.actionRow(tideSnapshot.shorelineAvatarTokens.first)
+        let reefPayload = tideSnapshot.shoreHostAlias.replacingOccurrences(of: " x".suliJoyPalmUnfurled, with: "").lowercased()
+        presentShoreCommentPrompt.text = "\("bxyx x@x".suliJoyPalmUnfurled)\(reefPayload)"
+        presentShoreCommentPrompt.textAlignment = shellWidth ? .left : .right
+        tideSessionVault.text = "\(tideSnapshot.tideJoinedTotal)\(" xjxoxixnxexdx x·x x".suliJoyPalmUnfurled)\(showHarborMenu(tideSnapshot.shoreDayText))"
+        tideSessionVault.textAlignment = shellWidth ? .left : .right
 
-        titleLeadingConstraint?.isActive = titleLeads
-        titleTrailingChevronConstraint?.isActive = titleLeads
-        titleTrailingAlignConstraint?.isActive = !titleLeads
-        faceLeadingConstraint?.isActive = titleLeads
-        faceTrailingConstraint?.isActive = !titleLeads
-        hostLeadingConstraint?.isActive = titleLeads
-        hostTrailingConstraint?.isActive = !titleLeads
-        metaLeadingConstraint?.isActive = titleLeads
-        metaTrailingAlignConstraint?.isActive = !titleLeads
+        reefCameraView?.isActive = shellWidth
+        safeCargo?.isActive = shellWidth
+        prepareGradientTideShell?.isActive = !shellWidth
+        localReefMotionDirectory?.isActive = shellWidth
+        lagoonEntryControl?.isActive = !shellWidth
+        senderName?.isActive = shellWidth
+        toastMaxInset?.isActive = !shellWidth
+        shell?.isActive = shellWidth
+        reefPreviewViews?.isActive = !shellWidth
     }
 }
 
-private final class SuliJoyChallengeCreateButton: UIButton {
-    private let wash = CAGradientLayer()
+private final class SuliJoyGuestMomentPreviewCard: UIButton {
+    private let foldReefKeyboard = CAGradientLayer()
 
     init() {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        setTitle("+ Create", for: .normal)
+        setTitle("+x xCxrxexaxtxex".suliJoyPalmUnfurled, for: .normal)
         setTitleColor(.white, for: .normal)
         titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         contentEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
         clipsToBounds = true
-        wash.colors = [
+        foldReefKeyboard.colors = [
             UIColor(red: 155 / 255, green: 81 / 255, blue: 224 / 255, alpha: 1).cgColor,
             UIColor(red: 236 / 255, green: 72 / 255, blue: 153 / 255, alpha: 1).cgColor
         ]
-        wash.startPoint = CGPoint(x: 0, y: 0.5)
-        wash.endPoint = CGPoint(x: 1, y: 0.5)
-        layer.insertSublayer(wash, at: 0)
+        foldReefKeyboard.startPoint = CGPoint(x: 0, y: 0.5)
+        foldReefKeyboard.endPoint = CGPoint(x: 1, y: 0.5)
+        layer.insertSublayer(foldReefKeyboard, at: 0)
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.height / 2
-        wash.frame = bounds
+        foldReefKeyboard.frame = bounds
     }
 }
 
-private func suliJoyChallengeDaysLeft(_ dayText: String) -> String {
-    let parts = dayText.split(separator: "/").compactMap { Int($0) }
-    guard parts.count >= 2 else { return "3 days left" }
-    let calendar = Calendar.current
-    var partsDate = calendar.dateComponents([.year], from: Date())
-    partsDate.month = parts[0]
-    partsDate.day = parts[1]
-    guard var date = calendar.date(from: partsDate) else { return "3 days left" }
-    let today = calendar.startOfDay(for: Date())
-    if date < today {
-        partsDate.year = (partsDate.year ?? 2026) + 1
-        date = calendar.date(from: partsDate) ?? date
+private func showHarborMenu(_ makeShoreBioShell: String) -> String {
+    let SuliJoyTideCoverSlotControl = makeShoreBioShell.split(separator: Character("/x".suliJoyPalmUnfurled)).compactMap { Int($0) }
+    guard SuliJoyTideCoverSlotControl.count >= 2 else { return "3x xdxaxyxsx xlxexfxtx".suliJoyPalmUnfurled }
+    let openReefCommentModeration = Calendar.current
+    var imageWaveDurationGlyph = openReefCommentModeration.dateComponents([.year], from: Date())
+    imageWaveDurationGlyph.month = SuliJoyTideCoverSlotControl[0]
+    imageWaveDurationGlyph.day = SuliJoyTideCoverSlotControl[1]
+    guard var date = openReefCommentModeration.date(from: imageWaveDurationGlyph) else { return "3x xdxaxyxsx xlxexfxtx".suliJoyPalmUnfurled }
+    let corner = openReefCommentModeration.startOfDay(for: Date())
+    if date < corner {
+        imageWaveDurationGlyph.year = (imageWaveDurationGlyph.year ?? 2026) + 1
+        date = openReefCommentModeration.date(from: imageWaveDurationGlyph) ?? date
     }
-    let days = calendar.dateComponents([.day], from: today, to: calendar.startOfDay(for: date)).day ?? 0
-    if days <= 0 { return "ends today" }
-    return days == 1 ? "1 day left" : "\(days) days left"
+    let tapCreatorDrift = openReefCommentModeration.dateComponents([.day], from: corner, to: openReefCommentModeration.startOfDay(for: date)).day ?? 0
+    if tapCreatorDrift <= 0 { return "exnxdxsx xtxoxdxaxyx".suliJoyPalmUnfurled }
+    return tapCreatorDrift == 1 ? "1x xdxaxyx xlxexfxtx".suliJoyPalmUnfurled : "\(tapCreatorDrift)\(" xdxaxyxsx xlxexfxtx".suliJoyPalmUnfurled)"
 }

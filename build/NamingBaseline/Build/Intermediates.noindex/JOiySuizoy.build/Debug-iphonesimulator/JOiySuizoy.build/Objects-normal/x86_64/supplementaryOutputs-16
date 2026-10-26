@@ -1,0 +1,37 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyShoreReportSheetController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreReportSheetController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreReportSheetController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreReportSheetController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreReportSheetController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreReportSheetController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyShoreRoomLoadingView.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreRoomLoadingView.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreRoomLoadingView.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreRoomLoadingView.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreRoomLoadingView.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreRoomLoadingView.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyShoreSkeleton.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreSkeleton.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreSkeleton.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreSkeleton.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreSkeleton.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyShoreSkeleton.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/suliJoyShorelineFabric.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/suliJoyShorelineFabric.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/suliJoyShorelineFabric.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/suliJoyShorelineFabric.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/suliJoyShorelineFabric.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/suliJoyShorelineFabric.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/suliJoyShorelineIntent.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/suliJoyShorelineIntent.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/suliJoyShorelineIntent.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/suliJoyShorelineIntent.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/suliJoyShorelineIntent.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/NamingBaseline/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/suliJoyShorelineIntent.swiftdeps"
+  }
+}

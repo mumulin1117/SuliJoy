@@ -1,39 +1,39 @@
 import UIKit
 import WebKit
 
-final class SuliJoyRoomShellWebController: SuliJoyTropicCanvasController {
-    private enum ShellBridge {
-        static let handlerName = "roomBridge"
-        static let receiverName = "__ROOM_H5_BRIDGE_RECEIVE__"
-        static let rechargeEvent = "recharge.succeeded"
-        static let splashColor = UIColor(red: 21 / 255, green: 5 / 255, blue: 46 / 255, alpha: 1)
+final class setShoreValue: SuliJoyTropicCanvasController {
+    private enum missingWaveDomain {
+        static let sailBackToWelcome = "rxoxoxmxBxrxixdxgxex".suliJoyPalmUnfurled
+        static let tideJoinedTotal = "_x_xRxOxOxMx_xHx5x_xBxRxIxDxGxEx_xRxExCxExIxVxEx_x_x".suliJoyPalmUnfurled
+        static let sailToReefPrivacy = "rxexcxhxaxrxgxex.xsxuxcxcxexexdxexdx".suliJoyPalmUnfurled
+        static let seatCursor = UIColor(red: 21 / 255, green: 5 / 255, blue: 46 / 255, alpha: 1)
     }
 
-    private let roomKind: SuliJoyRoomShellKind
-    private let roomID: String
-    private let credentials: SuliJoyRoomShellCredentials
+    private let islandLayer: coverSlot
+    private let abaloneTone: String
+    private let backReefControl: subtitleMark
 
-    private var webView: WKWebView!
-    private var bridgeCoordinator: RoomShellBridgeCoordinator?
-    private let splashOverlay = SuliJoyShoreRoomLoadingView()
+    private var makeIslandCodeBadgeText: WKWebView!
+    private var clipStylistMark: sectionHeadlineGlyph?
+    private let listBottomInset = toggleAuthorFollow()
 
-    init(roomKind: SuliJoyRoomShellKind, roomID: String, credentials: SuliJoyRoomShellCredentials) {
-        self.roomKind = roomKind
-        self.roomID = roomID
-        self.credentials = credentials
+    init(islandLayer: coverSlot, abaloneTone: String, backReefControl: subtitleMark) {
+        self.islandLayer = islandLayer
+        self.abaloneTone = abaloneTone
+        self.backReefControl = backReefControl
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = ShellBridge.splashColor
-        assembleRoomShellScene()
-        loadRoomShellEntry(forceFreshCredentials: true)
+        view.backgroundColor = missingWaveDomain.seatCursor
+        carveSuliJoyWordmark()
+        activeReefClipCell(toastBottom: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,143 +42,143 @@ final class SuliJoyRoomShellWebController: SuliJoyTropicCanvasController {
     }
 
     @MainActor deinit {
-        webView?.configuration.userContentController.removeScriptMessageHandler(forName: ShellBridge.handlerName)
+        makeIslandCodeBadgeText?.configuration.userContentController.removeScriptMessageHandler(forName: missingWaveDomain.sailBackToWelcome)
     }
 
-    private func assembleRoomShellScene() {
-        let configuration = WKWebViewConfiguration()
-        configuration.allowsInlineMediaPlayback = true
-        configuration.mediaTypesRequiringUserActionForPlayback = []
+    private func carveSuliJoyWordmark() {
+        let coralPlate = WKWebViewConfiguration()
+        coralPlate.allowsInlineMediaPlayback = true
+        coralPlate.mediaTypesRequiringUserActionForPlayback = []
         if #available(iOS 14.0, *) {
-            configuration.defaultWebpagePreferences.allowsContentJavaScript = true
+            coralPlate.defaultWebpagePreferences.allowsContentJavaScript = true
         }
-        let coordinator = RoomShellBridgeCoordinator(owner: self)
-        bridgeCoordinator = coordinator
-        configuration.userContentController.add(coordinator, name: ShellBridge.handlerName)
+        let reefOffset = sectionHeadlineGlyph(reefCinemaView: self)
+        clipStylistMark = reefOffset
+        coralPlate.userContentController.add(reefOffset, name: missingWaveDomain.sailBackToWelcome)
 
-        webView = WKWebView(frame: .zero, configuration: configuration)
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        webView.backgroundColor = ShellBridge.splashColor
-        webView.isOpaque = false
-        webView.scrollView.backgroundColor = ShellBridge.splashColor
-        webView.uiDelegate = coordinator
-        webView.navigationDelegate = coordinator
+        makeIslandCodeBadgeText = WKWebView(frame: .zero, configuration: coralPlate)
+        makeIslandCodeBadgeText.translatesAutoresizingMaskIntoConstraints = false
+        makeIslandCodeBadgeText.backgroundColor = missingWaveDomain.seatCursor
+        makeIslandCodeBadgeText.isOpaque = false
+        makeIslandCodeBadgeText.scrollView.backgroundColor = missingWaveDomain.seatCursor
+        makeIslandCodeBadgeText.uiDelegate = reefOffset
+        makeIslandCodeBadgeText.navigationDelegate = reefOffset
 
-        view.addSubview(webView)
-        view.addSubview(splashOverlay)
+        view.addSubview(makeIslandCodeBadgeText)
+        view.addSubview(listBottomInset)
         NSLayoutConstraint.activate([
-            webView.topAnchor.constraint(equalTo: view.topAnchor),
-            webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            makeIslandCodeBadgeText.topAnchor.constraint(equalTo: view.topAnchor),
+            makeIslandCodeBadgeText.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            makeIslandCodeBadgeText.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            makeIslandCodeBadgeText.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            splashOverlay.topAnchor.constraint(equalTo: view.topAnchor),
-            splashOverlay.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            splashOverlay.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            splashOverlay.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            listBottomInset.topAnchor.constraint(equalTo: view.topAnchor),
+            listBottomInset.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            listBottomInset.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            listBottomInset.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        splashOverlay.showShore(kind: roomKind)
+        listBottomInset.shoreNotice(kind: islandLayer)
     }
 
-    fileprivate func loadRoomShellEntry(forceFreshCredentials: Bool) {
-        let activeCredentials: SuliJoyRoomShellCredentials
-        if forceFreshCredentials, let fresh = SuliJoyRoomShellCredentials.fromCurrentSession() {
-            activeCredentials = fresh
+    fileprivate func activeReefClipCell(toastBottom: Bool) {
+        let prepareTideCardSurface: subtitleMark
+        if toastBottom, let reefBottomOffset = subtitleMark.bubble() {
+            prepareTideCardSurface = reefBottomOffset
         } else {
-            activeCredentials = credentials
+            prepareTideCardSurface = backReefControl
         }
-        guard let dist = SuliJoyRoomShellBundleLocator.distDirectoryURL(),
-              let entry = SuliJoyRoomShellBundleLocator.buildEntryURL(
-                roomKind: roomKind,
-                roomID: roomID,
-                credentials: activeCredentials
+        guard let offShoulder = joinTide.indicatorWidth(),
+              let header = joinTide.onReefComplete(
+                islandLayer: islandLayer,
+                abaloneTone: abaloneTone,
+                backReefControl: prepareTideCardSurface
               ) else {
-            showLagoonToast("The room bundle could not be loaded.")
+            showLagoonToast("Txhxex xrxoxoxmx xbxuxnxdxlxex xcxoxuxlxdx xnxoxtx xbxex xlxoxaxdxexdx.x".suliJoyPalmUnfurled)
             navigationController?.popViewController(animated: true)
             return
         }
-        splashOverlay.showShore(kind: roomKind)
-        webView.loadFileURL(entry, allowingReadAccessTo: dist)
+        listBottomInset.shoreNotice(kind: islandLayer)
+        makeIslandCodeBadgeText.loadFileURL(header, allowingReadAccessTo: offShoulder)
     }
 
-    fileprivate func revealRoomShellContent() {
+    fileprivate func shoreClockText() {
         UIView.animate(withDuration: 0.25, animations: {
-            self.splashOverlay.alpha = 0
+            self.listBottomInset.alpha = 0
         }, completion: { _ in
-            self.splashOverlay.hideShore()
+            self.listBottomInset.shoresunDressSettle()
         })
     }
 
-    fileprivate func closeRoomShell(reason: String) {
+    fileprivate func polishReefTabChrome(reason: String) {
         _ = reason
         navigationController?.popViewController(animated: true)
     }
 
-    fileprivate func openRoomShellRecharge(requiredDiamonds: Int) {
-        let harbor = SuliJoyPearlHarborViewController()
-        harbor.hidesBottomBarWhenPushed = true
-        harbor.onShellPurchaseSettled = { [weak self] transactionID in
-            self?.notifyRoomShellRechargeSucceeded(transactionID: transactionID)
+    fileprivate func ReadyIslandTideMeasure(refreshShorelineReels: Int) {
+        let shorelineCell = SuliJoyPearlHarborViewController()
+        shorelineCell.hidesBottomBarWhenPushed = true
+        shorelineCell.timeFormatter = { [weak self] transactionID in
+            self?.shoreSignupControl(transactionID: transactionID)
         }
-        navigationController?.pushViewController(harbor, animated: true)
-        if requiredDiamonds > 0 {
-            showLagoonToast("Add gems to continue in the room.")
+        navigationController?.pushViewController(shorelineCell, animated: true)
+        if refreshShorelineReels > 0 {
+            showLagoonToast("Axdxdx xgxexmxsx xtxox xcxoxnxtxixnxuxex xixnx xtxhxex xrxoxoxmx.x".suliJoyPalmUnfurled)
         }
     }
 
-    fileprivate func notifyRoomShellRechargeSucceeded(transactionID: String?) {
-        var payload: [String: Any] = [
-            "eventId": UUID().uuidString,
-            "occurredAt": Int(Date().timeIntervalSince1970 * 1000),
+    fileprivate func shoreSignupControl(transactionID: String?) {
+        var shoreFilterButtons: [String: Any] = [
+            "exvxexnxtxIxdx".suliJoyPalmUnfurled: UUID().uuidString,
+            "oxcxcxuxrxrxexdxAxtx".suliJoyPalmUnfurled: Int(Date().timeIntervalSince1970 * 1000),
         ]
         if let transactionID, !transactionID.isEmpty {
-            payload["transactionId"] = transactionID
+            shoreFilterButtons["txrxaxnxsxaxcxtxixoxnxIxdx".suliJoyPalmUnfurled] = transactionID
         }
-        let message: [String: Any] = [
-            "protocolVersion": 1,
-            "kind": "event",
-            "name": ShellBridge.rechargeEvent,
-            "payload": payload,
+        let tideJoined: [String: Any] = [
+            "pxrxoxtxoxcxoxlxVxexrxsxixoxnx".suliJoyPalmUnfurled: 1,
+            "kxixnxdx".suliJoyPalmUnfurled: "exvxexnxtx".suliJoyPalmUnfurled,
+            "nxaxmxex".suliJoyPalmUnfurled: missingWaveDomain.sailToReefPrivacy,
+            "pxaxyxlxoxaxdx".suliJoyPalmUnfurled: shoreFilterButtons,
         ]
-        guard let data = try? JSONSerialization.data(withJSONObject: message),
-              let json = String(data: data, encoding: .utf8) else { return }
-        let script = "window.\(ShellBridge.receiverName)(\(json));"
-        webView.evaluateJavaScript(script, completionHandler: nil)
+        guard let data = try? JSONSerialization.data(withJSONObject: tideJoined),
+              let fetchReefDetail = String(data: data, encoding: .utf8) else { return }
+        let makeLagoonRuleAgreeButton = "\("wxixnxdxoxwx.x".suliJoyPalmUnfurled)\(missingWaveDomain.tideJoinedTotal)\("(x".suliJoyPalmUnfurled)\(fetchReefDetail)\(")x;x".suliJoyPalmUnfurled)"
+        makeIslandCodeBadgeText.evaluateJavaScript(makeLagoonRuleAgreeButton, completionHandler: nil)
     }
 }
 
-private final class RoomShellBridgeCoordinator: NSObject, WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate {
-    private weak var owner: SuliJoyRoomShellWebController?
+private final class sectionHeadlineGlyph: NSObject, WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate {
+    private weak var reefCinemaView: setShoreValue?
 
-    init(owner: SuliJoyRoomShellWebController) {
-        self.owner = owner
+    init(reefCinemaView: setShoreValue) {
+        self.reefCinemaView = reefCinemaView
     }
 
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        guard message.name == "roomBridge" else { return }
-        let body = message.body
-        let dictionary: [String: Any]
-        if let map = body as? [String: Any] {
-            dictionary = map
+    func userContentController(_ pearlGap: WKUserContentController, didReceive tideJoined: WKScriptMessage) {
+        guard tideJoined.name == "rxoxoxmxBxrxixdxgxex".suliJoyPalmUnfurled else { return }
+        let body = tideJoined.body
+        let resortThemeOptions: [String: Any]
+        if let optionWidth = body as? [String: Any] {
+            resortThemeOptions = optionWidth
         } else if let text = body as? String,
                   let data = text.data(using: .utf8),
-                  let map = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
-            dictionary = map
+                  let optionWidth = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
+            resortThemeOptions = optionWidth
         } else {
             return
         }
-        guard dictionary["kind"] as? String == "command" else { return }
-        let name = dictionary["name"] as? String ?? ""
-        let payload = dictionary["payload"] as? [String: Any] ?? [:]
+        guard resortThemeOptions["kxixnxdx".suliJoyPalmUnfurled] as? String == "cxoxmxmxaxnxdx".suliJoyPalmUnfurled else { return }
+        let name = resortThemeOptions["nxaxmxex".suliJoyPalmUnfurled] as? String ?? ""
+        let shoreFilterButtons = resortThemeOptions["pxaxyxlxoxaxdx".suliJoyPalmUnfurled] as? [String: Any] ?? [:]
         switch name {
-        case "room.ready":
-            owner?.revealRoomShellContent()
-        case "room.close":
-            let reason = payload["reason"] as? String ?? "user"
-            owner?.closeRoomShell(reason: reason)
-        case "recharge.open":
-            let required = payload["requiredDiamonds"] as? Int ?? 0
-            owner?.openRoomShellRecharge(requiredDiamonds: required)
+        case "rxoxoxmx.xrxexaxdxyx".suliJoyPalmUnfurled:
+            reefCinemaView?.shoreClockText()
+        case "rxoxoxmx.xcxlxoxsxex".suliJoyPalmUnfurled:
+            let reason = shoreFilterButtons["rxexaxsxoxnx".suliJoyPalmUnfurled] as? String ?? "uxsxexrx".suliJoyPalmUnfurled
+            reefCinemaView?.polishReefTabChrome(reason: reason)
+        case "rxexcxhxaxrxgxex.xoxpxexnx".suliJoyPalmUnfurled:
+            let required = shoreFilterButtons["rxexqxuxixrxexdxDxixaxmxoxnxdxsx".suliJoyPalmUnfurled] as? Int ?? 0
+            reefCinemaView?.ReadyIslandTideMeasure(refreshShorelineReels: required)
         default:
             break
         }
@@ -186,16 +186,16 @@ private final class RoomShellBridgeCoordinator: NSObject, WKScriptMessageHandler
 
     @available(iOS 15.0, *)
     func webView(
-        _ webView: WKWebView,
-        requestMediaCapturePermissionFor origin: WKSecurityOrigin,
+        _ makeIslandCodeBadgeText: WKWebView,
+        requestMediaCapturePermissionFor makeTideHeader: WKSecurityOrigin,
         initiatedByFrame frame: WKFrameInfo,
-        type: WKMediaCaptureType,
-        decisionHandler: @escaping (WKPermissionDecision) -> Void
+        type partial: WKMediaCaptureType,
+        decisionHandler flutterSleeve: @escaping (WKPermissionDecision) -> Void
     ) {
-        decisionHandler(.grant)
+        flutterSleeve(.grant)
     }
 
-    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
-        owner?.loadRoomShellEntry(forceFreshCredentials: true)
+    func webViewWebContentProcessDidTerminate(_ makeIslandCodeBadgeText: WKWebView) {
+        reefCinemaView?.activeReefClipCell(toastBottom: true)
     }
 }

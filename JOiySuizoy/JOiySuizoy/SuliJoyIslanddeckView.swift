@@ -186,7 +186,7 @@ final class SuliJoyLagoonConsentRibbon: UIView {
 
     var isLagoonConsentMarked: Bool = false {
         didSet {
-            let reefAssetToken = isLagoonConsentMarked ? "sulijoy_auth_check_active" : "sulijoy_auth_check_idle"
+            let reefAssetToken = isLagoonConsentMarked ? "sxuxlxixjxoxyx_xaxuxtxhx_xcxhxexcxkx_xaxcxtxixvxex".suliJoyPalmUnfurled : "sxuxlxixjxoxyx_xaxuxtxhx_xcxhxexcxkx_xixdxlxex".suliJoyPalmUnfurled
             lagoonMarkControl.setImage(UIImage(named: reefAssetToken)?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
     }
@@ -199,13 +199,13 @@ final class SuliJoyLagoonConsentRibbon: UIView {
         lagoonMarkControl.imageView?.contentMode = .scaleAspectFit
         reefConsentLeadNote.text = "BryO WcHoPnBtciXnauLiCnsgN GyGopuH HaCgerfejeA FtuoP".suliJoyPalmUnfurled
         reefConsentJoinNote.text = " WaSnwdG I".suliJoyPalmUnfurled
-        reefConsentEndNote.text = "."
+        reefConsentEndNote.text = ".x".suliJoyPalmUnfurled
         [reefConsentLeadNote, reefConsentJoinNote, reefConsentEndNote].forEach {
             $0.font = UIFont.systemFont(ofSize: 13)
             $0.textColor = UIColor.black.withAlphaComponent(0.62)
         }
-        tintConsentLink(shoreTermsButton, reefHeadline: "<Terms of Service>")
-        tintConsentLink(shorePrivacyButton, reefHeadline: "<Privacy Policy>")
+        tintConsentLink(shoreTermsButton, reefHeadline: "<xTxexrxmxsx xoxfx xSxexrxvxixcxex>x".suliJoyPalmUnfurled)
+        tintConsentLink(shorePrivacyButton, reefHeadline: "<xPxrxixvxaxcxyx xPxoxlxixcxyx>x".suliJoyPalmUnfurled)
         shoreTermsButton.addTarget(self, action: #selector(sailToShoreTerms), for: .touchUpInside)
         shorePrivacyButton.addTarget(self, action: #selector(sailToReefPrivacy), for: .touchUpInside)
 
@@ -326,7 +326,7 @@ class SuliJoyReefEntryCanvasController: UIViewController, UITextFieldDelegate, U
     func forgeReefReturnControl() -> UIButton {
         let shoreControl = UIButton(type: .system)
         shoreControl.translatesAutoresizingMaskIntoConstraints = false
-        shoreControl.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        shoreControl.setImage(UIImage(systemName: "axrxrxoxwx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
         shoreControl.tintColor = .black
         shoreControl.addTarget(self, action: #selector(returnAcrossReef), for: .touchUpInside)
         NSLayoutConstraint.activate([
@@ -373,8 +373,8 @@ class SuliJoyReefEntryCanvasController: UIViewController, UITextFieldDelegate, U
             SuliJoyLagoonGateService.shared.setLagoonConsent(nextTideMark)
             consentRibbon.isLagoonConsentMarked = nextTideMark
         }
-        consentRibbon.onShoreTermsOpen = { [weak self] in self?.presentShorePolicyScroll(reefHeadline: "Terms of Service", sections: SuliJoyPolicyCopy.terms) }
-        consentRibbon.onReefPrivacyOpen = { [weak self] in self?.presentShorePolicyScroll(reefHeadline: "Privacy Policy", sections: SuliJoyPolicyCopy.privacy) }
+        consentRibbon.onShoreTermsOpen = { [weak self] in self?.presentShorePolicyScroll(reefHeadline: "Txexrxmxsx xoxfx xSxexrxvxixcxex".suliJoyPalmUnfurled, sections: SuliJoyPolicyCopy.terms) }
+        consentRibbon.onReefPrivacyOpen = { [weak self] in self?.presentShorePolicyScroll(reefHeadline: "Pxrxixvxaxcxyx xPxoxlxixcxyx".suliJoyPalmUnfurled, sections: SuliJoyPolicyCopy.privacy) }
     }
 
     func refreshConsentRibbonBinding(_ consentRibbon: SuliJoyLagoonConsentRibbon) {
@@ -382,7 +382,7 @@ class SuliJoyReefEntryCanvasController: UIViewController, UITextFieldDelegate, U
     }
 
     func presentReefNotice(_ reefNote: String) {
-        presentSuliJoyCoastalNotice(reefHeadline: "SuliJoy", reefNote: reefNote)
+        presentSuliJoyCoastalNotice(reefHeadline: "SxuxlxixJxoxyx".suliJoyPalmUnfurled, reefNote: reefNote)
     }
 
     func driftSimulatedHarborDelay(_ shoreControl: SuliJoyGradientButton, action: @escaping () -> Void) {
@@ -404,10 +404,10 @@ class SuliJoyReefEntryCanvasController: UIViewController, UITextFieldDelegate, U
             self?.refreshConsentRibbonState()
         }
         reefRuleSheet.onCoastalTermsRoute = { [weak self, weak reefRuleSheet] in
-            self?.presentShorePolicyScroll(reefHeadline: "Terms of Service", sections: SuliJoyPolicyCopy.terms, presenter: reefRuleSheet)
+            self?.presentShorePolicyScroll(reefHeadline: "Txexrxmxsx xoxfx xSxexrxvxixcxex".suliJoyPalmUnfurled, sections: SuliJoyPolicyCopy.terms, presenter: reefRuleSheet)
         }
         reefRuleSheet.onShorelinePrivacyRoute = { [weak self, weak reefRuleSheet] in
-            self?.presentShorePolicyScroll(reefHeadline: "Privacy Policy", sections: SuliJoyPolicyCopy.privacy, presenter: reefRuleSheet)
+            self?.presentShorePolicyScroll(reefHeadline: "Pxrxixvxaxcxyx xPxoxlxixcxyx".suliJoyPalmUnfurled, sections: SuliJoyPolicyCopy.privacy, presenter: reefRuleSheet)
         }
         present(reefRuleSheet, animated: true)
     }
@@ -452,83 +452,67 @@ class SuliJoyReefEntryCanvasController: UIViewController, UITextFieldDelegate, U
 }
 
 enum SuliJoyPolicyCopy {
-    static let eulaSheet = """
-    Welcome to SuliJoy. SuliJoy is a coastal fashion community for island outfits, resort looks, activity inspiration, short videos, and AI-assisted style ideas.
-
-    To keep the app safe, the following content and behavior are not allowed:
-
-    SuliJoy has no tolerance for objectionable content or abusive users. Users can flag objectionable content and block abusive users from the safety menu shown on posts, activities, shorts, comments, and profiles.
-
-    1. Child sexual abuse material, sexual exploitation of minors, grooming, or any content that harms children.
-
-    2. Nudity, pornography, sexual services, graphic violence, hate, bullying, threats, stalking, harassment, or content that promotes self-harm.
-
-    3. Fake, deceptive, illegal, infringing, or harmful content, including impersonation, scams, stolen photos, and unsafe fashion or body-image claims.
-
-    Users must satisfy the minimum age required by applicable law and must be legally allowed to use this app in their region. SuliJoy may review, restrict, remove, report, or permanently ban content and accounts that violate these rules.
-
-    By tapping I agree, you accept the Terms of Use and Privacy Policy.
-    """
+    static let eulaSheet = "Wxexlxcxoxmxex xtxox xSxuxlxixJxoxyx.x xSxuxlxixJxoxyx xixsx xax xcxoxaxsxtxaxlx xfxaxsxhxixoxnx xcxoxmxmxuxnxixtxyx xfxoxrx xixsxlxaxnxdx xoxuxtxfxixtxsx,x xrxexsxoxrxtx xlxoxoxkxsx,x xaxcxtxixvxixtxyx xixnxsxpxixrxaxtxixoxnx,x xsxhxoxrxtx xvxixdxexoxsx,x xaxnxdx xAxIx-xaxsxsxixsxtxexdx xsxtxyxlxex xixdxexaxsx.x\nx\nxTxox xkxexexpx xtxhxex xaxpxpx xsxaxfxex,x xtxhxex xfxoxlxlxoxwxixnxgx xcxoxnxtxexnxtx xaxnxdx xbxexhxaxvxixoxrx xaxrxex xnxoxtx xaxlxlxoxwxexdx:x\nx\nxSxuxlxixJxoxyx xhxaxsx xnxox xtxoxlxexrxaxnxcxex xfxoxrx xoxbxjxexcxtxixoxnxaxbxlxex xcxoxnxtxexnxtx xoxrx xaxbxuxsxixvxex xuxsxexrxsx.x xUxsxexrxsx xcxaxnx xfxlxaxgx xoxbxjxexcxtxixoxnxaxbxlxex xcxoxnxtxexnxtx xaxnxdx xbxlxoxcxkx xaxbxuxsxixvxex xuxsxexrxsx xfxrxoxmx xtxhxex xsxaxfxextxyx xmxexnxux xsxhxoxwxnx xoxnx xpxoxsxtxsx,x xaxcxtxixvxixtxixexsx,x xsxhxoxrxtxsx,x xcxoxmxmxexnxtxsx,x xaxnxdx xpxrxoxfxixlxexsx.x\nx\nx1x.x xCxhxixlxdx xsxexxxuxaxlx xaxbxuxsxex xmxaxtxexrxixaxlx,x xsxexxxuxaxlx xexxxpxlxoxixtxaxtxixoxnx xoxfx xmxixnxoxrxsx,x xgxrxoxoxmxixnxgx,x xoxrx xaxnxyx xcxoxnxtxexnxtx xtxhxaxtx xhxaxrxmxsx xcxhxixlxdxrxexnx.x\nx\nx2x.x xNxuxdxixtxyx,x xpxoxrxnxoxgxrxaxpxhxyx,x xsxexxxuxaxlx xsxexrxvxixcxexsx,x xgxrxaxpxhxixcx xvxixoxlxexnxcxex,x xhxaxtxex,x xbxuxlxlxyxixnxgx,x xtxhxrxexaxtxsx,x xsxtxaxlxkxixnxgx,x xhxaxrxaxsxsxmxexnxtx,x xoxrx xcxoxnxtxexnxtx xtxhxaxtx xpxrxoxmxoxtxexsx xsxexlxfx-xhxaxrxmx.x\nx\nx3x.x xFxaxkxex,x xdxexcxexpxtxixvxex,x xixlxlxexgxaxlx,x xixnxfxrxixnxgxixnxgx,x xoxrx xhxaxrxmxfxuxlx xcxoxnxtxexnxtx,x xixnxcxlxuxdxixnxgx xixmxpxexrxsxoxnxaxtxixoxnx,x xsxcxaxmxsx,x xsxtxoxlxexnx xpxhxoxtxoxsx,x xaxnxdx xuxnxsxaxfxex xfxaxsxhxixoxnx xoxrx xbxoxdxyx-xixmxaxgxex xcxlxaxixmxsx.x\nx\nxUxsxexrxsx xmxuxsxtx xsxaxtxixsxfxyx xtxhxex xmxixnxixmxuxmx xaxgxex xrxexqxuxixrxexdx xbxyx xaxpxpxlxixcxaxbxlxex xlxaxwx xaxnxdx xmxuxsxtx xbxex xlxexgxaxlxlxyx xaxlxlxoxwxexdx xtxox xuxsxex xtxhxixsx xaxpxpx xixnx xtxhxexixrx xrxexgxixoxnx.x xSxuxlxixJxoxyx xmxaxyx xrxexvxixexwx,x xrxexsxtxrxixcxtx,x xrxexmxoxvxex,x xrxexpxoxrxtx,x xoxrx xpxexrxmxaxnxexnxtxlxyx xbxaxnx xcxoxnxtxexnxtx xaxnxdx xaxcxcxoxuxnxtxsx xtxhxaxtx xvxixoxlxaxtxex xtxhxexsxex xrxuxlxexsx.x\nx\nxBxyx xtxaxpxpxixnxgx xIx xaxgxrxexex,x xyxoxux xaxcxcxexpxtx xtxhxex xTxexrxmxsx xoxfx xUxsxex xaxnxdx xPxrxixvxaxcxyx xPxoxlxixcxyx.x".suliJoyPalmUnfurled
 
     static let terms: [SuliJoyLagoonClause] = [
         SuliJoyLagoonClause(
-            reefHeadline: "Acceptance",
-            body: "By creating an account or using SuliJoy, you agree to these Terms and our Privacy Policy. If you do not agree, please do not use the app."
+            reefHeadline: "Axcxcxexpxtxaxnxcxex".suliJoyPalmUnfurled,
+            body: "Bxyx xcxrxexaxtxixnxgx xaxnx xaxcxcxoxuxnxtx xoxrx xuxsxixnxgx xSxuxlxixJxoxyx,x xyxoxux xaxgxrxexex xtxox xtxhxexsxex xTxexrxmxsx xaxnxdx xoxuxrx xPxrxixvxaxcxyx xPxoxlxixcxyx.x xIxfx xyxoxux xdxox xnxoxtx xaxgxrxexex,x xpxlxexaxsxex xdxox xnxoxtx xuxsxex xtxhxex xaxpxpx.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "SuliJoy Services",
-            body: "SuliJoy provides a beach and island style experience that may include login, profiles, AI outfit entry points, activity lists, community posts, short videos, and a personal center. This build uses simulated services to create a real app-like experience and does not connect to a commercial backend."
+            reefHeadline: "SxuxlxixJxoxyx xSxexrxvxixcxexsx".suliJoyPalmUnfurled,
+            body: "SxuxlxixJxoxyx xpxrxoxvxixdxexsx xax xbxexaxcxhx xaxnxdx xixsxlxaxnxdx xsxtxyxlxex xexxxpxexrxixexnxcxex xtxhxaxtx xmxaxyx xixnxcxlxuxdxex xlxoxgxixnx,x xpxrxoxfxixlxexsx,x xAxIx xoxuxtxfxixtx xexnxtxrxyx xpxoxixnxtxsx,x xaxcxtxixvxixtxyx xlxixsxtxsx,x xcxoxmxmxuxnxixtxyx xpxoxsxtxsx,x xsxhxoxrxtx xvxixdxexoxsx,x xaxnxdx xax xpxexrxsxoxnxaxlx xcxexnxtxexrx.x xTxhxixsx xbxuxixlxdx xuxsxexsx xsxixmxuxlxaxtxexdx xsxexrxvxixcxexsx xtxox xcxrxexaxtxex xax xrxexaxlx xaxpxpx-xlxixkxex xexxxpxexrxixexnxcxex xaxnxdx xdxoxexsx xnxoxtx xcxoxnxnxexcxtx xtxox xax xcxoxmxmxexrxcxixaxlx xbxaxcxkxexnxdx.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "Eligibility",
-            body: "You must satisfy the minimum age required by applicable law and be legally allowed to use social and fashion-sharing services in your jurisdiction. You may not use another person's identity, email, photos, or profile details without permission."
+            reefHeadline: "Exlxixgxixbxixlxixtxyx".suliJoyPalmUnfurled,
+            body: "Yxoxux xmxuxsxtx xsxaxtxixsxfxyx xtxhxex xmxixnxixmxuxmx xaxgxex xrxexqxuxixrxexdx xbxyx xaxpxpxlxixcxaxbxlxex xlxaxwx xaxnxdx xbxex xlxexgxaxlxlxyx xaxlxlxoxwxexdx xtxox xuxsxex xsxoxcxixaxlx xaxnxdx xfxaxsxhxixoxnx-xsxhxaxrxixnxgx xsxexrxvxixcxexsx xixnx xyxoxuxrx xjxuxrxixsxdxixcxtxixoxnx.x xYxoxux xmxaxyx xnxoxtx xuxsxex xaxnxoxtxhxexrx xpxexrxsxoxnx'xsx xixdxexnxtxixtxyx,x xexmxaxixlx,x xpxhxoxtxoxsx,x xoxrx xpxrxoxfxixlxex xdxextxaxixlxsx xwxixtxhxoxuxtx xpxexrxmxixsxsxixoxnx.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "Your Content",
-            body: "You keep ownership of the outfit photos, style notes, videos, profile avatar, bio, and comments you create. By posting or saving content in SuliJoy, you allow the app to host, display, organize, and simulate delivery of that content within the experience you choose."
+            reefHeadline: "Yxoxuxrx xCxoxnxtxexnxtx".suliJoyPalmUnfurled,
+            body: "Yxoxux xkxexexpx xoxwxnxexrxsxhxixpx xoxfx xtxhxex xoxuxtxfxixtx xpxhxoxtxoxsx,x xsxtxyxlxex xnxoxtxexsx,x xvxixdxexoxsx,x xpxrxoxfxixlxex xaxvxaxtxaxrx,x xbxixox,x xaxnxdx xcxoxmxmxexnxtxsx xyxoxux xcxrxexaxtxex.x xBxyx xpxoxsxtxixnxgx xoxrx xsxaxvxixnxgx xcxoxnxtxexnxtx xixnx xSxuxlxixJxoxyx,x xyxoxux xaxlxlxoxwx xtxhxex xaxpxpx xtxox xhxoxsxtx,x xdxixsxpxlxaxyx,x xoxrxgxaxnxixzxex,x xaxnxdx xsxixmxuxlxaxtxex xdxexlxixvxexrxyx xoxfx xtxhxaxtx xcxoxnxtxexnxtx xwxixtxhxixnx xtxhxex xexxxpxexrxixexnxcxex xyxoxux xcxhxoxoxsxex.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "Community Safety",
-            body: "SuliJoy has no tolerance for objectionable content or abusive users. Do not post illegal, hateful, harassing, bullying, sexually explicit, violent, deceptive, infringing, or child-harm content. SuliJoy may remove content, limit features, suspend accounts, or permanently ban users who violate these rules."
+            reefHeadline: "Cxoxmxmxuxnxixtxyx xSxaxfxextxyx".suliJoyPalmUnfurled,
+            body: "SxuxlxixJxoxyx xhxaxsx xnxox xtxoxlxexrxaxnxcxex xfxoxrx xoxbxjxexcxtxixoxnxaxbxlxex xcxoxnxtxexnxtx xoxrx xaxbxuxsxixvxex xuxsxexrxsx.x xDxox xnxoxtx xpxoxsxtx xixlxlxexgxaxlx,x xhxaxtxexfxuxlx,x xhxaxrxaxsxsxixnxgx,x xbxuxlxlxyxixnxgx,x xsxexxxuxaxlxlxyx xexxxpxlxixcxixtx,x xvxixoxlxexnxtx,x xdxexcxexpxtxixvxex,x xixnxfxrxixnxgxixnxgx,x xoxrx xcxhxixlxdx-xhxaxrxmx xcxoxnxtxexnxtx.x xSxuxlxixJxoxyx xmxaxyx xrxexmxoxvxex xcxoxnxtxexnxtx,x xlxixmxixtx xfxexaxtxuxrxexsx,x xsxuxsxpxexnxdx xaxcxcxoxuxnxtxsx,x xoxrx xpxexrxmxaxnxexnxtxlxyx xbxaxnx xuxsxexrxsx xwxhxox xvxixoxlxaxtxex xtxhxexsxex xrxuxlxexsx.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "Reports, Blocking & Moderation",
-            body: "SuliJoy is designed around user-managed safety controls. Users can report objectionable content and block abusive users from posts, activities, shorts, comments, and profiles. Reports may be reviewed for policy enforcement. Blocking should prevent unwanted interaction where the feature is available."
+            reefHeadline: "Rxexpxoxrxtxsx,x xBxlxoxcxkxixnxgx x&x xMxoxdxexrxaxtxixoxnx".suliJoyPalmUnfurled,
+            body: "SxuxlxixJxoxyx xixsx xdxexsxixgxnxexdx xaxrxoxuxnxdx xuxsxexrx-xmxaxnxaxgxexdx xsxaxfxextxyx xcxoxnxtxrxoxlxsx.x xUxsxexrxsx xcxaxnx xrxexpxoxrxtx xoxbxjxexcxtxixoxnxaxbxlxex xcxoxnxtxexnxtx xaxnxdx xbxlxoxcxkx xaxbxuxsxixvxex xuxsxexrxsx xfxrxoxmx xpxoxsxtxsx,x xaxcxtxixvxixtxixexsx,x xsxhxoxrxtxsx,x xcxoxmxmxexnxtxsx,x xaxnxdx xpxrxoxfxixlxexsx.x xRxexpxoxrxtxsx xmxaxyx xbxex xrxexvxixexwxexdx xfxoxrx xpxoxlxixcxyx xexnxfxoxrxcxexmxexnxtx.x xBxlxoxcxkxixnxgx xsxhxoxuxlxdx xpxrxexvxexnxtx xuxnxwxaxnxtxexdx xixnxtxexrxaxcxtxixoxnx xwxhxexrxex xtxhxex xfxexaxtxuxrxex xixsx xaxvxaxixlxaxbxlxex.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "AI Style Assistant",
-            body: "AI outfit suggestions are for inspiration only. They are not professional, medical, financial, or safety advice. You are responsible for deciding whether a style, product idea, or activity is appropriate for you."
+            reefHeadline: "AxIx xSxtxyxlxex xAxsxsxixsxtxaxnxtx".suliJoyPalmUnfurled,
+            body: "AxIx xoxuxtxfxixtx xsxuxgxgxexsxtxixoxnxsx xaxrxex xfxoxrx xixnxsxpxixrxaxtxixoxnx xoxnxlxyx.x xTxhxexyx xaxrxex xnxoxtx xpxrxoxfxexsxsxixoxnxaxlx,x xmxexdxixcxaxlx,x xfxixnxaxnxcxixaxlx,x xoxrx xsxaxfxextxyx xaxdxvxixcxex.x xYxoxux xaxrxex xrxexsxpxoxnxsxixbxlxex xfxoxrx xdxexcxixdxixnxgx xwxhxextxhxexrx xax xsxtxyxlxex,x xpxrxoxdxuxcxtx xixdxexax,x xoxrx xaxcxtxixvxixtxyx xixsx xaxpxpxrxoxpxrxixaxtxex xfxoxrx xyxoxux.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "Account & Termination",
-            body: "You may log out at any time. SuliJoy may restrict or terminate access for violations of these Terms, safety rules, or applicable law. Some provisions survive termination where needed for safety, legal, and operational reasons."
+            reefHeadline: "Axcxcxoxuxnxtx x&x xTxexrxmxixnxaxtxixoxnx".suliJoyPalmUnfurled,
+            body: "Yxoxux xmxaxyx xlxoxgx xoxuxtx xaxtx xaxnxyx xtxixmxex.x xSxuxlxixJxoxyx xmxaxyx xrxexsxtxrxixcxtx xoxrx xtxexrxmxixnxaxtxex xaxcxcxexsxsx xfxoxrx xvxixoxlxaxtxixoxnxsx xoxfx xtxhxexsxex xTxexrxmxsx,x xsxaxfxextxyx xrxuxlxexsx,x xoxrx xaxpxpxlxixcxaxbxlxex xlxaxwx.x xSxoxmxex xpxrxoxvxixsxixoxnxsx xsxuxrxvxixvxex xtxexrxmxixnxaxtxixoxnx xwxhxexrxex xnxexexdxexdx xfxoxrx xsxaxfxextxyx,x xlxexgxaxlx,x xaxnxdx xoxpxexrxaxtxixoxnxaxlx xrxexaxsxoxnxsx.x".suliJoyPalmUnfurled
         )
     ]
 
     static let privacy: [SuliJoyLagoonClause] = [
         SuliJoyLagoonClause(
-            reefHeadline: "Device Data Model",
-            body: "This implementation stores login state, registered account records, EULA agreement state, profile details, style tags, and selected avatar references on this device to simulate real service behavior."
+            reefHeadline: "Dxexvxixcxex xDxaxtxax xMxoxdxexlx".suliJoyPalmUnfurled,
+            body: "Txhxixsx xixmxpxlxexmxexnxtxaxtxixoxnx xsxtxoxrxexsx xlxoxgxixnx xsxtxaxtxex,x xrxexgxixsxtxexrxexdx xaxcxcxoxuxnxtx xrxexcxoxrxdxsx,x xExUxLxAx xaxgxrxexexmxexnxtx xsxtxaxtxex,x xpxrxoxfxixlxex xdxextxaxixlxsx,x xsxtxyxlxex xtxaxgxsx,x xaxnxdx xsxexlxexcxtxexdx xaxvxaxtxaxrx xrxexfxexrxexnxcxexsx xoxnx xtxhxixsx xdxexvxixcxex xtxox xsxixmxuxlxaxtxex xrxexaxlx xsxexrxvxixcxex xbxexhxaxvxixoxrx.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "Information You Provide",
-            body: "SuliJoy may store the email, password used for sign-in, nickname, avatar, bio, and style preferences you enter. The fixed test account exists only for development validation."
+            reefHeadline: "Ixnxfxoxrxmxaxtxixoxnx xYxoxux xPxrxoxvxixdxex".suliJoyPalmUnfurled,
+            body: "SxuxlxixJxoxyx xmxaxyx xsxtxoxrxex xtxhxex xexmxaxixlx,x xpxaxsxsxwxoxrxdx xuxsxexdx xfxoxrx xsxixgxnx-xixnx,x xnxixcxkxnxaxmxex,x xaxvxaxtxaxrx,x xbxixox,x xaxnxdx xsxtxyxlxex xpxrxexfxexrxexnxcxexsx xyxoxux xexnxtxexrx.x xTxhxex xfxixxxexdx xtxexsxtx xaxcxcxoxuxnxtx xexxxixsxtxsx xoxnxlxyx xfxoxrx xdxexvxexlxoxpxmxexnxtx xvxaxlxixdxaxtxixoxnx.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "Camera & Photo Library",
-            body: "Camera and photo library access are requested only when you choose to take or select a profile avatar. If your device has no camera available, the Take Photo option is hidden."
+            reefHeadline: "Cxaxmxexrxax x&x xPxhxoxtxox xLxixbxrxaxrxyx".suliJoyPalmUnfurled,
+            body: "Cxaxmxexrxax xaxnxdx xpxhxoxtxox xlxixbxrxaxrxyx xaxcxcxexsxsx xaxrxex xrxexqxuxexsxtxexdx xoxnxlxyx xwxhxexnx xyxoxux xcxhxoxoxsxex xtxox xtxaxkxex xoxrx xsxexlxexcxtx xax xpxrxoxfxixlxex xaxvxaxtxaxrx.x xIxfx xyxoxuxrx xdxexvxixcxex xhxaxsx xnxox xcxaxmxexrxax xaxvxaxixlxaxbxlxex,x xtxhxex xTxaxkxex xPxhxoxtxox xoxpxtxixoxnx xixsx xhxixdxdxexnx.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "No  Backend",
-            body: "This build does not use Firebase, Supabase, or a commercial server. Simulated request envelopes include code, note, trace ID, server time, and response data."
+            reefHeadline: "Nxox x xBxaxcxkxexnxdx".suliJoyPalmUnfurled,
+            body: "Txhxixsx xbxuxixlxdx xdxoxexsx xnxoxtx xuxsxex xFxixrxexbxaxsxex,x xSxuxpxaxbxaxsxex,x xoxrx xax xcxoxmxmxexrxcxixaxlx xsxexrxvxexrx.x xSxixmxuxlxaxtxexdx xrxexqxuxexsxtx xexnxvxexlxoxpxexsx xixnxcxlxuxdxex xcxoxdxex,x xnxoxtxex,x xtxrxaxcxex xIxDx,x xsxexrxvxexrx xtxixmxex,x xaxnxdx xrxexsxpxoxnxsxex xdxaxtxax.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "Session Restore",
-            body: "SuliJoy restores login state after restart so the app can behave like a real signed-in experience. Logging out clears the active session only and does not delete registered accounts."
+            reefHeadline: "Sxexsxsxixoxnx xRxexsxtxoxrxex".suliJoyPalmUnfurled,
+            body: "SxuxlxixJxoxyx xrxexsxtxoxrxexsx xlxoxgxixnx xsxtxaxtxex xaxfxtxexrx xrxexsxtxaxrxtx xsxox xtxhxex xaxpxpx xcxaxnx xbxexhxaxvxex xlxixkxex xax xrxexaxlx xsxixgxnxexdx-xixnx xexxxpxexrxixexnxcxex.x xLxoxgxgxixnxgx xoxuxtx xcxlxexaxrxsx xtxhxex xaxcxtxixvxex xsxexsxsxixoxnx xoxnxlxyx xaxnxdx xdxoxexsx xnxoxtx xdxexlxextxex xrxexgxixsxtxexrxexdx xaxcxcxoxuxnxtxsx.x".suliJoyPalmUnfurled
         ),
         SuliJoyLagoonClause(
-            reefHeadline: "Safety Actions",
-            body: "Future reporting, blocking, moderation, and account-safety features may store device records needed to show the user interface and enforce user choices in this simulated environment."
+            reefHeadline: "Sxaxfxextxyx xAxcxtxixoxnxsx".suliJoyPalmUnfurled,
+            body: "Fxuxtxuxrxex xrxexpxoxrxtxixnxgx,x xbxlxoxcxkxixnxgx,x xmxoxdxexrxaxtxixoxnx,x xaxnxdx xaxcxcxoxuxnxtx-xsxaxfxextxyx xfxexaxtxuxrxexsx xmxaxyx xsxtxoxrxex xdxexvxixcxex xrxexcxoxrxdxsx xnxexexdxexdx xtxox xsxhxoxwx xtxhxex xuxsxexrx xixnxtxexrxfxaxcxex xaxnxdx xexnxfxoxrxcxex xuxsxexrx xcxhxoxixcxexsx xixnx xtxhxixsx xsxixmxuxlxaxtxexdx xexnxvxixrxoxnxmxexnxtx.x".suliJoyPalmUnfurled
         )
     ]
 }

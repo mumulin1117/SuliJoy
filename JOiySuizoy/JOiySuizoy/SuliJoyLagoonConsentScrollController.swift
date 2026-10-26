@@ -112,8 +112,8 @@ final class SuliJoyLagoonConsentScrollController: UIViewController {
     }
 
     private func makeLagoonRuleLinks() -> UIStackView {
-        let terms = makeLagoonRuleLinkButton(reefHeadline: "<Terms of Use>", action: #selector(openLagoonRuleTerms))
-        let privacy = makeLagoonRuleLinkButton(reefHeadline: "<Privacy Policy>", action: #selector(openLagoonRulePrivacy))
+        let terms = makeLagoonRuleLinkButton(reefHeadline: "<xTxexrxmxsx xoxfx xUxsxex>x".suliJoyPalmUnfurled, action: #selector(openLagoonRuleTerms))
+        let privacy = makeLagoonRuleLinkButton(reefHeadline: "<xPxrxixvxaxcxyx xPxoxlxixcxyx>x".suliJoyPalmUnfurled, action: #selector(openLagoonRulePrivacy))
         let stack = UIStackView(arrangedSubviews: [terms, privacy])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal

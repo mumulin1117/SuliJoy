@@ -1,0 +1,7 @@
+Target dependency graph (3 targets)
+Target 'JOiySuizoy' in project 'JOiySuizoy'
+➜ Implicit dependency on target 'Pods-JOiySuizoy' in project 'Pods' via file 'libPods-JOiySuizoy.a' in build phase 'Link Binary'
+➜ Implicit dependency on target 'SVProgressHUD' in project 'Pods' via options '-lSVProgressHUD' in build setting 'OTHER_LDFLAGS'
+Target 'Pods-JOiySuizoy' in project 'Pods'
+➜ Explicit dependency on target 'SVProgressHUD' in project 'Pods'
+Target 'SVProgressHUD' in project 'Pods' (no dependencies)

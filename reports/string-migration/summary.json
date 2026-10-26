@@ -1,0 +1,331 @@
+[
+  {
+    "encoded" : 0,
+    "excluded" : {
+
+    },
+    "file" : "AppDelegate.swift"
+  },
+  {
+    "encoded" : 11,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyAgentKeyBarController.swift"
+  },
+  {
+    "encoded" : 18,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyChallengeShareLookController.swift"
+  },
+  {
+    "encoded" : 363,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyCoveMockService.swift"
+  },
+  {
+    "encoded" : 21,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyForinController.swift"
+  },
+  {
+    "encoded" : 22,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyIslandVisitorProfileViewController.swift"
+  },
+  {
+    "encoded" : 40,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyIslanddeckView.swift"
+  },
+  {
+    "encoded" : 10,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyJokerAuthUserService.swift"
+  },
+  {
+    "encoded" : 58,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonBoardControllers.swift"
+  },
+  {
+    "encoded" : 2,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonConsentScrollController.swift"
+  },
+  {
+    "encoded" : 4,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonHarborService.swift"
+  },
+  {
+    "encoded" : 11,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonImageShelf.swift"
+  },
+  {
+    "encoded" : 24,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonLettersViewController.swift"
+  },
+  {
+    "encoded" : 0,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonMirrorController.swift"
+  },
+  {
+    "encoded" : 16,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonProfileCoveController.swift"
+  },
+  {
+    "encoded" : 95,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonProfileRemoteService.swift"
+  },
+  {
+    "encoded" : 192,
+    "excluded" : {
+      "compile-time literal" : 307
+    },
+    "file" : "SuliJoyLagoonRemoteClient.swift"
+  },
+  {
+    "encoded" : 8,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonRemoteConfiguration.swift"
+  },
+  {
+    "encoded" : 4,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonScrollTextController.swift"
+  },
+  {
+    "encoded" : 8,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyLagoonSessionStore.swift"
+  },
+  {
+    "encoded" : 40,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyMainUI.swift"
+  },
+  {
+    "encoded" : 21,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyMusiInDoController.swift"
+  },
+  {
+    "encoded" : 9,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyOpiRegistry.swift"
+  },
+  {
+    "encoded" : 1,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyPearlHarborBridge.swift"
+  },
+  {
+    "encoded" : 11,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyPearlHarborViewController.swift"
+  },
+  {
+    "encoded" : 14,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyReefMotionTideController.swift"
+  },
+  {
+    "encoded" : 21,
+    "excluded" : {
+      "compile-time literal" : 2
+    },
+    "file" : "SuliJoyRoomShellBridge.swift"
+  },
+  {
+    "encoded" : 26,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyRoomShellWebController.swift"
+  },
+  {
+    "encoded" : 52,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyShareBroadcastDraftControllers.swift"
+  },
+  {
+    "encoded" : 3,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyShellPearlStore.swift"
+  },
+  {
+    "encoded" : 5,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyShellPearlStorecontroller.swift"
+  },
+  {
+    "encoded" : 16,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyShellelasticWaistController.swift"
+  },
+  {
+    "encoded" : 69,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyShoortController.swift"
+  },
+  {
+    "encoded" : 5,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyShoreReportSheetController.swift"
+  },
+  {
+    "encoded" : 16,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyShoreRoomLoadingView.swift"
+  },
+  {
+    "encoded" : 11,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyShoreSkeleton.swift"
+  },
+  {
+    "encoded" : 11,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyTideCardCell.swift"
+  },
+  {
+    "encoded" : 54,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyTideCoastalDetailController.swift"
+  },
+  {
+    "encoded" : 39,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoyTideCurationDraftController.swift"
+  },
+  {
+    "encoded" : 14,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoymetallicThreadController.swift"
+  },
+  {
+    "encoded" : 3,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoypaperbagWaistController.swift"
+  },
+  {
+    "encoded" : 2,
+    "excluded" : {
+      "compile-time literal" : 1
+    },
+    "file" : "SuliJoyruffleHem.swift"
+  },
+  {
+    "encoded" : 22,
+    "excluded" : {
+
+    },
+    "file" : "SuliJoysequinedGlimmerController.swift"
+  },
+  {
+    "encoded" : 7,
+    "excluded" : {
+
+    },
+    "file" : "suliJoyShorelineAesthetic.swift"
+  },
+  {
+    "encoded" : 5,
+    "excluded" : {
+
+    },
+    "file" : "suliJoyShorelineEnsemble.swift"
+  },
+  {
+    "encoded" : 0,
+    "excluded" : {
+
+    },
+    "file" : "suliJoyShorelineFabric.swift"
+  },
+  {
+    "encoded" : 23,
+    "excluded" : {
+
+    },
+    "file" : "suliJoyShorelineIntent.swift"
+  }
+]

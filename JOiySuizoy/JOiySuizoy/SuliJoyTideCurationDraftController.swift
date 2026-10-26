@@ -1,40 +1,40 @@
 import UIKit
 
 final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-    private enum ChallengeDraftMeasure {
+    private enum openShoreDateWheel {
         static let pageSide: CGFloat = 20
-        static let navTop: CGFloat = 8
-        static let navHeight: CGFloat = 44
-        static let coverTop: CGFloat = 16
-        static let coverCorner: CGFloat = 22
-        static let coverHeight: CGFloat = 188
+        static let pearlBadgeShell: CGFloat = 8
+        static let toggleShoreMomentAudio: CGFloat = 44
+        static let removeCoverControl: CGFloat = 16
+        static let toastSide: CGFloat = 22
+        static let arrivalScene: CGFloat = 188
         static let formTop: CGFloat = 22
-        static let sectionSpacing: CGFloat = 18
-        static let sectionTitleSize: CGFloat = 18
-        static let titleFieldHeight: CGFloat = 52
-        static let titleFieldCorner: CGFloat = 16
-        static let publishHeight: CGFloat = 54
-        static let publishBottom: CGFloat = 8
+        static let wrapCoastalEnvelope: CGFloat = 18
+        static let dismissKeyboard: CGFloat = 18
+        static let email: CGFloat = 52
+        static let makeShoreSignupNextControl: CGFloat = 16
+        static let shoreNameInput: CGFloat = 54
+        static let completeProfile: CGFloat = 8
     }
 
     private let shoreDraftScrollCanvas = UIScrollView()
     private let shoreDraftDeck = UIView()
     private let shoreDraftNavRail = UIView()
     private let styleTitleField = UITextField()
-    private let shorePublishControl = SuliJoyGradientButton(reefHeadline: "Create Challenge", reefHeight: ChallengeDraftMeasure.publishHeight)
+    private let shorePublishControl = SuliJoyGradientButton(reefHeadline: "Cxrxexaxtxex xCxhxaxlxlxexnxgxex".suliJoyPalmUnfurled, reefHeight: openShoreDateWheel.shoreNameInput)
 
-    private let coverPreview = UIImageView()
-    private let coverPromptStack = UIStackView()
+    private let reefShelves = UIImageView()
+    private let returnAcrossReef = UIStackView()
     private var coverReefPicks: [SuliJoyReefEventPhotoPick] = []
-    private var styleSignalButtons: [UIButton] = []
-    private var durationButtons: [UIButton] = []
-    private var selectedStyleSignal = "Blue"
-    private var selectedDuration = "23h"
+    private var makeQuietHeadlineLabel: [UIButton] = []
+    private var SuliJoyavatarSide: [UIButton] = []
+    private var cardMinRatio = "Bxlxuxex".suliJoyPalmUnfurled
+    private var suggestionRow = "2x3xhx".suliJoyPalmUnfurled
 
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
-        raiseChallengeDraftScene()
+        detail()
         registerDraftKeyboardObservers()
     }
 
@@ -47,7 +47,7 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         NotificationCenter.default.removeObserver(self)
     }
 
-    private func raiseChallengeDraftScene() {
+    private func detail() {
         shoreDraftScrollCanvas.translatesAutoresizingMaskIntoConstraints = false
         shoreDraftScrollCanvas.keyboardDismissMode = .interactive
         shoreDraftScrollCanvas.showsVerticalScrollIndicator = false
@@ -55,80 +55,80 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         shoreDraftDeck.translatesAutoresizingMaskIntoConstraints = false
         shoreDraftDeck.backgroundColor = .clear
 
-        anchorChallengeNav()
+        loadPublishedClipReef()
 
-        let coverCard = UIControl()
-        coverCard.translatesAutoresizingMaskIntoConstraints = false
-        coverCard.backgroundColor = UIColor(red: 0.98, green: 0.86, blue: 0.62, alpha: 1)
-        coverCard.layer.cornerRadius = ChallengeDraftMeasure.coverCorner
-        coverCard.clipsToBounds = true
-        coverCard.addTarget(self, action: #selector(chooseChallengeCover), for: .touchUpInside)
+        let anchorCurationDraftNav = UIControl()
+        anchorCurationDraftNav.translatesAutoresizingMaskIntoConstraints = false
+        anchorCurationDraftNav.backgroundColor = UIColor(red: 0.98, green: 0.86, blue: 0.62, alpha: 1)
+        anchorCurationDraftNav.layer.cornerRadius = openShoreDateWheel.toastSide
+        anchorCurationDraftNav.clipsToBounds = true
+        anchorCurationDraftNav.addTarget(self, action: #selector(refreshedMoment), for: .touchUpInside)
 
-        coverPreview.translatesAutoresizingMaskIntoConstraints = false
-        coverPreview.contentMode = .scaleAspectFill
-        coverPreview.clipsToBounds = true
-        coverPreview.image = SuliJoyImagePlaceholder.photo
+        reefShelves.translatesAutoresizingMaskIntoConstraints = false
+        reefShelves.contentMode = .scaleAspectFill
+        reefShelves.clipsToBounds = true
+        reefShelves.image = esuliJoyPalmGuidemail.guestAvatarView
 
-        let camera = UIImageView(image: UIImage(systemName: "camera.fill"))
-        camera.translatesAutoresizingMaskIntoConstraints = false
-        camera.tintColor = .white
-        camera.contentMode = .scaleAspectFit
-        let coverPrompt = UILabel()
-        coverPrompt.text = "Add a cover photo"
-        coverPrompt.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        coverPrompt.textColor = .white
-        coverPromptStack.axis = .vertical
-        coverPromptStack.alignment = .center
-        coverPromptStack.spacing = 8
-        coverPromptStack.translatesAutoresizingMaskIntoConstraints = false
-        coverPromptStack.isUserInteractionEnabled = false
-        coverPromptStack.addArrangedSubview(camera)
-        coverPromptStack.addArrangedSubview(coverPrompt)
-        coverCard.addSubview(coverPreview)
-        coverCard.addSubview(coverPromptStack)
+        let tideCardShell = UIImageView(image: UIImage(systemName: "cxaxmxexrxax.xfxixlxlx".suliJoyPalmUnfurled))
+        tideCardShell.translatesAutoresizingMaskIntoConstraints = false
+        tideCardShell.tintColor = .white
+        tideCardShell.contentMode = .scaleAspectFit
+        let taglineSize = UILabel()
+        taglineSize.text = "Axdxdx xax xcxoxvxexrx xpxhxoxtxox".suliJoyPalmUnfurled
+        taglineSize.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        taglineSize.textColor = .white
+        returnAcrossReef.axis = .vertical
+        returnAcrossReef.alignment = .center
+        returnAcrossReef.spacing = 8
+        returnAcrossReef.translatesAutoresizingMaskIntoConstraints = false
+        returnAcrossReef.isUserInteractionEnabled = false
+        returnAcrossReef.addArrangedSubview(tideCardShell)
+        returnAcrossReef.addArrangedSubview(taglineSize)
+        anchorCurationDraftNav.addSubview(reefShelves)
+        anchorCurationDraftNav.addSubview(returnAcrossReef)
 
         styleTitleField.translatesAutoresizingMaskIntoConstraints = false
-        styleTitleField.placeholder = "e.g. A Touch of Blue"
+        styleTitleField.placeholder = "ex.xgx.x xAx xTxoxuxcxhx xoxfx xBxlxuxex".suliJoyPalmUnfurled
         styleTitleField.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         styleTitleField.textColor = .suliInk
         styleTitleField.backgroundColor = .white
-        styleTitleField.layer.cornerRadius = ChallengeDraftMeasure.titleFieldCorner
+        styleTitleField.layer.cornerRadius = openShoreDateWheel.makeShoreSignupNextControl
         styleTitleField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
         styleTitleField.leftViewMode = .always
         styleTitleField.delegate = self
         styleTitleField.addTarget(self, action: #selector(shoreDraftTextFieldChanged(_:)), for: .editingChanged)
         styleTitleField.attributedPlaceholder = NSAttributedString(
-            string: "e.g. A Touch of Blue",
+            string: "ex.xgx.x xAx xTxoxuxcxhx xoxfx xBxlxuxex".suliJoyPalmUnfurled,
             attributes: [
                 .foregroundColor: UIColor(red: 0.72, green: 0.71, blue: 0.70, alpha: 1),
                 .font: UIFont.systemFont(ofSize: 16, weight: .medium)
             ]
         )
 
-        let signalWrap = makeChallengeChipRow(
-            titles: ["Blue", "Linen", "Floral", "White", "Breezy", "Resort", "Bold"],
-            selected: selectedStyleSignal,
-            storage: &styleSignalButtons,
-            action: #selector(chooseStyleSignal(_:))
+        let isVisitorSelected = reefFollowerTotal(
+            sheetCorner: ["Bxlxuxex".suliJoyPalmUnfurled, "Lxixnxexnx".suliJoyPalmUnfurled, "Fxlxoxrxaxlx".suliJoyPalmUnfurled, "Wxhxixtxex".suliJoyPalmUnfurled, "Bxrxexexzxyx".suliJoyPalmUnfurled, "Rxexsxoxrxtx".suliJoyPalmUnfurled, "Bxoxlxdx".suliJoyPalmUnfurled],
+            selected: cardMinRatio,
+            heroTop: &makeQuietHeadlineLabel,
+            action: #selector(cancelTap(_:))
         )
-        let durationWrap = makeChallengeChipRow(
-            titles: ["23h", "3 days", "7 days"],
-            selected: selectedDuration,
-            storage: &durationButtons,
-            action: #selector(chooseChallengeDuration(_:))
+        let tuneWaveRow = reefFollowerTotal(
+            sheetCorner: ["2x3xhx".suliJoyPalmUnfurled, "3x xdxaxyxsx".suliJoyPalmUnfurled, "7x xdxaxyxsx".suliJoyPalmUnfurled],
+            selected: suggestionRow,
+            heroTop: &SuliJoyavatarSide,
+            action: #selector(chooseShorelineStyle(_:))
         )
 
-        let form = UIStackView()
-        form.translatesAutoresizingMaskIntoConstraints = false
-        form.axis = .vertical
-        form.spacing = ChallengeDraftMeasure.sectionSpacing
-        form.addArrangedSubview(makeChallengeHeading("Challenge title"))
-        form.addArrangedSubview(styleTitleField)
-        form.addArrangedSubview(makeChallengeHeading("Style Signal"))
-        form.addArrangedSubview(signalWrap)
-        form.addArrangedSubview(makeChallengeHeading("Challenge duration"))
-        form.addArrangedSubview(durationWrap)
-        styleTitleField.heightAnchor.constraint(equalToConstant: ChallengeDraftMeasure.titleFieldHeight).isActive = true
+        let shoreContentGlyph = UIStackView()
+        shoreContentGlyph.translatesAutoresizingMaskIntoConstraints = false
+        shoreContentGlyph.axis = .vertical
+        shoreContentGlyph.spacing = openShoreDateWheel.wrapCoastalEnvelope
+        shoreContentGlyph.addArrangedSubview(followEnvelope("Cxhxaxlxlxexnxgxex xtxixtxlxex".suliJoyPalmUnfurled))
+        shoreContentGlyph.addArrangedSubview(styleTitleField)
+        shoreContentGlyph.addArrangedSubview(followEnvelope("Sxtxyxlxex xSxixgxnxaxlx".suliJoyPalmUnfurled))
+        shoreContentGlyph.addArrangedSubview(isVisitorSelected)
+        shoreContentGlyph.addArrangedSubview(followEnvelope("Cxhxaxlxlxexnxgxex xdxuxrxaxtxixoxnx".suliJoyPalmUnfurled))
+        shoreContentGlyph.addArrangedSubview(tuneWaveRow)
+        styleTitleField.heightAnchor.constraint(equalToConstant: openShoreDateWheel.email).isActive = true
 
         shorePublishControl.translatesAutoresizingMaskIntoConstraints = false
         shorePublishControl.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .black)
@@ -137,12 +137,12 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         view.addSubview(shoreDraftScrollCanvas)
         view.addSubview(shorePublishControl)
         shoreDraftScrollCanvas.addSubview(shoreDraftDeck)
-        [shoreDraftNavRail, coverCard, form].forEach { shoreDraftDeck.addSubview($0) }
+        [shoreDraftNavRail, anchorCurationDraftNav, shoreContentGlyph].forEach { shoreDraftDeck.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            shorePublishControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ChallengeDraftMeasure.pageSide),
-            shorePublishControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ChallengeDraftMeasure.pageSide),
-            shorePublishControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ChallengeDraftMeasure.publishBottom),
+            shorePublishControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: openShoreDateWheel.pageSide),
+            shorePublishControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -openShoreDateWheel.pageSide),
+            shorePublishControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -openShoreDateWheel.completeProfile),
 
             shoreDraftScrollCanvas.topAnchor.constraint(equalTo: view.topAnchor),
             shoreDraftScrollCanvas.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -155,30 +155,30 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
             shoreDraftDeck.bottomAnchor.constraint(equalTo: shoreDraftScrollCanvas.contentLayoutGuide.bottomAnchor),
             shoreDraftDeck.widthAnchor.constraint(equalTo: shoreDraftScrollCanvas.frameLayoutGuide.widthAnchor),
 
-            shoreDraftNavRail.topAnchor.constraint(equalTo: shoreDraftDeck.safeAreaLayoutGuide.topAnchor, constant: ChallengeDraftMeasure.navTop),
-            shoreDraftNavRail.leadingAnchor.constraint(equalTo: shoreDraftDeck.leadingAnchor, constant: ChallengeDraftMeasure.pageSide),
-            shoreDraftNavRail.trailingAnchor.constraint(equalTo: shoreDraftDeck.trailingAnchor, constant: -ChallengeDraftMeasure.pageSide),
-            shoreDraftNavRail.heightAnchor.constraint(equalToConstant: ChallengeDraftMeasure.navHeight),
+            shoreDraftNavRail.topAnchor.constraint(equalTo: shoreDraftDeck.safeAreaLayoutGuide.topAnchor, constant: openShoreDateWheel.pearlBadgeShell),
+            shoreDraftNavRail.leadingAnchor.constraint(equalTo: shoreDraftDeck.leadingAnchor, constant: openShoreDateWheel.pageSide),
+            shoreDraftNavRail.trailingAnchor.constraint(equalTo: shoreDraftDeck.trailingAnchor, constant: -openShoreDateWheel.pageSide),
+            shoreDraftNavRail.heightAnchor.constraint(equalToConstant: openShoreDateWheel.toggleShoreMomentAudio),
 
-            coverCard.topAnchor.constraint(equalTo: shoreDraftNavRail.bottomAnchor, constant: ChallengeDraftMeasure.coverTop),
-            coverCard.leadingAnchor.constraint(equalTo: shoreDraftDeck.leadingAnchor, constant: ChallengeDraftMeasure.pageSide),
-            coverCard.trailingAnchor.constraint(equalTo: shoreDraftDeck.trailingAnchor, constant: -ChallengeDraftMeasure.pageSide),
-            coverCard.heightAnchor.constraint(equalToConstant: ChallengeDraftMeasure.coverHeight),
+            anchorCurationDraftNav.topAnchor.constraint(equalTo: shoreDraftNavRail.bottomAnchor, constant: openShoreDateWheel.removeCoverControl),
+            anchorCurationDraftNav.leadingAnchor.constraint(equalTo: shoreDraftDeck.leadingAnchor, constant: openShoreDateWheel.pageSide),
+            anchorCurationDraftNav.trailingAnchor.constraint(equalTo: shoreDraftDeck.trailingAnchor, constant: -openShoreDateWheel.pageSide),
+            anchorCurationDraftNav.heightAnchor.constraint(equalToConstant: openShoreDateWheel.arrivalScene),
 
-            coverPreview.topAnchor.constraint(equalTo: coverCard.topAnchor),
-            coverPreview.leadingAnchor.constraint(equalTo: coverCard.leadingAnchor),
-            coverPreview.trailingAnchor.constraint(equalTo: coverCard.trailingAnchor),
-            coverPreview.bottomAnchor.constraint(equalTo: coverCard.bottomAnchor),
+            reefShelves.topAnchor.constraint(equalTo: anchorCurationDraftNav.topAnchor),
+            reefShelves.leadingAnchor.constraint(equalTo: anchorCurationDraftNav.leadingAnchor),
+            reefShelves.trailingAnchor.constraint(equalTo: anchorCurationDraftNav.trailingAnchor),
+            reefShelves.bottomAnchor.constraint(equalTo: anchorCurationDraftNav.bottomAnchor),
 
-            coverPromptStack.centerXAnchor.constraint(equalTo: coverCard.centerXAnchor),
-            coverPromptStack.centerYAnchor.constraint(equalTo: coverCard.centerYAnchor),
-            camera.widthAnchor.constraint(equalToConstant: 28),
-            camera.heightAnchor.constraint(equalToConstant: 24),
+            returnAcrossReef.centerXAnchor.constraint(equalTo: anchorCurationDraftNav.centerXAnchor),
+            returnAcrossReef.centerYAnchor.constraint(equalTo: anchorCurationDraftNav.centerYAnchor),
+            tideCardShell.widthAnchor.constraint(equalToConstant: 28),
+            tideCardShell.heightAnchor.constraint(equalToConstant: 24),
 
-            form.topAnchor.constraint(equalTo: coverCard.bottomAnchor, constant: ChallengeDraftMeasure.formTop),
-            form.leadingAnchor.constraint(equalTo: coverCard.leadingAnchor),
-            form.trailingAnchor.constraint(equalTo: coverCard.trailingAnchor),
-            form.bottomAnchor.constraint(equalTo: shoreDraftDeck.bottomAnchor, constant: -24)
+            shoreContentGlyph.topAnchor.constraint(equalTo: anchorCurationDraftNav.bottomAnchor, constant: openShoreDateWheel.formTop),
+            shoreContentGlyph.leadingAnchor.constraint(equalTo: anchorCurationDraftNav.leadingAnchor),
+            shoreContentGlyph.trailingAnchor.constraint(equalTo: anchorCurationDraftNav.trailingAnchor),
+            shoreContentGlyph.bottomAnchor.constraint(equalTo: shoreDraftDeck.bottomAnchor, constant: -24)
         ])
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(foldDraftKeyboard))
@@ -186,93 +186,93 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         view.addGestureRecognizer(tap)
     }
 
-    private func anchorChallengeNav() {
+    private func loadPublishedClipReef() {
         shoreDraftNavRail.translatesAutoresizingMaskIntoConstraints = false
-        let back = UIButton(type: .system)
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)), for: .normal)
-        back.tintColor = .suliInk
-        back.addTarget(self, action: #selector(driftBackFromCurationDraft), for: .touchUpInside)
-        let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Create Events"
-        title.font = UIFont.systemFont(ofSize: 18, weight: .black)
-        title.textColor = .suliInk
-        title.textAlignment = .center
-        shoreDraftNavRail.addSubview(back)
-        shoreDraftNavRail.addSubview(title)
+        let presentShorePortraitPicker = UIButton(type: .system)
+        presentShorePortraitPicker.translatesAutoresizingMaskIntoConstraints = false
+        presentShorePortraitPicker.setImage(UIImage(systemName: "cxhxexvxrxoxnx.xlxexfxtx".suliJoyPalmUnfurled, withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold)), for: .normal)
+        presentShorePortraitPicker.tintColor = .suliInk
+        presentShorePortraitPicker.addTarget(self, action: #selector(driftBackFromCurationDraft), for: .touchUpInside)
+        let titlelagoonSeatMarkbigh = UILabel()
+        titlelagoonSeatMarkbigh.translatesAutoresizingMaskIntoConstraints = false
+        titlelagoonSeatMarkbigh.text = "Cxrxexaxtxex xExvxexnxtxsx".suliJoyPalmUnfurled
+        titlelagoonSeatMarkbigh.font = UIFont.systemFont(ofSize: 18, weight: .black)
+        titlelagoonSeatMarkbigh.textColor = .suliInk
+        titlelagoonSeatMarkbigh.textAlignment = .center
+        shoreDraftNavRail.addSubview(presentShorePortraitPicker)
+        shoreDraftNavRail.addSubview(titlelagoonSeatMarkbigh)
         NSLayoutConstraint.activate([
-            back.leadingAnchor.constraint(equalTo: shoreDraftNavRail.leadingAnchor),
-            back.centerYAnchor.constraint(equalTo: shoreDraftNavRail.centerYAnchor),
-            back.widthAnchor.constraint(equalToConstant: 40),
-            back.heightAnchor.constraint(equalToConstant: 40),
-            title.centerXAnchor.constraint(equalTo: shoreDraftNavRail.centerXAnchor),
-            title.centerYAnchor.constraint(equalTo: shoreDraftNavRail.centerYAnchor),
-            title.leadingAnchor.constraint(greaterThanOrEqualTo: back.trailingAnchor, constant: 8)
+            presentShorePortraitPicker.leadingAnchor.constraint(equalTo: shoreDraftNavRail.leadingAnchor),
+            presentShorePortraitPicker.centerYAnchor.constraint(equalTo: shoreDraftNavRail.centerYAnchor),
+            presentShorePortraitPicker.widthAnchor.constraint(equalToConstant: 40),
+            presentShorePortraitPicker.heightAnchor.constraint(equalToConstant: 40),
+            titlelagoonSeatMarkbigh.centerXAnchor.constraint(equalTo: shoreDraftNavRail.centerXAnchor),
+            titlelagoonSeatMarkbigh.centerYAnchor.constraint(equalTo: shoreDraftNavRail.centerYAnchor),
+            titlelagoonSeatMarkbigh.leadingAnchor.constraint(greaterThanOrEqualTo: presentShorePortraitPicker.trailingAnchor, constant: 8)
         ])
     }
 
-    private func makeChallengeHeading(_ text: String) -> UILabel {
+    private func followEnvelope(_ text: String) -> UILabel {
         let label = UILabel()
         label.text = text
-        label.font = UIFont.systemFont(ofSize: ChallengeDraftMeasure.sectionTitleSize, weight: .black)
+        label.font = UIFont.systemFont(ofSize: openShoreDateWheel.dismissKeyboard, weight: .black)
         label.textColor = .suliInk
         return label
     }
 
-    private func makeChallengeChipRow(titles: [String], selected: String, storage: inout [UIButton], action: Selector) -> UIStackView {
-        let column = UIStackView()
-        column.axis = .vertical
-        column.spacing = 10
-        column.alignment = .leading
+    private func reefFollowerTotal(sheetCorner: [String], selected: String, heroTop: inout [UIButton], action: Selector) -> UIStackView {
+        let clipPortraitToken = UIStackView()
+        clipPortraitToken.axis = .vertical
+        clipPortraitToken.spacing = 10
+        clipPortraitToken.alignment = .leading
         var row = UIStackView()
         row.axis = .horizontal
         row.spacing = 10
         var width: CGFloat = 0
-        let limit = UIScreen.main.bounds.width - ChallengeDraftMeasure.pageSide * 2
-        for name in titles {
-            let chip = SuliJoyChallengeDraftChip()
-            chip.setTitle(name, for: .normal)
-            chip.addTarget(self, action: action, for: .touchUpInside)
-            paintChallengeChip(chip, selected: name == selected)
-            storage.append(chip)
-            let chipWidth = max(72, CGFloat(name.count * 9 + 36))
-            if width > 0, width + chipWidth > limit {
-                column.addArrangedSubview(row)
+        let reefContentView = UIScreen.main.bounds.width - openShoreDateWheel.pageSide * 2
+        for name in sheetCorner {
+            let reefMuteButton = ReefLaunchCrown()
+            reefMuteButton.setTitle(name, for: .normal)
+            reefMuteButton.addTarget(self, action: action, for: .touchUpInside)
+            stylistEnvelope(reefMuteButton, selected: name == selected)
+            heroTop.append(reefMuteButton)
+            let islandAwaitingReturn = max(72, CGFloat(name.count * 9 + 36))
+            if width > 0, width + islandAwaitingReturn > reefContentView {
+                clipPortraitToken.addArrangedSubview(row)
                 row = UIStackView()
                 row.axis = .horizontal
                 row.spacing = 10
                 width = 0
             }
-            row.addArrangedSubview(chip)
-            width += chipWidth + 10
+            row.addArrangedSubview(reefMuteButton)
+            width += islandAwaitingReturn + 10
         }
         if !row.arrangedSubviews.isEmpty {
-            column.addArrangedSubview(row)
+            clipPortraitToken.addArrangedSubview(row)
         }
-        return column
+        return clipPortraitToken
     }
 
-    private func paintChallengeChip(_ chip: SuliJoyChallengeDraftChip, selected: Bool) {
-        chip.setSelectedChip(selected)
-        chip.setTitleColor(selected ? .suliInk : UIColor(red: 0.70, green: 0.69, blue: 0.67, alpha: 1), for: .normal)
+    private func stylistEnvelope(_ reefMuteButton: ReefLaunchCrown, selected: Bool) {
+        reefMuteButton.lagoonFansTextGlyph(selected)
+        reefMuteButton.setTitleColor(selected ? .suliInk : UIColor(red: 0.70, green: 0.69, blue: 0.67, alpha: 1), for: .normal)
     }
 
-    @objc private func chooseChallengeCover() {
+    @objc private func refreshedMoment() {
         suliJoyCoastalStyle()
     }
 
-    @objc private func chooseStyleSignal(_ sender: UIButton) {
-        selectedStyleSignal = sender.title(for: .normal) ?? selectedStyleSignal
-        styleSignalButtons.forEach {
-            paintChallengeChip($0 as! SuliJoyChallengeDraftChip, selected: $0 === sender)
+    @objc private func cancelTap(_ sender: UIButton) {
+        cardMinRatio = sender.title(for: .normal) ?? cardMinRatio
+        makeQuietHeadlineLabel.forEach {
+            stylistEnvelope($0 as! ReefLaunchCrown, selected: $0 === sender)
         }
     }
 
-    @objc private func chooseChallengeDuration(_ sender: UIButton) {
-        selectedDuration = sender.title(for: .normal) ?? selectedDuration
-        durationButtons.forEach {
-            paintChallengeChip($0 as! SuliJoyChallengeDraftChip, selected: $0 === sender)
+    @objc private func chooseShorelineStyle(_ sender: UIButton) {
+        suggestionRow = sender.title(for: .normal) ?? suggestionRow
+        SuliJoyavatarSide.forEach {
+            stylistEnvelope($0 as! ReefLaunchCrown, selected: $0 === sender)
         }
     }
 
@@ -280,27 +280,27 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         foldDraftKeyboard()
         let coverChoiceSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            coverChoiceSheet.addAction(UIAlertAction(title: "Take Photo", style: .default) { [weak self] _ in
+            coverChoiceSheet.addAction(UIAlertAction(title: "Txaxkxex xPxhxoxtxox".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
                 self?.openCoverImagePicker(source: .camera)
             })
         }
-        coverChoiceSheet.addAction(UIAlertAction(title: "Choose from Library", style: .default) { [weak self] _ in
+        coverChoiceSheet.addAction(UIAlertAction(title: "Cxhxoxoxsxex xfxrxoxmx xLxixbxrxaxrxyx".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
             self?.openCoverImagePicker(source: .photoLibrary)
         })
-        coverChoiceSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        coverChoiceSheet.popoverPresentationController?.sourceView = coverPreview
-        coverChoiceSheet.popoverPresentationController?.sourceRect = coverPreview.bounds
+        coverChoiceSheet.addAction(UIAlertAction(title: "Cxaxnxcxexlx".suliJoyPalmUnfurled, style: .cancel))
+        coverChoiceSheet.popoverPresentationController?.sourceView = reefShelves
+        coverChoiceSheet.popoverPresentationController?.sourceRect = reefShelves.bounds
         present(coverChoiceSheet, animated: true)
     }
 
     private func openCoverImagePicker(source reefSource: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(reefSource) else {
-            showLagoonToast("Source unavailable.")
+            showLagoonToast("Sxoxuxrxcxex xuxnxaxvxaxixlxaxbxlxex.x".suliJoyPalmUnfurled)
             return
         }
         let coverPicker = UIImagePickerController()
         coverPicker.sourceType = reefSource
-        coverPicker.mediaTypes = ["public.image"]
+        coverPicker.mediaTypes = ["pxuxbxlxixcx.xixmxaxgxex".suliJoyPalmUnfurled]
         coverPicker.delegate = self
         coverPicker.allowsEditing = true
         present(coverPicker, animated: true)
@@ -310,12 +310,12 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         coverPicker.dismiss(animated: true)
         let coverImage = (reefInfo[.editedImage] as? UIImage) ?? (reefInfo[.originalImage] as? UIImage)
         guard let coverImage, let shorelinePath = storeCoverSnapshot(coverImage) else {
-            showLagoonToast("Could not save cover photo.")
+            showLagoonToast("Cxoxuxlxdx xnxoxtx xsxaxvxex xcxoxvxexrx xpxhxoxtxox.x".suliJoyPalmUnfurled)
             return
         }
-        coverReefPicks = [SuliJoyReefEventPhotoPick(reefSandboxPath: shorelinePath, hibiscusShade: "Event Cover")]
-        coverPreview.image = coverImage
-        coverPromptStack.isHidden = true
+        coverReefPicks = [SuliJoyReefEventPhotoPick(reefSandboxPath: shorelinePath, hibiscusShade: "Exvxexnxtx xCxoxvxexrx".suliJoyPalmUnfurled)]
+        reefShelves.image = coverImage
+        returnAcrossReef.isHidden = true
     }
 
     func imagePickerControllerDidCancel(_ coverPicker: UIImagePickerController) {
@@ -325,10 +325,10 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
     private func storeCoverSnapshot(_ coverImage: UIImage) -> String? {
         guard let reefData = coverImage.jpegData(compressionQuality: 0.86) else { return nil }
         let shoreDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?
-            .appendingPathComponent("SuliJoyEventMedia", isDirectory: true)
+            .appendingPathComponent("SxuxlxixJxoxyxExvxexnxtxMxexdxixax".suliJoyPalmUnfurled, isDirectory: true)
         guard let shoreDirectory else { return nil }
         try? FileManager.default.createDirectory(at: shoreDirectory, withIntermediateDirectories: true)
-        let shoreFileURL = shoreDirectory.appendingPathComponent("tide_photo_\(UUID().uuidString).jpg")
+        let shoreFileURL = shoreDirectory.appendingPathComponent("\("txixdxex_xpxhxoxtxox_x".suliJoyPalmUnfurled)\(UUID().uuidString)\(".xjxpxgx".suliJoyPalmUnfurled)")
         do {
             try reefData.write(to: shoreFileURL, options: [.atomic])
             return shoreFileURL.path
@@ -340,29 +340,29 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
     @objc private func publishShorelineDraft() {
         foldDraftKeyboard()
         guard !coverReefPicks.isEmpty else {
-            showLagoonToast("Please add a cover photo.")
+            showLagoonToast("Pxlxexaxsxex xaxdxdx xax xcxoxvxexrx xpxhxoxtxox.x".suliJoyPalmUnfurled)
             return
         }
         let shorelineTitle = (styleTitleField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         guard !shorelineTitle.isEmpty else {
-            showLagoonToast("Please enter a challenge title.")
+            showLagoonToast("Pxlxexaxsxex xexnxtxexrx xax xcxhxaxlxlxexnxgxex xtxixtxlxex.x".suliJoyPalmUnfurled)
             return
         }
-        let hours: TimeInterval
-        switch selectedDuration {
-        case "3 days": hours = 3 * 24
-        case "7 days": hours = 7 * 24
-        default: hours = 23
+        let lagoonMarkControl: TimeInterval
+        switch suggestionRow {
+        case "3x xdxaxyxsx".suliJoyPalmUnfurled: lagoonMarkControl = 3 * 24
+        case "7x xdxaxyxsx".suliJoyPalmUnfurled: lagoonMarkControl = 7 * 24
+        default: lagoonMarkControl = 23
         }
-        let finish = Date().addingTimeInterval(hours * 3600)
+        let openSettingCove = Date().addingTimeInterval(lagoonMarkControl * 3600)
         let tideDraft = SuliJoyTideDraftActivity(
             tideTitleLine: shorelineTitle,
-            tideStyleKind: selectedStyleSignal,
-            wardrobeThemeLine: selectedStyleSignal,
-            shoreBriefLine: "Style Signal: \(selectedStyleSignal) · \(selectedDuration)",
-            tideDay: finish,
-            tideClock: finish,
-            shoreSpotLine: "Island",
+            tideStyleKind: cardMinRatio,
+            wardrobeThemeLine: cardMinRatio,
+            shoreBriefLine: "\("Sxtxyxlxex xSxixgxnxaxlx:x x".suliJoyPalmUnfurled)\(cardMinRatio)\(" x·x x".suliJoyPalmUnfurled)\(suggestionRow)",
+            tideDay: openSettingCove,
+            tideClock: openSettingCove,
+            shoreSpotLine: "Ixsxlxaxnxdx".suliJoyPalmUnfurled,
             tideCrewLimit: 30,
             pearlNeed: 0,
             reefPhotoPicks: coverReefPicks
@@ -377,7 +377,7 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
                 self.showLagoonToast(publishEnvelope.coastalWardrobe)
                 return
             }
-            self.showLagoonToast("Challenge created successfully.")
+            self.showLagoonToast("Cxhxaxlxlxexnxgxex xcxrxexaxtxexdx xsxuxcxcxexsxsxfxuxlxlxyx.x".suliJoyPalmUnfurled)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                 self.navigationController?.popViewController(animated: true)
             }
@@ -423,34 +423,34 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
     }
 }
 
-private final class SuliJoyChallengeDraftChip: UIButton {
-    private let gradientRing = CAGradientLayer()
-    private let innerShell = UIView()
+private final class ReefLaunchCrown: UIButton {
+    private let toastIconSide = CAGradientLayer()
+    private let reefImage = UIView()
 
     init() {
         super.init(frame: .zero)
         titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         contentEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
-        gradientRing.colors = [
+        toastIconSide.colors = [
             UIColor(red: 1, green: 0.55, blue: 0.28, alpha: 1).cgColor,
             UIColor(red: 1, green: 0.92, blue: 0.32, alpha: 1).cgColor,
             UIColor(red: 0.55, green: 0.98, blue: 0.55, alpha: 1).cgColor
         ]
-        gradientRing.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientRing.endPoint = CGPoint(x: 1, y: 0.5)
-        layer.insertSublayer(gradientRing, at: 0)
-        innerShell.backgroundColor = .white
-        innerShell.isUserInteractionEnabled = false
-        insertSubview(innerShell, at: 0)
-        setSelectedChip(false)
+        toastIconSide.startPoint = CGPoint(x: 0, y: 0.5)
+        toastIconSide.endPoint = CGPoint(x: 1, y: 0.5)
+        layer.insertSublayer(toastIconSide, at: 0)
+        reefImage.backgroundColor = .white
+        reefImage.isUserInteractionEnabled = false
+        insertSubview(reefImage, at: 0)
+        lagoonFansTextGlyph(false)
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 
-    func setSelectedChip(_ selected: Bool) {
-        gradientRing.isHidden = !selected
+    func lagoonFansTextGlyph(_ selected: Bool) {
+        toastIconSide.isHidden = !selected
         layer.borderWidth = selected ? 0 : 1
         layer.borderColor = UIColor(red: 0.90, green: 0.88, blue: 0.84, alpha: 1).cgColor
         backgroundColor = .white
@@ -459,10 +459,10 @@ private final class SuliJoyChallengeDraftChip: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.height / 2
-        gradientRing.frame = bounds
-        gradientRing.cornerRadius = bounds.height / 2
-        let inset: CGFloat = gradientRing.isHidden ? 0 : 2
-        innerShell.frame = bounds.insetBy(dx: inset, dy: inset)
-        innerShell.layer.cornerRadius = innerShell.bounds.height / 2
+        toastIconSide.frame = bounds
+        toastIconSide.cornerRadius = bounds.height / 2
+        let inset: CGFloat = toastIconSide.isHidden ? 0 : 2
+        reefImage.frame = bounds.insetBy(dx: inset, dy: inset)
+        reefImage.layer.cornerRadius = reefImage.bounds.height / 2
     }
 }

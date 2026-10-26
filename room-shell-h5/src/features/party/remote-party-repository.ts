@@ -2004,9 +2004,7 @@ export class RemotePartyRepository implements PartyRepository {
           this.clearReconnectTimers()
           this.setCommunication(room.id, 'connected')
           void this.resumeRetainedCommunication(room.id, this.communicationVisibilityEpoch).catch(
-            (cause) => {
-              console.warn('[party] failed to activate retained room capabilities', cause)
-            },
+            () => undefined,
           )
         } else this.reconcileCommunication(room.id)
       }
@@ -2372,9 +2370,7 @@ export class RemotePartyRepository implements PartyRepository {
       this.clearReconnectTimers()
       if (snapshot?.communication.state !== 'connected')
         void this.resumeRetainedCommunication(roomId, this.communicationVisibilityEpoch).catch(
-          (cause) => {
-            console.warn('[party] failed to resume retained room communication', cause)
-          },
+          () => undefined,
         )
       return
     }
@@ -2444,11 +2440,10 @@ export class RemotePartyRepository implements PartyRepository {
     this.syncCommunication(roomId)
   }
 
-  private handleHeartbeatTerminalFailure(roomId: string, error: Error): void {
+  private handleHeartbeatTerminalFailure(roomId: string, _error: Error): void {
     if (this.activeRoomId !== roomId || !this.enteredRooms.has(roomId)) return
     // 旧站的 Socket 心跳独立于 NIM/Agora；心跳耗尽重试不能把仍然健康的
     // 房间音频和消息通道降级成失败。下次生命周期恢复会重新启动心跳。
-    console.warn('[party] retained room heartbeat stopped after retries', error)
   }
 
   private async resumeRetainedCommunication(
@@ -2488,14 +2483,9 @@ export class RemotePartyRepository implements PartyRepository {
       ])
       if (heartbeatResult.status === 'rejected') {
         this.heartbeat.stop()
-        console.warn('[party] failed to start retained room heartbeat', heartbeatResult.reason)
       }
       if (publishingResult.status === 'rejected') {
         await partyRoomRtc.setVoicePublishing(false).catch(() => undefined)
-        console.warn(
-          '[party] failed to restore retained room microphone publishing',
-          publishingResult.reason,
-        )
       }
       // 显式 Retry/离房已经建立新 communication epoch 时，旧任务无权再静音、
       // 写 Reconnecting 或安排失败计时器；新代任务会接管这些共享 SDK 能力。
@@ -2665,9 +2655,8 @@ export class RemotePartyRepository implements PartyRepository {
       if (!this.rtcDisabledRoomIds.has(roomId))
         await partyRoomRtc
           .setVoicePublishing(nextSeatIndex >= 0, ownSeat?.type === 'video')
-          .catch(async (cause) => {
+          .catch(async () => {
             await partyRoomRtc.setVoicePublishing(false).catch(() => undefined)
-            console.warn('[party] failed to synchronize local seat publishing', cause)
           })
     }
     if (ownSeat && !this.rtcDisabledRoomIds.has(roomId)) {
@@ -2729,7 +2718,6 @@ export class RemotePartyRepository implements PartyRepository {
         : Math.max(snapshot.room.memberCount, viewersResult.value.length)
     }
     if (seatsResult.status === 'rejected')
-      console.warn('[party] failed to synchronize room seats', seatsResult.reason)
     this.emit(roomId)
   }
 

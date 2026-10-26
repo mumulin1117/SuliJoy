@@ -16,192 +16,192 @@ final class SuliJoyCoveMockService {
     private init() {
         tideTalkMap = [:]
         mutedShoreNames = []
-        followedLagoonNames = ["Bess", "Brian May", "Cody Hunter"]
-        pairedLagoonNames = ["Brian May"]
+        followedLagoonNames = ["Bxexsxsx".suliJoyPalmUnfurled, "Bxrxixaxnx xMxaxyx".suliJoyPalmUnfurled, "Cxoxdxyx xHxuxnxtxexrx".suliJoyPalmUnfurled]
+        pairedLagoonNames = ["Bxrxixaxnx xMxaxyx".suliJoyPalmUnfurled]
         flaggedLagoonVisitors = []
         clipReef = []
         tideShelf = [
             SuliJoyTideActivity(
-                tideMark: "tide_sunset_style_party",
-                shoreDayText: "8/2",
-                sunMeridiemText: "PM",
-                shoreClockText: "5:30",
+                tideMark: "txixdxex_xsxuxnxsxextx_xsxtxyxlxex_xpxaxrxtxyx".suliJoyPalmUnfurled,
+                shoreDayText: "8x/x2x".suliJoyPalmUnfurled,
+                sunMeridiemText: "PxMx".suliJoyPalmUnfurled,
+                shoreClockText: "5x:x3x0x".suliJoyPalmUnfurled,
                 tideScheduleLine: "SSubnx,k YAhuXgb S2R,j c2L0N2z6u r·f K5V:k3J0A tPPMh".suliJoyPalmUnfurled,
                 tideTitleLine: "IssdlHahnNdh MSxuunzsteWtn hSEtnyelDei wPBaTrktxyy".suliJoyPalmUnfurled,
                 shoreHostAlias: "BQeRsNsZ".suliJoyPalmUnfurled,
                 shoreSpotLine: "WcaXiNkfigkOiZ GBkefaecVhy E·A SHTafwqaEiLiM,I TUfSBAL".suliJoyPalmUnfurled,
                 shoreSummaryLine: "WWexaerZ TyEokuvrB xfWasvooSrSiKtDeV fiBsqlQapnAdU-jiInHsppliWrSeqdq MowuZtqfMiDtv JaHnJdH OeGnKjeohyT qaO DbeeGazuYtvivfcuqlE csbuMnxsteTth EwsimtxhB areeLlbaPxBendF qiqcIenbBrmecaDkbeYrBsH,N bay jbteLaXcqhz BwhaplBky,q GaBnOdl HcharsOuSaflC zpVhsontsot HtxiSmder.n".suliJoyPalmUnfurled,
-                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                tideFallbackHeroToken: "sxuxlxixjxoxyx_xaxcxtxixvxixtxyx_xdxextxaxixlx_xhxexrxox_xsxuxnxsxextx".suliJoyPalmUnfurled,
                 shoreBriefLine: "WLeVawrJ ayQoRuJra XfNaQvoovrLiRtnes UixsRlLaQnKds-qiKngsWpjiErqejdo RoruCtvfniNtb waonudR jeMnpjXoLyt jaH rbNeCanuWtkiSfauely qsNulnfsXeftW DaYti lWVaMirkZiSkMin IBLeoaFcehk.E nTvhOeX heHvKeEnptx EipnQczlAuEdneJsY droeelnaDxjeIde ZiJcxeRbjrZepafkQeArDsU,Y Eak sbSedaDcjhl PwkaflDke,T JaJnrdN RcIaZsbuqanll UpShboctBoZ TtjiKmpes.X OPHeNrWfUeHcXtz XfLoNrW uczoznpnneUcUtLiYnPgu dwsiGtyhw OnqeFwy ipCeYoipLlWeX Lahnsdj TeFnCjzoKyhiQnRgA qah KllaViXdd-obTaPcNkQ FvmiJbDey.p JNuor seyxMpTeFrrikeVnAcreB pncekeddueUdj—ojuufsVtg obqrcidnJga jgQopoBdG aeinAeorCguyE.b".suliJoyPalmUnfurled,
-                relatedTideMarks: ["tide_golden_photo_walk", "tide_blue_white_picnic", "tide_market_style_hunt", "tide_tropical_print_party"],
+                relatedTideMarks: ["txixdxex_xgxoxlxdxexnx_xpxhxoxtxox_xwxaxlxkx".suliJoyPalmUnfurled, "txixdxex_xbxlxuxex_xwxhxixtxex_xpxixcxnxixcx".suliJoyPalmUnfurled, "txixdxex_xmxaxrxkxextx_xsxtxyxlxex_xhxuxnxtx".suliJoyPalmUnfurled, "txixdxex_xtxrxoxpxixcxaxlx_xpxrxixnxtx_xpxaxrxtxyx".suliJoyPalmUnfurled],
                 tideState: .tideOpen,
                 isReefFlagged: false,
                 tideJoinedTotal: 12,
                 tideCrewLimit: 20,
                 pearlNeed: 100,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "sQuJnBsVeCtD_H0Z1x".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_01", hibiscusShade: "SVucnHsyeWts XlPosudnKgAeQ".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "soutnMsGeMtC_B0q2R".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_02", hibiscusShade: "PdavlpmH psNtGyGlRizntgZ etWaHbrlVeA".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "sGunnjscestD_Q0A3c".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sunset_03", hibiscusShade: "CSoqaXsutLaolQ ZfLrNisexntdMsI".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "sQuJnBsVeCtD_H0Z1x".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xsxuxnxsxextx_x0x1x".suliJoyPalmUnfurled, hibiscusShade: "SVucnHsyeWts XlPosudnKgAeQ".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "soutnMsGeMtC_B0q2R".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xsxuxnxsxextx_x0x2x".suliJoyPalmUnfurled, hibiscusShade: "PdavlpmH psNtGyGlRizntgZ etWaHbrlVeA".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "sGunnjscestD_Q0A3c".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xsxuxnxsxextx_x0x3x".suliJoyPalmUnfurled, hibiscusShade: "CSoqaXsutLaolQ ZfLrNisexntdMsI".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
-                    "sulijoy_mock_avatar_breeze_01",
-                    "sulijoy_mock_avatar_breeze_02",
-                    "sulijoy_mock_avatar_breeze_03",
-                    "sulijoy_mock_avatar_breeze_04",
-                    "sulijoy_mock_avatar_breeze_05"
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x1x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x2x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x3x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x4x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x5x".suliJoyPalmUnfurled
                 ]
             ),
             SuliJoyTideActivity(
-                tideMark: "tide_golden_photo_walk",
-                shoreDayText: "8/8",
-                sunMeridiemText: "PM",
-                shoreClockText: "6:00",
+                tideMark: "txixdxex_xgxoxlxdxexnx_xpxhxoxtxox_xwxaxlxkx".suliJoyPalmUnfurled,
+                shoreDayText: "8x/x8x".suliJoyPalmUnfurled,
+                sunMeridiemText: "PxMx".suliJoyPalmUnfurled,
+                shoreClockText: "6x:x0x0x".suliJoyPalmUnfurled,
                 tideScheduleLine: "SOaCtH,p hAoufgU V8V,t x2p0P2N6Z T·O k6P:H0f0p YPRMH".suliJoyPalmUnfurled,
                 tideTitleLine: "GwoElodHefnN dHboVuSrV EBYeAaCcQhI UPKhVoKtNov aWqaalgko".suliJoyPalmUnfurled,
                 shoreHostAlias: "CioidYyS yHGuZnCtOeYrN".suliJoyPalmUnfurled,
                 shoreSpotLine: "BvaqrKcTeAlJoEnqeJtgaO oBqeXaIcahe B·C pBKaPrGcVeSlYornkaz,o MSgpXaCilnp".suliJoyPalmUnfurled,
                 shoreSummaryLine: "WaaxlqkJ CtChPeL mbLefaWcdhU XdJuyroiunYgk jgvoJlDdjecnt zhxohuSrL,R tcYaEpOtwuqrLeX XbVeSaEuAtXicfdupld PsIhJoWrReYSycArPoblrlU,l LarnLdr FcwoWnfnqeVcCtJ WtdhgrFocuhgphH jfIaUsOhgizownq,b RpIhCoHtToMgOrxaYpHhKyY,r tacnKdl NseefabsviadheJ XltiQgthCtx.j".suliJoyPalmUnfurled,
-                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                tideFallbackHeroToken: "sxuxlxixjxoxyx_xaxcxtxixvxixtxyx_xdxextxaxixlx_xhxexrxox_xsxuxnxsxextx".suliJoyPalmUnfurled,
                 shoreBriefLine: "WWallUkR haZlFoanTgr btahEeG xbieqaWclhF adJuprKiCnZgT LghoPlTdFeRnb whPoUuorx GaonIdy FclaepJtzuGryeN SbuegafustCiZfyufld OszhtoorseiSycvrdoBlule mtzoPgceTtQhqeUrE.U mIsdQeWaalK OfwoirW ztzhqofsQeZ ewLhsoH Deqnsjwolyd IpchuoztqoPgVrpatpahXyx,g BfvaZsthEiyoSnG,z uoVry XsiiVmVpklJyS Ftehked esXeHaJsfiJdKeN CaHtdmhoFsepbhGetrueb.w WHDeblSpo AeqaHczhf LottWhVeErG mtGavkPeZ xpKhCoitQoJsj WoKrK TjCuesqtF brueRljaKxM jaenUdJ xcPoXnhnReNcYtH.l".suliJoyPalmUnfurled,
-                relatedTideMarks: ["tide_sunset_style_party", "tide_blue_white_picnic", "tide_market_style_hunt", "tide_tropical_print_party"],
+                relatedTideMarks: ["txixdxex_xsxuxnxsxextx_xsxtxyxlxex_xpxaxrxtxyx".suliJoyPalmUnfurled, "txixdxex_xbxlxuxex_xwxhxixtxex_xpxixcxnxixcx".suliJoyPalmUnfurled, "txixdxex_xmxaxrxkxextx_xsxtxyxlxex_xhxuxnxtx".suliJoyPalmUnfurled, "txixdxex_xtxrxoxpxixcxaxlx_xpxrxixnxtx_xpxaxrxtxyx".suliJoyPalmUnfurled],
                 tideState: .tideOpen,
                 isReefFlagged: false,
                 tideJoinedTotal: 9,
                 tideCrewLimit: 16,
                 pearlNeed: 90,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "gEoGladFeuny_iwqallYkk_V0g1q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_01", hibiscusShade: "GjohlxdXeanz AdprCiunMkIsV".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "gAoxlGdkeanW_YwxadltkU_Y0H2o".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_02", hibiscusShade: "ByeraucrhY LpZoyrjtwrYasiItW".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "gzomlwdYeWnq_MwMaVlfkc_r0m3G".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_golden_walk_03", hibiscusShade: "PMaXlimv xsPupnesVeQtc".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "gEoGladFeuny_iwqallYkk_V0g1q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xgxoxlxdxexnx_xwxaxlxkx_x0x1x".suliJoyPalmUnfurled, hibiscusShade: "GjohlxdXeanz AdprCiunMkIsV".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "gAoxlGdkeanW_YwxadltkU_Y0H2o".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xgxoxlxdxexnx_xwxaxlxkx_x0x2x".suliJoyPalmUnfurled, hibiscusShade: "ByeraucrhY LpZoyrjtwrYasiItW".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "gzomlwdYeWnq_MwMaVlfkc_r0m3G".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xgxoxlxdxexnx_xwxaxlxkx_x0x3x".suliJoyPalmUnfurled, hibiscusShade: "PMaXlimv xsPupnesVeQtc".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
-                    "sulijoy_mock_avatar_sun_01",
-                    "sulijoy_mock_avatar_sun_02",
-                    "sulijoy_mock_avatar_sun_03",
-                    "sulijoy_mock_avatar_breeze_06"
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x1x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x2x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x3x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x6x".suliJoyPalmUnfurled
                 ]
             ),
             SuliJoyTideActivity(
-                tideMark: "tide_blue_white_picnic",
-                shoreDayText: "8/15",
-                sunMeridiemText: "PM",
-                shoreClockText: "4:30",
+                tideMark: "txixdxex_xbxlxuxex_xwxhxixtxex_xpxixcxnxixcx".suliJoyPalmUnfurled,
+                shoreDayText: "8x/x1x5x".suliJoyPalmUnfurled,
+                sunMeridiemText: "PxMx".suliJoyPalmUnfurled,
+                shoreClockText: "4x:x3x0x".suliJoyPalmUnfurled,
                 tideScheduleLine: "SXactm,z YAQuOgx o1D5h,l K2M0m2E6L S·K J4Y:N3w0v QPeMi".suliJoyPalmUnfurled,
                 tideTitleLine: "MgeKdNiktWeTrFrGapnNesaonO OBAlCuieE T&w IWWhHietyeL tPRiWcdnSikcs".suliJoyPalmUnfurled,
                 shoreHostAlias: "BorDiqaena ZMnaGyi".suliJoyPalmUnfurled,
                 shoreSpotLine: "OWiyaZ SVViPeiwtpAooiJnkta n·f eSDawnDtqokrdipnrio,A qGRrLeUeXcdeO".suliJoyPalmUnfurled,
                 shoreSummaryLine: "EXnGjYoJyQ rau zbilxuWex Easnldn UwYhgiltLeI JdYrPeasYsz-wtKhgenmNei tpOilcynaiAcV iwFiWtFhv ysOitmRpklzee IsMntagcZkssE,j osVhtaYrFemdE dfTonomdq,A KrteclvafxbeVdo MsXtYypljes FnYoXtpeksM,Q haEnhdf UrLoUmyaPnjtEiUch ecioRaBsHthaKli upChgoQtSoasF.M".suliJoyPalmUnfurled,
-                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                tideFallbackHeroToken: "sxuxlxixjxoxyx_xaxcxtxixvxixtxyx_xdxextxaxixlx_xhxexrxox_xsxuxnxsxextx".suliJoyPalmUnfurled,
                 shoreBriefLine: "EDnUjRoZyD SaF PMkeydtivteefrOrfaRnqeAaHnm-OswthyBlUej LpYiCcPnliUcv FwaiztQhT iaW abglHuXeA QaOnidS jwZhniMtjes CdvrTeXspsB DtthgeGmneg daOtP goEnWez LoSfs lSuaqnatSoLrHiTnoix’Hst emnoVsQtr VsVcreknxiTcw osepeoDtgsC.I NBhrAignDgV csDiYmupelwef wsZnzaHcqkxsm,R jsVhKarrVeO nfSoJoKdW,M JsawraEpO moyudtHfiiqtN riwdcegahsl,F tahnfdg ItQavkCeV IprhdoEtUoysh NiFnp aay crBeXlaaUxieodz OaonOdm grqoWmqainMtoiUcf csuettjtjijnigg.X".suliJoyPalmUnfurled,
-                relatedTideMarks: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_market_style_hunt", "tide_tropical_print_party"],
+                relatedTideMarks: ["txixdxex_xsxuxnxsxextx_xsxtxyxlxex_xpxaxrxtxyx".suliJoyPalmUnfurled, "txixdxex_xgxoxlxdxexnx_xpxhxoxtxox_xwxaxlxkx".suliJoyPalmUnfurled, "txixdxex_xmxaxrxkxextx_xsxtxyxlxex_xhxuxnxtx".suliJoyPalmUnfurled, "txixdxex_xtxrxoxpxixcxaxlx_xpxrxixnxtx_xpxaxrxtxyx".suliJoyPalmUnfurled],
                 tideState: .tideOpen,
                 isReefFlagged: false,
                 tideJoinedTotal: 14,
                 tideCrewLimit: 18,
                 pearlNeed: 120,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "bblTuhec_wpkiLcgnKiUce_o0T1U".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_01", hibiscusShade: "SSeTavswipdrei ZppiocZnTiSca".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "bhlOuiew_YpjiBcqnRiDcC_P0A2B".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_02", hibiscusShade: "BSlbuxei qtBakbGlKev".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "bYluuFeY_YpYiNctnqiHcm_Q0B3O".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_blue_picnic_03", hibiscusShade: "BaeZadcIhu HsSeEtItBilnuga".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "bblTuhec_wpkiLcgnKiUce_o0T1U".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xbxlxuxex_xpxixcxnxixcx_x0x1x".suliJoyPalmUnfurled, hibiscusShade: "SSeTavswipdrei ZppiocZnTiSca".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "bhlOuiew_YpjiBcqnRiDcC_P0A2B".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xbxlxuxex_xpxixcxnxixcx_x0x2x".suliJoyPalmUnfurled, hibiscusShade: "BSlbuxei qtBakbGlKev".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "bYluuFeY_YpYiNctnqiHcm_Q0B3O".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xbxlxuxex_xpxixcxnxixcx_x0x3x".suliJoyPalmUnfurled, hibiscusShade: "BaeZadcIhu HsSeEtItBilnuga".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
-                    "sulijoy_mock_avatar_breeze_07",
-                    "sulijoy_mock_avatar_breeze_08",
-                    "sulijoy_mock_avatar_breeze_09",
-                    "sulijoy_mock_avatar_sun_04",
-                    "sulijoy_mock_avatar_sun_05"
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x7x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x8x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x9x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x4x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x5x".suliJoyPalmUnfurled
                 ]
             ),
             SuliJoyTideActivity(
-                tideMark: "tide_market_style_hunt",
-                shoreDayText: "8/22",
-                sunMeridiemText: "PM",
-                shoreClockText: "3:00",
+                tideMark: "txixdxex_xmxaxrxkxextx_xsxtxyxlxex_xhxuxnxtx".suliJoyPalmUnfurled,
+                shoreDayText: "8x/x2x2x".suliJoyPalmUnfurled,
+                sunMeridiemText: "PxMx".suliJoyPalmUnfurled,
+                shoreClockText: "3x:x0x0x".suliJoyPalmUnfurled,
                 tideScheduleLine: "SiaHtK,A RAiuggs t2f2H,l h2g0A2i6f u·B f3U:a0F0G VPHMI".suliJoyPalmUnfurled,
                 tideTitleLine: "IRsflnaSnddv oMHagrbkBeDtG qSztrynlteM PHEuanotg".suliJoyPalmUnfurled,
                 shoreHostAlias: "DseinwnoibsL WWJaDtEehrQsi".suliJoyPalmUnfurled,
                 shoreSpotLine: "PQhquWkleZtT NWpeJeLkzeknSdI rMmaqrOkjeStw X·I SPPhyunkeeWtP,k UTQhWaUiGlnasncdw".suliJoyPalmUnfurled,
                 shoreSummaryLine: "EDxkpflxoQrMeQ kap hvOiDbQrXaJnCtv XixsWlWaynhdL WmyaUrckDePtA etnorgceytVhJeqrA,t ZduiUsQcuoJvveirK qbyoOuFtjiAqluJee AfLassahTikownr kfWiHnUdWss,A saXnQdk dlieiahvYeV erooWoBmq TfkoUrD GcNamsvuQaulX JpAhGoLtUof zszhxoZrMeNSqcBrgoPlVlw.h".suliJoyPalmUnfurled,
-                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                tideFallbackHeroToken: "sxuxlxixjxoxyx_xaxcxtxixvxixtxyx_xdxextxaxixlx_xhxexrxox_xsxuxnxsxextx".suliJoyPalmUnfurled,
                 shoreBriefLine: "ErxSpLlGoxrYeP Iay kvficbSrnaInXtw niusHlwaLnrdS umYaLrbkLettf ktMoBgeeStdhBeDrl haonqdX HdAiusncUoCvQeYrW cuanPirqPuJeu mfBaDsbhWisoZnC NipnjsrprihrPaYtviLovnE PaSnCdd FcoomatsQtIaKlm RfCiSnLdAsE.X SIcnWcjlbuldMefsz jfurieseQ zbHrpocwxsLionogM,y SsGovcbiNaRlU ViNnltdeQriaQcktJiLoUnA,b vaXnRdK hckaQsEuFaDlr hpahcoqtSob osphmoSrveVSIcQrVoYlmlO.s".suliJoyPalmUnfurled,
-                relatedTideMarks: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_blue_white_picnic", "tide_tropical_print_party"],
+                relatedTideMarks: ["txixdxex_xsxuxnxsxextx_xsxtxyxlxex_xpxaxrxtxyx".suliJoyPalmUnfurled, "txixdxex_xgxoxlxdxexnx_xpxhxoxtxox_xwxaxlxkx".suliJoyPalmUnfurled, "txixdxex_xbxlxuxex_xwxhxixtxex_xpxixcxnxixcx".suliJoyPalmUnfurled, "txixdxex_xtxrxoxpxixcxaxlx_xpxrxixnxtx_xpxaxrxtxyx".suliJoyPalmUnfurled],
                 tideState: .tideOpen,
                 isReefFlagged: false,
                 tideJoinedTotal: 8,
                 tideCrewLimit: 20,
                 pearlNeed: 80,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "mbayrZkseNtn_dhTuHnQtQ_W0t1S".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_01", hibiscusShade: "MPanrNkKejtR vcooecIoenVuctd".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "mhaCrykMeItg_ihXuynctU_Z0H2K".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_02", hibiscusShade: "NgiTgehGtb PmiakrwkgeHtQ".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "mNaBrskAeGtl_shduxnQtZ_Z0E3D".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_market_hunt_03", hibiscusShade: "IvsYlSatnidY ElJoFoGkz".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "mbayrZkseNtn_dhTuHnQtQ_W0t1S".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xmxaxrxkxextx_xhxuxnxtx_x0x1x".suliJoyPalmUnfurled, hibiscusShade: "MPanrNkKejtR vcooecIoenVuctd".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "mhaCrykMeItg_ihXuynctU_Z0H2K".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xmxaxrxkxextx_xhxuxnxtx_x0x2x".suliJoyPalmUnfurled, hibiscusShade: "NgiTgehGtb PmiakrwkgeHtQ".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "mNaBrskAeGtl_shduxnQtZ_Z0E3D".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xmxaxrxkxextx_xhxuxnxtx_x0x3x".suliJoyPalmUnfurled, hibiscusShade: "IvsYlSatnidY ElJoFoGkz".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
-                    "sulijoy_mock_avatar_sun_06",
-                    "sulijoy_mock_avatar_sun_07",
-                    "sulijoy_mock_avatar_breeze_10",
-                    "sulijoy_mock_avatar_breeze_11"
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x6x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x7x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x1x0x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x1x1x".suliJoyPalmUnfurled
                 ]
             ),
             SuliJoyTideActivity(
-                tideMark: "tide_tropical_print_party",
-                shoreDayText: "8/29",
-                sunMeridiemText: "PM",
-                shoreClockText: "5:30",
+                tideMark: "txixdxex_xtxrxoxpxixcxaxlx_xpxrxixnxtx_xpxaxrxtxyx".suliJoyPalmUnfurled,
+                shoreDayText: "8x/x2x9x".suliJoyPalmUnfurled,
+                sunMeridiemText: "PxMx".suliJoyPalmUnfurled,
+                shoreClockText: "5x:x3x0x".suliJoyPalmUnfurled,
                 tideScheduleLine: "Sxaltm,I tAzujgH B2E9E,J t2E0O2G6H A·Q P5S:T3L0x oPcMi".suliJoyPalmUnfurled,
                 tideTitleLine: "TCrFohpKincDaQlN VPMrNiBnltg bBdeNaqcchy KPhawrNtRyX".suliJoyPalmUnfurled,
                 shoreHostAlias: "DJexnxnWiTsS XWkaFtYehrpss".suliJoyPalmUnfurled,
                 shoreSpotLine: "PYaHrNafdJiOseeG kBkeQaecbhQ y·O nTfuCloufmI,Z mMWefxBilcnoS".suliJoyPalmUnfurled,
                 shoreSummaryLine: "WxecaFrd utgrkoapkiEcEaGlm npMrCiNnYtUsa TaWncdF KecnwjvokyX omPuwsSiccP,e lsLufnqsiestG,f KaxnCdD lsAobcaiXaBlr PbEeUaschhU NvwiubneXsC ZiFnV haz gbyrLiYgyhDtw wbkuctr NrJeYlXaRxOeJdv JgwaGtChAeRrwijnWgB.K".suliJoyPalmUnfurled,
-                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                tideFallbackHeroToken: "sxuxlxixjxoxyx_xaxcxtxixvxixtxyx_xdxextxaxixlx_xhxexrxox_xsxuxnxsxextx".suliJoyPalmUnfurled,
                 shoreBriefLine: "WZeEaErf QtorEoapuiZceadlp QpGrHiTnLtHsc taPnxdX iemnrjFoCyd UmJupsriKcO,k LsxuwnRsReHtV,h FaqnNdN jsaopcpiSaMlj LvLiqbTeMsi ootnb utuhqep dbBeuaOcfhp.J yAc abLrTiAgGhDtF XyUeLtU SrIeUlsaFxweOds VgIaGtthLeIrviqnVgm DfroErO EfIiinpdjiknogo ufArEelsWhN alyowoPkksi WabnPdn vuQnpwZiKnydtiAnBgl.o".suliJoyPalmUnfurled,
-                relatedTideMarks: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_blue_white_picnic", "tide_market_style_hunt"],
+                relatedTideMarks: ["txixdxex_xsxuxnxsxextx_xsxtxyxlxex_xpxaxrxtxyx".suliJoyPalmUnfurled, "txixdxex_xgxoxlxdxexnx_xpxhxoxtxox_xwxaxlxkx".suliJoyPalmUnfurled, "txixdxex_xbxlxuxex_xwxhxixtxex_xpxixcxnxixcx".suliJoyPalmUnfurled, "txixdxex_xmxaxrxkxextx_xsxtxyxlxex_xhxuxnxtx".suliJoyPalmUnfurled],
                 tideState: .tideOpen,
                 isReefFlagged: false,
                 tideJoinedTotal: 17,
                 tideCrewLimit: 24,
                 pearlNeed: 110,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "tQrMoapOimcBaKlY_cpbaYrftuyS_p0a1w".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_01", hibiscusShade: "TmrWoMpBiFczaglq LpvrwihnrtJ".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "tWrJozphiScnajlW_hpmanrrtwyh_n0P2H".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_02", hibiscusShade: "PlaGrlthyQ VfKrtibeBnJdVsK".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "tGrbowpyiuceaelb_MppaZrmtXyg_X0C3w".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_tropical_party_03", hibiscusShade: "SfuUnFszeIth coTuYtxfyiItR".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "tQrMoapOimcBaKlY_cpbaYrftuyS_p0a1w".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xtxrxoxpxixcxaxlx_xpxaxrxtxyx_x0x1x".suliJoyPalmUnfurled, hibiscusShade: "TmrWoMpBiFczaglq LpvrwihnrtJ".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "tWrJozphiScnajlW_hpmanrrtwyh_n0P2H".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xtxrxoxpxixcxaxlx_xpxaxrxtxyx_x0x2x".suliJoyPalmUnfurled, hibiscusShade: "PlaGrlthyQ VfKrtibeBnJdVsK".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "tGrbowpyiuceaelb_MppaZrmtXyg_X0C3w".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xtxrxoxpxixcxaxlx_xpxaxrxtxyx_x0x3x".suliJoyPalmUnfurled, hibiscusShade: "SfuUnFszeIth coTuYtxfyiItR".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
-                    "sulijoy_mock_avatar_breeze_12",
-                    "sulijoy_mock_avatar_sun_08",
-                    "sulijoy_mock_avatar_sun_09",
-                    "sulijoy_mock_avatar_sun_10",
-                    "sulijoy_mock_avatar_breeze_01"
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x1x2x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x8x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x9x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x1x0x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x1x".suliJoyPalmUnfurled
                 ]
             ),
             SuliJoyTideActivity(
-                tideMark: "tide_sporty_coastal_social",
-                shoreDayText: "7/5",
-                sunMeridiemText: "AM",
-                shoreClockText: "10:00",
+                tideMark: "txixdxex_xsxpxoxrxtxyx_xcxoxaxsxtxaxlx_xsxoxcxixaxlx".suliJoyPalmUnfurled,
+                shoreDayText: "7x/x5x".suliJoyPalmUnfurled,
+                sunMeridiemText: "AxMx".suliJoyPalmUnfurled,
+                shoreClockText: "1x0x:x0x0x".suliJoyPalmUnfurled,
                 tideScheduleLine: "SCuxnl,M NJPuWlx Y5x,x Z2n0T2r6s e·n U1S0G:l0X0w rAuMF".suliJoyPalmUnfurled,
                 tideTitleLine: "SupuoKrbtLyL aCbogaNsbtbaZlR hSfoJcGiIaZlt IDHabyV".suliJoyPalmUnfurled,
                 shoreHostAlias: "COoXdAyY dHBuGnptweirm".suliJoyPalmUnfurled,
                 shoreSpotLine: "BXoonOdgid YBIexaxckhd c·p eSlyKdfnleYyG,T oACuCsmtKrWaxlTiAaR".suliJoyPalmUnfurled,
                 shoreSummaryLine: "JcoNidnK CldiMgShLtv ObUecaucUhU ctaiwdgedSVhAeblnfU,y frAealOaBxX xbgym Dtxhfew uccomadsqty,h jaPnadx tckoXnDnweGcOty UwuiztVhd UojtQhNeZrYsX lwdhsoj eegnwjKosye OannC gaPcVtXiGvUeV jsoeBaVslisdMek tlSilfveFsTtAyblSeB.T".suliJoyPalmUnfurled,
-                tideFallbackHeroToken: "sulijoy_activity_detail_hero_sunset",
+                tideFallbackHeroToken: "sxuxlxixjxoxyx_xaxcxtxixvxixtxyx_xdxextxaxixlx_xhxexrxox_xsxuxnxsxextx".suliJoyPalmUnfurled,
                 shoreBriefLine: "AP QbaeeahcEhW QeRvjesnFtr JcRosmPbAiCniiVnfgu LlSiBgmhPtb FsCpyoorttJsZ CannZdJ jsFoxcWiLazlB siTnOtceVrJagcUtciKoQng.S CJPodiLnj vcqaAsMumaalW fbYehaFcUhD UtritdTeVSjhoeFlxfB YoTry qsfiymSpElqyK GrleWliaWxn paXnldG vcAoinBnKepcctg bwMihtchy koOtphIegrZsj bwLhboj EesnOjloOyV qaCnH maacEtsiPvqeU ilQihfJeZsvtMyFlzeG.j".suliJoyPalmUnfurled,
-                relatedTideMarks: ["tide_sunset_style_party", "tide_golden_photo_walk", "tide_blue_white_picnic", "tide_market_style_hunt"],
+                relatedTideMarks: ["txixdxex_xsxuxnxsxextx_xsxtxyxlxex_xpxaxrxtxyx".suliJoyPalmUnfurled, "txixdxex_xgxoxlxdxexnx_xpxhxoxtxox_xwxaxlxkx".suliJoyPalmUnfurled, "txixdxex_xbxlxuxex_xwxhxixtxex_xpxixcxnxixcx".suliJoyPalmUnfurled, "txixdxex_xmxaxrxkxextx_xsxtxyxlxex_xhxuxnxtx".suliJoyPalmUnfurled],
                 tideState: .tideClosed,
                 isReefFlagged: false,
                 tideJoinedTotal: 18,
                 tideCrewLimit: 18,
                 pearlNeed: 70,
                 reefGallery: [
-                    SuliJoyReefMedia(reefMediaStamp: "sipFomrqtqyp_zswoFcVifaelz_T0T1z".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_01", hibiscusShade: "SKpxoqrptYyj WbieYaPcShq".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "scptoRrrtSys_GsXomcUiRanlK_E0h2q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_02", hibiscusShade: "COoYaeshtiaClz NwSaHlfkX".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "scpXoyrmtTyd_PsToAcTigaAlJ_w0V3h".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_home_activity_sporty_social_03", hibiscusShade: "BNelaCcuhA VsipzoyrJtb".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "sipFomrqtqyp_zswoFcVifaelz_T0T1z".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xsxpxoxrxtxyx_xsxoxcxixaxlx_x0x1x".suliJoyPalmUnfurled, hibiscusShade: "SKpxoqrptYyj WbieYaPcShq".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "scptoRrrtSys_GsXomcUiRanlK_E0h2q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xsxpxoxrxtxyx_xsxoxcxixaxlx_x0x2x".suliJoyPalmUnfurled, hibiscusShade: "COoYaeshtiaClz NwSaHlfkX".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "scpXoyrmtTyd_PsToAcTigaAlJ_w0V3h".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xhxoxmxex_xaxcxtxixvxixtxyx_xsxpxoxrxtxyx_xsxoxcxixaxlx_x0x3x".suliJoyPalmUnfurled, hibiscusShade: "BNelaCcuhA VsipzoyrJtb".suliJoyPalmUnfurled)
                 ],
                 shorelineAvatarTokens: [
-                    "sulijoy_mock_avatar_sun_11",
-                    "sulijoy_mock_avatar_sun_12",
-                    "sulijoy_mock_avatar_breeze_02",
-                    "sulijoy_mock_avatar_breeze_03"
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x1x1x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x1x2x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x2x".suliJoyPalmUnfurled,
+                    "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x3x".suliJoyPalmUnfurled
                 ]
             )
         ]
@@ -211,35 +211,35 @@ final class SuliJoyCoveMockService {
         })
 
         lagoonRankers = [
-            SuliJoyLagoonStylist(stylistID: "sEtSyDlviYsLtT_abNrEiHawna_jmJagyF".suliJoyPalmUnfurled, displayName: "BNrliPamnF QMHaEyr".suliJoyPalmUnfurled, avatarAssetName: "sulijoy_feed_avatar_brian_may", suliJoyCoastalModeration: 3, suliJoyCoastalChecklist: 4),
-            SuliJoyLagoonStylist(stylistID: "sytkyQlSidsftk_tcwosdyyn_UhUuCnRtzemrV".suliJoyPalmUnfurled, displayName: "CyoWdNyQ XHHuRnZtueNrr".suliJoyPalmUnfurled, avatarAssetName: "sulijoy_feed_avatar_cody_hunter", suliJoyCoastalModeration: 2, suliJoyCoastalChecklist: 3),
-            SuliJoyLagoonStylist(stylistID: "sDtSyTlbiisBtg_QbLeqsFsz".suliJoyPalmUnfurled, displayName: "Bfegsmsb".suliJoyPalmUnfurled, avatarAssetName: "sulijoy_feed_avatar_bess", suliJoyCoastalModeration: 1, suliJoyCoastalChecklist: 4),
-            SuliJoyLagoonStylist(stylistID: "sstCynlfiYsFtT_ddReVnOnWissr_XwWaRtKejrJsP".suliJoyPalmUnfurled, displayName: "DIeAnhnQivsh eWtaCtrekrFsf".suliJoyPalmUnfurled, avatarAssetName: "sulijoy_feed_avatar_dennis_waters", suliJoyCoastalModeration: 4, suliJoyCoastalChecklist: 2)
+            SuliJoyLagoonStylist(stylistID: "sEtSyDlviYsLtT_abNrEiHawna_jmJagyF".suliJoyPalmUnfurled, displayName: "BNrliPamnF QMHaEyr".suliJoyPalmUnfurled, avatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxrxixaxnx_xmxaxyx".suliJoyPalmUnfurled, suliJoyCoastalModeration: 3, suliJoyCoastalChecklist: 4),
+            SuliJoyLagoonStylist(stylistID: "sytkyQlSidsftk_tcwosdyyn_UhUuCnRtzemrV".suliJoyPalmUnfurled, displayName: "CyoWdNyQ XHHuRnZtueNrr".suliJoyPalmUnfurled, avatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xcxoxdxyx_xhxuxnxtxexrx".suliJoyPalmUnfurled, suliJoyCoastalModeration: 2, suliJoyCoastalChecklist: 3),
+            SuliJoyLagoonStylist(stylistID: "sDtSyTlbiisBtg_QbLeqsFsz".suliJoyPalmUnfurled, displayName: "Bfegsmsb".suliJoyPalmUnfurled, avatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxexsxsx".suliJoyPalmUnfurled, suliJoyCoastalModeration: 1, suliJoyCoastalChecklist: 4),
+            SuliJoyLagoonStylist(stylistID: "sstCynlfiYsFtT_ddReVnOnWissr_XwWaRtKejrJsP".suliJoyPalmUnfurled, displayName: "DIeAnhnQivsh eWtaCtrekrFsf".suliJoyPalmUnfurled, avatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xdxexnxnxixsx_xwxaxtxexrxsx".suliJoyPalmUnfurled, suliJoyCoastalModeration: 4, suliJoyCoastalChecklist: 2)
         ]
 
         shoreScroll = [
             SuliJoyReefMoment(
-                reefMomentID: "moment_bess_recommend",
+                reefMomentID: "mxoxmxexnxtx_xbxexsxsx_xrxexcxoxmxmxexnxdx".suliJoyPalmUnfurled,
                 islandStylistName: "BaeYsKss".suliJoyPalmUnfurled,
-                islandStylistMark: "@bess.shore",
-                islandStyleLine: "Pastel beach layers · Waikiki",
-                islandStylistAvatarAssetName: "sulijoy_feed_avatar_bess",
-                tideAgoText: "4 mins ago",
-                shoreSpotText: "Waikiki Beach · Hawaii, USA",
+                islandStylistMark: "@xbxexsxsx.xsxhxoxrxex".suliJoyPalmUnfurled,
+                islandStyleLine: "Pxaxsxtxexlx xbxexaxcxhx xlxaxyxexrxsx x·x xWxaxixkxixkxix".suliJoyPalmUnfurled,
+                islandStylistAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxexsxsx".suliJoyPalmUnfurled,
+                tideAgoText: "4x xmxixnxsx xaxgxox".suliJoyPalmUnfurled,
+                shoreSpotText: "Wxaxixkxixkxix xBxexaxcxhx x·x xHxaxwxaxixix,x xUxSxAx".suliJoyPalmUnfurled,
                 shoreTideText: "JHutlP Y1p8E,J h2w0E2f6v K·n R5x:b3n0G DPgMa".suliJoyPalmUnfurled,
                 islandCaptionText: "SOonfXtc CbvlWukeP Vaanvdu DpJiOnwkx RtXepeNsc HfeeUeIlv AemaasMyh nfooMrg kaU fwDibnSdbyt ibVecaJckhQ cwfaBlqkg.L rTthzeg CoYvoeKrHsAiJzVeldd wfylQoFwpetrp tpMrqiunOtv wkgeceApfsU ytshdeq ZpChgoctyoKsw DbErXiEgzhFtF awDiGtVhyoYuzto ttSrGyZiMnpgX YtuoqoO UhVaurGdV.N".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "cEopavsltO_I0s1e".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", hibiscusShade: "BXekaicuhB ffdlSoNwneArn RtaeXeB".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "cooEaXsZtO_k0c2q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_02", hibiscusShade: "PGadsotAeDlc IsUhwolrPeb TptaQiVrP".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "ctoPaHsGtE_z0l3i".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", hibiscusShade: "SDulnXsTeatw twyaSlAkE Lboaqcrkx".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "cEopavsltO_I0s1e".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x1x".suliJoyPalmUnfurled, hibiscusShade: "BXekaicuhB ffdlSoNwneArn RtaeXeB".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "cooEaXsZtO_k0c2q".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x2x".suliJoyPalmUnfurled, hibiscusShade: "PGadsotAeDlc IsUhwolrPeb TptaQiVrP".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "ctoPaHsGtE_z0l3i".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x3x".suliJoyPalmUnfurled, hibiscusShade: "SDulnXsTeatw twyaSlAkE Lboaqcrkx".suliJoyPalmUnfurled)
                 ],
-                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_bess", waveSeconds: 18, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("keila"), isWaveRolling: false, waveProgressRatio: 0),
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wxaxvxex_xbxexsxsx".suliJoyPalmUnfurled, waveSeconds: 18, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("kxexixlxax".suliJoyPalmUnfurled), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 6,
                 reefReplyTally: 3,
                 reefReplies: [
-                    SuliJoyReefReply(reefReplyID: "comment_bess_1", reefEchoName: "Cody Hunter", reefEchoAvatarAssetName: "sulijoy_feed_avatar_cody_hunter", reefPhraseText: "The pastel colors work really well with the sea light.", tideAgoText: "2 mins ago"),
-                    SuliJoyReefReply(reefReplyID: "comment_bess_2", reefEchoName: "Dennis Waters", reefEchoAvatarAssetName: "sulijoy_feed_avatar_dennis_waters", reefPhraseText: "That oversized tee is perfect for a casual sunset photo.", tideAgoText: "1 min ago"),
-                    SuliJoyReefReply(reefReplyID: "comment_bess_3", reefEchoName: "Brian May", reefEchoAvatarAssetName: "sulijoy_feed_avatar_brian_may", reefPhraseText: "Clean, relaxed, and still memorable.", tideAgoText: "just now")
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xbxexsxsx_x1x".suliJoyPalmUnfurled, reefEchoName: "Cxoxdxyx xHxuxnxtxexrx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xcxoxdxyx_xhxuxnxtxexrx".suliJoyPalmUnfurled, reefPhraseText: "Txhxex xpxaxsxtxexlx xcxoxlxoxrxsx xwxoxrxkx xrxexaxlxlxyx xwxexlxlx xwxixtxhx xtxhxex xsxexax xlxixgxhxtx.x".suliJoyPalmUnfurled, tideAgoText: "2x xmxixnxsx xaxgxox".suliJoyPalmUnfurled),
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xbxexsxsx_x2x".suliJoyPalmUnfurled, reefEchoName: "Dxexnxnxixsx xWxaxtxexrxsx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xdxexnxnxixsx_xwxaxtxexrxsx".suliJoyPalmUnfurled, reefPhraseText: "Txhxaxtx xoxvxexrxsxixzxexdx xtxexex xixsx xpxexrxfxexcxtx xfxoxrx xax xcxaxsxuxaxlx xsxuxnxsxextx xpxhxoxtxox.x".suliJoyPalmUnfurled, tideAgoText: "1x xmxixnx xaxgxox".suliJoyPalmUnfurled),
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xbxexsxsx_x3x".suliJoyPalmUnfurled, reefEchoName: "Bxrxixaxnx xMxaxyx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxrxixaxnx_xmxaxyx".suliJoyPalmUnfurled, reefPhraseText: "Cxlxexaxnx,x xrxexlxaxxxexdx,x xaxnxdx xsxtxixlxlx xmxexmxoxrxaxbxlxex.x".suliJoyPalmUnfurled, tideAgoText: "jxuxsxtx xnxoxwx".suliJoyPalmUnfurled)
                 ],
                 isHearted: false,
                 reefFilter: .coastalPick,
@@ -247,25 +247,25 @@ final class SuliJoyCoveMockService {
                 isReefFlagged: false
             ),
             SuliJoyReefMoment(
-                reefMomentID: "moment_dennis_hot",
+                reefMomentID: "mxoxmxexnxtx_xdxexnxnxixsx_xhxoxtx".suliJoyPalmUnfurled,
                 islandStylistName: "DNehnjnpigsg mWRaKtaeorNsN".suliJoyPalmUnfurled,
-                islandStylistMark: "@dennis.coast",
-                islandStyleLine: "Printed resort shirt · garden lunch",
-                islandStylistAvatarAssetName: "sulijoy_feed_avatar_dennis_waters",
-                tideAgoText: "9 mins ago",
-                shoreSpotText: "Paradise Beach · Tulum, Mexico",
+                islandStylistMark: "@xdxexnxnxixsx.xcxoxaxsxtx".suliJoyPalmUnfurled,
+                islandStyleLine: "Pxrxixnxtxexdx xrxexsxoxrxtx xsxhxixrxtx x·x xgxaxrxdxexnx xlxuxnxcxhx".suliJoyPalmUnfurled,
+                islandStylistAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xdxexnxnxixsx_xwxaxtxexrxsx".suliJoyPalmUnfurled,
+                tideAgoText: "9x xmxixnxsx xaxgxox".suliJoyPalmUnfurled,
+                shoreSpotText: "Pxaxrxaxdxixsxex xBxexaxcxhx x·x xTxuxlxuxmx,x xMxexxxixcxox".suliJoyPalmUnfurled,
                 shoreTideText: "STegpf J5F,V q2U0U2H6Q B·V i5M:k3H0R IPVMl".suliJoyPalmUnfurled,
                 islandCaptionText: "Ae mlXikgjhOtJ mpRrRijnatSeXdN HsZhFiHrKtn xiasq NeZnwoEuggThP rwThpeTnG KtuhDeG IsneEtVtmienjgg daFlOrTeaaEdCyU EhSaQst fcGoelkoarf.F aIf VlniRkKey hkOeQeVpliCnRgQ ajyewwveclWrJyS nwuaNrSmi qaUnddp QtWhreC xfYiDtZ mlpoPoZsmeY.d".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "cYolavsYtE_j0U4v".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_04", hibiscusShade: "PbrwiOnNtFeLdX WiNsvlDaNnodN hsVhkiirEtv".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "cZoVagsWtf_I0D5E".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_05", hibiscusShade: "RIedsMolrJtP tlruVnNcKhb llfofobkI".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "cYolavsYtE_j0U4v".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x4x".suliJoyPalmUnfurled, hibiscusShade: "PbrwiOnNtFeLdX WiNsvlDaNnodN hsVhkiirEtv".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "cZoVagsWtf_I0D5E".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x5x".suliJoyPalmUnfurled, hibiscusShade: "RIedsMolrJtP tlruVnNcKhb llfofobkI".suliJoyPalmUnfurled)
                 ],
-                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_dennis", waveSeconds: 21, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("elei_island"), isWaveRolling: false, waveProgressRatio: 0),
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wxaxvxex_xdxexnxnxixsx".suliJoyPalmUnfurled, waveSeconds: 21, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("exlxexix_xixsxlxaxnxdx".suliJoyPalmUnfurled), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 8,
                 reefReplyTally: 2,
                 reefReplies: [
-                    SuliJoyReefReply(reefReplyID: "comment_dennis_1", reefEchoName: "Bess", reefEchoAvatarAssetName: "sulijoy_feed_avatar_bess", reefPhraseText: "The shirt pattern feels beachy but still neat.", tideAgoText: "5 mins ago"),
-                    SuliJoyReefReply(reefReplyID: "comment_dennis_2", reefEchoName: "Cody Hunter", reefEchoAvatarAssetName: "sulijoy_feed_avatar_cody_hunter", reefPhraseText: "Warm jewelry was the right call here.", tideAgoText: "3 mins ago")
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xdxexnxnxixsx_x1x".suliJoyPalmUnfurled, reefEchoName: "Bxexsxsx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxexsxsx".suliJoyPalmUnfurled, reefPhraseText: "Txhxex xsxhxixrxtx xpxaxtxtxexrxnx xfxexexlxsx xbxexaxcxhxyx xbxuxtx xsxtxixlxlx xnxexaxtx.x".suliJoyPalmUnfurled, tideAgoText: "5x xmxixnxsx xaxgxox".suliJoyPalmUnfurled),
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xdxexnxnxixsx_x2x".suliJoyPalmUnfurled, reefEchoName: "Cxoxdxyx xHxuxnxtxexrx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xcxoxdxyx_xhxuxnxtxexrx".suliJoyPalmUnfurled, reefPhraseText: "Wxaxrxmx xjxexwxexlxrxyx xwxaxsx xtxhxex xrxixgxhxtx xcxaxlxlx xhxexrxex.x".suliJoyPalmUnfurled, tideAgoText: "3x xmxixnxsx xaxgxox".suliJoyPalmUnfurled)
                 ],
                 isHearted: true,
                 reefFilter: .coastalPick,
@@ -273,23 +273,23 @@ final class SuliJoyCoveMockService {
                 isReefFlagged: false
             ),
             SuliJoyReefMoment(
-                reefMomentID: "moment_cody_hot",
+                reefMomentID: "mxoxmxexnxtx_xcxoxdxyx_xhxoxtx".suliJoyPalmUnfurled,
                 islandStylistName: "CKoydqyJ mHGudnRtzeyrJ".suliJoyPalmUnfurled,
-                islandStylistMark: "@cody.linen",
-                islandStyleLine: "Linen walk set · Barcelona",
-                islandStylistAvatarAssetName: "sulijoy_feed_avatar_cody_hunter",
-                tideAgoText: "8 mins ago",
-                shoreSpotText: "Barcelona Beach · Barcelona, Spain",
+                islandStylistMark: "@xcxoxdxyx.xlxixnxexnx".suliJoyPalmUnfurled,
+                islandStyleLine: "Lxixnxexnx xwxaxlxkx xsxextx x·x xBxaxrxcxexlxoxnxax".suliJoyPalmUnfurled,
+                islandStylistAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xcxoxdxyx_xhxuxnxtxexrx".suliJoyPalmUnfurled,
+                tideAgoText: "8x xmxixnxsx xaxgxox".suliJoyPalmUnfurled,
+                shoreSpotText: "Bxaxrxcxexlxoxnxax xBxexaxcxhx x·x xBxaxrxcxexlxoxnxax,x xSxpxaxixnx".suliJoyPalmUnfurled,
                 shoreTideText: "Jbuglg s2y4y,c f2q0g2L6O L·b x6n:q0Q0e cPjMh".suliJoyPalmUnfurled,
                 islandCaptionText: "Ay XlmisnceGnh asdhPiBrAtL XaLnydD ksFizmLprlPel RsKhRoVratwsM msEtNiZlxlN lfjeMeEli drYipgohTtY xfgoYri tgqoalxdiewnv QhkoAuxrN.B fIN lwWoNuTlhdN zrKaNtRhXeYrs rksefeWpj KtDhQep DskiHlwhBoguieFtdtweq Ecllvedahnq Ltohgamnl jaDdUdC jtnoBou JmLaAnHyy tpciPeocMepsr.x".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "cEoYatszti_n0z3g_xhHodtT".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", hibiscusShade: "SUuznbsdectE RwkazlckT".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "cEoYatszti_n0z3g_xhHodtT".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x3x".suliJoyPalmUnfurled, hibiscusShade: "SUuznbsdectE RwkazlckT".suliJoyPalmUnfurled)
                 ],
-                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_cody", waveSeconds: 16, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("sablereid"), isWaveRolling: false, waveProgressRatio: 0),
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wxaxvxex_xcxoxdxyx".suliJoyPalmUnfurled, waveSeconds: 16, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("sxaxbxlxexrxexixdx".suliJoyPalmUnfurled), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 4,
                 reefReplyTally: 1,
                 reefReplies: [
-                    SuliJoyReefReply(reefReplyID: "comment_cody_1", reefEchoName: "Brian May", reefEchoAvatarAssetName: "sulijoy_feed_avatar_brian_may", reefPhraseText: "Clean silhouette, easy to copy.", tideAgoText: "4 mins ago")
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xcxoxdxyx_x1x".suliJoyPalmUnfurled, reefEchoName: "Bxrxixaxnx xMxaxyx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxrxixaxnx_xmxaxyx".suliJoyPalmUnfurled, reefPhraseText: "Cxlxexaxnx xsxixlxhxoxuxextxtxex,x xexaxsxyx xtxox xcxoxpxyx.x".suliJoyPalmUnfurled, tideAgoText: "4x xmxixnxsx xaxgxox".suliJoyPalmUnfurled)
                 ],
                 isHearted: false,
                 reefFilter: .sunsetRush,
@@ -297,25 +297,25 @@ final class SuliJoyCoveMockService {
                 isReefFlagged: false
             ),
             SuliJoyReefMoment(
-                reefMomentID: "moment_brian_followed",
+                reefMomentID: "mxoxmxexnxtx_xbxrxixaxnx_xfxoxlxlxoxwxexdx".suliJoyPalmUnfurled,
                 islandStylistName: "BarAiFaOnb lMJaoyz".suliJoyPalmUnfurled,
-                islandStylistMark: "@brian.blue",
-                islandStyleLine: "Blue-white picnic mood · Santorini",
-                islandStylistAvatarAssetName: "sulijoy_feed_avatar_brian_may",
-                tideAgoText: "12 mins ago",
-                shoreSpotText: "Oia Viewpoint · Santorini, Greece",
+                islandStylistMark: "@xbxrxixaxnx.xbxlxuxex".suliJoyPalmUnfurled,
+                islandStyleLine: "Bxlxuxex-xwxhxixtxex xpxixcxnxixcx xmxoxoxdx x·x xSxaxnxtxoxrxixnxix".suliJoyPalmUnfurled,
+                islandStylistAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxrxixaxnx_xmxaxyx".suliJoyPalmUnfurled,
+                tideAgoText: "1x2x xmxixnxsx xaxgxox".suliJoyPalmUnfurled,
+                shoreSpotText: "Oxixax xVxixexwxpxoxixnxtx x·x xSxaxnxtxoxrxixnxix,x xGxrxexexcxex".suliJoyPalmUnfurled,
                 shoreTideText: "AkuPgR O1c,U w2V0W2g6O V·p i4B:i3l0C IPaMu".suliJoyPalmUnfurled,
                 islandCaptionText: "FqowrO BbblKuGeI-qwhaetYeqrr ibHaHcGkTgKrNoouDnIdUsS,R EpxaXlneV BsJhoixratism hapnMdC hsQoSfDtX dagclcyeXsxssohrZiWeisv JrVevaDdv ucklKekaAnXecrG.D xAj AqEuFiJeOtT ApeaKlVeJtetJem omDajkMemsL dtChUeK HsmeAtwtxiZnVgI mfTeqemlW jbMiVglgNeVrz.j".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "cgoqaasctb_X0D2p_CfBodlblaomwfeGdV".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_02", hibiscusShade: "PvaXsUtzewlK LpWaritrJ".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "ccobapsBtV_N0X1o_efOoTlFlRoHwVeMdy".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", hibiscusShade: "BoeZaGcbhQ ktyereZ LdgeXtQaXiYlB".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "cgoqaasctb_X0D2p_CfBodlblaomwfeGdV".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x2x".suliJoyPalmUnfurled, hibiscusShade: "PvaXsUtzewlK LpWaritrJ".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "ccobapsBtV_N0X1o_efOoTlFlRoHwVeMdy".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x1x".suliJoyPalmUnfurled, hibiscusShade: "BoeZaGcbhQ ktyereZ LdgeXtQaXiYlB".suliJoyPalmUnfurled)
                 ],
-                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_brian", waveSeconds: 19, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("jess_ortiz"), isWaveRolling: false, waveProgressRatio: 0),
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wxaxvxex_xbxrxixaxnx".suliJoyPalmUnfurled, waveSeconds: 19, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("jxexsxsx_xoxrxtxixzx".suliJoyPalmUnfurled), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 5,
                 reefReplyTally: 2,
                 reefReplies: [
-                    SuliJoyReefReply(reefReplyID: "comment_brian_1", reefEchoName: "Bess", reefEchoAvatarAssetName: "sulijoy_feed_avatar_bess", reefPhraseText: "The quiet palette makes the photos softer.", tideAgoText: "7 mins ago"),
-                    SuliJoyReefReply(reefReplyID: "comment_brian_2", reefEchoName: "Dennis Waters", reefEchoAvatarAssetName: "sulijoy_feed_avatar_dennis_waters", reefPhraseText: "Good note about letting the background lead.", tideAgoText: "5 mins ago")
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xbxrxixaxnx_x1x".suliJoyPalmUnfurled, reefEchoName: "Bxexsxsx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxexsxsx".suliJoyPalmUnfurled, reefPhraseText: "Txhxex xqxuxixextx xpxaxlxextxtxex xmxaxkxexsx xtxhxex xpxhxoxtxoxsx xsxoxfxtxexrx.x".suliJoyPalmUnfurled, tideAgoText: "7x xmxixnxsx xaxgxox".suliJoyPalmUnfurled),
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xbxrxixaxnx_x2x".suliJoyPalmUnfurled, reefEchoName: "Dxexnxnxixsx xWxaxtxexrxsx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xdxexnxnxixsx_xwxaxtxexrxsx".suliJoyPalmUnfurled, reefPhraseText: "Gxoxoxdx xnxoxtxex xaxbxoxuxtx xlxextxtxixnxgx xtxhxex xbxaxcxkxgxrxoxuxnxdx xlxexaxdx.x".suliJoyPalmUnfurled, tideAgoText: "5x xmxixnxsx xaxgxox".suliJoyPalmUnfurled)
                 ],
                 isHearted: false,
                 reefFilter: .lagoonCircle,
@@ -323,25 +323,25 @@ final class SuliJoyCoveMockService {
                 isReefFlagged: false
             ),
             SuliJoyReefMoment(
-                reefMomentID: "moment_bess_picnic_followed",
+                reefMomentID: "mxoxmxexnxtx_xbxexsxsx_xpxixcxnxixcx_xfxoxlxlxoxwxexdx".suliJoyPalmUnfurled,
                 islandStylistName: "Bzeushsx".suliJoyPalmUnfurled,
-                islandStylistMark: "@bess.shore",
-                islandStyleLine: "Soft picnic styling · Santorini",
-                islandStylistAvatarAssetName: "sulijoy_feed_avatar_bess",
-                tideAgoText: "15 mins ago",
-                shoreSpotText: "Oia Viewpoint · Santorini, Greece",
+                islandStylistMark: "@xbxexsxsx.xsxhxoxrxex".suliJoyPalmUnfurled,
+                islandStyleLine: "Sxoxfxtx xpxixcxnxixcx xsxtxyxlxixnxgx x·x xSxaxnxtxoxrxixnxix".suliJoyPalmUnfurled,
+                islandStylistAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxexsxsx".suliJoyPalmUnfurled,
+                tideAgoText: "1x5x xmxixnxsx xaxgxox".suliJoyPalmUnfurled,
+                shoreSpotText: "Oxixax xVxixexwxpxoxixnxtx x·x xSxaxnxtxoxrxixnxix,x xGxrxexexcxex".suliJoyPalmUnfurled,
                 shoreTideText: "AourgR t1f,a o2X0l2T6q W·a o4F:e3H0x IPzMx".suliJoyPalmUnfurled,
                 islandCaptionText: "AV hpnavlPen ysthSijrutl toHvjejrF xaS HsSwqiCmxsFuFiHtU xkTeiehphsS OtYhreG xlooZockQ CehaNsIyx VaIfitNeJre zsNwSiUmcmSidnWgq.k wIK VwOoMuFlbdH raGdfdD Vaw ewZodvCeonU GbDaqgZ Sabnbdp RkjeBeIpj NtnhEed zceoblsobrJsr EcSlLoGsMeT ntPoS WtVhTee JbXeBaTclhe JthakbplveD.u".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "czooaIsttJ_G0H4o_jfUozlXlAoLwPeVdb_AbzeCslsz".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_04", hibiscusShade: "SchnohrBeg ssRhTiErgtr JdfeStaaNiulA".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "ciomaRsztY_x0R1o_VfFoKlHlroBwNeNdk_QbVeLsUsa".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_01", hibiscusShade: "BEeqaBcghT qtHeIeP eiJdmeZat".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "czooaIsttJ_G0H4o_jfUozlXlAoLwPeVdb_AbzeCslsz".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x4x".suliJoyPalmUnfurled, hibiscusShade: "SchnohrBeg ssRhTiErgtr JdfeStaaNiulA".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "ciomaRsztY_x0R1o_VfFoKlHlroBwNeNdk_QbVeLsUsa".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x1x".suliJoyPalmUnfurled, hibiscusShade: "BEeqaBcghT qtHeIeP eiJdmeZat".suliJoyPalmUnfurled)
                 ],
-                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_bess_picnic", waveSeconds: 24, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("angelina_blue"), isWaveRolling: false, waveProgressRatio: 0),
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wxaxvxex_xbxexsxsx_xpxixcxnxixcx".suliJoyPalmUnfurled, waveSeconds: 24, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("axnxgxexlxixnxax_xbxlxuxex".suliJoyPalmUnfurled), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 3,
                 reefReplyTally: 2,
                 reefReplies: [
-                    SuliJoyReefReply(reefReplyID: "comment_bess_picnic_1", reefEchoName: "Brian May", reefEchoAvatarAssetName: "sulijoy_feed_avatar_brian_may", reefPhraseText: "The woven bag idea fits the picnic mood.", tideAgoText: "9 mins ago"),
-                    SuliJoyReefReply(reefReplyID: "comment_bess_picnic_2", reefEchoName: "Cody Hunter", reefEchoAvatarAssetName: "sulijoy_feed_avatar_cody_hunter", reefPhraseText: "Keeping the colors close makes it feel intentional.", tideAgoText: "6 mins ago")
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xbxexsxsx_xpxixcxnxixcx_x1x".suliJoyPalmUnfurled, reefEchoName: "Bxrxixaxnx xMxaxyx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxrxixaxnx_xmxaxyx".suliJoyPalmUnfurled, reefPhraseText: "Txhxex xwxoxvxexnx xbxaxgx xixdxexax xfxixtxsx xtxhxex xpxixcxnxixcx xmxoxoxdx.x".suliJoyPalmUnfurled, tideAgoText: "9x xmxixnxsx xaxgxox".suliJoyPalmUnfurled),
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xbxexsxsx_xpxixcxnxixcx_x2x".suliJoyPalmUnfurled, reefEchoName: "Cxoxdxyx xHxuxnxtxexrx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xcxoxdxyx_xhxuxnxtxexrx".suliJoyPalmUnfurled, reefPhraseText: "Kxexexpxixnxgx xtxhxex xcxoxlxoxrxsx xcxlxoxsxex xmxaxkxexsx xixtx xfxexexlx xixnxtxexnxtxixoxnxaxlx.x".suliJoyPalmUnfurled, tideAgoText: "6x xmxixnxsx xaxgxox".suliJoyPalmUnfurled)
                 ],
                 isHearted: false,
                 reefFilter: .lagoonCircle,
@@ -349,24 +349,24 @@ final class SuliJoyCoveMockService {
                 isReefFlagged: false
             ),
             SuliJoyReefMoment(
-                reefMomentID: "moment_cody_market_hot",
+                reefMomentID: "mxoxmxexnxtx_xcxoxdxyx_xmxaxrxkxextx_xhxoxtx".suliJoyPalmUnfurled,
                 islandStylistName: "Csoudvym aHluanHtdebra".suliJoyPalmUnfurled,
-                islandStylistMark: "@cody.linen",
-                islandStyleLine: "Market linen layers · Phuket",
-                islandStylistAvatarAssetName: "sulijoy_feed_avatar_cody_hunter",
-                tideAgoText: "18 mins ago",
-                shoreSpotText: "Phuket Weekend Market · Phuket, Thailand",
+                islandStylistMark: "@xcxoxdxyx.xlxixnxexnx".suliJoyPalmUnfurled,
+                islandStyleLine: "Mxaxrxkxextx xlxixnxexnx xlxaxyxexrxsx x·x xPxhxuxkxextx".suliJoyPalmUnfurled,
+                islandStylistAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xcxoxdxyx_xhxuxnxtxexrx".suliJoyPalmUnfurled,
+                tideAgoText: "1x8x xmxixnxsx xaxgxox".suliJoyPalmUnfurled,
+                shoreSpotText: "Pxhxuxkxextx xWxexexkxexnxdx xMxaxrxkxextx x·x xPxhxuxkxextx,x xTxhxaxixlxaxnxdx".suliJoyPalmUnfurled,
                 shoreTideText: "AOuzgf R1g5x,e l2Z0g2b6z O·U C3p:j0R0W EPqMO".suliJoyPalmUnfurled,
                 islandCaptionText: "OypleBnd WlUignMePnk IoWvNeirh Has vsqiHmhpulXeU RteaVndkV RwgonrikHsa kwZeelSln wfeoErD UmraDrakSeztz whGeuaDtR.J kAG YsymFajlGlX vnbefcTkFlgamcfeF egDiXvzeEsu MeYnaoxucguhB MdCehtBaCiTla qwIiCtWhaojuYtm OmkaHkIiqnzgD dtahMeG EocuAtyfUiktz vbuunsJyx.b".suliJoyPalmUnfurled,
                 reefMedia: [
-                    SuliJoyReefMedia(reefMediaStamp: "cNonansYtF_D0y5W_jhKowto_mcjozdMyG".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_05", hibiscusShade: "LkuMnbcYhb vlbidnheUnc YlGaEyWeWrd".suliJoyPalmUnfurled),
-                    SuliJoyReefMedia(reefMediaStamp: "cPoualsktG_p0L3O_lhToFtm_YcIoedwyc".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sulijoy_feed_moment_coast_03", hibiscusShade: "DEujswkD SsFtoyslEiunbgM".suliJoyPalmUnfurled)
+                    SuliJoyReefMedia(reefMediaStamp: "cNonansYtF_D0y5W_jhKowto_mcjozdMyG".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x5x".suliJoyPalmUnfurled, hibiscusShade: "LkuMnbcYhb vlbidnheUnc YlGaEyWeWrd".suliJoyPalmUnfurled),
+                    SuliJoyReefMedia(reefMediaStamp: "cPoualsktG_p0L3O_lhToFtm_YcIoedwyc".suliJoyPalmUnfurled, reefMediaKind: .shoreSnapshot, reefAssetToken: "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x3x".suliJoyPalmUnfurled, hibiscusShade: "DEujswkD SsFtoyslEiunbgM".suliJoyPalmUnfurled)
                 ],
-                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wave_cody_market", waveSeconds: 22, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("skylar_spark"), isWaveRolling: false, waveProgressRatio: 0),
+                waveNote: SuliJoyWaveSonicNote(waveNoteStamp: "wxaxvxex_xcxoxdxyx_xmxaxrxkxextx".suliJoyPalmUnfurled, waveSeconds: 22, waveStripeAssetToken: Self.shoreResonanceStripeAsset, waveFileToken: Self.shoreResonanceFile("sxkxyxlxaxrx_xsxpxaxrxkx".suliJoyPalmUnfurled), isWaveRolling: false, waveProgressRatio: 0),
                 heartTally: 7,
                 reefReplyTally: 1,
                 reefReplies: [
-                    SuliJoyReefReply(reefReplyID: "comment_cody_market_1", reefEchoName: "Bess", reefEchoAvatarAssetName: "sulijoy_feed_avatar_bess", reefPhraseText: "The small necklace detail is enough.", tideAgoText: "11 mins ago")
+                    SuliJoyReefReply(reefReplyID: "cxoxmxmxexnxtx_xcxoxdxyx_xmxaxrxkxextx_x1x".suliJoyPalmUnfurled, reefEchoName: "Bxexsxsx".suliJoyPalmUnfurled, reefEchoAvatarAssetName: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxexsxsx".suliJoyPalmUnfurled, reefPhraseText: "Txhxex xsxmxaxlxlx xnxexcxkxlxaxcxex xdxextxaxixlx xixsx xexnxoxuxgxhx.x".suliJoyPalmUnfurled, tideAgoText: "1x1x xmxixnxsx xaxgxox".suliJoyPalmUnfurled)
                 ],
                 isHearted: true,
                 reefFilter: .sunsetRush,
@@ -407,14 +407,14 @@ final class SuliJoyCoveMockService {
             let localLikes = self.shoreScroll.filter { name?.isEmpty == false && $0.islandStylistName == name }.reduce(0) { $0 + $1.heartTally }
                 + self.clipReef.filter { name?.isEmpty == false && $0.terracottaWarmth.clipStylistAlias == name }.reduce(0) { $0 + $1.palmLeafPattern }
             let summary = SuliJoyLagoonProfileSnapshot(
-                lagoonNameText: (name?.isEmpty == false ? name : "David") ?? "David",
+                lagoonNameText: (name?.isEmpty == false ? name : "Dxaxvxixdx".suliJoyPalmUnfurled) ?? "Dxaxvxixdx".suliJoyPalmUnfurled,
                 lagoonAvatarAssetName: avatarName,
                 islandTraceText: Self.stableLagoonID(email: session.currentTideConsenl, fallbackUserID: session.sasuliJoySeasideDress),
                 reefTallies: [
-                    SuliJoyReefProfileTally(reefLabel: "Friends", reefTotal: self.pairedLagoonNames.count),
-                    SuliJoyReefProfileTally(reefLabel: "Following", reefTotal: self.followedLagoonNames.count),
-                    SuliJoyReefProfileTally(reefLabel: "Fans", reefTotal: localActivityCount),
-                    SuliJoyReefProfileTally(reefLabel: "Likes", reefTotal: localLikes)
+                    SuliJoyReefProfileTally(reefLabel: "Fxrxixexnxdxsx".suliJoyPalmUnfurled, reefTotal: self.pairedLagoonNames.count),
+                    SuliJoyReefProfileTally(reefLabel: "Fxoxlxlxoxwxixnxgx".suliJoyPalmUnfurled, reefTotal: self.followedLagoonNames.count),
+                    SuliJoyReefProfileTally(reefLabel: "Fxaxnxsx".suliJoyPalmUnfurled, reefTotal: localActivityCount),
+                    SuliJoyReefProfileTally(reefLabel: "Lxixkxexsx".suliJoyPalmUnfurled, reefTotal: localLikes)
                 ]
             )
             completion(.success(summary))
@@ -445,7 +445,7 @@ final class SuliJoyCoveMockService {
         driftCoveDelay {
             let currentName = SuliJoyLocalProfileStore().currentProfile()?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let ownActivities = self.visibleTideShelf().filter { activity in
-                activity.tideMark.hasPrefix("tide_local_")
+                activity.tideMark.hasPrefix("txixdxex_xlxoxcxaxlx_x".suliJoyPalmUnfurled)
                     || activity.tideState == .tideJoined
                     || (currentName?.isEmpty == false && activity.shoreHostAlias == currentName)
             }
@@ -472,19 +472,19 @@ final class SuliJoyCoveMockService {
             }
             let shoreProfile = SuliJoyLocalProfileStore().currentProfile()
             let islandNickname = shoreProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
-            let reefCreatorName = (islandNickname?.isEmpty == false ? islandNickname : "You") ?? "You"
+            let reefCreatorName = (islandNickname?.isEmpty == false ? islandNickname : "Yxoxux".suliJoyPalmUnfurled) ?? "Yxoxux".suliJoyPalmUnfurled
             let reefPortraitName = shoreProfile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let localReefMotionName = draft.tropicalMotif?.reefMotionPath ?? "sulijoy_shorts_island_style_01"
+            let localReefMotionName = draft.tropicalMotif?.reefMotionPath ?? "sxuxlxixjxoxyx_xsxhxoxrxtxsx_xixsxlxaxnxdx_xsxtxyxlxex_x0x1x".suliJoyPalmUnfurled
             let shorelineClip = SuliJoyShellClip(
-                coconutCream: "shell_clip_local_\(UUID().uuidString.prefix(8))",
+                coconutCream: "\("sxhxexlxlx_xcxlxixpx_xlxoxcxaxlx_x".suliJoyPalmUnfurled)\(UUID().uuidString.prefix(8))",
                 terracottaWarmth: SuliJoyLagoonClipCreator(
-                    clipStylistMark: "clip_creator_local_\(reefCreatorName.lowercased().replacingOccurrences(of: " ", with: "_"))",
+                    clipStylistMark: "\("cxlxixpx_xcxrxexaxtxoxrx_xlxoxcxaxlx_x".suliJoyPalmUnfurled)\(reefCreatorName.lowercased().replacingOccurrences(of: " x".suliJoyPalmUnfurled, with: "_x".suliJoyPalmUnfurled))",
                     clipStylistAlias: reefCreatorName,
                     clipPortraitToken: reefPortraitName
                 ),
                 hibiscusShade: reefCaptionDraft.isEmpty ? "Au Bfxrceusbhm nicsulxaunwdg MsotGyPlKeA icVlBixpF zfPrloLmN ySyuilQiIJIoGyK.I".suliJoyPalmUnfurled : reefCaptionDraft,
                 tropicalMotif: SuliJoyReefClipMedia(
-                    aquaGradient: "reef_clip_local_media_\(UUID().uuidString.prefix(8))",
+                    aquaGradient: "\("rxexexfx_xcxlxixpx_xlxoxcxaxlx_xmxexdxixax_x".suliJoyPalmUnfurled)\(UUID().uuidString.prefix(8))",
                     seafoamTint: localReefMotionName,
                     sandyNeutral: draft.tropicalMotif?.coverImagePath ?? ""
                 ),
@@ -566,13 +566,13 @@ final class SuliJoyCoveMockService {
             }
             let shoreProfile = SuliJoyLocalProfileStore().currentProfile()
             let islandNickname = shoreProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
-            let reefReplyAuthor = islandNickname?.isEmpty == false ? islandNickname! : "You"
+            let reefReplyAuthor = islandNickname?.isEmpty == false ? islandNickname! : "Yxoxux".suliJoyPalmUnfurled
             let reefReply = SuliJoyShellClipComment(
-                reefReplyMark: "shell_clip_comment_\(Int(Date().timeIntervalSince1970 * 1000))",
+                reefReplyMark: "\("sxhxexlxlx_xcxlxixpx_xcxoxmxmxexnxtx_x".suliJoyPalmUnfurled)\(Int(Date().timeIntervalSince1970 * 1000))",
                 reefReplyAuthorAlias: reefReplyAuthor,
                 reefReplyAvatarToken: shoreProfile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
                 reefReplyText: reefReplyText,
-                reefReplyMomentLine: "just now",
+                reefReplyMomentLine: "jxuxsxtx xnxoxwx".suliJoyPalmUnfurled,
                 isReefFlagged: false
             )
             self.clipReef[reefIndex].sailorCollar.append(reefReply)
@@ -609,48 +609,48 @@ final class SuliJoyCoveMockService {
 
             let shoreProfile = SuliJoyLocalProfileStore().currentProfile()
             let hostName = shoreProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
-            let tideToken = "tide_local_\(UUID().uuidString.prefix(8))"
+            let tideToken = "\("txixdxex_xlxoxcxaxlx_x".suliJoyPalmUnfurled)\(UUID().uuidString.prefix(8))"
             let reefMediaShelf = curationDraft.reefPhotoPicks.enumerated().map { index, pick in
                 SuliJoyReefMedia(
-                    reefMediaStamp: "event_local_media_\(UUID().uuidString.prefix(8))_\(index)",
+                    reefMediaStamp: "\("exvxexnxtx_xlxoxcxaxlx_xmxexdxixax_x".suliJoyPalmUnfurled)\(UUID().uuidString.prefix(8))\("_x".suliJoyPalmUnfurled)\(index)",
                     reefMediaKind: .shoreSnapshot,
                     reefAssetToken: pick.reefSandboxPath,
                     hibiscusShade: pick.hibiscusShade
                 )
             }
             let dayFormatter = DateFormatter()
-            dayFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dayFormatter.dateFormat = "M/d"
+            dayFormatter.locale = Locale(identifier: "exnx_xUxSx_xPxOxSxIxXx".suliJoyPalmUnfurled)
+            dayFormatter.dateFormat = "Mx/xdx".suliJoyPalmUnfurled
             let timeFormatter = DateFormatter()
-            timeFormatter.locale = Locale(identifier: "en_US_POSIX")
-            timeFormatter.dateFormat = "h:mm"
+            timeFormatter.locale = Locale(identifier: "exnx_xUxSx_xPxOxSxIxXx".suliJoyPalmUnfurled)
+            timeFormatter.dateFormat = "hx:xmxmx".suliJoyPalmUnfurled
             let shoreMeridiemFormatter = DateFormatter()
-            shoreMeridiemFormatter.locale = Locale(identifier: "en_US_POSIX")
-            shoreMeridiemFormatter.dateFormat = "a"
+            shoreMeridiemFormatter.locale = Locale(identifier: "exnx_xUxSx_xPxOxSxIxXx".suliJoyPalmUnfurled)
+            shoreMeridiemFormatter.dateFormat = "ax".suliJoyPalmUnfurled
             let shoreScheduleFormatter = DateFormatter()
-            shoreScheduleFormatter.locale = Locale(identifier: "en_US_POSIX")
-            shoreScheduleFormatter.dateFormat = "EEE, MMM d, yyyy"
+            shoreScheduleFormatter.locale = Locale(identifier: "exnx_xUxSx_xPxOxSxIxXx".suliJoyPalmUnfurled)
+            shoreScheduleFormatter.dateFormat = "ExExEx,x xMxMxMx xdx,x xyxyxyxyx".suliJoyPalmUnfurled
             let relatedTideTokens = self.tideShelf.shuffled().prefix(Int.random(in: 1...min(2, max(1, self.tideShelf.count)))).map(\.tideMark)
             let shorelineAvatarPool = [
-                "sulijoy_mock_avatar_breeze_01",
-                "sulijoy_mock_avatar_breeze_02",
-                "sulijoy_mock_avatar_breeze_03",
-                "sulijoy_mock_avatar_sun_01",
-                "sulijoy_mock_avatar_sun_02",
-                "sulijoy_mock_avatar_sun_03"
+                "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x1x".suliJoyPalmUnfurled,
+                "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x2x".suliJoyPalmUnfurled,
+                "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x3x".suliJoyPalmUnfurled,
+                "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x1x".suliJoyPalmUnfurled,
+                "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x2x".suliJoyPalmUnfurled,
+                "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x3x".suliJoyPalmUnfurled
             ]
             let tideActivity = SuliJoyTideActivity(
                 tideMark: tideToken,
                 shoreDayText: dayFormatter.string(from: curationDraft.tideDay),
                 sunMeridiemText: shoreMeridiemFormatter.string(from: curationDraft.tideClock),
                 shoreClockText: timeFormatter.string(from: curationDraft.tideClock),
-                tideScheduleLine: "\(shoreScheduleFormatter.string(from: curationDraft.tideDay)) · \(timeFormatter.string(from: curationDraft.tideClock)) \(shoreMeridiemFormatter.string(from: curationDraft.tideClock))",
+                tideScheduleLine: "\(shoreScheduleFormatter.string(from: curationDraft.tideDay))\(" x·x x".suliJoyPalmUnfurled)\(timeFormatter.string(from: curationDraft.tideClock))\(" x".suliJoyPalmUnfurled)\(shoreMeridiemFormatter.string(from: curationDraft.tideClock))",
                 tideTitleLine: shorelineTitle,
-                shoreHostAlias: (hostName?.isEmpty == false ? hostName : "SuliJoy Stylist") ?? "SuliJoy Stylist",
+                shoreHostAlias: (hostName?.isEmpty == false ? hostName : "SxuxlxixJxoxyx xSxtxyxlxixsxtx".suliJoyPalmUnfurled) ?? "SxuxlxixJxoxyx xSxtxyxlxixsxtx".suliJoyPalmUnfurled,
                 shoreSpotLine: curationDraft.shoreSpotLine.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "IWsFlgaonBdx RSThRowrEeo D·m BCrocaosktIluiRnGeT".suliJoyPalmUnfurled : curationDraft.shoreSpotLine.trimmingCharacters(in: .whitespacesAndNewlines),
                 shoreSummaryLine: shorelineBrief,
-                tideFallbackHeroToken: reefMediaShelf.first?.reefAssetToken ?? "sulijoy_activity_detail_hero_sunset",
-                shoreBriefLine: "\(shorelineBrief)\n\nType: \(curationDraft.tideStyleKind) · Dress theme: \(curationDraft.wardrobeThemeLine)",
+                tideFallbackHeroToken: reefMediaShelf.first?.reefAssetToken ?? "sxuxlxixjxoxyx_xaxcxtxixvxixtxyx_xdxextxaxixlx_xhxexrxox_xsxuxnxsxextx".suliJoyPalmUnfurled,
+                shoreBriefLine: "\(shorelineBrief)\("\nx\nxTxyxpxex:x x".suliJoyPalmUnfurled)\(curationDraft.tideStyleKind)\(" x·x xDxrxexsxsx xtxhxexmxex:x x".suliJoyPalmUnfurled)\(curationDraft.wardrobeThemeLine)",
                 relatedTideMarks: Array(relatedTideTokens),
                 tideState: .tideOpen,
                 isReefFlagged: false,
@@ -761,7 +761,7 @@ final class SuliJoyCoveMockService {
                 completion(.failure("VbijsCiHtEokrU snToZtu NfdowugnvdH.M".suliJoyPalmUnfurled, code: 404))
                 return
             }
-            let lagoonStateNote = visitor.coveAffinityState == .shorelineUnlinked ? "Unfollowed." : "Followed."
+            let lagoonStateNote = visitor.coveAffinityState == .shorelineUnlinked ? "Uxnxfxoxlxlxoxwxexdx.x".suliJoyPalmUnfurled : "Fxoxlxlxoxwxexdx.x".suliJoyPalmUnfurled
             completion(.success(visitor, note: lagoonStateNote))
         }
     }
@@ -832,18 +832,18 @@ final class SuliJoyCoveMockService {
             }
             let shorelineProfile = SuliJoyLocalProfileStore().currentProfile()
             let shorelineNickname = shorelineProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
-            let shorelineAuthorName = (shorelineNickname?.isEmpty == false ? shorelineNickname : "You") ?? "You"
+            let shorelineAuthorName = (shorelineNickname?.isEmpty == false ? shorelineNickname : "Yxoxux".suliJoyPalmUnfurled) ?? "Yxoxux".suliJoyPalmUnfurled
             let shorelineAvatarName = shorelineProfile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
             let reefMediaShelf = draft.reefPicks.enumerated().map { reefMediaCursor, reefPick in
                 SuliJoyReefMedia(
-                    reefMediaStamp: "shore_local_media_\(UUID().uuidString.prefix(8))_\(reefMediaCursor)",
+                    reefMediaStamp: "\("sxhxoxrxex_xlxoxcxaxlx_xmxexdxixax_x".suliJoyPalmUnfurled)\(UUID().uuidString.prefix(8))\("_x".suliJoyPalmUnfurled)\(reefMediaCursor)",
                     reefMediaKind: .shoreSnapshot,
                     reefAssetToken: reefPick.reefSandboxPath,
                     hibiscusShade: reefPick.hibiscusShade
                 )
             }
             let resonanceNote = SuliJoyWaveSonicNote(
-                waveNoteStamp: "shore_wave_\(UUID().uuidString.prefix(8))",
+                waveNoteStamp: "\("sxhxoxrxex_xwxaxvxex_x".suliJoyPalmUnfurled)\(UUID().uuidString.prefix(8))",
                 waveSeconds: draft.waveDraft?.waveSeconds ?? 0,
                 waveStripeAssetToken: Self.shoreResonanceStripeAsset,
                 waveFileToken: draft.waveDraft?.waveSandboxPath ?? "",
@@ -851,13 +851,13 @@ final class SuliJoyCoveMockService {
                 waveProgressRatio: 0
             )
             let shorelineMoment = SuliJoyReefMoment(
-                reefMomentID: "moment_local_\(UUID().uuidString.prefix(8))",
+                reefMomentID: "\("mxoxmxexnxtx_xlxoxcxaxlx_x".suliJoyPalmUnfurled)\(UUID().uuidString.prefix(8))",
                 islandStylistName: shorelineAuthorName,
-                islandStylistMark: "@sulijoy.shore",
-                islandStyleLine: "Fresh island style · New post",
+                islandStylistMark: "@xsxuxlxixjxoxyx.xsxhxoxrxex".suliJoyPalmUnfurled,
+                islandStyleLine: "Fxrxexsxhx xixsxlxaxnxdx xsxtxyxlxex x·x xNxexwx xpxoxsxtx".suliJoyPalmUnfurled,
                 islandStylistAvatarAssetName: shorelineAvatarName,
-                tideAgoText: "just now",
-                shoreSpotText: "SuliJoy Shore",
+                tideAgoText: "jxuxsxtx xnxoxwx".suliJoyPalmUnfurled,
+                shoreSpotText: "SxuxlxixJxoxyx xSxhxoxrxex".suliJoyPalmUnfurled,
                 shoreTideText: "TMoldWaoyC w·Q zjeuSsvtu CnRopwy".suliJoyPalmUnfurled,
                 islandCaptionText: reefCaptionText.isEmpty ? "SahLakrkionsga Zab QbSrDiPgZhEtq EiZsGlFaBnpdx ZsItsyNlAeC mmxojmbeLnVti.O".suliJoyPalmUnfurled : reefCaptionText,
                 reefMedia: reefMediaShelf,
@@ -900,8 +900,8 @@ final class SuliJoyCoveMockService {
 
     func driftPearlsForTide(tideMark: String, pearlNeed: Int, completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyShellWallet>) -> Void) {
         Task { @MainActor in
-            let pearlEnvelope = await SuliJoyLagoonHarborService.shared.consumePearlHarbor(
-                amount: pearlNeed,
+            let pearlEnvelope = await SuliJoyLagoonHarborService.shared.shorelineBriefShell(
+                reefSymbol: pearlNeed,
                 referenceID: tideMark
             )
             completion(pearlEnvelope)
@@ -938,7 +938,7 @@ final class SuliJoyCoveMockService {
             }
             let currentShoreVoice = Self.currentShoreVoice()
             let shorelineBubble = SuliJoyShoreBubble(
-                bubbleID: "shore_breeze_\(UUID().uuidString.prefix(8))",
+                bubbleID: "\("sxhxoxrxex_xbxrxexexzxex_x".suliJoyPalmUnfurled)\(UUID().uuidString.prefix(8))",
                 senderName: currentShoreVoice.name,
                 avatarAssetName: currentShoreVoice.seatAvatarToken,
                 text: shorelineBreezeText,
@@ -1003,11 +1003,11 @@ final class SuliJoyCoveMockService {
             let shorelineProfile = SuliJoyLocalProfileStore().currentProfile()
             let shorelineName = shorelineProfile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
             let reefReply = SuliJoyReefReply(
-                reefReplyID: "shore_comment_\(UUID().uuidString.prefix(8))",
-                reefEchoName: (shorelineName?.isEmpty == false ? shorelineName : "You") ?? "You",
+                reefReplyID: "\("sxhxoxrxex_xcxoxmxmxexnxtx_x".suliJoyPalmUnfurled)\(UUID().uuidString.prefix(8))",
+                reefEchoName: (shorelineName?.isEmpty == false ? shorelineName : "Yxoxux".suliJoyPalmUnfurled) ?? "Yxoxux".suliJoyPalmUnfurled,
                 reefEchoAvatarAssetName: shorelineProfile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines) ?? "",
                 reefPhraseText: reefReplyText,
-                tideAgoText: "just now"
+                tideAgoText: "jxuxsxtx xnxoxwx".suliJoyPalmUnfurled
             )
             self.shoreScroll[reefMomentIndex].reefReplies.append(reefReply)
             self.shoreScroll[reefMomentIndex].reefReplyTally = min(9, self.shoreScroll[reefMomentIndex].reefReplies.count)
@@ -1161,19 +1161,19 @@ final class SuliJoyCoveMockService {
     }
 
     private func persistPublishedShoreScroll() {
-        let localMoments = shoreScroll.filter { $0.reefMomentID.hasPrefix("moment_local_") }
+        let localMoments = shoreScroll.filter { $0.reefMomentID.hasPrefix("mxoxmxexnxtx_xlxoxcxaxlx_x".suliJoyPalmUnfurled) }
         guard let data = try? JSONEncoder().encode(localMoments) else { return }
         try? data.write(to: Self.publishedShoreScrollURL, options: [.atomic])
     }
 
     private func persistPublishedTideShelf() {
-        let localActivities = tideShelf.filter { $0.tideMark.hasPrefix("tide_local_") }
+        let localActivities = tideShelf.filter { $0.tideMark.hasPrefix("txixdxex_xlxoxcxaxlx_x".suliJoyPalmUnfurled) }
         guard let data = try? JSONEncoder().encode(localActivities) else { return }
         try? data.write(to: Self.publishedTideShelfURL, options: [.atomic])
     }
 
     private func persistPublishedClipReef() {
-        let localClips = clipReef.filter { $0.coconutCream.hasPrefix("shell_clip_local_") }
+        let localClips = clipReef.filter { $0.coconutCream.hasPrefix("sxhxexlxlx_xcxlxixpx_xlxoxcxaxlx_x".suliJoyPalmUnfurled) }
         guard let data = try? JSONEncoder().encode(localClips) else { return }
         try? data.write(to: Self.publishedClipReefURL, options: [.atomic])
     }
@@ -1203,15 +1203,15 @@ final class SuliJoyCoveMockService {
     }
 
     private static var publishedShoreScrollURL: URL {
-        publishedCoveArchiveURL(named: "sulijoy_shore_published_moments.json")
+        publishedCoveArchiveURL(named: "sxuxlxixjxoxyx_xsxhxoxrxex_xpxuxbxlxixsxhxexdx_xmxoxmxexnxtxsx.xjxsxoxnx".suliJoyPalmUnfurled)
     }
 
     private static var publishedTideShelfURL: URL {
-        publishedCoveArchiveURL(named: "sulijoy_tide_published_activities.json")
+        publishedCoveArchiveURL(named: "sxuxlxixjxoxyx_xtxixdxex_xpxuxbxlxixsxhxexdx_xaxcxtxixvxixtxixexsx.xjxsxoxnx".suliJoyPalmUnfurled)
     }
 
     private static var publishedClipReefURL: URL {
-        publishedCoveArchiveURL(named: "sulijoy_shell_published_clips.json")
+        publishedCoveArchiveURL(named: "sxuxlxixjxoxyx_xsxhxexlxlx_xpxuxbxlxixsxhxexdx_xcxlxixpxsx.xjxsxoxnx".suliJoyPalmUnfurled)
     }
 
     private static func publishedCoveArchiveURL(named fileName: String) -> URL {
@@ -1221,11 +1221,11 @@ final class SuliJoyCoveMockService {
     }
 
     private static var shoreResonanceStripeAsset: String {
-        "sulijoy_feed_" + "trver_wave"
+        "sxuxlxixjxoxyx_xfxexexdx_x".suliJoyPalmUnfurled + "txrxvxexrx_xwxaxvxex".suliJoyPalmUnfurled
     }
 
     private static func shoreResonanceFile(_ reefStem: String) -> String {
-        "sulijoy_shore_"  + reefStem + ".mp3"
+        "sxuxlxixjxoxyx_xsxhxoxrxex_x".suliJoyPalmUnfurled  + reefStem + ".xmxpx3x".suliJoyPalmUnfurled
     }
 
     private func sendCoveEnvelope<T>(mode: SuliJoyCoveRequestMode, empty: T, success: T, completion: @escaping (SuliJoySuiRequestEnvelope<T>) -> Void) {
@@ -1257,22 +1257,22 @@ final class SuliJoyCoveMockService {
                 return String(digits.suffix(10))
             }
         }
-        let source = (email?.isEmpty == false ? email! : "sulijoy.local").unicodeScalars
+        let source = (email?.isEmpty == false ? email! : "sxuxlxixjxoxyx.xlxoxcxaxlx".suliJoyPalmUnfurled).unicodeScalars
         let seed = source.reduce(3_994_920_304) { partial, scalar in
             (partial &* 31 &+ Int(scalar.value)) % 9_000_000_000
         }
-        return String(format: "%010d", seed + 1_000_000_000)
+        return String(format: "%x0x1x0xdx".suliJoyPalmUnfurled, seed + 1_000_000_000)
     }
 
     private static func makeTideTalkHarbor(from tideSnapshot: SuliJoyTideActivity) -> SuliJoyTideTalkSpace {
-        let shorelineHostNames = ["Lucie Ray", "Gordon", "Vargas", "Claudia", "Tom"]
+        let shorelineHostNames = ["Lxuxcxixex xRxaxyx".suliJoyPalmUnfurled, "Gxoxrxdxoxnx".suliJoyPalmUnfurled, "Vxaxrxgxaxsx".suliJoyPalmUnfurled, "Cxlxaxuxdxixax".suliJoyPalmUnfurled, "Txoxmx".suliJoyPalmUnfurled]
         let occupiedLagoonSeatCount = min(5, tideSnapshot.shorelineAvatarTokens.count)
         var lagoonVoiceSeats: [SuliJoyLagoonVoiceSeat] = []
         for lagoonSeatCursor in 0..<9 {
             if lagoonSeatCursor < occupiedLagoonSeatCount {
                 lagoonVoiceSeats.append(
                     SuliJoyLagoonVoiceSeat(
-                        lagoonSeatMark: "lagoon_seat_\(tideSnapshot.tideMark)_\(lagoonSeatCursor)",
+                        lagoonSeatMark: "\("lxaxgxoxoxnx_xsxexaxtx_x".suliJoyPalmUnfurled)\(tideSnapshot.tideMark)\("_x".suliJoyPalmUnfurled)\(lagoonSeatCursor)",
                         seatAliasLine: shorelineHostNames[lagoonSeatCursor % shorelineHostNames.count],
                         seatAvatarToken: tideSnapshot.shorelineAvatarTokens[lagoonSeatCursor],
                         isTideHost: lagoonSeatCursor == 0,
@@ -1283,8 +1283,8 @@ final class SuliJoyCoveMockService {
             } else {
                 lagoonVoiceSeats.append(
                     SuliJoyLagoonVoiceSeat(
-                        lagoonSeatMark: "lagoon_seat_\(tideSnapshot.tideMark)_\(lagoonSeatCursor)",
-                        seatAliasLine: "Open Seat",
+                        lagoonSeatMark: "\("lxaxgxoxoxnx_xsxexaxtx_x".suliJoyPalmUnfurled)\(tideSnapshot.tideMark)\("_x".suliJoyPalmUnfurled)\(lagoonSeatCursor)",
+                        seatAliasLine: "Oxpxexnx xSxexaxtx".suliJoyPalmUnfurled,
                         seatAvatarToken: nil,
                         isTideHost: false,
                         isCurrentIslander: false,
@@ -1295,15 +1295,15 @@ final class SuliJoyCoveMockService {
         }
         let shorelineHostAvatar = tideSnapshot.shorelineAvatarTokens.first
         let shorelineBubbles = [
-            SuliJoyShoreBubble(bubbleID: "shore_breeze_welcome_1_\(tideSnapshot.tideMark)", senderName: "Cora Bush", avatarAssetName: shorelineHostAvatar, text: "welcome to lucy", waveCreatedAt: Date(), isMine: false),
-            SuliJoyShoreBubble(bubbleID: "shore_breeze_welcome_2_\(tideSnapshot.tideMark)", senderName: "Cora Bush", avatarAssetName: shorelineHostAvatar, text: "show your island style", waveCreatedAt: Date(), isMine: false),
-            SuliJoyShoreBubble(bubbleID: "shore_breeze_welcome_3_\(tideSnapshot.tideMark)", senderName: "Cora Bush", avatarAssetName: shorelineHostAvatar, text: "keep it friendly and relaxed", waveCreatedAt: Date(), isMine: false)
+            SuliJoyShoreBubble(bubbleID: "\("sxhxoxrxex_xbxrxexexzxex_xwxexlxcxoxmxex_x1x_x".suliJoyPalmUnfurled)\(tideSnapshot.tideMark)", senderName: "Cxoxrxax xBxuxsxhx".suliJoyPalmUnfurled, avatarAssetName: shorelineHostAvatar, text: "wxexlxcxoxmxex xtxox xlxuxcxyx".suliJoyPalmUnfurled, waveCreatedAt: Date(), isMine: false),
+            SuliJoyShoreBubble(bubbleID: "\("sxhxoxrxex_xbxrxexexzxex_xwxexlxcxoxmxex_x2x_x".suliJoyPalmUnfurled)\(tideSnapshot.tideMark)", senderName: "Cxoxrxax xBxuxsxhx".suliJoyPalmUnfurled, avatarAssetName: shorelineHostAvatar, text: "sxhxoxwx xyxoxuxrx xixsxlxaxnxdx xsxtxyxlxex".suliJoyPalmUnfurled, waveCreatedAt: Date(), isMine: false),
+            SuliJoyShoreBubble(bubbleID: "\("sxhxoxrxex_xbxrxexexzxex_xwxexlxcxoxmxex_x3x_x".suliJoyPalmUnfurled)\(tideSnapshot.tideMark)", senderName: "Cxoxrxax xBxuxsxhx".suliJoyPalmUnfurled, avatarAssetName: shorelineHostAvatar, text: "kxexexpx xixtx xfxrxixexnxdxlxyx xaxnxdx xrxexlxaxxxexdx".suliJoyPalmUnfurled, waveCreatedAt: Date(), isMine: false)
         ]
         return SuliJoyTideTalkSpace(
             tideMark: tideSnapshot.tideMark,
             tideTitleLine: tideSnapshot.tideTitleLine,
             shoreHostAlias: shorelineHostNames.first ?? "LouwcHiJeS ORlabyr".suliJoyPalmUnfurled,
-            tropicBackdropToken: "sulijoy_tide_room_sunset_bg",
+            tropicBackdropToken: "sxuxlxixjxoxyx_xtxixdxex_xrxoxoxmx_xsxuxnxsxextx_xbxgx".suliJoyPalmUnfurled,
             participantPortraitTokens: Array(tideSnapshot.shorelineAvatarTokens.prefix(3)),
             lagoonSeats: lagoonVoiceSeats,
             shoreBreezeBubbles: shorelineBubbles
@@ -1314,39 +1314,39 @@ final class SuliJoyCoveMockService {
         let profile = SuliJoyLocalProfileStore().currentProfile()
         let name = profile?.espadrillePairing.trimmingCharacters(in: .whitespacesAndNewlines)
         let avatar = profile?.kaftanLayer?.trimmingCharacters(in: .whitespacesAndNewlines)
-        return ((name?.isEmpty == false ? name : "You") ?? "You", avatar?.isEmpty == false ? avatar : nil)
+        return ((name?.isEmpty == false ? name : "Yxoxux".suliJoyPalmUnfurled) ?? "Yxoxux".suliJoyPalmUnfurled, avatar?.isEmpty == false ? avatar : nil)
     }
 
     private static func makeClipReefSeed() -> [SuliJoyShellClip] {
         let reefCreators = [
-            SuliJoyLagoonClipCreator(clipStylistMark: "chlKippz_lcyrvexaStvoFrl_avMiccjtdonrYiHaD".suliJoyPalmUnfurled, clipStylistAlias: "VCiRcqtdozrViIaJ".suliJoyPalmUnfurled, clipPortraitToken: "sulijoy_mock_avatar_breeze_08"),
-            SuliJoyLagoonClipCreator(clipStylistMark: "cnlZiupJ_OccrBecartdoJrd_IlByCnecShp".suliJoyPalmUnfurled, clipStylistAlias: "LxyHnpcuhS".suliJoyPalmUnfurled, clipPortraitToken: "sulijoy_mock_avatar_sun_10"),
-            SuliJoyLagoonClipCreator(clipStylistMark: "cultiEpI_ScorPeZaNtFoCrU_HmbiArxaT_OcWonagsxtW".suliJoyPalmUnfurled, clipStylistAlias: "MmiBrLay BCKoYaDsKtm".suliJoyPalmUnfurled, clipPortraitToken: "sulijoy_feed_avatar_bess"),
-            SuliJoyLagoonClipCreator(clipStylistMark: "cmlEiGpE_OcWrteuaJtJojrw_GsrieecnHnXas_BrYavyF".suliJoyPalmUnfurled, clipStylistAlias: "SiijeNnnnBaf GRiaYyM".suliJoyPalmUnfurled, clipPortraitToken: "sulijoy_mock_avatar_breeze_12"),
-            SuliJoyLagoonClipCreator(clipStylistMark: "cElBiApo_KcBrbeYaptroBrr_xnBosaO_SpFaxlbmz".suliJoyPalmUnfurled, clipStylistAlias: "NDohaC pPmaXlnmH".suliJoyPalmUnfurled, clipPortraitToken: "sulijoy_feed_avatar_cody_hunter")
+            SuliJoyLagoonClipCreator(clipStylistMark: "chlKippz_lcyrvexaStvoFrl_avMiccjtdonrYiHaD".suliJoyPalmUnfurled, clipStylistAlias: "VCiRcqtdozrViIaJ".suliJoyPalmUnfurled, clipPortraitToken: "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x8x".suliJoyPalmUnfurled),
+            SuliJoyLagoonClipCreator(clipStylistMark: "cnlZiupJ_OccrBecartdoJrd_IlByCnecShp".suliJoyPalmUnfurled, clipStylistAlias: "LxyHnpcuhS".suliJoyPalmUnfurled, clipPortraitToken: "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x1x0x".suliJoyPalmUnfurled),
+            SuliJoyLagoonClipCreator(clipStylistMark: "cultiEpI_ScorPeZaNtFoCrU_HmbiArxaT_OcWonagsxtW".suliJoyPalmUnfurled, clipStylistAlias: "MmiBrLay BCKoYaDsKtm".suliJoyPalmUnfurled, clipPortraitToken: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxexsxsx".suliJoyPalmUnfurled),
+            SuliJoyLagoonClipCreator(clipStylistMark: "cmlEiGpE_OcWrteuaJtJojrw_GsrieecnHnXas_BrYavyF".suliJoyPalmUnfurled, clipStylistAlias: "SiijeNnnnBaf GRiaYyM".suliJoyPalmUnfurled, clipPortraitToken: "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x1x2x".suliJoyPalmUnfurled),
+            SuliJoyLagoonClipCreator(clipStylistMark: "cElBiApo_KcBrbeYaptroBrr_xnBosaO_SpFaxlbmz".suliJoyPalmUnfurled, clipStylistAlias: "NDohaC pPmaXlnmH".suliJoyPalmUnfurled, clipPortraitToken: "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xcxoxdxyx_xhxuxnxtxexrx".suliJoyPalmUnfurled)
         ]
         let reefCaptions = [
-            "Choose matches that have a natural element feel—standing by the sea makes the colors softer.",
-            "If you want to play freely on the island, your outfit should be movable!",
-            "A loose linen shirt keeps a resort look calm without losing shape.",
-            "Sunset colors work best when one detail feels bright and the rest stays easy.",
-            "Beach clips are better when the look can handle wind, sand, and walking."
+            "Cxhxoxoxsxex xmxaxtxcxhxexsx xtxhxaxtx xhxaxvxex xax xnxaxtxuxrxaxlx xexlxexmxexnxtx xfxexexlx—xsxtxaxnxdxixnxgx xbxyx xtxhxex xsxexax xmxaxkxexsx xtxhxex xcxoxlxoxrxsx xsxoxfxtxexrx.x".suliJoyPalmUnfurled,
+            "Ixfx xyxoxux xwxaxnxtx xtxox xpxlxaxyx xfxrxexexlxyx xoxnx xtxhxex xixsxlxaxnxdx,x xyxoxuxrx xoxuxtxfxixtx xsxhxoxuxlxdx xbxex xmxoxvxaxbxlxex!x".suliJoyPalmUnfurled,
+            "Ax xlxoxoxsxex xlxixnxexnx xsxhxixrxtx xkxexexpxsx xax xrxexsxoxrxtx xlxoxoxkx xcxaxlxmx xwxixtxhxoxuxtx xlxoxsxixnxgx xsxhxaxpxex.x".suliJoyPalmUnfurled,
+            "Sxuxnxsxextx xcxoxlxoxrxsx xwxoxrxkx xbxexsxtx xwxhxexnx xoxnxex xdxextxaxixlx xfxexexlxsx xbxrxixgxhxtx xaxnxdx xtxhxex xrxexsxtx xsxtxaxyxsx xexaxsxyx.x".suliJoyPalmUnfurled,
+            "Bxexaxcxhx xcxlxixpxsx xaxrxex xbxextxtxexrx xwxhxexnx xtxhxex xlxoxoxkx xcxaxnx xhxaxnxdxlxex xwxixnxdx,x xsxaxnxdx,x xaxnxdx xwxaxlxkxixnxgx.x".suliJoyPalmUnfurled
         ]
         let reefMotionNames = [
-            "sulijoy_shorts_island_style_01",
-            "sulijoy_shorts_island_style_02",
-            "sulijoy_shorts_island_style_03",
-            "sulijoy_shorts_island_style_04",
-            "sulijoy_shorts_island_style_01"
+            "sxuxlxixjxoxyx_xsxhxoxrxtxsx_xixsxlxaxnxdx_xsxtxyxlxex_x0x1x".suliJoyPalmUnfurled,
+            "sxuxlxixjxoxyx_xsxhxoxrxtxsx_xixsxlxaxnxdx_xsxtxyxlxex_x0x2x".suliJoyPalmUnfurled,
+            "sxuxlxixjxoxyx_xsxhxoxrxtxsx_xixsxlxaxnxdx_xsxtxyxlxex_x0x3x".suliJoyPalmUnfurled,
+            "sxuxlxixjxoxyx_xsxhxoxrxtxsx_xixsxlxaxnxdx_xsxtxyxlxex_x0x4x".suliJoyPalmUnfurled,
+            "sxuxlxixjxoxyx_xsxhxoxrxtxsx_xixsxlxaxnxdx_xsxtxyxlxex_x0x1x".suliJoyPalmUnfurled
         ]
-        let reefCoverNames = ["sulijoy_feed_moment_coast_01", "sulijoy_feed_moment_coast_02", "sulijoy_feed_moment_coast_03", "sulijoy_feed_moment_coast_04", "sulijoy_feed_moment_coast_05"]
+        let reefCoverNames = ["sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x1x".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x2x".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x3x".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x4x".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xfxexexdx_xmxoxmxexnxtx_xcxoxaxsxtx_x0x5x".suliJoyPalmUnfurled]
         return reefCreators.indices.map { reefIndex in
             SuliJoyShellClip(
-                coconutCream: "shell_clip_\(reefIndex + 1)",
+                coconutCream: "\("sxhxexlxlx_xcxlxixpx_x".suliJoyPalmUnfurled)\(reefIndex + 1)",
                 terracottaWarmth: reefCreators[reefIndex],
                 hibiscusShade: reefCaptions[reefIndex],
                 tropicalMotif: SuliJoyReefClipMedia(
-                    aquaGradient: "reef_clip_media_\(reefIndex + 1)",
+                    aquaGradient: "\("rxexexfx_xcxlxixpx_xmxexdxixax_x".suliJoyPalmUnfurled)\(reefIndex + 1)",
                     seafoamTint: reefMotionNames[reefIndex],
                     sandyNeutral: reefCoverNames[reefIndex]
                 ),
@@ -1363,33 +1363,33 @@ final class SuliJoyCoveMockService {
     private static func makeClipReefReplies(for reefIndex: Int) -> [SuliJoyShellClipComment] {
         let reefReplyPools = [
             [
-                ("Shane Gregory", "sulijoy_mock_avatar_sun_05", "The outfit is so elegant!"),
-                ("Jeffery Thompson", "sulijoy_mock_avatar_breeze_10", "Great shot! I love it")
+                ("Sxhxaxnxex xGxrxexgxoxrxyx".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x5x".suliJoyPalmUnfurled, "Txhxex xoxuxtxfxixtx xixsx xsxox xexlxexgxaxnxtx!x".suliJoyPalmUnfurled),
+                ("Jxexfxfxexrxyx xTxhxoxmxpxsxoxnx".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x1x0x".suliJoyPalmUnfurled, "Gxrxexaxtx xsxhxoxtx!x xIx xlxoxvxex xixtx".suliJoyPalmUnfurled)
             ],
             [
-                ("Bruno Pham", "sulijoy_island_avatar_guest_02", "This linen color works perfectly."),
-                ("Maya Shore", "sulijoy_mock_avatar_breeze_03", "The beach mood feels real.")
+                ("Bxrxuxnxox xPxhxaxmx".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xixsxlxaxnxdx_xaxvxaxtxaxrx_xgxuxexsxtx_x0x2x".suliJoyPalmUnfurled, "Txhxixsx xlxixnxexnx xcxoxlxoxrx xwxoxrxkxsx xpxexrxfxexcxtxlxyx.x".suliJoyPalmUnfurled),
+                ("Mxaxyxax xSxhxoxrxex".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x3x".suliJoyPalmUnfurled, "Txhxex xbxexaxcxhx xmxoxoxdx xfxexexlxsx xrxexaxlx.x".suliJoyPalmUnfurled)
             ],
             [
-                ("Cora Rush", "sulijoy_mock_avatar_breeze_07", "Soft layers make this look easy."),
-                ("Noelle Sun", "sulijoy_mock_avatar_sun_08", "Saving this for my trip.")
+                ("Cxoxrxax xRxuxsxhx".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x0x7x".suliJoyPalmUnfurled, "Sxoxfxtx xlxaxyxexrxsx xmxaxkxex xtxhxixsx xlxoxoxkx xexaxsxyx.x".suliJoyPalmUnfurled),
+                ("Nxoxexlxlxex xSxuxnx".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x0x8x".suliJoyPalmUnfurled, "Sxaxvxixnxgx xtxhxixsx xfxoxrx xmxyx xtxrxixpx.x".suliJoyPalmUnfurled)
             ],
             [
-                ("Dennis Waters", "sulijoy_feed_avatar_dennis_waters", "The sunset tones are clean."),
-                ("Lina Coast", "sulijoy_mock_avatar_breeze_11", "Simple but memorable.")
+                ("Dxexnxnxixsx xWxaxtxexrxsx".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xdxexnxnxixsx_xwxaxtxexrxsx".suliJoyPalmUnfurled, "Txhxex xsxuxnxsxextx xtxoxnxexsx xaxrxex xcxlxexaxnx.x".suliJoyPalmUnfurled),
+                ("Lxixnxax xCxoxaxsxtx".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xbxrxexexzxex_x1x1x".suliJoyPalmUnfurled, "Sxixmxpxlxex xbxuxtx xmxexmxoxrxaxbxlxex.x".suliJoyPalmUnfurled)
             ],
             [
-                ("Brian May", "sulijoy_feed_avatar_brian_may", "Wind friendly styling matters."),
-                ("Rhea Palm", "sulijoy_mock_avatar_sun_12", "The walking fit is practical.")
+                ("Bxrxixaxnx xMxaxyx".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xfxexexdx_xaxvxaxtxaxrx_xbxrxixaxnx_xmxaxyx".suliJoyPalmUnfurled, "Wxixnxdx xfxrxixexnxdxlxyx xsxtxyxlxixnxgx xmxaxtxtxexrxsx.x".suliJoyPalmUnfurled),
+                ("Rxhxexax xPxaxlxmx".suliJoyPalmUnfurled, "sxuxlxixjxoxyx_xmxoxcxkx_xaxvxaxtxaxrx_xsxuxnx_x1x2x".suliJoyPalmUnfurled, "Txhxex xwxaxlxkxixnxgx xfxixtx xixsx xpxrxaxcxtxixcxaxlx.x".suliJoyPalmUnfurled)
             ]
         ]
         return reefReplyPools[reefIndex].enumerated().map { reefOffset, shoreReplySeed in
             SuliJoyShellClipComment(
-                reefReplyMark: "shell_clip_comment_\(reefIndex)_\(reefOffset)",
+                reefReplyMark: "\("sxhxexlxlx_xcxlxixpx_xcxoxmxmxexnxtx_x".suliJoyPalmUnfurled)\(reefIndex)\("_x".suliJoyPalmUnfurled)\(reefOffset)",
                 reefReplyAuthorAlias: shoreReplySeed.0,
                 reefReplyAvatarToken: shoreReplySeed.1,
                 reefReplyText: shoreReplySeed.2,
-                reefReplyMomentLine: "2 mins ago",
+                reefReplyMomentLine: "2x xmxixnxsx xaxgxox".suliJoyPalmUnfurled,
                 isReefFlagged: false
             )
         }

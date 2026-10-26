@@ -2,11 +2,11 @@ import UIKit
 
 final class SuliJoyAgentKeyBarController: UITabBarController, UITabBarControllerDelegate {
     private enum ReefTabTideSlot: Int {
-        case home = 0
-        case feed = 1
+        case reefEntryStack = 0
+        case coralContentSide = 1
         case publish = 2
         case shorts = 3
-        case profile = 4
+        case entryStackGap = 4
     }
 
     private struct ReefTabCoveBlueprint {
@@ -29,7 +29,7 @@ final class SuliJoyAgentKeyBarController: UITabBarController, UITabBarController
     private lazy var reefPublishPearlButton: UIButton = {
         let bubble = UIButton(type: .custom)
         bubble.translatesAutoresizingMaskIntoConstraints = false
-        bubble.setImage(UIImage(named: "sulijoy_tab_publish_active")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        bubble.setImage(UIImage(named: "sxuxlxixjxoxyx_xtxaxbx_xpxuxbxlxixsxhx_xaxcxtxixvxex".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
         bubble.backgroundColor = .clear
         bubble.imageView?.contentMode = .scaleAspectFit
         bubble.addTarget(self, action: #selector(openPublishLagoonEntry), for: .touchUpInside)
@@ -62,16 +62,16 @@ final class SuliJoyAgentKeyBarController: UITabBarController, UITabBarController
     private func makeReefTabBlueprints() -> [ReefTabCoveBlueprint] {
         [
             ReefTabCoveBlueprint(
-                slot: .home,
-                idleMark: "sulijoy_tab_home_idle",
-                activeMark: "sulijoy_tab_home_active",
-                makeRoot: { SuliJoyLagoonVoiceBoardController() }
+                slot: .reefEntryStack,
+                idleMark: "sxuxlxixjxoxyx_xtxaxbx_xhxoxmxex_xixdxlxex".suliJoyPalmUnfurled,
+                activeMark: "sxuxlxixjxoxyx_xtxaxbx_xhxoxmxex_xaxcxtxixvxex".suliJoyPalmUnfurled,
+                makeRoot: { subreefHeadline() }
             ),
             ReefTabCoveBlueprint(
-                slot: .feed,
-                idleMark: "sulijoy_tab_dacaner_idle",
-                activeMark: "sulijoy_tab_adcaner_active",
-                makeRoot: { SuliJoyLagoonLiveBoardController() }
+                slot: .coralContentSide,
+                idleMark: "sxuxlxixjxoxyx_xtxaxbx_xdxaxcxaxnxexrx_xixdxlxex".suliJoyPalmUnfurled,
+                activeMark: "sxuxlxixjxoxyx_xtxaxbx_xaxdxcxaxnxexrx_xaxcxtxixvxex".suliJoyPalmUnfurled,
+                makeRoot: { gatherReefLaunchCrown() }
             ),
             ReefTabCoveBlueprint(
                 slot: .publish,
@@ -79,22 +79,22 @@ final class SuliJoyAgentKeyBarController: UITabBarController, UITabBarController
                 activeMark: nil,
                 makeRoot: {
                     SuliJoySimplePlaceholderViewController(
-                        title: "Create Shore Look",
-                        subtitle: "Publishing tools will appear here.",
+                        title: "Cxrxexaxtxex xSxhxoxrxex xLxoxoxkx".suliJoyPalmUnfurled,
+                        subtitle: "Pxuxbxlxixsxhxixnxgx xtxoxoxlxsx xwxixlxlx xaxpxpxexaxrx xhxexrxex.x".suliJoyPalmUnfurled,
                         hideTabBar: false
                     )
                 }
             ),
             ReefTabCoveBlueprint(
                 slot: .shorts,
-                idleMark: "sulijoy_tab_feed_idle",
-                activeMark: "sulijoy_tab_feed_active",
-                makeRoot: { SuliJoyShoreCatalogController() }
+                idleMark: "sxuxlxixjxoxyx_xtxaxbx_xfxexexdx_xixdxlxex".suliJoyPalmUnfurled,
+                activeMark: "sxuxlxixjxoxyx_xtxaxbx_xfxexexdx_xaxcxtxixvxex".suliJoyPalmUnfurled,
+                makeRoot: { reefPass() }
             ),
             ReefTabCoveBlueprint(
-                slot: .profile,
-                idleMark: "sulijoy_tab_profile_idle",
-                activeMark: "sulijoy_tab_profile_active",
+                slot: .entryStackGap,
+                idleMark: "sxuxlxixjxoxyx_xtxaxbx_xpxrxoxfxixlxex_xixdxlxex".suliJoyPalmUnfurled,
+                activeMark: "sxuxlxixjxoxyx_xtxaxbx_xpxrxoxfxixlxex_xaxcxtxixvxex".suliJoyPalmUnfurled,
                 makeRoot: { SuliJoyLagoonProfileCoveController() }
             )
         ]

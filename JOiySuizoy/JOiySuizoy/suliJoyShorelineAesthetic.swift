@@ -25,9 +25,9 @@ final class suliJoyShorelineAesthetic: SuliJoyReefEntryCanvasController {
         let nextControl: SuliJoyGradientButton
     }
 
-    private let shoreNameInput = SuliJoyAuthTextField(placeholder: "Enter your name")
-    private let shoreMailInput = SuliJoyAuthTextField(placeholder: "Enter email address")
-    private let shoreSecretInput = SuliJoyAuthTextField(placeholder: "Enter password", secure: true)
+    private let shoreNameInput = SuliJoyAuthTextField(placeholder: "Exnxtxexrx xyxoxuxrx xnxaxmxex".suliJoyPalmUnfurled)
+    private let shoreMailInput = SuliJoyAuthTextField(placeholder: "Exnxtxexrx xexmxaxixlx xaxdxdxrxexsxsx".suliJoyPalmUnfurled)
+    private let shoreSecretInput = SuliJoyAuthTextField(placeholder: "Exnxtxexrx xpxaxsxsxwxoxrxdx".suliJoyPalmUnfurled, secure: true)
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ final class suliJoyShorelineAesthetic: SuliJoyReefEntryCanvasController {
 
     private func harvestShoreSignupReefScene() -> ShoreSignupReefScene {
         let returnControl = forgeReefReturnControl()
-        let titleView = carveSuliJoyWordmark("Sign up", size: ShoreSignupTideMeasure.titleSize)
+        let titleView = carveSuliJoyWordmark("Sxixgxnx xuxpx".suliJoyPalmUnfurled, size: ShoreSignupTideMeasure.titleSize)
         let formShell = makeShoreSignupShell()
         let fieldColumn = makeShoreSignupColumn()
         let nextControl = makeShoreSignupNextControl()
@@ -68,9 +68,9 @@ final class suliJoyShorelineAesthetic: SuliJoyReefEntryCanvasController {
 
     private func makeShoreSignupColumn() -> UIStackView {
         let shorelineFieldColumn = UIStackView(arrangedSubviews: [
-            stackShoreInputReef(reefHeadline: "Name", field: shoreNameInput),
-            stackShoreInputReef(reefHeadline: "Email", field: shoreMailInput),
-            stackShoreInputReef(reefHeadline: "Password", field: shoreSecretInput)
+            stackShoreInputReef(reefHeadline: "Nxaxmxex".suliJoyPalmUnfurled, field: shoreNameInput),
+            stackShoreInputReef(reefHeadline: "Exmxaxixlx".suliJoyPalmUnfurled, field: shoreMailInput),
+            stackShoreInputReef(reefHeadline: "Pxaxsxsxwxoxrxdx".suliJoyPalmUnfurled, field: shoreSecretInput)
         ])
         shorelineFieldColumn.axis = .vertical
         shorelineFieldColumn.spacing = ShoreSignupTideMeasure.fieldGap

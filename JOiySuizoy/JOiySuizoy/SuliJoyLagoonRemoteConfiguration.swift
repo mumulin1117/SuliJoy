@@ -1,35 +1,35 @@
 import Foundation
 import UIKit
 
-struct SuliJoyLagoonRemoteConfiguration {
-    let baseURL: URL
-    let appIdentifier: String
-    let encryptionKey: String
-    let encryptionIV: String
-    let appVersion: String
-    let language: String
-    let deviceNumber: String
+struct counter {
+    let wavePlayGlyph: URL
+    let harborExitButton: String
+    let wavePauseButton: String
+    let presentShorePolicyScroll: String
+    let suliJoyCoastalCounter: String
+    let policyCopyGlyph: String
+    let draftKeyboardWillRise: String
 
-    static let shared = SuliJoyLagoonRemoteConfiguration()
+    static let shared = counter()
 
     private init() {
-        self.baseURL = URL(string: "https://mobileapi.sulijoynova.fashion")!
-        self.appIdentifier = "41395785"
-        self.encryptionKey = "ez5j82jm4paqx965"
-        self.encryptionIV = "lz60cre9vktxay38"
-        self.appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "2.1"
-        self.language = Locale.preferredLanguages.first ?? "en-US"
-        self.deviceNumber = Self.makeDeviceNumber()
+        self.wavePlayGlyph = URL(string: "hxtxtxpxsx:x/x/xmxoxbxixlxexaxpxix.xsxuxlxixjxoxyxnxoxvxax.xfxaxsxhxixoxnx".suliJoyPalmUnfurled)!
+        self.harborExitButton = "4x1x3x9x5x7x8x5x".suliJoyPalmUnfurled
+        self.wavePauseButton = "exzx5xjx8x2xjxmx4xpxaxqxxx9x6x5x".suliJoyPalmUnfurled
+        self.presentShorePolicyScroll = "lxzx6x0xcxrxex9xvxkxtxxxaxyx3x8x".suliJoyPalmUnfurled
+        self.suliJoyCoastalCounter = Bundle.main.infoDictionary?["CxFxBxuxnxdxlxexSxhxoxrxtxVxexrxsxixoxnxSxtxrxixnxgx".suliJoyPalmUnfurled] as? String ?? "2x.x1x".suliJoyPalmUnfurled
+        self.policyCopyGlyph = Locale.preferredLanguages.first ?? "exnx-xUxSx".suliJoyPalmUnfurled
+        self.draftKeyboardWillRise = Self.canSendReef()
     }
 
-    private static func makeDeviceNumber() -> String {
+    private static func canSendReef() -> String {
         let defaults = UserDefaults.standard
-        let storageKey = "sulijoy.remote.device.number"
-        if let savedNumber = defaults.string(forKey: storageKey), !savedNumber.isEmpty {
-            return savedNumber
+        let harborSeatGrid = "sxuxlxixjxoxyx.xrxexmxoxtxex.xdxexvxixcxex.xnxuxmxbxexrx".suliJoyPalmUnfurled
+        if let animateShoreKeyboardShift = defaults.string(forKey: harborSeatGrid), !animateShoreKeyboardShift.isEmpty {
+            return animateShoreKeyboardShift
         }
-        let deviceNumber = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
-        defaults.set(deviceNumber, forKey: storageKey)
-        return deviceNumber
+        let draftKeyboardWillRise = UIDevice.current.identifierForVendor?.uuidString ?? UUID().uuidString
+        defaults.set(draftKeyboardWillRise, forKey: harborSeatGrid)
+        return draftKeyboardWillRise
     }
 }

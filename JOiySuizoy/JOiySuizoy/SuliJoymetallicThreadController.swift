@@ -4,7 +4,7 @@ final class SuliJoymetallicThreadController: SuliJoyTropicCanvasController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
-        assembleShareNowDock()
+        ribbonTop()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -19,88 +19,88 @@ final class SuliJoymetallicThreadController: SuliJoyTropicCanvasController {
         }
     }
 
-    private func assembleShareNowDock() {
-        let close = UIButton(type: .custom)
-        close.translatesAutoresizingMaskIntoConstraints = false
-        close.setImage(UIImage(named: "sulijoy_share_close")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        close.imageView?.contentMode = .scaleAspectFit
-        close.accessibilityLabel = "Close"
-        close.addTarget(self, action: #selector(sailBackToTabs), for: .touchUpInside)
+    private func ribbonTop() {
+        let titleDrop = UIButton(type: .custom)
+        titleDrop.translatesAutoresizingMaskIntoConstraints = false
+        titleDrop.setImage(UIImage(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xcxlxoxsxex".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        titleDrop.imageView?.contentMode = .scaleAspectFit
+        titleDrop.accessibilityLabel = "Cxlxoxsxex".suliJoyPalmUnfurled
+        titleDrop.addTarget(self, action: #selector(sailBackToTabs), for: .touchUpInside)
 
-        let title = UIImageView(image: UIImage(named: "sulijoy_share_title")?.withRenderingMode(.alwaysOriginal))
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.contentMode = .scaleAspectFit
-        title.accessibilityLabel = "Share Now"
+        let lagoonSeatMarkbigh = UIImageView(image: UIImage(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xtxixtxlxex".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal))
+        lagoonSeatMarkbigh.translatesAutoresizingMaskIntoConstraints = false
+        lagoonSeatMarkbigh.contentMode = .scaleAspectFit
+        lagoonSeatMarkbigh.accessibilityLabel = "Sxhxaxrxex xNxoxwx".suliJoyPalmUnfurled
 
-        let banner = UIImageView(image: UIImage(named: "sulijoy_share_banner")?
+        let reefReplyAlert = UIImageView(image: UIImage(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xbxaxnxnxexrx".suliJoyPalmUnfurled)?
             .resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20), resizingMode: .stretch))
-        banner.translatesAutoresizingMaskIntoConstraints = false
-        banner.contentMode = .scaleToFill
-        banner.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        banner.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        reefReplyAlert.translatesAutoresizingMaskIntoConstraints = false
+        reefReplyAlert.contentMode = .scaleToFill
+        reefReplyAlert.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        reefReplyAlert.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         let caption = UILabel()
         caption.translatesAutoresizingMaskIntoConstraints = false
-        caption.text = "Want to Create Events, post, or film?"
+        caption.text = "Wxaxnxtx xtxox xCxrxexaxtxex xExvxexnxtxsx,x xpxoxsxtx,x xoxrx xfxixlxmx?x".suliJoyPalmUnfurled
         caption.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         caption.textColor = .suliInk
         caption.adjustsFontSizeToFitWidth = true
         caption.minimumScaleFactor = 0.75
         caption.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        banner.addSubview(caption)
+        reefReplyAlert.addSubview(caption)
 
-        let goLive = makeShareCard(named: "sulijoy_share_go_live", label: "Go Live", action: #selector(openGoLive))
-        let startRoom = makeShareCard(named: "sulijoy_share_start_room", label: "Start a Room", action: #selector(openStartRoom))
-        let postMoment = makeShareCard(named: "sulijoy_share_post_moment", label: "Post Moment", action: #selector(openShoreMomentMaker))
-        let shorts = makeShareCard(named: "sulijoy_share_shorts", label: "Shorts Video", action: #selector(openReefClipMaker))
+        let consentActionRail = reefTallies(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xgxox_xlxixvxex".suliJoyPalmUnfurled, label: "Gxox xLxixvxex".suliJoyPalmUnfurled, action: #selector(reefPath))
+        let fieldStack = reefTallies(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xsxtxaxrxtx_xrxoxoxmx".suliJoyPalmUnfurled, label: "Sxtxaxrxtx xax xRxoxoxmx".suliJoyPalmUnfurled, action: #selector(overlap))
+        let saveReefMotionToSandbox = reefTallies(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xpxoxsxtx_xmxoxmxexnxtx".suliJoyPalmUnfurled, label: "Pxoxsxtx xMxoxmxexnxtx".suliJoyPalmUnfurled, action: #selector(openShoreMomentMaker))
+        let shorts = reefTallies(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xsxhxoxrxtxsx".suliJoyPalmUnfurled, label: "Sxhxoxrxtxsx xVxixdxexox".suliJoyPalmUnfurled, action: #selector(openReefClipMaker))
 
-        let topRow = UIStackView(arrangedSubviews: [goLive, startRoom])
-        let bottomRow = UIStackView(arrangedSubviews: [postMoment, shorts])
-        [topRow, bottomRow].forEach {
+        let flag = UIStackView(arrangedSubviews: [consentActionRail, fieldStack])
+        let acceptLagoonControl = UIStackView(arrangedSubviews: [saveReefMotionToSandbox, shorts])
+        [flag, acceptLagoonControl].forEach {
             $0.axis = .horizontal
             $0.spacing = 14
             $0.distribution = .fillEqually
         }
-        let grid = UIStackView(arrangedSubviews: [topRow, bottomRow])
-        grid.translatesAutoresizingMaskIntoConstraints = false
-        grid.axis = .vertical
-        grid.spacing = 14
+        let reefNumber = UIStackView(arrangedSubviews: [flag, acceptLagoonControl])
+        reefNumber.translatesAutoresizingMaskIntoConstraints = false
+        reefNumber.axis = .vertical
+        reefNumber.spacing = 14
 
-        [close, title, banner, grid].forEach { view.addSubview($0) }
-        let gridCenter = grid.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 52)
-        gridCenter.priority = .defaultHigh
+        [titleDrop, lagoonSeatMarkbigh, reefReplyAlert, reefNumber].forEach { view.addSubview($0) }
+        let totalTop = reefNumber.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 52)
+        totalTop.priority = .defaultHigh
         NSLayoutConstraint.activate([
-            close.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 6),
-            close.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
-            close.widthAnchor.constraint(equalToConstant: 32),
-            close.heightAnchor.constraint(equalToConstant: 32),
+            titleDrop.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 6),
+            titleDrop.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
+            titleDrop.widthAnchor.constraint(equalToConstant: 32),
+            titleDrop.heightAnchor.constraint(equalToConstant: 32),
 
-            title.topAnchor.constraint(equalTo: close.bottomAnchor, constant: 18),
-            title.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            title.heightAnchor.constraint(equalToConstant: 28),
-            title.widthAnchor.constraint(equalTo: title.heightAnchor, multiplier: 410.0 / 52.0),
-            title.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -22),
+            lagoonSeatMarkbigh.topAnchor.constraint(equalTo: titleDrop.bottomAnchor, constant: 18),
+            lagoonSeatMarkbigh.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            lagoonSeatMarkbigh.heightAnchor.constraint(equalToConstant: 28),
+            lagoonSeatMarkbigh.widthAnchor.constraint(equalTo: lagoonSeatMarkbigh.heightAnchor, multiplier: 410.0 / 52.0),
+            lagoonSeatMarkbigh.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -22),
 
-            banner.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 14),
-            banner.leadingAnchor.constraint(equalTo: title.leadingAnchor),
-            banner.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -22),
-            banner.heightAnchor.constraint(equalToConstant: 32),
-            caption.leadingAnchor.constraint(equalTo: banner.leadingAnchor, constant: 12),
-            caption.trailingAnchor.constraint(equalTo: banner.trailingAnchor, constant: -12),
-            caption.centerYAnchor.constraint(equalTo: banner.centerYAnchor),
+            reefReplyAlert.topAnchor.constraint(equalTo: lagoonSeatMarkbigh.bottomAnchor, constant: 14),
+            reefReplyAlert.leadingAnchor.constraint(equalTo: lagoonSeatMarkbigh.leadingAnchor),
+            reefReplyAlert.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -22),
+            reefReplyAlert.heightAnchor.constraint(equalToConstant: 32),
+            caption.leadingAnchor.constraint(equalTo: reefReplyAlert.leadingAnchor, constant: 12),
+            caption.trailingAnchor.constraint(equalTo: reefReplyAlert.trailingAnchor, constant: -12),
+            caption.centerYAnchor.constraint(equalTo: reefReplyAlert.centerYAnchor),
 
-            grid.topAnchor.constraint(greaterThanOrEqualTo: banner.bottomAnchor, constant: 28),
-            grid.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            grid.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            grid.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            gridCenter,
-            goLive.heightAnchor.constraint(equalTo: goLive.widthAnchor, multiplier: 224.0 / 328.0)
+            reefNumber.topAnchor.constraint(greaterThanOrEqualTo: reefReplyAlert.bottomAnchor, constant: 28),
+            reefNumber.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            reefNumber.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+            reefNumber.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            totalTop,
+            consentActionRail.heightAnchor.constraint(equalTo: consentActionRail.widthAnchor, multiplier: 224.0 / 328.0)
         ])
     }
 
-    private func makeShareCard(named assetName: String, label: String, action: Selector) -> UIButton {
+    private func reefTallies(named assembleShoreProfileReef: String, label: String, action: Selector) -> UIButton {
         let card = UIButton(type: .custom)
         card.translatesAutoresizingMaskIntoConstraints = false
-        card.setImage(UIImage(named: assetName)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        card.setImage(UIImage(named: assembleShoreProfileReef)?.withRenderingMode(.alwaysOriginal), for: .normal)
         card.imageView?.contentMode = .scaleAspectFit
         card.contentHorizontalAlignment = .fill
         card.contentVerticalAlignment = .fill
@@ -113,14 +113,14 @@ final class SuliJoymetallicThreadController: SuliJoyTropicCanvasController {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc private func openGoLive() {
-        let page = SuliJoyGoLiveDraftController()
+    @objc private func reefPath() {
+        let page = coralMood()
         page.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(page, animated: true)
     }
 
-    @objc private func openStartRoom() {
-        let page = SuliJoyVoiceRoomDraftController()
+    @objc private func overlap() {
+        let page = typeWrap()
         page.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(page, animated: true)
     }

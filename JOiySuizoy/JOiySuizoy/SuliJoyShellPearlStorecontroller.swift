@@ -27,8 +27,8 @@ final class SuliJoyShellPearlStorecontroller: SuliJoyReefEntryCanvasController {
         let submitLagoon: SuliJoyGradientButton
     }
 
-    private let shoreMailInput = SuliJoyAuthTextField(placeholder: "Enter email address")
-    private let reefSecretInput = SuliJoyAuthTextField(placeholder: "Enter password", secure: true)
+    private let shoreMailInput = SuliJoyAuthTextField(placeholder: "Exnxtxexrx xexmxaxixlx xaxdxdxrxexsxsx".suliJoyPalmUnfurled)
+    private let reefSecretInput = SuliJoyAuthTextField(placeholder: "Exnxtxexrx xpxaxsxsxwxoxrxdx".suliJoyPalmUnfurled, secure: true)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +49,7 @@ final class SuliJoyShellPearlStorecontroller: SuliJoyReefEntryCanvasController {
         return LagoonEntryReefScene(
             backShell: forgeReefReturnControl(),
             eulaCapsule: forgeLagoonRuleCapsule(),
-            titleMark: carveSuliJoyWordmark("LOGIN", size: LagoonEntryTideMeasure.titleSize),
+            titleMark: carveSuliJoyWordmark("LxOxGxIxNx".suliJoyPalmUnfurled, size: LagoonEntryTideMeasure.titleSize),
             formShell: formShell,
             fieldStack: fieldStack,
             submitLagoon: submitLagoon
@@ -65,8 +65,8 @@ final class SuliJoyShellPearlStorecontroller: SuliJoyReefEntryCanvasController {
     }
 
     private func makeLagoonEntryColumn() -> UIStackView {
-        let shoreMailBlock = stackShoreInputReef(reefHeadline: "Email", field: shoreMailInput)
-        let reefSecretBlock = stackShoreInputReef(reefHeadline: "Password", field: reefSecretInput)
+        let shoreMailBlock = stackShoreInputReef(reefHeadline: "Exmxaxixlx".suliJoyPalmUnfurled, field: shoreMailInput)
+        let reefSecretBlock = stackShoreInputReef(reefHeadline: "Pxaxsxsxwxoxrxdx".suliJoyPalmUnfurled, field: reefSecretInput)
         let lagoonFieldColumn = UIStackView(arrangedSubviews: [shoreMailBlock, reefSecretBlock])
         lagoonFieldColumn.axis = .vertical
         lagoonFieldColumn.spacing = LagoonEntryTideMeasure.fieldGap

@@ -43,11 +43,11 @@ final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, U
 
     private var shellWardrobeEntries: [ShellWardrobeEntry] {
         [
-            ShellWardrobeEntry(shoreCaption: "User Agreement", reefMarkName: "doc.text.fill", tideSelector: #selector(openShoreTerms)),
-            ShellWardrobeEntry(shoreCaption: "Privacy", reefMarkName: "lock.doc.fill", tideSelector: #selector(openReefPrivacy)),
-            ShellWardrobeEntry(shoreCaption: "Clear the cache", reefMarkName: "sparkles", tideSelector: #selector(polishShellCache)),
-            ShellWardrobeEntry(shoreCaption: "Blocked List", reefMarkName: "person.crop.circle.badge.xmark", tideSelector: #selector(openMutedReef)),
-            ShellWardrobeEntry(shoreCaption: "Delete Account", reefMarkName: "person.crop.circle.badge.minus", tideSelector: #selector(askIslandAccountRemoval))
+            ShellWardrobeEntry(shoreCaption: "Uxsxexrx xAxgxrxexexmxexnxtx".suliJoyPalmUnfurled, reefMarkName: "dxoxcx.xtxexxxtx.xfxixlxlx".suliJoyPalmUnfurled, tideSelector: #selector(openShoreTerms)),
+            ShellWardrobeEntry(shoreCaption: "Pxrxixvxaxcxyx".suliJoyPalmUnfurled, reefMarkName: "lxoxcxkx.xdxoxcx.xfxixlxlx".suliJoyPalmUnfurled, tideSelector: #selector(openReefPrivacy)),
+            ShellWardrobeEntry(shoreCaption: "Cxlxexaxrx xtxhxex xcxaxcxhxex".suliJoyPalmUnfurled, reefMarkName: "sxpxaxrxkxlxexsx".suliJoyPalmUnfurled, tideSelector: #selector(polishShellCache)),
+            ShellWardrobeEntry(shoreCaption: "Bxlxoxcxkxexdx xLxixsxtx".suliJoyPalmUnfurled, reefMarkName: "pxexrxsxoxnx.xcxrxoxpx.xcxixrxcxlxex.xbxaxdxgxex.xxxmxaxrxkx".suliJoyPalmUnfurled, tideSelector: #selector(openMutedReef)),
+            ShellWardrobeEntry(shoreCaption: "Dxexlxextxex xAxcxcxoxuxnxtx".suliJoyPalmUnfurled, reefMarkName: "pxexrxsxoxnx.xcxrxoxpx.xcxixrxcxlxex.xbxaxdxgxex.xmxixnxuxsx".suliJoyPalmUnfurled, tideSelector: #selector(askIslandAccountRemoval))
         ]
     }
 
@@ -74,7 +74,7 @@ final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, U
     private func gatherShellWardrobeCrown() -> ShellWardrobeCrown {
         let shoreBackTap = UIButton(type: .system)
         shoreBackTap.translatesAutoresizingMaskIntoConstraints = false
-        shoreBackTap.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        shoreBackTap.setImage(UIImage(systemName: "axrxrxoxwx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
         shoreBackTap.tintColor = .suliInk
         shoreBackTap.addTarget(self, action: #selector(sailBack), for: .touchUpInside)
 
@@ -115,7 +115,7 @@ final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, U
 
     private func tuneHarborExitControl() {
         harborExitButton.translatesAutoresizingMaskIntoConstraints = false
-        harborExitButton.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right"), for: .normal)
+        harborExitButton.setImage(UIImage(systemName: "rxexcxtxaxnxgxlxex.xpxoxrxtxrxaxixtx.xaxnxdx.xaxrxrxoxwx.xrxixgxhxtx".suliJoyPalmUnfurled), for: .normal)
         harborExitButton.tintColor = .suliInk
         harborExitButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)
         harborExitButton.addTarget(self, action: #selector(askLagoonExit), for: .touchUpInside)
@@ -162,11 +162,11 @@ final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, U
     }
 
     @objc private func openShoreTerms() {
-        navigationController?.pushViewController(SuliJoyLagoonScrollTextController(shoreTitle: "Terms of Service", reefClauses: SuliJoyPolicyCopy.terms), animated: true)
+        navigationController?.pushViewController(SuliJoyLagoonScrollTextController(shoreTitle: "Txexrxmxsx xoxfx xSxexrxvxixcxex".suliJoyPalmUnfurled, reefClauses: SuliJoyPolicyCopy.terms), animated: true)
     }
 
     @objc private func openReefPrivacy() {
-        navigationController?.pushViewController(SuliJoyLagoonScrollTextController(shoreTitle: "Privacy Policy", reefClauses: SuliJoyPolicyCopy.privacy), animated: true)
+        navigationController?.pushViewController(SuliJoyLagoonScrollTextController(shoreTitle: "Pxrxixvxaxcxyx xPxoxlxixcxyx".suliJoyPalmUnfurled, reefClauses: SuliJoyPolicyCopy.privacy), animated: true)
     }
 
     @objc private func polishShellCache() {
@@ -398,7 +398,7 @@ final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, U
 private final class SuliJoyShellCoveActionRow: UIButton {
     private let reefGlyphView = UIImageView()
     private let shoreTitleGlyph = UILabel()
-    private let tideArrowGlyph = UIImageView(image: UIImage(systemName: "chevron.right"))
+    private let tideArrowGlyph = UIImageView(image: UIImage(systemName: "cxhxexvxrxoxnx.xrxixgxhxtx".suliJoyPalmUnfurled))
 
     init(shoreTitle: String, reefSymbol: String) {
         super.init(frame: .zero)
@@ -467,7 +467,7 @@ private final class SuliJoyShellCoveHairline: UIView {
 }
 
 final class SuliJoyReefMutedVisitorCoveController: SuliJoyTropicCanvasController {
-    private let mutedShoreService = SuliJoyLagoonProfileRemoteService.shared
+    private let mutedShoreService = suliJoyPalmRankingaccount.shared
     private let mutedReefStack = UIStackView()
     private let quietShoreLabel = UILabel()
 
@@ -486,7 +486,7 @@ final class SuliJoyReefMutedVisitorCoveController: SuliJoyTropicCanvasController
     private func weaveMutedVisitorCove() {
         let shoreBackTap = UIButton(type: .system)
         shoreBackTap.translatesAutoresizingMaskIntoConstraints = false
-        shoreBackTap.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        shoreBackTap.setImage(UIImage(systemName: "axrxrxoxwx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
         shoreBackTap.tintColor = .suliInk
         shoreBackTap.addTarget(self, action: #selector(sailBack), for: .touchUpInside)
 
@@ -564,7 +564,7 @@ final class SuliJoyReefMutedVisitorCoveController: SuliJoyTropicCanvasController
 
         let avatarGlyph = UIImageView()
         avatarGlyph.translatesAutoresizingMaskIntoConstraints = false
-        avatarGlyph.suliJoyApplyPortrait(islandGuest.portraitAssetToken)
+        avatarGlyph.actionRow(islandGuest.portraitAssetToken)
         avatarGlyph.contentMode = .scaleAspectFill
         avatarGlyph.layer.cornerRadius = 24
         avatarGlyph.clipsToBounds = true

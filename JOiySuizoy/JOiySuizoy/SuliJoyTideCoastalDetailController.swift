@@ -77,29 +77,29 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
 
         let beachwearCapsule = UIButton(type: .system)
         beachwearCapsule.translatesAutoresizingMaskIntoConstraints = false
-        beachwearCapsule.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        beachwearCapsule.setImage(UIImage(systemName: "cxhxexvxrxoxnx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
         beachwearCapsule.tintColor = .white
         beachwearCapsule.addTarget(self, action: #selector(driftBackFromShoreDetail), for: .touchUpInside)
 
         shoreFlagControl.translatesAutoresizingMaskIntoConstraints = false
-        shoreFlagControl.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        shoreFlagControl.setImage(UIImage(systemName: "exlxlxixpxsxixsx".suliJoyPalmUnfurled), for: .normal)
         shoreFlagControl.tintColor = .white
-        shoreFlagControl.accessibilityLabel = "More"
+        shoreFlagControl.accessibilityLabel = "Mxoxrxex".suliJoyPalmUnfurled
         shoreFlagControl.addTarget(self, action: #selector(openShoreModerationMenu), for: .touchUpInside)
 
         shoreTitleGlyph.translatesAutoresizingMaskIntoConstraints = false
-        shoreTitleGlyph.font = UIFont(name: "SnellRoundhand-Bold", size: 36) ?? UIFont.italicSystemFont(ofSize: 34)
+        shoreTitleGlyph.font = UIFont(name: "SxnxexlxlxRxoxuxnxdxhxaxnxdx-xBxoxlxdx".suliJoyPalmUnfurled, size: 36) ?? UIFont.italicSystemFont(ofSize: 34)
         shoreTitleGlyph.textColor = .white
         shoreTitleGlyph.numberOfLines = 2
 
-        let hostFace = UIImageView()
-        hostFace.translatesAutoresizingMaskIntoConstraints = false
-        hostFace.tag = 410
-        hostFace.contentMode = .scaleAspectFill
-        hostFace.clipsToBounds = true
-        hostFace.layer.cornerRadius = 14
-        hostFace.layer.borderWidth = 1.5
-        hostFace.layer.borderColor = UIColor.white.cgColor
+        let islandPromptTitle = UIImageView()
+        islandPromptTitle.translatesAutoresizingMaskIntoConstraints = false
+        islandPromptTitle.tag = 410
+        islandPromptTitle.contentMode = .scaleAspectFill
+        islandPromptTitle.clipsToBounds = true
+        islandPromptTitle.layer.cornerRadius = 14
+        islandPromptTitle.layer.borderWidth = 1.5
+        islandPromptTitle.layer.borderColor = UIColor.white.cgColor
 
         shorePlaceGlyph.translatesAutoresizingMaskIntoConstraints = false
         shorePlaceGlyph.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
@@ -138,7 +138,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         shoreSuggestionCard.backgroundColor = .clear
         let relatedTitle = UILabel()
         relatedTitle.translatesAutoresizingMaskIntoConstraints = false
-        relatedTitle.text = "Latest Looks"
+        relatedTitle.text = "Lxaxtxexsxtx xLxoxoxkxsx".suliJoyPalmUnfurled
         relatedTitle.font = UIFont.systemFont(ofSize: 22, weight: .black)
         relatedTitle.textColor = .suliInk
         shoreSuggestionGrid.axis = .vertical
@@ -149,7 +149,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         shoreActionFooter.translatesAutoresizingMaskIntoConstraints = false
         shoreActionFooter.backgroundColor = .clear
         shorePrimaryControl.translatesAutoresizingMaskIntoConstraints = false
-        shorePrimaryControl.setTitle("Join Challenge", for: .normal)
+        shorePrimaryControl.setTitle("Jxoxixnx xCxhxaxlxlxexnxgxex".suliJoyPalmUnfurled, for: .normal)
         shorePrimaryControl.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .black)
         shorePrimaryControl.addTarget(self, action: #selector(runShorePrimaryAction), for: .touchUpInside)
         shoreActionFooter.addSubview(shorePrimaryControl)
@@ -165,7 +165,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         view.addSubview(shoreSpinner)
         shoreDetailScrollCanvas.addSubview(shoreDetailDeck)
         shoreHeroCarousel.addSubview(shoreHeroRibbon)
-        [shoreHeroCarousel, shoreTitleGlyph, hostFace, shorePlaceGlyph, shoreInfoCard, shoreSuggestionCard].forEach { shoreDetailDeck.addSubview($0) }
+        [shoreHeroCarousel, shoreTitleGlyph, islandPromptTitle, shorePlaceGlyph, shoreInfoCard, shoreSuggestionCard].forEach { shoreDetailDeck.addSubview($0) }
 
         NSLayoutConstraint.activate([
             shoreDetailScrollCanvas.topAnchor.constraint(equalTo: view.topAnchor),
@@ -201,14 +201,14 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             shoreInfoCard.leadingAnchor.constraint(equalTo: shoreDetailDeck.leadingAnchor, constant: 16),
             shoreInfoCard.trailingAnchor.constraint(equalTo: shoreDetailDeck.trailingAnchor, constant: -16),
             shorePlaceGlyph.bottomAnchor.constraint(equalTo: shoreInfoCard.topAnchor, constant: -14),
-            shorePlaceGlyph.leadingAnchor.constraint(equalTo: hostFace.trailingAnchor, constant: 8),
-            hostFace.leadingAnchor.constraint(equalTo: shoreInfoCard.leadingAnchor, constant: 8),
-            hostFace.centerYAnchor.constraint(equalTo: shorePlaceGlyph.centerYAnchor),
-            hostFace.widthAnchor.constraint(equalToConstant: 28),
-            hostFace.heightAnchor.constraint(equalToConstant: 28),
+            shorePlaceGlyph.leadingAnchor.constraint(equalTo: islandPromptTitle.trailingAnchor, constant: 8),
+            islandPromptTitle.leadingAnchor.constraint(equalTo: shoreInfoCard.leadingAnchor, constant: 8),
+            islandPromptTitle.centerYAnchor.constraint(equalTo: shorePlaceGlyph.centerYAnchor),
+            islandPromptTitle.widthAnchor.constraint(equalToConstant: 28),
+            islandPromptTitle.heightAnchor.constraint(equalToConstant: 28),
             shoreTitleGlyph.leadingAnchor.constraint(equalTo: shoreInfoCard.leadingAnchor, constant: 8),
             shoreTitleGlyph.trailingAnchor.constraint(equalTo: shoreInfoCard.trailingAnchor, constant: -8),
-            shoreTitleGlyph.bottomAnchor.constraint(equalTo: hostFace.topAnchor, constant: -6),
+            shoreTitleGlyph.bottomAnchor.constraint(equalTo: islandPromptTitle.topAnchor, constant: -6),
 
             shoreTimingGlyph.topAnchor.constraint(equalTo: shoreInfoCard.topAnchor, constant: 18),
             shoreTimingGlyph.leadingAnchor.constraint(equalTo: shoreInfoCard.leadingAnchor, constant: 18),
@@ -281,11 +281,11 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
     private func render(_ shorelineTideDetail: SuliJoyTideActivity) {
         renderShoreHeroCarousel(for: shorelineTideDetail)
         shoreTitleGlyph.text = shorelineTideDetail.tideTitleLine
-        let handle = shorelineTideDetail.shoreHostAlias.replacingOccurrences(of: " ", with: "").lowercased()
-        shorePlaceGlyph.text = "by @\(handle)"
-        let faceToken = shorelineTideDetail.shorelineAvatarTokens.first
-        (shoreDetailDeck.viewWithTag(410) as? UIImageView)?.suliJoyApplyPortrait(faceToken)
-        shoreTimingGlyph.text = "\(shorelineTideDetail.tideJoinedTotal) joined · \(suliJoyChallengeDaysLeft(shorelineTideDetail.shoreDayText))"
+        let reefPayload = shorelineTideDetail.shoreHostAlias.replacingOccurrences(of: " x".suliJoyPalmUnfurled, with: "").lowercased()
+        shorePlaceGlyph.text = "\("bxyx x@x".suliJoyPalmUnfurled)\(reefPayload)"
+        let coveSheet = shorelineTideDetail.shorelineAvatarTokens.first
+        (shoreDetailDeck.viewWithTag(410) as? UIImageView)?.actionRow(coveSheet)
+        shoreTimingGlyph.text = "\(shorelineTideDetail.tideJoinedTotal)\(" xjxoxixnxexdx x·x x".suliJoyPalmUnfurled)\(showHarborMenu(shorelineTideDetail.shoreDayText))"
         renderShoreState(shorelineTideDetail)
         renderShoreAvatars(shorelineTideDetail.shorelineAvatarTokens, reefNumber: shorelineTideDetail.tideJoinedTotal)
         renderShorePrimaryAction(shorelineTideDetail)
@@ -306,7 +306,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             shoreImageView.contentMode = .scaleAspectFill
             shoreImageView.clipsToBounds = true
             shoreImageView.backgroundColor = UIColor(red: 1, green: 0.84, blue: 0.58, alpha: 1)
-            shoreImageView.suliJoyApplyPhoto(heroAssetToken)
+            shoreImageView.shoreCell(heroAssetToken)
             shoreHeroRibbon.addArrangedSubview(shoreImageView)
             NSLayoutConstraint.activate([
                 shoreImageView.widthAnchor.constraint(equalTo: shoreHeroCarousel.frameLayoutGuide.widthAnchor),
@@ -329,46 +329,46 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
     }
 
     private func renderShoreState(_ shorelineTideDetail: SuliJoyTideActivity) {
-        let signal = suliJoyChallengeSignal(shorelineTideDetail)
-        shoreStateGlyph.text = "  Style Signal:\(signal)  "
+        let tapShoreReply = capSleeve(shorelineTideDetail)
+        shoreStateGlyph.text = "\(" x xSxtxyxlxex xSxixgxnxaxlx:x".suliJoyPalmUnfurled)\(tapShoreReply)\(" x x".suliJoyPalmUnfurled)"
         shoreStateGlyph.backgroundColor = .white
         shoreStateGlyph.textColor = UIColor(red: 1, green: 0.45, blue: 0.28, alpha: 1)
         shoreStateGlyph.layer.borderColor = UIColor(red: 1, green: 0.45, blue: 0.28, alpha: 1).cgColor
     }
 
-    private func suliJoyChallengeSignal(_ shorelineTideDetail: SuliJoyTideActivity) -> String {
-        let brief = shorelineTideDetail.shoreBriefLine
-        if let range = brief.range(of: "Style Signal:") {
-            let rest = brief[range.upperBound...]
-            let token = rest.split(whereSeparator: { $0 == "·" || $0 == "\n" }).first
+    private func capSleeve(_ shorelineTideDetail: SuliJoyTideActivity) -> String {
+        let reefGuest = shorelineTideDetail.shoreBriefLine
+        if let range = reefGuest.range(of: "Sxtxyxlxex xSxixgxnxaxlx:x".suliJoyPalmUnfurled) {
+            let islandDefaultsVault = reefGuest[range.upperBound...]
+            let token = islandDefaultsVault.split(whereSeparator: { $0 == Character("·x".suliJoyPalmUnfurled) || $0 == Character("\nx".suliJoyPalmUnfurled) }).first
             let name = token.map { String($0).trimmingCharacters(in: .whitespacesAndNewlines) } ?? ""
             if !name.isEmpty { return name }
         }
-        let title = shorelineTideDetail.tideTitleLine.lowercased()
-        if title.contains("white") { return "White" }
-        if title.contains("blue") { return "Blue" }
-        if title.contains("gold") || title.contains("resort") { return "Resort" }
-        if title.contains("print") || title.contains("floral") { return "Floral" }
-        if title.contains("linen") { return "Linen" }
-        return "Blue"
+        let lagoonSeatMarkbighB = shorelineTideDetail.tideTitleLine.lowercased()
+        if lagoonSeatMarkbighB.contains("wxhxixtxex".suliJoyPalmUnfurled) { return "Wxhxixtxex".suliJoyPalmUnfurled }
+        if lagoonSeatMarkbighB.contains("bxlxuxex".suliJoyPalmUnfurled) { return "Bxlxuxex".suliJoyPalmUnfurled }
+        if lagoonSeatMarkbighB.contains("gxoxlxdx".suliJoyPalmUnfurled) || lagoonSeatMarkbighB.contains("rxexsxoxrxtx".suliJoyPalmUnfurled) { return "Rxexsxoxrxtx".suliJoyPalmUnfurled }
+        if lagoonSeatMarkbighB.contains("pxrxixnxtx".suliJoyPalmUnfurled) || lagoonSeatMarkbighB.contains("fxlxoxrxaxlx".suliJoyPalmUnfurled) { return "Fxlxoxrxaxlx".suliJoyPalmUnfurled }
+        if lagoonSeatMarkbighB.contains("lxixnxexnx".suliJoyPalmUnfurled) { return "Lxixnxexnx".suliJoyPalmUnfurled }
+        return "Bxlxuxex".suliJoyPalmUnfurled
     }
 
-    private func suliJoyChallengeDaysLeft(_ dayText: String) -> String {
-        let parts = dayText.split(separator: "/").compactMap { Int($0) }
-        guard parts.count >= 2 else { return "3 days left" }
-        let calendar = Calendar.current
-        var partsDate = calendar.dateComponents([.year], from: Date())
-        partsDate.month = parts[0]
-        partsDate.day = parts[1]
-        guard var date = calendar.date(from: partsDate) else { return "3 days left" }
-        let today = calendar.startOfDay(for: Date())
-        if date < today {
-            partsDate.year = (partsDate.year ?? 2026) + 1
-            date = calendar.date(from: partsDate) ?? date
+    private func showHarborMenu(_ makeShoreBioShell: String) -> String {
+        let SuliJoyTideCoverSlotControl = makeShoreBioShell.split(separator: Character("/x".suliJoyPalmUnfurled)).compactMap { Int($0) }
+        guard SuliJoyTideCoverSlotControl.count >= 2 else { return "3x xdxaxyxsx xlxexfxtx".suliJoyPalmUnfurled }
+        let openReefCommentModeration = Calendar.current
+        var imageWaveDurationGlyph = openReefCommentModeration.dateComponents([.year], from: Date())
+        imageWaveDurationGlyph.month = SuliJoyTideCoverSlotControl[0]
+        imageWaveDurationGlyph.day = SuliJoyTideCoverSlotControl[1]
+        guard var date = openReefCommentModeration.date(from: imageWaveDurationGlyph) else { return "3x xdxaxyxsx xlxexfxtx".suliJoyPalmUnfurled }
+        let corner = openReefCommentModeration.startOfDay(for: Date())
+        if date < corner {
+            imageWaveDurationGlyph.year = (imageWaveDurationGlyph.year ?? 2026) + 1
+            date = openReefCommentModeration.date(from: imageWaveDurationGlyph) ?? date
         }
-        let days = calendar.dateComponents([.day], from: today, to: calendar.startOfDay(for: date)).day ?? 0
-        if days <= 0 { return "ends today" }
-        return days == 1 ? "1 day left" : "\(days) days left"
+        let tapCreatorDrift = openReefCommentModeration.dateComponents([.day], from: corner, to: openReefCommentModeration.startOfDay(for: date)).day ?? 0
+        if tapCreatorDrift <= 0 { return "exnxdxsx xtxoxdxaxyx".suliJoyPalmUnfurled }
+        return tapCreatorDrift == 1 ? "1x xdxaxyx xlxexfxtx".suliJoyPalmUnfurled : "\(tapCreatorDrift)\(" xdxaxyxsx xlxexfxtx".suliJoyPalmUnfurled)"
     }
 
     private func renderShoreAvatars(_ assets: [String], reefNumber: Int) {
@@ -376,7 +376,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         let heroAssetTokens = Array(assets.prefix(min(6, max(0, reefNumber))))
         for asset in heroAssetTokens {
             let shoreImageView = UIImageView()
-            shoreImageView.suliJoyApplyPortrait(asset)
+            shoreImageView.actionRow(asset)
             shoreImageView.translatesAutoresizingMaskIntoConstraints = false
             shoreImageView.contentMode = .scaleAspectFill
             shoreImageView.clipsToBounds = true
@@ -388,18 +388,18 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             shoreImageView.heightAnchor.constraint(equalToConstant: 28).isActive = true
         }
         let page = max(0, reefNumber - heroAssetTokens.count)
-        shoreCrewCountGlyph.text = "+\(page)"
+        shoreCrewCountGlyph.text = "\("+x".suliJoyPalmUnfurled)\(page)"
         shoreCrewCountGlyph.isHidden = page == 0
     }
 
     private func renderShorePrimaryAction(_ shorelineTideDetail: SuliJoyTideActivity) {
         switch shorelineTideDetail.tideState {
         case .tideOpen:
-            shorePrimaryControl.setTitle("Join Challenge", for: .normal)
+            shorePrimaryControl.setTitle("Jxoxixnx xCxhxaxlxlxexnxgxex".suliJoyPalmUnfurled, for: .normal)
             shorePrimaryControl.isEnabled = true
             shorePrimaryControl.alpha = 1
         case .tideJoined:
-            shorePrimaryControl.setTitle("Joined", for: .normal)
+            shorePrimaryControl.setTitle("Jxoxixnxexdx".suliJoyPalmUnfurled, for: .normal)
             shorePrimaryControl.isEnabled = true
             shorePrimaryControl.alpha = 1
         case .tideClosed:
@@ -442,13 +442,13 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         guard let shorelineTideDetail else { return }
         switch shorelineTideDetail.tideState {
         case .tideOpen:
-            let shareLook = SuliJoyChallengeShareLookController(challengeTideMark: shorelineTideDetail.tideMark)
-            shareLook.onChallengeJoined = { [weak self] joinedTideSnapshot in
+            let refreshWaveOverlay = dateTimeStack(discover: shorelineTideDetail.tideMark)
+            refreshWaveOverlay.lagoonNameText = { [weak self] joinedTideSnapshot in
                 guard let self else { return }
                 self.shorelineTideDetail = joinedTideSnapshot
                 self.render(joinedTideSnapshot)
             }
-            navigationController?.pushViewController(shareLook, animated: true)
+            navigationController?.pushViewController(refreshWaveOverlay, animated: true)
         case .tideJoined:
             let shorelineTalkController = SuliJoyTideTalkSpaceViewController(shorelineTideDetail: shorelineTideDetail)
             navigationController?.pushViewController(shorelineTalkController, animated: true)
@@ -469,7 +469,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             }
         } block: { [weak self] in
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: shorelineTideDetail.shoreHostAlias)
-            SuliJoyLagoonProfileRemoteService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
+            suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.navigationController?.popViewController(animated: true)
@@ -511,7 +511,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         harborEntryControl.translatesAutoresizingMaskIntoConstraints = false
         var harborEntryConfiguration = UIButton.Configuration.plain()
         harborEntryConfiguration.title = harborEntryControl.title(for: .normal)
-        harborEntryConfiguration.image = UIImage(named: "sulijoy_shell_" + "co" + "in_gem")?.withRenderingMode(.alwaysOriginal)
+        harborEntryConfiguration.image = UIImage(named: "sxuxlxixjxoxyx_xsxhxexlxlx_x".suliJoyPalmUnfurled + "cxox".suliJoyPalmUnfurled + "ixnx_xgxexmx".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal)
         harborEntryConfiguration.imagePadding = 10
         harborEntryConfiguration.baseForegroundColor = .suliInk
         harborEntryConfiguration.contentInsets = .zero
@@ -623,7 +623,7 @@ private final class SuliJoyCoastalSuggestionCard: UIControl {
         shoreStateGlyph.translatesAutoresizingMaskIntoConstraints = false
         shoreStateGlyph.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         shoreStateGlyph.textColor = .white
-        shoreStateGlyph.text = "•••"
+        shoreStateGlyph.text = "•x•x•x".suliJoyPalmUnfurled
         shoreStateGlyph.textAlignment = .right
 
         shoreDateGlyph.translatesAutoresizingMaskIntoConstraints = false
@@ -651,13 +651,13 @@ private final class SuliJoyCoastalSuggestionCard: UIControl {
     }
 
     private func render(_ shorelineTideDetail: SuliJoyTideActivity) {
-        shoreImageView.suliJoyApplyPhoto(shorelineTideDetail.reefGallery.first?.reefAssetToken ?? shorelineTideDetail.tideFallbackHeroToken)
-        let place = shorelineTideDetail.shoreSpotLine.split(separator: " ").first.map(String.init) ?? shorelineTideDetail.shoreHostAlias
-        shoreTitleGlyph.text = place.count > 16 ? shorelineTideDetail.shoreHostAlias : place
-        shoreDateGlyph.text = "♡  \(shorelineTideDetail.tideJoinedTotal)"
+        shoreImageView.shoreCell(shorelineTideDetail.reefGallery.first?.reefAssetToken ?? shorelineTideDetail.tideFallbackHeroToken)
+        let persistPublishedShoreScroll = shorelineTideDetail.shoreSpotLine.split(separator: Character(" x".suliJoyPalmUnfurled)).first.map(String.init) ?? shorelineTideDetail.shoreHostAlias
+        shoreTitleGlyph.text = persistPublishedShoreScroll.count > 16 ? shorelineTideDetail.shoreHostAlias : persistPublishedShoreScroll
+        shoreDateGlyph.text = "\("♡x x x".suliJoyPalmUnfurled)\(shorelineTideDetail.tideJoinedTotal)"
         shoreAvatarRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
         let shoreAvatarView = UIImageView()
-        shoreAvatarView.suliJoyApplyPortrait(shorelineTideDetail.shorelineAvatarTokens.first)
+        shoreAvatarView.actionRow(shorelineTideDetail.shorelineAvatarTokens.first)
         shoreAvatarView.translatesAutoresizingMaskIntoConstraints = false
         shoreAvatarView.contentMode = .scaleAspectFill
         shoreAvatarView.clipsToBounds = true
@@ -721,7 +721,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
 
     private func raiseShorelineDetailScene() {
         harborBackdropImage.translatesAutoresizingMaskIntoConstraints = false
-        harborBackdropImage.image = UIImage(named: "sulijoy_tide_room_sunset_bg") ?? UIImage.suliJoyPhoto(named: shorelineTideDetail.reefGallery.first?.reefAssetToken)
+        harborBackdropImage.image = UIImage(named: "sxuxlxixjxoxyx_xtxixdxex_xrxoxoxmx_xsxuxnxsxextx_xbxgx".suliJoyPalmUnfurled) ?? UIImage.gemSize(named: shorelineTideDetail.reefGallery.first?.reefAssetToken)
         harborBackdropImage.contentMode = .scaleAspectFill
         harborBackdropImage.clipsToBounds = true
 
@@ -746,14 +746,14 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
         harborParticipantRail.spacing = -8
 
         harborMoreControl.translatesAutoresizingMaskIntoConstraints = false
-        harborMoreControl.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        harborMoreControl.setImage(UIImage(systemName: "exlxlxixpxsxixsx".suliJoyPalmUnfurled), for: .normal)
         harborMoreControl.tintColor = .white
         harborMoreControl.backgroundColor = UIColor.white.withAlphaComponent(0.18)
         harborMoreControl.layer.cornerRadius = 15
         harborMoreControl.addTarget(self, action: #selector(openHarborMore), for: .touchUpInside)
 
         harborCloseControl.translatesAutoresizingMaskIntoConstraints = false
-        harborCloseControl.setImage(UIImage(named: "sulijoy_tide_room_close_mark"), for: .normal)
+        harborCloseControl.setImage(UIImage(named: "sxuxlxixjxoxyx_xtxixdxex_xrxoxoxmx_xcxlxoxsxex_xmxaxrxkx".suliJoyPalmUnfurled), for: .normal)
         harborCloseControl.imageView?.contentMode = .scaleAspectFit
         harborCloseControl.addTarget(self, action: #selector(confirmHarborLeave), for: .touchUpInside)
 
@@ -787,7 +787,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
 
         let emojiButton = UIButton(type: .system)
         emojiButton.translatesAutoresizingMaskIntoConstraints = false
-        emojiButton.setImage(UIImage(systemName: "face.smiling"), for: .normal)
+        emojiButton.setImage(UIImage(systemName: "fxaxcxex.xsxmxixlxixnxgx".suliJoyPalmUnfurled), for: .normal)
         emojiButton.tintColor = UIColor.white.withAlphaComponent(0.86)
 
         shoreNoteField.translatesAutoresizingMaskIntoConstraints = false
@@ -797,12 +797,12 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
         shoreNoteField.delegate = self
         shoreNoteField.returnKeyType = .send
         shoreNoteField.attributedPlaceholder = NSAttributedString(
-            string: "Say hi~",
+            string: "Sxaxyx xhxix~x".suliJoyPalmUnfurled,
             attributes: [.foregroundColor: UIColor.white.withAlphaComponent(0.56)]
         )
 
         shoreSendControl.translatesAutoresizingMaskIntoConstraints = false
-        shoreSendControl.setImage(UIImage(named: "sulijoy_feed_send_mark"), for: .normal)
+        shoreSendControl.setImage(UIImage(named: "sxuxlxixjxoxyx_xfxexexdx_xsxexnxdx_xmxaxrxkx".suliJoyPalmUnfurled), for: .normal)
         shoreSendControl.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.23, alpha: 1)
         shoreSendControl.layer.cornerRadius = 17.5
         shoreSendControl.imageView?.contentMode = .scaleAspectFit
@@ -930,7 +930,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
         harborParticipantRail.arrangedSubviews.forEach { $0.removeFromSuperview() }
         for participantAsset in participantAssets.prefix(3) {
             let shoreAvatarView = UIImageView()
-            shoreAvatarView.suliJoyApplyPortrait(participantAsset)
+            shoreAvatarView.actionRow(participantAsset)
             shoreAvatarView.translatesAutoresizingMaskIntoConstraints = false
             shoreAvatarView.contentMode = .scaleAspectFill
             shoreAvatarView.clipsToBounds = true
@@ -984,7 +984,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
                 self.showLagoonToast("SHeuaete ajiocimnhecdU.h".suliJoyPalmUnfurled)
             }
         } else {
-            showLagoonToast("\(seat.seatAliasLine) is on the seat.")
+            showLagoonToast("\(seat.seatAliasLine)\(" xixsx xoxnx xtxhxex xsxexaxtx.x".suliJoyPalmUnfurled)")
         }
     }
 
@@ -1021,7 +1021,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
         } block: { [weak self] in
             guard let self else { return }
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: self.shorelineTideDetail.shoreHostAlias)
-            SuliJoyLagoonProfileRemoteService.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { result in
+            suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { result in
                 self.showLagoonToast(result.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self.navigationController?.popViewController(animated: true)
@@ -1035,11 +1035,11 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
 
     private func showHarborLeaveDialog() {
         presentHarborNoticeDialog(
-            badgeName: "sulijoy_tide_room_exit_badge",
+            badgeName: "sxuxlxixjxoxyx_xtxixdxex_xrxoxoxmx_xexxxixtx_xbxaxdxgxex".suliJoyPalmUnfurled,
             reefHeadline: nil,
-            shoreNotice: "Do you want to close the room?",
-            primaryTitle: "Cancel",
-            secondaryTitle: "Close",
+            shoreNotice: "Dxox xyxoxux xwxaxnxtx xtxox xcxlxoxsxex xtxhxex xrxoxoxmx?x".suliJoyPalmUnfurled,
+            primaryTitle: "Cxaxnxcxexlx".suliJoyPalmUnfurled,
+            secondaryTitle: "Cxlxoxsxex".suliJoyPalmUnfurled,
             runShorePrimaryAction: nil,
             secondaryAction: { [weak self] in
                 self?.navigationController?.popViewController(animated: true)
@@ -1230,7 +1230,7 @@ private final class SuliJoyLagoonSeatShellControl: UIControl {
         seatAvatarView.backgroundColor = UIColor.white.withAlphaComponent(0.16)
 
         seatMarkView.translatesAutoresizingMaskIntoConstraints = false
-        seatMarkView.image = UIImage(systemName: "mic")
+        seatMarkView.image = UIImage(systemName: "mxixcx".suliJoyPalmUnfurled)
         seatMarkView.tintColor = .white
         seatMarkView.contentMode = .scaleAspectFit
 
@@ -1282,7 +1282,7 @@ private final class SuliJoyLagoonSeatShellControl: UIControl {
             seatAvatarView.backgroundColor = UIColor.black.withAlphaComponent(0.22)
             seatNameGlyph.textColor = UIColor.white.withAlphaComponent(0.86)
         } else {
-            seatAvatarView.suliJoyApplyPortrait(seat.seatAvatarToken)
+            seatAvatarView.actionRow(seat.seatAvatarToken)
             seatMarkView.isHidden = true
             seatAvatarView.backgroundColor = UIColor.white.withAlphaComponent(0.16)
             seatNameGlyph.textColor = .white
@@ -1291,7 +1291,7 @@ private final class SuliJoyLagoonSeatShellControl: UIControl {
 }
 
 private final class SuliJoyShoreNoteBubbleCell: UITableViewCell {
-    static let shoreReuseKey = "SuliJoyShoreNoteBubbleCell"
+    static let shoreReuseKey = "SxuxlxixJxoxyxSxhxoxrxexNxoxtxexBxuxbxbxlxexCxexlxlx".suliJoyPalmUnfurled
     private let shoreAvatarView = UIImageView()
     private let seatNameGlyph = UILabel()
     private let bubbleTextGlyph = UILabel()
@@ -1357,7 +1357,7 @@ private final class SuliJoyShoreNoteBubbleCell: UITableViewCell {
     }
 
     func render(_ bubble: SuliJoyShoreBubble) {
-        shoreAvatarView.suliJoyApplyPortrait(bubble.avatarAssetName)
+        shoreAvatarView.actionRow(bubble.avatarAssetName)
         seatNameGlyph.text = bubble.senderName
         bubbleTextGlyph.text = bubble.text
         bubbleShellView.backgroundColor = bubble.isMine ? UIColor(red: 0.84, green: 1, blue: 0.76, alpha: 1) : .white

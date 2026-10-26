@@ -1,49 +1,49 @@
 import UIKit
 
-final class SuliJoyChallengeShareLookController: SuliJoyTropicCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-    private enum ShareLookMeasure {
+final class dateTimeStack: SuliJoyTropicCanvasController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+    private enum login {
         static let pageSide: CGFloat = 20
-        static let navTop: CGFloat = 8
-        static let navHeight: CGFloat = 44
-        static let photoTop: CGFloat = 16
-        static let photoCorner: CGFloat = 28
-        static let photoAspect: CGFloat = 1.12
-        static let captionTitleTop: CGFloat = 24
-        static let captionFieldTop: CGFloat = 10
-        static let captionFieldHeight: CGFloat = 56
-        static let captionFieldCorner: CGFloat = 12
-        static let shareBottom: CGFloat = 30
-        static let shareHeight: CGFloat = 56
+        static let pearlBadgeShell: CGFloat = 8
+        static let toggleShoreMomentAudio: CGFloat = 44
+        static let presentReefPhotoChoice: CGFloat = 16
+        static let shoreReplyCountLabel: CGFloat = 28
+        static let shoreTap: CGFloat = 1.12
+        static let followWidth: CGFloat = 24
+        static let reefFrameHarvester: CGFloat = 10
+        static let makeShoreFeedScene: CGFloat = 56
+        static let bodyGlyph: CGFloat = 12
+        static let reefBackShell: CGFloat = 30
+        static let reefAssetName: CGFloat = 56
     }
 
-    var onChallengeJoined: ((SuliJoyTideActivity) -> Void)?
+    var lagoonNameText: ((SuliJoyTideActivity) -> Void)?
 
-    private let challengeTideMark: String
+    private let discover: String
     private let shoreScroll = UIScrollView()
-    private let reefDeck = UIView()
-    private let photoCard = UIControl()
-    private let photoPreview = UIImageView()
-    private let editPhotoPill = UIControl()
-    private let captionTitle = UILabel()
-    private let captionField = UITextField()
-    private let shareLookButton = SuliJoyGradientButton(reefHeadline: "Share Look", reefHeight: ShareLookMeasure.shareHeight)
-    private var pickedPhoto: UIImage?
-    private var reefMediaPick: SuliJoyReefLocalMediaPick?
+    private let driftwoodPalette = UIView()
+    private let desuliJoyPalmMatcherlete = UIControl()
+    private let bioSide = UIImageView()
+    private let pinMistVeil = UIControl()
+    private let reefMediaPicks = UILabel()
+    private let logoWidth = UITextField()
+    private let raglanEase = SuliJoyGradientButton(reefHeadline: "Sxhxaxrxex xLxoxoxkx".suliJoyPalmUnfurled, reefHeight: login.reefAssetName)
+    private var suliJoyShorelineStore: UIImage?
+    private var reefInputBar: SuliJoyReefLocalMediaPick?
 
-    init(challengeTideMark: String) {
-        self.challengeTideMark = challengeTideMark
+    init(discover: String) {
+        self.discover = discover
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("ixnxixtx(xcxoxdxexrx:x)x xhxaxsx xnxoxtx xbxexexnx xixmxpxlxexmxexnxtxexdx".suliJoyPalmUnfurled)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        raiseShareLookScene()
-        registerShareLookKeyboardObservers()
+        pauseWaveRecording()
+        toggleFollow()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -55,245 +55,245 @@ final class SuliJoyChallengeShareLookController: SuliJoyTropicCanvasController, 
         NotificationCenter.default.removeObserver(self)
     }
 
-    private func raiseShareLookScene() {
+    private func pauseWaveRecording() {
         shoreScroll.translatesAutoresizingMaskIntoConstraints = false
         shoreScroll.showsVerticalScrollIndicator = false
         shoreScroll.keyboardDismissMode = .interactive
         shoreScroll.backgroundColor = .clear
-        reefDeck.translatesAutoresizingMaskIntoConstraints = false
-        reefDeck.backgroundColor = .clear
+        driftwoodPalette.translatesAutoresizingMaskIntoConstraints = false
+        driftwoodPalette.backgroundColor = .clear
 
-        let back = UIButton(type: .system)
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.setImage(UIImage(systemName: "chevron.left", withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .bold)), for: .normal)
-        back.tintColor = .suliInk
-        back.addTarget(self, action: #selector(driftBackFromShareLook), for: .touchUpInside)
+        let presentShorePortraitPicker = UIButton(type: .system)
+        presentShorePortraitPicker.translatesAutoresizingMaskIntoConstraints = false
+        presentShorePortraitPicker.setImage(UIImage(systemName: "cxhxexvxrxoxnx.xlxexfxtx".suliJoyPalmUnfurled, withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .bold)), for: .normal)
+        presentShorePortraitPicker.tintColor = .suliInk
+        presentShorePortraitPicker.addTarget(self, action: #selector(avatarShellTop), for: .touchUpInside)
 
-        let title = UILabel()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.text = "Share Your Look"
-        title.font = UIFont.systemFont(ofSize: 18, weight: .black)
-        title.textColor = .suliInk
-        title.textAlignment = .center
+        let pinwhoMistVeil = UILabel()
+        pinwhoMistVeil.translatesAutoresizingMaskIntoConstraints = false
+        pinwhoMistVeil.text = "Sxhxaxrxex xYxoxuxrx xLxoxoxkx".suliJoyPalmUnfurled
+        pinwhoMistVeil.font = UIFont.systemFont(ofSize: 18, weight: .black)
+        pinwhoMistVeil.textColor = .suliInk
+        pinwhoMistVeil.textAlignment = .center
 
-        photoCard.translatesAutoresizingMaskIntoConstraints = false
-        photoCard.backgroundColor = UIColor(red: 0.98, green: 0.86, blue: 0.62, alpha: 1)
-        photoCard.layer.cornerRadius = ShareLookMeasure.photoCorner
-        photoCard.clipsToBounds = true
-        photoCard.addTarget(self, action: #selector(openPhotoPicker), for: .touchUpInside)
+        desuliJoyPalmMatcherlete.translatesAutoresizingMaskIntoConstraints = false
+        desuliJoyPalmMatcherlete.backgroundColor = UIColor(red: 0.98, green: 0.86, blue: 0.62, alpha: 1)
+        desuliJoyPalmMatcherlete.layer.cornerRadius = login.shoreReplyCountLabel
+        desuliJoyPalmMatcherlete.clipsToBounds = true
+        desuliJoyPalmMatcherlete.addTarget(self, action: #selector(addShoreReportContent), for: .touchUpInside)
 
-        photoPreview.translatesAutoresizingMaskIntoConstraints = false
-        photoPreview.contentMode = .scaleAspectFill
-        photoPreview.clipsToBounds = true
-        photoPreview.image = SuliJoyImagePlaceholder.photo
+        bioSide.translatesAutoresizingMaskIntoConstraints = false
+        bioSide.contentMode = .scaleAspectFill
+        bioSide.clipsToBounds = true
+        bioSide.image = esuliJoyPalmGuidemail.guestAvatarView
 
-        editPhotoPill.translatesAutoresizingMaskIntoConstraints = false
-        editPhotoPill.backgroundColor = UIColor.black.withAlphaComponent(0.55)
-        editPhotoPill.layer.cornerRadius = 20
-        editPhotoPill.layer.borderWidth = 1
-        editPhotoPill.layer.borderColor = UIColor.white.withAlphaComponent(0.85).cgColor
-        editPhotoPill.addTarget(self, action: #selector(openPhotoPicker), for: .touchUpInside)
+        pinMistVeil.translatesAutoresizingMaskIntoConstraints = false
+        pinMistVeil.backgroundColor = UIColor.black.withAlphaComponent(0.55)
+        pinMistVeil.layer.cornerRadius = 20
+        pinMistVeil.layer.borderWidth = 1
+        pinMistVeil.layer.borderColor = UIColor.white.withAlphaComponent(0.85).cgColor
+        pinMistVeil.addTarget(self, action: #selector(addShoreReportContent), for: .touchUpInside)
 
-        let cameraGlyph = UIImageView(image: UIImage(systemName: "camera.fill"))
-        cameraGlyph.translatesAutoresizingMaskIntoConstraints = false
-        cameraGlyph.tintColor = .white
-        cameraGlyph.contentMode = .scaleAspectFit
-        let editLabel = UILabel()
-        editLabel.translatesAutoresizingMaskIntoConstraints = false
-        editLabel.text = "Edit Photo"
-        editLabel.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        editLabel.textColor = .white
-        editPhotoPill.addSubview(cameraGlyph)
-        editPhotoPill.addSubview(editLabel)
+        let buttonHeight = UIImageView(image: UIImage(systemName: "cxaxmxexrxax.xfxixlxlx".suliJoyPalmUnfurled))
+        buttonHeight.translatesAutoresizingMaskIntoConstraints = false
+        buttonHeight.tintColor = .white
+        buttonHeight.contentMode = .scaleAspectFit
+        let secondaryAction = UILabel()
+        secondaryAction.translatesAutoresizingMaskIntoConstraints = false
+        secondaryAction.text = "Exdxixtx xPxhxoxtxox".suliJoyPalmUnfurled
+        secondaryAction.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        secondaryAction.textColor = .white
+        pinMistVeil.addSubview(buttonHeight)
+        pinMistVeil.addSubview(secondaryAction)
 
-        captionTitle.translatesAutoresizingMaskIntoConstraints = false
-        captionTitle.text = "Write a caption"
-        captionTitle.font = UIFont.systemFont(ofSize: 18, weight: .black)
-        captionTitle.textColor = .suliInk
+        reefMediaPicks.translatesAutoresizingMaskIntoConstraints = false
+        reefMediaPicks.text = "Wxrxixtxex xax xcxaxpxtxixoxnx".suliJoyPalmUnfurled
+        reefMediaPicks.font = UIFont.systemFont(ofSize: 18, weight: .black)
+        reefMediaPicks.textColor = .suliInk
 
-        captionField.translatesAutoresizingMaskIntoConstraints = false
-        captionField.placeholder = "Blue skies, island vibes"
-        captionField.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        captionField.textColor = .suliInk
-        captionField.backgroundColor = .white
-        captionField.layer.cornerRadius = ShareLookMeasure.captionFieldCorner
-        captionField.delegate = self
-        captionField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
-        captionField.leftViewMode = .always
-        captionField.attributedPlaceholder = NSAttributedString(
-            string: "Blue skies, island vibes",
+        logoWidth.translatesAutoresizingMaskIntoConstraints = false
+        logoWidth.placeholder = "Bxlxuxex xsxkxixexsx,x xixsxlxaxnxdx xvxixbxexsx".suliJoyPalmUnfurled
+        logoWidth.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        logoWidth.textColor = .suliInk
+        logoWidth.backgroundColor = .white
+        logoWidth.layer.cornerRadius = login.bodyGlyph
+        logoWidth.delegate = self
+        logoWidth.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: 1))
+        logoWidth.leftViewMode = .always
+        logoWidth.attributedPlaceholder = NSAttributedString(
+            string: "Bxlxuxex xsxkxixexsx,x xixsxlxaxnxdx xvxixbxexsx".suliJoyPalmUnfurled,
             attributes: [
                 .foregroundColor: UIColor(red: 0.74, green: 0.74, blue: 0.74, alpha: 1),
                 .font: UIFont.systemFont(ofSize: 16, weight: .regular)
             ]
         )
 
-        shareLookButton.translatesAutoresizingMaskIntoConstraints = false
-        shareLookButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .black)
-        shareLookButton.addTarget(self, action: #selector(shareLookForChallenge), for: .touchUpInside)
+        raglanEase.translatesAutoresizingMaskIntoConstraints = false
+        raglanEase.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .black)
+        raglanEase.addTarget(self, action: #selector(relatedTideMarks), for: .touchUpInside)
 
         view.addSubview(shoreScroll)
-        view.addSubview(shareLookButton)
-        shoreScroll.addSubview(reefDeck)
-        reefDeck.addSubview(back)
-        reefDeck.addSubview(title)
-        reefDeck.addSubview(photoCard)
-        photoCard.addSubview(photoPreview)
-        photoCard.addSubview(editPhotoPill)
+        view.addSubview(raglanEase)
+        shoreScroll.addSubview(driftwoodPalette)
+        driftwoodPalette.addSubview(presentShorePortraitPicker)
+        driftwoodPalette.addSubview(pinwhoMistVeil)
+        driftwoodPalette.addSubview(desuliJoyPalmMatcherlete)
+        desuliJoyPalmMatcherlete.addSubview(bioSide)
+        desuliJoyPalmMatcherlete.addSubview(pinMistVeil)
 
         NSLayoutConstraint.activate([
-            shareLookButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ShareLookMeasure.pageSide),
-            shareLookButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ShareLookMeasure.pageSide),
-            shareLookButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -ShareLookMeasure.shareBottom),
+            raglanEase.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: login.pageSide),
+            raglanEase.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -login.pageSide),
+            raglanEase.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -login.reefBackShell),
 
             shoreScroll.topAnchor.constraint(equalTo: view.topAnchor),
             shoreScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             shoreScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            shoreScroll.bottomAnchor.constraint(equalTo: shareLookButton.topAnchor, constant: -12),
+            shoreScroll.bottomAnchor.constraint(equalTo: raglanEase.topAnchor, constant: -12),
 
-            reefDeck.topAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.topAnchor),
-            reefDeck.leadingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.leadingAnchor),
-            reefDeck.trailingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.trailingAnchor),
-            reefDeck.bottomAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.bottomAnchor),
-            reefDeck.widthAnchor.constraint(equalTo: shoreScroll.frameLayoutGuide.widthAnchor),
+            driftwoodPalette.topAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.topAnchor),
+            driftwoodPalette.leadingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.leadingAnchor),
+            driftwoodPalette.trailingAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.trailingAnchor),
+            driftwoodPalette.bottomAnchor.constraint(equalTo: shoreScroll.contentLayoutGuide.bottomAnchor),
+            driftwoodPalette.widthAnchor.constraint(equalTo: shoreScroll.frameLayoutGuide.widthAnchor),
 
-            back.topAnchor.constraint(equalTo: reefDeck.safeAreaLayoutGuide.topAnchor, constant: ShareLookMeasure.navTop),
-            back.leadingAnchor.constraint(equalTo: reefDeck.leadingAnchor, constant: ShareLookMeasure.pageSide),
-            back.widthAnchor.constraint(equalToConstant: ShareLookMeasure.navHeight),
-            back.heightAnchor.constraint(equalToConstant: ShareLookMeasure.navHeight),
+            presentShorePortraitPicker.topAnchor.constraint(equalTo: driftwoodPalette.safeAreaLayoutGuide.topAnchor, constant: login.pearlBadgeShell),
+            presentShorePortraitPicker.leadingAnchor.constraint(equalTo: driftwoodPalette.leadingAnchor, constant: login.pageSide),
+            presentShorePortraitPicker.widthAnchor.constraint(equalToConstant: login.toggleShoreMomentAudio),
+            presentShorePortraitPicker.heightAnchor.constraint(equalToConstant: login.toggleShoreMomentAudio),
 
-            title.centerYAnchor.constraint(equalTo: back.centerYAnchor),
-            title.centerXAnchor.constraint(equalTo: reefDeck.centerXAnchor),
-            title.leadingAnchor.constraint(greaterThanOrEqualTo: back.trailingAnchor, constant: 8),
+            pinwhoMistVeil.centerYAnchor.constraint(equalTo: presentShorePortraitPicker.centerYAnchor),
+            pinwhoMistVeil.centerXAnchor.constraint(equalTo: driftwoodPalette.centerXAnchor),
+            pinwhoMistVeil.leadingAnchor.constraint(greaterThanOrEqualTo: presentShorePortraitPicker.trailingAnchor, constant: 8),
 
-            photoCard.topAnchor.constraint(equalTo: back.bottomAnchor, constant: ShareLookMeasure.photoTop),
-            photoCard.leadingAnchor.constraint(equalTo: reefDeck.leadingAnchor, constant: ShareLookMeasure.pageSide),
-            photoCard.trailingAnchor.constraint(equalTo: reefDeck.trailingAnchor, constant: -ShareLookMeasure.pageSide),
-            photoCard.heightAnchor.constraint(equalTo: photoCard.widthAnchor, multiplier: ShareLookMeasure.photoAspect),
+            desuliJoyPalmMatcherlete.topAnchor.constraint(equalTo: presentShorePortraitPicker.bottomAnchor, constant: login.presentReefPhotoChoice),
+            desuliJoyPalmMatcherlete.leadingAnchor.constraint(equalTo: driftwoodPalette.leadingAnchor, constant: login.pageSide),
+            desuliJoyPalmMatcherlete.trailingAnchor.constraint(equalTo: driftwoodPalette.trailingAnchor, constant: -login.pageSide),
+            desuliJoyPalmMatcherlete.heightAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.widthAnchor, multiplier: login.shoreTap),
 
-            photoPreview.topAnchor.constraint(equalTo: photoCard.topAnchor),
-            photoPreview.leadingAnchor.constraint(equalTo: photoCard.leadingAnchor),
-            photoPreview.trailingAnchor.constraint(equalTo: photoCard.trailingAnchor),
-            photoPreview.bottomAnchor.constraint(equalTo: photoCard.bottomAnchor),
+            bioSide.topAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.topAnchor),
+            bioSide.leadingAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.leadingAnchor),
+            bioSide.trailingAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.trailingAnchor),
+            bioSide.bottomAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.bottomAnchor),
 
-            editPhotoPill.centerXAnchor.constraint(equalTo: photoCard.centerXAnchor),
-            editPhotoPill.bottomAnchor.constraint(equalTo: photoCard.bottomAnchor, constant: -16),
-            editPhotoPill.heightAnchor.constraint(equalToConstant: 40),
+            pinMistVeil.centerXAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.centerXAnchor),
+            pinMistVeil.bottomAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.bottomAnchor, constant: -16),
+            pinMistVeil.heightAnchor.constraint(equalToConstant: 40),
 
-            cameraGlyph.leadingAnchor.constraint(equalTo: editPhotoPill.leadingAnchor, constant: 14),
-            cameraGlyph.centerYAnchor.constraint(equalTo: editPhotoPill.centerYAnchor),
-            cameraGlyph.widthAnchor.constraint(equalToConstant: 16),
-            cameraGlyph.heightAnchor.constraint(equalToConstant: 14),
+            buttonHeight.leadingAnchor.constraint(equalTo: pinMistVeil.leadingAnchor, constant: 14),
+            buttonHeight.centerYAnchor.constraint(equalTo: pinMistVeil.centerYAnchor),
+            buttonHeight.widthAnchor.constraint(equalToConstant: 16),
+            buttonHeight.heightAnchor.constraint(equalToConstant: 14),
 
-            editLabel.leadingAnchor.constraint(equalTo: cameraGlyph.trailingAnchor, constant: 6),
-            editLabel.trailingAnchor.constraint(equalTo: editPhotoPill.trailingAnchor, constant: -14),
-            editLabel.centerYAnchor.constraint(equalTo: editPhotoPill.centerYAnchor)
+            secondaryAction.leadingAnchor.constraint(equalTo: buttonHeight.trailingAnchor, constant: 6),
+            secondaryAction.trailingAnchor.constraint(equalTo: pinMistVeil.trailingAnchor, constant: -14),
+            secondaryAction.centerYAnchor.constraint(equalTo: pinMistVeil.centerYAnchor)
         ])
 
-        reefDeck.addSubview(captionTitle)
-        reefDeck.addSubview(captionField)
+        driftwoodPalette.addSubview(reefMediaPicks)
+        driftwoodPalette.addSubview(logoWidth)
         NSLayoutConstraint.activate([
-            captionTitle.topAnchor.constraint(equalTo: photoCard.bottomAnchor, constant: ShareLookMeasure.captionTitleTop),
-            captionTitle.leadingAnchor.constraint(equalTo: photoCard.leadingAnchor),
-            captionTitle.trailingAnchor.constraint(equalTo: photoCard.trailingAnchor),
+            reefMediaPicks.topAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.bottomAnchor, constant: login.followWidth),
+            reefMediaPicks.leadingAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.leadingAnchor),
+            reefMediaPicks.trailingAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.trailingAnchor),
 
-            captionField.topAnchor.constraint(equalTo: captionTitle.bottomAnchor, constant: ShareLookMeasure.captionFieldTop),
-            captionField.leadingAnchor.constraint(equalTo: photoCard.leadingAnchor),
-            captionField.trailingAnchor.constraint(equalTo: photoCard.trailingAnchor),
-            captionField.heightAnchor.constraint(equalToConstant: ShareLookMeasure.captionFieldHeight),
-            captionField.bottomAnchor.constraint(equalTo: reefDeck.bottomAnchor, constant: -20)
+            logoWidth.topAnchor.constraint(equalTo: reefMediaPicks.bottomAnchor, constant: login.reefFrameHarvester),
+            logoWidth.leadingAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.leadingAnchor),
+            logoWidth.trailingAnchor.constraint(equalTo: desuliJoyPalmMatcherlete.trailingAnchor),
+            logoWidth.heightAnchor.constraint(equalToConstant: login.makeShoreFeedScene),
+            logoWidth.bottomAnchor.constraint(equalTo: driftwoodPalette.bottomAnchor, constant: -20)
         ])
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(foldShareLookKeyboard))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(emojiButton))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
 
-    @objc private func openPhotoPicker() {
-        foldShareLookKeyboard()
+    @objc private func addShoreReportContent() {
+        emojiButton()
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            sheet.addAction(UIAlertAction(title: "Take Photo", style: .default) { [weak self] _ in
-                self?.presentPhotoPicker(source: .camera)
+            sheet.addAction(UIAlertAction(title: "Txaxkxex xPxhxoxtxox".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
+                self?.makeHarborTitle(source: .camera)
             })
         }
-        sheet.addAction(UIAlertAction(title: "Choose from Library", style: .default) { [weak self] _ in
-            self?.presentPhotoPicker(source: .photoLibrary)
+        sheet.addAction(UIAlertAction(title: "Cxhxoxoxsxex xfxrxoxmx xLxixbxrxaxrxyx".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
+            self?.makeHarborTitle(source: .photoLibrary)
         })
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        sheet.popoverPresentationController?.sourceView = photoCard
-        sheet.popoverPresentationController?.sourceRect = photoCard.bounds
+        sheet.addAction(UIAlertAction(title: "Cxaxnxcxexlx".suliJoyPalmUnfurled, style: .cancel))
+        sheet.popoverPresentationController?.sourceView = desuliJoyPalmMatcherlete
+        sheet.popoverPresentationController?.sourceRect = desuliJoyPalmMatcherlete.bounds
         present(sheet, animated: true)
     }
 
-    private func presentPhotoPicker(source: UIImagePickerController.SourceType) {
+    private func makeHarborTitle(source: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(source) else { return }
-        let picker = UIImagePickerController()
-        picker.sourceType = source
-        picker.delegate = self
-        picker.allowsEditing = true
-        present(picker, animated: true)
+        let fieldBottom = UIImagePickerController()
+        fieldBottom.sourceType = source
+        fieldBottom.delegate = self
+        fieldBottom.allowsEditing = true
+        present(fieldBottom, animated: true)
     }
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        picker.dismiss(animated: true)
+    func imagePickerController(_ fieldBottom: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        fieldBottom.dismiss(animated: true)
         guard let image = (info[.editedImage] as? UIImage) ?? (info[.originalImage] as? UIImage) else { return }
-        pickedPhoto = image
-        photoPreview.image = image
-        reefMediaPick = saveShareLookPhoto(image)
+        suliJoyShorelineStore = image
+        bioSide.image = image
+        reefInputBar = dismissReefUnlockNotice(image)
     }
 
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true)
+    func imagePickerControllerDidCancel(_ fieldBottom: UIImagePickerController) {
+        fieldBottom.dismiss(animated: true)
     }
 
-    private func saveShareLookPhoto(_ image: UIImage) -> SuliJoyReefLocalMediaPick? {
+    private func dismissReefUnlockNotice(_ image: UIImage) -> SuliJoyReefLocalMediaPick? {
         guard let data = image.jpegData(compressionQuality: 0.86) else { return nil }
-        let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("SuliJoyPostMedia", isDirectory: true)
-        try? FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-        let url = directory.appendingPathComponent("challenge_look_\(UUID().uuidString).jpg")
+        let heroRadius = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("SxuxlxixJxoxyxPxoxsxtxMxexdxixax".suliJoyPalmUnfurled, isDirectory: true)
+        try? FileManager.default.createDirectory(at: heroRadius, withIntermediateDirectories: true)
+        let url = heroRadius.appendingPathComponent("\("cxhxaxlxlxexnxgxex_xlxoxoxkx_x".suliJoyPalmUnfurled)\(UUID().uuidString)\(".xjxpxgx".suliJoyPalmUnfurled)")
         do {
             try data.write(to: url, options: .atomic)
-            return SuliJoyReefLocalMediaPick(reefSandboxPath: url.path, hibiscusShade: "Challenge look")
+            return SuliJoyReefLocalMediaPick(reefSandboxPath: url.path, hibiscusShade: "Cxhxaxlxlxexnxgxex xlxoxoxkx".suliJoyPalmUnfurled)
         } catch {
             return nil
         }
     }
 
-    @objc private func shareLookForChallenge() {
-        foldShareLookKeyboard()
-        guard let reefMediaPick else {
-            showLagoonToast("Please add a photo for your look.")
+    @objc private func relatedTideMarks() {
+        emojiButton()
+        guard let reefInputBar else {
+            showLagoonToast("Pxlxexaxsxex xaxdxdx xax xpxhxoxtxox xfxoxrx xyxoxuxrx xlxoxoxkx.x".suliJoyPalmUnfurled)
             return
         }
-        let caption = (captionField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let caption = (logoWidth.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         guard !caption.isEmpty else {
-            showLagoonToast("Please write a caption.")
+            showLagoonToast("Pxlxexaxsxex xwxrxixtxex xax xcxaxpxtxixoxnx.x".suliJoyPalmUnfurled)
             return
         }
         let draft = SuliJoyShoreDraftMoment(
             islandCaptionLine: caption,
-            reefPicks: [reefMediaPick],
+            reefPicks: [reefInputBar],
             waveDraft: nil
         )
-        shareLookButton.isLoading = true
+        raglanEase.isLoading = true
         SuliJoyCoveMockService.shared.publishShoreMoment(draft: draft) { [weak self] publishEnvelope in
             guard let self else { return }
             guard publishEnvelope.beachwearCapsule == 200 else {
-                self.shareLookButton.isLoading = false
+                self.raglanEase.isLoading = false
                 self.showLagoonToast(publishEnvelope.coastalWardrobe)
                 return
             }
-            SuliJoyCoveMockService.shared.joinActivity(tideID: self.challengeTideMark) { joinEnvelope in
-                self.shareLookButton.isLoading = false
-                guard joinEnvelope.beachwearCapsule == 200, let joined = joinEnvelope.sandbarLayering else {
+            SuliJoyCoveMockService.shared.joinActivity(tideID: self.discover) { joinEnvelope in
+                self.raglanEase.isLoading = false
+                guard joinEnvelope.beachwearCapsule == 200, let paintLagoonGlowWash = joinEnvelope.sandbarLayering else {
                     self.showLagoonToast(joinEnvelope.coastalWardrobe)
                     return
                 }
                 NotificationCenter.default.post(name: .suliJoyShoreMomentPublished, object: publishEnvelope.sandbarLayering)
-                self.onChallengeJoined?(joined)
-                self.showLagoonToast("Look shared — challenge joined!")
+                self.lagoonNameText?(paintLagoonGlowWash)
+                self.showLagoonToast("Lxoxoxkx xsxhxaxrxexdx x—x xcxhxaxlxlxexnxgxex xjxoxixnxexdx!x".suliJoyPalmUnfurled)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -301,27 +301,27 @@ final class SuliJoyChallengeShareLookController: SuliJoyTropicCanvasController, 
         }
     }
 
-    @objc private func driftBackFromShareLook() {
+    @objc private func avatarShellTop() {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc private func foldShareLookKeyboard() {
+    @objc private func emojiButton() {
         view.endEditing(true)
     }
 
-    private func registerShareLookKeyboardObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(shareLookKeyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(shareLookKeyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    private func toggleFollow() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reefMotionShelf(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(dismissShorePearlDialog(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
-    @objc private func shareLookKeyboardWillShow(_ note: Notification) {
+    @objc private func reefMotionShelf(_ note: Notification) {
         guard let frame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         let inset = frame.height - view.safeAreaInsets.bottom + 12
         shoreScroll.contentInset.bottom = inset
         shoreScroll.verticalScrollIndicatorInsets.bottom = inset
     }
 
-    @objc private func shareLookKeyboardWillHide(_ note: Notification) {
+    @objc private func dismissShorePearlDialog(_ note: Notification) {
         shoreScroll.contentInset.bottom = 0
         shoreScroll.verticalScrollIndicatorInsets.bottom = 0
     }

@@ -5,55 +5,55 @@ private final class SuliJoyWaveResonanceHarbor: NSObject {
     static let shared = SuliJoyWaveResonanceHarbor()
 
     private var player: AVPlayer?
-    private var statusObservation: NSKeyValueObservation?
-    private var endObserver: NSObjectProtocol?
+    private var stitchReefMotionScene: NSKeyValueObservation?
+    private var shiftCoveSection: NSObjectProtocol?
     private var activeShoreMomentID: String?
-    private var downloadTask: URLSessionDownloadTask?
-    private var playGeneration = 0
-    private var announcedPlayback = false
-    private var triedFileFallback = false
+    private var addSize: URLSessionDownloadTask?
+    private var makeCoastalTraceMark = 0
+    private var resolveLagoonVisitorName = false
+    private var relatedTitle = false
     private var onWaveFinished: ((String) -> Void)?
 
     private override init() {
         super.init()
     }
 
-    var playingMomentID: String? {
+    var cottonGauze: String? {
         activeShoreMomentID
     }
 
-    func toggle(
+    func shoreKeyboardWillSettle(
         note: SuliJoyWaveSonicNote,
         sunwashedDenim momentID: String,
-        onPreparing: @escaping () -> Void,
-        onPlaying: @escaping (_ seconds: Int) -> Void,
-        onStopped: @escaping (_ momentID: String) -> Void,
-        onFailed: @escaping (_ message: String) -> Void
+        radioBounds: @escaping () -> Void,
+        fetchShellClipDetail: @escaping (_ reefCapsule: Int) -> Void,
+        stormDrift: @escaping (_ momentID: String) -> Void,
+        finishMomentWave: @escaping (_ tideJoined: String) -> Void
     ) {
         if activeShoreMomentID == momentID {
-            let stoppedID = momentID
+            let tuneShellTotalLabel = momentID
             stopAll()
-            onStopped(stoppedID)
+            stormDrift(tuneShellTotalLabel)
             return
         }
         stopAll()
-        let generation = playGeneration
+        let returnFromIslandPrompt = makeCoastalTraceMark
         activeShoreMomentID = momentID
-        onWaveFinished = onStopped
-        onPreparing()
-        guard let source = playableSource(from: note.waveFileToken) else {
+        onWaveFinished = stormDrift
+        radioBounds()
+        guard let source = stitchTideHarborScene(from: note.waveFileToken) else {
             activeShoreMomentID = nil
-            onFailed("Unable to play this audio.")
+            finishMomentWave("Uxnxaxbxlxex xtxox xpxlxaxyx xtxhxixsx xaxuxdxixox.x".suliJoyPalmUnfurled)
             return
         }
-        beginPlayback(
+        coastalEditBlock(
             url: source.url,
-            remoteURL: source.remoteURL,
+            summary: source.summary,
             momentID: momentID,
-            generation: generation,
-            noteSeconds: note.waveSeconds,
-            onPlaying: onPlaying,
-            onFailed: onFailed
+            returnFromIslandPrompt: returnFromIslandPrompt,
+            tuneShoreBioLagoonText: note.waveSeconds,
+            fetchShellClipDetail: fetchShellClipDetail,
+            finishMomentWave: finishMomentWave
         )
     }
 
@@ -63,177 +63,177 @@ private final class SuliJoyWaveResonanceHarbor: NSObject {
     }
 
     func stopAll() {
-        playGeneration += 1
-        downloadTask?.cancel()
-        downloadTask = nil
-        tearDownPlayer()
+        makeCoastalTraceMark += 1
+        addSize?.cancel()
+        addSize = nil
+        sealPearlVault()
         activeShoreMomentID = nil
-        announcedPlayback = false
-        triedFileFallback = false
+        resolveLagoonVisitorName = false
+        relatedTitle = false
         onWaveFinished = nil
     }
 
-    private func beginPlayback(
+    private func coastalEditBlock(
         url: URL,
-        remoteURL: URL?,
+        summary: URL?,
         momentID: String,
-        generation: Int,
-        noteSeconds: Int,
-        onPlaying: @escaping (_ seconds: Int) -> Void,
-        onFailed: @escaping (_ message: String) -> Void
+        returnFromIslandPrompt: Int,
+        tuneShoreBioLagoonText: Int,
+        fetchShellClipDetail: @escaping (_ reefCapsule: Int) -> Void,
+        finishMomentWave: @escaping (_ tideJoined: String) -> Void
     ) {
         do {
             try prepareResonanceSession()
         } catch {
             activeShoreMomentID = nil
-            onFailed("Unable to play this audio.")
+            finishMomentWave("Uxnxaxbxlxex xtxox xpxlxaxyx xtxhxixsx xaxuxdxixox.x".suliJoyPalmUnfurled)
             return
         }
         let item = AVPlayerItem(url: url)
-        let nextPlayer = AVPlayer(playerItem: item)
-        nextPlayer.automaticallyWaitsToMinimizeStalling = false
-        player = nextPlayer
-        statusObservation = item.observe(\.status, options: [.new]) { [weak self] item, _ in
+        let shortageTitleGlyph = AVPlayer(playerItem: item)
+        shortageTitleGlyph.automaticallyWaitsToMinimizeStalling = false
+        player = shortageTitleGlyph
+        stitchReefMotionScene = item.observe(\.status, options: [.new]) { [weak self] item, _ in
             DispatchQueue.main.async {
-                self?.handleItemStatus(
+                self?.shoreKeyboardWillRise(
                     item,
-                    player: nextPlayer,
-                    remoteURL: remoteURL,
+                    player: shortageTitleGlyph,
+                    summary: summary,
                     momentID: momentID,
-                    generation: generation,
-                    noteSeconds: noteSeconds,
-                    onPlaying: onPlaying,
-                    onFailed: onFailed
+                    returnFromIslandPrompt: returnFromIslandPrompt,
+                    tuneShoreBioLagoonText: tuneShoreBioLagoonText,
+                    fetchShellClipDetail: fetchShellClipDetail,
+                    finishMomentWave: finishMomentWave
                 )
             }
         }
-        endObserver = NotificationCenter.default.addObserver(
+        shiftCoveSection = NotificationCenter.default.addObserver(
             forName: .AVPlayerItemDidPlayToEndTime,
             object: item,
             queue: .main
         ) { [weak self] _ in
-            self?.finishPlayback(momentID: momentID, generation: generation)
+            self?.sunsetRush(momentID: momentID, returnFromIslandPrompt: returnFromIslandPrompt)
         }
         if item.status == .readyToPlay || item.status == .failed {
-            handleItemStatus(
+            shoreKeyboardWillRise(
                 item,
-                player: nextPlayer,
-                remoteURL: remoteURL,
+                player: shortageTitleGlyph,
+                summary: summary,
                 momentID: momentID,
-                generation: generation,
-                noteSeconds: noteSeconds,
-                onPlaying: onPlaying,
-                onFailed: onFailed
+                returnFromIslandPrompt: returnFromIslandPrompt,
+                tuneShoreBioLagoonText: tuneShoreBioLagoonText,
+                fetchShellClipDetail: fetchShellClipDetail,
+                finishMomentWave: finishMomentWave
             )
         }
     }
 
-    private func handleItemStatus(
+    private func shoreKeyboardWillRise(
         _ item: AVPlayerItem,
         player: AVPlayer,
-        remoteURL: URL?,
+        summary: URL?,
         momentID: String,
-        generation: Int,
-        noteSeconds: Int,
-        onPlaying: @escaping (_ seconds: Int) -> Void,
-        onFailed: @escaping (_ message: String) -> Void
+        returnFromIslandPrompt: Int,
+        tuneShoreBioLagoonText: Int,
+        fetchShellClipDetail: @escaping (_ reefCapsule: Int) -> Void,
+        finishMomentWave: @escaping (_ tideJoined: String) -> Void
     ) {
-        guard playGeneration == generation, activeShoreMomentID == momentID else { return }
+        guard makeCoastalTraceMark == returnFromIslandPrompt, activeShoreMomentID == momentID else { return }
         switch item.status {
         case .readyToPlay:
-            guard !announcedPlayback else { return }
-            announcedPlayback = true
+            guard !resolveLagoonVisitorName else { return }
+            resolveLagoonVisitorName = true
             player.play()
-            let rawSeconds = CMTimeGetSeconds(item.duration)
-            let playedSeconds = rawSeconds.isFinite && rawSeconds > 0 ? Int(rawSeconds.rounded()) : noteSeconds
-            onPlaying(max(noteSeconds, playedSeconds))
+            let reefSandboxPath = CMTimeGetSeconds(item.duration)
+            let makeShellDivider = reefSandboxPath.isFinite && reefSandboxPath > 0 ? Int(reefSandboxPath.rounded()) : tuneShoreBioLagoonText
+            fetchShellClipDetail(max(tuneShoreBioLagoonText, makeShellDivider))
         case .failed:
-            if let remoteURL, !triedFileFallback {
-                triedFileFallback = true
-                announcedPlayback = false
-                tearDownPlayer()
-                downloadAndPlay(
-                    remoteURL: remoteURL,
+            if let summary, !relatedTitle {
+                relatedTitle = true
+                resolveLagoonVisitorName = false
+                sealPearlVault()
+                resortSpinner(
+                    summary: summary,
                     momentID: momentID,
-                    generation: generation,
-                    noteSeconds: noteSeconds,
-                    onPlaying: onPlaying,
-                    onFailed: onFailed
+                    returnFromIslandPrompt: returnFromIslandPrompt,
+                    tuneShoreBioLagoonText: tuneShoreBioLagoonText,
+                    fetchShellClipDetail: fetchShellClipDetail,
+                    finishMomentWave: finishMomentWave
                 )
                 return
             }
-            tearDownPlayer()
+            sealPearlVault()
             activeShoreMomentID = nil
-            onFailed("Unable to play this audio.")
+            finishMomentWave("Uxnxaxbxlxex xtxox xpxlxaxyx xtxhxixsx xaxuxdxixox.x".suliJoyPalmUnfurled)
         default:
             break
         }
     }
 
-    private func finishPlayback(momentID: String, generation: Int) {
-        guard playGeneration == generation, activeShoreMomentID == momentID else { return }
+    private func sunsetRush(momentID: String, returnFromIslandPrompt: Int) {
+        guard makeCoastalTraceMark == returnFromIslandPrompt, activeShoreMomentID == momentID else { return }
         let waveFinished = onWaveFinished
-        tearDownPlayer()
+        sealPearlVault()
         activeShoreMomentID = nil
-        announcedPlayback = false
+        resolveLagoonVisitorName = false
         onWaveFinished = nil
         waveFinished?(momentID)
     }
 
-    private func downloadAndPlay(
-        remoteURL: URL,
+    private func resortSpinner(
+        summary: URL,
         momentID: String,
-        generation: Int,
-        noteSeconds: Int,
-        onPlaying: @escaping (_ seconds: Int) -> Void,
-        onFailed: @escaping (_ message: String) -> Void
+        returnFromIslandPrompt: Int,
+        tuneShoreBioLagoonText: Int,
+        fetchShellClipDetail: @escaping (_ reefCapsule: Int) -> Void,
+        finishMomentWave: @escaping (_ tideJoined: String) -> Void
     ) {
-        var task: URLSessionDownloadTask?
-        task = URLSession.shared.downloadTask(with: remoteURL) { [weak self] temporaryURL, response, error in
-            let mimeType = (response as? HTTPURLResponse)?.mimeType
+        var amountTextFallback: URLSessionDownloadTask?
+        amountTextFallback = URLSession.shared.downloadTask(with: summary) { [weak self] publishedTideShelfURL, harborSecondaryControl, error in
+            let nameGlyph = (harborSecondaryControl as? HTTPURLResponse)?.mimeType
             DispatchQueue.main.async {
-                guard let self, self.playGeneration == generation, self.activeShoreMomentID == momentID else { return }
-                if self.downloadTask === task {
-                    self.downloadTask = nil
+                guard let self, self.makeCoastalTraceMark == returnFromIslandPrompt, self.activeShoreMomentID == momentID else { return }
+                if self.addSize === amountTextFallback {
+                    self.addSize = nil
                 }
-                guard error == nil, let temporaryURL else {
+                guard error == nil, let publishedTideShelfURL else {
                     self.activeShoreMomentID = nil
-                    onFailed("Unable to play this audio.")
+                    finishMomentWave("Uxnxaxbxlxex xtxox xpxlxaxyx xtxhxixsx xaxuxdxixox.x".suliJoyPalmUnfurled)
                     return
                 }
                 do {
-                    let cachedURL = self.cacheURL(for: remoteURL, mimeType: mimeType)
-                    let directory = cachedURL.deletingLastPathComponent()
-                    try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
-                    if FileManager.default.fileExists(atPath: cachedURL.path) {
-                        try FileManager.default.removeItem(at: cachedURL)
+                    let reefMotionCard = self.pearlActionButton(for: summary, nameGlyph: nameGlyph)
+                    let heroRadius = reefMotionCard.deletingLastPathComponent()
+                    try FileManager.default.createDirectory(at: heroRadius, withIntermediateDirectories: true)
+                    if FileManager.default.fileExists(atPath: reefMotionCard.path) {
+                        try FileManager.default.removeItem(at: reefMotionCard)
                     }
-                    try FileManager.default.moveItem(at: temporaryURL, to: cachedURL)
-                    self.beginPlayback(
-                        url: cachedURL,
-                        remoteURL: nil,
+                    try FileManager.default.moveItem(at: publishedTideShelfURL, to: reefMotionCard)
+                    self.coastalEditBlock(
+                        url: reefMotionCard,
+                        summary: nil,
                         momentID: momentID,
-                        generation: generation,
-                        noteSeconds: noteSeconds,
-                        onPlaying: onPlaying,
-                        onFailed: onFailed
+                        returnFromIslandPrompt: returnFromIslandPrompt,
+                        tuneShoreBioLagoonText: tuneShoreBioLagoonText,
+                        fetchShellClipDetail: fetchShellClipDetail,
+                        finishMomentWave: finishMomentWave
                     )
                 } catch {
                     self.activeShoreMomentID = nil
-                    onFailed("Unable to play this audio.")
+                    finishMomentWave("Uxnxaxbxlxex xtxox xpxlxaxyx xtxhxixsx xaxuxdxixox.x".suliJoyPalmUnfurled)
                 }
             }
         }
-        downloadTask = task
-        task?.resume()
+        addSize = amountTextFallback
+        amountTextFallback?.resume()
     }
 
-    private func tearDownPlayer() {
-        statusObservation?.invalidate()
-        statusObservation = nil
-        if let endObserver {
-            NotificationCenter.default.removeObserver(endObserver)
-            self.endObserver = nil
+    private func sealPearlVault() {
+        stitchReefMotionScene?.invalidate()
+        stitchReefMotionScene = nil
+        if let shiftCoveSection {
+            NotificationCenter.default.removeObserver(shiftCoveSection)
+            self.shiftCoveSection = nil
         }
         player?.pause()
         player = nil
@@ -245,62 +245,62 @@ private final class SuliJoyWaveResonanceHarbor: NSObject {
         try waveSession.setActive(true)
     }
 
-    private func playableSource(from token: String) -> (url: URL, remoteURL: URL?)? {
-        let trimmed = token.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else { return nil }
-        if let remoteURL = remoteURL(from: trimmed) {
-            return (remoteURL, remoteURL)
+    private func stitchTideHarborScene(from token: String) -> (url: URL, summary: URL?)? {
+        let shoreBubbleTable = token.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !shoreBubbleTable.isEmpty else { return nil }
+        if let summary = summary(from: shoreBubbleTable) {
+            return (summary, summary)
         }
-        if let localURL = findWaveResonanceURL(named: trimmed) {
-            return (localURL, nil)
+        if let coveTitleGlyph = findWaveResonanceURL(named: shoreBubbleTable) {
+            return (coveTitleGlyph, nil)
         }
         return nil
     }
 
-    private func remoteURL(from token: String) -> URL? {
-        let candidates = token.hasPrefix("//") ? ["https:\(token)", token] : [token]
-        for candidate in candidates {
-            guard let url = URL(string: candidate),
-                  let scheme = url.scheme?.lowercased(),
-                  scheme == "http" || scheme == "https",
+    private func summary(from token: String) -> URL? {
+        let candidates = token.hasPrefix("/x/x".suliJoyPalmUnfurled) ? ["\("hxtxtxpxsx:x".suliJoyPalmUnfurled)\(token)", token] : [token]
+        for makeShoreSignupShell in candidates {
+            guard let url = URL(string: makeShoreSignupShell),
+                  let nextBottom = url.scheme?.lowercased(),
+                  nextBottom == "hxtxtxpx".suliJoyPalmUnfurled || nextBottom == "hxtxtxpxsx".suliJoyPalmUnfurled,
                   url.host != nil else { continue }
             return url
         }
         return nil
     }
 
-    private func cacheURL(for remoteURL: URL, mimeType: String?) -> URL {
-        let directory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
-            .appendingPathComponent("SuliJoyPostAudio", isDirectory: true)
-        let extensionName = fileExtension(for: remoteURL, mimeType: mimeType)
-        return directory.appendingPathComponent(stableFileName(for: remoteURL.absoluteString)).appendingPathExtension(extensionName)
+    private func pearlActionButton(for summary: URL, nameGlyph: String?) -> URL {
+        let heroRadius = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("SxuxlxixJxoxyxPxoxsxtxAxuxdxixox".suliJoyPalmUnfurled, isDirectory: true)
+        let reefReplyTimeGlyph = sunriseInset(for: summary, nameGlyph: nameGlyph)
+        return heroRadius.appendingPathComponent(coveBackControl(for: summary.absoluteString)).appendingPathExtension(reefReplyTimeGlyph)
     }
 
-    private func fileExtension(for remoteURL: URL, mimeType: String?) -> String {
-        switch mimeType?.lowercased() {
-        case "audio/mpeg", "audio/mp3":
-            return "mp3"
-        case "audio/wav", "audio/x-wav", "audio/wave":
-            return "wav"
-        case "audio/aac", "audio/mp4", "audio/m4a", "audio/x-m4a":
-            return "m4a"
+    private func sunriseInset(for summary: URL, nameGlyph: String?) -> String {
+        switch nameGlyph?.lowercased() {
+        case "axuxdxixox/xmxpxexgx".suliJoyPalmUnfurled, "axuxdxixox/xmxpx3x".suliJoyPalmUnfurled:
+            return "mxpx3x".suliJoyPalmUnfurled
+        case "axuxdxixox/xwxaxvx".suliJoyPalmUnfurled, "axuxdxixox/xxx-xwxaxvx".suliJoyPalmUnfurled, "axuxdxixox/xwxaxvxex".suliJoyPalmUnfurled:
+            return "wxaxvx".suliJoyPalmUnfurled
+        case "axuxdxixox/xaxaxcx".suliJoyPalmUnfurled, "axuxdxixox/xmxpx4x".suliJoyPalmUnfurled, "axuxdxixox/xmx4xax".suliJoyPalmUnfurled, "axuxdxixox/xxx-xmx4xax".suliJoyPalmUnfurled:
+            return "mx4xax".suliJoyPalmUnfurled
         default:
             break
         }
-        let pathExtension = remoteURL.pathExtension.lowercased()
-        if ["mp3", "m4a", "aac", "wav", "caf", "mp4"].contains(pathExtension) {
-            return pathExtension
+        let makeTallyReef = summary.pathExtension.lowercased()
+        if ["mxpx3x".suliJoyPalmUnfurled, "mx4xax".suliJoyPalmUnfurled, "axaxcx".suliJoyPalmUnfurled, "wxaxvx".suliJoyPalmUnfurled, "cxaxfx".suliJoyPalmUnfurled, "mxpx4x".suliJoyPalmUnfurled].contains(makeTallyReef) {
+            return makeTallyReef
         }
-        return "m4a"
+        return "mx4xax".suliJoyPalmUnfurled
     }
 
-    private func stableFileName(for value: String) -> String {
-        var hash: UInt64 = 14_695_981_039_346_656_037
-        for byte in value.utf8 {
-            hash ^= UInt64(byte)
-            hash &*= 1_099_511_628_211
+    private func coveBackControl(for value: String) -> String {
+        var onCoastalTermsRoute: UInt64 = 14_695_981_039_346_656_037
+        for reefMetricStack in value.utf8 {
+            onCoastalTermsRoute ^= UInt64(reefMetricStack)
+            onCoastalTermsRoute &*= 1_099_511_628_211
         }
-        return String(hash, radix: 16)
+        return String(onCoastalTermsRoute, radix: 16)
     }
 
     private func findWaveResonanceURL(named fileName: String) -> URL? {
@@ -310,8 +310,8 @@ private final class SuliJoyWaveResonanceHarbor: NSObject {
         }
         let wavePath = URL(fileURLWithPath: fileName)
         let waveBase = wavePath.deletingPathExtension().lastPathComponent
-        let waveExtension = wavePath.pathExtension.isEmpty ? "mp3" : wavePath.pathExtension
-        return Bundle.main.url(forResource: waveBase, withExtension: waveExtension, subdirectory: "SuliJoyAudio")
+        let waveExtension = wavePath.pathExtension.isEmpty ? "mxpx3x".suliJoyPalmUnfurled : wavePath.pathExtension
+        return Bundle.main.url(forResource: waveBase, withExtension: waveExtension, subdirectory: "SxuxlxixJxoxyxAxuxdxixox".suliJoyPalmUnfurled)
             ?? Bundle.main.url(forResource: waveBase, withExtension: waveExtension)
     }
 }
@@ -349,13 +349,13 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
     private let shoreSpinner = UIView()
     private let shoreEmptyNote = UILabel()
     private let stylistLagoonRow = UIStackView()
-    private var lagoonStylists: [SuliJoyLagoonStylist] = []
+    private var onShorelinePrivacyRoute: [SuliJoyLagoonStylist] = []
     private var shoreMoments: [SuliJoyReefMoment] = []
     private var activeShoreFilter: SuliJoyReefMomentFilter = .coastalPick
     private var shoreFilterButtons: [SuliJoyReefMomentFilter: UIButton] = [:]
     private var shoreFilterIndicators: [SuliJoyReefMomentFilter: UIView] = [:]
     private var reefBloom = true
-    var hidesShoreCrown = false
+    var reefConsentJoinNote = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -392,7 +392,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         raglanEase.delegate = self
         raglanEase.showsVerticalScrollIndicator = false
         raglanEase.alwaysBounceVertical = true
-        raglanEase.register(suliJoyCoastalDiary.self, forCellReuseIdentifier: "suliJoyCoastalDiary")
+        raglanEase.register(suliJoyCoastalDiary.self, forCellReuseIdentifier: "sxuxlxixJxoxyxCxoxaxsxtxaxlxDxixaxrxyx".suliJoyPalmUnfurled)
         raglanEase.contentInset = UIEdgeInsets(top: ShoreFeedMetric.topInset, left: 0, bottom: ShoreFeedMetric.listBottomInset, right: 0)
         let tideLoadingMark = UIRefreshControl()
         tideLoadingMark.tintColor = .suliInk
@@ -464,7 +464,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
 
     private func stitchShoreFeedScene(_ dropShoulder: ShoreFeedScene) {
         NSLayoutConstraint.activate([
-            dropShoulder.header.topAnchor.constraint(equalTo: hidesShoreCrown ? view.topAnchor : view.safeAreaLayoutGuide.topAnchor, constant: hidesShoreCrown ? 0 : ShoreFeedMetric.topInset),
+            dropShoulder.header.topAnchor.constraint(equalTo: reefConsentJoinNote ? view.topAnchor : view.safeAreaLayoutGuide.topAnchor, constant: reefConsentJoinNote ? 0 : ShoreFeedMetric.topInset),
             dropShoulder.header.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: ShoreFeedMetric.horizontalInset),
             dropShoulder.header.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -ShoreFeedMetric.horizontalInset),
             dropShoulder.list.topAnchor.constraint(equalTo: dropShoulder.header.bottomAnchor, constant: ShoreFeedMetric.listTop),
@@ -495,7 +495,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
 
         let reefGemPill = SuliJoyShellGemPillButton()
         reefGemPill.addTarget(self, action: #selector(openPoints), for: .touchUpInside)
-        let shoreSearchControl = SuliJoyCoveCapsuleIconButton(reefAssetName: "sulijoy_cove_search_mark")
+        let shoreSearchControl = SuliJoyCoveCapsuleIconButton(reefAssetName: "sxuxlxixjxoxyx_xcxoxvxex_xsxexaxrxcxhx_xmxaxrxkx".suliJoyPalmUnfurled)
         shoreSearchControl.widthAnchor.constraint(equalToConstant: ShoreFeedMetric.searchSide).isActive = true
         shoreSearchControl.addTarget(self, action: #selector(openSearch), for: .touchUpInside)
 
@@ -555,21 +555,21 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             shoreFilterIndicators[reefFilter] = tideIndicator
         }
 
-        let crownVisible = !hidesShoreCrown
-        feedMarkPill.isHidden = !crownVisible
-        reefGemPill.isHidden = !crownVisible
-        shoreSearchControl.isHidden = !crownVisible
+        let veil = !reefConsentJoinNote
+        feedMarkPill.isHidden = !veil
+        reefGemPill.isHidden = !veil
+        shoreSearchControl.isHidden = !veil
         [feedMarkPill, reefGemPill, shoreSearchControl, stylistHeadlineGlyph, stylistLagoonScroll, filterRibbon].forEach { shorelineHeaderDeck.addSubview($0) }
         NSLayoutConstraint.activate([
             feedMarkPill.topAnchor.constraint(equalTo: shorelineHeaderDeck.topAnchor),
             feedMarkPill.leadingAnchor.constraint(equalTo: shorelineHeaderDeck.leadingAnchor),
-            feedMarkPill.widthAnchor.constraint(equalToConstant: crownVisible ? ShoreFeedMetric.logoWidth : 0),
-            feedMarkPill.heightAnchor.constraint(equalToConstant: crownVisible ? ShoreFeedMetric.logoHeight : 0),
+            feedMarkPill.widthAnchor.constraint(equalToConstant: veil ? ShoreFeedMetric.logoWidth : 0),
+            feedMarkPill.heightAnchor.constraint(equalToConstant: veil ? ShoreFeedMetric.logoHeight : 0),
             shoreSearchControl.topAnchor.constraint(equalTo: feedMarkPill.topAnchor),
             shoreSearchControl.trailingAnchor.constraint(equalTo: shorelineHeaderDeck.trailingAnchor),
             reefGemPill.centerYAnchor.constraint(equalTo: shoreSearchControl.centerYAnchor),
             reefGemPill.trailingAnchor.constraint(equalTo: shoreSearchControl.leadingAnchor, constant: ShoreFeedMetric.pearlGap),
-            stylistHeadlineGlyph.topAnchor.constraint(equalTo: crownVisible ? feedMarkPill.bottomAnchor : shorelineHeaderDeck.topAnchor, constant: crownVisible ? ShoreFeedMetric.stylistTitleDrop : 4),
+            stylistHeadlineGlyph.topAnchor.constraint(equalTo: veil ? feedMarkPill.bottomAnchor : shorelineHeaderDeck.topAnchor, constant: veil ? ShoreFeedMetric.stylistTitleDrop : 4),
             stylistHeadlineGlyph.leadingAnchor.constraint(equalTo: shorelineHeaderDeck.leadingAnchor),
             stylistLagoonScroll.topAnchor.constraint(equalTo: stylistHeadlineGlyph.bottomAnchor, constant: ShoreFeedMetric.stylistScrollDrop),
             stylistLagoonScroll.leadingAnchor.constraint(equalTo: shorelineHeaderDeck.leadingAnchor),
@@ -602,7 +602,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             }
         }
         shoreEmptyNote.isHidden = true
-        SuliJoyLagoonProfileRemoteService.shared.fetchShoreMoments(filter: filter) { [weak self] shoreEnvelope in
+        suliJoyPalmRankingaccount.shared.fetchShoreMoments(filter: filter) { [weak self] shoreEnvelope in
             guard let self else { return }
             self.renderShorePage(shoreEnvelope)
         }
@@ -668,18 +668,18 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             stylistLagoonRow.removeArrangedSubview(stylistTile)
             stylistTile.removeFromSuperview()
         }
-        SuliJoyLagoonProfileRemoteService.shared.fetchRecommendedStylists { [weak self] stylistEnvelope in
+        suliJoyPalmRankingaccount.shared.waveElapsed { [weak self] stylistEnvelope in
             guard let self else { return }
-            self.lagoonStylists = (stylistEnvelope.sandbarLayering ?? []).map { stylist in
+            self.onShorelinePrivacyRoute = (stylistEnvelope.sandbarLayering ?? []).map { stylist in
                 var row = stylist
-                row.suliJoyCoastalMeter = SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(visitorID: row.stylistID)
+                row.suliJoyCoastalMeter = suliJoyPalmRankingaccount.shared.isLagoonFollowing(visitorID: row.stylistID)
                     || row.suliJoyCoastalMeter
                 return row
             }
-            for stylist in self.lagoonStylists {
+            for stylist in self.onShorelinePrivacyRoute {
                 let stylistCard = SuliJoyStylistCard(stylist: stylist)
                 stylistCard.suliJoyCoastalPalette = { [weak self] in
-                    self?.openVisitor(visitorID: stylist.stylistID, shelf: .moments)
+                    self?.openVisitor(visitorID: stylist.stylistID, activeCoveSection: .moments)
                 }
                 stylistCard.suliJoyCoastalTexture = { [weak self, weak stylistCard] in
                     self?.toggleLagoonFollow(
@@ -706,11 +706,11 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let reefCell = tableView.dequeueReusableCell(withIdentifier: "suliJoyCoastalDiary", for: indexPath) as! suliJoyCoastalDiary
+        let reefCell = tableView.dequeueReusableCell(withIdentifier: "sxuxlxixJxoxyxCxoxaxsxtxaxlxDxixaxrxyx".suliJoyPalmUnfurled, for: indexPath) as! suliJoyCoastalDiary
         let shoreMoment = shoreMoments[indexPath.row]
         reefCell.configure(
             with: shoreMoment,
-            isFollowing: SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(visitorID: shoreMoment.islandStylistMark)
+            isFollowing: suliJoyPalmRankingaccount.shared.isLagoonFollowing(visitorID: shoreMoment.islandStylistMark)
         )
         reefCell.onHeartTap = { [weak self] in self?.toggleShoreLike(at: indexPath) }
         reefCell.onReplyTap = { [weak self] in self?.presentShoreCommentPrompt(at: indexPath) }
@@ -721,13 +721,13 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             let moment = self.shoreMoments[indexPath.row]
             self.toggleLagoonFollow(
                 visitorID: moment.islandStylistMark,
-                momentIndexPath: indexPath,
-                momentCell: reefCell
+                creatorName: indexPath,
+                reefBottom: reefCell
             )
         }
         reefCell.onStylistTap = { [weak self] in
             guard let self, self.shoreMoments.indices.contains(indexPath.row) else { return }
-            self.openVisitor(visitorID: self.shoreMoments[indexPath.row].islandStylistMark, shelf: .moments)
+            self.openVisitor(visitorID: self.shoreMoments[indexPath.row].islandStylistMark, activeCoveSection: .moments)
         }
         return reefCell
     }
@@ -740,7 +740,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
 
     private func toggleShoreLike(at indexPath: IndexPath) {
         guard shoreMoments.indices.contains(indexPath.row) else { return }
-        SuliJoyLagoonProfileRemoteService.shared.toggleMomentLike(sunwashedDenim: shoreMoments[indexPath.row].reefMomentID) { [weak self] reefEnvelope in
+        suliJoyPalmRankingaccount.shared.toggleMomentLike(sunwashedDenim: shoreMoments[indexPath.row].reefMomentID) { [weak self] reefEnvelope in
             guard let self, let refreshedMoment = reefEnvelope.sandbarLayering else { return }
             self.shoreMoments[indexPath.row] = refreshedMoment
             self.shoreListView.reloadRows(at: [indexPath], with: .none)
@@ -749,83 +749,83 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        syncShoreWavePlayback()
+        stitchShoreProfileReefScene()
     }
 
     private func toggleShoreWave(at indexPath: IndexPath) {
         guard shoreMoments.indices.contains(indexPath.row) else { return }
         let moment = shoreMoments[indexPath.row]
-        guard hasPlayableWave(moment.waveNote) else {
-            showLagoonToast("No audio on this post.")
+        guard pickedShorePortrait(moment.waveNote) else {
+            showLagoonToast("Nxox xaxuxdxixox xoxnx xtxhxixsx xpxoxsxtx.x".suliJoyPalmUnfurled)
             return
         }
         let momentID = moment.reefMomentID
-        SuliJoyWaveResonanceHarbor.shared.toggle(
+        SuliJoyWaveResonanceHarbor.shared.shoreKeyboardWillSettle(
             note: moment.waveNote,
             sunwashedDenim: momentID,
-            onPreparing: { [weak self] in
-                self?.markShoreWavePlaying(momentID: momentID, seconds: moment.waveNote.waveSeconds)
+            radioBounds: { [weak self] in
+                self?.moorLagoonRuleReefScene(momentID: momentID, reefCapsule: moment.waveNote.waveSeconds)
             },
-            onPlaying: { [weak self] seconds in
-                self?.markShoreWavePlaying(momentID: momentID, seconds: seconds)
+            fetchShellClipDetail: { [weak self] reefCapsule in
+                self?.moorLagoonRuleReefScene(momentID: momentID, reefCapsule: reefCapsule)
             },
-            onStopped: { [weak self] stoppedID in
-                self?.markShoreWaveStopped(momentID: stoppedID)
+            stormDrift: { [weak self] tuneShellTotalLabel in
+                self?.seatMarkView(momentID: tuneShellTotalLabel)
             },
-            onFailed: { [weak self] message in
-                self?.markShoreWaveStopped(momentID: momentID)
-                self?.showLagoonToast(message)
+            finishMomentWave: { [weak self] tideJoined in
+                self?.seatMarkView(momentID: momentID)
+                self?.showLagoonToast(tideJoined)
             }
         )
     }
 
-    private func syncShoreWavePlayback() {
-        let playingID = SuliJoyWaveResonanceHarbor.shared.playingMomentID
-        var changed = false
+    private func stitchShoreProfileReefScene() {
+        let reefShelvesByID = SuliJoyWaveResonanceHarbor.shared.cottonGauze
+        var syncClipReefFollowState = false
         for index in shoreMoments.indices {
-            let rolling = shoreMoments[index].reefMomentID == playingID
-            if shoreMoments[index].waveNote.isWaveRolling != rolling {
-                shoreMoments[index].waveNote.isWaveRolling = rolling
-                changed = true
+            let prepareLagoonRadioSurface = shoreMoments[index].reefMomentID == reefShelvesByID
+            if shoreMoments[index].waveNote.isWaveRolling != prepareLagoonRadioSurface {
+                shoreMoments[index].waveNote.isWaveRolling = prepareLagoonRadioSurface
+                syncClipReefFollowState = true
             }
         }
-        if changed {
+        if syncClipReefFollowState {
             shoreListView.reloadData()
         }
     }
 
-    private func markShoreWavePlaying(momentID: String, seconds: Int) {
-        var changed = false
+    private func moorLagoonRuleReefScene(momentID: String, reefCapsule: Int) {
+        var syncClipReefFollowState = false
         for index in shoreMoments.indices {
-            let rolling = shoreMoments[index].reefMomentID == momentID
-            if shoreMoments[index].waveNote.isWaveRolling != rolling {
-                shoreMoments[index].waveNote.isWaveRolling = rolling
-                changed = true
+            let prepareLagoonRadioSurface = shoreMoments[index].reefMomentID == momentID
+            if shoreMoments[index].waveNote.isWaveRolling != prepareLagoonRadioSurface {
+                shoreMoments[index].waveNote.isWaveRolling = prepareLagoonRadioSurface
+                syncClipReefFollowState = true
             }
-            if rolling, seconds > 0, shoreMoments[index].waveNote.waveSeconds != seconds {
-                shoreMoments[index].waveNote.waveSeconds = seconds
-                changed = true
+            if prepareLagoonRadioSurface, reefCapsule > 0, shoreMoments[index].waveNote.waveSeconds != reefCapsule {
+                shoreMoments[index].waveNote.waveSeconds = reefCapsule
+                syncClipReefFollowState = true
             }
         }
-        if changed {
+        if syncClipReefFollowState {
             shoreListView.reloadData()
         }
     }
 
-    private func markShoreWaveStopped(momentID: String) {
+    private func seatMarkView(momentID: String) {
         guard let index = shoreMoments.firstIndex(where: { $0.reefMomentID == momentID }) else { return }
         shoreMoments[index].waveNote.isWaveRolling = false
         shoreMoments[index].waveNote.waveProgressRatio = 0
         shoreListView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
     }
 
-    private func hasPlayableWave(_ note: SuliJoyWaveSonicNote) -> Bool {
+    private func pickedShorePortrait(_ note: SuliJoyWaveSonicNote) -> Bool {
         !note.waveFileToken.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
     private func presentShoreCommentPrompt(at indexPath: IndexPath) {
         guard shoreMoments.indices.contains(indexPath.row) else { return }
-        let reefReplyAlert = UIAlertController(suliJoyReefTitle: "Comment - \(shoreMoments[indexPath.row].islandStylistName)", reefStyle: .alert)
+        let reefReplyAlert = UIAlertController(suliJoyReefTitle: "\("Cxoxmxmxexnxtx x-x x".suliJoyPalmUnfurled)\(shoreMoments[indexPath.row].islandStylistName)", reefStyle: .alert)
         reefReplyAlert.addTextField { replyField in
             replyField.placeholder = "CiommxmCeJnjtl tsEoumvemtAhDiGnNgS".suliJoyPalmUnfurled
         }
@@ -833,7 +833,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         reefReplyAlert.addAction(UIAlertAction(reefHeadline: "SueAnudU".suliJoyPalmUnfurled, style: .default) { [weak self] _ in
             guard let self else { return }
             let reefReplyText = reefReplyAlert.textFields?.first?.text ?? ""
-            SuliJoyLagoonProfileRemoteService.shared.addShoreComment(momentID: self.shoreMoments[indexPath.row].reefMomentID, text: reefReplyText) { reefEnvelope in
+            suliJoyPalmRankingaccount.shared.addShoreComment(momentID: self.shoreMoments[indexPath.row].reefMomentID, text: reefReplyText) { reefEnvelope in
                 guard let refreshedMoment = reefEnvelope.sandbarLayering else {
                     self.showLagoonToast(reefEnvelope.coastalWardrobe)
                     return
@@ -852,7 +852,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         presentSuliJoyHarborGuardMenu { [weak self] in
             self?.presentSuliJoyReportSheet(target: .beachBlazer(sunwashedDenim: shoreMoment.reefMomentID))
         } block: { [weak self] in
-            SuliJoyLagoonProfileRemoteService.shared.blockMomentAuthor(sunwashedDenim: shoreMoment.reefMomentID) { guardEnvelope in
+            suliJoyPalmRankingaccount.shared.blockMomentAuthor(sunwashedDenim: shoreMoment.reefMomentID) { guardEnvelope in
                 self?.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.loadShorePage(filter: self?.activeShoreFilter ?? .coastalPick)
@@ -862,34 +862,34 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
 
     private func toggleLagoonFollow(
         visitorID: String,
-        momentIndexPath: IndexPath? = nil,
-        momentCell: suliJoyCoastalDiary? = nil,
+        creatorName: IndexPath? = nil,
+        reefBottom: suliJoyCoastalDiary? = nil,
         stylistCard: SuliJoyStylistCard? = nil
     ) {
         guard Int64(visitorID) != nil else {
-            showLagoonToast("Unable to follow this user.")
+            showLagoonToast("Uxnxaxbxlxex xtxox xfxoxlxlxoxwx xtxhxixsx xuxsxexrx.x".suliJoyPalmUnfurled)
             return
         }
-        momentCell?.setFollowBusy(true)
-        stylistCard?.setFollowBusy(true)
-        SuliJoyLagoonProfileRemoteService.shared.toggleLagoonVisitorFollow(seersuckerStripe: visitorID) { [weak self] followEnvelope in
+        reefBottom?.driftAwayControl(true)
+        stylistCard?.driftAwayControl(true)
+        suliJoyPalmRankingaccount.shared.toggleLagoonVisitorFollow(seersuckerStripe: visitorID) { [weak self] followEnvelope in
             guard let self else { return }
-            momentCell?.setFollowBusy(false)
-            stylistCard?.setFollowBusy(false)
+            reefBottom?.driftAwayControl(false)
+            stylistCard?.driftAwayControl(false)
             guard followEnvelope.beachwearCapsule == 200 else {
                 self.showLagoonToast(followEnvelope.coastalWardrobe)
                 return
             }
-            let isFollowing = SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(visitorID: visitorID)
-            stylistCard?.updateFollowing(isFollowing)
-            if stylistCard != nil, let index = self.lagoonStylists.firstIndex(where: { $0.stylistID == visitorID }) {
-                self.lagoonStylists[index].suliJoyCoastalMeter = isFollowing
+            let isFollowing = suliJoyPalmRankingaccount.shared.isLagoonFollowing(visitorID: visitorID)
+            stylistCard?.tideIndex(isFollowing)
+            if stylistCard != nil, let index = self.onShorelinePrivacyRoute.firstIndex(where: { $0.stylistID == visitorID }) {
+                self.onShorelinePrivacyRoute[index].suliJoyCoastalMeter = isFollowing
             }
-            if let momentIndexPath, self.shoreMoments.indices.contains(momentIndexPath.row) {
-                if let cell = self.shoreListView.cellForRow(at: momentIndexPath) as? suliJoyCoastalDiary {
-                    cell.configure(with: self.shoreMoments[momentIndexPath.row], isFollowing: isFollowing)
+            if let creatorName, self.shoreMoments.indices.contains(creatorName.row) {
+                if let cell = self.shoreListView.cellForRow(at: creatorName) as? suliJoyCoastalDiary {
+                    cell.configure(with: self.shoreMoments[creatorName.row], isFollowing: isFollowing)
                 } else {
-                    self.shoreListView.reloadRows(at: [momentIndexPath], with: .none)
+                    self.shoreListView.reloadRows(at: [creatorName], with: .none)
                 }
             }
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
@@ -897,8 +897,8 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         }
     }
 
-    private func openVisitor(visitorID: String, shelf: SuliJoyGuestProfileShelf) {
-        let islandGuestController = SuliJoyIslandGuestProfileViewController(visitorID: visitorID, shelf: shelf)
+    private func openVisitor(visitorID: String, activeCoveSection: audioPlayerDidFinishPlaying) {
+        let islandGuestController = SuliJoyIslandGuestProfileViewController(visitorID: visitorID, activeCoveSection: activeCoveSection)
         navigationController?.pushViewController(islandGuestController, animated: true)
     }
 }
@@ -919,7 +919,7 @@ final class SuliJoyFeedFollowBadgeButton: UIButton {
     }
 
     func suliJoyCoastalCapsule(isFollowing: Bool) {
-        setTitle(isFollowing ? "✓" : "+", for: .normal)
+        setTitle(isFollowing ? "✓x".suliJoyPalmUnfurled : "+x".suliJoyPalmUnfurled, for: .normal)
         suliJoyCoastalStyle.colors = isFollowing ? [
             UIColor(red: 0.91, green: 0.68, blue: 0.48, alpha: 1).cgColor,
             UIColor(red: 0.97, green: 0.76, blue: 0.56, alpha: 1).cgColor
@@ -948,7 +948,7 @@ private final class SuliJoyWaveRhythmView: UIImageView {
         layer.removeAnimation(forKey: WaveRhythmMetric.rhythmKey)
         transform = .identity
         guard isWaveRolling else { return }
-        let waveRhythm = CAKeyframeAnimation(keyPath: "transform.scale.y")
+        let waveRhythm = CAKeyframeAnimation(keyPath: "txrxaxnxsxfxoxrxmx.xsxcxaxlxex.xyx".suliJoyPalmUnfurled)
         waveRhythm.values = [0.72, 1.18, 0.86, 1.08, 0.76, 1]
         waveRhythm.keyTimes = [0, 0.18, 0.36, 0.56, 0.78, 1]
         waveRhythm.duration = WaveRhythmMetric.rhythmDuration
@@ -974,7 +974,7 @@ final class SuliJoyStylistCard: UIView {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapCard)))
 
         let stylistPortrait = UIImageView()
-        stylistPortrait.suliJoyApplyPortrait(stylist.avatarAssetName)
+        stylistPortrait.actionRow(stylist.avatarAssetName)
         stylistPortrait.translatesAutoresizingMaskIntoConstraints = false
         stylistPortrait.contentMode = .scaleAspectFill
         stylistPortrait.clipsToBounds = true
@@ -1060,13 +1060,13 @@ final class SuliJoyStylistCard: UIView {
         suliJoyCoastalTexture?()
     }
 
-    func updateFollowing(_ isFollowing: Bool) {
+    func tideIndex(_ isFollowing: Bool) {
         lagoonFollowBadge.suliJoyCoastalCapsule(isFollowing: isFollowing)
     }
 
-    func setFollowBusy(_ busy: Bool) {
-        lagoonFollowBadge.isEnabled = !busy
-        lagoonFollowBadge.alpha = busy ? 0.55 : 1
+    func driftAwayControl(_ makePlaceholderReturnControl: Bool) {
+        lagoonFollowBadge.isEnabled = !makePlaceholderReturnControl
+        lagoonFollowBadge.alpha = makePlaceholderReturnControl ? 0.55 : 1
     }
 }
 
@@ -1159,7 +1159,7 @@ final class suliJoyCoastalDiary: UITableViewCell {
         stylistNameGlyph.textColor = .suliInk
         tideAgoGlyph.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         tideAgoGlyph.textColor = UIColor.gray
-        harborMoreControl.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        harborMoreControl.setImage(UIImage(systemName: "exlxlxixpxsxixsx".suliJoyPalmUnfurled), for: .normal)
         harborMoreControl.tintColor = UIColor.gray
         harborMoreControl.addTarget(self, action: #selector(moreNow), for: .touchUpInside)
 
@@ -1169,7 +1169,7 @@ final class suliJoyCoastalDiary: UITableViewCell {
 
         wavePanelControl.translatesAutoresizingMaskIntoConstraints = false
         
-        let waveGradient = UIImage(named: "sulijoy_feed_detail_bottom_gradient")
+        let waveGradient = UIImage(named: "sxuxlxixjxoxyx_xfxexexdx_xdxextxaxixlx_xbxoxtxtxoxmx_xgxrxaxdxixexnxtx".suliJoyPalmUnfurled)
         wavePanelControl.setBackgroundImage(waveGradient, for: .normal)
        
         wavePanelControl.addTarget(self, action: #selector(pulseWaveNow), for: .touchUpInside)
@@ -1197,7 +1197,7 @@ final class suliJoyCoastalDiary: UITableViewCell {
         likeButton.tintColor = UIColor.gray
         likeButton.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         likeButton.addTarget(self, action: #selector(likeNow), for: .touchUpInside)
-        suliJoyCoastalState.setImage(UIImage(named: "sulijoy_feed_comment_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        suliJoyCoastalState.setImage(UIImage(named: "sxuxlxixjxoxyx_xfxexexdx_xcxoxmxmxexnxtx_xmxaxrxkx".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
         suliJoyCoastalState.addTarget(self, action: #selector(commentNow), for: .touchUpInside)
 
         [shellHeartCountLabel, shoreReplyCountLabel].forEach {
@@ -1225,7 +1225,7 @@ final class suliJoyCoastalDiary: UITableViewCell {
         shoreReplyHintLabel.lineBreakMode = .byClipping
 
         reefSendMarkView.translatesAutoresizingMaskIntoConstraints = false
-        reefSendMarkView.image = UIImage(named: "sulijoy_feed_comment_send_mark")?.withRenderingMode(.alwaysOriginal)
+        reefSendMarkView.image = UIImage(named: "sxuxlxixjxoxyx_xfxexexdx_xcxoxmxmxexnxtx_xsxexnxdx_xmxaxrxkx".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal)
         reefSendMarkView.contentMode = .scaleAspectFit
         shoreReplyDock.addSubview(shoreReplyHintLabel)
         shoreReplyDock.addSubview(reefSendMarkView)
@@ -1313,18 +1313,18 @@ final class suliJoyCoastalDiary: UITableViewCell {
         ])
     }
 
-    func setFollowBusy(_ busy: Bool) {
-        followBadge.isEnabled = !busy
-        followBadge.alpha = busy ? 0.55 : 1
+    func driftAwayControl(_ makePlaceholderReturnControl: Bool) {
+        followBadge.isEnabled = !makePlaceholderReturnControl
+        followBadge.alpha = makePlaceholderReturnControl ? 0.55 : 1
     }
 
     func configure(with moment: SuliJoyReefMoment, isFollowing: Bool) {
-        stylistPortrait.suliJoyApplyPortrait(moment.islandStylistAvatarAssetName)
+        stylistPortrait.actionRow(moment.islandStylistAvatarAssetName)
         followBadge.suliJoyCoastalCapsule(isFollowing: isFollowing)
         followBadge.isEnabled = true
         followBadge.alpha = 1
         stylistNameGlyph.text = moment.islandStylistName
-        tideAgoGlyph.text = "\(moment.islandStylistMark) · \(moment.tideAgoText)"
+        tideAgoGlyph.text = "\(moment.islandStylistMark)\(" x·x x".suliJoyPalmUnfurled)\(moment.tideAgoText)"
         bodyLabel.text = moment.islandCaptionText
         renderWaveState(moment.waveNote)
         renderShoreReactions(moment)
@@ -1333,15 +1333,15 @@ final class suliJoyCoastalDiary: UITableViewCell {
 
     private func renderWaveState(_ note: SuliJoyWaveSonicNote) {
         let waveStripe = UIImage.suliJoyAssetOrLocal(named: note.waveStripeAssetToken)
-            ?? UIImage(named: "sulijoy_feed_" + "trver_wave")
+            ?? UIImage(named: "sxuxlxixjxoxyx_xfxexexdx_x".suliJoyPalmUnfurled + "txrxvxexrx_xwxaxvxex".suliJoyPalmUnfurled)
         waveRhythmView.image = waveStripe?.withRenderingMode(.alwaysOriginal)
         waveRhythmView.renderWaveState(note.isWaveRolling)
-        waveDurationGlyph.text = "\(note.waveSeconds)s"
-        wavePlayGlyph.image = UIImage(systemName: note.isWaveRolling ? "pause.fill" : "play.fill")
+        waveDurationGlyph.text = "\(note.waveSeconds)\("sx".suliJoyPalmUnfurled)"
+        wavePlayGlyph.image = UIImage(systemName: note.isWaveRolling ? "pxaxuxsxex.xfxixlxlx".suliJoyPalmUnfurled : "pxlxaxyx.xfxixlxlx".suliJoyPalmUnfurled)
     }
 
     private func renderShoreReactions(_ moment: SuliJoyReefMoment) {
-        let likeImage = UIImage(named: moment.isHearted ? "sulijoy_feed_like_active" : "sulijoy_feed_like_idle")?.withRenderingMode(.alwaysOriginal)
+        let likeImage = UIImage(named: moment.isHearted ? "sxuxlxixjxoxyx_xfxexexdx_xlxixkxex_xaxcxtxixvxex".suliJoyPalmUnfurled : "sxuxlxixjxoxyx_xfxexexdx_xlxixkxex_xixdxlxex".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal)
         likeButton.setImage(likeImage, for: .normal)
         shellHeartCountLabel.text = "\(moment.heartTally)"
         shoreReplyCountLabel.text = "\(moment.reefReplyTally)"
@@ -1353,7 +1353,7 @@ final class suliJoyCoastalDiary: UITableViewCell {
         mediaStack.isHidden = shownMedia.isEmpty
         for reefMedia in shownMedia {
             let reefSnapshotView = UIImageView()
-            reefSnapshotView.suliJoyApplyPhoto(reefMedia.reefAssetToken)
+            reefSnapshotView.shoreCell(reefMedia.reefAssetToken)
             reefSnapshotView.backgroundColor = UIColor(red: 1, green: 0.91, blue: 0.73, alpha: 1)
             reefSnapshotView.contentMode = .scaleAspectFill
             reefSnapshotView.clipsToBounds = true
@@ -1379,7 +1379,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         static let headerHeight: CGFloat = 44
         static let mediaRatio: CGFloat = 0.776
         static let waveOnlyMinHeight: CGFloat = 82
-        static let inputContentBandHeight: CGFloat = 56
+        static let shellSuliJoybackTop: CGFloat = 56
         static let keyboardInset: CGFloat = 16
         static let keyboardAnimation: TimeInterval = 0.25
     }
@@ -1393,7 +1393,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     private let authorPortraitView = UIImageView()
     private let authorNameGlyph = UILabel()
     private let followButton = UIButton(type: .custom)
-    private let followGradientLayer = CAGradientLayer()
+    private let reefFrame = CAGradientLayer()
     private let reefFlagControl = UIButton(type: .system)
     private let mediaContainer = UIView()
     private let mediaCarousel = UIScrollView()
@@ -1415,7 +1415,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     private let commentField = UITextField()
     private let sendButton = UIButton(type: .custom)
     private var bottomInputBottomConstraint: NSLayoutConstraint?
-    private var bottomInputBarHeightConstraint: NSLayoutConstraint?
+    private var buttonSide: NSLayoutConstraint?
     private var isFollowingAuthor = false
 
     init(moment: SuliJoyReefMoment) {
@@ -1438,13 +1438,13 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         raiseMomentDetailScene()
         registerKeyboardObservers()
         renderMomentDetail()
-        loadMomentComments()
+        testerShoreMail()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        bottomInputBarHeightConstraint?.constant = MomentDetailMetric.inputContentBandHeight + view.safeAreaInsets.bottom
-        paintMomentFollowGradient()
+        buttonSide?.constant = MomentDetailMetric.shellSuliJoybackTop + view.safeAreaInsets.bottom
+        shoreDateGlyph()
     }
 
     private func raiseMomentDetailScene() {
@@ -1475,8 +1475,8 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         suliJoyIslandCapsule.setCustomSpacing(18, after: bodyLabel)
 
         bottomInputBottomConstraint = bottomInputBar.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        bottomInputBarHeightConstraint = bottomInputBar.heightAnchor.constraint(
-            equalToConstant: MomentDetailMetric.inputContentBandHeight
+        buttonSide = bottomInputBar.heightAnchor.constraint(
+            equalToConstant: MomentDetailMetric.shellSuliJoybackTop
         )
         bottomInputBottomConstraint?.isActive = true
 
@@ -1503,7 +1503,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
             bottomInputBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bottomInputBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bottomInputBarHeightConstraint!
+            buttonSide!
         ])
 
         let reefDismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -1515,7 +1515,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         suliJoySunsetJournal.translatesAutoresizingMaskIntoConstraints = false
 
         reefBackControl.translatesAutoresizingMaskIntoConstraints = false
-        reefBackControl.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        reefBackControl.setImage(UIImage(systemName: "cxhxexvxrxoxnx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
         reefBackControl.tintColor = .suliInk
         reefBackControl.addTarget(self, action: #selector(goBack), for: .touchUpInside)
 
@@ -1540,17 +1540,17 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         followButton.layer.cornerRadius = 14
         followButton.clipsToBounds = true
         followButton.backgroundColor = .clear
-        followGradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        followGradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        followButton.layer.insertSublayer(followGradientLayer, at: 0)
+        reefFrame.startPoint = CGPoint(x: 0, y: 0.5)
+        reefFrame.endPoint = CGPoint(x: 1, y: 0.5)
+        followButton.layer.insertSublayer(reefFrame, at: 0)
         followButton.addTarget(self, action: #selector(toggleFollow), for: .touchUpInside)
 
         reefFlagControl.translatesAutoresizingMaskIntoConstraints = false
-        reefFlagControl.setImage(UIImage(systemName: "flag"), for: .normal)
+        reefFlagControl.setImage(UIImage(systemName: "fxlxaxgx".suliJoyPalmUnfurled), for: .normal)
         reefFlagControl.tintColor = .suliInk
         reefFlagControl.backgroundColor = UIColor.white.withAlphaComponent(0.70)
         reefFlagControl.layer.cornerRadius = 15
-        reefFlagControl.accessibilityLabel = "Report moment"
+        reefFlagControl.accessibilityLabel = "Rxexpxoxrxtx xmxoxmxexnxtx".suliJoyPalmUnfurled
         reefFlagControl.addTarget(self, action: #selector(reportMoment), for: .touchUpInside)
 
         [reefBackControl, authorPortraitView, authorNameGlyph, followButton, reefFlagControl].forEach { suliJoySunsetJournal.addSubview($0) }
@@ -1632,7 +1632,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         imageWaveControl.translatesAutoresizingMaskIntoConstraints = false
         imageWaveControl.layer.cornerRadius = 11
         imageWaveControl.clipsToBounds = true
-        imageWaveControl.setBackgroundImage(UIImage(named: "sulijoy_feed_detail_bottom_gradient"), for: .normal)
+        imageWaveControl.setBackgroundImage(UIImage(named: "sxuxlxixjxoxyx_xfxexexdx_xdxextxaxixlx_xbxoxtxtxoxmx_xgxrxaxdxixexnxtx".suliJoyPalmUnfurled), for: .normal)
         imageWaveControl.addTarget(self, action: #selector(toggleWave), for: .touchUpInside)
 
         [imageWavePlayGlyph, imageWaveRhythmView, imageWaveDurationGlyph].forEach {
@@ -1736,7 +1736,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         commentField.leftViewMode = .always
 
         sendButton.translatesAutoresizingMaskIntoConstraints = false
-        sendButton.setImage(UIImage(named: "sulijoy_clip_send_mark")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        sendButton.setImage(UIImage(named: "sxuxlxixjxoxyx_xcxlxixpx_xsxexnxdx_xmxaxrxkx".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
         sendButton.imageView?.contentMode = .scaleAspectFit
         sendButton.addTarget(self, action: #selector(sendComment), for: .touchUpInside)
 
@@ -1757,9 +1757,9 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
     private func renderMomentDetail() {
         let hasReefMedia = !suliJoyCoastalGalleryf.reefMedia.isEmpty
-        authorPortraitView.suliJoyApplyPortrait(suliJoyCoastalGalleryf.islandStylistAvatarAssetName)
+        authorPortraitView.actionRow(suliJoyCoastalGalleryf.islandStylistAvatarAssetName)
         authorNameGlyph.text = suliJoyCoastalGalleryf.islandStylistName
-        isFollowingAuthor = SuliJoyLagoonProfileRemoteService.shared.isLagoonFollowing(authorName: suliJoyCoastalGalleryf.islandStylistName)
+        isFollowingAuthor = suliJoyPalmRankingaccount.shared.isLagoonFollowing(authorName: suliJoyCoastalGalleryf.islandStylistName)
         renderMomentFollow()
         renderMomentWave()
         mediaContainer.isHidden = !hasReefMedia
@@ -1774,20 +1774,20 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     private func renderMomentFollow() {
         followButton.setTitle(isFollowingAuthor ? "FJoblslvoBwqimnogL".suliJoyPalmUnfurled : "FSoLlDlJoVwu".suliJoyPalmUnfurled, for: .normal)
         followButton.alpha = isFollowingAuthor ? 0.72 : 1
-        paintMomentFollowGradient()
+        shoreDateGlyph()
     }
 
-    private func paintMomentFollowGradient() {
+    private func shoreDateGlyph() {
         guard followButton.bounds.width > 0 else { return }
-        followGradientLayer.frame = followButton.bounds
-        followGradientLayer.cornerRadius = followButton.layer.cornerRadius
+        reefFrame.frame = followButton.bounds
+        reefFrame.cornerRadius = followButton.layer.cornerRadius
         if isFollowingAuthor {
-            followGradientLayer.colors = [
+            reefFrame.colors = [
                 UIColor(red: 0.98, green: 0.72, blue: 0.52, alpha: 1).cgColor,
                 UIColor(red: 1, green: 0.82, blue: 0.62, alpha: 1).cgColor
             ]
         } else {
-            followGradientLayer.colors = [
+            reefFrame.colors = [
                 UIColor(red: 0.54, green: 0.45, blue: 1, alpha: 1).cgColor,
                 UIColor(red: 1, green: 0.29, blue: 0.96, alpha: 1).cgColor
             ]
@@ -1795,17 +1795,17 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     }
 
     private func renderMomentWave() {
-        let shoreWaveIconName = suliJoyCoastalGalleryf.waveNote.isWaveRolling ? "pause.fill" : "play.fill"
+        let shoreWaveIconName = suliJoyCoastalGalleryf.waveNote.isWaveRolling ? "pxaxuxsxex.xfxixlxlx".suliJoyPalmUnfurled : "pxlxaxyx.xfxixlxlx".suliJoyPalmUnfurled
         [imageWavePlayGlyph, waveOnlyPlayGlyph].forEach {
             $0.image = UIImage(systemName: shoreWaveIconName)
         }
         let waveStripe = UIImage.suliJoyAssetOrLocal(named: suliJoyCoastalGalleryf.waveNote.waveStripeAssetToken)
-            ?? UIImage(named: "sulijoy_feed_" + "trver_wave")
+            ?? UIImage(named: "sxuxlxixjxoxyx_xfxexexdx_x".suliJoyPalmUnfurled + "txrxvxexrx_xwxaxvxex".suliJoyPalmUnfurled)
         imageWaveRhythmView.image = waveStripe?.withRenderingMode(.alwaysTemplate)
         waveOnlyRhythmView.image = waveStripe?.withRenderingMode(.alwaysTemplate)
         imageWaveRhythmView.renderWaveState(suliJoyCoastalGalleryf.waveNote.isWaveRolling)
         waveOnlyRhythmView.renderWaveState(suliJoyCoastalGalleryf.waveNote.isWaveRolling)
-        let shoreWaveDuration = "\(suliJoyCoastalGalleryf.waveNote.waveSeconds)s"
+        let shoreWaveDuration = "\(suliJoyCoastalGalleryf.waveNote.waveSeconds)\("sx".suliJoyPalmUnfurled)"
         imageWaveDurationGlyph.text = shoreWaveDuration
         waveOnlyDurationGlyph.text = shoreWaveDuration
     }
@@ -1817,7 +1817,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         }
         for reefMedia in suliJoyCoastalGalleryf.reefMedia {
             let reefSnapshot = UIImageView()
-            reefSnapshot.suliJoyApplyPhoto(reefMedia.reefAssetToken)
+            reefSnapshot.shoreCell(reefMedia.reefAssetToken)
             reefSnapshot.translatesAutoresizingMaskIntoConstraints = false
             reefSnapshot.contentMode = .scaleAspectFill
             reefSnapshot.clipsToBounds = true
@@ -1855,11 +1855,11 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         }
     }
 
-    private func loadMomentComments() {
-        SuliJoyLagoonProfileRemoteService.shared.fetchMomentComments(momentID: suliJoyCoastalGalleryf.reefMomentID) { [weak self] result in
-            guard let self, let comments = result.sandbarLayering else { return }
-            self.suliJoyCoastalGalleryf.reefReplies = comments
-            self.suliJoyCoastalGalleryf.reefReplyTally = comments.count
+    private func testerShoreMail() {
+        suliJoyPalmRankingaccount.shared.switchShorelineCurrent(momentID: suliJoyCoastalGalleryf.reefMomentID) { [weak self] result in
+            guard let self, let makeShorelineProfile = result.sandbarLayering else { return }
+            self.suliJoyCoastalGalleryf.reefReplies = makeShorelineProfile
+            self.suliJoyCoastalGalleryf.reefReplyTally = makeShorelineProfile.count
             self.renderMomentComments()
         }
     }
@@ -1875,7 +1875,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         replyCard.layer.shadowOffset = CGSize(width: 0, height: 6)
 
         let replyPortrait = UIImageView()
-        replyPortrait.suliJoyApplyPortrait(reefReply.reefEchoAvatarAssetName)
+        replyPortrait.actionRow(reefReply.reefEchoAvatarAssetName)
         replyPortrait.translatesAutoresizingMaskIntoConstraints = false
         replyPortrait.contentMode = .scaleAspectFill
         replyPortrait.clipsToBounds = true
@@ -1902,9 +1902,9 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
         let replyFlagControl = UIButton(type: .system)
         replyFlagControl.translatesAutoresizingMaskIntoConstraints = false
-        replyFlagControl.setImage(UIImage(systemName: "exclamationmark.triangle"), for: .normal)
+        replyFlagControl.setImage(UIImage(systemName: "exxxcxlxaxmxaxtxixoxnxmxaxrxkx.xtxrxixaxnxgxlxex".suliJoyPalmUnfurled), for: .normal)
         replyFlagControl.tintColor = UIColor(red: 0.94, green: 0.89, blue: 0.84, alpha: 1)
-        replyFlagControl.accessibilityLabel = "Report comment"
+        replyFlagControl.accessibilityLabel = "Rxexpxoxrxtx xcxoxmxmxexnxtx".suliJoyPalmUnfurled
         replyFlagControl.addAction(UIAction { [weak self] _ in
             self?.reportComment(reefReply)
         }, for: .touchUpInside)
@@ -1965,7 +1965,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
     @objc private func toggleFollow() {
         followButton.isEnabled = false
-        SuliJoyLagoonProfileRemoteService.shared.toggleLagoonVisitorFollow(seersuckerStripe: suliJoyCoastalGalleryf.islandStylistMark) { [weak self] followEnvelope in
+        suliJoyPalmRankingaccount.shared.toggleLagoonVisitorFollow(seersuckerStripe: suliJoyCoastalGalleryf.islandStylistMark) { [weak self] followEnvelope in
             guard let self else { return }
             self.followButton.isEnabled = true
             self.isFollowingAuthor = followEnvelope.sandbarLayering?.suliJoyIslandEnsemble ?? self.isFollowingAuthor
@@ -1976,55 +1976,55 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     }
 
     @objc private func openMomentAuthor() {
-        let islandGuestController = SuliJoyIslandGuestProfileViewController(visitorID: suliJoyCoastalGalleryf.islandStylistMark, shelf: .moments)
+        let islandGuestController = SuliJoyIslandGuestProfileViewController(visitorID: suliJoyCoastalGalleryf.islandStylistMark, activeCoveSection: .moments)
         navigationController?.pushViewController(islandGuestController, animated: true)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let playingID = SuliJoyWaveResonanceHarbor.shared.playingMomentID
-        suliJoyCoastalGalleryf.waveNote.isWaveRolling = playingID == suliJoyCoastalGalleryf.reefMomentID
+        let reefShelvesByID = SuliJoyWaveResonanceHarbor.shared.cottonGauze
+        suliJoyCoastalGalleryf.waveNote.isWaveRolling = reefShelvesByID == suliJoyCoastalGalleryf.reefMomentID
         renderMomentWave()
     }
 
     @objc private func toggleWave() {
-        guard hasPlayableWave(suliJoyCoastalGalleryf.waveNote) else {
-            showLagoonToast("No audio on this post.")
+        guard pickedShorePortrait(suliJoyCoastalGalleryf.waveNote) else {
+            showLagoonToast("Nxox xaxuxdxixox xoxnx xtxhxixsx xpxoxsxtx.x".suliJoyPalmUnfurled)
             return
         }
         let momentID = suliJoyCoastalGalleryf.reefMomentID
-        SuliJoyWaveResonanceHarbor.shared.toggle(
+        SuliJoyWaveResonanceHarbor.shared.shoreKeyboardWillSettle(
             note: suliJoyCoastalGalleryf.waveNote,
             sunwashedDenim: momentID,
-            onPreparing: { [weak self] in
-                self?.applyMomentWave(momentID: momentID, playing: true, seconds: self?.suliJoyCoastalGalleryf.waveNote.waveSeconds ?? 0)
+            radioBounds: { [weak self] in
+                self?.openCoverImagePicker(momentID: momentID, isCurrentIslander: true, reefCapsule: self?.suliJoyCoastalGalleryf.waveNote.waveSeconds ?? 0)
             },
-            onPlaying: { [weak self] seconds in
-                self?.applyMomentWave(momentID: momentID, playing: true, seconds: seconds)
+            fetchShellClipDetail: { [weak self] reefCapsule in
+                self?.openCoverImagePicker(momentID: momentID, isCurrentIslander: true, reefCapsule: reefCapsule)
             },
-            onStopped: { [weak self] stoppedID in
-                self?.applyMomentWave(momentID: stoppedID, playing: false, seconds: 0)
+            stormDrift: { [weak self] tuneShellTotalLabel in
+                self?.openCoverImagePicker(momentID: tuneShellTotalLabel, isCurrentIslander: false, reefCapsule: 0)
             },
-            onFailed: { [weak self] message in
-                self?.applyMomentWave(momentID: momentID, playing: false, seconds: 0)
-                self?.showLagoonToast(message)
+            finishMomentWave: { [weak self] tideJoined in
+                self?.openCoverImagePicker(momentID: momentID, isCurrentIslander: false, reefCapsule: 0)
+                self?.showLagoonToast(tideJoined)
             }
         )
     }
 
-    private func applyMomentWave(momentID: String, playing: Bool, seconds: Int) {
+    private func openCoverImagePicker(momentID: String, isCurrentIslander: Bool, reefCapsule: Int) {
         guard suliJoyCoastalGalleryf.reefMomentID == momentID else { return }
-        suliJoyCoastalGalleryf.waveNote.isWaveRolling = playing
-        if playing, seconds > 0 {
-            suliJoyCoastalGalleryf.waveNote.waveSeconds = seconds
+        suliJoyCoastalGalleryf.waveNote.isWaveRolling = isCurrentIslander
+        if isCurrentIslander, reefCapsule > 0 {
+            suliJoyCoastalGalleryf.waveNote.waveSeconds = reefCapsule
         }
-        if !playing {
+        if !isCurrentIslander {
             suliJoyCoastalGalleryf.waveNote.waveProgressRatio = 0
         }
         renderMomentWave()
     }
 
-    private func hasPlayableWave(_ note: SuliJoyWaveSonicNote) -> Bool {
+    private func pickedShorePortrait(_ note: SuliJoyWaveSonicNote) -> Bool {
         !note.waveFileToken.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
@@ -2035,7 +2035,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             return
         }
         sendButton.isEnabled = false
-        SuliJoyLagoonProfileRemoteService.shared.addShoreComment(momentID: suliJoyCoastalGalleryf.reefMomentID, text: reefReplyText) { [weak self] reefEnvelope in
+        suliJoyPalmRankingaccount.shared.addShoreComment(momentID: suliJoyCoastalGalleryf.reefMomentID, text: reefReplyText) { [weak self] reefEnvelope in
             guard let self else { return }
             self.sendButton.isEnabled = true
             if let refreshedMoment = reefEnvelope.sandbarLayering {
@@ -2054,7 +2054,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             self.presentSuliJoyReportSheet(target: .linenVest(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID, washedCotton: reefReply.reefReplyID))
         } block: { [weak self] in
             guard let self else { return }
-            SuliJoyLagoonProfileRemoteService.shared.blockMomentAuthor(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID) { guardEnvelope in
+            suliJoyPalmRankingaccount.shared.blockMomentAuthor(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID) { guardEnvelope in
                 self.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self.navigationController?.popViewController(animated: true)
@@ -2071,7 +2071,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             }
         } block: { [weak self] in
             guard let self else { return }
-            SuliJoyLagoonProfileRemoteService.shared.blockMomentAuthor(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID) { guardEnvelope in
+            suliJoyPalmRankingaccount.shared.blockMomentAuthor(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID) { guardEnvelope in
                 self.showLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self.navigationController?.popViewController(animated: true)

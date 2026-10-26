@@ -430,7 +430,7 @@ export class LivePkSession {
           this.phase.value = this.visiblePhase()
           await this.syncOpponent()
         }
-      } catch (cause) {
+      } catch {
         if (signal.aborted || generation !== this.generation) return
         staleCount += 1
         this.phase.value = this.detail.value
@@ -438,8 +438,6 @@ export class LivePkSession {
           : staleCount >= FAILURE_VISIBLE_THRESHOLD
             ? 'failed'
             : 'loading'
-        if (import.meta.env.DEV && staleCount === 1)
-          console.warn('Live PK detail is temporarily unavailable.', cause)
       }
       const delay = Math.min(
         MAX_REFRESH_INTERVAL_MS,
@@ -469,9 +467,8 @@ export class LivePkSession {
     this.opponentSync = { channelName, promise }
     try {
       await promise
-    } catch (cause) {
+    } catch {
       if (epoch !== this.opponentEpoch || this.controller?.signal.aborted) return
-      if (import.meta.env.DEV) console.warn('Live PK opponent channel is unavailable.', cause)
     } finally {
       if (this.opponentSync?.promise === promise) this.opponentSync = null
     }
