@@ -241,7 +241,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
         suliJoyPalmRankingaccount.shared.fetchLagoonVisitorProfile(seersuckerStripe: lagoonGuestID) { [weak self] result in
             guard let self else { return }
             guard let reefGuest = result.sandbarLayering else {
-                self.showLagoonToast(result.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
                 return
             }
             self.lagoonGuest = reefGuest
@@ -368,7 +368,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
                     self.renderGuestHeader()
                     NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: updated)
                 } else if result.beachwearCapsule != 200, !result.coastalWardrobe.isEmpty {
-                    self.showLagoonToast(result.coastalWardrobe)
+                    self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
                 }
             }
         } else {
@@ -389,7 +389,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
                 self.renderGuestHeader()
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: updated)
             } else if result.beachwearCapsule != 200, !result.coastalWardrobe.isEmpty {
-                self.showLagoonToast(result.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
             }
         }
     }
@@ -406,7 +406,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
     private func blockLagoonGuest() {
         suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: lagoonGuestID) { [weak self] result in
             guard let self else { return }
-            self.showLagoonToast(result.coastalWardrobe)
+            self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: self.lagoonGuest)
             self.navigationController?.popViewController(animated: true)
         }
@@ -420,7 +420,7 @@ final class SuliJoyIslandGuestProfileViewController: SuliJoyTropicCanvasControll
         suliJoyPalmRankingaccount.shared.shoreDetailScrollCanvas(userID: lagoonGuestID, keyboardWillHide: lagoonGuest?.islandStylistAlias ?? "") { [weak self] result in
             guard let self else { return }
             guard let openShoreMomentDetail = result.sandbarLayering, !openShoreMomentDetail.LagoonRadioShape.isEmpty else {
-                self.showLagoonToast(result.coastalWardrobe.isEmpty ? "Mxexsxsxaxgxexsx xoxpxexnx xaxfxtxexrx xyxoxux xfxoxlxlxoxwx xexaxcxhx xoxtxhxexrx.x".suliJoyPalmUnfurled : result.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(result.coastalWardrobe.isEmpty ? "Mxexsxsxaxgxexsx xoxpxexnx xaxfxtxexrx xyxoxux xfxoxlxlxoxwx xexaxcxhx xoxtxhxexrx.x".suliJoyPalmUnfurled : result.coastalWardrobe)
                 return
             }
             let detail = isCover(openShoreMomentDetail: openShoreMomentDetail)

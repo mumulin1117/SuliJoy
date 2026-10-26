@@ -41,13 +41,13 @@ struct tideArrowSide {
 }
 
 enum ShoreReportCoveKey {
-    /// Live-list row tags. Two labels are chosen from this fixed pool for each room.
+    
     static let stitchIslandToastReefScene = ["Cxhxixlxlx".suliJoyPalmUnfurled, "Sxtxyxlxex".suliJoyPalmUnfurled, "Lxixfxexsxtxyxlxex".suliJoyPalmUnfurled, "Bxexaxcxhxwxexaxrx".suliJoyPalmUnfurled, "Rxexsxoxrxtx xLxoxoxkx".suliJoyPalmUnfurled, "Cxoxaxsxtxaxlx xVxixbxexsx".suliJoyPalmUnfurled]
 
     private static let token = NSLock()
     private static var cameraGlyphView: [String] = []
 
-    /// Latest `categories` from live host options — sole source for Go Live chips and live list tag pool.
+   
     static var removeSize: [String] {
         token.lock()
         defer { token.unlock() }
@@ -70,7 +70,7 @@ enum ShoreReportCoveKey {
         token.unlock()
     }
 
-    /// Backend `liveType` — pass the option `code` from host options, not the chip label.
+   
     static let TideSessionArchiveMark: [(code: String, title: String)] = [
         ("VxIxDxExOx".suliJoyPalmUnfurled, "Sxtxyxlxex xcxaxmx".suliJoyPalmUnfurled),
         ("AxUxDxIxOx".suliJoyPalmUnfurled, "Vxoxixcxex xcxhxaxtx".suliJoyPalmUnfurled),
@@ -92,21 +92,21 @@ struct optionText {
 
 enum stitchReadyIslandReefScene {
     static let reefSendButton = "Exnxgxlxixsxhx".suliJoyPalmUnfurled
-    private static let token = NSLock()
+    private static let islandSolitaryAccent = NSLock()
     private static var scalar = ""
 
-    /// `roomLanguage` on create — language **code** from party languages API (H5 parity).
+  
     static var coveHeaderTop: String {
-        token.lock()
-        defer { token.unlock() }
+        islandSolitaryAccent.lock()
+        defer { islandSolitaryAccent.unlock() }
         return scalar
     }
 
     static func lagoonGuest(_ code: String) {
         let islandCode = code.trimmingCharacters(in: .whitespacesAndNewlines)
-        token.lock()
+        islandSolitaryAccent.lock()
         scalar = islandCode
-        token.unlock()
+        islandSolitaryAccent.unlock()
     }
 }
 
@@ -750,7 +750,7 @@ final class suliJoyPalmRankingaccount {
                 let lagoonFansCountGlyph = Self.creatorAvatarView(from: tuneReefTextCard)
                 stitchReadyIslandReefScene.lagoonGuest(lagoonFansCountGlyph)
                 let shoreInfoCard = try await shellPearlTotal(heroAssetToken: draft.themeWrap, nameGlyph: "ixmxaxgxex/xjxpxexgx".suliJoyPalmUnfurled)
-                // Match room-shell H5: create payload omits `roomTags` (backend 4002 when tags are not exact codes).
+               
                 let completeLagoonExit = try await reefSegmentHeight.ShoreFeedMetric(
                     craftSuliJoyReefPickerSheet: shorelineReels,
                     timeFormatter: shoreInfoCard,
@@ -1467,7 +1467,7 @@ final class suliJoyPalmRankingaccount {
         )
     }
 
-    /// Two display tags from the fixed Go Live category labels.
+
     private func LagoonGateMark(abaloneTone: Int64) -> [String] {
         LagoonLetterScene(from: ShoreReportCoveKey.stitchIslandToastReefScene, abaloneTone: max(abaloneTone, 1))
     }

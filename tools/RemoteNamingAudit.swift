@@ -104,13 +104,8 @@ for case let file as URL in FileManager.default.enumerator(at: beforeRoot, inclu
         return false
     }
     rows.append(["file": rel, "identical_after_inverse_rename": equal, "before_tokens": ca.count, "after_tokens": cb.count])
-    if !equal {
-        let mismatches = zip(ca, cb).enumerated().filter { $0.element.0 != $0.element.1 }.prefix(3).map { $0.offset }
-        print("MISMATCH \(rel), token positions \(mismatches), counts \(ca.count)/\(cb.count)")
-    }
 }
 let data = try JSONSerialization.data(withJSONObject: rows.sorted { ($0["file"] as! String) < ($1["file"] as! String) }, options: [.prettyPrinted, .sortedKeys])
 try data.write(to: reportRoot.appendingPathComponent("semantic-token-audit.json"))
 let failed = rows.filter { !($0["identical_after_inverse_rename"] as! Bool) }.count
-print("Token audit: \(rows.count - failed)/\(rows.count) files equivalent after inverse rename and serialization compatibility normalization.")
 if failed > 0 { exit(1) }

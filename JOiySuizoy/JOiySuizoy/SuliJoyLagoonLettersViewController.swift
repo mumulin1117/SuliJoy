@@ -77,7 +77,7 @@ final class SuliJoyLagoonLettersViewController: SuliJoyTropicCanvasController, U
             guard let self else { return }
             self.makeLagoonRuleLinks.refreshControl?.endRefreshing()
             guard result.beachwearCapsule == 200 else {
-                self.showLagoonToast(result.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
                 self.shortageCard.isHidden = !self.waveOnlyControl.isEmpty
                 return
             }
@@ -260,7 +260,7 @@ final class isCover: SuliJoyTropicCanvasController, UITableViewDataSource, UITex
         suliJoyPalmRankingaccount.shared.inspectShorelineDraftFields(LagoonRadioShape: openShoreMomentDetail.LagoonRadioShape) { [weak self] result in
             guard let self else { return }
             guard result.beachwearCapsule == 200 else {
-                self.showLagoonToast(result.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
                 return
             }
             self.waveHeight = result.sandbarLayering ?? []
@@ -279,12 +279,12 @@ final class isCover: SuliJoyTropicCanvasController, UITableViewDataSource, UITex
             guard let self else { return }
             self.presentSuliJoyReportSheet(target: .softDrape(seersuckerStripe: self.openShoreMomentDetail.prepareTideCardControls))
         } block: { [weak self] in
-            self?.showLagoonToast("Cxhxaxtx xaxcxtxixoxnxsx xuxpxdxaxtxexdx xlxoxcxaxlxlxyx.x".suliJoyPalmUnfurled)
+            self?.abaloneShellIrisLagoonToast("Cxhxaxtx xaxcxtxixoxnxsx xuxpxdxaxtxexdx xlxoxcxaxlxlxyx.x".suliJoyPalmUnfurled)
         }
     }
 
     @objc private func tideFallbackHeroToken() {
-        showLagoonToast("Pxhxoxtxox xmxexsxsxaxgxexsx xwxixlxlx xaxrxrxixvxex xixnx xax xlxaxtxexrx xuxpxdxaxtxex.x".suliJoyPalmUnfurled)
+        abaloneShellIrisLagoonToast("Pxhxoxtxox xmxexsxsxaxgxexsx xwxixlxlx xaxrxrxixvxex xixnx xax xlxaxtxexrx xuxpxdxaxtxex.x".suliJoyPalmUnfurled)
     }
 
     @objc private func reefTile() {
@@ -294,7 +294,7 @@ final class isCover: SuliJoyTropicCanvasController, UITableViewDataSource, UITex
             guard let self else { return }
             self.prepareResonanceSession.isEnabled = true
             guard let note = result.sandbarLayering else {
-                self.showLagoonToast(result.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
                 return
             }
             self.oceanPalette.text = ""

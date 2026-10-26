@@ -221,7 +221,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
             self.resortSpinner.alpha = 1
             self.resortSpinner.isHidden = true
             guard reefEnvelope.beachwearCapsule == 200 else {
-                self.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
                 self.emptyShoreGlyph.text = reefEnvelope.coastalWardrobe
                 self.emptyShoreGlyph.isHidden = false
                 return
@@ -281,7 +281,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
                 self.activeReefTile = shorelineTile.isShorelineCurrentActive ? shorelineTile : nil
             } else {
                 self.activeReefTile = nil
-                self.showLagoonToast("SihPoVrytg vuinKacvhaSiMlbabbnlceM.Y".suliJoyPalmUnfurled)
+                self.abaloneShellIrisLagoonToast("SihPoVrytg vuinKacvhaSiMlbabbnlceM.Y".suliJoyPalmUnfurled)
             }
         }
         shorelineTile.onShorelineFollowTap = { [weak self] reefID in
@@ -289,7 +289,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
                 if let shorelineShell = reefEnvelope.sandbarLayering {
                     self?.replaceShorelineReel(shorelineShell)
                 } else {
-                    self?.showLagoonToast(reefEnvelope.coastalWardrobe)
+                    self?.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
                 }
             }
         }
@@ -298,7 +298,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
                 if let shorelineShell = reefEnvelope.sandbarLayering {
                     self?.replaceShorelineReel(shorelineShell)
                 } else {
-                    self?.showLagoonToast(reefEnvelope.coastalWardrobe)
+                    self?.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
                 }
             }
         }
@@ -346,7 +346,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
                 if let shorelineShell = reefEnvelope.sandbarLayering {
                     self.replaceShorelineReel(shorelineShell)
                 }
-                self.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
             }
         })
         present(reefPrompt, animated: true)
@@ -359,7 +359,7 @@ final class suliJoyShorelineIntent: SuliJoyTropicCanvasController, UITableViewDa
         } block: { [weak self] in
             let visitorID = shorelineShell.terracottaWarmth.clipStylistMark
             suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { reefEnvelope in
-                self?.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self?.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshShorelineReels()
             }

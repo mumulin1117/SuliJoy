@@ -1,0 +1,30 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonProfileCoveController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonProfileCoveController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonProfileCoveController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonProfileCoveController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonProfileCoveController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonProfileCoveController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonProfileRemoteService.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonProfileRemoteService.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonProfileRemoteService.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonProfileRemoteService.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonProfileRemoteService.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonProfileRemoteService.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonRemoteClient.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonRemoteClient.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonRemoteClient.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonRemoteClient.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonRemoteClient.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonRemoteClient.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonRemoteConfiguration.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonRemoteConfiguration.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonRemoteConfiguration.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonRemoteConfiguration.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonRemoteConfiguration.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyLagoonRemoteConfiguration.swiftdeps"
+  }
+}

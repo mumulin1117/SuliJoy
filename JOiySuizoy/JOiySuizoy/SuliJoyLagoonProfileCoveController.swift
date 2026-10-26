@@ -484,7 +484,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
                 self.shoreLookShelf[shelfIndex] = shoreMoment
                 self.wardrobeTable.reloadRows(at: [IndexPath(row: shelfIndex, section: 0)], with: .none)
             }
-            self.showLagoonToast(shoreEnvelope.coastalWardrobe)
+            self.abaloneShellIrisLagoonToast(shoreEnvelope.coastalWardrobe)
         }
     }
 
@@ -493,7 +493,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
             self?.presentSuliJoyReportSheet(target: .beachBlazer(sunwashedDenim: momentID))
         } block: { [weak self] in
             suliJoyPalmRankingaccount.shared.blockMomentAuthor(sunwashedDenim: momentID) { guardEnvelope in
-                self?.showLagoonToast(guardEnvelope.coastalWardrobe)
+                self?.abaloneShellIrisLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()
             }
@@ -508,7 +508,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         if cell.switchShorelineCurrent() {
             activeReefClipCell = cell.isShorelineCurrentActive ? cell : nil
         } else {
-            showLagoonToast("CllQiMpb GuznNaYvlaciplEaSbHlOeU.r".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("CllQiMpb GuznNaYvlaciplEaSbHlOeU.r".suliJoyPalmUnfurled)
         }
     }
 
@@ -519,7 +519,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
                 self.reefMotionShelf[shelfIndex].driftwoodPalette = reefClip.driftwoodPalette
             }
             self.wardrobeTable.reloadData()
-            self.showLagoonToast(reefEnvelope.coastalWardrobe)
+            self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
         }
     }
 
@@ -622,7 +622,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
                 self.reefMotionShelf[reefIndex] = reefClip
                 self.wardrobeTable.reloadRows(at: [IndexPath(row: reefIndex, section: 0)], with: .none)
             }
-            self.showLagoonToast(reefEnvelope.coastalWardrobe)
+            self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
         }
     }
 
@@ -638,7 +638,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         } block: { [weak self] in
             let visitorID = reefClip.terracottaWarmth.clipStylistMark
             suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
-                self?.showLagoonToast(guardEnvelope.coastalWardrobe)
+                self?.abaloneShellIrisLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()
             }
@@ -652,7 +652,7 @@ final class SuliJoyLagoonProfileCoveController: SuliJoyTropicCanvasController, U
         } block: { [weak self] in
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: tideActivity.shoreHostAlias)
             suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
-                self?.showLagoonToast(guardEnvelope.coastalWardrobe)
+                self?.abaloneShellIrisLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.refreshLagoonProfile()
             }

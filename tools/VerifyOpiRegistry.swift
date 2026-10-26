@@ -7,20 +7,17 @@ struct RegistryCheck {
         let paths = expected["pathAliases"] as! [String: String]
         if CommandLine.arguments.count > 2 {
             for path in paths.keys { precondition(curationForm.normalizeCoastalMail(for: path) == path) }
-            print("PASS: invalid/missing resource rejected without plaintext fallback")
             return
         }
         for (original, alias) in paths { precondition(curationForm.normalizeCoastalMail(for: original) == alias) }
         for (original, alias) in expected["headerAliases"] as! [String: String] {
             precondition(curationForm.shorelineAuthor(for: original) == alias)
         }
-        var fields = 0
         for (path, pairs) in expected["requestFieldsByPath"] as! [String: [[String: String]]] {
             for pair in pairs {
                 let original = pair["original"]!, alias = pair["alias"]!
                 let actual = curationForm.reefTextView(openSuliJoyLagoonLetters: path, shoreTides: [original: [[original: 7]]])
                 precondition(NSDictionary(dictionary: actual).isEqual(to: [alias: [[alias: 7]]]))
-                fields += 1
             }
         }
         for (path, pairs) in expected["responseFieldsByPath"] as! [String: [[String: String]]] {
@@ -28,13 +25,11 @@ struct RegistryCheck {
                 let original = pair["original"]!, alias = pair["alias"]!
                 let actual = curationForm.scrollCommentsToBottom(openSuliJoyLagoonLetters: path, emptyView: [alias: [[alias: 7]]]) as! [String: Any]
                 precondition(NSDictionary(dictionary: actual).isEqual(to: [original: [[original: 7]]]))
-                fields += 1
             }
         }
         for (original, alias) in expected["envelope"] as! [String: String] {
             precondition(curationForm.renderMomentDetail(original, from: [alias: 7]) as? Int == 7)
             precondition(curationForm.renderMomentDetail(original, from: [original: 9, alias: 7]) as? Int == 9)
         }
-        print("PASS: actual Swift loader, \(paths.count) paths, \(fields) recursive field mappings, headers/envelope")
     }
 }

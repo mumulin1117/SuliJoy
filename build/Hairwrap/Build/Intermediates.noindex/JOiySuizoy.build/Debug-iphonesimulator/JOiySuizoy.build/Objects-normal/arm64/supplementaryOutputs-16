@@ -1,0 +1,30 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyMusiInDoController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMusiInDoController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMusiInDoController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMusiInDoController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMusiInDoController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMusiInDoController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyPearlHarborViewController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyPearlHarborViewController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyPearlHarborViewController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyPearlHarborViewController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyPearlHarborViewController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyPearlHarborViewController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyReefMotionTideController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyReefMotionTideController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyReefMotionTideController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyReefMotionTideController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyReefMotionTideController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyReefMotionTideController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoypaperbagWaistController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoypaperbagWaistController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoypaperbagWaistController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoypaperbagWaistController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoypaperbagWaistController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoypaperbagWaistController.swiftdeps"
+  }
+}

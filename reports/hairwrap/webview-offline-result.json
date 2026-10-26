@@ -1,0 +1,25 @@
+{
+  "baseline" : {
+    "bg" : "rgb(21, 5, 46)",
+    "font" : "-apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Helvetica, \"Segoe UI\", Arial, Roboto, \"PingFang SC\", miui, \"Hiragino Sans GB\", \"Microsoft Yahei\", sans-serif",
+    "fonts" : "loaded",
+    "images" : [
+
+    ],
+    "ready" : "complete",
+    "text" : "Unable to open room\nCheck your internet connection.\nClose"
+  },
+  "equal" : true,
+  "network_blocked" : true,
+  "packed" : {
+    "bg" : "rgb(21, 5, 46)",
+    "font" : "-apple-system, BlinkMacSystemFont, \"Helvetica Neue\", Helvetica, \"Segoe UI\", Arial, Roboto, \"PingFang SC\", miui, \"Hiragino Sans GB\", \"Microsoft Yahei\", sans-serif",
+    "fonts" : "loaded",
+    "images" : [
+
+    ],
+    "ready" : "complete",
+    "text" : "Unable to open room\nCheck your internet connection.\nClose"
+  },
+  "storage_preserved" : true
+}

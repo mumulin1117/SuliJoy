@@ -744,9 +744,24 @@ struct SuliJoyTideTalkSpace: Equatable {
     var shoreBreezeBubbles: [SuliJoyShoreBubble]
 }
 
-enum SuliJoyCoralPearlLedgerKind: String, Codable {
+enum SuliJoyCoralPearlLedgerKind: Codable, RawRepresentable, Hashable {
     case joinedActivity
     case iapRecharge
+
+    var rawValue: String {
+        switch self {
+        case .joinedActivity: return "jxoxixnxexdxAxcxtxixvxixtxyx".suliJoyPalmUnfurled
+        case .iapRecharge: return "ixaxpxRxexcxhxaxrxgxex".suliJoyPalmUnfurled
+        }
+    }
+
+    init?(rawValue: String) {
+        switch rawValue {
+        case Self.joinedActivity.rawValue: self = .joinedActivity
+        case Self.iapRecharge.rawValue: self = .iapRecharge
+        default: return nil
+        }
+    }
 }
 
 struct SuliJoyCoralPearlLedger: Codable, Equatable {
@@ -931,7 +946,7 @@ struct SuliJoyShellClip: Codable, Equatable {
         self.tideText = tideText
     }
 
-    private enum CodingKeys: String, CodingKey {
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
         case coconutCream
         case terracottaWarmth
         case hibiscusShade
@@ -942,7 +957,45 @@ struct SuliJoyShellClip: Codable, Equatable {
         case ropeBelt
         case driftwoodPalette
         case coastalChic
-        case tideText = "lagoonViewTotal"
+        case tideText
+
+        var rawValue: String {
+            switch self {
+            case .coconutCream: return "cxoxcxoxnxuxtxCxrxexaxmx".suliJoyPalmUnfurled
+            case .terracottaWarmth: return "txexrxrxaxcxoxtxtxaxWxaxrxmxtxhx".suliJoyPalmUnfurled
+            case .hibiscusShade: return "hxixbxixsxcxuxsxSxhxaxdxex".suliJoyPalmUnfurled
+            case .tropicalMotif: return "txrxoxpxixcxaxlxMxoxtxixfx".suliJoyPalmUnfurled
+            case .palmLeafPattern: return "pxaxlxmxLxexaxfxPxaxtxtxexrxnx".suliJoyPalmUnfurled
+            case .marineStripe: return "mxaxrxixnxexSxtxrxixpxex".suliJoyPalmUnfurled
+            case .sailorCollar: return "sxaxixlxoxrxCxoxlxlxaxrx".suliJoyPalmUnfurled
+            case .ropeBelt: return "rxoxpxexBxexlxtx".suliJoyPalmUnfurled
+            case .driftwoodPalette: return "dxrxixfxtxwxoxoxdxPxaxlxextxtxex".suliJoyPalmUnfurled
+            case .coastalChic: return "cxoxaxsxtxaxlxCxhxixcx".suliJoyPalmUnfurled
+            case .tideText: return "lxaxgxoxoxnxVxixexwxTxoxtxaxlx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.coconutCream.rawValue: self = .coconutCream
+            case Self.terracottaWarmth.rawValue: self = .terracottaWarmth
+            case Self.hibiscusShade.rawValue: self = .hibiscusShade
+            case Self.tropicalMotif.rawValue: self = .tropicalMotif
+            case Self.palmLeafPattern.rawValue: self = .palmLeafPattern
+            case Self.marineStripe.rawValue: self = .marineStripe
+            case Self.sailorCollar.rawValue: self = .sailorCollar
+            case Self.ropeBelt.rawValue: self = .ropeBelt
+            case Self.driftwoodPalette.rawValue: self = .driftwoodPalette
+            case Self.coastalChic.rawValue: self = .coastalChic
+            case Self.tideText.rawValue: self = .tideText
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from decoder: Decoder) throws {

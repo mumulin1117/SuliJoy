@@ -231,12 +231,12 @@ class SuliJoyTropicCanvasController: UIViewController {
         ])
     }
 
-    func showLagoonToast(_ reefLine: String) {
+    func abaloneShellIrisLagoonToast(_ reefLine: String) {
         let info = reefLine.shoreNoteField
-        let toastScene = harvestIslandToastReefScene(reefLine, info: info)
-        moorIslandToastReefScene(toastScene)
-        stitchIslandToastReefScene(toastScene)
-        animateIslandToastReefScene(toastScene)
+        let titaniumRingSheen = harvestIslandToastReefScene(reefLine, info: info)
+        moorIslandToastReefScene(titaniumRingSheen)
+        stitchIslandToastReefScene(titaniumRingSheen)
+        animateIslandToastReefScene(titaniumRingSheen)
     }
 
     private func harvestIslandToastReefScene(_ reefLine: String, info: Bool) -> IslandToastReefScene {

@@ -171,7 +171,7 @@ final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, U
 
     @objc private func polishShellCache() {
         wardrobeCoveService.clearSuliJoyLocalCache { [weak self] shellEnvelope in
-            self?.showLagoonToast(shellEnvelope.coastalWardrobe)
+            self?.abaloneShellIrisLagoonToast(shellEnvelope.coastalWardrobe)
         }
     }
 
@@ -364,7 +364,7 @@ final class SuliJoyShellelasticWaistController: SuliJoyTropicCanvasController, U
             guard let self else { return }
             let result = await lagoonAccessStore.deleteCurrentIslandAccount()
             guard result.beachwearCapsule == 200 else {
-                self.showLagoonToast(result.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
                 return
             }
             self.closeMistAndSailToArrival()

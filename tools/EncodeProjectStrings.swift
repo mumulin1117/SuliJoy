@@ -35,8 +35,8 @@ final class EncodeStrings: SyntaxRewriter {
             parent = ancestor.parent
         }
         guard let value = node.representedLiteralValue else {
-            // Resolve escape sequences and multiline indentation with SwiftSyntax,
-            // substituting markers only for interpolation expressions, never their values.
+
+
             let marker = "SULIJOY_STRING_BOUNDARY_8A6D3E"
             precondition(!node.description.contains(marker))
             var flat = node
@@ -71,7 +71,7 @@ final class EncodeStrings: SyntaxRewriter {
             return ExprSyntax(result)
         }
         guard !value.isEmpty else { return ExprSyntax(node) }
-        // Work in Swift Characters, exactly like the existing decoder (including emoji).
+
         var expression = encodedExpression(value)
         var context = node.parent
         while let ancestor = context {
@@ -104,4 +104,3 @@ for url in try fm.contentsOfDirectory(at: root, includingPropertiesForKeys: nil)
     records.append(["file": url.lastPathComponent, "encoded": rewriter.changed, "excluded": rewriter.skipped])
 }
 try JSONSerialization.data(withJSONObject: records, options: [.prettyPrinted, .sortedKeys]).write(to: report.appendingPathComponent("summary.json"))
-print("Encoded \(records.reduce(0) { $0 + ($1["encoded"] as! Int) }) literals")

@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  JOiySuizoy
-//
-//  Created by  on 2026/7/13.
-//
-
 import UIKit
 
 @main

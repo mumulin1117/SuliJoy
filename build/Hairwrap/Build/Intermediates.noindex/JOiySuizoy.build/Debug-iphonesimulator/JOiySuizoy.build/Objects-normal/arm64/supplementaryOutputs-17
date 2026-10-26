@@ -1,0 +1,30 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyReemShellBridge.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyReemShellBridge.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyReemShellBridge.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyReemShellBridge.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyReemShellBridge.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyReemShellBridge.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyShareBroadcastDraftControllers.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShareBroadcastDraftControllers.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShareBroadcastDraftControllers.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShareBroadcastDraftControllers.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShareBroadcastDraftControllers.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShareBroadcastDraftControllers.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyruffleHem.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyruffleHem.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyruffleHem.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyruffleHem.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyruffleHem.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyruffleHem.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoysequinedGlimmerController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoysequinedGlimmerController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoysequinedGlimmerController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoysequinedGlimmerController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoysequinedGlimmerController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoysequinedGlimmerController.swiftdeps"
+  }
+}

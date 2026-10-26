@@ -287,7 +287,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
 
     private func presentReefMotionPicker(source reefSource: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(reefSource) else {
-            showLagoonToast("ChlBiKpF RsTovucrxcUeB RudntaXvwaYiolrasbalweN.e".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("ChlBiKpF RsTovucrxcUeB RudntaXvwaYiolrasbalweN.e".suliJoyPalmUnfurled)
             return
         }
         let reefPicker = UIImagePickerController()
@@ -305,7 +305,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
     func imagePickerController(_ reefPicker: UIImagePickerController, didFinishPickingMediaWithInfo reefInfo: [UIImagePickerController.InfoKey: Any]) {
         guard let reefSourceURL = reefInfo[.mediaURL] as? URL else {
             reefPicker.dismiss(animated: true) { [weak self] in
-                self?.showLagoonToast("CUlKiApi wuWnxagvuaCiSliaCbXlOeQ.G".suliJoyPalmUnfurled)
+                self?.abaloneShellIrisLagoonToast("CUlKiApi wuWnxagvuaCiSliaCbXlOeQ.G".suliJoyPalmUnfurled)
             }
             return
         }
@@ -317,7 +317,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
             reefPicker.dismiss(animated: true)
         } catch {
             reefPicker.dismiss(animated: true) { [weak self] in
-                self?.showLagoonToast("CUonuulNdr TnGoWtY UsbaivbeJ aciljiipP.r".suliJoyPalmUnfurled)
+                self?.abaloneShellIrisLagoonToast("CUonuulNdr TnGoWtY UsbaivbeJ aciljiipP.r".suliJoyPalmUnfurled)
             }
         }
     }
@@ -389,7 +389,7 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
 
     @objc private func confirmReefMotion() {
         guard let reefDraft = makeReefMotionDraftOrAlert() else {
-            showLagoonToast("PXlYeHaFsVem eaGdxdt BaO ncPlbiKpC cozrN IcBonnotDennrtF.D".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("PXlYeHaFsVem eaGdxdt BaO ncPlbiKpC cozrN IcBonnotDennrtF.D".suliJoyPalmUnfurled)
             return
         }
         tideConfirmButton.isLoading = true
@@ -409,11 +409,11 @@ final class SuliJoyReefMotionTideController: SuliJoyTropicCanvasController, UIIm
             self.tideConfirmButton.isLoading = false
             self.refreshReefConfirmState()
             guard reefEnvelope.beachwearCapsule == 200 else {
-                self.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
                 return
             }
             NotificationCenter.default.post(name: .suliJoyShellClipPublished, object: reefEnvelope.sandbarLayering)
-            self.showLagoonToast("CclriKpJ VpaoAsctjexdj.E".suliJoyPalmUnfurled)
+            self.abaloneShellIrisLagoonToast("CclriKpJ VpaoAsctjexdj.E".suliJoyPalmUnfurled)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                 self.returnToReefShortsTab()
             }

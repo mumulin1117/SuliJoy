@@ -21,6 +21,7 @@
 		04AFDAE9300486BF002F01FC /* Exceptions for "JOiySuizoy" folder in "JOiySuizoy" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				HairwrapKnotDrape/CoastalWeave.dat,
 				Info.plist,
 			);
 			target = 04AFDAD6300486BD002F01FC /* JOiySuizoy */;
@@ -96,7 +97,7 @@
 				04AFDAD3300486BD002F01FC /* Sources */,
 				04AFDAD4300486BD002F01FC /* Frameworks */,
 				04AFDAD5300486BD002F01FC /* Resources */,
-				E3A1B2C4D5E6F708192A3B4C /* Copy Room Shell H5 */,
+				E3A1B2C4D5E6F708192A3B4C /* Copy HairwrapKnotDrape */,
 				2EE88FBC8B80B3F5CFE99018 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -199,22 +200,22 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JOiySuizoy/Pods-JOiySuizoy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E3A1B2C4D5E6F708192A3B4C /* Copy Room Shell H5 */ = {
+		E3A1B2C4D5E6F708192A3B4C /* Copy HairwrapKnotDrape */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/../room-shell-h5/dist/index.html",
-				"$(SRCROOT)/JOiySuizoy/RoomShellH5/index.html",
+				"$(SRCROOT)/JOiySuizoy/HairwrapKnotDrape/CoastalWeave.dat",
+				"$(SRCROOT)/../tools/copy-hairwrap.sh",
 			);
-			name = "Copy Room Shell H5";
+			name = "Copy HairwrapKnotDrape";
 			outputPaths = (
-				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/RoomShellH5/index.html",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/HairwrapKnotDrape/CoastalWeave.dat",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\nSOURCE=\"${SRCROOT}/../room-shell-h5/dist\"\nFALLBACK=\"${SRCROOT}/JOiySuizoy/RoomShellH5\"\nDEST=\"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RoomShellH5\"\nif [ -d \"$SOURCE\" ]; then\n  ditto \"$SOURCE\" \"$DEST\"\nelif [ -d \"$FALLBACK\" ]; then\n  ditto \"$FALLBACK\" \"$DEST\"\nelse\n  echo \"error: Room Shell H5 dist missing. Build room-shell-h5 or keep JOiySuizoy/RoomShellH5.\" >&2\n  exit 1\nfi\n";
+			shellScript = "/bin/sh \"${SRCROOT}/../tools/copy-hairwrap.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -239,7 +240,7 @@
 				CODE_SIGN_ENTITLEMENTS = JOiySuizoy/JOiySuizoy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JOiySuizoy/Info.plist;
@@ -257,7 +258,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sharecomsj.joiysuizoy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -285,7 +286,7 @@
 				CODE_SIGN_ENTITLEMENTS = JOiySuizoy/JOiySuizoy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JOiySuizoy/Info.plist;
@@ -303,7 +304,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sharecomsj.joiysuizoy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

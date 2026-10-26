@@ -87,18 +87,21 @@ final class setShoreValue: SuliJoyTropicCanvasController {
         } else {
             prepareTideCardSurface = backReefControl
         }
-        guard let offShoulder = joinTide.indicatorWidth(),
-              let header = joinTide.onReefComplete(
-                islandLayer: islandLayer,
-                abaloneTone: abaloneTone,
-                backReefControl: prepareTideCardSurface
-              ) else {
-            showLagoonToast("Txhxex xrxoxoxmx xbxuxnxdxlxex xcxoxuxlxdx xnxoxtx xbxex xlxoxaxdxexdx.x".suliJoyPalmUnfurled)
-            navigationController?.popViewController(animated: true)
-            return
+        Task { @MainActor [weak self] in
+            guard let self else { return }
+            guard let bronzeBuckleRelief = await coastalColourAccord.zephyrAiryBuoyancy(),
+                  let enamelPendantHue = coastalColourAccord.onReefComplete(
+                    islandLayer: islandLayer,
+                    abaloneTone: abaloneTone,
+                    backReefControl: prepareTideCardSurface
+                  ) else {
+                abaloneShellIrisLagoonToast("Txhxex xrxoxoxmx xbxuxnxdxlxex xcxoxuxlxdx xnxoxtx xbxex xlxoxaxdxexdx.x".suliJoyPalmUnfurled)
+                navigationController?.popViewController(animated: true)
+                return
+            }
+            listBottomInset.shoreNotice(kind: islandLayer)
+            makeIslandCodeBadgeText.loadFileURL(enamelPendantHue, allowingReadAccessTo: bronzeBuckleRelief)
         }
-        listBottomInset.shoreNotice(kind: islandLayer)
-        makeIslandCodeBadgeText.loadFileURL(header, allowingReadAccessTo: offShoulder)
     }
 
     fileprivate func shoreClockText() {
@@ -122,7 +125,7 @@ final class setShoreValue: SuliJoyTropicCanvasController {
         }
         navigationController?.pushViewController(shorelineCell, animated: true)
         if refreshShorelineReels > 0 {
-            showLagoonToast("Axdxdx xgxexmxsx xtxox xcxoxnxtxixnxuxex xixnx xtxhxex xrxoxoxmx.x".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("Axdxdx xgxexmxsx xtxox xcxoxnxtxixnxuxex xixnx xtxhxex xrxoxoxmx.x".suliJoyPalmUnfurled)
         }
     }
 

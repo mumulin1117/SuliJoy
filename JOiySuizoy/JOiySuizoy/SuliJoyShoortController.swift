@@ -623,7 +623,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             shoreListView.reloadData()
             shoreEmptyNote.text = shoreEnvelope.coastalWardrobe
             shoreEmptyNote.isHidden = false
-            showLagoonToast(shoreEnvelope.coastalWardrobe)
+            abaloneShellIrisLagoonToast(shoreEnvelope.coastalWardrobe)
             return
         }
         shoreMoments = shoreEnvelope.sandbarLayering ?? []
@@ -756,7 +756,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         guard shoreMoments.indices.contains(indexPath.row) else { return }
         let moment = shoreMoments[indexPath.row]
         guard pickedShorePortrait(moment.waveNote) else {
-            showLagoonToast("Nxox xaxuxdxixox xoxnx xtxhxixsx xpxoxsxtx.x".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("Nxox xaxuxdxixox xoxnx xtxhxixsx xpxoxsxtx.x".suliJoyPalmUnfurled)
             return
         }
         let momentID = moment.reefMomentID
@@ -774,7 +774,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             },
             finishMomentWave: { [weak self] tideJoined in
                 self?.seatMarkView(momentID: momentID)
-                self?.showLagoonToast(tideJoined)
+                self?.abaloneShellIrisLagoonToast(tideJoined)
             }
         )
     }
@@ -835,12 +835,12 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             let reefReplyText = reefReplyAlert.textFields?.first?.text ?? ""
             suliJoyPalmRankingaccount.shared.addShoreComment(momentID: self.shoreMoments[indexPath.row].reefMomentID, text: reefReplyText) { reefEnvelope in
                 guard let refreshedMoment = reefEnvelope.sandbarLayering else {
-                    self.showLagoonToast(reefEnvelope.coastalWardrobe)
+                    self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
                     return
                 }
                 self.shoreMoments[indexPath.row] = refreshedMoment
                 self.shoreListView.reloadRows(at: [indexPath], with: .none)
-                self.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
             }
         })
         present(reefReplyAlert, animated: true)
@@ -853,7 +853,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             self?.presentSuliJoyReportSheet(target: .beachBlazer(sunwashedDenim: shoreMoment.reefMomentID))
         } block: { [weak self] in
             suliJoyPalmRankingaccount.shared.blockMomentAuthor(sunwashedDenim: shoreMoment.reefMomentID) { guardEnvelope in
-                self?.showLagoonToast(guardEnvelope.coastalWardrobe)
+                self?.abaloneShellIrisLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.loadShorePage(filter: self?.activeShoreFilter ?? .coastalPick)
             }
@@ -867,7 +867,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
         stylistCard: SuliJoyStylistCard? = nil
     ) {
         guard Int64(visitorID) != nil else {
-            showLagoonToast("Uxnxaxbxlxex xtxox xfxoxlxlxoxwx xtxhxixsx xuxsxexrx.x".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("Uxnxaxbxlxex xtxox xfxoxlxlxoxwx xtxhxixsx xuxsxexrx.x".suliJoyPalmUnfurled)
             return
         }
         reefBottom?.driftAwayControl(true)
@@ -877,7 +877,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
             reefBottom?.driftAwayControl(false)
             stylistCard?.driftAwayControl(false)
             guard followEnvelope.beachwearCapsule == 200 else {
-                self.showLagoonToast(followEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(followEnvelope.coastalWardrobe)
                 return
             }
             let isFollowing = suliJoyPalmRankingaccount.shared.isLagoonFollowing(visitorID: visitorID)
@@ -893,7 +893,7 @@ final class SuliJoyShoortController: SuliJoyTropicCanvasController, UITableViewD
                 }
             }
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-            self.showLagoonToast(followEnvelope.coastalWardrobe)
+            self.abaloneShellIrisLagoonToast(followEnvelope.coastalWardrobe)
         }
     }
 
@@ -1971,7 +1971,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             self.isFollowingAuthor = followEnvelope.sandbarLayering?.suliJoyIslandEnsemble ?? self.isFollowingAuthor
             self.renderMomentFollow()
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
-            self.showLagoonToast(followEnvelope.coastalWardrobe)
+            self.abaloneShellIrisLagoonToast(followEnvelope.coastalWardrobe)
         }
     }
 
@@ -1989,7 +1989,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
 
     @objc private func toggleWave() {
         guard pickedShorePortrait(suliJoyCoastalGalleryf.waveNote) else {
-            showLagoonToast("Nxox xaxuxdxixox xoxnx xtxhxixsx xpxoxsxtx.x".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("Nxox xaxuxdxixox xoxnx xtxhxixsx xpxoxsxtx.x".suliJoyPalmUnfurled)
             return
         }
         let momentID = suliJoyCoastalGalleryf.reefMomentID
@@ -2007,7 +2007,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
             },
             finishMomentWave: { [weak self] tideJoined in
                 self?.openCoverImagePicker(momentID: momentID, isCurrentIslander: false, reefCapsule: 0)
-                self?.showLagoonToast(tideJoined)
+                self?.abaloneShellIrisLagoonToast(tideJoined)
             }
         )
     }
@@ -2031,7 +2031,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
     @objc private func sendComment() {
         let reefReplyText = commentField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         guard !reefReplyText.isEmpty else {
-            showLagoonToast("PbloebaUsVeM ieindtveIry yas KcZoampmOeFnete.V".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("PbloebaUsVeM ieindtveIry yas KcZoampmOeFnete.V".suliJoyPalmUnfurled)
             return
         }
         sendButton.isEnabled = false
@@ -2044,7 +2044,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
                 self.renderMomentComments()
                 self.scrollCommentsToBottom()
             }
-            self.showLagoonToast(reefEnvelope.coastalWardrobe)
+            self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
         }
     }
 
@@ -2055,7 +2055,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         } block: { [weak self] in
             guard let self else { return }
             suliJoyPalmRankingaccount.shared.blockMomentAuthor(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID) { guardEnvelope in
-                self.showLagoonToast(guardEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self.navigationController?.popViewController(animated: true)
             }
@@ -2072,7 +2072,7 @@ final class SuliJoyShoreMomentReefController: SuliJoyTropicCanvasController, UIT
         } block: { [weak self] in
             guard let self else { return }
             suliJoyPalmRankingaccount.shared.blockMomentAuthor(sunwashedDenim: self.suliJoyCoastalGalleryf.reefMomentID) { guardEnvelope in
-                self.showLagoonToast(guardEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self.navigationController?.popViewController(animated: true)
             }

@@ -1,0 +1,30 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonScrollTextController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonScrollTextController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonScrollTextController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonScrollTextController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonScrollTextController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonScrollTextController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonSessionStore.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonSessionStore.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonSessionStore.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonSessionStore.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonSessionStore.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonSessionStore.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyMainBoundkingUI.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyMainBoundkingUI.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyMainBoundkingUI.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyMainBoundkingUI.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyMainBoundkingUI.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyMainBoundkingUI.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoymetallicThreadController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoymetallicThreadController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoymetallicThreadController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoymetallicThreadController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoymetallicThreadController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoymetallicThreadController.swiftdeps"
+  }
+}

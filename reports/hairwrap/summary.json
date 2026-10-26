@@ -1,0 +1,18 @@
+{
+  "files": 237,
+  "original_bytes": 11035762,
+  "archive_bytes": 6633190,
+  "archive_sha256": "fc91ee3ef473187dc24906714bbb433e0e1afd180933ff299b47853fb5897629",
+  "compression_layers": 2,
+  "encryption_layers": 2,
+  "key_characters": 48,
+  "new_runtime_names": [],
+  "original_files_byte_identical": true,
+  "swift_fixture_tests_passed": true,
+  "webview_offline_equal": true,
+  "debug_simulator_build": true,
+  "release_simulator_build": true,
+  "release_device_build_unsigned": true,
+  "full_live_media_tested": false,
+  "webview_storage_preserved": true
+}

@@ -1,0 +1,37 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyAgentKeyBarController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyAgentKeyBarController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyAgentKeyBarController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyAgentKeyBarController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyAgentKeyBarController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyAgentKeyBarController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyChallengeShareLookController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyChallengeShareLookController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyChallengeShareLookController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyChallengeShareLookController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyChallengeShareLookController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyChallengeShareLookController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyCoveMockService.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyCoveMockService.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyCoveMockService.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyCoveMockService.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyCoveMockService.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyCoveMockService.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyForinController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyForinController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyForinController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyForinController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyForinController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyForinController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyGuestActionButton.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyGuestActionButton.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyGuestActionButton.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyGuestActionButton.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyGuestActionButton.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/Hairwrap/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyGuestActionButton.swiftdeps"
+  }
+}

@@ -321,7 +321,7 @@ final class SuliJoyForinController: SuliJoyTropicCanvasController, UITableViewDa
             tideListView.reloadData()
             tideEmptyNote.text = result.coastalWardrobe
             tideEmptyNote.isHidden = false
-            showLagoonToast(result.coastalWardrobe)
+            abaloneShellIrisLagoonToast(result.coastalWardrobe)
             return
         }
         occupiedLagoonSeatCount = result.sandbarLayering ?? []

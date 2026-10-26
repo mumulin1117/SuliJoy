@@ -314,7 +314,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         suliJoyPalmRankingaccount.shared.fetchShellClipDetail(clipID: reefClipID) { [weak self] reefEnvelope in
             guard let self else { return }
             guard let reefClip = reefEnvelope.sandbarLayering else {
-                self.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
                 return
             }
             self.separator(reefClip)
@@ -465,7 +465,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
             return
         }
         guard let reefMotionURL = reefMovieURL(for: reefClip.tropicalMotif.aquaGradient, makeRoot: reefClip.tropicalMotif.seafoamTint) else {
-            showLagoonToast("VviAdXevoM xuinNaSvnaciulEaYbWlheH.h".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("VviAdXevoM xuinNaSvnaciulEaYbWlheH.h".suliJoyPalmUnfurled)
             return
         }
         let shoreMotionEngine = AVPlayer(url: reefMotionURL)
@@ -490,7 +490,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         guard reefClip != nil else { return }
         suliJoyPalmRankingaccount.shared.toggleShellClipFollow(coconutCream: reefClipID) { [weak self] reefEnvelope in
             guard let self else { return }
-            self.showLagoonToast(reefEnvelope.coastalWardrobe)
+            self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
             NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
             self.fetchReefDetail()
         }
@@ -508,7 +508,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
             if let refreshedReefClip = reefEnvelope.sandbarLayering {
                 self.paintReefClip(refreshedReefClip)
             } else {
-                self.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
             }
         }
     }
@@ -518,12 +518,12 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         suliJoyPalmRankingaccount.shared.addShellClipComment(coconutCream: reefClipID, reefReplyText: shoreReplyText) { [weak self] reefEnvelope in
             guard let self else { return }
             guard let refreshedReefClip = reefEnvelope.sandbarLayering else {
-                self.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
                 return
             }
             self.reefInputField.text = nil
             self.paintReefClip(refreshedReefClip)
-            self.showLagoonToast(reefEnvelope.coastalWardrobe)
+            self.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
             self.reefScrollView.layoutIfNeeded()
             let reefBottomOffset = CGPoint(x: 0, y: max(0, self.reefScrollView.contentSize.height - self.reefScrollView.bounds.height + self.reefScrollView.adjustedContentInset.bottom))
             self.reefScrollView.setContentOffset(reefBottomOffset, animated: true)
@@ -540,7 +540,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         } block: { [weak self] in
             let visitorID = reefClip.terracottaWarmth.clipStylistMark
             suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { reefEnvelope in
-                self?.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self?.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.navigationController?.popViewController(animated: true)
             }
@@ -557,7 +557,7 @@ final class SuliJoyMusiInDoController: SuliJoyTropicCanvasController {
         } block: { [weak self] in
             let visitorID = reefClip.terracottaWarmth.clipStylistMark
             suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { reefEnvelope in
-                self?.showLagoonToast(reefEnvelope.coastalWardrobe)
+                self?.abaloneShellIrisLagoonToast(reefEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.navigationController?.popViewController(animated: true)
             }

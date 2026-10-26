@@ -53,7 +53,6 @@ final class CanonicalStrings: SyntaxRewriter {
 
 let before = URL(fileURLWithPath: CommandLine.arguments[1])
 let after = URL(fileURLWithPath: CommandLine.arguments[2])
-var verified = 0
 for file in try FileManager.default.contentsOfDirectory(at: before, includingPropertiesForKeys: nil).filter({ $0.pathExtension == "swift" }) {
     func tokens(_ url: URL) throws -> [TokenKind] {
         let tree = Parser.parse(source: try String(contentsOf: url, encoding: .utf8))
@@ -61,10 +60,6 @@ for file in try FileManager.default.contentsOfDirectory(at: before, includingPro
     }
     let lhs = try tokens(file), rhs = try tokens(after.appendingPathComponent(file.lastPathComponent))
     guard lhs == rhs else {
-        print("Mismatch: \(file.lastPathComponent)")
-        for (index, pair) in zip(lhs, rhs).enumerated() where pair.0 != pair.1 { print("\(index): \(pair)"); break }
         exit(1)
     }
-    verified += 1
 }
-print("PASS: \(verified) files, identical normalized syntax and string values")

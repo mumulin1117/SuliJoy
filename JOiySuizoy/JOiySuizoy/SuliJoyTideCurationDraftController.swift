@@ -213,11 +213,11 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
     }
 
     private func followEnvelope(_ text: String) -> UILabel {
-        let label = UILabel()
-        label.text = text
-        label.font = UIFont.systemFont(ofSize: openShoreDateWheel.dismissKeyboard, weight: .black)
-        label.textColor = .suliInk
-        return label
+        let necklineCurveStudy = UILabel()
+        necklineCurveStudy.text = text
+        necklineCurveStudy.font = UIFont.systemFont(ofSize: openShoreDateWheel.dismissKeyboard, weight: .black)
+        necklineCurveStudy.textColor = .suliInk
+        return necklineCurveStudy
     }
 
     private func reefFollowerTotal(sheetCorner: [String], selected: String, heroTop: inout [UIButton], action: Selector) -> UIStackView {
@@ -295,7 +295,7 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
 
     private func openCoverImagePicker(source reefSource: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(reefSource) else {
-            showLagoonToast("Sxoxuxrxcxex xuxnxaxvxaxixlxaxbxlxex.x".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("Sxoxuxrxcxex xuxnxaxvxaxixlxaxbxlxex.x".suliJoyPalmUnfurled)
             return
         }
         let coverPicker = UIImagePickerController()
@@ -310,7 +310,7 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
         coverPicker.dismiss(animated: true)
         let coverImage = (reefInfo[.editedImage] as? UIImage) ?? (reefInfo[.originalImage] as? UIImage)
         guard let coverImage, let shorelinePath = storeCoverSnapshot(coverImage) else {
-            showLagoonToast("Cxoxuxlxdx xnxoxtx xsxaxvxex xcxoxvxexrx xpxhxoxtxox.x".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("Cxoxuxlxdx xnxoxtx xsxaxvxex xcxoxvxexrx xpxhxoxtxox.x".suliJoyPalmUnfurled)
             return
         }
         coverReefPicks = [SuliJoyReefEventPhotoPick(reefSandboxPath: shorelinePath, hibiscusShade: "Exvxexnxtx xCxoxvxexrx".suliJoyPalmUnfurled)]
@@ -340,12 +340,12 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
     @objc private func publishShorelineDraft() {
         foldDraftKeyboard()
         guard !coverReefPicks.isEmpty else {
-            showLagoonToast("Pxlxexaxsxex xaxdxdx xax xcxoxvxexrx xpxhxoxtxox.x".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("Pxlxexaxsxex xaxdxdx xax xcxoxvxexrx xpxhxoxtxox.x".suliJoyPalmUnfurled)
             return
         }
         let shorelineTitle = (styleTitleField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         guard !shorelineTitle.isEmpty else {
-            showLagoonToast("Pxlxexaxsxex xexnxtxexrx xax xcxhxaxlxlxexnxgxex xtxixtxlxex.x".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("Pxlxexaxsxex xexnxtxexrx xax xcxhxaxlxlxexnxgxex xtxixtxlxex.x".suliJoyPalmUnfurled)
             return
         }
         let lagoonMarkControl: TimeInterval
@@ -374,10 +374,10 @@ final class SuliJoyTideCurationDraftController: SuliJoyTropicCanvasController, U
             self.shorePublishControl.isLoading = false
             self.shorePublishControl.isEnabled = true
             guard publishEnvelope.beachwearCapsule == 200 else {
-                self.showLagoonToast(publishEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(publishEnvelope.coastalWardrobe)
                 return
             }
-            self.showLagoonToast("Cxhxaxlxlxexnxgxex xcxrxexaxtxexdx xsxuxcxcxexsxsxfxuxlxlxyx.x".suliJoyPalmUnfurled)
+            self.abaloneShellIrisLagoonToast("Cxhxaxlxlxexnxgxex xcxrxexaxtxexdx xsxuxcxcxexsxsxfxuxlxlxyx.x".suliJoyPalmUnfurled)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                 self.navigationController?.popViewController(animated: true)
             }

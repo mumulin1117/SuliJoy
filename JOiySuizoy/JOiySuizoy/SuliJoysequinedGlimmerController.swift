@@ -268,7 +268,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
 
     private func openReefImagePicker(source reefSource: UIImagePickerController.SourceType) {
         guard UIImagePickerController.isSourceTypeAvailable(reefSource) else {
-            showLagoonToast("CWaamueArDaG Eiosb yuvnxabvWaCiclUaPbklLet.X".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("CWaamueArDaG Eiosb yuvnxabvWaCiclUaPbklLet.X".suliJoyPalmUnfurled)
             return
         }
         let reefPicker = UIImagePickerController()
@@ -295,7 +295,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
 
     private func storeReefImage(_ reefImage: UIImage) {
         guard let reefPick = saveReefImageToSandbox(reefImage) else {
-            showLagoonToast("PWhToZtOoo pcFoFuplvdC AnpoVtS hbPet msaaevUeAdv.a".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("PWhToZtOoo pcFoFuplvdC AnpoVtS hbPet msaaevUeAdv.a".suliJoyPalmUnfurled)
             return
         }
         if reefMediaPicks.indices.contains(activePhotoIndex) {
@@ -340,7 +340,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
             waveOverlay?.removeFromSuperview()
         }
         waveOverlay.onReefIssue = { [weak self, weak waveOverlay] reefNotice in
-            self?.showLagoonToast(reefNotice)
+            self?.abaloneShellIrisLagoonToast(reefNotice)
             waveOverlay?.removeFromSuperview()
         }
         waveOverlay.translatesAutoresizingMaskIntoConstraints = false
@@ -350,7 +350,7 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
 
     @objc private func confirmShoreMoment() {
         guard hasShoreMomentContent() else {
-            showLagoonToast("PxleewaVsAej EaCdydv kcCoJnjtNetnztS,o VpDhLoKtQopsq,M uoQrT hazutdZiroQ.k".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("PxleewaVsAej EaCdydv kcCoJnjtNetnztS,o VpDhLoKtQopsq,M uoQrT hazutdZiroQ.k".suliJoyPalmUnfurled)
             return
         }
         let shoreDraft = SuliJoyShoreDraftMoment(
@@ -365,11 +365,11 @@ final class SuliJoysequinedGlimmerController: SuliJoyTropicCanvasController, UII
             self.tideConfirmButton.isLoading = false
             self.refreshShoreMomentState()
             guard reefResult.beachwearCapsule == 200 else {
-                self.showLagoonToast(reefResult.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(reefResult.coastalWardrobe)
                 return
             }
             NotificationCenter.default.post(name: .suliJoyShoreMomentPublished, object: reefResult.sandbarLayering)
-            self.showLagoonToast(reefResult.coastalWardrobe)
+            self.abaloneShellIrisLagoonToast(reefResult.coastalWardrobe)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                 self.tabBarController?.selectedIndex = 1
                 self.navigationController?.popViewController(animated: true)

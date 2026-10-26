@@ -497,7 +497,7 @@ private extension SuliJoyespadrillePairing {
 extension SuliJoyTropicCanvasController {
     func presentSuliJoyReportSheet(target: SuliJoyespadrillePairing, completion: (() -> Void)? = nil) {
         let sheet = SuliJoyShoreReportSheetController(target: target) { [weak self] result in
-            self?.showLagoonToast(result.coastalWardrobe)
+            self?.abaloneShellIrisLagoonToast(result.coastalWardrobe)
             completion?()
         }
         present(sheet, animated: false)

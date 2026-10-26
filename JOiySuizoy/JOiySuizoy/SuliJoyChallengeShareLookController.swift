@@ -264,12 +264,12 @@ final class dateTimeStack: SuliJoyTropicCanvasController, UIImagePickerControlle
     @objc private func relatedTideMarks() {
         emojiButton()
         guard let reefInputBar else {
-            showLagoonToast("Pxlxexaxsxex xaxdxdx xax xpxhxoxtxox xfxoxrx xyxoxuxrx xlxoxoxkx.x".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("Pxlxexaxsxex xaxdxdx xax xpxhxoxtxox xfxoxrx xyxoxuxrx xlxoxoxkx.x".suliJoyPalmUnfurled)
             return
         }
         let caption = (logoWidth.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         guard !caption.isEmpty else {
-            showLagoonToast("Pxlxexaxsxex xwxrxixtxex xax xcxaxpxtxixoxnx.x".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("Pxlxexaxsxex xwxrxixtxex xax xcxaxpxtxixoxnx.x".suliJoyPalmUnfurled)
             return
         }
         let draft = SuliJoyShoreDraftMoment(
@@ -282,18 +282,18 @@ final class dateTimeStack: SuliJoyTropicCanvasController, UIImagePickerControlle
             guard let self else { return }
             guard publishEnvelope.beachwearCapsule == 200 else {
                 self.raglanEase.isLoading = false
-                self.showLagoonToast(publishEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(publishEnvelope.coastalWardrobe)
                 return
             }
             SuliJoyCoveMockService.shared.joinActivity(tideID: self.discover) { joinEnvelope in
                 self.raglanEase.isLoading = false
                 guard joinEnvelope.beachwearCapsule == 200, let paintLagoonGlowWash = joinEnvelope.sandbarLayering else {
-                    self.showLagoonToast(joinEnvelope.coastalWardrobe)
+                    self.abaloneShellIrisLagoonToast(joinEnvelope.coastalWardrobe)
                     return
                 }
                 NotificationCenter.default.post(name: .suliJoyShoreMomentPublished, object: publishEnvelope.sandbarLayering)
                 self.lagoonNameText?(paintLagoonGlowWash)
-                self.showLagoonToast("Lxoxoxkx xsxhxaxrxexdx x—x xcxhxaxlxlxexnxgxex xjxoxixnxexdx!x".suliJoyPalmUnfurled)
+                self.abaloneShellIrisLagoonToast("Lxoxoxkx xsxhxaxrxexdx x—x xcxhxaxlxlxexnxgxex xjxoxixnxexdx!x".suliJoyPalmUnfurled)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
                     self.navigationController?.popViewController(animated: true)
                 }

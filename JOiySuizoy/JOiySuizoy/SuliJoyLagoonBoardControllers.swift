@@ -444,7 +444,7 @@ final class subreefHeadline: SuliJoyTropicCanvasController, UICollectionViewData
                 self.suliJoyPalmUnfurled[index].text = result.coastalWardrobe
                 self.suliJoyPalmUnfurled[index].isHidden = false
                 if self.stylistLagoonRow.fetchActivityDetail == index {
-                    self.showLagoonToast(result.coastalWardrobe)
+                    self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
                 }
                 return
             }
@@ -489,7 +489,7 @@ final class subreefHeadline: SuliJoyTropicCanvasController, UICollectionViewData
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let completeLagoonExit = coveFollowingTotal[collectionView.tag][indexPath.item]
-        sunlit.coveSection(kind: .raiseReefCommentFlag, abaloneTone: completeLagoonExit.abaloneTone, from: self)
+        SulilatinumTineTaper.etchingMotifIncision(engravingStrokeDepth: .raiseReefCommentFlag, duneUndulatingLine: completeLagoonExit.abaloneTone, estuaryDendriticMotif: self)
     }
 }
 
@@ -764,7 +764,7 @@ final class gatherReefLaunchCrown: SuliJoyTropicCanvasController, UITableViewDat
                 self.harborScene = []
                 self.returnToIslandCove.forEach { $0.reloadData() }
                 self.makeResortVerticalStack(tideJoined: result.coastalWardrobe)
-                self.showLagoonToast(result.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
                 return
             }
             self.harborScene = activeCoveSection.isShoreScrollItemVisible
@@ -806,7 +806,7 @@ final class gatherReefLaunchCrown: SuliJoyTropicCanvasController, UITableViewDat
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let completeLagoonExit = isShoreScrollItemVisible(for: heroPanel[tableView.tag])[indexPath.row]
-        sunlit.coveSection(kind: .moorShoreProfileReefScene, abaloneTone: completeLagoonExit.abaloneTone, from: self)
+        SulilatinumTineTaper.etchingMotifIncision(engravingStrokeDepth: .moorShoreProfileReefScene, duneUndulatingLine: completeLagoonExit.abaloneTone, estuaryDendriticMotif: self)
     }
 }
 
@@ -935,7 +935,7 @@ final class markShellSide: SuliJoyTropicCanvasController, UITableViewDataSource,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let completeLagoonExit = harborScene[indexPath.row]
-        sunlit.coveSection(kind: .moorShoreProfileReefScene, abaloneTone: completeLagoonExit.abaloneTone, from: self)
+        SulilatinumTineTaper.etchingMotifIncision(engravingStrokeDepth: .moorShoreProfileReefScene, duneUndulatingLine: completeLagoonExit.abaloneTone, estuaryDendriticMotif: self)
     }
 }
 

@@ -27,4 +27,3 @@ let rhs = restored.tokens(viewMode: .sourceAccurate).map(\.tokenKind)
 precondition(lhs == rhs, "Unexpected non-identifier change")
 let result: [String: Any] = ["file": target, "identifiers": mapping.count, "all_tokens_identical_after_inverse_rename": true, "strings_selectors_and_layout_expressions_preserved": true]
 try JSONSerialization.data(withJSONObject: result, options: [.prettyPrinted, .sortedKeys]).write(to: planURL.deletingLastPathComponent().appendingPathComponent("syntax-audit.json"))
-print("PASS: exact inverse-token equality, including every string, layout value, selector target and system API")

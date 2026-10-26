@@ -265,7 +265,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
             guard let self else { return }
             guard tideEnvelope.beachwearCapsule == 200, let tideSnapshot = tideEnvelope.sandbarLayering else {
                 self.shoreSpinner.stopAnimating()
-                self.showLagoonToast(tideEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(tideEnvelope.coastalWardrobe)
                 return
             }
             self.shorelineTideDetail = tideSnapshot
@@ -470,7 +470,7 @@ final class SuliJoyTideCoastalDetailController: SuliJoyTropicCanvasController, U
         } block: { [weak self] in
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: shorelineTideDetail.shoreHostAlias)
             suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { guardEnvelope in
-                self?.showLagoonToast(guardEnvelope.coastalWardrobe)
+                self?.abaloneShellIrisLagoonToast(guardEnvelope.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self?.navigationController?.popViewController(animated: true)
             }
@@ -588,7 +588,7 @@ private final class SuliJoyCoastalSuggestionCard: UIControl {
     private let shoreTimeGlyph = UILabel()
     private let shoreTitleGlyph = UILabel()
     private let shoreAvatarRail = UIStackView()
-//    private let joinButton = SuliJoyGradientButton(reefHeadline: "JsoqiFnE yEpvFePnPtr".suliJoyPalmUnfurled)
+
 
     init(shorelineTideDetail: SuliJoyTideActivity) {
         self.shorelineTideDetail = shorelineTideDetail
@@ -909,7 +909,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
             guard let self else { return }
             self.shoreSpinner.stopAnimating()
             guard harborEnvelope.beachwearCapsule == 200, let harborSpace = harborEnvelope.sandbarLayering else {
-                self.showLagoonToast(harborEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(harborEnvelope.coastalWardrobe)
                 return
             }
             self.talkSpace = harborSpace
@@ -976,22 +976,22 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
                 sender?.isEnabled = true
                 guard let self else { return }
                 guard seatEnvelope.beachwearCapsule == 200, let harborSpace = seatEnvelope.sandbarLayering else {
-                    self.showLagoonToast(seatEnvelope.coastalWardrobe)
+                    self.abaloneShellIrisLagoonToast(seatEnvelope.coastalWardrobe)
                     return
                 }
                 self.talkSpace = harborSpace
                 self.render(harborSpace)
-                self.showLagoonToast("SHeuaete ajiocimnhecdU.h".suliJoyPalmUnfurled)
+                self.abaloneShellIrisLagoonToast("SHeuaete ajiocimnhecdU.h".suliJoyPalmUnfurled)
             }
         } else {
-            showLagoonToast("\(seat.seatAliasLine)\(" xixsx xoxnx xtxhxex xsxexaxtx.x".suliJoyPalmUnfurled)")
+            abaloneShellIrisLagoonToast("\(seat.seatAliasLine)\(" xixsx xoxnx xtxhxex xsxexaxtx.x".suliJoyPalmUnfurled)")
         }
     }
 
     @objc private func sendShoreNote() {
         let shoreDraftText = shoreNoteField.text ?? ""
         guard !shoreDraftText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            showLagoonToast("PllAeOalsqeg ReLnhtSeerm Qar q".suliJoyPalmUnfurled + "mteesJsn".suliJoyPalmUnfurled + "aFgceM.b".suliJoyPalmUnfurled)
+            abaloneShellIrisLagoonToast("PllAeOalsqeg ReLnhtSeerm Qar q".suliJoyPalmUnfurled + "mteesJsn".suliJoyPalmUnfurled + "aFgceM.b".suliJoyPalmUnfurled)
             return
         }
         shoreSendControl.isEnabled = false
@@ -999,7 +999,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
             guard let self else { return }
             self.shoreSendControl.isEnabled = true
             guard breezeEnvelope.beachwearCapsule == 200, let harborSpace = breezeEnvelope.sandbarLayering else {
-                self.showLagoonToast(breezeEnvelope.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(breezeEnvelope.coastalWardrobe)
                 return
             }
             self.shoreNoteField.text = nil
@@ -1022,7 +1022,7 @@ private final class SuliJoyTideTalkSpaceViewController: SuliJoyTropicCanvasContr
             guard let self else { return }
             let visitorID = SuliJoyLagoonVisitor.lagoonGuestToken(for: self.shorelineTideDetail.shoreHostAlias)
             suliJoyPalmRankingaccount.shared.blockLagoonVisitor(seersuckerStripe: visitorID) { result in
-                self.showLagoonToast(result.coastalWardrobe)
+                self.abaloneShellIrisLagoonToast(result.coastalWardrobe)
                 NotificationCenter.default.post(name: .suliJoyLagoonVisitorChanged, object: nil)
                 self.navigationController?.popViewController(animated: true)
             }

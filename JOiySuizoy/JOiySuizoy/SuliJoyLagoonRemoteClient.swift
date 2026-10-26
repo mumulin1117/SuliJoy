@@ -153,8 +153,26 @@ private enum reloadAfterLocalPublish {
 struct ReadyIslandReefScene: Decodable {
     let returnControl: String
 
-    private enum CodingKeys: String, CodingKey {
-        case returnControl = "photoUrl"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case returnControl
+
+        var rawValue: String {
+            switch self {
+            case .returnControl: return "pxhxoxtxoxUxrxlx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.returnControl.rawValue: self = .returnControl
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -177,19 +195,59 @@ struct onLagoonFollowTap: Decodable {
     let startOrResumeWave: Int
     let tideIndicatorHeight: [ReadyIslandReefScene]
 
-    private enum CodingKeys: String, CodingKey {
-        case tuneMomentImageWavePill = "userId"
-        case polishShellCache = "nickname"
-        case shoreBriefTextView = "icon"
-        case hibiscusShade = "signature"
-        case keyboardWillShow = "friendNum"
-        case refreshMutedVisitors = "fansNum"
-        case ShellWardrobeMeasure = "upsNum"
-        case refreshDraftCounters = "diamondNum"
-        case fetchPearlHarborShelves = "receivedLikeCount"
-        case reefCoverPath = "videoCount"
-        case startOrResumeWave = "videoLikeCount"
-        case tideIndicatorHeight = "photoList"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case tuneMomentImageWavePill
+        case polishShellCache
+        case shoreBriefTextView
+        case hibiscusShade
+        case keyboardWillShow
+        case refreshMutedVisitors
+        case ShellWardrobeMeasure
+        case refreshDraftCounters
+        case fetchPearlHarborShelves
+        case reefCoverPath
+        case startOrResumeWave
+        case tideIndicatorHeight
+
+        var rawValue: String {
+            switch self {
+            case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            case .polishShellCache: return "nxixcxkxnxaxmxex".suliJoyPalmUnfurled
+            case .shoreBriefTextView: return "ixcxoxnx".suliJoyPalmUnfurled
+            case .hibiscusShade: return "sxixgxnxaxtxuxrxex".suliJoyPalmUnfurled
+            case .keyboardWillShow: return "fxrxixexnxdxNxuxmx".suliJoyPalmUnfurled
+            case .refreshMutedVisitors: return "fxaxnxsxNxuxmx".suliJoyPalmUnfurled
+            case .ShellWardrobeMeasure: return "uxpxsxNxuxmx".suliJoyPalmUnfurled
+            case .refreshDraftCounters: return "dxixaxmxoxnxdxNxuxmx".suliJoyPalmUnfurled
+            case .fetchPearlHarborShelves: return "rxexcxexixvxexdxLxixkxexCxoxuxnxtx".suliJoyPalmUnfurled
+            case .reefCoverPath: return "vxixdxexoxCxoxuxnxtx".suliJoyPalmUnfurled
+            case .startOrResumeWave: return "vxixdxexoxLxixkxexCxoxuxnxtx".suliJoyPalmUnfurled
+            case .tideIndicatorHeight: return "pxhxoxtxoxLxixsxtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+            case Self.polishShellCache.rawValue: self = .polishShellCache
+            case Self.shoreBriefTextView.rawValue: self = .shoreBriefTextView
+            case Self.hibiscusShade.rawValue: self = .hibiscusShade
+            case Self.keyboardWillShow.rawValue: self = .keyboardWillShow
+            case Self.refreshMutedVisitors.rawValue: self = .refreshMutedVisitors
+            case Self.ShellWardrobeMeasure.rawValue: self = .ShellWardrobeMeasure
+            case Self.refreshDraftCounters.rawValue: self = .refreshDraftCounters
+            case Self.fetchPearlHarborShelves.rawValue: self = .fetchPearlHarborShelves
+            case Self.reefCoverPath.rawValue: self = .reefCoverPath
+            case Self.startOrResumeWave.rawValue: self = .startOrResumeWave
+            case Self.tideIndicatorHeight.rawValue: self = .tideIndicatorHeight
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -224,20 +282,62 @@ struct hasShoreMomentContent: Decodable {
     let commentField: Bool
     let tideIndicatorHeight: [ReadyIslandReefScene]
 
-    private enum CodingKeys: String, CodingKey {
-        case tuneMomentImageWavePill = "userId"
-        case polishShellCache = "nickName"
-        case shoreBriefTextView = "icon"
-        case hibiscusShade = "signature"
-        case refreshMutedVisitors = "fans"
-        case ShellWardrobeMeasure = "follow"
-        case fetchPearlHarborShelves = "receivedLikeCount"
-        case reefCoverPath = "videoCount"
-        case startOrResumeWave = "videoLikeCount"
-        case guestTitleLabel = "isFollow"
-        case keyboardWillHide = "isMutualFollow"
-        case commentField = "isBlocked"
-        case tideIndicatorHeight = "photoList"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case tuneMomentImageWavePill
+        case polishShellCache
+        case shoreBriefTextView
+        case hibiscusShade
+        case refreshMutedVisitors
+        case ShellWardrobeMeasure
+        case fetchPearlHarborShelves
+        case reefCoverPath
+        case startOrResumeWave
+        case guestTitleLabel
+        case keyboardWillHide
+        case commentField
+        case tideIndicatorHeight
+
+        var rawValue: String {
+            switch self {
+            case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            case .polishShellCache: return "nxixcxkxNxaxmxex".suliJoyPalmUnfurled
+            case .shoreBriefTextView: return "ixcxoxnx".suliJoyPalmUnfurled
+            case .hibiscusShade: return "sxixgxnxaxtxuxrxex".suliJoyPalmUnfurled
+            case .refreshMutedVisitors: return "fxaxnxsx".suliJoyPalmUnfurled
+            case .ShellWardrobeMeasure: return "fxoxlxlxoxwx".suliJoyPalmUnfurled
+            case .fetchPearlHarborShelves: return "rxexcxexixvxexdxLxixkxexCxoxuxnxtx".suliJoyPalmUnfurled
+            case .reefCoverPath: return "vxixdxexoxCxoxuxnxtx".suliJoyPalmUnfurled
+            case .startOrResumeWave: return "vxixdxexoxLxixkxexCxoxuxnxtx".suliJoyPalmUnfurled
+            case .guestTitleLabel: return "ixsxFxoxlxlxoxwx".suliJoyPalmUnfurled
+            case .keyboardWillHide: return "ixsxMxuxtxuxaxlxFxoxlxlxoxwx".suliJoyPalmUnfurled
+            case .commentField: return "ixsxBxlxoxcxkxexdx".suliJoyPalmUnfurled
+            case .tideIndicatorHeight: return "pxhxoxtxoxLxixsxtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+            case Self.polishShellCache.rawValue: self = .polishShellCache
+            case Self.shoreBriefTextView.rawValue: self = .shoreBriefTextView
+            case Self.hibiscusShade.rawValue: self = .hibiscusShade
+            case Self.refreshMutedVisitors.rawValue: self = .refreshMutedVisitors
+            case Self.ShellWardrobeMeasure.rawValue: self = .ShellWardrobeMeasure
+            case Self.fetchPearlHarborShelves.rawValue: self = .fetchPearlHarborShelves
+            case Self.reefCoverPath.rawValue: self = .reefCoverPath
+            case Self.startOrResumeWave.rawValue: self = .startOrResumeWave
+            case Self.guestTitleLabel.rawValue: self = .guestTitleLabel
+            case Self.keyboardWillHide.rawValue: self = .keyboardWillHide
+            case Self.commentField.rawValue: self = .commentField
+            case Self.tideIndicatorHeight.rawValue: self = .tideIndicatorHeight
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -273,20 +373,62 @@ struct openLagoonMirror: Decodable {
     let makePlaceholderReturnControl: String
     let duskVeilView: Int
 
-    private enum CodingKeys: String, CodingKey {
-        case isLagoonFollowing = "id"
-        case openLagoonRuleTerms = "textContent"
-        case polishShellCache = "nickname"
-        case shoreBriefTextView = "icon"
-        case tuneMomentImageWavePill = "userId"
-        case moorReefCardScene = "imgUrls"
-        case tideActivities = "audioUrl"
-        case refreshedReefClip = "audioDuration"
-        case paintIslandBaseWash = "likeFlag"
-        case waveCreatedAt = "likeNum"
-        case viewController = "followFlag"
-        case makePlaceholderReturnControl = "createTime"
-        case duskVeilView = "commentNum"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case isLagoonFollowing
+        case openLagoonRuleTerms
+        case polishShellCache
+        case shoreBriefTextView
+        case tuneMomentImageWavePill
+        case moorReefCardScene
+        case tideActivities
+        case refreshedReefClip
+        case paintIslandBaseWash
+        case waveCreatedAt
+        case viewController
+        case makePlaceholderReturnControl
+        case duskVeilView
+
+        var rawValue: String {
+            switch self {
+            case .isLagoonFollowing: return "ixdx".suliJoyPalmUnfurled
+            case .openLagoonRuleTerms: return "txexxxtxCxoxnxtxexnxtx".suliJoyPalmUnfurled
+            case .polishShellCache: return "nxixcxkxnxaxmxex".suliJoyPalmUnfurled
+            case .shoreBriefTextView: return "ixcxoxnx".suliJoyPalmUnfurled
+            case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            case .moorReefCardScene: return "ixmxgxUxrxlxsx".suliJoyPalmUnfurled
+            case .tideActivities: return "axuxdxixoxUxrxlx".suliJoyPalmUnfurled
+            case .refreshedReefClip: return "axuxdxixoxDxuxrxaxtxixoxnx".suliJoyPalmUnfurled
+            case .paintIslandBaseWash: return "lxixkxexFxlxaxgx".suliJoyPalmUnfurled
+            case .waveCreatedAt: return "lxixkxexNxuxmx".suliJoyPalmUnfurled
+            case .viewController: return "fxoxlxlxoxwxFxlxaxgx".suliJoyPalmUnfurled
+            case .makePlaceholderReturnControl: return "cxrxexaxtxexTxixmxex".suliJoyPalmUnfurled
+            case .duskVeilView: return "cxoxmxmxexnxtxNxuxmx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.isLagoonFollowing.rawValue: self = .isLagoonFollowing
+            case Self.openLagoonRuleTerms.rawValue: self = .openLagoonRuleTerms
+            case Self.polishShellCache.rawValue: self = .polishShellCache
+            case Self.shoreBriefTextView.rawValue: self = .shoreBriefTextView
+            case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+            case Self.moorReefCardScene.rawValue: self = .moorReefCardScene
+            case Self.tideActivities.rawValue: self = .tideActivities
+            case Self.refreshedReefClip.rawValue: self = .refreshedReefClip
+            case Self.paintIslandBaseWash.rawValue: self = .paintIslandBaseWash
+            case Self.waveCreatedAt.rawValue: self = .waveCreatedAt
+            case Self.viewController.rawValue: self = .viewController
+            case Self.makePlaceholderReturnControl.rawValue: self = .makePlaceholderReturnControl
+            case Self.duskVeilView.rawValue: self = .duskVeilView
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -310,14 +452,50 @@ struct openLagoonMirror: Decodable {
 struct returnToIslandCove: Decodable {
     let onShorelineFollowTap: [openLagoonMirror]
 
-    private enum CodingKeys: String, CodingKey {
-        case waveOnlyCaptionGlyph = "list"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case waveOnlyCaptionGlyph
+
+        var rawValue: String {
+            switch self {
+            case .waveOnlyCaptionGlyph: return "lxixsxtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.waveOnlyCaptionGlyph.rawValue: self = .waveOnlyCaptionGlyph
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     private struct activeCoverSlotIndex: Decodable {
         let onShorelineFollowTap: [openLagoonMirror]
-    private enum CodingKeys: String, CodingKey {
-        case onShorelineFollowTap = "rows"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case onShorelineFollowTap
+
+        var rawValue: String {
+            switch self {
+            case .onShorelineFollowTap: return "rxoxwxsx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.onShorelineFollowTap.rawValue: self = .onShorelineFollowTap
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -335,12 +513,38 @@ struct lagoonFieldColumn: Decodable {
     let lagoonMarkControl: String
     let makePlaceholderReturnControl: String
 
-    private enum CodingKeys: String, CodingKey {
-        case makeReefTabBlueprints = "id"
-        case polishShellCache = "nickname"
-        case shoreBriefTextView = "icon"
-        case lagoonMarkControl = "commentContent"
-        case makePlaceholderReturnControl = "createTime"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case makeReefTabBlueprints
+        case polishShellCache
+        case shoreBriefTextView
+        case lagoonMarkControl
+        case makePlaceholderReturnControl
+
+        var rawValue: String {
+            switch self {
+            case .makeReefTabBlueprints: return "ixdx".suliJoyPalmUnfurled
+            case .polishShellCache: return "nxixcxkxnxaxmxex".suliJoyPalmUnfurled
+            case .shoreBriefTextView: return "ixcxoxnx".suliJoyPalmUnfurled
+            case .lagoonMarkControl: return "cxoxmxmxexnxtxCxoxnxtxexnxtx".suliJoyPalmUnfurled
+            case .makePlaceholderReturnControl: return "cxrxexaxtxexTxixmxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.makeReefTabBlueprints.rawValue: self = .makeReefTabBlueprints
+            case Self.polishShellCache.rawValue: self = .polishShellCache
+            case Self.shoreBriefTextView.rawValue: self = .shoreBriefTextView
+            case Self.lagoonMarkControl.rawValue: self = .lagoonMarkControl
+            case Self.makePlaceholderReturnControl.rawValue: self = .makePlaceholderReturnControl
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -356,8 +560,26 @@ struct lagoonFieldColumn: Decodable {
 struct shoreAvatarView: Decodable {
     let onShorelineFollowTap: [lagoonFieldColumn]
 
-    private enum CodingKeys: String, CodingKey {
-        case onShorelineFollowTap = "rows"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case onShorelineFollowTap
+
+        var rawValue: String {
+            switch self {
+            case .onShorelineFollowTap: return "rxoxwxsx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.onShorelineFollowTap.rawValue: self = .onShorelineFollowTap
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -371,10 +593,32 @@ struct tuneShellCoveStack: Decodable {
     let makeReefTabBlueprints: Int64
     let duskVeilView: Int
 
-    private enum CodingKeys: String, CodingKey {
-        case waveOnlyControl = "success"
-        case makeReefTabBlueprints = "commentId"
-        case duskVeilView = "commentNum"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case waveOnlyControl
+        case makeReefTabBlueprints
+        case duskVeilView
+
+        var rawValue: String {
+            switch self {
+            case .waveOnlyControl: return "sxuxcxcxexsxsx".suliJoyPalmUnfurled
+            case .makeReefTabBlueprints: return "cxoxmxmxexnxtxIxdx".suliJoyPalmUnfurled
+            case .duskVeilView: return "cxoxmxmxexnxtxNxuxmx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.waveOnlyControl.rawValue: self = .waveOnlyControl
+            case Self.makeReefTabBlueprints.rawValue: self = .makeReefTabBlueprints
+            case Self.duskVeilView.rawValue: self = .duskVeilView
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -391,11 +635,35 @@ struct shoreDetailDeck: Decodable {
     let wavePauseTimeGlyph: [String]
     let dividerHeight: String
 
-    private enum CodingKeys: String, CodingKey {
-        case shorelineCell = "published"
-        case isLagoonFollowing = "friendsCircleId"
-        case wavePauseTimeGlyph = "validImgUrls"
-        case dividerHeight = "message"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case shorelineCell
+        case isLagoonFollowing
+        case wavePauseTimeGlyph
+        case dividerHeight
+
+        var rawValue: String {
+            switch self {
+            case .shorelineCell: return "pxuxbxlxixsxhxexdx".suliJoyPalmUnfurled
+            case .isLagoonFollowing: return "fxrxixexnxdxsxCxixrxcxlxexIxdx".suliJoyPalmUnfurled
+            case .wavePauseTimeGlyph: return "vxaxlxixdxIxmxgxUxrxlxsx".suliJoyPalmUnfurled
+            case .dividerHeight: return "mxexsxsxaxgxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.shorelineCell.rawValue: self = .shorelineCell
+            case Self.isLagoonFollowing.rawValue: self = .isLagoonFollowing
+            case Self.wavePauseTimeGlyph.rawValue: self = .wavePauseTimeGlyph
+            case Self.dividerHeight.rawValue: self = .dividerHeight
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -412,10 +680,32 @@ struct reefLikeButton: Decodable {
     let polishShellCache: String
     let shoreBriefTextView: String
 
-    private enum CodingKeys: String, CodingKey {
-        case tuneMomentImageWavePill = "userId"
-        case polishShellCache = "nickname"
-        case shoreBriefTextView = "icon"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case tuneMomentImageWavePill
+        case polishShellCache
+        case shoreBriefTextView
+
+        var rawValue: String {
+            switch self {
+            case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            case .polishShellCache: return "nxixcxkxnxaxmxex".suliJoyPalmUnfurled
+            case .shoreBriefTextView: return "ixcxoxnx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+            case Self.polishShellCache.rawValue: self = .polishShellCache
+            case Self.shoreBriefTextView.rawValue: self = .shoreBriefTextView
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -440,19 +730,59 @@ struct upperReefLine: Decodable {
     let renderHarborSeats: Int64
     let islandStyleTagline: reefLikeButton?
 
-    private enum CodingKeys: String, CodingKey {
-        case shoreSecretInput = "videoId"
-        case mediaPageIndicator = "caption"
-        case openCoverImagePicker = "videoUrl"
-        case suliJoyCoastalMeter = "coverUrl"
-        case dayFormatter = "durationSeconds"
-        case waveCreatedAt = "likeCount"
-        case duskVeilView = "commentCount"
-        case aquaGradient = "liked"
-        case lagoonFaceRail = "followed"
-        case mediaCarousel = "viewCount"
-        case renderHarborSeats = "createdAt"
-        case islandStyleTagline = "author"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case shoreSecretInput
+        case mediaPageIndicator
+        case openCoverImagePicker
+        case suliJoyCoastalMeter
+        case dayFormatter
+        case waveCreatedAt
+        case duskVeilView
+        case aquaGradient
+        case lagoonFaceRail
+        case mediaCarousel
+        case renderHarborSeats
+        case islandStyleTagline
+
+        var rawValue: String {
+            switch self {
+            case .shoreSecretInput: return "vxixdxexoxIxdx".suliJoyPalmUnfurled
+            case .mediaPageIndicator: return "cxaxpxtxixoxnx".suliJoyPalmUnfurled
+            case .openCoverImagePicker: return "vxixdxexoxUxrxlx".suliJoyPalmUnfurled
+            case .suliJoyCoastalMeter: return "cxoxvxexrxUxrxlx".suliJoyPalmUnfurled
+            case .dayFormatter: return "dxuxrxaxtxixoxnxSxexcxoxnxdxsx".suliJoyPalmUnfurled
+            case .waveCreatedAt: return "lxixkxexCxoxuxnxtx".suliJoyPalmUnfurled
+            case .duskVeilView: return "cxoxmxmxexnxtxCxoxuxnxtx".suliJoyPalmUnfurled
+            case .aquaGradient: return "lxixkxexdx".suliJoyPalmUnfurled
+            case .lagoonFaceRail: return "fxoxlxlxoxwxexdx".suliJoyPalmUnfurled
+            case .mediaCarousel: return "vxixexwxCxoxuxnxtx".suliJoyPalmUnfurled
+            case .renderHarborSeats: return "cxrxexaxtxexdxAxtx".suliJoyPalmUnfurled
+            case .islandStyleTagline: return "axuxtxhxoxrx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.shoreSecretInput.rawValue: self = .shoreSecretInput
+            case Self.mediaPageIndicator.rawValue: self = .mediaPageIndicator
+            case Self.openCoverImagePicker.rawValue: self = .openCoverImagePicker
+            case Self.suliJoyCoastalMeter.rawValue: self = .suliJoyCoastalMeter
+            case Self.dayFormatter.rawValue: self = .dayFormatter
+            case Self.waveCreatedAt.rawValue: self = .waveCreatedAt
+            case Self.duskVeilView.rawValue: self = .duskVeilView
+            case Self.aquaGradient.rawValue: self = .aquaGradient
+            case Self.lagoonFaceRail.rawValue: self = .lagoonFaceRail
+            case Self.mediaCarousel.rawValue: self = .mediaCarousel
+            case Self.renderHarborSeats.rawValue: self = .renderHarborSeats
+            case Self.islandStyleTagline.rawValue: self = .islandStyleTagline
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -475,8 +805,26 @@ struct upperReefLine: Decodable {
 struct shorelineAvatarName: Decodable {
     let resortImageView: [upperReefLine]
 
-    private enum CodingKeys: String, CodingKey {
-        case resortImageView = "items"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case resortImageView
+
+        var rawValue: String {
+            switch self {
+            case .resortImageView: return "ixtxexmxsx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.resortImageView.rawValue: self = .resortImageView
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -503,19 +851,67 @@ struct shorelineAction: Decodable {
     let renderStylists: [prepareTideCardSurface]
     let reefAddGlyph: String
 
-    private enum CodingKeys: String, CodingKey {
-        case avatarShellBadge = "id"
-        case islandPromptTitle = "ownerId"
-        case craftSuliJoyReefPickerSheet = "roomName"
-        case timeFormatter = "roomAvatar"
-        case suliJoyCoastalSnapshot = "greetingMessage"
-        case islandShared = "countryCode"
-        case tuneResortSpinner = "heatValue"
-        case reefMuteButton = "roomStatus"
-        case makePlaceholderReturnControl = "createTime"
-        case moorLagoonEntryReefScene = "ownerName", reefDirectory = "yxRoomId", registerKeyboardObservers = "roomTempId", shoreLookShelf = "audienceNum", reefStackFloor = "roomSeatList"
-        case renderStylists = "onlineUserList"
-        case reefAddGlyph = "bigImgUrl"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case avatarShellBadge
+        case islandPromptTitle
+        case craftSuliJoyReefPickerSheet
+        case timeFormatter
+        case suliJoyCoastalSnapshot
+        case islandShared
+        case tuneResortSpinner
+        case reefMuteButton
+        case makePlaceholderReturnControl
+        case moorLagoonEntryReefScene, reefDirectory, registerKeyboardObservers, shoreLookShelf, reefStackFloor
+        case renderStylists
+        case reefAddGlyph
+
+        var rawValue: String {
+            switch self {
+            case .avatarShellBadge: return "ixdx".suliJoyPalmUnfurled
+            case .islandPromptTitle: return "oxwxnxexrxIxdx".suliJoyPalmUnfurled
+            case .craftSuliJoyReefPickerSheet: return "rxoxoxmxNxaxmxex".suliJoyPalmUnfurled
+            case .timeFormatter: return "rxoxoxmxAxvxaxtxaxrx".suliJoyPalmUnfurled
+            case .suliJoyCoastalSnapshot: return "gxrxexextxixnxgxMxexsxsxaxgxex".suliJoyPalmUnfurled
+            case .islandShared: return "cxoxuxnxtxrxyxCxoxdxex".suliJoyPalmUnfurled
+            case .tuneResortSpinner: return "hxexaxtxVxaxlxuxex".suliJoyPalmUnfurled
+            case .reefMuteButton: return "rxoxoxmxSxtxaxtxuxsx".suliJoyPalmUnfurled
+            case .makePlaceholderReturnControl: return "cxrxexaxtxexTxixmxex".suliJoyPalmUnfurled
+            case .moorLagoonEntryReefScene: return "oxwxnxexrxNxaxmxex".suliJoyPalmUnfurled
+            case .reefDirectory: return "yxxxRxoxoxmxIxdx".suliJoyPalmUnfurled
+            case .registerKeyboardObservers: return "rxoxoxmxTxexmxpxIxdx".suliJoyPalmUnfurled
+            case .shoreLookShelf: return "axuxdxixexnxcxexNxuxmx".suliJoyPalmUnfurled
+            case .reefStackFloor: return "rxoxoxmxSxexaxtxLxixsxtx".suliJoyPalmUnfurled
+            case .renderStylists: return "oxnxlxixnxexUxsxexrxLxixsxtx".suliJoyPalmUnfurled
+            case .reefAddGlyph: return "bxixgxIxmxgxUxrxlx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.avatarShellBadge.rawValue: self = .avatarShellBadge
+            case Self.islandPromptTitle.rawValue: self = .islandPromptTitle
+            case Self.craftSuliJoyReefPickerSheet.rawValue: self = .craftSuliJoyReefPickerSheet
+            case Self.timeFormatter.rawValue: self = .timeFormatter
+            case Self.suliJoyCoastalSnapshot.rawValue: self = .suliJoyCoastalSnapshot
+            case Self.islandShared.rawValue: self = .islandShared
+            case Self.tuneResortSpinner.rawValue: self = .tuneResortSpinner
+            case Self.reefMuteButton.rawValue: self = .reefMuteButton
+            case Self.makePlaceholderReturnControl.rawValue: self = .makePlaceholderReturnControl
+            case Self.moorLagoonEntryReefScene.rawValue: self = .moorLagoonEntryReefScene
+            case Self.reefDirectory.rawValue: self = .reefDirectory
+            case Self.registerKeyboardObservers.rawValue: self = .registerKeyboardObservers
+            case Self.shoreLookShelf.rawValue: self = .shoreLookShelf
+            case Self.reefStackFloor.rawValue: self = .reefStackFloor
+            case Self.renderStylists.rawValue: self = .renderStylists
+            case Self.reefAddGlyph.rawValue: self = .reefAddGlyph
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -541,7 +937,7 @@ struct shorelineAction: Decodable {
 }
 
 struct reefEchoAvatarAssetName: Decodable, Equatable {
-    /// Passed as `category` on `host/prepare`.
+
     let ownActivities: String
     let reefViewCountLabel: String
 
@@ -574,9 +970,29 @@ struct reefEchoAvatarAssetName: Decodable, Equatable {
             reefViewCountLabel = tuneMomentWaveOnlyCard
         }
     }
-    private enum CodingKeys: String, CodingKey {
-        case ownActivities = "submitValue"
-        case reefViewCountLabel = "displayTitle"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case ownActivities
+        case reefViewCountLabel
+
+        var rawValue: String {
+            switch self {
+            case .ownActivities: return "sxuxbxmxixtxVxaxlxuxex".suliJoyPalmUnfurled
+            case .reefViewCountLabel: return "dxixsxpxlxaxyxTxixtxlxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.ownActivities.rawValue: self = .ownActivities
+            case Self.reefViewCountLabel.rawValue: self = .reefViewCountLabel
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
 }
@@ -589,10 +1005,32 @@ struct openPearlHarbor: Decodable {
 
     var harvestReefMotionScene: [String] { isLagoonConsentMarked.map(\.ownActivities) }
 
-    private enum CodingKeys: String, CodingKey {
-        case shoreProfile = "liveTypes"
-        case finishIslandProfileTide = "locales"
-        case avatarTokens = "contentReminder"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case shoreProfile
+        case finishIslandProfileTide
+        case avatarTokens
+
+        var rawValue: String {
+            switch self {
+            case .shoreProfile: return "lxixvxexTxyxpxexsx".suliJoyPalmUnfurled
+            case .finishIslandProfileTide: return "lxoxcxaxlxexsx".suliJoyPalmUnfurled
+            case .avatarTokens: return "cxoxnxtxexnxtxRxexmxixnxdxexrx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.shoreProfile.rawValue: self = .shoreProfile
+            case Self.finishIslandProfileTide.rawValue: self = .finishIslandProfileTide
+            case Self.avatarTokens.rawValue: self = .avatarTokens
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -625,10 +1063,32 @@ struct openPearlHarbor: Decodable {
 struct coveTitleGlyph: Decodable {
     let currentPearlBalance: String
 
-    private enum CodingKeys: String, CodingKey {
-        case currentPearlBalance = "text"
-        case dividerHeight = "message"
-        case lagoonMarkControl = "content"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case currentPearlBalance
+        case dividerHeight
+        case lagoonMarkControl
+
+        var rawValue: String {
+            switch self {
+            case .currentPearlBalance: return "txexxxtx".suliJoyPalmUnfurled
+            case .dividerHeight: return "mxexsxsxaxgxex".suliJoyPalmUnfurled
+            case .lagoonMarkControl: return "cxoxnxtxexnxtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.currentPearlBalance.rawValue: self = .currentPearlBalance
+            case Self.dividerHeight.rawValue: self = .dividerHeight
+            case Self.lagoonMarkControl.rawValue: self = .lagoonMarkControl
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -657,9 +1117,29 @@ struct islandTitleGlyph: Decodable {
         paintReefClip = harborSeatGrid
         shorelineAvatarTokens = shellDivider
     }
-    private enum CodingKeys: String, CodingKey {
-        case paintReefClip = "code"
-        case shorelineAvatarTokens = "title"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case paintReefClip
+        case shorelineAvatarTokens
+
+        var rawValue: String {
+            switch self {
+            case .paintReefClip: return "cxoxdxex".suliJoyPalmUnfurled
+            case .shorelineAvatarTokens: return "txixtxlxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.paintReefClip.rawValue: self = .paintReefClip
+            case Self.shorelineAvatarTokens.rawValue: self = .shorelineAvatarTokens
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
 }
@@ -668,11 +1148,35 @@ struct shoreAnimated: Decodable {
     let renderMomentComments: String
     let islandShared: String
 
-    private enum CodingKeys: String, CodingKey {
-        case renderMomentComments = "languageName"
-        case reefReplyCopyGlyph = "name"
-        case dismissKeyboard = "countries"
-        case islandShared = "countryCode"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case renderMomentComments
+        case reefReplyCopyGlyph
+        case dismissKeyboard
+        case islandShared
+
+        var rawValue: String {
+            switch self {
+            case .renderMomentComments: return "lxaxnxgxuxaxgxexNxaxmxex".suliJoyPalmUnfurled
+            case .reefReplyCopyGlyph: return "nxaxmxex".suliJoyPalmUnfurled
+            case .dismissKeyboard: return "cxoxuxnxtxrxixexsx".suliJoyPalmUnfurled
+            case .islandShared: return "cxoxuxnxtxrxyxCxoxdxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.renderMomentComments.rawValue: self = .renderMomentComments
+            case Self.reefReplyCopyGlyph.rawValue: self = .reefReplyCopyGlyph
+            case Self.dismissKeyboard.rawValue: self = .dismissKeyboard
+            case Self.islandShared.rawValue: self = .islandShared
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -692,9 +1196,29 @@ struct shoreAnimated: Decodable {
 struct shorelineRenewalTask: Decodable {
     let islandShared: String
 
-    private enum CodingKeys: String, CodingKey {
-        case islandShared = "countryCode"
-        case paintReefClip = "code"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case islandShared
+        case paintReefClip
+
+        var rawValue: String {
+            switch self {
+            case .islandShared: return "cxoxuxnxtxrxyxCxoxdxex".suliJoyPalmUnfurled
+            case .paintReefClip: return "cxoxdxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.islandShared.rawValue: self = .islandShared
+            case Self.paintReefClip.rawValue: self = .paintReefClip
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -713,13 +1237,41 @@ struct fetchMineTideActivities: Decodable {
     let suliJoyCoastalMeter: String
     let suliJoyCoastalStyle: String
 
-    private enum CodingKeys: String, CodingKey {
-        case avatarShellBadge = "roomId"
-        case shoreHeroDots = "sessionId"
-        case forgeReefReturnControl = "channelId"
-        case forgeCoralRemovalCard = "liveTitle"
-        case suliJoyCoastalMeter = "coverUrl"
-        case suliJoyCoastalStyle = "status"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case avatarShellBadge
+        case shoreHeroDots
+        case forgeReefReturnControl
+        case forgeCoralRemovalCard
+        case suliJoyCoastalMeter
+        case suliJoyCoastalStyle
+
+        var rawValue: String {
+            switch self {
+            case .avatarShellBadge: return "rxoxoxmxIxdx".suliJoyPalmUnfurled
+            case .shoreHeroDots: return "sxexsxsxixoxnxIxdx".suliJoyPalmUnfurled
+            case .forgeReefReturnControl: return "cxhxaxnxnxexlxIxdx".suliJoyPalmUnfurled
+            case .forgeCoralRemovalCard: return "lxixvxexTxixtxlxex".suliJoyPalmUnfurled
+            case .suliJoyCoastalMeter: return "cxoxvxexrxUxrxlx".suliJoyPalmUnfurled
+            case .suliJoyCoastalStyle: return "sxtxaxtxuxsx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.avatarShellBadge.rawValue: self = .avatarShellBadge
+            case Self.shoreHeroDots.rawValue: self = .shoreHeroDots
+            case Self.forgeReefReturnControl.rawValue: self = .forgeReefReturnControl
+            case Self.forgeCoralRemovalCard.rawValue: self = .forgeCoralRemovalCard
+            case Self.suliJoyCoastalMeter.rawValue: self = .suliJoyCoastalMeter
+            case Self.suliJoyCoastalStyle.rawValue: self = .suliJoyCoastalStyle
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -735,7 +1287,7 @@ struct fetchMineTideActivities: Decodable {
 }
 
 struct activeShoreInput: Decodable, Equatable {
-    /// Value accepted by `party/room/create` when the backend enables tag submission.
+
     let ownActivities: String
     let reefViewCountLabel: String
 
@@ -768,9 +1320,29 @@ struct activeShoreInput: Decodable, Equatable {
             reefViewCountLabel = tuneMomentWaveOnlyCard
         }
     }
-    private enum CodingKeys: String, CodingKey {
-        case ownActivities = "submitValue"
-        case reefViewCountLabel = "displayTitle"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case ownActivities
+        case reefViewCountLabel
+
+        var rawValue: String {
+            switch self {
+            case .ownActivities: return "sxuxbxmxixtxVxaxlxuxex".suliJoyPalmUnfurled
+            case .reefViewCountLabel: return "dxixsxpxlxaxyxTxixtxlxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.ownActivities.rawValue: self = .ownActivities
+            case Self.reefViewCountLabel.rawValue: self = .reefViewCountLabel
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
 }
@@ -782,9 +1354,29 @@ struct weaveMutedVisitorCove: Decodable {
 
     var inspectShorelineDraftFields: [String] { makeLagoonRuleCancelButton.map(\.ownActivities) }
 
-    private enum CodingKeys: String, CodingKey {
-        case makeIslandToastSunStripe = "canCreateRoom"
-        case toggleShellClipFollow = "createRoomLevel"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case makeIslandToastSunStripe
+        case toggleShellClipFollow
+
+        var rawValue: String {
+            switch self {
+            case .makeIslandToastSunStripe: return "cxaxnxCxrxexaxtxexRxoxoxmx".suliJoyPalmUnfurled
+            case .toggleShellClipFollow: return "cxrxexaxtxexRxoxoxmxLxexvxexlx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.makeIslandToastSunStripe.rawValue: self = .makeIslandToastSunStripe
+            case Self.toggleShellClipFollow.rawValue: self = .toggleShellClipFollow
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -815,11 +1407,35 @@ struct stitchLagoonScrollTextScene: Decodable {
     let washedCotton: String
     let shorelineAvatarTokens: String
 
-    private enum CodingKeys: String, CodingKey {
-        case textFieldDidBeginEditing = "roomTempId"
-        case washedCotton = "imgUrl"
-        case shorelineAvatarTokens = "title"
-        case dismissReefReplyVeil = "roomTempName"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case textFieldDidBeginEditing
+        case washedCotton
+        case shorelineAvatarTokens
+        case dismissReefReplyVeil
+
+        var rawValue: String {
+            switch self {
+            case .textFieldDidBeginEditing: return "rxoxoxmxTxexmxpxIxdx".suliJoyPalmUnfurled
+            case .washedCotton: return "ixmxgxUxrxlx".suliJoyPalmUnfurled
+            case .shorelineAvatarTokens: return "txixtxlxex".suliJoyPalmUnfurled
+            case .dismissReefReplyVeil: return "rxoxoxmxTxexmxpxNxaxmxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.textFieldDidBeginEditing.rawValue: self = .textFieldDidBeginEditing
+            case Self.washedCotton.rawValue: self = .washedCotton
+            case Self.shorelineAvatarTokens.rawValue: self = .shorelineAvatarTokens
+            case Self.dismissReefReplyVeil.rawValue: self = .dismissReefReplyVeil
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -836,9 +1452,29 @@ struct shellEnvelope: Decodable {
     let renderMomentComments: String
     let tuneTideTagLabel: String
 
-    private enum CodingKeys: String, CodingKey {
-        case renderMomentComments = "languageName"
-        case tuneTideTagLabel = "languageCode"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case renderMomentComments
+        case tuneTideTagLabel
+
+        var rawValue: String {
+            switch self {
+            case .renderMomentComments: return "lxaxnxgxuxaxgxexNxaxmxex".suliJoyPalmUnfurled
+            case .tuneTideTagLabel: return "lxaxnxgxuxaxgxexCxoxdxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.renderMomentComments.rawValue: self = .renderMomentComments
+            case Self.tuneTideTagLabel.rawValue: self = .tuneTideTagLabel
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -867,8 +1503,26 @@ struct presentShoreCalendarWheel: Decodable {
         }
         reefMailJoiner = []
     }
-    private enum CodingKeys: String, CodingKey {
-        case reefMailJoiner = "templates"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case reefMailJoiner
+
+        var rawValue: String {
+            switch self {
+            case .reefMailJoiner: return "txexmxpxlxaxtxexsx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.reefMailJoiner.rawValue: self = .reefMailJoiner
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
 }
@@ -892,8 +1546,26 @@ struct ownerBadgeGlyph: Decodable {
         }
         hasReefMedia = []
     }
-    private enum CodingKeys: String, CodingKey {
-        case hasReefMedia = "languages"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case hasReefMedia
+
+        var rawValue: String {
+            switch self {
+            case .hasReefMedia: return "lxaxnxgxuxaxgxexsx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.hasReefMedia.rawValue: self = .hasReefMedia
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
 }
@@ -901,8 +1573,26 @@ struct ownerBadgeGlyph: Decodable {
 struct prepareTideCardSurface: Decodable {
     let stitchIslandBackdropReef: String
 
-    private enum CodingKeys: String, CodingKey {
-        case stitchIslandBackdropReef = "avatar"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case stitchIslandBackdropReef
+
+        var rawValue: String {
+            switch self {
+            case .stitchIslandBackdropReef: return "axvxaxtxaxrx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.stitchIslandBackdropReef.rawValue: self = .stitchIslandBackdropReef
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -918,13 +1608,41 @@ struct followButton: Decodable {
     let polishShellCache: String?
     let driftwoodPalette: Int?
     let applyLagoonSummary: Int?
-    private enum CodingKeys: String, CodingKey {
-        case shouldReceive = "seatIndex"
-        case sheetBottomConstraint = "userId"
-        case stitchIslandBackdropReef = "avatar"
-        case polishShellCache = "nickname"
-        case driftwoodPalette = "isOccupied"
-        case applyLagoonSummary = "roomRoleType"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case shouldReceive
+        case sheetBottomConstraint
+        case stitchIslandBackdropReef
+        case polishShellCache
+        case driftwoodPalette
+        case applyLagoonSummary
+
+        var rawValue: String {
+            switch self {
+            case .shouldReceive: return "sxexaxtxIxnxdxexxx".suliJoyPalmUnfurled
+            case .sheetBottomConstraint: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            case .stitchIslandBackdropReef: return "axvxaxtxaxrx".suliJoyPalmUnfurled
+            case .polishShellCache: return "nxixcxkxnxaxmxex".suliJoyPalmUnfurled
+            case .driftwoodPalette: return "ixsxOxcxcxuxpxixexdx".suliJoyPalmUnfurled
+            case .applyLagoonSummary: return "rxoxoxmxRxoxlxexTxyxpxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.shouldReceive.rawValue: self = .shouldReceive
+            case Self.sheetBottomConstraint.rawValue: self = .sheetBottomConstraint
+            case Self.stitchIslandBackdropReef.rawValue: self = .stitchIslandBackdropReef
+            case Self.polishShellCache.rawValue: self = .polishShellCache
+            case Self.driftwoodPalette.rawValue: self = .driftwoodPalette
+            case Self.applyLagoonSummary.rawValue: self = .applyLagoonSummary
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
 }
@@ -937,10 +1655,38 @@ struct harvestPearlTileScene: Decodable {
     let currentPearlBalance: String
     let renderHarborSeats: Int64
 
-    private enum CodingKeys: String, CodingKey {
-        case shoreCrewField = "id"
-        case tuneMomentImageWavePill = "userId"
-        case polishShellCache = "nickname", openPublishLagoonEntry = "avatarUrl", currentPearlBalance = "text", renderHarborSeats = "createdAt"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case shoreCrewField
+        case tuneMomentImageWavePill
+        case polishShellCache, openPublishLagoonEntry, currentPearlBalance, renderHarborSeats
+
+        var rawValue: String {
+            switch self {
+            case .shoreCrewField: return "ixdx".suliJoyPalmUnfurled
+            case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            case .polishShellCache: return "nxixcxkxnxaxmxex".suliJoyPalmUnfurled
+            case .openPublishLagoonEntry: return "axvxaxtxaxrxUxrxlx".suliJoyPalmUnfurled
+            case .currentPearlBalance: return "txexxxtx".suliJoyPalmUnfurled
+            case .renderHarborSeats: return "cxrxexaxtxexdxAxtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.shoreCrewField.rawValue: self = .shoreCrewField
+            case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+            case Self.polishShellCache.rawValue: self = .polishShellCache
+            case Self.openPublishLagoonEntry.rawValue: self = .openPublishLagoonEntry
+            case Self.currentPearlBalance.rawValue: self = .currentPearlBalance
+            case Self.renderHarborSeats.rawValue: self = .renderHarborSeats
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -962,12 +1708,38 @@ struct tideClockGlyph: Decodable {
         let quietHeadlineLabel: Int
         let lagoonFaceRail: Bool
 
-        private enum CodingKeys: String, CodingKey {
-            case sheetBottomConstraint = "userId"
-            case waveStripeAssetToken = "nickName"
-            case shoreBriefTextView = "icon"
-            case quietHeadlineLabel = "fansCount"
-            case lagoonFaceRail = "followed"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case sheetBottomConstraint
+            case waveStripeAssetToken
+            case shoreBriefTextView
+            case quietHeadlineLabel
+            case lagoonFaceRail
+
+            var rawValue: String {
+                switch self {
+                case .sheetBottomConstraint: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+                case .waveStripeAssetToken: return "nxixcxkxNxaxmxex".suliJoyPalmUnfurled
+                case .shoreBriefTextView: return "ixcxoxnx".suliJoyPalmUnfurled
+                case .quietHeadlineLabel: return "fxaxnxsxCxoxuxnxtx".suliJoyPalmUnfurled
+                case .lagoonFaceRail: return "fxoxlxlxoxwxexdx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.sheetBottomConstraint.rawValue: self = .sheetBottomConstraint
+                case Self.waveStripeAssetToken.rawValue: self = .waveStripeAssetToken
+                case Self.shoreBriefTextView.rawValue: self = .shoreBriefTextView
+                case Self.quietHeadlineLabel.rawValue: self = .quietHeadlineLabel
+                case Self.lagoonFaceRail.rawValue: self = .lagoonFaceRail
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
 
         init(from replacementString: Decoder) throws {
@@ -980,8 +1752,26 @@ struct tideClockGlyph: Decodable {
         }
     }
     let waveOnlyCaptionGlyph: [tuneReefPhotoSlots]
-    private enum CodingKeys: String, CodingKey {
-        case waveOnlyCaptionGlyph = "list"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case waveOnlyCaptionGlyph
+
+        var rawValue: String {
+            switch self {
+            case .waveOnlyCaptionGlyph: return "lxixsxtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.waveOnlyCaptionGlyph.rawValue: self = .waveOnlyCaptionGlyph
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
 }
@@ -989,8 +1779,26 @@ struct tideClockGlyph: Decodable {
 struct localActivities: Decodable {
     let onShorelineFollowTap: [shorelineAction]
 
-    private enum CodingKeys: String, CodingKey {
-        case onShorelineFollowTap = "rows"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case onShorelineFollowTap
+
+        var rawValue: String {
+            switch self {
+            case .onShorelineFollowTap: return "rxoxwxsx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.onShorelineFollowTap.rawValue: self = .onShorelineFollowTap
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1014,30 +1822,92 @@ struct reefPhotoRow: Decodable {
     let presentShoreCommentPrompt: String
     let lagoonFaceRail: Bool
 
-    private enum CodingKeys: String, CodingKey {
-        case avatarShellBadge = "id"
-        case numberOfRowsInSection = "userId"
-        case polishShellCache = "nickname"
-        case shoreBriefTextView = "icon"
-        case suliJoyCoastalMeter = "backgroundImgUrl"
-        case anchorCurationDraftNav = "joinNum"
-        case tuneResortSpinner = "heatValue"
-        case renderTideCrewRail = "heatNum"
-        case shoreSpotLine = "hotNum"
-        case emptyShoreGlyph = "hotValue"
-        case crownTitleLabel = "hotScore"
-        case lagoonGuestToken = "liveName"
-        case forgeCoralRemovalCard = "title"
-        case harborKeyboardWillRise = "roomTitle"
-        case craftSuliJoyReefPickerSheet = "roomName"
-        case profileEnvelope = "tags"
-        case makeIslandToastPearlIcon = "tagList"
-        case renderShoreMediaTiles = "onlineUserList"
-        case mirrorEnvelope = "audienceList"
-        case shoreResonanceStripeAsset = "viewerList"
-        case publishedTideShelfURL = "countryId"
-        case presentShoreCommentPrompt = "category"
-        case lagoonFaceRail = "followFlag"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case avatarShellBadge
+        case numberOfRowsInSection
+        case polishShellCache
+        case shoreBriefTextView
+        case suliJoyCoastalMeter
+        case anchorCurationDraftNav
+        case tuneResortSpinner
+        case renderTideCrewRail
+        case shoreSpotLine
+        case emptyShoreGlyph
+        case crownTitleLabel
+        case lagoonGuestToken
+        case forgeCoralRemovalCard
+        case harborKeyboardWillRise
+        case craftSuliJoyReefPickerSheet
+        case profileEnvelope
+        case makeIslandToastPearlIcon
+        case renderShoreMediaTiles
+        case mirrorEnvelope
+        case shoreResonanceStripeAsset
+        case publishedTideShelfURL
+        case presentShoreCommentPrompt
+        case lagoonFaceRail
+
+        var rawValue: String {
+            switch self {
+            case .avatarShellBadge: return "ixdx".suliJoyPalmUnfurled
+            case .numberOfRowsInSection: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            case .polishShellCache: return "nxixcxkxnxaxmxex".suliJoyPalmUnfurled
+            case .shoreBriefTextView: return "ixcxoxnx".suliJoyPalmUnfurled
+            case .suliJoyCoastalMeter: return "bxaxcxkxgxrxoxuxnxdxIxmxgxUxrxlx".suliJoyPalmUnfurled
+            case .anchorCurationDraftNav: return "jxoxixnxNxuxmx".suliJoyPalmUnfurled
+            case .tuneResortSpinner: return "hxexaxtxVxaxlxuxex".suliJoyPalmUnfurled
+            case .renderTideCrewRail: return "hxexaxtxNxuxmx".suliJoyPalmUnfurled
+            case .shoreSpotLine: return "hxoxtxNxuxmx".suliJoyPalmUnfurled
+            case .emptyShoreGlyph: return "hxoxtxVxaxlxuxex".suliJoyPalmUnfurled
+            case .crownTitleLabel: return "hxoxtxSxcxoxrxex".suliJoyPalmUnfurled
+            case .lagoonGuestToken: return "lxixvxexNxaxmxex".suliJoyPalmUnfurled
+            case .forgeCoralRemovalCard: return "txixtxlxex".suliJoyPalmUnfurled
+            case .harborKeyboardWillRise: return "rxoxoxmxTxixtxlxex".suliJoyPalmUnfurled
+            case .craftSuliJoyReefPickerSheet: return "rxoxoxmxNxaxmxex".suliJoyPalmUnfurled
+            case .profileEnvelope: return "txaxgxsx".suliJoyPalmUnfurled
+            case .makeIslandToastPearlIcon: return "txaxgxLxixsxtx".suliJoyPalmUnfurled
+            case .renderShoreMediaTiles: return "oxnxlxixnxexUxsxexrxLxixsxtx".suliJoyPalmUnfurled
+            case .mirrorEnvelope: return "axuxdxixexnxcxexLxixsxtx".suliJoyPalmUnfurled
+            case .shoreResonanceStripeAsset: return "vxixexwxexrxLxixsxtx".suliJoyPalmUnfurled
+            case .publishedTideShelfURL: return "cxoxuxnxtxrxyxIxdx".suliJoyPalmUnfurled
+            case .presentShoreCommentPrompt: return "cxaxtxexgxoxrxyx".suliJoyPalmUnfurled
+            case .lagoonFaceRail: return "fxoxlxlxoxwxFxlxaxgx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.avatarShellBadge.rawValue: self = .avatarShellBadge
+            case Self.numberOfRowsInSection.rawValue: self = .numberOfRowsInSection
+            case Self.polishShellCache.rawValue: self = .polishShellCache
+            case Self.shoreBriefTextView.rawValue: self = .shoreBriefTextView
+            case Self.suliJoyCoastalMeter.rawValue: self = .suliJoyCoastalMeter
+            case Self.anchorCurationDraftNav.rawValue: self = .anchorCurationDraftNav
+            case Self.tuneResortSpinner.rawValue: self = .tuneResortSpinner
+            case Self.renderTideCrewRail.rawValue: self = .renderTideCrewRail
+            case Self.shoreSpotLine.rawValue: self = .shoreSpotLine
+            case Self.emptyShoreGlyph.rawValue: self = .emptyShoreGlyph
+            case Self.crownTitleLabel.rawValue: self = .crownTitleLabel
+            case Self.lagoonGuestToken.rawValue: self = .lagoonGuestToken
+            case Self.forgeCoralRemovalCard.rawValue: self = .forgeCoralRemovalCard
+            case Self.harborKeyboardWillRise.rawValue: self = .harborKeyboardWillRise
+            case Self.craftSuliJoyReefPickerSheet.rawValue: self = .craftSuliJoyReefPickerSheet
+            case Self.profileEnvelope.rawValue: self = .profileEnvelope
+            case Self.makeIslandToastPearlIcon.rawValue: self = .makeIslandToastPearlIcon
+            case Self.renderShoreMediaTiles.rawValue: self = .renderShoreMediaTiles
+            case Self.mirrorEnvelope.rawValue: self = .mirrorEnvelope
+            case Self.shoreResonanceStripeAsset.rawValue: self = .shoreResonanceStripeAsset
+            case Self.publishedTideShelfURL.rawValue: self = .publishedTideShelfURL
+            case Self.presentShoreCommentPrompt.rawValue: self = .presentShoreCommentPrompt
+            case Self.lagoonFaceRail.rawValue: self = .lagoonFaceRail
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1081,9 +1951,29 @@ struct makeProfileTideActivityCell: Decodable {
     let onShorelineFollowTap: [reefPhotoRow]
     let waveDirectory: Int
 
-    private enum CodingKeys: String, CodingKey {
-        case onShorelineFollowTap = "rows"
-        case waveDirectory = "total"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case onShorelineFollowTap
+        case waveDirectory
+
+        var rawValue: String {
+            switch self {
+            case .onShorelineFollowTap: return "rxoxwxsx".suliJoyPalmUnfurled
+            case .waveDirectory: return "txoxtxaxlx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.onShorelineFollowTap.rawValue: self = .onShorelineFollowTap
+            case Self.waveDirectory.rawValue: self = .waveDirectory
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1098,10 +1988,32 @@ struct followHeight: Decodable {
     let polishShellCache: String
     let shoreBriefTextView: String
 
-    private enum CodingKeys: String, CodingKey {
-        case tuneMomentImageWavePill = "userId"
-        case polishShellCache = "nickname"
-        case shoreBriefTextView = "icon"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case tuneMomentImageWavePill
+        case polishShellCache
+        case shoreBriefTextView
+
+        var rawValue: String {
+            switch self {
+            case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            case .polishShellCache: return "nxixcxkxnxaxmxex".suliJoyPalmUnfurled
+            case .shoreBriefTextView: return "ixcxoxnx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+            case Self.polishShellCache.rawValue: self = .polishShellCache
+            case Self.shoreBriefTextView.rawValue: self = .shoreBriefTextView
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1115,8 +2027,26 @@ struct followHeight: Decodable {
 struct sailorCollar: Decodable {
     let onShorelineFollowTap: [followHeight]
 
-    private enum CodingKeys: String, CodingKey {
-        case onShorelineFollowTap = "rows"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case onShorelineFollowTap
+
+        var rawValue: String {
+            switch self {
+            case .onShorelineFollowTap: return "rxoxwxsx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.onShorelineFollowTap.rawValue: self = .onShorelineFollowTap
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1128,8 +2058,26 @@ struct sailorCollar: Decodable {
 struct startWaveTicker: Decodable {
     let duskVeilView: Int
 
-    private enum CodingKeys: String, CodingKey {
-        case duskVeilView = "commentCount"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case duskVeilView
+
+        var rawValue: String {
+            switch self {
+            case .duskVeilView: return "cxoxmxmxexnxtxCxoxuxnxtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.duskVeilView.rawValue: self = .duskVeilView
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1145,20 +2093,64 @@ struct islanderStamp: Decodable {
     let polishShellCache: String
     let shoreBriefTextView: String
 
-    private enum CodingKeys: String, CodingKey {
-        case makeReefTabBlueprints = "commentId"
-        case lagoonMarkControl = "content"
-        case renderHarborSeats = "createdAt"
-        case shorePortraitPreview = "user"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case makeReefTabBlueprints
+        case lagoonMarkControl
+        case renderHarborSeats
+        case shorePortraitPreview
+
+        var rawValue: String {
+            switch self {
+            case .makeReefTabBlueprints: return "cxoxmxmxexnxtxIxdx".suliJoyPalmUnfurled
+            case .lagoonMarkControl: return "cxoxnxtxexnxtx".suliJoyPalmUnfurled
+            case .renderHarborSeats: return "cxrxexaxtxexdxAxtx".suliJoyPalmUnfurled
+            case .shorePortraitPreview: return "uxsxexrx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.makeReefTabBlueprints.rawValue: self = .makeReefTabBlueprints
+            case Self.lagoonMarkControl.rawValue: self = .lagoonMarkControl
+            case Self.renderHarborSeats.rawValue: self = .renderHarborSeats
+            case Self.shorePortraitPreview.rawValue: self = .shorePortraitPreview
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     private struct tapCreatorDrift: Decodable {
         let polishShellCache: String
         let shoreBriefTextView: String
 
-        private enum CodingKeys: String, CodingKey {
-            case polishShellCache = "nickname"
-            case shoreBriefTextView = "icon"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case polishShellCache
+            case shoreBriefTextView
+
+            var rawValue: String {
+                switch self {
+                case .polishShellCache: return "nxixcxkxnxaxmxex".suliJoyPalmUnfurled
+                case .shoreBriefTextView: return "ixcxoxnx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.polishShellCache.rawValue: self = .polishShellCache
+                case Self.shoreBriefTextView.rawValue: self = .shoreBriefTextView
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1176,8 +2168,26 @@ struct islanderStamp: Decodable {
 struct presentLagoonRuleSheet: Decodable {
     let resortImageView: [islanderStamp]
 
-    private enum CodingKeys: String, CodingKey {
-        case resortImageView = "items"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case resortImageView
+
+        var rawValue: String {
+            switch self {
+            case .resortImageView: return "ixtxexmxsx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.resortImageView.rawValue: self = .resortImageView
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1202,21 +2212,65 @@ struct openSuliJoyLetters: Decodable {
     let renderHarborSeats: Int64
     let islandStyleTagline: reefLikeButton?
 
-    private enum CodingKeys: String, CodingKey {
-        case shoreSecretInput = "videoId"
-        case mediaPageIndicator = "caption"
-        case openCoverImagePicker = "videoUrl"
-        case suliJoyCoastalMeter = "coverUrl"
-        case dayFormatter = "durationSeconds"
-        case ArrivalScenePack = "width"
-        case fetchVisitorShoreMoments = "height"
-        case waveCreatedAt = "likeCount"
-        case duskVeilView = "commentCount"
-        case aquaGradient = "liked"
-        case lagoonFaceRail = "followed"
-        case mediaCarousel = "viewCount"
-        case renderHarborSeats = "createdAt"
-        case islandStyleTagline = "author"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case shoreSecretInput
+        case mediaPageIndicator
+        case openCoverImagePicker
+        case suliJoyCoastalMeter
+        case dayFormatter
+        case ArrivalScenePack
+        case fetchVisitorShoreMoments
+        case waveCreatedAt
+        case duskVeilView
+        case aquaGradient
+        case lagoonFaceRail
+        case mediaCarousel
+        case renderHarborSeats
+        case islandStyleTagline
+
+        var rawValue: String {
+            switch self {
+            case .shoreSecretInput: return "vxixdxexoxIxdx".suliJoyPalmUnfurled
+            case .mediaPageIndicator: return "cxaxpxtxixoxnx".suliJoyPalmUnfurled
+            case .openCoverImagePicker: return "vxixdxexoxUxrxlx".suliJoyPalmUnfurled
+            case .suliJoyCoastalMeter: return "cxoxvxexrxUxrxlx".suliJoyPalmUnfurled
+            case .dayFormatter: return "dxuxrxaxtxixoxnxSxexcxoxnxdxsx".suliJoyPalmUnfurled
+            case .ArrivalScenePack: return "wxixdxtxhx".suliJoyPalmUnfurled
+            case .fetchVisitorShoreMoments: return "hxexixgxhxtx".suliJoyPalmUnfurled
+            case .waveCreatedAt: return "lxixkxexCxoxuxnxtx".suliJoyPalmUnfurled
+            case .duskVeilView: return "cxoxmxmxexnxtxCxoxuxnxtx".suliJoyPalmUnfurled
+            case .aquaGradient: return "lxixkxexdx".suliJoyPalmUnfurled
+            case .lagoonFaceRail: return "fxoxlxlxoxwxexdx".suliJoyPalmUnfurled
+            case .mediaCarousel: return "vxixexwxCxoxuxnxtx".suliJoyPalmUnfurled
+            case .renderHarborSeats: return "cxrxexaxtxexdxAxtx".suliJoyPalmUnfurled
+            case .islandStyleTagline: return "axuxtxhxoxrx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.shoreSecretInput.rawValue: self = .shoreSecretInput
+            case Self.mediaPageIndicator.rawValue: self = .mediaPageIndicator
+            case Self.openCoverImagePicker.rawValue: self = .openCoverImagePicker
+            case Self.suliJoyCoastalMeter.rawValue: self = .suliJoyCoastalMeter
+            case Self.dayFormatter.rawValue: self = .dayFormatter
+            case Self.ArrivalScenePack.rawValue: self = .ArrivalScenePack
+            case Self.fetchVisitorShoreMoments.rawValue: self = .fetchVisitorShoreMoments
+            case Self.waveCreatedAt.rawValue: self = .waveCreatedAt
+            case Self.duskVeilView.rawValue: self = .duskVeilView
+            case Self.aquaGradient.rawValue: self = .aquaGradient
+            case Self.lagoonFaceRail.rawValue: self = .lagoonFaceRail
+            case Self.mediaCarousel.rawValue: self = .mediaCarousel
+            case Self.renderHarborSeats.rawValue: self = .renderHarborSeats
+            case Self.islandStyleTagline.rawValue: self = .islandStyleTagline
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1241,8 +2295,26 @@ struct openSuliJoyLetters: Decodable {
 struct shoreReasonRows: Decodable {
     let commitReadyIslandExit: String
 
-    private enum CodingKeys: String, CodingKey {
-        case commitReadyIslandExit = "url"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case commitReadyIslandExit
+
+        var rawValue: String {
+            switch self {
+            case .commitReadyIslandExit: return "uxrxlx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.commitReadyIslandExit.rawValue: self = .commitReadyIslandExit
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1254,8 +2326,26 @@ struct shoreReasonRows: Decodable {
 struct openPearlHarborFromShoreDialog: Decodable {
     let refreshDraftCounters: Int
 
-    private enum CodingKeys: String, CodingKey {
-        case refreshDraftCounters = "diamondNum"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case refreshDraftCounters
+
+        var rawValue: String {
+            switch self {
+            case .refreshDraftCounters: return "dxixaxmxoxnxdxNxuxmx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.refreshDraftCounters.rawValue: self = .refreshDraftCounters
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1272,13 +2362,41 @@ struct reefSourceRoute: Decodable {
     let tuneShorelineReelList: Bool
     let searchShellWidth: Bool
 
-    private enum CodingKeys: String, CodingKey {
-        case makeClipReefSeed = "accessToken"
-        case LagoonEntryKey = "refreshToken"
-        case tuneMomentImageWavePill = "userId"
-        case reefConsentJoinNote = "balance"
-        case tuneShorelineReelList = "registered"
-        case searchShellWidth = "profileCompleted"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case makeClipReefSeed
+        case LagoonEntryKey
+        case tuneMomentImageWavePill
+        case reefConsentJoinNote
+        case tuneShorelineReelList
+        case searchShellWidth
+
+        var rawValue: String {
+            switch self {
+            case .makeClipReefSeed: return "axcxcxexsxsxTxoxkxexnx".suliJoyPalmUnfurled
+            case .LagoonEntryKey: return "rxexfxrxexsxhxTxoxkxexnx".suliJoyPalmUnfurled
+            case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            case .reefConsentJoinNote: return "bxaxlxaxnxcxex".suliJoyPalmUnfurled
+            case .tuneShorelineReelList: return "rxexgxixsxtxexrxexdx".suliJoyPalmUnfurled
+            case .searchShellWidth: return "pxrxoxfxixlxexCxoxmxpxlxextxexdx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.makeClipReefSeed.rawValue: self = .makeClipReefSeed
+            case Self.LagoonEntryKey.rawValue: self = .LagoonEntryKey
+            case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+            case Self.reefConsentJoinNote.rawValue: self = .reefConsentJoinNote
+            case Self.tuneShorelineReelList.rawValue: self = .tuneShorelineReelList
+            case Self.searchShellWidth.rawValue: self = .searchShellWidth
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1319,14 +2437,44 @@ struct refreshActiveCoveSection: Decodable {
     let currentPearlBalance: String
     let tuneHarborExitControl: String
 
-    private enum CodingKeys: String, CodingKey {
-        case makeShoreSignupShell = "id"
-        case settleReefMotionPublish = "conversationId"
-        case renderHarborSeats = "createdAt"
-        case waveNoteStamp = "kind"
-        case sailToLagoonEntry = "own"
-        case currentPearlBalance = "text"
-        case tuneHarborExitControl = "attachmentUrl"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case makeShoreSignupShell
+        case settleReefMotionPublish
+        case renderHarborSeats
+        case waveNoteStamp
+        case sailToLagoonEntry
+        case currentPearlBalance
+        case tuneHarborExitControl
+
+        var rawValue: String {
+            switch self {
+            case .makeShoreSignupShell: return "ixdx".suliJoyPalmUnfurled
+            case .settleReefMotionPublish: return "cxoxnxvxexrxsxaxtxixoxnxIxdx".suliJoyPalmUnfurled
+            case .renderHarborSeats: return "cxrxexaxtxexdxAxtx".suliJoyPalmUnfurled
+            case .waveNoteStamp: return "kxixnxdx".suliJoyPalmUnfurled
+            case .sailToLagoonEntry: return "oxwxnx".suliJoyPalmUnfurled
+            case .currentPearlBalance: return "txexxxtx".suliJoyPalmUnfurled
+            case .tuneHarborExitControl: return "axtxtxaxcxhxmxexnxtxUxrxlx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.makeShoreSignupShell.rawValue: self = .makeShoreSignupShell
+            case Self.settleReefMotionPublish.rawValue: self = .settleReefMotionPublish
+            case Self.renderHarborSeats.rawValue: self = .renderHarborSeats
+            case Self.waveNoteStamp.rawValue: self = .waveNoteStamp
+            case Self.sailToLagoonEntry.rawValue: self = .sailToLagoonEntry
+            case Self.currentPearlBalance.rawValue: self = .currentPearlBalance
+            case Self.tuneHarborExitControl.rawValue: self = .tuneHarborExitControl
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1351,15 +2499,47 @@ struct presentReefPhotoChoice: Decodable {
     let coverReefPicks: Int64
     let coverPhotoRail: refreshActiveCoveSection?
 
-    private enum CodingKeys: String, CodingKey {
-        case settleReefMotionPublish = "conversationId"
-        case tuneMomentImageWavePill = "userId"
-        case shorePrimaryButton = "displayName"
-        case publishTideActivity = "avatarUrl"
-        case tidePlanShelf = "unread"
-        case tideIndicatorWidth = "blocked"
-        case coverReefPicks = "sortTime"
-        case coverPhotoRail = "latest"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case settleReefMotionPublish
+        case tuneMomentImageWavePill
+        case shorePrimaryButton
+        case publishTideActivity
+        case tidePlanShelf
+        case tideIndicatorWidth
+        case coverReefPicks
+        case coverPhotoRail
+
+        var rawValue: String {
+            switch self {
+            case .settleReefMotionPublish: return "cxoxnxvxexrxsxaxtxixoxnxIxdx".suliJoyPalmUnfurled
+            case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            case .shorePrimaryButton: return "dxixsxpxlxaxyxNxaxmxex".suliJoyPalmUnfurled
+            case .publishTideActivity: return "axvxaxtxaxrxUxrxlx".suliJoyPalmUnfurled
+            case .tidePlanShelf: return "uxnxrxexaxdx".suliJoyPalmUnfurled
+            case .tideIndicatorWidth: return "bxlxoxcxkxexdx".suliJoyPalmUnfurled
+            case .coverReefPicks: return "sxoxrxtxTxixmxex".suliJoyPalmUnfurled
+            case .coverPhotoRail: return "lxaxtxexsxtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.settleReefMotionPublish.rawValue: self = .settleReefMotionPublish
+            case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+            case Self.shorePrimaryButton.rawValue: self = .shorePrimaryButton
+            case Self.publishTideActivity.rawValue: self = .publishTideActivity
+            case Self.tidePlanShelf.rawValue: self = .tidePlanShelf
+            case Self.tideIndicatorWidth.rawValue: self = .tideIndicatorWidth
+            case Self.coverReefPicks.rawValue: self = .coverReefPicks
+            case Self.coverPhotoRail.rawValue: self = .coverPhotoRail
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1380,10 +2560,32 @@ struct lagoonSeatCursor: Decodable {
     let renderShoreFilterTabs: String
     let stylistEnvelope: Bool
 
-    private enum CodingKeys: String, CodingKey {
-        case resortImageView = "items"
-        case renderShoreFilterTabs = "nextCursor"
-        case stylistEnvelope = "finished"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case resortImageView
+        case renderShoreFilterTabs
+        case stylistEnvelope
+
+        var rawValue: String {
+            switch self {
+            case .resortImageView: return "ixtxexmxsx".suliJoyPalmUnfurled
+            case .renderShoreFilterTabs: return "nxexxxtxCxuxrxsxoxrx".suliJoyPalmUnfurled
+            case .stylistEnvelope: return "fxixnxixsxhxexdx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.resortImageView.rawValue: self = .resortImageView
+            case Self.renderShoreFilterTabs.rawValue: self = .renderShoreFilterTabs
+            case Self.stylistEnvelope.rawValue: self = .stylistEnvelope
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1399,10 +2601,32 @@ struct renderTideJoinControl: Decodable {
     let renderShoreFilterTabs: String
     let stylistEnvelope: Bool
 
-    private enum CodingKeys: String, CodingKey {
-        case resortImageView = "items"
-        case renderShoreFilterTabs = "nextCursor"
-        case stylistEnvelope = "finished"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case resortImageView
+        case renderShoreFilterTabs
+        case stylistEnvelope
+
+        var rawValue: String {
+            switch self {
+            case .resortImageView: return "ixtxexmxsx".suliJoyPalmUnfurled
+            case .renderShoreFilterTabs: return "nxexxxtxCxuxrxsxoxrx".suliJoyPalmUnfurled
+            case .stylistEnvelope: return "fxixnxixsxhxexdx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.resortImageView.rawValue: self = .resortImageView
+            case Self.renderShoreFilterTabs.rawValue: self = .renderShoreFilterTabs
+            case Self.stylistEnvelope.rawValue: self = .stylistEnvelope
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     init(from replacementString: Decoder) throws {
@@ -1462,11 +2686,35 @@ final class reefMarkGlyph {
         let shorelineClip: String?
         let makeProfileReefClipCell: String?
 
-        private enum CodingKeys: String, CodingKey {
-            case paintReefClip = "code"
-            case dividerHeight = "message"
-            case shorelineClip = "requestId"
-            case makeProfileReefClipCell = "result"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case paintReefClip
+            case dividerHeight
+            case shorelineClip
+            case makeProfileReefClipCell
+
+            var rawValue: String {
+                switch self {
+                case .paintReefClip: return "cxoxdxex".suliJoyPalmUnfurled
+                case .dividerHeight: return "mxexsxsxaxgxex".suliJoyPalmUnfurled
+                case .shorelineClip: return "rxexqxuxexsxtxIxdx".suliJoyPalmUnfurled
+                case .makeProfileReefClipCell: return "rxexsxuxlxtx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.paintReefClip.rawValue: self = .paintReefClip
+                case Self.dividerHeight.rawValue: self = .dividerHeight
+                case Self.shorelineClip.rawValue: self = .shorelineClip
+                case Self.makeProfileReefClipCell.rawValue: self = .makeProfileReefClipCell
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
 
         init(from replacementString: Decoder) throws {
@@ -1497,7 +2745,7 @@ final class reefMarkGlyph {
             }
         }
 
-        /// Encrypted hex string, or a JSON object/array when the gateway returns plaintext `result`.
+
         let openShoreModerationMenu: Any?
 
         private static func stringValue(_ lagoonIslandWash: Any?) -> String {
@@ -1518,18 +2766,58 @@ final class reefMarkGlyph {
         let makePlaceholderTitleGlyph: String
         let reportShellClip: String
         let checkVerified: String
-    private enum CodingKeys: String, CodingKey {
-        case makePlaceholderTitleGlyph = "email"
-        case reportShellClip = "password"
-        case checkVerified = "deviceNo"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case makePlaceholderTitleGlyph
+        case reportShellClip
+        case checkVerified
+
+        var rawValue: String {
+            switch self {
+            case .makePlaceholderTitleGlyph: return "exmxaxixlx".suliJoyPalmUnfurled
+            case .reportShellClip: return "pxaxsxsxwxoxrxdx".suliJoyPalmUnfurled
+            case .checkVerified: return "dxexvxixcxexNxox".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.makePlaceholderTitleGlyph.rawValue: self = .makePlaceholderTitleGlyph
+            case Self.reportShellClip.rawValue: self = .reportShellClip
+            case Self.checkVerified.rawValue: self = .checkVerified
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
 
     private struct LagoonRadioPalette: Encodable {
         let LagoonEntryKey: String
-    private enum CodingKeys: String, CodingKey {
-        case LagoonEntryKey = "refreshToken"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case LagoonEntryKey
+
+        var rawValue: String {
+            switch self {
+            case .LagoonEntryKey: return "rxexfxrxexsxhxTxoxkxexnx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.LagoonEntryKey.rawValue: self = .LagoonEntryKey
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1538,10 +2826,32 @@ final class reefMarkGlyph {
         let polishShellCache: String
         let hibiscusShade: String
         let shoreBriefTextView: String?
-    private enum CodingKeys: String, CodingKey {
-        case polishShellCache = "nickname"
-        case hibiscusShade = "signature"
-        case shoreBriefTextView = "icon"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case polishShellCache
+        case hibiscusShade
+        case shoreBriefTextView
+
+        var rawValue: String {
+            switch self {
+            case .polishShellCache: return "nxixcxkxnxaxmxex".suliJoyPalmUnfurled
+            case .hibiscusShade: return "sxixgxnxaxtxuxrxex".suliJoyPalmUnfurled
+            case .shoreBriefTextView: return "ixcxoxnx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.polishShellCache.rawValue: self = .polishShellCache
+            case Self.hibiscusShade.rawValue: self = .hibiscusShade
+            case Self.shoreBriefTextView.rawValue: self = .shoreBriefTextView
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1551,8 +2861,26 @@ final class reefMarkGlyph {
     private struct reefFileName: Encodable {
         let tuneMomentImageWavePill: Int64
 
-        private enum CodingKeys: String, CodingKey {
-            case tuneMomentImageWavePill = "userId"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case tuneMomentImageWavePill
+
+            var rawValue: String {
+                switch self {
+                case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1560,18 +2888,58 @@ final class reefMarkGlyph {
         let bottomInputBottomConstraint: Int64
         let tuneHarborHintLabel: Int
 
-        private enum CodingKeys: String, CodingKey {
-            case bottomInputBottomConstraint = "followUserId"
-            case tuneHarborHintLabel = "followType"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case bottomInputBottomConstraint
+            case tuneHarborHintLabel
+
+            var rawValue: String {
+                switch self {
+                case .bottomInputBottomConstraint: return "fxoxlxlxoxwxUxsxexrxIxdx".suliJoyPalmUnfurled
+                case .tuneHarborHintLabel: return "fxoxlxlxoxwxTxyxpxex".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.bottomInputBottomConstraint.rawValue: self = .bottomInputBottomConstraint
+                case Self.tuneHarborHintLabel.rawValue: self = .tuneHarborHintLabel
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
     private struct stitchArrivalScene: Encodable {
         let reefCommentsTitle: Int
         let toggleReefClipFollow: Int
-    private enum CodingKeys: String, CodingKey {
-        case reefCommentsTitle = "cursor"
-        case toggleReefClipFollow = "limit"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case reefCommentsTitle
+        case toggleReefClipFollow
+
+        var rawValue: String {
+            switch self {
+            case .reefCommentsTitle: return "cxuxrxsxoxrx".suliJoyPalmUnfurled
+            case .toggleReefClipFollow: return "lxixmxixtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.reefCommentsTitle.rawValue: self = .reefCommentsTitle
+            case Self.toggleReefClipFollow.rawValue: self = .toggleReefClipFollow
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1580,10 +2948,32 @@ final class reefMarkGlyph {
         let makeProfileShoreMomentCell: String
         let reefCommentsTitle: Int
         let toggleReefClipFollow: Int
-    private enum CodingKeys: String, CodingKey {
-        case makeProfileShoreMomentCell = "conversationId"
-        case reefCommentsTitle = "cursor"
-        case toggleReefClipFollow = "limit"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case makeProfileShoreMomentCell
+        case reefCommentsTitle
+        case toggleReefClipFollow
+
+        var rawValue: String {
+            switch self {
+            case .makeProfileShoreMomentCell: return "cxoxnxvxexrxsxaxtxixoxnxIxdx".suliJoyPalmUnfurled
+            case .reefCommentsTitle: return "cxuxrxsxoxrx".suliJoyPalmUnfurled
+            case .toggleReefClipFollow: return "lxixmxixtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.makeProfileShoreMomentCell.rawValue: self = .makeProfileShoreMomentCell
+            case Self.reefCommentsTitle.rawValue: self = .reefCommentsTitle
+            case Self.toggleReefClipFollow.rawValue: self = .toggleReefClipFollow
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1593,27 +2983,87 @@ final class reefMarkGlyph {
         let waveNoteStamp: String
         let currentPearlBalance: String
         let makeTideTalkHarbor: String
-    private enum CodingKeys: String, CodingKey {
-        case makeProfileShoreMomentCell = "conversationId"
-        case waveNoteStamp = "kind"
-        case currentPearlBalance = "text"
-        case makeTideTalkHarbor = "clientMessageId"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case makeProfileShoreMomentCell
+        case waveNoteStamp
+        case currentPearlBalance
+        case makeTideTalkHarbor
+
+        var rawValue: String {
+            switch self {
+            case .makeProfileShoreMomentCell: return "cxoxnxvxexrxsxaxtxixoxnxIxdx".suliJoyPalmUnfurled
+            case .waveNoteStamp: return "kxixnxdx".suliJoyPalmUnfurled
+            case .currentPearlBalance: return "txexxxtx".suliJoyPalmUnfurled
+            case .makeTideTalkHarbor: return "cxlxixexnxtxMxexsxsxaxgxexIxdx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.makeProfileShoreMomentCell.rawValue: self = .makeProfileShoreMomentCell
+            case Self.waveNoteStamp.rawValue: self = .waveNoteStamp
+            case Self.currentPearlBalance.rawValue: self = .currentPearlBalance
+            case Self.makeTideTalkHarbor.rawValue: self = .makeTideTalkHarbor
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
 
     private struct finishMomentWave: Encodable {
         let makeProfileShoreMomentCell: String
-    private enum CodingKeys: String, CodingKey {
-        case makeProfileShoreMomentCell = "conversationId"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case makeProfileShoreMomentCell
+
+        var rawValue: String {
+            switch self {
+            case .makeProfileShoreMomentCell: return "cxoxnxvxexrxsxaxtxixoxnxIxdx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.makeProfileShoreMomentCell.rawValue: self = .makeProfileShoreMomentCell
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
 
     private struct tuneLagoonRuleSheet: Encodable {
         let sheetBottomConstraint: String
-    private enum CodingKeys: String, CodingKey {
-        case sheetBottomConstraint = "userId"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case sheetBottomConstraint
+
+        var rawValue: String {
+            switch self {
+            case .sheetBottomConstraint: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.sheetBottomConstraint.rawValue: self = .sheetBottomConstraint
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1622,9 +3072,29 @@ final class reefMarkGlyph {
         let tuneMomentImageWavePill: Int64
         let renderTideCardState: Int
 
-        private enum CodingKeys: String, CodingKey {
-            case tuneMomentImageWavePill = "userId"
-            case renderTideCardState = "type"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case tuneMomentImageWavePill
+            case renderTideCardState
+
+            var rawValue: String {
+                switch self {
+                case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+                case .renderTideCardState: return "txyxpxex".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+                case Self.renderTideCardState.rawValue: self = .renderTideCardState
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1633,10 +3103,32 @@ final class reefMarkGlyph {
         let pearlBalanceButton: Int64
         let occupiedLagoonSeatCount: Int
 
-        private enum CodingKeys: String, CodingKey {
-            case tuneMomentImageWavePill = "userId"
-            case pearlBalanceButton = "cursorId"
-            case occupiedLagoonSeatCount = "size"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case tuneMomentImageWavePill
+            case pearlBalanceButton
+            case occupiedLagoonSeatCount
+
+            var rawValue: String {
+                switch self {
+                case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+                case .pearlBalanceButton: return "cxuxrxsxoxrxIxdx".suliJoyPalmUnfurled
+                case .occupiedLagoonSeatCount: return "sxixzxex".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+                case Self.pearlBalanceButton.rawValue: self = .pearlBalanceButton
+                case Self.occupiedLagoonSeatCount.rawValue: self = .occupiedLagoonSeatCount
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1646,11 +3138,35 @@ final class reefMarkGlyph {
         let breezyLeftLook: Int
         let reefTransaction: String
 
-        private enum CodingKeys: String, CodingKey {
-            case tuneMomentImageWavePill = "userId"
-            case reefCommentsTitle = "cursor"
-            case breezyLeftLook = "pageSize"
-            case reefTransaction = "contentType"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case tuneMomentImageWavePill
+            case reefCommentsTitle
+            case breezyLeftLook
+            case reefTransaction
+
+            var rawValue: String {
+                switch self {
+                case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+                case .reefCommentsTitle: return "cxuxrxsxoxrx".suliJoyPalmUnfurled
+                case .breezyLeftLook: return "pxaxgxexSxixzxex".suliJoyPalmUnfurled
+                case .reefTransaction: return "cxoxnxtxexnxtxTxyxpxex".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+                case Self.reefCommentsTitle.rawValue: self = .reefCommentsTitle
+                case Self.breezyLeftLook.rawValue: self = .breezyLeftLook
+                case Self.reefTransaction.rawValue: self = .reefTransaction
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
 
         func encode(to keyboardAnimation: Encoder) throws {
@@ -1666,9 +3182,29 @@ final class reefMarkGlyph {
         let isLagoonFollowing: Int64
         let toastMinHeight: Int
 
-        private enum CodingKeys: String, CodingKey {
-            case isLagoonFollowing = "id"
-            case toastMinHeight = "optionType"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case isLagoonFollowing
+            case toastMinHeight
+
+            var rawValue: String {
+                switch self {
+                case .isLagoonFollowing: return "ixdx".suliJoyPalmUnfurled
+                case .toastMinHeight: return "oxpxtxixoxnxTxyxpxex".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.isLagoonFollowing.rawValue: self = .isLagoonFollowing
+                case Self.toastMinHeight.rawValue: self = .toastMinHeight
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
 
         init(isLagoonFollowing: Int64, aquaGradient: Bool) {
@@ -1682,10 +3218,32 @@ final class reefMarkGlyph {
         let pearlBalanceButton: Int64
         let occupiedLagoonSeatCount: Int
 
-        private enum CodingKeys: String, CodingKey {
-            case tideConfirmButton = "feedType"
-            case pearlBalanceButton = "cursorId"
-            case occupiedLagoonSeatCount = "size"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case tideConfirmButton
+            case pearlBalanceButton
+            case occupiedLagoonSeatCount
+
+            var rawValue: String {
+                switch self {
+                case .tideConfirmButton: return "fxexexdxTxyxpxex".suliJoyPalmUnfurled
+                case .pearlBalanceButton: return "cxuxrxsxoxrxIxdx".suliJoyPalmUnfurled
+                case .occupiedLagoonSeatCount: return "sxixzxex".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.tideConfirmButton.rawValue: self = .tideConfirmButton
+                case Self.pearlBalanceButton.rawValue: self = .pearlBalanceButton
+                case Self.occupiedLagoonSeatCount.rawValue: self = .occupiedLagoonSeatCount
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1694,10 +3252,32 @@ final class reefMarkGlyph {
         let shoreDraftTextFieldChanged: Int
         let breezyLeftLook: Int
 
-        private enum CodingKeys: String, CodingKey {
-            case isLagoonFollowing = "friendsCircleId"
-            case shoreDraftTextFieldChanged = "currentPage"
-            case breezyLeftLook = "pageSize"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case isLagoonFollowing
+            case shoreDraftTextFieldChanged
+            case breezyLeftLook
+
+            var rawValue: String {
+                switch self {
+                case .isLagoonFollowing: return "fxrxixexnxdxsxCxixrxcxlxexIxdx".suliJoyPalmUnfurled
+                case .shoreDraftTextFieldChanged: return "cxuxrxrxexnxtxPxaxgxex".suliJoyPalmUnfurled
+                case .breezyLeftLook: return "pxaxgxexSxixzxex".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.isLagoonFollowing.rawValue: self = .isLagoonFollowing
+                case Self.shoreDraftTextFieldChanged.rawValue: self = .shoreDraftTextFieldChanged
+                case Self.breezyLeftLook.rawValue: self = .breezyLeftLook
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1705,9 +3285,29 @@ final class reefMarkGlyph {
         let isLagoonFollowing: Int64
         let assembleReefTabShell: String
 
-        private enum CodingKeys: String, CodingKey {
-            case isLagoonFollowing = "friendsCircleId"
-            case assembleReefTabShell = "commentContent"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case isLagoonFollowing
+            case assembleReefTabShell
+
+            var rawValue: String {
+                switch self {
+                case .isLagoonFollowing: return "fxrxixexnxdxsxCxixrxcxlxexIxdx".suliJoyPalmUnfurled
+                case .assembleReefTabShell: return "cxoxmxmxexnxtxCxoxnxtxexnxtx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.isLagoonFollowing.rawValue: self = .isLagoonFollowing
+                case Self.assembleReefTabShell.rawValue: self = .assembleReefTabShell
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1717,11 +3317,35 @@ final class reefMarkGlyph {
         let makeReefTabBlueprints: Int64?
         let logoutLagoonSession: String?
 
-        private enum CodingKeys: String, CodingKey {
-            case isLagoonFollowing = "id"
-            case shorePrivacyButton = "reasonCode"
-            case makeReefTabBlueprints = "commentId"
-            case logoutLagoonSession = "description"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case isLagoonFollowing
+            case shorePrivacyButton
+            case makeReefTabBlueprints
+            case logoutLagoonSession
+
+            var rawValue: String {
+                switch self {
+                case .isLagoonFollowing: return "ixdx".suliJoyPalmUnfurled
+                case .shorePrivacyButton: return "rxexaxsxoxnxCxoxdxex".suliJoyPalmUnfurled
+                case .makeReefTabBlueprints: return "cxoxmxmxexnxtxIxdx".suliJoyPalmUnfurled
+                case .logoutLagoonSession: return "dxexsxcxrxixpxtxixoxnx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.isLagoonFollowing.rawValue: self = .isLagoonFollowing
+                case Self.shorePrivacyButton.rawValue: self = .shorePrivacyButton
+                case Self.makeReefTabBlueprints.rawValue: self = .makeReefTabBlueprints
+                case Self.logoutLagoonSession.rawValue: self = .logoutLagoonSession
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1729,9 +3353,29 @@ final class reefMarkGlyph {
         let shoreSecretInput: Int64
         let aquaGradient: Bool
 
-        private enum CodingKeys: String, CodingKey {
-            case shoreSecretInput = "videoId"
-            case aquaGradient = "liked"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case shoreSecretInput
+            case aquaGradient
+
+            var rawValue: String {
+                switch self {
+                case .shoreSecretInput: return "vxixdxexoxIxdx".suliJoyPalmUnfurled
+                case .aquaGradient: return "lxixkxexdx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.shoreSecretInput.rawValue: self = .shoreSecretInput
+                case Self.aquaGradient.rawValue: self = .aquaGradient
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1739,17 +3383,55 @@ final class reefMarkGlyph {
         let shoreSecretInput: Int64
         let lagoonMarkControl: String
 
-        private enum CodingKeys: String, CodingKey {
-            case shoreSecretInput = "videoId"
-            case lagoonMarkControl = "content"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case shoreSecretInput
+            case lagoonMarkControl
+
+            var rawValue: String {
+                switch self {
+                case .shoreSecretInput: return "vxixdxexoxIxdx".suliJoyPalmUnfurled
+                case .lagoonMarkControl: return "cxoxnxtxexnxtx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.shoreSecretInput.rawValue: self = .shoreSecretInput
+                case Self.lagoonMarkControl.rawValue: self = .lagoonMarkControl
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
     private struct fetchTideTalkSpace: Encodable {
         let shoreSecretInput: Int64
 
-        private enum CodingKeys: String, CodingKey {
-            case shoreSecretInput = "videoId"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case shoreSecretInput
+
+            var rawValue: String {
+                switch self {
+                case .shoreSecretInput: return "vxixdxexoxIxdx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.shoreSecretInput.rawValue: self = .shoreSecretInput
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1758,10 +3440,32 @@ final class reefMarkGlyph {
         let reefCommentsTitle: Int64
         let breezyLeftLook: Int
 
-        private enum CodingKeys: String, CodingKey {
-            case shoreSecretInput = "videoId"
-            case reefCommentsTitle = "cursor"
-            case breezyLeftLook = "pageSize"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case shoreSecretInput
+            case reefCommentsTitle
+            case breezyLeftLook
+
+            var rawValue: String {
+                switch self {
+                case .shoreSecretInput: return "vxixdxexoxIxdx".suliJoyPalmUnfurled
+                case .reefCommentsTitle: return "cxuxrxsxoxrx".suliJoyPalmUnfurled
+                case .breezyLeftLook: return "pxaxgxexSxixzxex".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.shoreSecretInput.rawValue: self = .shoreSecretInput
+                case Self.reefCommentsTitle.rawValue: self = .reefCommentsTitle
+                case Self.breezyLeftLook.rawValue: self = .breezyLeftLook
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1770,19 +3474,61 @@ final class reefMarkGlyph {
         let shorePrivacyButton: String
         let logoutLagoonSession: String?
 
-        private enum CodingKeys: String, CodingKey {
-            case shoreSecretInput = "videoId"
-            case shorePrivacyButton = "reasonCode"
-            case logoutLagoonSession = "description"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case shoreSecretInput
+            case shorePrivacyButton
+            case logoutLagoonSession
+
+            var rawValue: String {
+                switch self {
+                case .shoreSecretInput: return "vxixdxexoxIxdx".suliJoyPalmUnfurled
+                case .shorePrivacyButton: return "rxexaxsxoxnxCxoxdxex".suliJoyPalmUnfurled
+                case .logoutLagoonSession: return "dxexsxcxrxixpxtxixoxnx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.shoreSecretInput.rawValue: self = .shoreSecretInput
+                case Self.shorePrivacyButton.rawValue: self = .shorePrivacyButton
+                case Self.logoutLagoonSession.rawValue: self = .logoutLagoonSession
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
     private struct tuneShellTotalLabel: Encodable {
         let tuneLagoonLetterCanvas: String
         let LagoonScrollTextMeasure: Int
-    private enum CodingKeys: String, CodingKey {
-        case tuneLagoonLetterCanvas = "recordType"
-        case LagoonScrollTextMeasure = "diamondNum"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case tuneLagoonLetterCanvas
+        case LagoonScrollTextMeasure
+
+        var rawValue: String {
+            switch self {
+            case .tuneLagoonLetterCanvas: return "rxexcxoxrxdxTxyxpxex".suliJoyPalmUnfurled
+            case .LagoonScrollTextMeasure: return "dxixaxmxoxnxdxNxuxmx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.tuneLagoonLetterCanvas.rawValue: self = .tuneLagoonLetterCanvas
+            case Self.LagoonScrollTextMeasure.rawValue: self = .LagoonScrollTextMeasure
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1794,12 +3540,38 @@ final class reefMarkGlyph {
         let tideActivities: String?
         let refreshedReefClip: Int?
 
-        private enum CodingKeys: String, CodingKey {
-            case openLagoonRuleTerms = "textContent"
-            case allAsuliJoyShorelineStoreccounts = "imgUrls"
-            case flaggedLagoonVisitorslo = "displayRange"
-            case tideActivities = "audioUrl"
-            case refreshedReefClip = "audioDuration"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case openLagoonRuleTerms
+            case allAsuliJoyShorelineStoreccounts
+            case flaggedLagoonVisitorslo
+            case tideActivities
+            case refreshedReefClip
+
+            var rawValue: String {
+                switch self {
+                case .openLagoonRuleTerms: return "txexxxtxCxoxnxtxexnxtx".suliJoyPalmUnfurled
+                case .allAsuliJoyShorelineStoreccounts: return "ixmxgxUxrxlxsx".suliJoyPalmUnfurled
+                case .flaggedLagoonVisitorslo: return "dxixsxpxlxaxyxRxaxnxgxex".suliJoyPalmUnfurled
+                case .tideActivities: return "axuxdxixoxUxrxlx".suliJoyPalmUnfurled
+                case .refreshedReefClip: return "axuxdxixoxDxuxrxaxtxixoxnx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.openLagoonRuleTerms.rawValue: self = .openLagoonRuleTerms
+                case Self.allAsuliJoyShorelineStoreccounts.rawValue: self = .allAsuliJoyShorelineStoreccounts
+                case Self.flaggedLagoonVisitorslo.rawValue: self = .flaggedLagoonVisitorslo
+                case Self.tideActivities.rawValue: self = .tideActivities
+                case Self.refreshedReefClip.rawValue: self = .refreshedReefClip
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1817,19 +3589,59 @@ final class reefMarkGlyph {
         let openShoreTerms: String
         let crewTallyGlyph: String?
 
-        private enum CodingKeys: String, CodingKey {
-            case reefTransaction = "contentType"
-            case registerDraftKeyboardObservers = "clientRequestId"
-            case mediaPageIndicator = "caption"
-            case openCoverImagePicker = "videoUrl"
-            case suliJoyCoastalMeter = "coverUrl"
-            case dayFormatter = "durationSeconds"
-            case ArrivalScenePack = "width"
-            case fetchVisitorShoreMoments = "height"
-            case tuneTideTagLabel = "languageCode"
-            case profileEnvelope = "tags"
-            case openShoreTerms = "visibility"
-            case crewTallyGlyph = "extra"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case reefTransaction
+            case registerDraftKeyboardObservers
+            case mediaPageIndicator
+            case openCoverImagePicker
+            case suliJoyCoastalMeter
+            case dayFormatter
+            case ArrivalScenePack
+            case fetchVisitorShoreMoments
+            case tuneTideTagLabel
+            case profileEnvelope
+            case openShoreTerms
+            case crewTallyGlyph
+
+            var rawValue: String {
+                switch self {
+                case .reefTransaction: return "cxoxnxtxexnxtxTxyxpxex".suliJoyPalmUnfurled
+                case .registerDraftKeyboardObservers: return "cxlxixexnxtxRxexqxuxexsxtxIxdx".suliJoyPalmUnfurled
+                case .mediaPageIndicator: return "cxaxpxtxixoxnx".suliJoyPalmUnfurled
+                case .openCoverImagePicker: return "vxixdxexoxUxrxlx".suliJoyPalmUnfurled
+                case .suliJoyCoastalMeter: return "cxoxvxexrxUxrxlx".suliJoyPalmUnfurled
+                case .dayFormatter: return "dxuxrxaxtxixoxnxSxexcxoxnxdxsx".suliJoyPalmUnfurled
+                case .ArrivalScenePack: return "wxixdxtxhx".suliJoyPalmUnfurled
+                case .fetchVisitorShoreMoments: return "hxexixgxhxtx".suliJoyPalmUnfurled
+                case .tuneTideTagLabel: return "lxaxnxgxuxaxgxexCxoxdxex".suliJoyPalmUnfurled
+                case .profileEnvelope: return "txaxgxsx".suliJoyPalmUnfurled
+                case .openShoreTerms: return "vxixsxixbxixlxixtxyx".suliJoyPalmUnfurled
+                case .crewTallyGlyph: return "exxxtxrxax".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.reefTransaction.rawValue: self = .reefTransaction
+                case Self.registerDraftKeyboardObservers.rawValue: self = .registerDraftKeyboardObservers
+                case Self.mediaPageIndicator.rawValue: self = .mediaPageIndicator
+                case Self.openCoverImagePicker.rawValue: self = .openCoverImagePicker
+                case Self.suliJoyCoastalMeter.rawValue: self = .suliJoyCoastalMeter
+                case Self.dayFormatter.rawValue: self = .dayFormatter
+                case Self.ArrivalScenePack.rawValue: self = .ArrivalScenePack
+                case Self.fetchVisitorShoreMoments.rawValue: self = .fetchVisitorShoreMoments
+                case Self.tuneTideTagLabel.rawValue: self = .tuneTideTagLabel
+                case Self.profileEnvelope.rawValue: self = .profileEnvelope
+                case Self.openShoreTerms.rawValue: self = .openShoreTerms
+                case Self.crewTallyGlyph.rawValue: self = .crewTallyGlyph
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
@@ -1843,15 +3655,47 @@ final class reefMarkGlyph {
         let islandShared: String?
         let saveReefMotionToSandbox: Int?
 
-        private enum CodingKeys: String, CodingKey {
-            case inspectShorelineDraftFields = "roomTags"
-            case craftSuliJoyReefPickerSheet = "roomName"
-            case timeFormatter = "roomAvatar"
-            case suliJoyCoastalSnapshot = "greetingMessage"
-            case suliJoyCoastalWeight = "roomLanguage"
-            case islandShared = "countryCode"
-            case openSearchCove = "roomTempId"
-            case saveReefMotionToSandbox = "bgImgId"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case inspectShorelineDraftFields
+            case craftSuliJoyReefPickerSheet
+            case timeFormatter
+            case suliJoyCoastalSnapshot
+            case suliJoyCoastalWeight
+            case islandShared
+            case openSearchCove
+            case saveReefMotionToSandbox
+
+            var rawValue: String {
+                switch self {
+                case .inspectShorelineDraftFields: return "rxoxoxmxTxaxgxsx".suliJoyPalmUnfurled
+                case .craftSuliJoyReefPickerSheet: return "rxoxoxmxNxaxmxex".suliJoyPalmUnfurled
+                case .timeFormatter: return "rxoxoxmxAxvxaxtxaxrx".suliJoyPalmUnfurled
+                case .suliJoyCoastalSnapshot: return "gxrxexextxixnxgxMxexsxsxaxgxex".suliJoyPalmUnfurled
+                case .suliJoyCoastalWeight: return "rxoxoxmxLxaxnxgxuxaxgxex".suliJoyPalmUnfurled
+                case .islandShared: return "cxoxuxnxtxrxyxCxoxdxex".suliJoyPalmUnfurled
+                case .openSearchCove: return "rxoxoxmxTxexmxpxIxdx".suliJoyPalmUnfurled
+                case .saveReefMotionToSandbox: return "bxgxIxmxgxIxdx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.inspectShorelineDraftFields.rawValue: self = .inspectShorelineDraftFields
+                case Self.craftSuliJoyReefPickerSheet.rawValue: self = .craftSuliJoyReefPickerSheet
+                case Self.timeFormatter.rawValue: self = .timeFormatter
+                case Self.suliJoyCoastalSnapshot.rawValue: self = .suliJoyCoastalSnapshot
+                case Self.suliJoyCoastalWeight.rawValue: self = .suliJoyCoastalWeight
+                case Self.islandShared.rawValue: self = .islandShared
+                case Self.openSearchCove.rawValue: self = .openSearchCove
+                case Self.saveReefMotionToSandbox.rawValue: self = .saveReefMotionToSandbox
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
 
         func encode(to keyboardAnimation: Encoder) throws {
@@ -1882,15 +3726,47 @@ final class reefMarkGlyph {
         let islandShared: String
         let seatAvatarView: String
         let SuliJoyavatarTop: Bool
-    private enum CodingKeys: String, CodingKey {
-        case presentShoreCommentPrompt = "category"
-        case shorelineScene = "coverUrl"
-        case forgeCoralRemovalCard = "liveTitle"
-        case removalTitleGlyph = "liveType"
-        case renderMomentComments = "languageName"
-        case islandShared = "countryCode"
-        case seatAvatarView = "requestNo"
-        case SuliJoyavatarTop = "contentReminderAccepted"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case presentShoreCommentPrompt
+        case shorelineScene
+        case forgeCoralRemovalCard
+        case removalTitleGlyph
+        case renderMomentComments
+        case islandShared
+        case seatAvatarView
+        case SuliJoyavatarTop
+
+        var rawValue: String {
+            switch self {
+            case .presentShoreCommentPrompt: return "cxaxtxexgxoxrxyx".suliJoyPalmUnfurled
+            case .shorelineScene: return "cxoxvxexrxUxrxlx".suliJoyPalmUnfurled
+            case .forgeCoralRemovalCard: return "lxixvxexTxixtxlxex".suliJoyPalmUnfurled
+            case .removalTitleGlyph: return "lxixvxexTxyxpxex".suliJoyPalmUnfurled
+            case .renderMomentComments: return "lxaxnxgxuxaxgxexNxaxmxex".suliJoyPalmUnfurled
+            case .islandShared: return "cxoxuxnxtxrxyxCxoxdxex".suliJoyPalmUnfurled
+            case .seatAvatarView: return "rxexqxuxexsxtxNxox".suliJoyPalmUnfurled
+            case .SuliJoyavatarTop: return "cxoxnxtxexnxtxRxexmxixnxdxexrxAxcxcxexpxtxexdx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.presentShoreCommentPrompt.rawValue: self = .presentShoreCommentPrompt
+            case Self.shorelineScene.rawValue: self = .shorelineScene
+            case Self.forgeCoralRemovalCard.rawValue: self = .forgeCoralRemovalCard
+            case Self.removalTitleGlyph.rawValue: self = .removalTitleGlyph
+            case Self.renderMomentComments.rawValue: self = .renderMomentComments
+            case Self.islandShared.rawValue: self = .islandShared
+            case Self.seatAvatarView.rawValue: self = .seatAvatarView
+            case Self.SuliJoyavatarTop.rawValue: self = .SuliJoyavatarTop
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1898,17 +3774,55 @@ final class reefMarkGlyph {
     private struct publishedShoreScrollURL: Encodable {
         let shorelineTransaction: Int64
         let heroAssetTokens: Int64
-    private enum CodingKeys: String, CodingKey {
-        case shorelineTransaction = "roomId"
-        case heroAssetTokens = "sessionId"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case shorelineTransaction
+        case heroAssetTokens
+
+        var rawValue: String {
+            switch self {
+            case .shorelineTransaction: return "rxoxoxmxIxdx".suliJoyPalmUnfurled
+            case .heroAssetTokens: return "sxexsxsxixoxnxIxdx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.shorelineTransaction.rawValue: self = .shorelineTransaction
+            case Self.heroAssetTokens.rawValue: self = .heroAssetTokens
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
 
     private struct scrollViewWillBeginDragging: Encodable {
         let renderTideCardState: Int
-    private enum CodingKeys: String, CodingKey {
-        case renderTideCardState = "type"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case renderTideCardState
+
+        var rawValue: String {
+            switch self {
+            case .renderTideCardState: return "txyxpxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.renderTideCardState.rawValue: self = .renderTideCardState
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1918,19 +3832,61 @@ final class reefMarkGlyph {
         let pearlBalanceButton: Int64
         let occupiedLagoonSeatCount: Int
 
-        private enum CodingKeys: String, CodingKey {
-            case tuneMomentImageWavePill = "userId"
-            case pearlBalanceButton = "cursorId"
-            case occupiedLagoonSeatCount = "size"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case tuneMomentImageWavePill
+            case pearlBalanceButton
+            case occupiedLagoonSeatCount
+
+            var rawValue: String {
+                switch self {
+                case .tuneMomentImageWavePill: return "uxsxexrxIxdx".suliJoyPalmUnfurled
+                case .pearlBalanceButton: return "cxuxrxsxoxrxIxdx".suliJoyPalmUnfurled
+                case .occupiedLagoonSeatCount: return "sxixzxex".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.tuneMomentImageWavePill.rawValue: self = .tuneMomentImageWavePill
+                case Self.pearlBalanceButton.rawValue: self = .pearlBalanceButton
+                case Self.occupiedLagoonSeatCount.rawValue: self = .occupiedLagoonSeatCount
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
     }
 
     private struct refreshShoreMomentState: Encodable {
         let shoreDraftTextFieldChanged: Int
         let breezyLeftLook: Int
-    private enum CodingKeys: String, CodingKey {
-        case shoreDraftTextFieldChanged = "currentPage"
-        case breezyLeftLook = "pageSize"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case shoreDraftTextFieldChanged
+        case breezyLeftLook
+
+        var rawValue: String {
+            switch self {
+            case .shoreDraftTextFieldChanged: return "cxuxrxrxexnxtxPxaxgxex".suliJoyPalmUnfurled
+            case .breezyLeftLook: return "pxaxgxexSxixzxex".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.shoreDraftTextFieldChanged.rawValue: self = .shoreDraftTextFieldChanged
+            case Self.breezyLeftLook.rawValue: self = .breezyLeftLook
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1942,13 +3898,41 @@ final class reefMarkGlyph {
         var registerKeyboardObservers: Int64? = nil
         var lagoonMarkControl: String? = nil
         var toggleReefClipFollow: Int? = nil
-    private enum CodingKeys: String, CodingKey {
-        case shorelineTransaction = "roomId"
-        case shouldReceive = "seatIndex"
-        case reefDirectory = "yxRoomId"
-        case registerKeyboardObservers = "roomTempId"
-        case lagoonMarkControl = "content"
-        case toggleReefClipFollow = "limit"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case shorelineTransaction
+        case shouldReceive
+        case reefDirectory
+        case registerKeyboardObservers
+        case lagoonMarkControl
+        case toggleReefClipFollow
+
+        var rawValue: String {
+            switch self {
+            case .shorelineTransaction: return "rxoxoxmxIxdx".suliJoyPalmUnfurled
+            case .shouldReceive: return "sxexaxtxIxnxdxexxx".suliJoyPalmUnfurled
+            case .reefDirectory: return "yxxxRxoxoxmxIxdx".suliJoyPalmUnfurled
+            case .registerKeyboardObservers: return "rxoxoxmxTxexmxpxIxdx".suliJoyPalmUnfurled
+            case .lagoonMarkControl: return "cxoxnxtxexnxtx".suliJoyPalmUnfurled
+            case .toggleReefClipFollow: return "lxixmxixtx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.shorelineTransaction.rawValue: self = .shorelineTransaction
+            case Self.shouldReceive.rawValue: self = .shouldReceive
+            case Self.reefDirectory.rawValue: self = .reefDirectory
+            case Self.registerKeyboardObservers.rawValue: self = .registerKeyboardObservers
+            case Self.lagoonMarkControl.rawValue: self = .lagoonMarkControl
+            case Self.toggleReefClipFollow.rawValue: self = .toggleReefClipFollow
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1960,13 +3944,41 @@ final class reefMarkGlyph {
         var ShoreProfileTideMeasure: String? = nil
         var tuneTideTagLabel: String? = nil
         var openShoreMomentMaker: String? = nil
-    private enum CodingKeys: String, CodingKey {
-        case breezyLeftLook = "pageSize"
-        case reefCommentsTitle = "cursor"
-        case reefTransaction = "contentType"
-        case ShoreProfileTideMeasure = "scene"
-        case tuneTideTagLabel = "languageCode"
-        case openShoreMomentMaker = "version"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case breezyLeftLook
+        case reefCommentsTitle
+        case reefTransaction
+        case ShoreProfileTideMeasure
+        case tuneTideTagLabel
+        case openShoreMomentMaker
+
+        var rawValue: String {
+            switch self {
+            case .breezyLeftLook: return "pxaxgxexSxixzxex".suliJoyPalmUnfurled
+            case .reefCommentsTitle: return "cxuxrxsxoxrx".suliJoyPalmUnfurled
+            case .reefTransaction: return "cxoxnxtxexnxtxTxyxpxex".suliJoyPalmUnfurled
+            case .ShoreProfileTideMeasure: return "sxcxexnxex".suliJoyPalmUnfurled
+            case .tuneTideTagLabel: return "lxaxnxgxuxaxgxexCxoxdxex".suliJoyPalmUnfurled
+            case .openShoreMomentMaker: return "vxexrxsxixoxnx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.breezyLeftLook.rawValue: self = .breezyLeftLook
+            case Self.reefCommentsTitle.rawValue: self = .reefCommentsTitle
+            case Self.reefTransaction.rawValue: self = .reefTransaction
+            case Self.ShoreProfileTideMeasure.rawValue: self = .ShoreProfileTideMeasure
+            case Self.tuneTideTagLabel.rawValue: self = .tuneTideTagLabel
+            case Self.openShoreMomentMaker.rawValue: self = .openShoreMomentMaker
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }
@@ -1976,10 +3988,32 @@ final class reefMarkGlyph {
         let breezyLeftLook: Int
         let openShoreMomentMaker: String
 
-        private enum CodingKeys: String, CodingKey {
-            case tuneTideTagLabel = "languageCode"
-            case breezyLeftLook = "pageSize"
-            case openShoreMomentMaker = "version"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case tuneTideTagLabel
+            case breezyLeftLook
+            case openShoreMomentMaker
+
+            var rawValue: String {
+                switch self {
+                case .tuneTideTagLabel: return "lxaxnxgxuxaxgxexCxoxdxex".suliJoyPalmUnfurled
+                case .breezyLeftLook: return "pxaxgxexSxixzxex".suliJoyPalmUnfurled
+                case .openShoreMomentMaker: return "vxexrxsxixoxnx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.tuneTideTagLabel.rawValue: self = .tuneTideTagLabel
+                case Self.breezyLeftLook.rawValue: self = .breezyLeftLook
+                case Self.openShoreMomentMaker.rawValue: self = .openShoreMomentMaker
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
 
         func encode(to keyboardAnimation: Encoder) throws {
@@ -1997,10 +4031,32 @@ final class reefMarkGlyph {
         let breezyLeftLook: Int
         let presentShoreCommentPrompt: String?
 
-        private enum CodingKeys: String, CodingKey {
-            case shoreDraftTextFieldChanged = "currentPage"
-            case breezyLeftLook = "pageSize"
-            case presentShoreCommentPrompt = "category"
+        private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+            case shoreDraftTextFieldChanged
+            case breezyLeftLook
+            case presentShoreCommentPrompt
+
+            var rawValue: String {
+                switch self {
+                case .shoreDraftTextFieldChanged: return "cxuxrxrxexnxtxPxaxgxex".suliJoyPalmUnfurled
+                case .breezyLeftLook: return "pxaxgxexSxixzxex".suliJoyPalmUnfurled
+                case .presentShoreCommentPrompt: return "cxaxtxexgxoxrxyx".suliJoyPalmUnfurled
+                }
+            }
+
+            init?(rawValue: String) {
+                switch rawValue {
+                case Self.shoreDraftTextFieldChanged.rawValue: self = .shoreDraftTextFieldChanged
+                case Self.breezyLeftLook.rawValue: self = .breezyLeftLook
+                case Self.presentShoreCommentPrompt.rawValue: self = .presentShoreCommentPrompt
+                default: return nil
+                }
+            }
+
+            var stringValue: String { rawValue }
+            init?(stringValue: String) { self.init(rawValue: stringValue) }
+            var intValue: Int? { nil }
+            init?(intValue: Int) { return nil }
         }
 
         func encode(to keyboardAnimation: Encoder) throws {
@@ -2018,11 +4074,35 @@ final class reefMarkGlyph {
         let didSelectRowAt: Int64?
         let shorelineTransaction: Int64?
         let registerShoreKeyboardSignals: String
-    private enum CodingKeys: String, CodingKey {
-        case relatedTideTokens = "feedbackType"
-        case didSelectRowAt = "targetUserId"
-        case shorelineTransaction = "roomId"
-        case registerShoreKeyboardSignals = "suggestion"
+    private enum CodingKeys: CodingKey, RawRepresentable, Hashable {
+        case relatedTideTokens
+        case didSelectRowAt
+        case shorelineTransaction
+        case registerShoreKeyboardSignals
+
+        var rawValue: String {
+            switch self {
+            case .relatedTideTokens: return "fxexexdxbxaxcxkxTxyxpxex".suliJoyPalmUnfurled
+            case .didSelectRowAt: return "txaxrxgxextxUxsxexrxIxdx".suliJoyPalmUnfurled
+            case .shorelineTransaction: return "rxoxoxmxIxdx".suliJoyPalmUnfurled
+            case .registerShoreKeyboardSignals: return "sxuxgxgxexsxtxixoxnx".suliJoyPalmUnfurled
+            }
+        }
+
+        init?(rawValue: String) {
+            switch rawValue {
+            case Self.relatedTideTokens.rawValue: self = .relatedTideTokens
+            case Self.didSelectRowAt.rawValue: self = .didSelectRowAt
+            case Self.shorelineTransaction.rawValue: self = .shorelineTransaction
+            case Self.registerShoreKeyboardSignals.rawValue: self = .registerShoreKeyboardSignals
+            default: return nil
+            }
+        }
+
+        var stringValue: String { rawValue }
+        init?(stringValue: String) { self.init(rawValue: stringValue) }
+        var intValue: Int? { nil }
+        init?(intValue: Int) { return nil }
     }
 
     }

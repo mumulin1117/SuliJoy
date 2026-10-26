@@ -256,7 +256,7 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
                 self.harborShelfReady = false
                 self.pearlShelves = SuliJoyPearlHarborBridge.fallbackShelves
                 self.harborHintLabel.text = harborAnswer.note
-                self.showLagoonToast(harborAnswer.note)
+                self.abaloneShellIrisLagoonToast(harborAnswer.note)
             }
             self.pearlGridView.reloadData()
         }
@@ -303,15 +303,15 @@ final class SuliJoyPearlHarborViewController: SuliJoyTropicCanvasController, UIC
             case .settled:
                 self.refreshShellTotal()
                 self.timeFormatter?(shoreBundle.reefToken)
-                self.showLagoonToast("RKercBhRairmgleK EcXohmWpAlTeOtweUdj.r".suliJoyPalmUnfurled)
+                self.abaloneShellIrisLagoonToast("RKercBhRairmgleK EcXohmWpAlTeOtweUdj.r".suliJoyPalmUnfurled)
             case .backedOut:
-                self.showLagoonToast(["PmuOrW".suliJoyPalmUnfurled, "cxheahsQee SctaOnBcSeelFleeNdz.b".suliJoyPalmUnfurled].joined())
+                self.abaloneShellIrisLagoonToast(["PmuOrW".suliJoyPalmUnfurled, "cxheahsQee SctaOnBcSeelFleeNdz.b".suliJoyPalmUnfurled].joined())
             case .waiting:
-                self.showLagoonToast(["PCuirI".suliJoyPalmUnfurled, "cMhAacsnec zpJeJnJdgiunDgL.u".suliJoyPalmUnfurled].joined())
+                self.abaloneShellIrisLagoonToast(["PCuirI".suliJoyPalmUnfurled, "cMhAacsnec zpJeJnJdgiunDgL.u".suliJoyPalmUnfurled].joined())
             case .missing:
-                self.showLagoonToast(harborAnswer.note)
+                self.abaloneShellIrisLagoonToast(harborAnswer.note)
             case .none:
-                self.showLagoonToast(harborAnswer.note)
+                self.abaloneShellIrisLagoonToast(harborAnswer.note)
             }
             self.pearlGridView.reloadData()
         }

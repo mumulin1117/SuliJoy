@@ -64,7 +64,7 @@ final class TokenRename: SyntaxRewriter {
         return super.visit(node)
     }
     override func visit(_ node: MemberAccessExprSyntax) -> ExprSyntax {
-        // EnumeratedSequence tuple labels have no symbol occurrence in IndexStore.
+
         if node.declName.baseName.text == "element" {
             skipPositions.insert(node.declName.baseName.positionAfterSkippingLeadingTrivia.utf8Offset)
         }
@@ -141,7 +141,6 @@ let plan = try JSONDecoder().decode(RenamePlan.self, from: Data(contentsOf: URL(
 let source = URL(fileURLWithPath: plan.source)
 let staged = URL(fileURLWithPath: args[2])
 let files = FileManager.default.enumerator(at: source, includingPropertiesForKeys: nil)!
-var count = 0
 for case let file as URL in files where file.pathExtension == "swift" {
     let relative = String(file.path.dropFirst(source.path.count + 1))
     let text = try String(contentsOf: file, encoding: .utf8)
@@ -155,8 +154,8 @@ for case let file as URL in files where file.pathExtension == "swift" {
     let renamed = rewriter.rewrite(tree).as(SourceFileSyntax.self)!
     let reverse = Dictionary(uniqueKeysWithValues: fileMap.map { ($0.value, $0.key) })
     var result = PreserveWireNames(reverse: reverse).rewrite(renamed).description
-    // IndexStore associates an inherited-property shorthand binding with UIButton's
-    // property rather than a local symbol. Make that binding explicit.
+
+
     if relative == "SuliJoyIslandVisitorProfileViewController.swift", let local = fileMap["imageView"] {
         result = result.replacingOccurrences(of: "guard let imageView else { return }", with: "guard let \(local) = imageView else { return }")
         result = result.replacingOccurrences(of: "imageView.bounds", with: "\(local).bounds")
@@ -166,6 +165,4 @@ for case let file as URL in files where file.pathExtension == "swift" {
     let output = staged.appendingPathComponent(relative)
     try FileManager.default.createDirectory(at: output.deletingLastPathComponent(), withIntermediateDirectories: true)
     try result.write(to: output, atomically: true, encoding: .utf8)
-    count += result == text ? 0 : 1
 }
-print("Staged \(count) modified source files; originals untouched.")
