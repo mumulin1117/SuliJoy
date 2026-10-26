@@ -222,14 +222,14 @@ final class resortThemeControls: UIView, UIScrollViewDelegate {
 final class subreefHeadline: SuliJoyTropicCanvasController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     private let makeIslandStyleTags = makeLagoonBackReefControl(style: .listTop)
     private let stylistLagoonRow = resortThemeControls()
-    private let profileEnvelope: [testerIslander] = [.islandAlias, .anchorReefCinema, .backgroundView]
-    private var shoreMailInput: [testerIslander: UIButton] = [:]
-    private var pearlGridView: [testerIslander: UIView] = [:]
+    private let profileEnvelope: [openIslandGuest] = [.openPearlVault, .profileTideScene, .setLagoonConsent]
+    private var shoreMailInput: [openIslandGuest: UIButton] = [:]
+    private var pearlGridView: [openIslandGuest: UIView] = [:]
     private var gemSparkView: [UICollectionView] = []
     private var suliJoyPalmUnfurled: [UILabel] = []
     private var shorelineTile: [makeCurationChoiceRail] = []
     private var coveFollowingTotal: [[shorelineWheel]] = [[], [], []]
-    private var nextTideMark: testerIslander = .islandAlias
+    private var nextTideMark: openIslandGuest = .openPearlVault
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -354,10 +354,10 @@ final class subreefHeadline: SuliJoyTropicCanvasController, UICollectionViewData
         row.translatesAutoresizingMaskIntoConstraints = false
         row.axis = .horizontal
         row.distribution = .fillEqually
-        let profileEnvelope: [(testerIslander, String)] = [
-            (.islandAlias, "Ixsxlxaxnxdx xVxixbxexsx".suliJoyPalmUnfurled),
-            (.anchorReefCinema, "Sxtxyxlxex xTxaxlxkx".suliJoyPalmUnfurled),
-            (.backgroundView, "Mxexextx x&x xMxixnxgxlxex".suliJoyPalmUnfurled)
+        let profileEnvelope: [(openIslandGuest, String)] = [
+            (.openPearlVault, "Ixsxlxaxnxdx xVxixbxexsx".suliJoyPalmUnfurled),
+            (.profileTideScene, "Sxtxyxlxex xTxaxlxkx".suliJoyPalmUnfurled),
+            (.setLagoonConsent, "Mxexextx x&x xMxixnxgxlxex".suliJoyPalmUnfurled)
         ]
         for item in profileEnvelope {
             let clipPortraitToken = UIStackView()
@@ -391,19 +391,19 @@ final class subreefHeadline: SuliJoyTropicCanvasController, UICollectionViewData
         return row
     }
 
-    private func delta(_ nextTideMark: testerIslander) -> Int {
+    private func delta(_ nextTideMark: openIslandGuest) -> Int {
         switch nextTideMark {
-        case .islandAlias: return 0
-        case .anchorReefCinema: return 1
-        case .backgroundView: return 2
+        case .openPearlVault: return 0
+        case .profileTideScene: return 1
+        case .setLagoonConsent: return 2
         }
     }
 
-    private func gridTop(_ rendered: Int) -> testerIslander {
+    private func gridTop(_ rendered: Int) -> openIslandGuest {
         switch rendered {
-        case 1: return .anchorReefCinema
-        case 2: return .backgroundView
-        default: return .islandAlias
+        case 1: return .profileTideScene
+        case 2: return .setLagoonConsent
+        default: return .openPearlVault
         }
     }
 

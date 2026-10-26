@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import ctypes as C
 import json
+import sys
 from pathlib import Path
 
 LIB = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libIndexStore.dylib'
@@ -24,7 +25,7 @@ CB=C.CFUNCTYPE(C.c_bool,P,P)
 apply=api('record_reader_occurrences_apply_f',C.c_bool,P,P,CB)
 relations_apply=api('occurrence_relations_apply_f',C.c_bool,P,P,CB)
 def string(ref): return C.string_at(ref.data,ref.length).decode() if ref.data else ''
-storepath=Path('build/NamingBaseline/Index.noindex/DataStore')
+storepath=Path(sys.argv[1] if len(sys.argv)>1 else 'build/NamingBaseline/Index.noindex/DataStore')
 error=P(); store=create(str(storepath.resolve()).encode(),C.byref(error))
 assert store,'index store not opened'
 source=Path('JOiySuizoy/JOiySuizoy').resolve()
@@ -50,7 +51,7 @@ for path in sorted((storepath/'v5/records').rglob('*.swift-*')):
             column=col.value,name=string(symbol_name(symbol)),usr=string(symbol_usr(symbol)),roles=roles(occ),relations=relations))
         return True
     apply(rec,None,callback);dispose(rec)
-out=Path('reports/naming-migration');out.mkdir(parents=True,exist_ok=True)
+out=Path(sys.argv[2] if len(sys.argv)>2 else 'reports/naming-migration');out.mkdir(parents=True,exist_ok=True)
 (out/'baseline-index.json').write_text(json.dumps(records,indent=2))
 print('Index occurrences:',len(records),'source files:',len(set(r['file'] for r in records)))
 print('Project declarations:',sum(bool(r['roles']&3) and r['usr'].startswith('s:10JOiySuizoy') for r in records))

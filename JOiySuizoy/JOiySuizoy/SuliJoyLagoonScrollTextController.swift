@@ -2,17 +2,17 @@ import UIKit
 
 struct SuliJoyLagoonClause {
     let reefHeadline: String
-    let body: String
+    let sandofferbody: String
 }
 
 final class SuliJoyLagoonScrollTextController: UIViewController {
     private enum LagoonScrollTextMeasure {
         static let SuliJoybackTop: CGFloat = 18
         static let SuliJoybackLeading: CGFloat = 18
-        static let backSize: CGFloat = 44
-        static let titleGap: CGFloat = 12
+        static let backSuliJoySize: CGFloat = 44
+        static let SuliJoyleGap: CGFloat = 12
         static let titleTrailing: CGFloat = -62
-        static let scrollTop: CGFloat = 28
+        static let scrollSuliJoyTop: CGFloat = 28
         static let stackSide: CGFloat = 30
         static let stackBottom: CGFloat = -30
         static let stackGap: CGFloat = 22
@@ -62,11 +62,11 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
     private func harvestLagoonScrollTextScene() -> LagoonScrollTextScene {
         lagoonIslandWash.translatesAutoresizingMaskIntoConstraints = false
 
-        let reefBackShell = UIButton(type: .system)
-        reefBackShell.translatesAutoresizingMaskIntoConstraints = false
-        reefBackShell.setImage(UIImage(systemName: "axrxrxoxwx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
-        reefBackShell.tintColor = .black
-        reefBackShell.addTarget(self, action: #selector(closeLagoonScrollText), for: .touchUpInside)
+        let SuliJoyBackShell = UIButton(type: .system)
+        SuliJoyBackShell.translatesAutoresizingMaskIntoConstraints = false
+        SuliJoyBackShell.setImage(UIImage(systemName: "axrxrxoxwx.xlxexfxtx".suliJoyPalmUnfurled), for: .normal)
+        SuliJoyBackShell.tintColor = .black
+        SuliJoyBackShell.addTarget(self, action: #selector(closeLagoonScrollText), for: .touchUpInside)
 
         let crownGlyph = UILabel()
         crownGlyph.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
         clauseStack.translatesAutoresizingMaskIntoConstraints = false
         clauseStack.axis = .vertical
         clauseStack.spacing = LagoonScrollTextMeasure.stackGap
-        return LagoonScrollTextScene(backShell: reefBackShell, crownGlyph: crownGlyph, tideScroll: tideScroll, clauseStack: clauseStack)
+        return LagoonScrollTextScene(backShell: SuliJoyBackShell, crownGlyph: crownGlyph, tideScroll: tideScroll, clauseStack: clauseStack)
     }
 
     private func growLagoonClauseCopy(in clauseStack: UIStackView) {
@@ -106,7 +106,7 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
         clauseBlock.axis = .vertical
         clauseBlock.spacing = LagoonScrollTextMeasure.sectionGap
         clauseBlock.addArrangedSubview(makeLagoonClauseHeading("\(reefNumber)\(".x x".suliJoyPalmUnfurled)\(clause.reefHeadline)"))
-        clauseBlock.addArrangedSubview(makeLagoonClauseBody(clause.body))
+        clauseBlock.addArrangedSubview(makeLagoonClauseBody(clause.sandofferbody))
         return clauseBlock
     }
 
@@ -146,32 +146,32 @@ final class SuliJoyLagoonScrollTextController: UIViewController {
         scene.tideScroll.addSubview(scene.clauseStack)
     }
 
-    private func stitchLagoonScrollTextScene(_ scene: LagoonScrollTextScene) {
+    private func stitchLagoonScrollTextScene(_ offerisland: LagoonScrollTextScene) {
         NSLayoutConstraint.activate([
             lagoonIslandWash.topAnchor.constraint(equalTo: view.topAnchor),
             lagoonIslandWash.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             lagoonIslandWash.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             lagoonIslandWash.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            scene.backShell.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LagoonScrollTextMeasure.SuliJoybackLeading),
-            scene.backShell.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LagoonScrollTextMeasure.SuliJoybackTop),
-            scene.backShell.widthAnchor.constraint(equalToConstant: LagoonScrollTextMeasure.backSize),
-            scene.backShell.heightAnchor.constraint(equalToConstant: LagoonScrollTextMeasure.backSize),
+            offerisland.backShell.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: LagoonScrollTextMeasure.SuliJoybackLeading),
+            offerisland.backShell.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: LagoonScrollTextMeasure.SuliJoybackTop),
+            offerisland.backShell.widthAnchor.constraint(equalToConstant: LagoonScrollTextMeasure.backSuliJoySize),
+            offerisland.backShell.heightAnchor.constraint(equalToConstant: LagoonScrollTextMeasure.backSuliJoySize),
 
-            scene.crownGlyph.centerYAnchor.constraint(equalTo: scene.backShell.centerYAnchor),
-            scene.crownGlyph.leadingAnchor.constraint(equalTo: scene.backShell.trailingAnchor, constant: LagoonScrollTextMeasure.titleGap),
-            scene.crownGlyph.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LagoonScrollTextMeasure.titleTrailing),
+            offerisland.crownGlyph.centerYAnchor.constraint(equalTo: offerisland.backShell.centerYAnchor),
+            offerisland.crownGlyph.leadingAnchor.constraint(equalTo: offerisland.backShell.trailingAnchor, constant: LagoonScrollTextMeasure.SuliJoyleGap),
+            offerisland.crownGlyph.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: LagoonScrollTextMeasure.titleTrailing),
 
-            scene.tideScroll.topAnchor.constraint(equalTo: scene.backShell.bottomAnchor, constant: LagoonScrollTextMeasure.scrollTop),
-            scene.tideScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scene.tideScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scene.tideScroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            offerisland.tideScroll.topAnchor.constraint(equalTo: offerisland.backShell.bottomAnchor, constant: LagoonScrollTextMeasure.scrollSuliJoyTop),
+            offerisland.tideScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            offerisland.tideScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            offerisland.tideScroll.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            scene.clauseStack.topAnchor.constraint(equalTo: scene.tideScroll.contentLayoutGuide.topAnchor),
-            scene.clauseStack.leadingAnchor.constraint(equalTo: scene.tideScroll.contentLayoutGuide.leadingAnchor, constant: LagoonScrollTextMeasure.stackSide),
-            scene.clauseStack.trailingAnchor.constraint(equalTo: scene.tideScroll.contentLayoutGuide.trailingAnchor, constant: -LagoonScrollTextMeasure.stackSide),
-            scene.clauseStack.bottomAnchor.constraint(equalTo: scene.tideScroll.contentLayoutGuide.bottomAnchor, constant: LagoonScrollTextMeasure.stackBottom),
-            scene.clauseStack.widthAnchor.constraint(equalTo: scene.tideScroll.frameLayoutGuide.widthAnchor, constant: -LagoonScrollTextMeasure.stackSide * 2)
+            offerisland.clauseStack.topAnchor.constraint(equalTo: offerisland.tideScroll.contentLayoutGuide.topAnchor),
+            offerisland.clauseStack.leadingAnchor.constraint(equalTo: offerisland.tideScroll.contentLayoutGuide.leadingAnchor, constant: LagoonScrollTextMeasure.stackSide),
+            offerisland.clauseStack.trailingAnchor.constraint(equalTo: offerisland.tideScroll.contentLayoutGuide.trailingAnchor, constant: -LagoonScrollTextMeasure.stackSide),
+            offerisland.clauseStack.bottomAnchor.constraint(equalTo: offerisland.tideScroll.contentLayoutGuide.bottomAnchor, constant: LagoonScrollTextMeasure.stackBottom),
+            offerisland.clauseStack.widthAnchor.constraint(equalTo: offerisland.tideScroll.frameLayoutGuide.widthAnchor, constant: -LagoonScrollTextMeasure.stackSide * 2)
         ])
     }
 

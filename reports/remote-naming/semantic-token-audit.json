@@ -1,0 +1,290 @@
+[
+  {
+    "after_tokens" : 137,
+    "before_tokens" : 137,
+    "file" : "AppDelegate.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 911,
+    "before_tokens" : 911,
+    "file" : "SuliJoyAgentKeyBarController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 2629,
+    "before_tokens" : 2629,
+    "file" : "SuliJoyChallengeShareLookController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 12700,
+    "before_tokens" : 12700,
+    "file" : "SuliJoyCoveMockService.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 4557,
+    "before_tokens" : 4557,
+    "file" : "SuliJoyForinController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 6819,
+    "before_tokens" : 6819,
+    "file" : "SuliJoyIslandVisitorProfileViewController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 3615,
+    "before_tokens" : 3615,
+    "file" : "SuliJoyIslanddeckView.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1522,
+    "before_tokens" : 1522,
+    "file" : "SuliJoyJokerAuthUserService.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 12682,
+    "before_tokens" : 12682,
+    "file" : "SuliJoyLagoonBoardControllers.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1615,
+    "before_tokens" : 1615,
+    "file" : "SuliJoyLagoonConsentScrollController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 943,
+    "before_tokens" : 943,
+    "file" : "SuliJoyLagoonHarborService.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1537,
+    "before_tokens" : 1537,
+    "file" : "SuliJoyLagoonImageShelf.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 4931,
+    "before_tokens" : 4931,
+    "file" : "SuliJoyLagoonLettersViewController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1535,
+    "before_tokens" : 1535,
+    "file" : "SuliJoyLagoonMirrorController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 5788,
+    "before_tokens" : 5788,
+    "file" : "SuliJoyLagoonProfileCoveController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 11185,
+    "before_tokens" : 11185,
+    "file" : "SuliJoyLagoonProfileRemoteService.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 18272,
+    "before_tokens" : 18272,
+    "file" : "SuliJoyLagoonRemoteClient.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 216,
+    "before_tokens" : 216,
+    "file" : "SuliJoyLagoonRemoteConfiguration.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1312,
+    "before_tokens" : 1312,
+    "file" : "SuliJoyLagoonScrollTextController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1229,
+    "before_tokens" : 1229,
+    "file" : "SuliJoyLagoonSessionStore.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 4603,
+    "before_tokens" : 4603,
+    "file" : "SuliJoyMainBoundkingUI.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 5395,
+    "before_tokens" : 5395,
+    "file" : "SuliJoyMusiInDoController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 850,
+    "before_tokens" : 850,
+    "file" : "SuliJoyOpiRegistry.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 83,
+    "before_tokens" : 83,
+    "file" : "SuliJoyPalmGlyphWeaver.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 298,
+    "before_tokens" : 298,
+    "file" : "SuliJoyPearlHarborBridge.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 3347,
+    "before_tokens" : 3347,
+    "file" : "SuliJoyPearlHarborViewController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 3434,
+    "before_tokens" : 3434,
+    "file" : "SuliJoyReefMotionTideController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 921,
+    "before_tokens" : 921,
+    "file" : "SuliJoyReemShellBridge.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1299,
+    "before_tokens" : 1299,
+    "file" : "SuliJoyRoomShellWebController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 8024,
+    "before_tokens" : 8024,
+    "file" : "SuliJoyShareBroadcastDraftControllers.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 523,
+    "before_tokens" : 523,
+    "file" : "SuliJoyShellPearlStore.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1008,
+    "before_tokens" : 1008,
+    "file" : "SuliJoyShellPearlStorecontroller.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 4294,
+    "before_tokens" : 4294,
+    "file" : "SuliJoyShellelasticWaistController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 16069,
+    "before_tokens" : 16069,
+    "file" : "SuliJoyShoortController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 4635,
+    "before_tokens" : 4635,
+    "file" : "SuliJoyShoreReportSheetController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1617,
+    "before_tokens" : 1617,
+    "file" : "SuliJoyShoreRoomLoadingView.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1740,
+    "before_tokens" : 1740,
+    "file" : "SuliJoyShoreSkeleton.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 2246,
+    "before_tokens" : 2246,
+    "file" : "SuliJoyTideCardCell.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 11252,
+    "before_tokens" : 11252,
+    "file" : "SuliJoyTideCoastalDetailController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 3684,
+    "before_tokens" : 3684,
+    "file" : "SuliJoyTideCurationDraftController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1198,
+    "before_tokens" : 1198,
+    "file" : "SuliJoymetallicThreadController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1808,
+    "before_tokens" : 1808,
+    "file" : "SuliJoypaperbagWaistController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 5967,
+    "before_tokens" : 5967,
+    "file" : "SuliJoyruffleHem.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 4926,
+    "before_tokens" : 4926,
+    "file" : "SuliJoysequinedGlimmerController.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 946,
+    "before_tokens" : 946,
+    "file" : "suliJoyShorelineAesthetic.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 1709,
+    "before_tokens" : 1709,
+    "file" : "suliJoyShorelineEnsemble.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 7,
+    "before_tokens" : 7,
+    "file" : "suliJoyShorelineFabric.swift",
+    "identical_after_inverse_rename" : true
+  },
+  {
+    "after_tokens" : 5691,
+    "before_tokens" : 5691,
+    "file" : "suliJoyShorelineIntent.swift",
+    "identical_after_inverse_rename" : true
+  }
+]

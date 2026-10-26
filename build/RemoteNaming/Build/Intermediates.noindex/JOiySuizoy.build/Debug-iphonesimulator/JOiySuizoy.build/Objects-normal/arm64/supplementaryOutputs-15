@@ -1,0 +1,37 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyShellPearlStore.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShellPearlStore.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShellPearlStore.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShellPearlStore.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShellPearlStore.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShellPearlStore.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyShellPearlStorecontroller.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShellPearlStorecontroller.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShellPearlStorecontroller.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShellPearlStorecontroller.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShellPearlStorecontroller.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShellPearlStorecontroller.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyShoortController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShoortController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShoortController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShoortController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShoortController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyShoortController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/suliJoyShorelineAesthetic.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/suliJoyShorelineAesthetic.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/suliJoyShorelineAesthetic.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/suliJoyShorelineAesthetic.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/suliJoyShorelineAesthetic.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/suliJoyShorelineAesthetic.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/suliJoyShorelineEnsemble.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/suliJoyShorelineEnsemble.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/suliJoyShorelineEnsemble.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/suliJoyShorelineEnsemble.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/suliJoyShorelineEnsemble.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/suliJoyShorelineEnsemble.swiftdeps"
+  }
+}

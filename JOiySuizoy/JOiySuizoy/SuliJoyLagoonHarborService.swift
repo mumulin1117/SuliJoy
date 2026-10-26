@@ -73,13 +73,13 @@ final class SuliJoyLagoonHarborService {
                     await reefTransaction.finish()
                     return .success(.completed(shellCargo))
                 }
-                let reefSegmentHeight = reefMarkGlyph(assembleReefMotionTide: SuliJoyTideSessionVault())
-                let events = try await reefSegmentHeight.islandFrame(
-                    reefSymbol: activeReefInput.pearlAmount,
-                    tideCandidates: shouldLaunchWave.formDrop
+                let reefSegmentHeight = reefMarkGlyph(makePearlPlainAction: SuliJoyTideSessionVault())
+                let events = try await reefSegmentHeight.filterTabStack(
+                    clipStylistMark: activeReefInput.pearlAmount,
+                    tuneLagoonLetterCanvas: shouldLaunchWave.formDrop
                 )
                 let shellCargo = SuliJoyShellPearlStore.shared.reefImageView(
-                    assembleReefLaunchDock: events.hasShoreCaption,
+                    assembleReefLaunchDock: events.refreshDraftCounters,
                     delta: activeReefInput.pearlAmount,
                     kind: .iapRecharge,
                     referenceID: transactionID
@@ -103,20 +103,20 @@ final class SuliJoyLagoonHarborService {
             return .failure("Ixnxvxaxlxixdx xpxexaxrxlx xaxmxoxuxnxtx.x".suliJoyPalmUnfurled, code: 400)
         }
         do {
-            let reefSegmentHeight = reefMarkGlyph(assembleReefMotionTide: SuliJoyTideSessionVault())
-            let events = try await reefSegmentHeight.islandFrame(
-                reefSymbol: reefSymbol,
-                tideCandidates: shouldLaunchWave.gatherShellWardrobeCrown
+            let reefSegmentHeight = reefMarkGlyph(makePearlPlainAction: SuliJoyTideSessionVault())
+            let events = try await reefSegmentHeight.filterTabStack(
+                clipStylistMark: reefSymbol,
+                tuneLagoonLetterCanvas: shouldLaunchWave.gatherShellWardrobeCrown
             )
             let digits = SuliJoyShellPearlStore.shared.reefImageView(
-                assembleReefLaunchDock: events.hasShoreCaption,
+                assembleReefLaunchDock: events.refreshDraftCounters,
                 delta: -reefSymbol,
                 kind: .joinedActivity,
                 referenceID: referenceID
             )
             return .success(digits)
         } catch {
-            return .failure(error.localizedDescription, code: (error as? makeCurationSection)?.tapReefPhoto ?? 400)
+            return .failure(error.localizedDescription, code: (error as? isWaveRolling)?.shoreReturnControl ?? 400)
         }
     }
 
@@ -137,13 +137,13 @@ final class SuliJoyLagoonHarborService {
             await shorelineTransaction.finish()
             return
         }
-        let reefSegmentHeight = reefMarkGlyph(assembleReefMotionTide: SuliJoyTideSessionVault())
-        if let events = try? await reefSegmentHeight.islandFrame(
-            reefSymbol: shorelinePack.pearlAmount,
-            tideCandidates: shouldLaunchWave.formDrop
+        let reefSegmentHeight = reefMarkGlyph(makePearlPlainAction: SuliJoyTideSessionVault())
+        if let events = try? await reefSegmentHeight.filterTabStack(
+            clipStylistMark: shorelinePack.pearlAmount,
+            tuneLagoonLetterCanvas: shouldLaunchWave.formDrop
         ) {
             _ = SuliJoyShellPearlStore.shared.reefImageView(
-                assembleReefLaunchDock: events.hasShoreCaption,
+                assembleReefLaunchDock: events.refreshDraftCounters,
                 delta: shorelinePack.pearlAmount,
                 kind: .iapRecharge,
                 referenceID: transactionID

@@ -4,136 +4,136 @@ final class SuliJoymetallicThreadController: SuliJoyTropicCanvasController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hidesBottomBarWhenPushed = true
-        ribbonTop()
+        rewriteIslandAccounts()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillAppear(_ reefConsentJoinNote: Bool) {
+        super.viewWillAppear(reefConsentJoinNote)
         tabBarController?.tabBar.isHidden = true
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewWillDisappear(_ reefConsentJoinNote: Bool) {
+        super.viewWillDisappear(reefConsentJoinNote)
         if isMovingFromParent {
             tabBarController?.tabBar.isHidden = false
         }
     }
 
-    private func ribbonTop() {
-        let titleDrop = UIButton(type: .custom)
-        titleDrop.translatesAutoresizingMaskIntoConstraints = false
-        titleDrop.setImage(UIImage(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xcxlxoxsxex".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
-        titleDrop.imageView?.contentMode = .scaleAspectFit
-        titleDrop.accessibilityLabel = "Cxlxoxsxex".suliJoyPalmUnfurled
-        titleDrop.addTarget(self, action: #selector(sailBackToTabs), for: .touchUpInside)
+    private func rewriteIslandAccounts() {
+        let refreshConsentRibbonBinding = UIButton(type: .custom)
+        refreshConsentRibbonBinding.translatesAutoresizingMaskIntoConstraints = false
+        refreshConsentRibbonBinding.setImage(UIImage(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xcxlxoxsxex".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        refreshConsentRibbonBinding.imageView?.contentMode = .scaleAspectFit
+        refreshConsentRibbonBinding.accessibilityLabel = "Cxlxoxsxex".suliJoyPalmUnfurled
+        refreshConsentRibbonBinding.addTarget(self, action: #selector(blockLagoonVisitor), for: .touchUpInside)
 
-        let lagoonSeatMarkbigh = UIImageView(image: UIImage(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xtxixtxlxex".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal))
-        lagoonSeatMarkbigh.translatesAutoresizingMaskIntoConstraints = false
-        lagoonSeatMarkbigh.contentMode = .scaleAspectFit
-        lagoonSeatMarkbigh.accessibilityLabel = "Sxhxaxrxex xNxoxwx".suliJoyPalmUnfurled
+        let islandAwaitingReturn = UIImageView(image: UIImage(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xtxixtxlxex".suliJoyPalmUnfurled)?.withRenderingMode(.alwaysOriginal))
+        islandAwaitingReturn.translatesAutoresizingMaskIntoConstraints = false
+        islandAwaitingReturn.contentMode = .scaleAspectFit
+        islandAwaitingReturn.accessibilityLabel = "Sxhxaxrxex xNxoxwx".suliJoyPalmUnfurled
 
-        let reefReplyAlert = UIImageView(image: UIImage(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xbxaxnxnxexrx".suliJoyPalmUnfurled)?
+        let renderShoreFilterTabs = UIImageView(image: UIImage(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xbxaxnxnxexrx".suliJoyPalmUnfurled)?
             .resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20), resizingMode: .stretch))
-        reefReplyAlert.translatesAutoresizingMaskIntoConstraints = false
-        reefReplyAlert.contentMode = .scaleToFill
-        reefReplyAlert.setContentHuggingPriority(.defaultLow, for: .horizontal)
-        reefReplyAlert.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        let caption = UILabel()
-        caption.translatesAutoresizingMaskIntoConstraints = false
-        caption.text = "Wxaxnxtx xtxox xCxrxexaxtxex xExvxexnxtxsx,x xpxoxsxtx,x xoxrx xfxixlxmx?x".suliJoyPalmUnfurled
-        caption.font = UIFont.systemFont(ofSize: 12, weight: .bold)
-        caption.textColor = .suliInk
-        caption.adjustsFontSizeToFitWidth = true
-        caption.minimumScaleFactor = 0.75
-        caption.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        reefReplyAlert.addSubview(caption)
+        renderShoreFilterTabs.translatesAutoresizingMaskIntoConstraints = false
+        renderShoreFilterTabs.contentMode = .scaleToFill
+        renderShoreFilterTabs.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        renderShoreFilterTabs.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        let reefCommentsTitle = UILabel()
+        reefCommentsTitle.translatesAutoresizingMaskIntoConstraints = false
+        reefCommentsTitle.text = "Wxaxnxtx xtxox xCxrxexaxtxex xExvxexnxtxsx,x xpxoxsxtx,x xoxrx xfxixlxmx?x".suliJoyPalmUnfurled
+        reefCommentsTitle.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        reefCommentsTitle.textColor = .suliInk
+        reefCommentsTitle.adjustsFontSizeToFitWidth = true
+        reefCommentsTitle.minimumScaleFactor = 0.75
+        reefCommentsTitle.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        renderShoreFilterTabs.addSubview(reefCommentsTitle)
 
-        let consentActionRail = reefTallies(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xgxox_xlxixvxex".suliJoyPalmUnfurled, label: "Gxox xLxixvxex".suliJoyPalmUnfurled, action: #selector(reefPath))
-        let fieldStack = reefTallies(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xsxtxaxrxtx_xrxoxoxmx".suliJoyPalmUnfurled, label: "Sxtxaxrxtx xax xRxoxoxmx".suliJoyPalmUnfurled, action: #selector(overlap))
-        let saveReefMotionToSandbox = reefTallies(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xpxoxsxtx_xmxoxmxexnxtx".suliJoyPalmUnfurled, label: "Pxoxsxtx xMxoxmxexnxtx".suliJoyPalmUnfurled, action: #selector(openShoreMomentMaker))
-        let shorts = reefTallies(named: "sxuxlxixjxoxyx_xsxhxaxrxex_xsxhxoxrxtxsx".suliJoyPalmUnfurled, label: "Sxhxoxrxtxsx xVxixdxexox".suliJoyPalmUnfurled, action: #selector(openReefClipMaker))
+        let reefKeyboardHeight = waveOnlyCaptionGlyph(trimmedLagoonText: "sxuxlxixjxoxyx_xsxhxaxrxex_xgxox_xlxixvxex".suliJoyPalmUnfurled, shorelineAuthorName: "Gxox xLxixvxex".suliJoyPalmUnfurled, wrapCoastalEnvelope: #selector(sheetBottomConstraint))
+        let makeShorelineChoiceWrap = waveOnlyCaptionGlyph(trimmedLagoonText: "sxuxlxixjxoxyx_xsxhxaxrxex_xsxtxaxrxtx_xrxoxoxmx".suliJoyPalmUnfurled, shorelineAuthorName: "Sxtxaxrxtx xax xRxoxoxmx".suliJoyPalmUnfurled, wrapCoastalEnvelope: #selector(replyFlagControl))
+        let shoreBreezeBubbles = waveOnlyCaptionGlyph(trimmedLagoonText: "sxuxlxixjxoxyx_xsxhxaxrxex_xpxoxsxtx_xmxoxmxexnxtx".suliJoyPalmUnfurled, shorelineAuthorName: "Pxoxsxtx xMxoxmxexnxtx".suliJoyPalmUnfurled, wrapCoastalEnvelope: #selector(tideIndicatorLead))
+        let dismissReefReplyVeil = waveOnlyCaptionGlyph(trimmedLagoonText: "sxuxlxixjxoxyx_xsxhxaxrxex_xsxhxoxrxtxsx".suliJoyPalmUnfurled, shorelineAuthorName: "Sxhxoxrxtxsx xVxixdxexox".suliJoyPalmUnfurled, wrapCoastalEnvelope: #selector(assembleReefLaunchCard))
 
-        let flag = UIStackView(arrangedSubviews: [consentActionRail, fieldStack])
-        let acceptLagoonControl = UIStackView(arrangedSubviews: [saveReefMotionToSandbox, shorts])
-        [flag, acceptLagoonControl].forEach {
+        let moorLagoonScrollTextScene = UIStackView(arrangedSubviews: [reefKeyboardHeight, makeShorelineChoiceWrap])
+        let reefKeysWillSettle = UIStackView(arrangedSubviews: [shoreBreezeBubbles, dismissReefReplyVeil])
+        [moorLagoonScrollTextScene, reefKeysWillSettle].forEach {
             $0.axis = .horizontal
             $0.spacing = 14
             $0.distribution = .fillEqually
         }
-        let reefNumber = UIStackView(arrangedSubviews: [flag, acceptLagoonControl])
-        reefNumber.translatesAutoresizingMaskIntoConstraints = false
-        reefNumber.axis = .vertical
-        reefNumber.spacing = 14
+        let fetchHomeActivities = UIStackView(arrangedSubviews: [moorLagoonScrollTextScene, reefKeysWillSettle])
+        fetchHomeActivities.translatesAutoresizingMaskIntoConstraints = false
+        fetchHomeActivities.axis = .vertical
+        fetchHomeActivities.spacing = 14
 
-        [titleDrop, lagoonSeatMarkbigh, reefReplyAlert, reefNumber].forEach { view.addSubview($0) }
-        let totalTop = reefNumber.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 52)
-        totalTop.priority = .defaultHigh
+        [refreshConsentRibbonBinding, islandAwaitingReturn, renderShoreFilterTabs, fetchHomeActivities].forEach { view.addSubview($0) }
+        let flaggedLagoonVisitors = fetchHomeActivities.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 52)
+        flaggedLagoonVisitors.priority = .defaultHigh
         NSLayoutConstraint.activate([
-            titleDrop.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 6),
-            titleDrop.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
-            titleDrop.widthAnchor.constraint(equalToConstant: 32),
-            titleDrop.heightAnchor.constraint(equalToConstant: 32),
+            refreshConsentRibbonBinding.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 6),
+            refreshConsentRibbonBinding.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 18),
+            refreshConsentRibbonBinding.widthAnchor.constraint(equalToConstant: 32),
+            refreshConsentRibbonBinding.heightAnchor.constraint(equalToConstant: 32),
 
-            lagoonSeatMarkbigh.topAnchor.constraint(equalTo: titleDrop.bottomAnchor, constant: 18),
-            lagoonSeatMarkbigh.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            lagoonSeatMarkbigh.heightAnchor.constraint(equalToConstant: 28),
-            lagoonSeatMarkbigh.widthAnchor.constraint(equalTo: lagoonSeatMarkbigh.heightAnchor, multiplier: 410.0 / 52.0),
-            lagoonSeatMarkbigh.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -22),
+            islandAwaitingReturn.topAnchor.constraint(equalTo: refreshConsentRibbonBinding.bottomAnchor, constant: 18),
+            islandAwaitingReturn.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            islandAwaitingReturn.heightAnchor.constraint(equalToConstant: 28),
+            islandAwaitingReturn.widthAnchor.constraint(equalTo: islandAwaitingReturn.heightAnchor, multiplier: 410.0 / 52.0),
+            islandAwaitingReturn.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -22),
 
-            reefReplyAlert.topAnchor.constraint(equalTo: lagoonSeatMarkbigh.bottomAnchor, constant: 14),
-            reefReplyAlert.leadingAnchor.constraint(equalTo: lagoonSeatMarkbigh.leadingAnchor),
-            reefReplyAlert.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -22),
-            reefReplyAlert.heightAnchor.constraint(equalToConstant: 32),
-            caption.leadingAnchor.constraint(equalTo: reefReplyAlert.leadingAnchor, constant: 12),
-            caption.trailingAnchor.constraint(equalTo: reefReplyAlert.trailingAnchor, constant: -12),
-            caption.centerYAnchor.constraint(equalTo: reefReplyAlert.centerYAnchor),
+            renderShoreFilterTabs.topAnchor.constraint(equalTo: islandAwaitingReturn.bottomAnchor, constant: 14),
+            renderShoreFilterTabs.leadingAnchor.constraint(equalTo: islandAwaitingReturn.leadingAnchor),
+            renderShoreFilterTabs.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -22),
+            renderShoreFilterTabs.heightAnchor.constraint(equalToConstant: 32),
+            reefCommentsTitle.leadingAnchor.constraint(equalTo: renderShoreFilterTabs.leadingAnchor, constant: 12),
+            reefCommentsTitle.trailingAnchor.constraint(equalTo: renderShoreFilterTabs.trailingAnchor, constant: -12),
+            reefCommentsTitle.centerYAnchor.constraint(equalTo: renderShoreFilterTabs.centerYAnchor),
 
-            reefNumber.topAnchor.constraint(greaterThanOrEqualTo: reefReplyAlert.bottomAnchor, constant: 28),
-            reefNumber.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
-            reefNumber.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
-            reefNumber.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            totalTop,
-            consentActionRail.heightAnchor.constraint(equalTo: consentActionRail.widthAnchor, multiplier: 224.0 / 328.0)
+            fetchHomeActivities.topAnchor.constraint(greaterThanOrEqualTo: renderShoreFilterTabs.bottomAnchor, constant: 28),
+            fetchHomeActivities.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22),
+            fetchHomeActivities.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -22),
+            fetchHomeActivities.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            flaggedLagoonVisitors,
+            reefKeyboardHeight.heightAnchor.constraint(equalTo: reefKeyboardHeight.widthAnchor, multiplier: 224.0 / 328.0)
         ])
     }
 
-    private func reefTallies(named assembleShoreProfileReef: String, label: String, action: Selector) -> UIButton {
-        let card = UIButton(type: .custom)
-        card.translatesAutoresizingMaskIntoConstraints = false
-        card.setImage(UIImage(named: assembleShoreProfileReef)?.withRenderingMode(.alwaysOriginal), for: .normal)
-        card.imageView?.contentMode = .scaleAspectFit
-        card.contentHorizontalAlignment = .fill
-        card.contentVerticalAlignment = .fill
-        card.accessibilityLabel = label
-        card.addTarget(self, action: action, for: .touchUpInside)
-        return card
+    private func waveOnlyCaptionGlyph(trimmedLagoonText lagoonMarkControl: String, shorelineAuthorName: String, wrapCoastalEnvelope: Selector) -> UIButton {
+        let shelfMinimumWidth = UIButton(type: .custom)
+        shelfMinimumWidth.translatesAutoresizingMaskIntoConstraints = false
+        shelfMinimumWidth.setImage(UIImage(named: lagoonMarkControl)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        shelfMinimumWidth.imageView?.contentMode = .scaleAspectFit
+        shelfMinimumWidth.contentHorizontalAlignment = .fill
+        shelfMinimumWidth.contentVerticalAlignment = .fill
+        shelfMinimumWidth.accessibilityLabel = shorelineAuthorName
+        shelfMinimumWidth.addTarget(self, action: wrapCoastalEnvelope, for: .touchUpInside)
+        return shelfMinimumWidth
     }
 
-    @objc private func sailBackToTabs() {
+    @objc private func blockLagoonVisitor() {
         navigationController?.popViewController(animated: true)
     }
 
-    @objc private func reefPath() {
-        let page = coralMood()
-        page.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(page, animated: true)
+    @objc private func sheetBottomConstraint() {
+        let lagoonFollowBadge = coralMood()
+        lagoonFollowBadge.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(lagoonFollowBadge, animated: true)
     }
 
-    @objc private func overlap() {
-        let page = typeWrap()
-        page.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(page, animated: true)
+    @objc private func replyFlagControl() {
+        let lagoonFollowBadge = typeWrap()
+        lagoonFollowBadge.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(lagoonFollowBadge, animated: true)
     }
 
-    @objc private func openShoreMomentMaker() {
-        let page = SuliJoysequinedGlimmerController()
-        page.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(page, animated: true)
+    @objc private func tideIndicatorLead() {
+        let lagoonFollowBadge = SuliJoysequinedGlimmerController()
+        lagoonFollowBadge.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(lagoonFollowBadge, animated: true)
     }
 
-    @objc private func openReefClipMaker() {
-        let page = SuliJoyReefMotionTideController()
-        page.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(page, animated: true)
+    @objc private func assembleReefLaunchCard() {
+        let lagoonFollowBadge = SuliJoyReefMotionTideController()
+        lagoonFollowBadge.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(lagoonFollowBadge, animated: true)
     }
 }

@@ -1,0 +1,12 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/AppDelegate.swift" : {
+    "abi-baseline-json" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Release-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/JOiySuizoy.abi.json",
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Release-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/JOiySuizoy-primary.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Release-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/JOiySuizoy-primary.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Release-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/JOiySuizoy-primary.dia",
+    "objc-header" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Release-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/JOiySuizoy-Swift.h",
+    "swiftdoc" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Release-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/JOiySuizoy.swiftdoc",
+    "swiftmodule" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Release-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/JOiySuizoy.swiftmodule",
+    "swiftsourceinfo" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Release-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/JOiySuizoy.swiftsourceinfo"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "replacements": 520,
+  "all_replacements_in_legacy_pool": true,
+  "remaining_modifiable_names": [],
+  "fixed_names": [
+    "CodingKeys",
+    "Data",
+    "KeyedDecodingContainer",
+    "encode",
+    "errorDescription",
+    "from",
+    "init",
+    "intValue",
+    "reefMarkGlyph",
+    "stringValue",
+    "to"
+  ],
+  "changed_files": [
+    "SuliJoyJokerAuthUserService.swift",
+    "SuliJoyLagoonBoardControllers.swift",
+    "SuliJoyLagoonHarborService.swift",
+    "SuliJoyLagoonProfileRemoteService.swift",
+    "SuliJoyLagoonRemoteClient.swift",
+    "SuliJoyShareBroadcastDraftControllers.swift"
+  ],
+  "syntax_equivalent_files": 48,
+  "request_json_models_tested": 12,
+  "debug_build": true,
+  "release_build": true,
+  "classes_preserved": true,
+  "existing_string_values_preserved": true
+}

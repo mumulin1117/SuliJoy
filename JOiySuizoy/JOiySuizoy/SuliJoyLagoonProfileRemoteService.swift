@@ -154,9 +154,9 @@ struct SuliJoyVisitorShoreBundle: Equatable {
 }
 
 enum makeCurationSectionTitle {
-    static func shoreReasonRows(for ReadyIslandReefScene: shorePlaceholderText?) -> String {
+    static func shoreReasonRows(for ReadyIslandReefScene: refreshActiveCoveSection?) -> String {
         guard let ReadyIslandReefScene else { return "" }
-        switch ReadyIslandReefScene.kind {
+        switch ReadyIslandReefScene.waveNoteStamp {
         case "ixmxaxgxex".suliJoyPalmUnfurled:
             return "Pxhxoxtxox".suliJoyPalmUnfurled
         case "vxoxixcxex".suliJoyPalmUnfurled:
@@ -164,17 +164,17 @@ enum makeCurationSectionTitle {
         case "vxixdxexox_xcxaxlxlx".suliJoyPalmUnfurled:
             return "Vxixdxexox xcxaxlxlx".suliJoyPalmUnfurled
         default:
-            return ReadyIslandReefScene.text
+            return ReadyIslandReefScene.currentPearlBalance
         }
     }
 
-    static func note(from ReadyIslandReefScene: shorePlaceholderText) -> SuliJoyVisitorShoreBundle {
+    static func note(from ReadyIslandReefScene: refreshActiveCoveSection) -> SuliJoyVisitorShoreBundle {
         SuliJoyVisitorShoreBundle(
-            moorShoreSignupReefScene: ReadyIslandReefScene.moorShoreSignupReefScene.isEmpty ? UUID().uuidString : ReadyIslandReefScene.moorShoreSignupReefScene,
+            moorShoreSignupReefScene: ReadyIslandReefScene.makeShoreSignupShell.isEmpty ? UUID().uuidString : ReadyIslandReefScene.makeShoreSignupShell,
             text: shoreReasonRows(for: ReadyIslandReefScene),
-            toggleReefPlayback: ReadyIslandReefScene.toggleReefPlayback,
-            followButton: islandAccountStore(forgeCoralRemovalCard: ReadyIslandReefScene.harborFlagControl),
-            harborFlagControl: ReadyIslandReefScene.harborFlagControl
+            toggleReefPlayback: ReadyIslandReefScene.sailToLagoonEntry,
+            followButton: islandAccountStore(forgeCoralRemovalCard: ReadyIslandReefScene.renderHarborSeats),
+            harborFlagControl: ReadyIslandReefScene.renderHarborSeats
         )
     }
 
@@ -204,24 +204,24 @@ final class suliJoyPalmRankingaccount {
     private let token = NSLock()
 
     private init() {
-        reefSegmentHeight = reefMarkGlyph(assembleReefMotionTide: SuliJoyTideSessionVault())
+        reefSegmentHeight = reefMarkGlyph(makePearlPlainAction: SuliJoyTideSessionVault())
     }
 
     func fetchIslandProfileSummary(completion: @escaping (SuliJoySuiRequestEnvelope<SuliJoyLagoonProfileSnapshot>) -> Void) {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let profile = try await reefSegmentHeight.shoreCaption()
-                let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: profile.icon)
+                let profile = try await reefSegmentHeight.installReefMotionTap()
+                let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: profile.shoreBriefTextView)
                 let presentHarborGuard = SuliJoyLagoonProfileSnapshot(
-                    lagoonNameText: profile.collage,
+                    lagoonNameText: profile.polishShellCache,
                     lagoonAvatarAssetName: openPearlHarborCove,
-                    islandTraceText: String(profile.userID),
+                    islandTraceText: String(profile.tuneMomentImageWavePill),
                     reefTallies: [
-                        SuliJoyReefProfileTally(reefLabel: "Fxrxixexnxdxsx".suliJoyPalmUnfurled, reefTotal: profile.suliJoyPinIslandEdges),
-                        SuliJoyReefProfileTally(reefLabel: "Fxoxlxlxoxwxixnxgx".suliJoyPalmUnfurled, reefTotal: profile.tideStamp),
-                        SuliJoyReefProfileTally(reefLabel: "Fxaxnxsx".suliJoyPalmUnfurled, reefTotal: profile.suliPinEdges),
-                        SuliJoyReefProfileTally(reefLabel: "Lxixkxexsx".suliJoyPalmUnfurled, reefTotal: profile.suggestionCount)
+                        SuliJoyReefProfileTally(reefLabel: "Fxrxixexnxdxsx".suliJoyPalmUnfurled, reefTotal: profile.keyboardWillShow),
+                        SuliJoyReefProfileTally(reefLabel: "Fxoxlxlxoxwxixnxgx".suliJoyPalmUnfurled, reefTotal: profile.ShellWardrobeMeasure),
+                        SuliJoyReefProfileTally(reefLabel: "Fxaxnxsx".suliJoyPalmUnfurled, reefTotal: profile.refreshMutedVisitors),
+                        SuliJoyReefProfileTally(reefLabel: "Lxixkxexsx".suliJoyPalmUnfurled, reefTotal: profile.fetchPearlHarborShelves)
                     ]
                 )
                 completion(.success(presentHarborGuard))
@@ -235,9 +235,9 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let profile = try await reefSegmentHeight.shoreCaption()
-                SuliJoyShellPearlStore.shared.sectionShellTaps(profile.hasShoreCaption)
-                completion(.success(profile.hasShoreCaption))
+                let profile = try await reefSegmentHeight.installReefMotionTap()
+                SuliJoyShellPearlStore.shared.sectionShellTaps(profile.refreshDraftCounters)
+                completion(.success(profile.refreshDraftCounters))
             } catch {
                 completion(.failure(error.localizedDescription, code: error.leadingShoreConstraint))
             }
@@ -248,16 +248,16 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let reefParagraph = try await reefSegmentHeight.fetchLagoonStylists()
-                let crownTitleLabel = await reefParagraph.list.shoreFlagControl { row in
-                    let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: row.icon)
+                let reefParagraph = try await reefSegmentHeight.lagoonAvatarAssetName()
+                let crownTitleLabel = await reefParagraph.waveOnlyCaptionGlyph.shoreFlagControl { row in
+                    let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: row.shoreBriefTextView)
                     return SuliJoyLagoonStylist(
-                        stylistID: String(row.crownBundle),
-                        displayName: row.clearSuliJoyLocalCache,
+                        stylistID: String(row.sheetBottomConstraint),
+                        displayName: row.waveStripeAssetToken,
                         avatarAssetName: resetWaveRecording,
                         suliJoyCoastalModeration: 0,
-                        suliJoyCoastalChecklist: row.toggleReefLike,
-                        suliJoyCoastalMeter: row.presentSuliJoyHarborGuardMenu
+                        suliJoyCoastalChecklist: row.quietHeadlineLabel,
+                        suliJoyCoastalMeter: row.lagoonFaceRail
                     )
                 }
                 completion(.success(crownTitleLabel))
@@ -271,12 +271,12 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let coastalWardrobe = try await reefSegmentHeight.placeholderTop()
-                let visitors = await coastalWardrobe.harborEntryControl.shoreFlagControl { reefShelf in
-                    let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: reefShelf.icon)
+                let coastalWardrobe = try await reefSegmentHeight.makeIslandToastShoreCaption()
+                let visitors = await coastalWardrobe.onShorelineFollowTap.shoreFlagControl { reefShelf in
+                    let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: reefShelf.shoreBriefTextView)
                     return SuliJoyLagoonVisitor(
-                        lagoonGuestToken: String(reefShelf.userID),
-                        islandStylistAlias: reefShelf.collage,
+                        lagoonGuestToken: String(reefShelf.tuneMomentImageWavePill),
+                        islandStylistAlias: reefShelf.polishShellCache,
                         portraitAssetToken: resetWaveRecording,
                         shorelineHeartTotal: 0,
                         reefFollowerTotal: 0,
@@ -297,8 +297,8 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let lagoonRefreshText = try await reefSegmentHeight.entryControl()
-                let moments = await lagoonRefreshText.harborEntryControl.shoreFlagControl { [weak self] row in
+                let lagoonRefreshText = try await reefSegmentHeight.tuneShoreList()
+                let moments = await lagoonRefreshText.onShorelineFollowTap.shoreFlagControl { [weak self] row in
                     await self?.reefMetrics(from: row) ?? shellBackSide.heroAssetTokens
                 }
                 stitchIslandBackdropReef(moments: moments)
@@ -313,8 +313,8 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let shorebeachwearCapsule = try await reefSegmentHeight.tuneCrownRow()
-                let clips = await shorebeachwearCapsule.likeButton.shoreFlagControl { [weak self] row in
+                let shorebeachwearCapsule = try await reefSegmentHeight.plantShoreMailBadge()
+                let clips = await shorebeachwearCapsule.resortImageView.shoreFlagControl { [weak self] row in
                     await self?.shorelineInputShell(from: row) ?? shellBackSide.tuneReefPhotoSlots
                 }
                 stitchIslandBackdropReef(clips: clips)
@@ -330,13 +330,13 @@ final class suliJoyPalmRankingaccount {
     }
 
     func shoreMailMark(
-        nextTideMark: testerIslander = .islandAlias,
+        nextTideMark: openIslandGuest = .openPearlVault,
         completion: @escaping (SuliJoySuiRequestEnvelope<[shorelineWheel]>) -> Void
     ) {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let harborScene = try await reefSegmentHeight.stylistHeight(nextTideMark: nextTideMark)
+                let harborScene = try await reefSegmentHeight.shoreDraftText(shorelineHostNames: nextTideMark)
                 let isShoreScrollItemVisible = await harborScene.shoreFlagControl { await self.shorelineScroll(from: $0) }
                 self.closeMistAndSailToArrival { completion(.success(isShoreScrollItemVisible)) }
             } catch {
@@ -352,9 +352,9 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let harborScene = try await reefSegmentHeight.stylistNameGlyph(cameraPhrase: cameraPhrase)
-                let isShoreScrollItemVisible = await harborScene.harborEntryControl.filter { $0.abaloneTone > 0 }.shoreFlagControl { await self.quietShorelineCurrent(from: $0) }
-                let activeCoveSection = SuliJoyTideCalendarCapsuleButton(isShoreScrollItemVisible: isShoreScrollItemVisible, isFollowingAuthor: max(harborScene.isFollowingAuthor, isShoreScrollItemVisible.count))
+                let harborScene = try await reefSegmentHeight.showShoreInlineNote(presentShoreCommentPrompt: cameraPhrase)
+                let isShoreScrollItemVisible = await harborScene.onShorelineFollowTap.filter { $0.avatarShellBadge > 0 }.shoreFlagControl { await self.quietShorelineCurrent(from: $0) }
+                let activeCoveSection = SuliJoyTideCalendarCapsuleButton(isShoreScrollItemVisible: isShoreScrollItemVisible, isFollowingAuthor: max(harborScene.waveDirectory, isShoreScrollItemVisible.count))
                 self.closeMistAndSailToArrival { completion(.success(activeCoveSection)) }
             } catch {
                 self.closeMistAndSailToArrival { completion(.failure(error.localizedDescription, code: error.leadingShoreConstraint)) }
@@ -366,8 +366,8 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let shorebeachwearCapsule = try await reefSegmentHeight.fetchShellClips()
-                let clips = await shorebeachwearCapsule.likeButton.shoreFlagControl { [weak self] row in
+                let shorebeachwearCapsule = try await reefSegmentHeight.coastalRuleCapsule()
+                let clips = await shorebeachwearCapsule.resortImageView.shoreFlagControl { [weak self] row in
                     await self?.shorelineInputShell(from: row) ?? shellBackSide.tuneReefPhotoSlots
                 }
                 stitchIslandBackdropReef(clips: clips)
@@ -391,8 +391,8 @@ final class suliJoyPalmRankingaccount {
                 case .sunsetRush: reefReply = "TxRxExNxDxIxNxGx".suliJoyPalmUnfurled
                 case .lagoonCircle: reefReply = "FxOxLxLxOxWx".suliJoyPalmUnfurled
                 }
-                let lagoonRefreshText = try await reefSegmentHeight.letterCardShell(reefReply: reefReply)
-                let moments = await lagoonRefreshText.harborEntryControl.shoreFlagControl { [weak self] row in
+                let lagoonRefreshText = try await reefSegmentHeight.islandAccountStore(tideConfirmButton: reefReply)
+                let moments = await lagoonRefreshText.onShorelineFollowTap.shoreFlagControl { [weak self] row in
                     await self?.reefMetrics(from: row) ?? shellBackSide.heroAssetTokens
                 }
                 stitchIslandBackdropReef(moments: moments)
@@ -414,15 +414,15 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let draftKeyboardWillSettle = try await reefSegmentHeight.reefCoverURL(momentID: ShorelineReelMeasure)
-                let makeShorelineProfile = await draftKeyboardWillSettle.harborEntryControl.shoreFlagControl { row in
-                    let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: row.icon)
+                let draftKeyboardWillSettle = try await reefSegmentHeight.gatherShelves(isLagoonFollowing: ShorelineReelMeasure)
+                let makeShorelineProfile = await draftKeyboardWillSettle.onShorelineFollowTap.shoreFlagControl { row in
+                    let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: row.shoreBriefTextView)
                     return SuliJoyReefReply(
-                        reefReplyID: String(row.commentID),
-                        reefEchoName: row.collage,
+                        reefReplyID: String(row.makeReefTabBlueprints),
+                        reefEchoName: row.polishShellCache,
                         reefEchoAvatarAssetName: openPearlHarborCove,
-                        reefPhraseText: row.content,
-                        tideAgoText: row.openIslandTabsAfterEntry
+                        reefPhraseText: row.lagoonMarkControl,
+                        tideAgoText: row.makePlaceholderReturnControl
                     )
                 }
                 if var moment = wordmark(for: momentID) {
@@ -454,19 +454,19 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let result = try await reefSegmentHeight.reefMark(momentID: ShorelineReelMeasure, content: headlineGlyph)
-                let profile = try? await reefSegmentHeight.shoreCaption()
-                let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: profile?.icon ?? "")
+                let result = try await reefSegmentHeight.indicatorHeight(isLagoonFollowing: ShorelineReelMeasure, lagoonMarkControl: headlineGlyph)
+                let profile = try? await reefSegmentHeight.installReefMotionTap()
+                let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: profile?.shoreBriefTextView ?? "")
                 moment.reefReplies.append(
                     SuliJoyReefReply(
-                        reefReplyID: String(result.commentID),
-                        reefEchoName: profile?.collage ?? "",
+                        reefReplyID: String(result.makeReefTabBlueprints),
+                        reefEchoName: profile?.polishShellCache ?? "",
                         reefEchoAvatarAssetName: openPearlHarborCove,
                         reefPhraseText: headlineGlyph,
                         tideAgoText: "jxuxsxtx xnxoxwx".suliJoyPalmUnfurled
                     )
                 )
-                moment.reefReplyTally = max(result.commitLagoonEntry, moment.reefReplies.count)
+                moment.reefReplyTally = max(result.duskVeilView, moment.reefReplies.count)
                 stitchIslandBackdropReef(moment: moment)
                 completion(.success(moment, note: "Cxoxmxmxexnxtx xaxdxdxexdx.x".suliJoyPalmUnfurled))
             } catch {
@@ -486,10 +486,10 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let result = try await reefSegmentHeight.harborNoticeCard(reefEntryUnlocked: ShorelineReelMeasure)
+                let result = try await reefSegmentHeight.foldDraftKeyboard(shoreSecretInput: ShorelineReelMeasure)
                 var clip = await shoreReplyButton(from: result)
-                if let makeShorelineProfile = try? await reefSegmentHeight.currentProfile(reefEntryUnlocked: ShorelineReelMeasure) {
-                    clip.sailorCollar = await ruleCapsule(from: makeShorelineProfile.likeButton)
+                if let makeShorelineProfile = try? await reefSegmentHeight.shorelineUnlinked(shoreSecretInput: ShorelineReelMeasure) {
+                    clip.sailorCollar = await ruleCapsule(from: makeShorelineProfile.resortImageView)
                     clip.marineStripe = max(clip.marineStripe, clip.sailorCollar.count)
                 }
                 stitchIslandBackdropReef(clip: clip)
@@ -509,32 +509,32 @@ final class suliJoyPalmRankingaccount {
             do {
                 switch draft.target {
                 case .beachBlazer(let momentID):
-                    guard let ShorelineReelMeasure = Int64(momentID) else { throw makeCurationSection.foldReefKeys }
-                    try await reefSegmentHeight.localPacks(
-                        momentID: ShorelineReelMeasure,
-                        commentID: nil,
-                        returnLeading: draft.reason.rawValue,
-                        quietActiveReefTile: draft.otherText
+                    guard let ShorelineReelMeasure = Int64(momentID) else { throw isWaveRolling.coveFollowingTotal }
+                    try await reefSegmentHeight.textFieldShouldReturn(
+                        isLagoonFollowing: ShorelineReelMeasure,
+                        makeReefTabBlueprints: nil,
+                        shorePrivacyButton: draft.reason.rawValue,
+                        logoutLagoonSession: draft.otherText
                     )
                 case .linenVest(let momentID, let commentID):
-                    guard let ShorelineReelMeasure = Int64(momentID), let reefLikeCountLabel = Int64(commentID) else { throw makeCurationSection.foldReefKeys }
-                    try await reefSegmentHeight.localPacks(
-                        momentID: ShorelineReelMeasure,
-                        commentID: reefLikeCountLabel,
-                        returnLeading: draft.reason.rawValue,
-                        quietActiveReefTile: draft.otherText
+                    guard let ShorelineReelMeasure = Int64(momentID), let reefLikeCountLabel = Int64(commentID) else { throw isWaveRolling.coveFollowingTotal }
+                    try await reefSegmentHeight.textFieldShouldReturn(
+                        isLagoonFollowing: ShorelineReelMeasure,
+                        makeReefTabBlueprints: reefLikeCountLabel,
+                        shorePrivacyButton: draft.reason.rawValue,
+                        logoutLagoonSession: draft.otherText
                     )
                 case .flowyHem(let clipID), .relaxedTailor(let clipID, _):
-                    guard let ShorelineReelMeasure = Int64(clipID) else { throw makeCurationSection.foldReefKeys }
-                    try await reefSegmentHeight.reefMute(
-                        reefEntryUnlocked: ShorelineReelMeasure,
-                        returnLeading: draft.reason.rawValue,
-                        quietActiveReefTile: draft.otherText
+                    guard let ShorelineReelMeasure = Int64(clipID) else { throw isWaveRolling.coveFollowingTotal }
+                    try await reefSegmentHeight.voiceSeatShelf(
+                        shoreSecretInput: ShorelineReelMeasure,
+                        shorePrivacyButton: draft.reason.rawValue,
+                        logoutLagoonSession: draft.otherText
                     )
                 case .softDrape(let visitorID):
                     try await joinGlyphText(visitorID: visitorID)
                 case .wideLegLinen, .breezyFit:
-                    throw makeCurationSection.candidates(code: "4x0x0x".suliJoyPalmUnfurled, tideJoined: "Txhxixsx xrxexpxoxrxtx xtxaxrxgxextx xixsx xuxnxaxvxaxixlxaxbxlxex.x".suliJoyPalmUnfurled, localReefMotionName: nil)
+                    throw isWaveRolling.tideSoftBottom(paintReefClip: "4x0x0x".suliJoyPalmUnfurled, dividerHeight: "Txhxixsx xrxexpxoxrxtx xtxaxrxgxextx xixsx xuxnxaxvxaxixlxaxbxlxex.x".suliJoyPalmUnfurled, shorelineClip: nil)
                 }
                 completion(.success(true, note: "Rxexpxoxrxtx xrxexcxexixvxexdx.x".suliJoyPalmUnfurled))
             } catch {
@@ -564,25 +564,25 @@ final class suliJoyPalmRankingaccount {
                 } else {
                     reefCreators = nil
                 }
-                let result = try await reefSegmentHeight.secondaryTitle(
-                    storeProductID: text,
-                    harvestIslandToastReefScene: harvestIslandToastReefScene,
-                    reefCreators: reefCreators,
-                    reloadAfterVisitorChange: reefCreators == nil ? nil : draft.waveDraft?.waveSeconds
+                let result = try await reefSegmentHeight.renderCoastalSuggestions(
+                    openLagoonRuleTerms: text,
+                    moorReefCardScene: harvestIslandToastReefScene,
+                    tideActivities: reefCreators,
+                    refreshedReefClip: reefCreators == nil ? nil : draft.waveDraft?.waveSeconds
                 )
-                guard result.tuneTideEmptyNote else {
-                    completion(.failure(result.tideJoined.isEmpty ? "Txhxex xpxoxsxtx xcxoxuxlxdx xnxoxtx xbxex xpxuxbxlxixsxhxexdx.x".suliJoyPalmUnfurled : result.tideJoined))
+                guard result.shorelineCell else {
+                    completion(.failure(result.dividerHeight.isEmpty ? "Txhxex xpxoxsxtx xcxoxuxlxdx xnxoxtx xbxex xpxuxbxlxixsxhxexdx.x".suliJoyPalmUnfurled : result.dividerHeight))
                     return
                 }
                 let moment = await block(
-                    momentID: result.momentID,
+                    momentID: result.isLagoonFollowing,
                     text: text,
                     harvestIslandToastReefScene: harvestIslandToastReefScene,
                     reefCreators: reefCreators,
                     reloadAfterVisitorChange: draft.waveDraft?.waveSeconds ?? 0
                 )
                 stitchIslandBackdropReef(moment: moment)
-                completion(.success(moment, note: result.tideJoined.isEmpty ? "Pxuxbxlxixsxhxexdx.x".suliJoyPalmUnfurled : result.tideJoined))
+                completion(.success(moment, note: result.dividerHeight.isEmpty ? "Pxuxbxlxixsxhxexdx.x".suliJoyPalmUnfurled : result.dividerHeight))
             } catch {
                 completion(.failure(error.localizedDescription, code: error.leadingShoreConstraint))
             }
@@ -615,13 +615,13 @@ final class suliJoyPalmRankingaccount {
                 let asset = AVURLAsset(url: URL(fileURLWithPath: isSeatOpen.reefMotionPath))
                 let duration = max(0, Int(asset.duration.seconds.rounded()))
                 let harvestShorePortraitImage = asset.tracks(withMediaType: .video).first?.naturalSize ?? .zero
-                let result = try await reefSegmentHeight.openReefCreatorProfile(
-                    caption: caption,
-                    toastTextGap: toastTextGap,
-                    activeShoreFilter: activeShoreFilter,
-                    makeShorePortraitCard: duration,
-                    width: max(0, Int(abs(harvestShorePortraitImage.width))),
-                    loadPublishedTideShelf: max(0, Int(abs(harvestShorePortraitImage.height)))
+                let result = try await reefSegmentHeight.subtitleLabel(
+                    mediaPageIndicator: caption,
+                    openCoverImagePicker: toastTextGap,
+                    suliJoyCoastalMeter: activeShoreFilter,
+                    dayFormatter: duration,
+                    ArrivalScenePack: max(0, Int(abs(harvestShorePortraitImage.width))),
+                    fetchVisitorShoreMoments: max(0, Int(abs(harvestShorePortraitImage.height)))
                 )
                 let clip = await shoreReplyButton(from: result)
                 stitchIslandBackdropReef(clip: clip)
@@ -636,16 +636,16 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let options = try await reefSegmentHeight.suliJoyPinCoastalEdges()
-                ShoreReportCoveKey.shorePrimaryButton(options.ShoreMomentCellMetric)
-                let showShoreMomentGuard = options.showShoreMomentGuard.map {
-                    showIslandPlaceholder(ReefMotionMetric: $0.ReefMotionMetric, bottomActionBar: $0.bottomActionBar)
+                let options = try await reefSegmentHeight.onShorelinePrivacyRoute()
+                ShoreReportCoveKey.shorePrimaryButton(options.harvestReefMotionScene)
+                let showShoreMomentGuard = options.isLagoonConsentMarked.map {
+                    showIslandPlaceholder(ReefMotionMetric: $0.ownActivities, bottomActionBar: $0.reefViewCountLabel)
                 }
                 let reefExtension = reportShellClipComment(
                     showShoreMomentGuard: showShoreMomentGuard,
-                    topInset: options.topInset.map { ($0.code, $0.title) },
-                    tideArrowGlyph: options.tideArrowGlyph.map { ($0.nameShellArrow, $0.shapeIslandSignupDraft) },
-                    searchSide: options.searchSide
+                    topInset: options.shoreProfile.map { ($0.paintReefClip, $0.shorelineAvatarTokens) },
+                    tideArrowGlyph: options.finishIslandProfileTide.map { ($0.renderMomentComments, $0.islandShared) },
+                    searchSide: options.imageWaveControl
                 )
                 completion(.success(reefExtension))
             } catch {
@@ -656,7 +656,7 @@ final class suliJoyPalmRankingaccount {
 
     func tuneCaption(
         lagoonSeatertMarkbigh: optionText,
-        completion: @escaping (SuliJoySuiRequestEnvelope<infoBlock>) -> Void
+        completion: @escaping (SuliJoySuiRequestEnvelope<fetchMineTideActivities>) -> Void
     ) {
         Task { [weak self] in
             guard let self else { return }
@@ -666,32 +666,32 @@ final class suliJoyPalmRankingaccount {
                     completion(.failure("Exnxtxexrx xax xlxixvxex xtxixtxlxex.x".suliJoyPalmUnfurled))
                     return
                 }
-                let lagoonSeatMarkbighder = try await reefSegmentHeight.suliJoyPinCoastalEdges()
-                ShoreReportCoveKey.shorePrimaryButton(lagoonSeatMarkbighder.ShoreMomentCellMetric)
-                let pearlVault = lagoonSeatMarkbighder.ShoreMomentCellMetric.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+                let lagoonSeatMarkbighder = try await reefSegmentHeight.onShorelinePrivacyRoute()
+                ShoreReportCoveKey.shorePrimaryButton(lagoonSeatMarkbighder.harvestReefMotionScene)
+                let pearlVault = lagoonSeatMarkbighder.harvestReefMotionScene.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
                 guard let visibleTideShelf = lagoonSeatertMarkbigh.cameraPhrase?.trimmingCharacters(in: .whitespacesAndNewlines),
                       !visibleTideShelf.isEmpty,
                       let cameraPhrase = pearlVault.first(where: { $0.caseInsensitiveCompare(visibleTideShelf) == .orderedSame }) else {
                     completion(.failure("Sxexlxexcxtx xax xcxaxtxexgxoxrxyx xfxrxoxmx xtxhxex xlxixsxtx.x".suliJoyPalmUnfurled))
                     return
                 }
-                let harborFlag = Set(lagoonSeatMarkbighder.topInset.map(\.code))
-                let driftBackFromCurationDraft = harborFlag.contains(lagoonSeatertMarkbigh.driftBackFromCurationDraft) ? lagoonSeatertMarkbigh.driftBackFromCurationDraft : (lagoonSeatMarkbighder.topInset.first?.code ?? lagoonSeatertMarkbigh.driftBackFromCurationDraft)
+                let harborFlag = Set(lagoonSeatMarkbighder.shoreProfile.map(\.paintReefClip))
+                let driftBackFromCurationDraft = harborFlag.contains(lagoonSeatertMarkbigh.driftBackFromCurationDraft) ? lagoonSeatertMarkbigh.driftBackFromCurationDraft : (lagoonSeatMarkbighder.shoreProfile.first?.paintReefClip ?? lagoonSeatertMarkbigh.driftBackFromCurationDraft)
                 let activeShoreFilter = try await shellPearlTotal(heroAssetToken: lagoonSeatertMarkbigh.themeWrap, nameGlyph: "ixmxaxgxex/xjxpxexgx".suliJoyPalmUnfurled)
                 let makeLagoonEntryControl = UUID().uuidString
-                let moorShoreFeedScene = try await reefSegmentHeight.reefImageRail(
-                    cameraPhrase: cameraPhrase,
-                    activeShoreFilter: activeShoreFilter,
-                    shoreHeroCarousel: clagoonSeatMarkbigh,
-                    driftBackFromCurationDraft: driftBackFromCurationDraft,
-                    nameShellArrow: lagoonSeatertMarkbigh.nameShellArrow,
-                    shapeIslandSignupDraft: lagoonSeatertMarkbigh.shapeIslandSignupDraft,
-                    makeLagoonEntryControl: makeLagoonEntryControl,
-                    shoreConfirmDock: true
+                let moorShoreFeedScene = try await reefSegmentHeight.raiseLagoonEntryReefScene(
+                    presentShoreCommentPrompt: cameraPhrase,
+                    suliJoyCoastalMeter: activeShoreFilter,
+                    forgeCoralRemovalCard: clagoonSeatMarkbigh,
+                    removalTitleGlyph: driftBackFromCurationDraft,
+                    renderMomentComments: lagoonSeatertMarkbigh.nameShellArrow,
+                    islandShared: lagoonSeatertMarkbigh.shapeIslandSignupDraft,
+                    seatAvatarView: makeLagoonEntryControl,
+                    SuliJoyavatarTop: true
                 )
-                let toastScene = try await reefSegmentHeight.isMine(
-                    abaloneTone: moorShoreFeedScene.abaloneTone,
-                    openWelcomeLagoonAfterExit: moorShoreFeedScene.openWelcomeLagoonAfterExit
+                let toastScene = try await reefSegmentHeight.stitchShoreFeedScene(
+                    avatarShellBadge: moorShoreFeedScene.avatarShellBadge,
+                    shoreHeroDots: moorShoreFeedScene.shoreHeroDots
                 )
                 completion(.success(toastScene, note: "Yxoxux xaxrxex xlxixvxex.x".suliJoyPalmUnfurled))
             } catch {
@@ -704,23 +704,23 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                async let logoHeight = reefSegmentHeight.tideDefaults()
-                async let driftBackFromShoreDetail = reefSegmentHeight.makeLagoonRuleTitle()
-                async let renderWaveState = reefSegmentHeight.MomentDetailMetric()
+                async let logoHeight = reefSegmentHeight.waveRetryButton()
+                async let driftBackFromShoreDetail = reefSegmentHeight.makeLagoonRuleCopy()
+                async let renderWaveState = reefSegmentHeight.shoreSendControl()
                 let shorelineBubble = try await logoHeight
                 let rhythmDuration = try await driftBackFromShoreDetail
                 let tuneReefTextCard = try await renderWaveState
                 let stylist = Self.creatorAvatarView(from: tuneReefTextCard)
                 stitchReadyIslandReefScene.lagoonGuest(stylist)
-                let shoreTextView = shorelineBubble.oneShoulder.map {
-                    testerTideSecret(ReefMotionMetric: $0.ReefMotionMetric, bottomActionBar: $0.bottomActionBar)
+                let shoreTextView = shorelineBubble.makeLagoonRuleCancelButton.map {
+                    testerTideSecret(ReefMotionMetric: $0.ownActivities, bottomActionBar: $0.reefViewCountLabel)
                 }
                 let reefExtension = tideArrowSide(
-                    tropicBackdropToken: shorelineBubble.tropicBackdropToken,
-                    shorelineTideKey: shorelineBubble.shorelineTideKey,
+                    tropicBackdropToken: shorelineBubble.makeIslandToastSunStripe,
+                    shorelineTideKey: shorelineBubble.toggleShellClipFollow,
                     oneShoulder: shoreTextView,
-                    rhythmDuration: rhythmDuration.map { ($0.rewriteLagoonSession, $0.title, $0.makeLagoonClauseBody) },
-                    tuneReefTextCard: tuneReefTextCard.map { ($0.nameShellArrow, $0.stylist) }
+                    rhythmDuration: rhythmDuration.map { ($0.textFieldDidBeginEditing, $0.shorelineAvatarTokens, $0.washedCotton) },
+                    tuneReefTextCard: tuneReefTextCard.map { ($0.renderMomentComments, $0.tuneTideTagLabel) }
                 )
                 completion(.success(reefExtension))
             } catch {
@@ -731,7 +731,7 @@ final class suliJoyPalmRankingaccount {
 
     func espadrillePairing(
         draft: calendarSheet,
-        completion: @escaping (SuliJoySuiRequestEnvelope<cardLift>) -> Void
+        completion: @escaping (SuliJoySuiRequestEnvelope<shorelineAction>) -> Void
     ) {
         Task { [weak self] in
             guard let self else { return }
@@ -746,17 +746,17 @@ final class suliJoyPalmRankingaccount {
                     completion(.failure("Axdxdx xax xsxhxoxrxtx xgxrxexextxixnxgx xfxoxrx xlxixsxtxexnxexrxsx.x".suliJoyPalmUnfurled))
                     return
                 }
-                let tuneReefTextCard = try await reefSegmentHeight.MomentDetailMetric()
+                let tuneReefTextCard = try await reefSegmentHeight.shoreSendControl()
                 let lagoonFansCountGlyph = Self.creatorAvatarView(from: tuneReefTextCard)
                 stitchReadyIslandReefScene.lagoonGuest(lagoonFansCountGlyph)
                 let shoreInfoCard = try await shellPearlTotal(heroAssetToken: draft.themeWrap, nameGlyph: "ixmxaxgxex/xjxpxexgx".suliJoyPalmUnfurled)
                 // Match room-shell H5: create payload omits `roomTags` (backend 4002 when tags are not exact codes).
-                let completeLagoonExit = try await reefSegmentHeight.makeReefMotionDraftOrAlert(
-                    shorelineReels: shorelineReels,
-                    reefSlotIndex: shoreInfoCard,
-                    amountText: makeLagoonEntryColumn,
-                    reefSegmentTop: draft.lagoonFansCountGlyph.isEmpty ? lagoonFansCountGlyph : draft.lagoonFansCountGlyph,
-                    reefPlayerLayer: draft.reefPlayerLayer
+                let completeLagoonExit = try await reefSegmentHeight.ShoreFeedMetric(
+                    craftSuliJoyReefPickerSheet: shorelineReels,
+                    timeFormatter: shoreInfoCard,
+                    suliJoyCoastalSnapshot: makeLagoonEntryColumn,
+                    suliJoyCoastalWeight: draft.lagoonFansCountGlyph.isEmpty ? lagoonFansCountGlyph : draft.lagoonFansCountGlyph,
+                    openSearchCove: draft.reefPlayerLayer
                 )
                 completion(.success(completeLagoonExit, note: "Rxoxoxmx xcxrxexaxtxexdx.x".suliJoyPalmUnfurled))
             } catch {
@@ -793,13 +793,13 @@ final class suliJoyPalmRankingaccount {
                     "\("Gxrxoxuxpx xsxixzxex:x x".suliJoyPalmUnfurled)\(draft.tideCrewLimit)",
                     "\("Axcxtxixvxixtxyx xfxexex:x x".suliJoyPalmUnfurled)\(draft.pearlNeed)"
                 ].joined(separator: "\nx".suliJoyPalmUnfurled)
-                let tuneReefTextCard = try await reefSegmentHeight.MomentDetailMetric()
+                let tuneReefTextCard = try await reefSegmentHeight.shoreSendControl()
                 let lagoonFansCountGlyph = Self.creatorAvatarView(from: tuneReefTextCard)
-                let completeLagoonExit = try await reefSegmentHeight.makeReefMotionDraftOrAlert(
-                    shorelineReels: lagoonSeatMarkbighNow,
-                    reefSlotIndex: shoreInfoCard,
-                    amountText: detail,
-                    reefSegmentTop: lagoonFansCountGlyph
+                let completeLagoonExit = try await reefSegmentHeight.ShoreFeedMetric(
+                    craftSuliJoyReefPickerSheet: lagoonSeatMarkbighNow,
+                    timeFormatter: shoreInfoCard,
+                    suliJoyCoastalSnapshot: detail,
+                    suliJoyCoastalWeight: lagoonFansCountGlyph
                 )
                 completion(.success(await tuneTideTagLabel(from: completeLagoonExit), note: "Pxuxbxlxixsxhxexdx.x".suliJoyPalmUnfurled))
             } catch {
@@ -816,7 +816,7 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let lagoonSeatMarkbighcard = try await reefSegmentHeight.shoreBloomLayer(userID: ShorelineReelMeasure)
+                let lagoonSeatMarkbighcard = try await reefSegmentHeight.shoreSpotGlyph(tuneMomentImageWavePill: ShorelineReelMeasure)
                 let visitor = await reefReplyAuthor(from: lagoonSeatMarkbighcard, makeShoreFinishControl: visitorID)
                 stitchIslandBackdropReef(visitor: visitor)
                 completion(.success(visitor))
@@ -838,8 +838,8 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let shorebeachwearCapsule = try await reefSegmentHeight.tuneCrownRow(userID: ShorelineReelMeasure)
-                let clips = await shorebeachwearCapsule.likeButton.shoreFlagControl { [weak self] row in
+                let shorebeachwearCapsule = try await reefSegmentHeight.plantShoreMailBadge(tuneMomentImageWavePill: ShorelineReelMeasure)
+                let clips = await shorebeachwearCapsule.resortImageView.shoreFlagControl { [weak self] row in
                     await self?.shorelineInputShell(from: row) ?? shellBackSide.tuneReefPhotoSlots
                 }
                 stitchIslandBackdropReef(clips: clips)
@@ -863,8 +863,8 @@ final class suliJoyPalmRankingaccount {
             guard let self else { return }
             do {
                 let styleTitleField = !self.isLagoonFollowing(visitorID: visitorID)
-                try await reefSegmentHeight.notification(userID: ShorelineReelMeasure, profileTallyStack: styleTitleField)
-                let card = try await reefSegmentHeight.shoreBloomLayer(userID: ShorelineReelMeasure)
+                try await reefSegmentHeight.tuneEmptyShoreGlyph(tuneMomentImageWavePill: ShorelineReelMeasure, shoreMediaShelf: styleTitleField)
+                let card = try await reefSegmentHeight.shoreSpotGlyph(tuneMomentImageWavePill: ShorelineReelMeasure)
                 let visitor = await reefReplyAuthor(from: card, makeShoreFinishControl: visitorID)
                 stitchIslandBackdropReef(visitor: visitor)
                 completion(.success(visitor))
@@ -878,18 +878,18 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let page = try await reefSegmentHeight.primaryFlow()
-                let waveOnlyControl = await page.likeButton.shoreFlagControl { row in
-                    let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: row.shoreInfoCard)
+                let page = try await reefSegmentHeight.persistPublishedClipReef()
+                let waveOnlyControl = await page.resortImageView.shoreFlagControl { row in
+                    let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: row.publishTideActivity)
                     return mist(
-                        LagoonRadioShape: row.LagoonRadioShape,
-                        prepareTideCardControls: row.userID,
-                        growReefLaunchCards: row.displayName,
+                        LagoonRadioShape: row.settleReefMotionPublish,
+                        prepareTideCardControls: row.tuneMomentImageWavePill,
+                        growReefLaunchCards: row.shorePrimaryButton,
                         resetWaveRecording: resetWaveRecording,
-                        shoreReasonRows: makeCurationSectionTitle.shoreReasonRows(for: row.shelves),
-                        followButton: makeCurationSectionTitle.islandAccountStore(forgeCoralRemovalCard: row.shelves?.harborFlagControl ?? row.currentCoastalMail),
-                        stitchReefLaunchCrown: row.stitchReefLaunchCrown,
-                        tuneTideSpinner: row.tuneTideSpinner
+                        shoreReasonRows: makeCurationSectionTitle.shoreReasonRows(for: row.coverPhotoRail),
+                        followButton: makeCurationSectionTitle.islandAccountStore(forgeCoralRemovalCard: row.coverPhotoRail?.renderHarborSeats ?? row.coverReefPicks),
+                        stitchReefLaunchCrown: row.tidePlanShelf,
+                        tuneTideSpinner: row.tideIndicatorWidth
                     )
                 }
                 completion(.success(waveOnlyControl))
@@ -903,8 +903,8 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let page = try await reefSegmentHeight.islandSnapshot(LagoonRadioShape: LagoonRadioShape)
-                let waveHeight = page.likeButton.map { makeCurationSectionTitle.note(from: $0) }
+                let page = try await reefSegmentHeight.relatedShelf(settleReefMotionPublish: LagoonRadioShape)
+                let waveHeight = page.resortImageView.map { makeCurationSectionTitle.note(from: $0) }
                     .sorted { $0.harborFlagControl < $1.harborFlagControl }
                 completion(.success(waveHeight))
             } catch {
@@ -922,7 +922,7 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let wordmarkSize = try await reefSegmentHeight.reefTile(LagoonRadioShape: LagoonRadioShape, text: shoreBubbleTable)
+                let wordmarkSize = try await reefSegmentHeight.lagoonRingColor(settleReefMotionPublish: LagoonRadioShape, currentPearlBalance: shoreBubbleTable)
                 completion(.success(makeCurationSectionTitle.note(from: wordmarkSize), note: "Sxexnxtx.x".suliJoyPalmUnfurled))
             } catch {
                 completion(.failure(error.localizedDescription, code: error.leadingShoreConstraint))
@@ -938,17 +938,17 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let row = try await reefSegmentHeight.shoreDetailScrollCanvas(userID: userID)
-                let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: row.shoreInfoCard)
+                let row = try await reefSegmentHeight.shorelineBubble(tuneMomentImageWavePill: userID)
+                let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: row.publishTideActivity)
                 let openShoreMomentDetail = mist(
-                    LagoonRadioShape: row.LagoonRadioShape,
-                    prepareTideCardControls: row.userID.isEmpty ? userID : row.userID,
-                    growReefLaunchCards: row.displayName.isEmpty ? keyboardWillHide : row.displayName,
+                    LagoonRadioShape: row.settleReefMotionPublish,
+                    prepareTideCardControls: row.tuneMomentImageWavePill.isEmpty ? userID : row.tuneMomentImageWavePill,
+                    growReefLaunchCards: row.shorePrimaryButton.isEmpty ? keyboardWillHide : row.shorePrimaryButton,
                     resetWaveRecording: resetWaveRecording,
                     shoreReasonRows: "",
                     followButton: "",
                     stitchReefLaunchCrown: 0,
-                    tuneTideSpinner: row.tuneTideSpinner
+                    tuneTideSpinner: row.tideIndicatorWidth
                 )
                 completion(.success(openShoreMomentDetail))
             } catch {
@@ -959,7 +959,7 @@ final class suliJoyPalmRankingaccount {
 
     func lagoonSessionVault(LagoonRadioShape: String) {
         Task { [weak self] in
-            try? await self?.reefSegmentHeight.lagoonSessionVault(LagoonRadioShape: LagoonRadioShape)
+            try? await self?.reefSegmentHeight.mutedShoreNames(settleReefMotionPublish: LagoonRadioShape)
         }
     }
 
@@ -971,7 +971,7 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                try await reefSegmentHeight.reefMovieURL(userID: ShorelineReelMeasure)
+                try await reefSegmentHeight.shoreSpinner(tuneMomentImageWavePill: ShorelineReelMeasure)
                 completion(.success(true))
             } catch {
                 completion(.failure(error.localizedDescription, code: error.leadingShoreConstraint))
@@ -989,7 +989,7 @@ final class suliJoyPalmRankingaccount {
             do {
                 let current = wordmark(for: momentID)
                 let stateGlyph = !(current?.isHearted ?? false)
-                try await reefSegmentHeight.waveButton(momentID: ShorelineReelMeasure, blueprint: stateGlyph)
+                try await reefSegmentHeight.storeReefImage(isLagoonFollowing: ShorelineReelMeasure, aquaGradient: stateGlyph)
                 guard var updated = current else {
                     completion(.failure("Mxoxmxexnxtx xixsx xuxnxaxvxaxixlxaxbxlxex.x".suliJoyPalmUnfurled, code: 404))
                     return
@@ -1032,7 +1032,7 @@ final class suliJoyPalmRankingaccount {
             do {
                 let current = avatarShellSize(for: clipID)
                 let stateGlyph = !(current?.driftwoodPalette ?? false)
-                try await reefSegmentHeight.shorelineName(reefEntryUnlocked: ShorelineReelMeasure, blueprint: stateGlyph)
+                try await reefSegmentHeight.sandCancelButton(shoreSecretInput: ShorelineReelMeasure, aquaGradient: stateGlyph)
                 guard var updated = current else {
                     completion(.failure("Sxhxoxrxtx xvxixdxexox xixsx xuxnxaxvxaxixlxaxbxlxex.x".suliJoyPalmUnfurled, code: 404))
                     return
@@ -1057,7 +1057,7 @@ final class suliJoyPalmRankingaccount {
             guard let self else { return }
             do {
                 let shoreReuseKey = !clip.coastalChic
-                try await reefSegmentHeight.notification(userID: ShorelineReelMeasure, profileTallyStack: shoreReuseKey)
+                try await reefSegmentHeight.tuneEmptyShoreGlyph(tuneMomentImageWavePill: ShorelineReelMeasure, shoreMediaShelf: shoreReuseKey)
                 var updated = clip
                 updated.coastalChic = shoreReuseKey
                 stitchIslandBackdropReef(clip: updated)
@@ -1081,10 +1081,10 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let result = try await reefSegmentHeight.lowerReefLine(reefEntryUnlocked: ShorelineReelMeasure, content: text)
-                let profile = try? await reefSegmentHeight.shoreCaption()
-                let onTap = profile?.collage ?? ""
-                let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: profile?.icon ?? "")
+                let result = try await reefSegmentHeight.shoreCurtainView(shoreSecretInput: ShorelineReelMeasure, lagoonMarkControl: text)
+                let profile = try? await reefSegmentHeight.installReefMotionTap()
+                let onTap = profile?.polishShellCache ?? ""
+                let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: profile?.shoreBriefTextView ?? "")
                 let sections = SuliJoyShellClipComment(
                     reefReplyMark: UUID().uuidString,
                     reefReplyAuthorAlias: onTap,
@@ -1094,7 +1094,7 @@ final class suliJoyPalmRankingaccount {
                     isReefFlagged: false
                 )
                 clip.sailorCollar.append(sections)
-                clip.marineStripe = max(result.commitLagoonEntry, clip.marineStripe + 1)
+                clip.marineStripe = max(result.duskVeilView, clip.marineStripe + 1)
                 stitchIslandBackdropReef(clip: clip)
                 completion(.success(clip))
             } catch {
@@ -1131,8 +1131,8 @@ final class suliJoyPalmRankingaccount {
     }
 
     private func joinGlyphText(visitorID: String) async throws {
-        guard let ShorelineReelMeasure = Int64(visitorID) else { throw makeCurationSection.foldReefKeys }
-        try await reefSegmentHeight.reefMovieURL(userID: ShorelineReelMeasure)
+        guard let ShorelineReelMeasure = Int64(visitorID) else { throw isWaveRolling.coveFollowingTotal }
+        try await reefSegmentHeight.shoreSpinner(tuneMomentImageWavePill: ShorelineReelMeasure)
     }
 
     private func touch(visitorID: String, completion: @escaping (SuliJoySuiRequestEnvelope<[SuliJoyReefMoment]>) -> Void) {
@@ -1143,8 +1143,8 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let lagoonRefreshText = try await reefSegmentHeight.entryControl(userID: ShorelineReelMeasure)
-                let moments = await lagoonRefreshText.harborEntryControl.shoreFlagControl { [weak self] row in
+                let lagoonRefreshText = try await reefSegmentHeight.tuneShoreList(tuneMomentImageWavePill: ShorelineReelMeasure)
+                let moments = await lagoonRefreshText.onShorelineFollowTap.shoreFlagControl { [weak self] row in
                     await self?.reefMetrics(from: row) ?? shellBackSide.heroAssetTokens
                 }
                 stitchIslandBackdropReef(moments: moments)
@@ -1158,9 +1158,9 @@ final class suliJoyPalmRankingaccount {
     private func shellPearlTotal(heroAssetToken: String, nameGlyph: String) async throws -> String {
         let formSide = URL(fileURLWithPath: heroAssetToken)
         guard FileManager.default.fileExists(atPath: formSide.path) else {
-            throw makeCurationSection.foldReefKeys
+            throw isWaveRolling.coveFollowingTotal
         }
-        return try await reefSegmentHeight.shellPearlTotal(formSide: formSide, nameGlyph: nameGlyph)
+        return try await reefSegmentHeight.clearCoverReefPick(registeredAt: formSide, shoreNameInput: nameGlyph)
     }
 
     private func renderMomentWave(lagoonEntryScene: Date, islandAccountStore: Date) -> Date {
@@ -1191,8 +1191,8 @@ final class suliJoyPalmRankingaccount {
         reefCreators: String?,
         reloadAfterVisitorChange: Int
     ) async -> SuliJoyReefMoment {
-        let profile = try? await reefSegmentHeight.shoreCaption()
-        let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: profile?.icon ?? "")
+        let profile = try? await reefSegmentHeight.installReefMotionTap()
+        let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: profile?.shoreBriefTextView ?? "")
         let isSeatOpen = await harvestIslandToastReefScene.enumerated().shoreFlagControl { item in
             SuliJoyReefMedia(
                 reefMediaStamp: "\(momentID)\("-x".suliJoyPalmUnfurled)\(item.offset)",
@@ -1203,8 +1203,8 @@ final class suliJoyPalmRankingaccount {
         }
         return SuliJoyReefMoment(
             reefMomentID: momentID == 0 ? UUID().uuidString : String(momentID),
-            islandStylistName: profile?.collage ?? "",
-            islandStylistMark: profile.map { String($0.userID) } ?? "",
+            islandStylistName: profile?.polishShellCache ?? "",
+            islandStylistMark: profile.map { String($0.tuneMomentImageWavePill) } ?? "",
             islandStyleLine: "",
             islandStylistAvatarAssetName: openPearlHarborCove,
             tideAgoText: "jxuxsxtx xnxoxwx".suliJoyPalmUnfurled,
@@ -1230,43 +1230,43 @@ final class suliJoyPalmRankingaccount {
         )
     }
 
-    private func shoreReplyButton(from result: dockPearlLetterScene) async -> SuliJoyShellClip {
-        let profile = try? await reefSegmentHeight.shoreCaption()
-        let field = result.field
-        let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: field?.icon ?? profile?.icon ?? "")
-        let reefDefaults = await cardSideInset.shared.forgeCoralRemovalTitle(for: result.activeShoreFilter)
+    private func shoreReplyButton(from result: openSuliJoyLetters) async -> SuliJoyShellClip {
+        let profile = try? await reefSegmentHeight.installReefMotionTap()
+        let field = result.islandStyleTagline
+        let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: field?.shoreBriefTextView ?? profile?.shoreBriefTextView ?? "")
+        let reefDefaults = await cardSideInset.shared.forgeCoralRemovalTitle(for: result.suliJoyCoastalMeter)
         return SuliJoyShellClip(
-            coconutCream: result.reefEntryUnlocked,
+            coconutCream: result.shoreSecretInput,
             terracottaWarmth: SuliJoyLagoonClipCreator(
-                clipStylistMark: field?.userID ?? profile.map { String($0.userID) } ?? "",
-                clipStylistAlias: field?.collage ?? profile?.collage ?? "",
+                clipStylistMark: field?.tuneMomentImageWavePill ?? profile.map { String($0.tuneMomentImageWavePill) } ?? "",
+                clipStylistAlias: field?.polishShellCache ?? profile?.polishShellCache ?? "",
                 clipPortraitToken: openPearlHarborCove
             ),
-            hibiscusShade: result.caption,
+            hibiscusShade: result.mediaPageIndicator,
             tropicalMotif: SuliJoyReefClipMedia(
-                aquaGradient: result.toastTextGap,
+                aquaGradient: result.openCoverImagePicker,
                 seafoamTint: "",
                 sandyNeutral: reefDefaults
             ),
-            palmLeafPattern: result.requestedReefID,
-            marineStripe: result.commitLagoonEntry,
+            palmLeafPattern: result.waveCreatedAt,
+            marineStripe: result.duskVeilView,
             sailorCollar: [],
-            ropeBelt: result.blueprint,
-            driftwoodPalette: result.blueprint,
-            coastalChic: result.presentSuliJoyHarborGuardMenu,
-            tideText: result.loadPublishedShoreScroll
+            ropeBelt: result.aquaGradient,
+            driftwoodPalette: result.aquaGradient,
+            coastalChic: result.lagoonFaceRail,
+            tideText: result.mediaCarousel
         )
     }
 
-    private func ruleCapsule(from makeShorelineProfile: [markShell]) async -> [SuliJoyShellClipComment] {
+    private func ruleCapsule(from makeShorelineProfile: [islanderStamp]) async -> [SuliJoyShellClipComment] {
         await makeShorelineProfile.shoreFlagControl { comment in
-            let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: comment.icon)
+            let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: comment.shoreBriefTextView)
             return SuliJoyShellClipComment(
-                reefReplyMark: comment.commentID,
-                reefReplyAuthorAlias: comment.collage,
+                reefReplyMark: comment.makeReefTabBlueprints,
+                reefReplyAuthorAlias: comment.polishShellCache,
                 reefReplyAvatarToken: openPearlHarborCove,
-                reefReplyText: comment.content,
-                reefReplyMomentLine: comment.harborFlagControl == 0 ? "" : String(comment.harborFlagControl),
+                reefReplyText: comment.lagoonMarkControl,
+                reefReplyMomentLine: comment.renderHarborSeats == 0 ? "" : String(comment.renderHarborSeats),
                 isReefFlagged: false
             )
         }
@@ -1276,8 +1276,8 @@ final class suliJoyPalmRankingaccount {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let harborScene = try await reefSegmentHeight.avatarCorner(userID: userID)
-                let activities = await harborScene.harborEntryControl.shoreFlagControl { await self.tuneTideTagLabel(from: $0) }
+                let harborScene = try await reefSegmentHeight.shouldChangeTextIn(tuneMomentImageWavePill: userID)
+                let activities = await harborScene.onShorelineFollowTap.shoreFlagControl { await self.tuneTideTagLabel(from: $0) }
                 completion(.success(activities))
             } catch {
                 completion(.failure(error.localizedDescription, code: error.leadingShoreConstraint))
@@ -1285,119 +1285,119 @@ final class suliJoyPalmRankingaccount {
         }
     }
 
-    private func reefReplyAuthor(from card: raiseCurationDraftScene, makeShoreFinishControl: String) async -> SuliJoyLagoonVisitor {
-        let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: card.icon)
+    private func reefReplyAuthor(from card: hasShoreMomentContent, makeShoreFinishControl: String) async -> SuliJoyLagoonVisitor {
+        let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: card.shoreBriefTextView)
         let waveOnlyMinHeight: SuliJoyCoveAffinityState
-        if card.restoreIslandArray {
+        if card.commentField {
             waveOnlyMinHeight = .shorelineUnlinked
-        } else if card.clipIndex {
+        } else if card.keyboardWillHide {
             waveOnlyMinHeight = .reefMutualBond
-        } else if card.tuneMomentDetailCopyAndComments {
+        } else if card.guestTitleLabel {
             waveOnlyMinHeight = .islandAwaitingReturn
         } else {
             waveOnlyMinHeight = .shorelineUnlinked
         }
         return SuliJoyLagoonVisitor(
             lagoonGuestToken: makeShoreFinishControl,
-            islandStylistAlias: card.collage,
+            islandStylistAlias: card.polishShellCache,
             portraitAssetToken: resetWaveRecording,
-            shorelineHeartTotal: card.suggestionCount,
-            reefFollowerTotal: card.suliPinEdges,
-            coveFollowingTotal: card.tideStamp,
+            shorelineHeartTotal: card.fetchPearlHarborShelves,
+            reefFollowerTotal: card.refreshMutedVisitors,
+            coveFollowingTotal: card.ShellWardrobeMeasure,
             coveAffinityState: waveOnlyMinHeight,
-            suliJoyIslandEnsemble: card.tuneMomentDetailCopyAndComments,
-            suliJoyIslandIndex: card.clipIndex
+            suliJoyIslandEnsemble: card.guestTitleLabel,
+            suliJoyIslandIndex: card.keyboardWillHide
         )
     }
 
-    private func reefMetrics(from row: entryStackGap) async -> SuliJoyReefMoment {
-        let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: row.icon)
-        let isSeatOpen = await row.harvestIslandToastReefScene.enumerated().shoreFlagControl { item in
+    private func reefMetrics(from row: openLagoonMirror) async -> SuliJoyReefMoment {
+        let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: row.shoreBriefTextView)
+        let isSeatOpen = await row.moorReefCardScene.enumerated().shoreFlagControl { item in
             let index = item.offset
             let makeLagoonClauseBody = item.element
             return SuliJoyReefMedia(
-                reefMediaStamp: "\(row.momentID)\("-x".suliJoyPalmUnfurled)\(index)",
+                reefMediaStamp: "\(row.isLagoonFollowing)\("-x".suliJoyPalmUnfurled)\(index)",
                 reefMediaKind: .shoreSnapshot,
                 reefAssetToken: await cardSideInset.shared.forgeCoralRemovalTitle(for: makeLagoonClauseBody),
                 hibiscusShade: ""
             )
         }
         let waveNote = SuliJoyWaveSonicNote(
-            waveNoteStamp: String(row.momentID),
-            waveSeconds: row.reloadAfterVisitorChange,
+            waveNoteStamp: String(row.isLagoonFollowing),
+            waveSeconds: row.refreshedReefClip,
             waveStripeAssetToken: "",
-            waveFileToken: row.reefCreators,
+            waveFileToken: row.tideActivities,
             isWaveRolling: false,
             waveProgressRatio: 0
         )
-        suliJoyCoastalGalleryf(String(row.userID), isFollowing: row.systemName != 0 && row.userID != 0)
+        suliJoyCoastalGalleryf(String(row.tuneMomentImageWavePill), isFollowing: row.viewController != 0 && row.tuneMomentImageWavePill != 0)
         return SuliJoyReefMoment(
-            reefMomentID: String(row.momentID),
-            islandStylistName: row.collage,
-            islandStylistMark: String(row.userID),
+            reefMomentID: String(row.isLagoonFollowing),
+            islandStylistName: row.polishShellCache,
+            islandStylistMark: String(row.tuneMomentImageWavePill),
             islandStyleLine: "",
             islandStylistAvatarAssetName: openPearlHarborCove,
-            tideAgoText: row.openIslandTabsAfterEntry,
+            tideAgoText: row.makePlaceholderReturnControl,
             shoreSpotText: "",
-            shoreTideText: row.openIslandTabsAfterEntry,
-            islandCaptionText: row.storeProductID,
+            shoreTideText: row.makePlaceholderReturnControl,
+            islandCaptionText: row.openLagoonRuleTerms,
             reefMedia: isSeatOpen,
             waveNote: waveNote,
-            heartTally: row.requestedReefID,
-            reefReplyTally: row.commitLagoonEntry,
+            heartTally: row.waveCreatedAt,
+            reefReplyTally: row.duskVeilView,
             reefReplies: [],
-            isHearted: row.makeShoreSignupControl != 0,
+            isHearted: row.paintIslandBaseWash != 0,
             reefFilter: .coastalPick,
             isTideHidden: false,
             isReefFlagged: false
         )
     }
 
-    private func shorelineInputShell(from row: islandBackdrop) async -> SuliJoyShellClip {
-        let field = row.field
-        let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: field?.icon ?? "")
+    private func shorelineInputShell(from row: upperReefLine) async -> SuliJoyShellClip {
+        let field = row.islandStyleTagline
+        let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: field?.shoreBriefTextView ?? "")
         let openSearchCove = SuliJoyLagoonClipCreator(
-            clipStylistMark: field?.userID ?? "",
-            clipStylistAlias: field?.collage ?? "",
+            clipStylistMark: field?.tuneMomentImageWavePill ?? "",
+            clipStylistAlias: field?.polishShellCache ?? "",
             clipPortraitToken: resetWaveRecording
         )
         return SuliJoyShellClip(
-            coconutCream: row.reefEntryUnlocked,
+            coconutCream: row.shoreSecretInput,
             terracottaWarmth: openSearchCove,
-            hibiscusShade: row.caption,
+            hibiscusShade: row.mediaPageIndicator,
             tropicalMotif: SuliJoyReefClipMedia(
-                aquaGradient: row.toastTextGap,
+                aquaGradient: row.openCoverImagePicker,
                 seafoamTint: "",
-                sandyNeutral: await cardSideInset.shared.forgeCoralRemovalTitle(for: row.activeShoreFilter)
+                sandyNeutral: await cardSideInset.shared.forgeCoralRemovalTitle(for: row.suliJoyCoastalMeter)
             ),
-            palmLeafPattern: row.requestedReefID,
-            marineStripe: row.commitLagoonEntry,
+            palmLeafPattern: row.waveCreatedAt,
+            marineStripe: row.duskVeilView,
             sailorCollar: [],
-            ropeBelt: row.blueprint,
-            driftwoodPalette: row.blueprint,
-            coastalChic: row.presentSuliJoyHarborGuardMenu,
-            tideText: row.loadPublishedShoreScroll
+            ropeBelt: row.aquaGradient,
+            driftwoodPalette: row.aquaGradient,
+            coastalChic: row.lagoonFaceRail,
+            tideText: row.mediaCarousel
         )
     }
 
-    private func tuneTideTagLabel(from completeLagoonExit: cardLift) async -> SuliJoyTideActivity {
-        let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: completeLagoonExit.reefSlotIndex)
+    private func tuneTideTagLabel(from completeLagoonExit: shorelineAction) async -> SuliJoyTideActivity {
+        let openPearlHarborCove = await cardSideInset.shared.forgeCoralRemovalTitle(for: completeLagoonExit.timeFormatter)
         return SuliJoyTideActivity(
-            tideMark: String(completeLagoonExit.abaloneTone),
-            shoreDayText: completeLagoonExit.openIslandTabsAfterEntry,
+            tideMark: String(completeLagoonExit.avatarShellBadge),
+            shoreDayText: completeLagoonExit.makePlaceholderReturnControl,
             sunMeridiemText: "",
             shoreClockText: "",
-            tideScheduleLine: completeLagoonExit.openIslandTabsAfterEntry,
-            tideTitleLine: completeLagoonExit.shorelineReels,
-            shoreHostAlias: String(completeLagoonExit.makeReadyIslandReefScene),
-            shoreSpotLine: completeLagoonExit.shapeIslandSignupDraft,
-            shoreSummaryLine: completeLagoonExit.amountText,
+            tideScheduleLine: completeLagoonExit.makePlaceholderReturnControl,
+            tideTitleLine: completeLagoonExit.craftSuliJoyReefPickerSheet,
+            shoreHostAlias: String(completeLagoonExit.islandPromptTitle),
+            shoreSpotLine: completeLagoonExit.islandShared,
+            shoreSummaryLine: completeLagoonExit.suliJoyCoastalSnapshot,
             tideFallbackHeroToken: openPearlHarborCove,
-            shoreBriefLine: completeLagoonExit.amountText,
+            shoreBriefLine: completeLagoonExit.suliJoyCoastalSnapshot,
             relatedTideMarks: [],
-            tideState: completeLagoonExit.reefSegmentButtons == 1 ? .tideOpen : .tideClosed,
+            tideState: completeLagoonExit.reefMuteButton == 1 ? .tideOpen : .tideClosed,
             isReefFlagged: false,
-            tideJoinedTotal: completeLagoonExit.buildReefScene,
+            tideJoinedTotal: completeLagoonExit.tuneResortSpinner,
             tideCrewLimit: 0,
             pearlNeed: 0,
             reefGallery: [],
@@ -1405,55 +1405,55 @@ final class suliJoyPalmRankingaccount {
         )
     }
 
-    private func shorelineScroll(from completeLagoonExit: cardLift) async -> shorelineWheel {
-        let imageWaveControl = completeLagoonExit.reefTitle.isEmpty ? completeLagoonExit.reefSlotIndex : completeLagoonExit.reefTitle
+    private func shorelineScroll(from completeLagoonExit: shorelineAction) async -> shorelineWheel {
+        let imageWaveControl = completeLagoonExit.reefAddGlyph.isEmpty ? completeLagoonExit.timeFormatter : completeLagoonExit.reefAddGlyph
         let reefDefaults = await cardSideInset.shared.forgeCoralRemovalTitle(for: imageWaveControl)
-        let reefBloom = completeLagoonExit.reefSlotIndex.isEmpty ? (completeLagoonExit.confirmWaveRecording.first?.avatar ?? "") : completeLagoonExit.reefSlotIndex
+        let reefBloom = completeLagoonExit.timeFormatter.isEmpty ? (completeLagoonExit.renderStylists.first?.stitchIslandBackdropReef ?? "") : completeLagoonExit.timeFormatter
         let tuneCoveCapsuleShell = await cardSideInset.shared.forgeCoralRemovalTitle(for: reefBloom)
-        let reefKeysWillRise = await completeLagoonExit.confirmWaveRecording.prefix(2).shoreFlagControl { reefKey in
-            await cardSideInset.shared.forgeCoralRemovalTitle(for: reefKey.avatar)
+        let reefKeysWillRise = await completeLagoonExit.renderStylists.prefix(2).shoreFlagControl { reefKey in
+            await cardSideInset.shared.forgeCoralRemovalTitle(for: reefKey.stitchIslandBackdropReef)
         }
-        let persistPublishedShoreScroll = completeLagoonExit.shapeIslandSignupDraft.isEmpty ? "Ixsxlxaxnxdx".suliJoyPalmUnfurled : completeLagoonExit.shapeIslandSignupDraft
+        let persistPublishedShoreScroll = completeLagoonExit.islandShared.isEmpty ? "Ixsxlxaxnxdx".suliJoyPalmUnfurled : completeLagoonExit.islandShared
         let hostName: String
-        if !completeLagoonExit.reefAction.isEmpty {
-            hostName = completeLagoonExit.reefAction
-        } else if !completeLagoonExit.shorelineReels.isEmpty {
-            hostName = completeLagoonExit.shorelineReels
+        if !completeLagoonExit.moorLagoonEntryReefScene.isEmpty {
+            hostName = completeLagoonExit.moorLagoonEntryReefScene
+        } else if !completeLagoonExit.craftSuliJoyReefPickerSheet.isEmpty {
+            hostName = completeLagoonExit.craftSuliJoyReefPickerSheet
         } else {
             hostName = persistPublishedShoreScroll
         }
-        let summary = completeLagoonExit.amountText.isEmpty ? "Sxaxyx xhxix,x xcxhxixlxlx xoxuxtx,x xaxnxdx xsxtxaxyx xfxoxrx xtxhxex xvxixbxexsx.x".suliJoyPalmUnfurled : completeLagoonExit.amountText
+        let summary = completeLagoonExit.suliJoyCoastalSnapshot.isEmpty ? "Sxaxyx xhxix,x xcxhxixlxlx xoxuxtx,x xaxnxdx xsxtxaxyx xfxoxrx xtxhxex xvxixbxexsx.x".suliJoyPalmUnfurled : completeLagoonExit.suliJoyCoastalSnapshot
         return shorelineWheel(
-            abaloneTone: String(completeLagoonExit.abaloneTone),
+            abaloneTone: String(completeLagoonExit.avatarShellBadge),
             persistPublishedShoreScroll: persistPublishedShoreScroll,
             hostName: hostName,
             tuneCoveCapsuleShell: tuneCoveCapsuleShell,
             reefDefaults: reefDefaults,
-            suliJoyShoreMomentPublished: completeLagoonExit.buildReefScene,
-            islandHost: completeLagoonExit.pearlAccent,
+            suliJoyShoreMomentPublished: completeLagoonExit.tuneResortSpinner,
+            islandHost: completeLagoonExit.shoreLookShelf,
             summary: summary,
             completed: reefKeysWillRise.filter { !$0.isEmpty }
         )
     }
 
-    private func quietShorelineCurrent(from completeLagoonExit: linenDrape) async -> coverImageView {
-        let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: completeLagoonExit.icon)
-        let imageWaveControl = completeLagoonExit.activeShoreFilter.isEmpty ? completeLagoonExit.icon : completeLagoonExit.activeShoreFilter
+    private func quietShorelineCurrent(from completeLagoonExit: reefPhotoRow) async -> coverImageView {
+        let resetWaveRecording = await cardSideInset.shared.forgeCoralRemovalTitle(for: completeLagoonExit.shoreBriefTextView)
+        let imageWaveControl = completeLagoonExit.suliJoyCoastalMeter.isEmpty ? completeLagoonExit.shoreBriefTextView : completeLagoonExit.suliJoyCoastalMeter
         let reefDefaults = await cardSideInset.shared.forgeCoralRemovalTitle(for: imageWaveControl)
-        let lagoonSeatMarkbigh = completeLagoonExit.collage.isEmpty ? "Lxixvxex xhxoxsxtx".suliJoyPalmUnfurled : completeLagoonExit.collage
-        let subtitle = completeLagoonExit.shoreHeroCarousel
-        var stripe = await completeLagoonExit.shoreLayout.prefix(3).shoreFlagControl { reefKey in
-            await cardSideInset.shared.forgeCoralRemovalTitle(for: reefKey.avatar)
+        let lagoonSeatMarkbigh = completeLagoonExit.polishShellCache.isEmpty ? "Lxixvxex xhxoxsxtx".suliJoyPalmUnfurled : completeLagoonExit.polishShellCache
+        let subtitle = completeLagoonExit.forgeCoralRemovalCard
+        var stripe = await completeLagoonExit.cellForRowAt.prefix(3).shoreFlagControl { reefKey in
+            await cardSideInset.shared.forgeCoralRemovalTitle(for: reefKey.stitchIslandBackdropReef)
         }
         stripe = stripe.filter { !$0.isEmpty }
-        let applyLagoonSummary = max(completeLagoonExit.seaBreezeLook, 0)
+        let applyLagoonSummary = max(completeLagoonExit.anchorCurationDraftNav, 0)
         if stripe.isEmpty, applyLagoonSummary > 0, !resetWaveRecording.isEmpty {
             stripe = [resetWaveRecording]
         }
-        let suliJoyShoreMomentPublished = completeLagoonExit.buildReefScene > 0 ? completeLagoonExit.buildReefScene : max(applyLagoonSummary * 3, 24)
+        let suliJoyShoreMomentPublished = completeLagoonExit.tuneResortSpinner > 0 ? completeLagoonExit.tuneResortSpinner : max(applyLagoonSummary * 3, 24)
         return coverImageView(
-            abaloneTone: String(completeLagoonExit.abaloneTone),
-            coveEncoder: String(completeLagoonExit.coveEncoder),
+            abaloneTone: String(completeLagoonExit.avatarShellBadge),
+            coveEncoder: String(completeLagoonExit.numberOfRowsInSection),
             title: lagoonSeatMarkbigh,
             subtitle: subtitle,
             reefDefaults: reefDefaults,
@@ -1461,9 +1461,9 @@ final class suliJoyPalmRankingaccount {
             suliJoyShoreMomentPublished: suliJoyShoreMomentPublished,
             applyLagoonSummary: applyLagoonSummary,
             tideScrollCanvas: stripe,
-            clipReef: LagoonGateMark(abaloneTone: completeLagoonExit.abaloneTone),
-            cameraPhrase: completeLagoonExit.cameraPhrase,
-            presentSuliJoyHarborGuardMenu: completeLagoonExit.presentSuliJoyHarborGuardMenu
+            clipReef: LagoonGateMark(abaloneTone: completeLagoonExit.avatarShellBadge),
+            cameraPhrase: completeLagoonExit.presentShoreCommentPrompt,
+            presentSuliJoyHarborGuardMenu: completeLagoonExit.lagoonFaceRail
         )
     }
 
@@ -1492,14 +1492,14 @@ final class suliJoyPalmRankingaccount {
         return [renderTideCrewRail, tideEmptyNote]
     }
 
-    private static func creatorAvatarView(from tuneReefTextCard: [islandEntryFlow]) -> String {
+    private static func creatorAvatarView(from tuneReefTextCard: [shellEnvelope]) -> String {
         if let rewriteIslandAccounts = tuneReefTextCard.first(where: {
-            $0.nameShellArrow.caseInsensitiveCompare(stitchReadyIslandReefScene.reefSendButton) == .orderedSame
-        }), !rewriteIslandAccounts.stylist.isEmpty {
-            return rewriteIslandAccounts.stylist
+            $0.renderMomentComments.caseInsensitiveCompare(stitchReadyIslandReefScene.reefSendButton) == .orderedSame
+        }), !rewriteIslandAccounts.tuneTideTagLabel.isEmpty {
+            return rewriteIslandAccounts.tuneTideTagLabel
         }
-        if let joinCoveStack = tuneReefTextCard.first(where: { !$0.stylist.isEmpty }) {
-            return joinCoveStack.stylist
+        if let joinCoveStack = tuneReefTextCard.first(where: { !$0.tuneTideTagLabel.isEmpty }) {
+            return joinCoveStack.tuneTideTagLabel
         }
         return ""
     }
@@ -1630,7 +1630,7 @@ private actor cardSideInset {
 
 private extension Error {
     var leadingShoreConstraint: Int {
-        (self as? makeCurationSection)?.tapReefPhoto ?? 400
+        (self as? isWaveRolling)?.shoreReturnControl ?? 400
     }
 }
 

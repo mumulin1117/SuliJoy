@@ -1,0 +1,17 @@
+{
+  "models_tested": [
+    "SuliJoyEmailPayload",
+    "SuliJoyRefreshPayload",
+    "SuliJoyProfilePayload",
+    "SuliJoyEmptyPayload",
+    "SuliJoyUserIDPayload",
+    "SuliJoyUserFollowPayload",
+    "SuliJoyLetterListPayload",
+    "SuliJoyLetterHistoryPayload",
+    "SuliJoyLetterSendPayload",
+    "SuliJoyLetterReadPayload",
+    "SuliJoyLetterOpenPayload",
+    "SuliJoyUserBlockPayload"
+  ],
+  "encoded_output_identical": true
+}

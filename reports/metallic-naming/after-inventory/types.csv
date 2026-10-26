@@ -1,0 +1,2 @@
+﻿kind,name,base_name,owner,file,line,column,location_basis,classification,is_override,is_static
+class,SuliJoymetallicThreadController,SuliJoymetallicThreadController,,SuliJoymetallicThreadController.swift,3,7,compiler_range,source_declared,False,False

@@ -1,0 +1,37 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyMainBoundkingUI.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMainBoundkingUI.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMainBoundkingUI.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMainBoundkingUI.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMainBoundkingUI.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMainBoundkingUI.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyMusiInDoController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMusiInDoController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMusiInDoController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMusiInDoController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMusiInDoController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyMusiInDoController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyOpiRegistry.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyOpiRegistry.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyOpiRegistry.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyOpiRegistry.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyOpiRegistry.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyOpiRegistry.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyPalmGlyphWeaver.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyPalmGlyphWeaver.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyPalmGlyphWeaver.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyPalmGlyphWeaver.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyPalmGlyphWeaver.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoyPalmGlyphWeaver.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoymetallicThreadController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoymetallicThreadController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoymetallicThreadController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoymetallicThreadController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoymetallicThreadController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/arm64/SuliJoymetallicThreadController.swiftdeps"
+  }
+}

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>12</integer>
+	<key>logs</key>
+	<dict>
+		<key>51F2E350-B445-4E68-B0C2-8990F368FA6D</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>51F2E350-B445-4E68-B0C2-8990F368FA6D.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>393</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>JOiySuizoy project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>JOiySuizoy</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace JOiySuizoy with scheme JOiySuizoy</string>
+			<key>timeStartedRecording</key>
+			<real>814698345.68553805</real>
+			<key>timeStoppedRecording</key>
+			<real>814698349.48294306</real>
+			<key>title</key>
+			<string>Building workspace JOiySuizoy with scheme JOiySuizoy</string>
+			<key>uniqueIdentifier</key>
+			<string>51F2E350-B445-4E68-B0C2-8990F368FA6D</string>
+		</dict>
+		<key>860BD4B4-D6AD-4DC6-82E4-6B934C246EC4</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>860BD4B4-D6AD-4DC6-82E4-6B934C246EC4.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>2</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>0</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>JOiySuizoy project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>JOiySuizoy</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace JOiySuizoy with scheme JOiySuizoy</string>
+			<key>timeStartedRecording</key>
+			<real>814698289.37986505</real>
+			<key>timeStoppedRecording</key>
+			<real>814698295.27114999</real>
+			<key>title</key>
+			<string>Building workspace JOiySuizoy with scheme JOiySuizoy</string>
+			<key>uniqueIdentifier</key>
+			<string>860BD4B4-D6AD-4DC6-82E4-6B934C246EC4</string>
+		</dict>
+		<key>AEF0649F-F247-42BB-8570-E1C021F5FAB6</key>
+		<dict>
+			<key>className</key>
+			<string>IDECommandLineBuildLog</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>AEF0649F-F247-42BB-8570-E1C021F5FAB6.xcactivitylog</string>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>W</string>
+				<key>totalNumberOfAnalyzerIssues</key>
+				<integer>0</integer>
+				<key>totalNumberOfErrors</key>
+				<integer>0</integer>
+				<key>totalNumberOfTestFailures</key>
+				<integer>0</integer>
+				<key>totalNumberOfWarnings</key>
+				<integer>48</integer>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>JOiySuizoy project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>JOiySuizoy</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Building workspace JOiySuizoy with scheme JOiySuizoy and configuration Release</string>
+			<key>timeStartedRecording</key>
+			<real>814698560.09769702</real>
+			<key>timeStoppedRecording</key>
+			<real>814698595.12192702</real>
+			<key>title</key>
+			<string>Building workspace JOiySuizoy with scheme JOiySuizoy and configuration Release</string>
+			<key>uniqueIdentifier</key>
+			<string>AEF0649F-F247-42BB-8570-E1C021F5FAB6</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,37 @@
+{
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonProfileRemoteService.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonProfileRemoteService.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonProfileRemoteService.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonProfileRemoteService.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonProfileRemoteService.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonProfileRemoteService.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonRemoteClient.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonRemoteClient.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonRemoteClient.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonRemoteClient.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonRemoteClient.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonRemoteClient.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonRemoteConfiguration.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonRemoteConfiguration.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonRemoteConfiguration.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonRemoteConfiguration.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonRemoteConfiguration.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonRemoteConfiguration.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonScrollTextController.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonScrollTextController.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonScrollTextController.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonScrollTextController.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonScrollTextController.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonScrollTextController.swiftdeps"
+  },
+  "/Users/linqian/Documents/SuliJoy/JOiySuizoy/JOiySuizoy/SuliJoyLagoonSessionStore.swift" : {
+    "const-values" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonSessionStore.swiftconstvalues",
+    "dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonSessionStore.d",
+    "diagnostics" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonSessionStore.dia",
+    "object" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonSessionStore.o",
+    "swift-dependencies" : "/Users/linqian/Documents/SuliJoy/build/RemoteNaming/Build/Intermediates.noindex/JOiySuizoy.build/Debug-iphonesimulator/JOiySuizoy.build/Objects-normal/x86_64/SuliJoyLagoonSessionStore.swiftdeps"
+  }
+}

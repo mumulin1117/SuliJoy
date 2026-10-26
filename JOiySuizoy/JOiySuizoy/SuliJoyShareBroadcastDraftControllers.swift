@@ -411,7 +411,7 @@ final class coralMood: SuliJoyTropicCanvasController, UIImagePickerControllerDel
                 return
             }
             self.showLagoonToast(stitchLagoonEntryReefScene.coastalWardrobe)
-            let abaloneTone = String(session.abaloneTone)
+            let abaloneTone = String(session.avatarShellBadge)
             self.navigationController?.popViewController(animated: false)
             if let motionPulseButton = self.navigationController?.topViewController {
                 sunlit.coveSection(kind: .moorShoreProfileReefScene, abaloneTone: abaloneTone, from: motionPulseButton, animated: true)
@@ -882,7 +882,7 @@ final class typeWrap: SuliJoyTropicCanvasController, UIImagePickerControllerDele
                 return
             }
             self.showLagoonToast(stitchLagoonEntryReefScene.coastalWardrobe)
-            let abaloneTone = String(completeLagoonExit.abaloneTone)
+            let abaloneTone = String(completeLagoonExit.avatarShellBadge)
             self.navigationController?.popViewController(animated: false)
             if let motionPulseButton = self.navigationController?.topViewController {
                 sunlit.coveSection(kind: .raiseReefCommentFlag, abaloneTone: abaloneTone, from: motionPulseButton, animated: true)
